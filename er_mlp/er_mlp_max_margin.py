@@ -17,11 +17,11 @@ from er_mlp import ERMLP
 from plotter import Plotter
 
 
-WORD_EMBEDDING = False
-DATA_TYPE = 'ecoli'
+WORD_EMBEDDING = True
+DATA_TYPE = 'freebase'
 EMBEDDING_SIZE = 60 # size of each embeddings
 LAYER_SIZE = 60 # number of columns in the first layer
-TRAINING_EPOCHS = 1000 
+TRAINING_EPOCHS = 100 
 BATCH_SIZE = 500
 LEARNING_RATE = 0.01  
 DISPLAY_STEP = 1
@@ -135,6 +135,7 @@ for epoch in range(TRAINING_EPOCHS):
         flip = bool(random.getrandbits(1))
         _, current_cost= sess.run([optimizer, cost], feed_dict={training_triplets: batch_xs, flip_placeholder: flip})
         avg_cost +=current_cost/total_batch
+        print(current_cost)
         cost_list.append(current_cost)
         iter_list.append(iteration)
         iteration+=1
