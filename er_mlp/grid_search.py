@@ -1,6 +1,9 @@
 import er_mlp_max_margin
-import itertools  
+import itertools
+import sys  
+sys.stdout.flush()
 
+print("running grid search...")
 WORD_EMBEDDING = True
 DATA_TYPE = 'freebase'
 TRAINING_EPOCHS = 100 
