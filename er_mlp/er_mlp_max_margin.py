@@ -8,13 +8,13 @@ import tensorflow as tf
 from sklearn import utils
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_curve, auc, precision_recall_curve
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import random
 from tensorflow.python import debug as tf_debug
 
 from data_processor import DataProcessor
 from er_mlp import ERMLP
-from plotter import Plotter
+# from plotter import Plotter
 
 
 WORD_EMBEDDING = True
@@ -106,7 +106,7 @@ cost = er_mlp.loss(training_predictions)
 print('optimizer')
 optimizer = er_mlp.train(cost)
 
-plotter = Plotter(plotter_params)
+# plotter = Plotter(plotter_params)
 
 
 
@@ -173,9 +173,9 @@ accuracy_b = sum(1 for x,y in zip(labels_test,a) if x == y) / len(a)
 print("baseline accuracy:")
 print(accuracy_b)
 
-plotter.plot_roc(labels_test,predictions_list,predicates_test)
-plotter.plot_pr(labels_test,predictions_list,predicates_test)
-plotter.plot_cost(iter_list,cost_list)
+# plotter.plot_roc(labels_test,predictions_list,predicates_test)
+# plotter.plot_pr(labels_test,predictions_list,predicates_test)
+# plotter.plot_cost(iter_list,cost_list)
 
 def save_object( obj, filename):
     with open(filename, 'wb') as output:
