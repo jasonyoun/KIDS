@@ -9,7 +9,6 @@ from sklearn import utils
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_curve, auc, precision_recall_curve
 import matplotlib.pyplot as plt
-from imblearn.over_sampling import RandomOverSampler
 import random
 from tensorflow.python import debug as tf_debug
 
@@ -196,17 +195,7 @@ save_data = {
 save_object(save_data,str(BATCH_SIZE)+str(DATA_TYPE)+str(WORD_EMBEDDING)+str(TRAINING_EPOCHS)+'.txt')
 name = str(BATCH_SIZE)+str(DATA_TYPE)+str(WORD_EMBEDDING)+str(TRAINING_EPOCHS)+'.txt'
 file_name = open(name,'rb')
-wv = pickle.load(file_name)
-wv['prediction_list']
-wv['labels_test']
-wv['batch_size']
-wv['training_epochs']
-wv['data_type']
-wv['num_entities']
-wv['num_preds']
-wv['pred_dic']
-wv['predicates']
-print(wv['predicates'])
+
 
 
 
