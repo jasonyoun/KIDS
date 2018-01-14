@@ -1,0 +1,4 @@
+er_mlp/results/*
+er_mlp/fig/*
+*__pycache__
+**/.DS_Store
