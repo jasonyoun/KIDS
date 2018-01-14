@@ -181,8 +181,11 @@ class ERMLP:
         cost = tf.nn.weighted_cross_entropy_with_logits(logits=predictions, targets=y, pos_weight=pos_weight)
         return tf.reduce_mean(cost)+ (self.params['lambda'] * l2)
 
-    def train(self,loss):
+    def train_adam(self,loss):
         return tf.train.AdamOptimizer(learning_rate = self.params['learning_rate']).minimize(loss)
+
+    def train_adagrad(self,loss):
+        return tf.train.AdagradOptimizer(learning_rate = self.params['learning_rate']).minimize(loss)
 
     def classify(self, predictions_list,threshold, predicates):
         classifications = []
