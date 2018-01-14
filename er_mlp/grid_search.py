@@ -19,6 +19,8 @@ optimizer_list = [0,1]
 optimal_list = None
 optimal_accuracy = 0.
 for x in itertools.product(embedding_size_list,layer_size_list,learning_rate_list,corrupt_size_list,lambda_list, optimizer_list):
+	print('current configuration: ')
+	print(x)
 	EMBEDDING_SIZE = x[0]
 	LAYER_SIZE = x[1]
 	LEARNING_RATE = x[2]  
@@ -30,6 +32,8 @@ for x in itertools.product(embedding_size_list,layer_size_list,learning_rate_lis
 	if (accuracy > optimal_accuracy):
 		optimal_accuracy = accuracy
 		optimal_list = x
+		print('new optimal accuracy: ')
+		print(optimal_accuracy)
 
 print('optimal configurations:')
 print(optimal_list)
