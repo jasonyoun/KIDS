@@ -3,7 +3,7 @@ import er_mlp_max_margin
 import itertools
 import sys  
 sys.stdout.flush()
-name = 'configs_486.txt'
+name = 'configs_972.txt'
 file_name = open(name,'rb')
 configs = pickle.load(file_name)
 x= configs[int(sys.argv[1])]
