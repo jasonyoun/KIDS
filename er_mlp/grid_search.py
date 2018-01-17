@@ -16,6 +16,7 @@ learning_rate_list = [0.001,.01,0.1]
 corrupt_size_list = [5, 10, 15]
 lambda_list = [0.00001,0.0001, 0.001]
 optimizer_list = [0,1]
+act_function = [0,1]
 optimal_list = None
 optimal_accuracy = 0.
 print('configuration initially set: ')
@@ -30,7 +31,8 @@ print('learning_rate_list: '+ str(learning_rate_list))
 print('corrupt_size_list: '+ str(corrupt_size_list))
 print('lambda_list: '+ str(lambda_list))
 print('optimizer_list: '+ str(optimizer_list))
-for x in itertools.product(embedding_size_list,layer_size_list,learning_rate_list,corrupt_size_list,lambda_list, optimizer_list):
+print('act_function: '+ str(act_function))
+for x in itertools.product(embedding_size_list,layer_size_list,learning_rate_list,corrupt_size_list,lambda_list, optimizer_list,act_function):
 	print('current configuration: ')
 	print(x)
 	EMBEDDING_SIZE = x[0]
@@ -39,8 +41,9 @@ for x in itertools.product(embedding_size_list,layer_size_list,learning_rate_lis
 	CORRUPT_SIZE = x[3]
 	LAMBDA = x[4]
 	OPTIMIZER = x[5]
+	ACT_FUNCTION = x[6]
 	accuracy = er_mlp_max_margin.run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
-        LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER )
+        LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION )
 	if (accuracy > optimal_accuracy):
 		optimal_accuracy = accuracy
 		optimal_list = x

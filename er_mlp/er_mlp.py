@@ -68,7 +68,7 @@ class ERMLP:
     # the neural network that is used during training. Along with the evaluation of a triplet,
     # the evaluation of a corrupted triplet is calculated as well so that we can calulcate
     # the contrastive max margin loss
-    def inference_for_max_margin_training(self,_triplets, _weights, _biases, _constants, _flip):
+    def inference_for_max_margin_training(self,_triplets, _weights, _biases, _constants, _flip, _act_function):
         pred_emb = None
         entity_emb = None
         if self.params['word_embedding']:
@@ -98,9 +98,14 @@ class ERMLP:
         
         # calculation of the first layer involves concatenating the three embeddings for each sample
         # and multipling it by the weight vector 
-        layer_1_correct = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b']))
-        layer_1_corrupted = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b']))
-        
+        layer_1_correct = None
+        layer_1_corrupted = None
+        if _act_function==0:
+            layer_1_correct = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b']))
+            layer_1_corrupted = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b']))
+        else:
+            layer_1_correct = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b']))
+            layer_1_corrupted = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b']))
 
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
         out_correct = tf.matmul(layer_1_correct,_weights['B'])
@@ -110,7 +115,7 @@ class ERMLP:
         return out
 
     # Similar to the network used for training, but without evaluating the corrupted triplet. This is used during testing
-    def inference(self,_triplets, _weights, _biases, _constants):
+    def inference(self,_triplets, _weights, _biases, _constants,_act_function):
         pred_emb = None
         entity_emb = None
         if self.params['word_embedding']:
@@ -132,7 +137,11 @@ class ERMLP:
         
         # calculation of the first layer involves concatenating the three embeddings for each sample
         # and multipling it by the weight vector 
-        layer_1 = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
+        layer_1 = None
+        if _act_function==0:
+            layer_1 = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
+        else:
+            layer_1 = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
         out = tf.matmul(layer_1,_weights['B'])
         return out

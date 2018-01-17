@@ -16,7 +16,7 @@ from er_mlp import ERMLP
 
 
 
-def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER ):
+def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION ):
     # numerically represent the entities, predicates, and words
     processor = DataProcessor()
     print("machine translation...")
@@ -72,10 +72,10 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     # A boolean to determine if we want to corrupt the head or tail
     flip_placeholder = tf.placeholder(tf.bool)
 
-    training_predictions = er_mlp.inference_for_max_margin_training(training_triplets, weights, biases, constants, flip_placeholder)
+    training_predictions = er_mlp.inference_for_max_margin_training(training_triplets, weights, biases, constants, flip_placeholder, ACT_FUNCTION)
 
     print('network for predictions')
-    predictions = er_mlp.inference(triplets, weights, biases, constants)
+    predictions = er_mlp.inference(triplets, weights, biases, constants, ACT_FUNCTION)
 
     print('calculate cost')
     cost = er_mlp.loss(training_predictions)
@@ -104,10 +104,33 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
 
     data_train = indexed_data_training[:,:3]
 
+
+    def determine_threshold(indexed_data_dev):
+        # use the dev set to compute the best threshold for classification
+        data_dev = indexed_data_dev[:,:3]
+        predicates_dev = indexed_data_dev[:,1]
+        labels_dev = indexed_data_dev[:,3]
+        labels_dev = labels_dev.reshape((np.shape(labels_dev)[0],1))
+        predictions_dev = sess.run(predictions, feed_dict={triplets: data_dev, y: labels_dev})
+        threshold = er_mlp.compute_threshold(predictions_dev,labels_dev,predicates_dev)
+        return threshold
+
+    def test_model(indexed_data_test,threshold):
+        data_test = indexed_data_test[:,:3]
+        labels_test = indexed_data_test[:,3]
+        labels_test = labels_test.reshape((np.shape(labels_test)[0],1))
+        predicates_test = indexed_data_test[:,1]
+        predictions_list = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
+        classifications = er_mlp.classify(predictions_list,threshold, predicates_test)
+        accuracy = sum(1 for x,y in zip(labels_test,classifications) if x == y) / len(labels_test)
+        return accuracy, classifications, labels_test, predicates_test, predictions_list
+
     iter_list = []
     cost_list = []
     iteration = 0
     current_cost = 0.
+    current_accuracy = None
+    current_threshold = None
     print("Begin training...")
     for epoch in range(TRAINING_EPOCHS):
         avg_cost = 0.
@@ -123,30 +146,23 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
             iteration+=1
         # Display progress
         if epoch % DISPLAY_STEP == 0:
+            current_threshold = determine_threshold(indexed_data_dev)
+            current_accuracy, c_, l_, p_, pr_ = test_model(indexed_data_test, current_threshold)
             print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, TRAINING_EPOCHS, avg_cost,current_cost ))
+            print("current accuracy:"+ str(current_accuracy))
 
-    # use the dev set to compute the best threshold for classification
     print("determine threshold for classification")
-    data_dev = indexed_data_dev[:,:3]
-    predicates_dev = indexed_data_dev[:,1]
-    labels_dev = indexed_data_dev[:,3]
-    labels_dev = labels_dev.reshape((np.shape(labels_dev)[0],1))
-    predictions_dev = sess.run(predictions, feed_dict={triplets: data_dev, y: labels_dev})
-    threshold = er_mlp.compute_threshold(predictions_dev,labels_dev,predicates_dev)
+    # use the dev set to compute the best threshold for classification
+    threshold = determine_threshold(indexed_data_dev)
+    
 
 
+    print("test model")
     # Test the model by classifying each sample using the threshold determined by running the model
     # over the dev set
-    print("test model")
-    data_test = indexed_data_test[:,:3]
-    labels_test = indexed_data_test[:,3]
-    labels_test = labels_test.reshape((np.shape(labels_test)[0],1))
-    predicates_test = indexed_data_test[:,1]
-    predictions_list = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
-    classifications = er_mlp.classify(predictions_list,threshold, predicates_test)
-    accuracy = sum(1 for x,y in zip(labels_test,classifications) if x == y) / len(labels_test)
-    print("overall accuracy:")
-    print(accuracy)
+    accuracy, classifications, labels_test, predicates_test, predictions_list = test_model(indexed_data_test,threshold)
+    print("overall accuracy:"+ str(accuracy))
+
 
     # find the accuracy for the baseline, which is the most often occuring class
     a = np.empty(np.shape(classifications))
@@ -197,15 +213,16 @@ if __name__ == "__main__":
     DATA_TYPE = 'ecoli'
     EMBEDDING_SIZE = 60 # size of each embeddings
     LAYER_SIZE = 60 # number of columns in the first layer
-    TRAINING_EPOCHS = 100 
+    TRAINING_EPOCHS = 5 
     BATCH_SIZE = 500
     LEARNING_RATE = 0.01  
     DISPLAY_STEP = 1
     CORRUPT_SIZE = 10
     LAMBDA = 0.0001
     OPTIMIZER = 1
+    ACT_FUNCTION = 0
     run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
-        LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER )
+        LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION )
 
 
 
