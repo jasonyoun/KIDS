@@ -100,10 +100,13 @@ class ERMLP:
         # and multipling it by the weight vector 
         layer_1_correct = None
         layer_1_corrupted = None
+        print('activation function:')
         if _act_function==0:
+            print(str(_act_function)+ 'tanh')
             layer_1_correct = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b']))
             layer_1_corrupted = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b']))
         else:
+            print(str(_act_function)+ 'sigmoid')
             layer_1_correct = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b']))
             layer_1_corrupted = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b']))
 
@@ -138,9 +141,12 @@ class ERMLP:
         # calculation of the first layer involves concatenating the three embeddings for each sample
         # and multipling it by the weight vector 
         layer_1 = None
+        print('activation function:')
         if _act_function==0:
+            print(str(_act_function)+ 'tanh')
             layer_1 = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
         else:
+            print(str(_act_function)+ 'sigmoid')
             layer_1 = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
         out = tf.matmul(layer_1,_weights['B'])
