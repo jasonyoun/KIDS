@@ -6,7 +6,7 @@ from collections import Counter
 
 class Voting():
 	@classmethod
-	def get_resolved_inconsistencies(cls, data, inconsistencies):
+	def resolve_inconsistencies(cls, data, inconsistencies):
 		tuples_with_max_occurrence = []
 		for inconsistent_tuples in inconsistencies:
 			occurrences = Counter(inconsistent_tuples)

@@ -9,7 +9,7 @@ MAX_NUM_ITERATIONS = 10
 
 class AverageLog():
 	@classmethod
-	def get_resolved_inconsistencies(cls, data, inconsistencies):
+	def resolve_inconsistencies(cls, data, inconsistencies):
 		tuple_to_belief_and_sources = Sums.initialize_beliefs(data)
 		source_to_trustworthiness_and_size = {}
 		change = 1.0

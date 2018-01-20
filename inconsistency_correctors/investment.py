@@ -10,7 +10,7 @@ MAX_NUM_ITERATIONS = 10
 
 class Investment():
 	@classmethod
-	def get_resolved_inconsistencies(cls, data, inconsistencies):
+	def resolve_inconsistencies(cls, data, inconsistencies):
 		tuple_to_belief_and_sources = cls.initialize_beliefs(data, inconsistencies)
 		source_to_trustworthiness_and_size = cls.initialize_trustworthiness(data, tuple_to_belief_and_sources)
 		change = 1.0

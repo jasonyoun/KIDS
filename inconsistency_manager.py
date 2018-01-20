@@ -4,65 +4,90 @@ import pandas as pd
 import math
 from collections import Counter
 import xml.etree.ElementTree as ET
-from .data_manager import condition_met
+from .data_manager import get_pd_of_statement
 
 SPO_LIST = ['Subject','Predicate','Object']
 
-def _has_conflict_values(pd_data, conflict_feature_name, conflict_feature_values):
-   all_feature_values = pd.unique(pd_data[conflict_feature_name])
-   has_conflict_values = False
+def _data_has_conflict_values(all_feature_values, conflict_feature_values):
+   unique_feature_values  = pd.unique(all_feature_values)
+   num_of_conflict_values = 0
+
    for conflict_feature_value in conflict_feature_values:
-      if conflict_feature_value in all_feature_values:
-         has_conflict_values = True
-   return has_conflict_values
+      if conflict_feature_value in unique_feature_values:
+         num_of_conflict_values = num_of_conflict_values + 1
+
+   return num_of_conflict_values > 1
 
 def detect_inconsistencies(inconsistency_rule_file, pd_data):
    inconsistency_rules = ET.parse(inconsistency_rule_file).getroot()
+   inconsistencies     = []
 
-   inconsistencies = []
    for inconsistency_rule in inconsistency_rules:
       inconsistency_rule_name = inconsistency_rule.get('name')
-      condition_statement = inconsistency_rule.find('condition')
+      condition_statement     = inconsistency_rule.find('condition')
 
+      # CHECK IF CONDITION IS MET
+      pd_condition_specific_data = pd_data.copy()
+      if condition_statement is not None:
+         pd_condition_statement     = get_pd_of_statement(condition_statement)
+         indices_meeting_condition  = (pd_data[pd_condition_statement.index] == pd_condition_statement).all(1).values
+         pd_condition_specific_data = pd_data[indices_meeting_condition].copy()
+
+         if pd_condition_specific_data.shape[0] == 0:
+            print("[inconsistency rule] {} is skipped because there are no data meeting condition.".format(inconsistency_rule_name))
+            continue
+
+      # CHECK IF DATA HAS CONFLICTS
       inconsistency_statement = inconsistency_rule.find('inconsistency')
-      conflict_feature_name = inconsistency_statement.get('name')
+      conflict_feature_name   = inconsistency_statement.get('name')
       conflict_feature_values = [inconsistency_feature.get('value') for inconsistency_feature in inconsistency_statement]
 
-      if _has_conflict_values(pd_data, conflict_feature_name, conflict_feature_values) == False:
+      if _data_has_conflict_values(pd_data[conflict_feature_name], conflict_feature_values) == False:
+         print("[inconsistency rule] {} is skipped because there are no conflicts.".format(inconsistency_rule_name))
          continue
 
       rest_feature_names = [feature_name for feature_name in SPO_LIST if feature_name != conflict_feature_name]
-      unique_tuples = pd_data[rest_feature_names].drop_duplicates()
-   
-      for idx, row in unique_tuples.iterrows():
-         print("[inconsistency rule] "+inconsistency_rule_name+" checking tuples "+str(idx)+"/"+str(len(unique_tuples))+"\r",end='')
-         if condition_met(row, condition_statement) == False:
-            continue
-         filtered_indices = (pd_data[rest_feature_names[0]] == row[rest_feature_names[0]]) & \
-                            (pd_data[rest_feature_names[1]] == row[rest_feature_names[1]])
-         feature_values = pd_data[filtered_indices][conflict_feature_name]
-         conflicts = [feature_value for feature_value in feature_values if feature_value in conflict_feature_values]
-         if len(conflicts) < 2:
-         	continue
+      
+      pd_grouped_data = pd_data.groupby(rest_feature_names)[conflict_feature_name].apply(set)
+
+      def has_conflict_values(x, conflict_feature_values):
+         return x.intersection(conflict_feature_values)
+
+      pd_grouped_data = pd_grouped_data.apply(has_conflict_values, args=(set(conflict_feature_values), ))
+      pd_grouped_data = pd_grouped_data[pd_grouped_data.apply(len) > 1]
+
+      for row_idx in range(pd_grouped_data.shape[0]):
+         pd_conflict_data = pd.Series(pd_grouped_data.index[row_idx], index = rest_feature_names)
+
          conflict_tuples = []
-         for conflict in conflicts:
-            new_data = row.copy()
-            new_data[conflict_feature_name] = conflict
-            conflict_tuples.append(tuple(new_data[SPO_LIST].values))
+         sources = pd.unique(pd_condition_specific_data[pd_condition_specific_data[SPO_LIST] == pd_grouped_data[row_idx]]['Source'])
+         for conflict_value in pd_grouped_data[row_idx]:
+            pd_conflict_data = pd_conflict_data.append(pd.Series(conflict_value, index = [conflict_feature_name]))
+            conflict_tuples.append((pd_conflict_data[SPO_LIST].tolist(), sources.tolist()))
          inconsistencies.append(conflict_tuples)
-      print("\n",end='')
-   print("[inconsistency detection summary] found "+str(len(inconsistencies))+" inconsistencies.")
+
+   print("[inconsistency detection summary] found {} inconsistencies.".format(len(inconsistencies)))
+
    return inconsistencies
+
+
+def condition_met(data, statement):
+   if statement is None:
+      return True
+   
+   for feature in statement:
+      feature_name  = feature.get('name')
+      feature_value = feature.get('value')
+      if data[feature_name] != feature_value:
+         return False
+   
+   return True
 
 def measure_accuracy(resolved_inconsistencies, answer):
    correctly_resolved_inconsistencies = 0.0
-   for resolved_inconsistency in resolved_inconsistencies:
-      if is_correct(resolved_inconsistency, answer):
-         correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
-   return float(correctly_resolved_inconsistencies) / float(len(resolved_inconsistencies))
 
-def is_correct(resolved_inconsistency, answer):
-   indices = (answer['Subject'] == resolved_inconsistency[0]) & \
-             (answer['Predicate'] == resolved_inconsistency[1]) & \
-             (answer['Object'] == resolved_inconsistency[2])
-   return np.any(indices)
+   for (resolved_inconsistency, belief) in resolved_inconsistencies:
+      if (resolved_inconsistency[SPO_LIST] == answer).all(1).any():
+         correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
+
+   return float(correctly_resolved_inconsistencies) / float(len(resolved_inconsistencies))

@@ -5,10 +5,11 @@ import math
 from collections import Counter
 
 MAX_NUM_ITERATIONS = 10
+SPO_LIST = ['Subject','Predicate','Object']
 
 class Sums(object):
 	@classmethod
-	def get_resolved_inconsistencies(cls, data, inconsistencies):
+	def resolve_inconsistencies(cls, data, inconsistencies):
 		tuple_to_belief_and_sources = cls.initialize_beliefs(data)
 		source_to_trustworthiness_and_size = {}
 		change = 1.0
@@ -25,17 +26,31 @@ class Sums(object):
 		return cls.find_tuple_with_max_belief(inconsistencies, tuple_to_belief_and_sources)
 
 	@staticmethod
+	def tuple_is_inconsistent(tuple, inconsistencies):
+		for inconsistent_tuples in inconsistencies:
+			if tuple in inconsistent_tuples:
+				return True
+		return False
+
+	@staticmethod
 	def find_tuple_with_max_belief(inconsistencies, tuple_to_belief_and_sources):
-		tuples_with_max_belief = []
+		tuple_to_belief_and_sources_without_inconsistencies = tuple_to_belief_and_sources
+		inconsistent_tuples_with_max_belief = []
+		inconsistency_idx = 1
 		for inconsistent_tuples in inconsistencies:
 			beliefs = {inconsistent_tuple: tuple_to_belief_and_sources[inconsistent_tuple][0] for inconsistent_tuple in inconsistent_tuples}
-			tuple_with_max_belief = max(beliefs.items(), key=operator.itemgetter(1))[0]
-			tuples_with_max_belief.append(tuple_with_max_belief)
-		return tuples_with_max_belief
+			for tuple in beliefs:
+				print('[inconsistency '+str(inconsistency_idx)+'] '+' '.join(tuple)+'\t'+str(beliefs[tuple]))
+				tuple_to_belief_and_sources_without_inconsistencies.pop(tuple, None)
+			inconsistency_idx = inconsistency_idx + 1
+			inconsistent_tuple, max_belief = max(beliefs.items(), key=operator.itemgetter(1))
+			inconsistent_tuples_with_max_belief.append((inconsistent_tuple, max_belief))
+
+		return inconsistent_tuples_with_max_belief, tuple_to_belief_and_sources_without_inconsistencies
 
 	@staticmethod
 	def initialize_beliefs(data):
-		unique_tuples = data[['Subject','Predicate','Object']].drop_duplicates()
+		unique_tuples = data[SPO_LIST].drop_duplicates()
 		tuple_to_belief_and_sources = {}
 		for idx, unique_tuple in unique_tuples.iterrows():
 			sources = data[(data['Subject'] == unique_tuple['Subject']) & (data['Predicate'] == unique_tuple['Predicate']) & \
@@ -57,7 +72,7 @@ class Sums(object):
 		unique_sources = pd.unique(data['Source'])
 		for unique_source in unique_sources: # for each source
 			trustworthiness = 0.0 
-			unique_tuples_to_source = data[data['Source'] == unique_source][['Subject','Predicate','Object']].drop_duplicates()
+			unique_tuples_to_source = data[data['Source'] == unique_source][SPO_LIST].drop_duplicates()
 			for idx, unique_tuple in unique_tuples_to_source.iterrows():
 				trustworthiness = trustworthiness + tuple_to_belief_and_sources[tuple(unique_tuple.values)][0]
 			source_to_trustworthiness_and_size[unique_source] = (trustworthiness, len(unique_tuples_to_source))
