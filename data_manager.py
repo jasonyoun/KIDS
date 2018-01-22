@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 SPO_LIST = ['Subject', 'Predicate', 'Object']
 
 def integrate_data(data_path_file, map_file, data_rule_file):
-   pd_data_paths        = pd.read_csv(data_path_file, sep='\t', comment='#')
+   pd_data_paths        = pd.read_csv(data_path_file, sep = '\t', comment = '#')
    list_integrated_data = []
 
    for idx, row in pd_data_paths.iterrows():
@@ -36,7 +36,6 @@ def _convert_data(pd_data, source_name, map_file):
 
    return pd_data
 
-
 def _apply_data_rule(pd_data, data_rule_file):
    data_rules   = ET.parse(data_rule_file).getroot()
    pd_new_data  = pd_data.copy()
@@ -55,7 +54,7 @@ def _apply_data_rule(pd_data, data_rule_file):
       pd_rule_specific_new_data[pd_then_statement.index] = pd_then_statement.tolist()
       pd_new_data       = pd_new_data.append(pd_rule_specific_new_data)
    
-   print("[data integration] {} new tuples are added based on data rule.".format(pd_new_data.shape[0]))
+   print("[data integration] {} new tuples are added based on data rule.".format(pd_new_data.shape[0]-pd_data.shape[0]))
    
    return pd_new_data
 
@@ -63,4 +62,4 @@ def get_pd_of_statement(statement):
    feature_names   = [feature.get('name') for feature in statement]
    feature_values  = [feature.get('value') for feature in statement]
    
-   return pd.Series(feature_values, index=feature_names)
+   return pd.Series(feature_values, index = feature_names)

@@ -53,41 +53,29 @@ def detect_inconsistencies(inconsistency_rule_file, pd_data):
       def has_conflict_values(x, conflict_feature_values):
          return x.intersection(conflict_feature_values)
 
-      pd_grouped_data = pd_grouped_data.apply(has_conflict_values, args=(set(conflict_feature_values), ))
+      pd_grouped_data = pd_grouped_data.apply(has_conflict_values, args = (set(conflict_feature_values), ))
       pd_grouped_data = pd_grouped_data[pd_grouped_data.apply(len) > 1]
 
       for row_idx in range(pd_grouped_data.shape[0]):
          pd_conflict_data = pd.Series(pd_grouped_data.index[row_idx], index = rest_feature_names)
 
          conflict_tuples = []
-         sources = pd.unique(pd_condition_specific_data[pd_condition_specific_data[SPO_LIST] == pd_grouped_data[row_idx]]['Source'])
+         sources = pd.unique(pd_condition_specific_data[(pd_condition_specific_data[SPO_LIST] == pd_grouped_data[row_idx]).values]['Source'])
          for conflict_value in pd_grouped_data[row_idx]:
-            pd_conflict_data = pd_conflict_data.append(pd.Series(conflict_value, index = [conflict_feature_name]))
-            conflict_tuples.append((pd_conflict_data[SPO_LIST].tolist(), sources.tolist()))
+            pd_conflict_data[conflict_feature_name] = conflict_value
+            conflict_tuples.append((tuple(pd_conflict_data[SPO_LIST]), sources.tolist()))
          inconsistencies.append(conflict_tuples)
 
    print("[inconsistency detection summary] found {} inconsistencies.".format(len(inconsistencies)))
 
    return inconsistencies
 
-
-def condition_met(data, statement):
-   if statement is None:
-      return True
-   
-   for feature in statement:
-      feature_name  = feature.get('name')
-      feature_value = feature.get('value')
-      if data[feature_name] != feature_value:
-         return False
-   
-   return True
-
 def measure_accuracy(resolved_inconsistencies, answer):
    correctly_resolved_inconsistencies = 0.0
 
    for (resolved_inconsistency, belief) in resolved_inconsistencies:
-      if (resolved_inconsistency[SPO_LIST] == answer).all(1).any():
+      pd_resolved_inconsistency = pd.Series(resolved_inconsistency, index = SPO_LIST)
+      if (pd_resolved_inconsistency == answer).all(1).any():
          correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
 
    return float(correctly_resolved_inconsistencies) / float(len(resolved_inconsistencies))

@@ -38,7 +38,7 @@ class Sums(object):
 		inconsistent_tuples_with_max_belief = []
 		inconsistency_idx = 1
 		for inconsistent_tuples in inconsistencies:
-			beliefs = {inconsistent_tuple: tuple_to_belief_and_sources[inconsistent_tuple][0] for inconsistent_tuple in inconsistent_tuples}
+			beliefs = {inconsistent_tuple: tuple_to_belief_and_sources[inconsistent_tuple][0] for inconsistent_tuple, sources in inconsistent_tuples}
 			for tuple in beliefs:
 				print('[inconsistency '+str(inconsistency_idx)+'] '+' '.join(tuple)+'\t'+str(beliefs[tuple]))
 				tuple_to_belief_and_sources_without_inconsistencies.pop(tuple, None)
