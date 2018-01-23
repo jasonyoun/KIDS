@@ -4,6 +4,7 @@ import numpy     as np
 import pandas    as pd
 import math
 from collections import Counter
+from operator import itemgetter
 
 # import knowledge_scholar packages
 from .voting     import Voting
@@ -43,19 +44,20 @@ class TruthFinder():
    @staticmethod
    def find_tuple_with_max_belief(inconsistencies, pd_present_belief_vector):
       pd_present_belief_vector_without_inconsistencies = pd_present_belief_vector
-      inconsistent_tuples_with_max_belief = []
+      inconsistencies_with_max_belief = []
       inconsistency_idx = 1
       for inconsistent_tuples in inconsistencies:
-         beliefs = {}
+         inconsistent_tuples_with_max_belief = []
          for inconsistent_tuple, sources in inconsistent_tuples:
-            beliefs[inconsistent_tuple] = pd_present_belief_vector.loc[inconsistent_tuple].values[0]
-            print('[inconsistency {}] {} {}'.format(inconsistency_idx,' '.join(inconsistent_tuple),beliefs[inconsistent_tuple]))
+            belief = pd_present_belief_vector.loc[inconsistent_tuple].values[0]
+            print('[inconsistency {}] {} {}'.format(inconsistency_idx,' '.join(inconsistent_tuple), belief))
+            inconsistent_tuples_with_max_belief.append((inconsistent_tuple, sources, belief))
             pd_present_belief_vector_without_inconsistencies.drop(inconsistent_tuple)
          inconsistency_idx = inconsistency_idx + 1
-         inconsistent_tuple, max_belief = max(beliefs.items(), key=operator.itemgetter(1))
-         inconsistent_tuples_with_max_belief.append((inconsistent_tuple, max_belief))
+         inconsistent_tuples_with_max_belief = sorted(inconsistent_tuples_with_max_belief, key = itemgetter(2), reverse = True)
+         inconsistencies_with_max_belief.append(inconsistent_tuples_with_max_belief)
 
-      return inconsistent_tuples_with_max_belief, pd_present_belief_vector_without_inconsistencies
+      return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies
 
    @staticmethod
    def initialize_trustworthiness(pd_data, inconsistencies):

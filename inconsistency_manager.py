@@ -47,8 +47,7 @@ def detect_inconsistencies(inconsistency_rule_file, pd_data):
          continue
 
       rest_feature_names = [feature_name for feature_name in SPO_LIST if feature_name != conflict_feature_name]
-      
-      pd_grouped_data = pd_data.groupby(rest_feature_names)[conflict_feature_name].apply(set)
+      pd_grouped_data    = pd_data.groupby(rest_feature_names)[conflict_feature_name].apply(set)
 
       def has_conflict_values(x, conflict_feature_values):
          return x.intersection(conflict_feature_values)
@@ -60,9 +59,9 @@ def detect_inconsistencies(inconsistency_rule_file, pd_data):
          pd_conflict_data = pd.Series(pd_grouped_data.index[row_idx], index = rest_feature_names)
 
          conflict_tuples = []
-         sources = pd.unique(pd_condition_specific_data[(pd_condition_specific_data[SPO_LIST] == pd_grouped_data[row_idx]).values]['Source'])
          for conflict_value in pd_grouped_data[row_idx]:
             pd_conflict_data[conflict_feature_name] = conflict_value
+            sources = pd.unique(pd_condition_specific_data[(pd_condition_specific_data[SPO_LIST] == pd_conflict_data).all(1)]['Source'])
             conflict_tuples.append((tuple(pd_conflict_data[SPO_LIST]), sources.tolist()))
          inconsistencies.append(conflict_tuples)
 
