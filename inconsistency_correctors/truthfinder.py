@@ -19,7 +19,7 @@ class TruthFinder():
    @classmethod
    def resolve_inconsistencies(cls, pd_data, inconsistencies):
       pd_present_belief_vector       = cls.initialize_belief(pd_data)
-      np_past_trustworthiness_vector = cls.initialize_trustworthiness(pd_data, inconsistencies)
+      np_past_trustworthiness_vector = cls.initialize_trustworthiness(pd_data)
       np_a_matrix, np_b_matrix       = cls.create_matrices(pd_data, inconsistencies)
 
       function_s  = np.vectorize(cls.function_s, otypes = [np.float])
@@ -64,7 +64,7 @@ class TruthFinder():
       return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies
 
    @staticmethod
-   def initialize_trustworthiness(pd_data, inconsistencies):
+   def initialize_trustworthiness(pd_data):
       num_of_sources            = len(pd.unique(pd_data['Source']))
       np_trustworthiness_vector = np.full((num_of_sources, 1), -np.log(0.1))
 
@@ -97,7 +97,7 @@ class TruthFinder():
    def modify_source_vector(elements, inconsistencies):
       for idx in range(len(elements)):
          if TruthFinder.source_has_conflicting_belief(elements.index[idx], elements.name, inconsistencies):
-            elements[idx] = -1
+            elements[idx] = -0.5
       return elements
 
    @staticmethod

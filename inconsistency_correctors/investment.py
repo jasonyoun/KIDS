@@ -50,8 +50,8 @@ class Investment():
 	@staticmethod
 	def get_exclusive_tuples(tuple, inconsistencies):
 		for inconsistent_tuples in inconsistencies:
-			if tuple in inconsistent_tuples:
-				return [inconsistent_tuple for inconsistent_tuple in inconsistent_tuples if tuple != inconsistent_tuple]
+			if tuple in [inconsistent_tuple for (inconsistent_tuple, sources) in inconsistent_tuples]:
+				return [inconsistent_tuple for (inconsistent_tuple, sources) in inconsistent_tuples if tuple != inconsistent_tuple]
 		return []
 
 	@staticmethod
