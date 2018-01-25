@@ -72,9 +72,15 @@ def detect_inconsistencies(inconsistency_rule_file, pd_data):
 def measure_accuracy(resolved_inconsistencies, answer):
    correctly_resolved_inconsistencies = 0.0
 
-   for (resolved_inconsistency, belief) in resolved_inconsistencies:
-      pd_resolved_inconsistency = pd.Series(resolved_inconsistency, index = SPO_LIST)
+   for resolved_inconsistency in resolved_inconsistencies:
+      ### SUPER UGLY : NEED TO UPDAE THE CORRECTORS ###
+      resolved_tuple = resolved_inconsistency[0] if type(resolved_inconsistency[0]) == tuple and type(resolved_inconsistency[0][0]) == str else resolved_inconsistency[0][0]
+
+      pd_resolved_inconsistency = pd.Series(resolved_tuple, index = SPO_LIST)
       if (pd_resolved_inconsistency == answer).all(1).any():
          correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
 
    return float(correctly_resolved_inconsistencies) / float(len(resolved_inconsistencies))
+
+
+
