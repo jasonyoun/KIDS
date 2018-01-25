@@ -12,4 +12,4 @@ class Voting():
 			occurrences = Counter([inconsistent_tuple for inconsistent_tuple, sources in inconsistent_tuples])
 			inconsistent_tuple, max_occurrence = max(occurrences.items(), key=operator.itemgetter(1))
 			inconsistent_tuples_with_max_occurrence.append((inconsistent_tuple, max_occurrence))
-		return inconsistent_tuples_with_max_occurrence, None
+		return inconsistent_tuples_with_max_occurrence, None, None
