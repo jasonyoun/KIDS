@@ -20,6 +20,7 @@ def integrate_data(data_path_file, map_file, data_rule_file):
 
    pd_integrated_data = pd.concat(list_integrated_data)
    pd_integrated_data = _apply_data_rule(pd_integrated_data, data_rule_file)
+   pd_integrated_data.index = range(pd_integrated_data.shape[0])
    print("[data integration] finally {} tuples are integrated.".format(pd_integrated_data.shape[0]))
    
    return pd_integrated_data
