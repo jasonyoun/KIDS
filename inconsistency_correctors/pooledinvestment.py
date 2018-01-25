@@ -25,7 +25,8 @@ class PooledInvestment():
 			source_to_trustworthiness_and_size = source_to_new_trustworthiness_and_size
 			tuple_to_belief_and_sources = cls.measure_beliefs(source_to_trustworthiness_and_size, tuple_to_belief_and_sources, inconsistencies)
 
-		return Sums.find_tuple_with_max_belief(inconsistencies, tuple_to_belief_and_sources)
+		inconsistencies_with_max_belief, tuple_to_belief_and_sources_without_inconsistencies = Sums.find_tuple_with_max_belief(inconsistencies, tuple_to_belief_and_sources)
+		return inconsistencies_with_max_belief, None, None
 
 	@staticmethod
 	def initialize_beliefs(data, inconsistencies):
