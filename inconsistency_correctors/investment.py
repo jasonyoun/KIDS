@@ -6,6 +6,7 @@ from collections import Counter
 
 from .sums import Sums
 
+SPO_LIST = ['Subject', 'Predicate', 'Object']
 MAX_NUM_ITERATIONS = 10
 
 class Investment():
@@ -38,11 +39,16 @@ class Investment():
 
 			total_size_of_all_sources = float(len(sources))
 			exclusive_tuples = Investment.get_exclusive_tuples(tuple, inconsistencies)
+			print(tuple)
 			for exclusive_tuple in exclusive_tuples:
-				exclusive_sources = data[(data['Subject'] == exclusive_tuple[0]) & (data['Predicate'] == exclusive_tuple[1]) & \
-				(data['Object'] == exclusive_tuple[2])]['Source']
+				print('exclusive_tuple')
+				print(exclusive_tuple)
+				pd_exclusive_tuple = pd.Series(exclusive_tuple, index = SPO_LIST)
+				exclusive_sources = data[(data[SPO_LIST] == pd_exclusive_tuple).all(1)]['Source']
+				print(exclusive_sources)
 				total_size_of_all_sources = total_size_of_all_sources + float(len(exclusive_sources))
-			
+
+			print(total_size_of_all_sources)		
 			belief = float(len(sources)) / total_size_of_all_sources
 			tuple_to_belief_and_sources[tuple] = (belief,sources.values.tolist())
 		return tuple_to_belief_and_sources

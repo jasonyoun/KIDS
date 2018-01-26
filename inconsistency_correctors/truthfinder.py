@@ -41,9 +41,6 @@ class TruthFinder():
       pd_grouped_data              = pd_data.groupby(SPO_LIST)['Source'].apply(set)
       pd_present_belief_and_source = pd.concat([pd_present_belief_vector, pd_grouped_data], axis = 1)
 
-      for belief in np_present_belief_vector.tolist():
-         print(belief)
-
       inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = TruthFinder.find_tuple_with_max_belief(inconsistencies, pd_present_belief_and_source)
       return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies, np_present_trustworthiness_vector
 
