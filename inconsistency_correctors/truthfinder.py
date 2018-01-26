@@ -31,7 +31,6 @@ class TruthFinder():
       while delta > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
          np_present_belief_vector          = function_s(np_b_matrix.dot(np_past_trustworthiness_vector))
          np_present_trustworthiness_vector = function_t(np_a_matrix.dot(np_present_belief_vector))
-      
          delta = cls.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
 
@@ -42,6 +41,9 @@ class TruthFinder():
       pd_grouped_data              = pd_data.groupby(SPO_LIST)['Source'].apply(set)
       pd_present_belief_and_source = pd.concat([pd_present_belief_vector, pd_grouped_data], axis = 1)
 
+      for belief in np_present_belief_vector.tolist():
+         print(belief)
+
       inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = TruthFinder.find_tuple_with_max_belief(inconsistencies, pd_present_belief_and_source)
       return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies, np_present_trustworthiness_vector
 
@@ -50,6 +52,7 @@ class TruthFinder():
       pd_present_belief_vector_without_inconsistencies = pd_present_belief_and_source
       inconsistencies_with_max_belief = []
       inconsistency_idx = 1
+
       for inconsistent_tuples in inconsistencies:
          inconsistent_tuples_with_max_belief = []
          for inconsistent_tuple, sources in inconsistent_tuples:
@@ -96,7 +99,7 @@ class TruthFinder():
    @staticmethod
    def modify_source_vector(elements, inconsistencies):
       for idx in range(len(elements)):
-         if TruthFinder.source_has_conflicting_belief(elements.index[idx], elements.name, inconsistencies):
+         if elements[idx] != 1 and TruthFinder.source_has_conflicting_belief(elements.index[idx], elements.name, inconsistencies):
             elements[idx] = -0.5
       return elements
 
