@@ -7,13 +7,14 @@ from collections import Counter
 from .investment import Investment
 from .sums import Sums
 
+SPO_LIST           = ['Subject', 'Predicate', 'Object']
 MAX_NUM_ITERATIONS = 10
 
 class PooledInvestment():
 	@classmethod
 	def resolve_inconsistencies(cls, data, inconsistencies):
 		tuple_to_belief_and_sources = cls.initialize_beliefs(data, inconsistencies)
-		source_to_trustworthiness_and_size = Investment.initialize_trustworthiness(data, tuple_to_belief_and_sources)
+		source_to_trustworthiness_and_size = cls.initialize_trustworthiness(data)
 		change = 1.0
 		iteration = 1.0
 
@@ -27,6 +28,18 @@ class PooledInvestment():
 
 		inconsistencies_with_max_belief, tuple_to_belief_and_sources_without_inconsistencies = Sums.find_tuple_with_max_belief(inconsistencies, tuple_to_belief_and_sources)
 		return inconsistencies_with_max_belief, None, None
+
+	@staticmethod
+	def initialize_trustworthiness(data):
+		source_to_trustworthiness_and_size = {}
+		unique_sources = pd.unique(data['Source'])
+
+		for unique_source in unique_sources: # for each source
+			trustworthiness = 1.0 
+			unique_tuples_to_source = data[data['Source'] == unique_source][SPO_LIST].drop_duplicates()
+			source_to_trustworthiness_and_size[unique_source] = (trustworthiness, len(unique_tuples_to_source))
+		# normalize
+		return source_to_trustworthiness_and_size
 
 	@staticmethod
 	def initialize_beliefs(data, inconsistencies):
