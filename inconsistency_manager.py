@@ -78,8 +78,12 @@ def measure_accuracy(resolved_inconsistencies, answer):
  
       pd_resolved_inconsistency = pd.Series(resolved_tuple, index = SPO_LIST)
       if (pd_resolved_inconsistency == answer).all(1).any():
+         print('[YES]\t'+','.join(pd_resolved_inconsistency)+' <-> '+','.join(answer))
          correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
-
+      else:
+         print('[NO]\t'+','.join(pd_resolved_inconsistency)+' <-> '+','.join(answer))
+   print(correctly_resolved_inconsistencies)
+   print(len(resolved_inconsistencies))
    return float(correctly_resolved_inconsistencies) / float(len(resolved_inconsistencies))
 
 
