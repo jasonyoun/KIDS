@@ -48,7 +48,7 @@ class PooledInvestment(object):
    def normalize(np_present_belief_vector, claims, inconsistencies, exponent):
       np_new_belief_vector = np_present_belief_vector.copy()
 
-      for inconsistent_tuples in inconsistencies:
+      for inconsistent_tuples in inconsistencies.values():
          total_score = 0
          for (inconsistent_tuple, sources) in inconsistent_tuples:
             total_score = total_score + Investment.function_s(np_present_belief_vector[claims.index(inconsistent_tuple)], exponent)

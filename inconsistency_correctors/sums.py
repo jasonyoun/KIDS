@@ -48,19 +48,19 @@ class Sums(object):
    @staticmethod
    def find_tuple_with_max_belief(inconsistencies, pd_present_belief_and_source):
       pd_present_belief_vector_without_inconsistencies = pd_present_belief_and_source
-      inconsistencies_with_max_belief = []
-      inconsistency_idx = 1
+      inconsistencies_with_max_belief = {}
 
-      for inconsistent_tuples in inconsistencies:
+      for inconsistency_id in inconsistencies:
+         inconsistent_tuples = inconsistencies[inconsistency_id]
          inconsistent_tuples_with_max_belief = []
          for inconsistent_tuple, sources in inconsistent_tuples:
             belief = pd_present_belief_and_source.loc[inconsistent_tuple].values[0]
-            #print('[inconsistency {}] {} {}'.format(inconsistency_idx,' '.join(inconsistent_tuple), belief))
+            #print('[inconsistency id {}] {} {}'.format(inconsistency_id,' '.join(inconsistent_tuple), belief))
             inconsistent_tuples_with_max_belief.append((inconsistent_tuple, sources, belief))
             pd_present_belief_vector_without_inconsistencies.drop(inconsistent_tuple)
-         inconsistency_idx = inconsistency_idx + 1
+
          inconsistent_tuples_with_max_belief = sorted(inconsistent_tuples_with_max_belief, key = itemgetter(2), reverse = True)
-         inconsistencies_with_max_belief.append(inconsistent_tuples_with_max_belief)
+         inconsistencies_with_max_belief[inconsistency_id] = inconsistent_tuples_with_max_belief
 
       return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies
 

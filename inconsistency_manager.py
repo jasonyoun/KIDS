@@ -20,7 +20,8 @@ def _data_has_conflict_values(all_feature_values, conflict_feature_values):
 
 def detect_inconsistencies(inconsistency_rule_file, pd_data):
    inconsistency_rules = ET.parse(inconsistency_rule_file).getroot()
-   inconsistencies     = []
+   inconsistencies     = {}
+   inconsistency_id    = 0
 
    for inconsistency_rule in inconsistency_rules:
       inconsistency_rule_name = inconsistency_rule.get('name')
@@ -63,7 +64,9 @@ def detect_inconsistencies(inconsistency_rule_file, pd_data):
             pd_conflict_data[conflict_feature_name] = conflict_value
             sources = pd.unique(pd_condition_specific_data[(pd_condition_specific_data[SPO_LIST] == pd_conflict_data).all(1)]['Source'])
             conflict_tuples.append((tuple(pd_conflict_data[SPO_LIST]), sources.tolist()))
-         inconsistencies.append(conflict_tuples)
+
+         inconsistencies[inconsistency_id] = conflict_tuples
+         inconsistency_id = inconsistency_id + 1
 
    print("[inconsistency detection summary] found {} inconsistencies.".format(len(inconsistencies)))
 
@@ -72,23 +75,12 @@ def detect_inconsistencies(inconsistency_rule_file, pd_data):
 def measure_accuracy(resolved_inconsistencies, answers):
    correctly_resolved_inconsistencies = 0.0
 
-   for resolved_inconsistency in resolved_inconsistencies:
-      ### SUPER UGLY : NEED TO UPDAE THE CORRECTORS ###
-      resolved_tuple = resolved_inconsistency[0] if type(resolved_inconsistency[0]) == tuple and type(resolved_inconsistency[0][0]) == str else resolved_inconsistency[0][0]
-      print("================")
-      print(resolved_tuple)
+   for inconsistency_id in resolved_inconsistencies:
+      resolved_inconsistency = resolved_inconsistencies[inconsistency_id]
+      resolved_tuple = resolved_inconsistency[0][0]
       pd_resolved_inconsistency = pd.Series(resolved_tuple, index = SPO_LIST)
-      indices = (answers[SPO_LIST] == pd_resolved_inconsistency).all(1)
-      print(sum(indices))
-      answer = answers[indices]
-      print(answer)
       if (pd_resolved_inconsistency == answers[SPO_LIST]).all(1).any():
-         print('[YES]\t'+','.join(pd_resolved_inconsistency)+' <-> '+','.join(answer))
          correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
-      else:
-         print('[NO]\t'+','.join(pd_resolved_inconsistency)+' <-> '+','.join(answer))
-   print(correctly_resolved_inconsistencies)
-   print(len(resolved_inconsistencies))
    return float(correctly_resolved_inconsistencies) / float(len(resolved_inconsistencies))
 
 

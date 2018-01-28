@@ -69,7 +69,7 @@ class Investment(object):
    def initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies):
       pd_present_belief_vector = pd_grouped_data.apply(lambda x: 1)
       # we only need to change claim that has inconsistency.
-      for inconsistent_tuples in inconsistencies:
+      for inconsistent_tuples in inconsistencies.values():
          total_source_size = Investment.get_total_source_size_of_inconsistent_tuples(inconsistent_tuples, pd_source_size_data)
          for (inconsistent_tuple, sources) in inconsistent_tuples:
             source_size = sum([pd_source_size_data[source] for source in sources])

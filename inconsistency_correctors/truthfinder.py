@@ -86,7 +86,7 @@ class TruthFinder():
 
    @staticmethod
    def source_has_conflicting_belief(belief, source, inconsistencies):
-      for inconsistent_tuples in inconsistencies:
+      for inconsistent_tuples in inconsistencies.values():
          for (inconsistent_tuple, sources) in inconsistent_tuples:
             if tuple(belief) == inconsistent_tuple and source in sources:
                return True
