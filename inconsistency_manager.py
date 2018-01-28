@@ -77,7 +77,7 @@ def measure_accuracy(resolved_inconsistencies, answers):
       resolved_tuple = resolved_inconsistency[0] if type(resolved_inconsistency[0]) == tuple and type(resolved_inconsistency[0][0]) == str else resolved_inconsistency[0][0]
  
       pd_resolved_inconsistency = pd.Series(resolved_tuple, index = SPO_LIST)
-      anwer = answer[(pd_resolved_inconsistency == answers).all(1)]
+      answer = answer[(pd_resolved_inconsistency == answers).all(1)]
       if (pd_resolved_inconsistency == answers).all(1).any():
          print('[YES]\t'+','.join(pd_resolved_inconsistency)+' <-> '+','.join(answer))
          correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
