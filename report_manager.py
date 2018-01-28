@@ -73,3 +73,37 @@ def generate_sankey_data(pd_data):
    out_sankey_data.write(','.join(['source','type','target','value'])+'\n')
    for index in pd_grouped_data.index:
       out_sankey_data.write("{},{},{},{}\n".format(index[0],index[1],index[2],pd_grouped_data.loc[index]))
+
+def save_resolved_inconsistencies(inconsistency_out_file, inconsistencies_with_max_belief):
+   inconsistency_out = open(inconsistency_out_file, 'w')
+
+   inconsistency_out.write('{}\n'.format('\t'.join(['Subject','Predicate','Object','Belief','Source size','Sources','Total source size','Conflicting tuple info'])))
+   for inconsistent_tuples_with_max_belief in inconsistencies_with_max_belief:
+      (selected_tuple, sources, belief) = inconsistent_tuples_with_max_belief[0]
+      conflicting_tuple_info            = inconsistent_tuples_with_max_belief[1:]
+
+      total_source_size = np.sum([len(inconsistent_tuple_with_max_belief[1]) for inconsistent_tuple_with_max_belief in inconsistent_tuples_with_max_belief])
+
+      print('[inconsistency resolution] {}\t{}\t{}\t{}\t{}\t{}'.format('\t'.join(selected_tuple),
+                                                         "{0:.10f}".format(belief),
+                                                         len(sources),
+                                                         ",".join(sources),
+                                                         total_source_size,
+                                                         conflicting_tuple_info))
+      inconsistency_out.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format('\t'.join(selected_tuple),
+                                                         "{0:.10f}".format(belief),
+                                                         len(sources),
+                                                         ",".join(sources),
+                                                         total_source_size,
+                                                         conflicting_tuple_info))
+
+   inconsistency_out.close()
+
+def save_integrated_data(data_out_file, pd_belief_vector_without_inconsistencies):
+   data_out = open(data_out_file, 'w')
+
+   data_out.write('\t'.join(['Subject','Predicate','Object','Belief','Source size','Sources'])+'\n')
+   for tuple, belief_and_sources in pd_belief_vector_without_inconsistencies.iterrows():
+      data_out.write('\t'.join(tuple)+'\t'+str("{0:.2f}".format(belief_and_sources[0]))+'\t'+str(len(belief_and_sources[1]))+'\t'+','.join(belief_and_sources[1])+'\n')
+
+   data_out.close()

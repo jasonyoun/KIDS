@@ -55,7 +55,7 @@ class Sums(object):
          inconsistent_tuples_with_max_belief = []
          for inconsistent_tuple, sources in inconsistent_tuples:
             belief = pd_present_belief_and_source.loc[inconsistent_tuple].values[0]
-            print('[inconsistency {}] {} {}'.format(inconsistency_idx,' '.join(inconsistent_tuple), belief))
+            #print('[inconsistency {}] {} {}'.format(inconsistency_idx,' '.join(inconsistent_tuple), belief))
             inconsistent_tuples_with_max_belief.append((inconsistent_tuple, sources, belief))
             pd_present_belief_vector_without_inconsistencies.drop(inconsistent_tuple)
          inconsistency_idx = inconsistency_idx + 1

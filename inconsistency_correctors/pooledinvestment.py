@@ -10,11 +10,10 @@ from .sums import Sums
 SPO_LIST           = ['Subject', 'Predicate', 'Object']
 MAX_NUM_ITERATIONS = 10
 THRESHOLD          = np.power(0.1,10)
-EXPONENT           = 1.4
 
 class PooledInvestment(object):
    @classmethod
-   def resolve_inconsistencies(cls, pd_data, inconsistencies):
+   def resolve_inconsistencies(cls, pd_data, inconsistencies, exponent=1.4):
    	  # preprocess
       pd_source_size_data = pd_data.groupby('Source').size()
       pd_grouped_data     = pd_data.groupby(SPO_LIST)['Source'].apply(set)
@@ -31,7 +30,7 @@ class PooledInvestment(object):
       while delta > THRESHOLD and iteration < MAX_NUM_ITERATIONS:
          np_present_trustworthiness_vector = np_a_matrix.dot(np_present_belief_vector)
          claims                            = pd_grouped_data.index.tolist()
-         np_present_belief_vector          = cls.normalize(np_b_matrix.dot(np_present_trustworthiness_vector), claims, inconsistencies)
+         np_present_belief_vector          = cls.normalize(np_b_matrix.dot(np_present_trustworthiness_vector), claims, inconsistencies, exponent)
          delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
          np_a_matrix                    = Investment.update_a_matrix(np_a_matrix, np_present_trustworthiness_vector, pd_source_size_data)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
@@ -46,20 +45,16 @@ class PooledInvestment(object):
       return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies, np_present_trustworthiness_vector
 
    @staticmethod
-   def function_s(x):
-      return np.power(x, EXPONENT)
-
-   @staticmethod
-   def normalize(np_present_belief_vector, claims, inconsistencies):
+   def normalize(np_present_belief_vector, claims, inconsistencies, exponent):
       np_new_belief_vector = np_present_belief_vector.copy()
 
       for inconsistent_tuples in inconsistencies:
          total_score = 0
          for (inconsistent_tuple, sources) in inconsistent_tuples:
-            total_score = total_score + PooledInvestment.function_s(np_present_belief_vector[claims.index(inconsistent_tuple)])
+            total_score = total_score + Investment.function_s(np_present_belief_vector[claims.index(inconsistent_tuple)], exponent)
          for (inconsistent_tuple, sources) in inconsistent_tuples:
             present_value         = np_new_belief_vector[claims.index(inconsistent_tuple)]
-            claim_spepcific_value = PooledInvestment.function_s(np_present_belief_vector[claims.index(inconsistent_tuple)])
+            claim_spepcific_value = Investment.function_s(np_present_belief_vector[claims.index(inconsistent_tuple)], exponent)
             np_new_belief_vector[claims.index(inconsistent_tuple)] = present_value * claim_spepcific_value / total_score
       
       return np_new_belief_vector
