@@ -18,7 +18,7 @@ class Investment(object):
       pd_grouped_data     = pd_data.groupby(SPO_LIST)['Source'].apply(set)
 
       # initialize
-      np_present_belief_vector       = cls.initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies)
+      np_present_belief_vector       = Sums.normalize(cls.initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies))
       np_past_trustworthiness_vector = cls.initialize_trustworthiness(pd_source_size_data)
       np_a_matrix, np_b_matrix       = cls.create_matrices(pd_grouped_data, pd_source_size_data)
       np_a_matrix                    = cls.update_a_matrix(np_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
@@ -29,8 +29,8 @@ class Investment(object):
       iteration   = 1
 
       while delta > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
-         np_present_trustworthiness_vector = np_a_matrix.dot(np_present_belief_vector)
-         np_present_belief_vector          = function_s(np_b_matrix.dot(np_present_trustworthiness_vector))
+         np_present_trustworthiness_vector = Sums.normalize(np_a_matrix.dot(np_present_belief_vector))
+         np_present_belief_vector          = Sums.normalize(function_s(np_b_matrix.dot(np_present_trustworthiness_vector)))
          delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
          np_a_matrix                    = cls.update_a_matrix(np_a_matrix, np_present_trustworthiness_vector, pd_source_size_data)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
@@ -88,45 +88,3 @@ class Investment(object):
    @staticmethod
    def initialize_trustworthiness(pd_source_size_data):
       return np.matrix(pd_source_size_data.apply(lambda x: 1)).T
-
-'''
-	@staticmethod
-	def get_exclusive_tuples(tuple, inconsistencies):
-		for inconsistent_tuples in inconsistencies:
-			if tuple in [inconsistent_tuple for (inconsistent_tuple, sources) in inconsistent_tuples]:
-				return [inconsistent_tuple for (inconsistent_tuple, sources) in inconsistent_tuples if tuple != inconsistent_tuple]
-		return []
-
-	@staticmethod
-	def measure_trustworthiness(pd_source_data, pd_claim_data):
-		pd_new_source_data = pd_source_data.copy()
-
-		for target_source in pd_new_source_data.index: # for each source T(i)(s)
-			new_trustworthiness = 0.0 
-			(target_size, target_claims, target_trustworthiness) = pd_source_data.loc[target_source] # T(i-1)(s)
-			for idx, target_claim in target_claims[SPO_LIST].iterrows(): # for each claim c in source s
-				belief  = pd_claim_data.loc[[tuple(target_claim)],'Belief'].values[0] # belief = B(i-1)(c)
-				sources = pd_claim_data.loc[[tuple(target_claim)],'Sources']
-				weight  = 0.0
-				
-				for source in list(sources)[0]: # IT IS UGLY. NEED TO MODIFY
-					(source_size, source_claims, source_trustworthiness) = pd_source_data.loc[source]
-					weight = weight + source_trustworthiness / float(source_size)
-				new_trustworthiness = new_trustworthiness + belief * target_trustworthiness / (target_size * weight)
-			pd_new_source_data.at[[target_source],'Trustworthiness'] = new_trustworthiness
-		# normalize
-		return pd_new_source_data
-
-	@staticmethod
-	def measure_beliefs(pd_source_data, pd_claim_data):
-		for claim in pd_claim_data.index:
-			belief  = pd_claim_data.loc[[tuple(claim)],'Belief'].values[0]
-			sources = pd_claim_data.loc[[tuple(claim)],'Sources']
-			new_belief = 0.0
-			for source in list(sources)[0]: # IT IS UGLY. NEED TO MODIFY
-				(source_size, source_claims, source_trustworthiness) = pd_source_data.loc[source]
-				new_belief = new_belief + source_trustworthiness / float(source_size)
-			pd_claim_data.at[[claim],'Belief'] = np.power(new_belief, 1.2)
-		# normalize
-		return pd_claim_data
-'''

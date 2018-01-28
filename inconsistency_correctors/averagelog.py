@@ -21,8 +21,8 @@ class AverageLog(object):
       iteration   = 1
 
       while delta > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
-         np_present_trustworthiness_vector = np_a_matrix.dot(np_present_belief_vector)
-         np_present_belief_vector       = np_b_matrix.dot(np_present_trustworthiness_vector)
+         np_present_trustworthiness_vector = Sums.normalize(np_a_matrix.dot(np_present_belief_vector))
+         np_present_belief_vector       = Sums.normalize(np_b_matrix.dot(np_present_trustworthiness_vector))
          delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
 

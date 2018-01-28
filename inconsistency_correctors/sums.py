@@ -19,8 +19,8 @@ class Sums(object):
       iteration   = 1
 
       while delta > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
-         np_present_trustworthiness_vector = np_a_matrix.dot(np_present_belief_vector)
-         np_present_belief_vector       = np_b_matrix.dot(np_present_trustworthiness_vector)
+         np_present_trustworthiness_vector = Sums.normalize(np_a_matrix.dot(np_present_belief_vector))
+         np_present_belief_vector          = Sums.normalize(np_b_matrix.dot(np_present_trustworthiness_vector))
          delta = cls.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
 
@@ -33,6 +33,10 @@ class Sums(object):
 
       inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = cls.find_tuple_with_max_belief(inconsistencies, pd_present_belief_and_source)
       return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies, np_present_trustworthiness_vector
+
+   @staticmethod
+   def normalize(vector):
+      return vector / max(vector)
 
    @staticmethod
    def find_tuple_with_max_belief(inconsistencies, pd_present_belief_and_source):
@@ -78,8 +82,8 @@ class Sums(object):
       np_belief_source_matrix = np.matrix(pd_belief_source_matrix.tolist()) 
       size_of_sources         = np.array([Sums.get_source_size(pd_data, source) for source in sources])
       
-      np_a_matrix = (np_belief_source_matrix / size_of_sources).T
-      np_b_matrix = np_a_matrix.T
+      np_a_matrix = np_belief_source_matrix.T
+      np_b_matrix = np_belief_source_matrix
       
       return np_a_matrix, np_b_matrix
 
