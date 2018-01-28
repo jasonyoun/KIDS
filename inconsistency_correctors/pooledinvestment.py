@@ -10,94 +10,34 @@ from .sums import Sums
 SPO_LIST           = ['Subject', 'Predicate', 'Object']
 MAX_NUM_ITERATIONS = 10
 
-class PooledInvestment():
-	@classmethod
-	def resolve_inconsistencies(cls, data, inconsistencies):
-		tuple_to_belief_and_sources = cls.initialize_beliefs(data, inconsistencies)
-		source_to_trustworthiness_and_size = cls.initialize_trustworthiness(data)
-		change = 1.0
-		iteration = 1.0
+class PooledInvestment(object):
+   @classmethod
+   def resolve_inconsistencies(cls, pd_data, inconsistencies):
+   	  # preprocess
+      pd_source_size_data = pd_data.groupby('Source').size()
+      pd_grouped_data     = pd_data.groupby(SPO_LIST)['Source'].apply(set)
 
-		while change > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
-			source_to_new_trustworthiness_and_size = cls.measure_trustworthiness(data, tuple_to_belief_and_sources, source_to_trustworthiness_and_size)
-			change = Sums.measure_trustworthiness_change(source_to_trustworthiness_and_size, source_to_new_trustworthiness_and_size)
-			print(str(iteration)+"\t"+str(change))
-			iteration = iteration + 1
-			source_to_trustworthiness_and_size = source_to_new_trustworthiness_and_size
-			tuple_to_belief_and_sources = cls.measure_beliefs(source_to_trustworthiness_and_size, tuple_to_belief_and_sources, inconsistencies)
+      # initialize
+      np_present_belief_vector       = Investment.initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies)
+      np_past_trustworthiness_vector = Investment.initialize_trustworthiness(pd_source_size_data)
+      np_a_matrix, np_b_matrix       = Investment.create_matrices(pd_grouped_data, pd_source_size_data)
+      np_a_matrix                    = Investment.update_a_matrix(np_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
 
-		inconsistencies_with_max_belief, tuple_to_belief_and_sources_without_inconsistencies = Sums.find_tuple_with_max_belief(inconsistencies, tuple_to_belief_and_sources)
-		return inconsistencies_with_max_belief, None, None
+      delta       = 1.0
+      iteration   = 1
 
-	@staticmethod
-	def initialize_trustworthiness(data):
-		source_to_trustworthiness_and_size = {}
-		unique_sources = pd.unique(data['Source'])
+      while delta > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
+         np_present_trustworthiness_vector = np_a_matrix.dot(np_present_belief_vector)
+         np_present_belief_vector          = np_b_matrix.dot(np_present_trustworthiness_vector)
+         delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
+         np_a_matrix                    = Investment.update_a_matrix(np_a_matrix, np_present_trustworthiness_vector, pd_source_size_data)
+         np_past_trustworthiness_vector = np_present_trustworthiness_vector
 
-		for unique_source in unique_sources: # for each source
-			trustworthiness = 1.0 
-			unique_tuples_to_source = data[data['Source'] == unique_source][SPO_LIST].drop_duplicates()
-			source_to_trustworthiness_and_size[unique_source] = (trustworthiness, len(unique_tuples_to_source))
-		# normalize
-		return source_to_trustworthiness_and_size
+         print("[truthfinder] iteration {} and delta {}".format(iteration, delta))
+         iteration = iteration + 1
+      
+      pd_present_belief_vector     = pd.DataFrame(np_present_belief_vector, index = pd_grouped_data.index)
+      pd_present_belief_and_source = pd.concat([pd_present_belief_vector, pd_grouped_data], axis = 1)
 
-	@staticmethod
-	def initialize_beliefs(data, inconsistencies):
-		unique_tuples = data[['Subject','Predicate','Object']].drop_duplicates()
-		tuple_to_belief_and_sources = {}
-		for idx, unique_tuple in unique_tuples.iterrows():
-			sources = data[(data['Subject'] == unique_tuple['Subject']) & (data['Predicate'] == unique_tuple['Predicate']) & \
-				(data['Object'] == unique_tuple['Object'])]['Source']
-			tuple = (unique_tuple['Subject'],unique_tuple['Predicate'],unique_tuple['Object'])
-
-			total_size_of_all_sources = float(len(sources))
-			exclusive_tuples = Investment.get_exclusive_tuples(tuple, inconsistencies)
-			for exclusive_tuple in exclusive_tuples:
-				exclusive_sources = data[(data['Subject'] == exclusive_tuple[0]) & (data['Predicate'] == exclusive_tuple[1]) & \
-				(data['Object'] == exclusive_tuple[2])]['Source']
-				total_size_of_all_sources = total_size_of_all_sources + float(len(exclusive_sources))
-			
-			belief = float(len(sources)) / total_size_of_all_sources
-			tuple_to_belief_and_sources[tuple] = (belief,sources.values.tolist())
-		return tuple_to_belief_and_sources
-
-	@staticmethod
-	def measure_trustworthiness(data, tuple_to_belief_and_sources, source_to_trustworthiness_and_size):
-		source_to_new_trustworthiness_and_size = {}
-		unique_sources = pd.unique(data['Source'])
-		for unique_source in unique_sources: # for each source
-			trustworthiness = 0.0 
-			unique_tuples_to_source = data[data['Source'] == unique_source][['Subject','Predicate','Object']].drop_duplicates()
-			(prev_target_trustworthiness, target_size) = source_to_trustworthiness_and_size[unique_source]
-			for idx, unique_tuple in unique_tuples_to_source.iterrows():
-				(belief, sources) = tuple_to_belief_and_sources[tuple(unique_tuple.values)]
-				weight = 0.0
-				for source in sources:
-					(source_trustworthiness, size) = source_to_trustworthiness_and_size[source]
-					weight = weight + source_trustworthiness / float(size)
-				trustworthiness = trustworthiness + belief * prev_target_trustworthiness / (target_size * weight)
-			source_to_new_trustworthiness_and_size[unique_source] = (trustworthiness, len(unique_tuples_to_source))
-		# normalize
-		return Sums.normalize_by_max(source_to_new_trustworthiness_and_size)
-
-	@staticmethod
-	def measure_beliefs(source_to_trustworthiness_and_size, tuple_to_belief_and_sources, inconsistencies):
-		for tuple in tuple_to_belief_and_sources:
-			belief = PooledInvestment.get_belief(tuple, tuple_to_belief_and_sources, source_to_trustworthiness_and_size)
-			exclusive_tuples = Investment.get_exclusive_tuples(tuple, inconsistencies)
-			total_belief = np.power(belief, 1.4)
-			for exclusive_tuple in set(exclusive_tuples):
-				total_belief = total_belief + PooledInvestment.get_belief(exclusive_tuple, tuple_to_belief_and_sources, source_to_trustworthiness_and_size)
-			final_belief = belief * np.power(belief, 1.4) / total_belief
-			tuple_to_belief_and_sources[tuple] = (final_belief, tuple_to_belief_and_sources[tuple][1])
-		# normalize
-		return Sums.normalize_by_max(tuple_to_belief_and_sources)
-
-	@staticmethod
-	def get_belief(tuple, tuple_to_belief_and_sources, source_to_trustworthiness_and_size):
-		belief, sources = tuple_to_belief_and_sources[tuple]
-		new_belief = 0.0
-		for source in sources:
-			(trustworthiness, size) = source_to_trustworthiness_and_size[source]
-			new_belief = new_belief + trustworthiness / float(size)
-		return new_belief
+      inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = Sums.find_tuple_with_max_belief(inconsistencies, pd_present_belief_and_source)
+      return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies, np_present_trustworthiness_vector

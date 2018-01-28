@@ -3,39 +3,51 @@ import numpy as np
 import pandas as pd
 import math
 from collections import Counter
-from .sums import Sums
+
+from .sums       import Sums
 
 MAX_NUM_ITERATIONS = 10
+SPO_LIST = ['Subject','Predicate','Object']
 
-class AverageLog():
-	@classmethod
-	def resolve_inconsistencies(cls, data, inconsistencies):
-		tuple_to_belief_and_sources = Sums.initialize_beliefs(data)
-		source_to_trustworthiness_and_size = {}
-		change = 1.0
-		iteration = 1.0
+class AverageLog(object):
+   @classmethod
+   def resolve_inconsistencies(cls, pd_data, inconsistencies):
+      pd_present_belief_vector       = Sums.initialize_belief(pd_data)
+      np_present_belief_vector       = np.matrix(pd_present_belief_vector)
+      np_past_trustworthiness_vector = None
+      np_a_matrix, np_b_matrix       = cls.create_matrices(pd_data)
 
-		while change > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
-			source_to_new_trustworthiness_and_size = cls.measure_trustworthiness(data, tuple_to_belief_and_sources)
-			change = Sums.measure_trustworthiness_change(source_to_trustworthiness_and_size, source_to_new_trustworthiness_and_size)
-			print(str(iteration)+"\t"+str(change))
-			iteration = iteration + 1
-			source_to_trustworthiness_and_size = source_to_new_trustworthiness_and_size
-			tuple_to_belief_and_sources = Sums.measure_beliefs(source_to_trustworthiness_and_size, tuple_to_belief_and_sources)
+      delta       = 1.0
+      iteration   = 1
 
-		inconsistencies_with_max_belief, tuple_to_belief_and_sources_without_inconsistencies = Sums.find_tuple_with_max_belief(inconsistencies, tuple_to_belief_and_sources)
-		return inconsistencies_with_max_belief, None, None
+      while delta > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
+         np_present_trustworthiness_vector = np_a_matrix.dot(np_present_belief_vector)
+         np_present_belief_vector       = np_b_matrix.dot(np_present_trustworthiness_vector)
+         delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
+         np_past_trustworthiness_vector = np_present_trustworthiness_vector
 
-	@staticmethod
-	def measure_trustworthiness(data, tuple_to_belief_and_sources):
-		source_to_trustworthiness_and_size = {}
-		unique_sources = pd.unique(data['Source'])
-		for unique_source in unique_sources: # for each source
-			trustworthiness = 0.0 
-			unique_tuples_to_source = data[data['Source'] == unique_source][['Subject','Predicate','Object']].drop_duplicates()
-			for idx, unique_tuple in unique_tuples_to_source.iterrows():
-				trustworthiness = trustworthiness + tuple_to_belief_and_sources[tuple(unique_tuple.values)][0]
-			trustworthiness = math.log(len(unique_tuples_to_source)) * (trustworthiness / float(len(unique_tuples_to_source)))
-			source_to_trustworthiness_and_size[unique_source] = (trustworthiness, len(unique_tuples_to_source))
-		# normalize
-		return Sums.normalize_by_max(source_to_trustworthiness_and_size)
+         print("[truthfinder] iteration {} and delta {}".format(iteration, delta))
+         iteration = iteration + 1
+      
+      pd_present_belief_vector     = pd.DataFrame(np_present_belief_vector, index = pd_present_belief_vector.index)
+      pd_grouped_data              = pd_data.groupby(SPO_LIST)['Source'].apply(set)
+      pd_present_belief_and_source = pd.concat([pd_present_belief_vector, pd_grouped_data], axis = 1)
+
+      inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = Sums.find_tuple_with_max_belief(inconsistencies, pd_present_belief_and_source)
+      return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies, np_present_trustworthiness_vector
+
+   @staticmethod
+   def create_matrices(pd_data):
+      pd_grouped_data = pd_data.groupby(SPO_LIST)['Source'].apply(set)
+      sources         = pd.unique(pd_data['Source']).tolist()
+
+      pd_belief_source_matrix = pd_grouped_data.apply(Sums.create_source_vector, args = (sources,)) 
+      np_belief_source_matrix = np.matrix(pd_belief_source_matrix.tolist()) 
+      size_of_sources         = np.array([Sums.get_source_size(pd_data, source) for source in sources])
+      
+      # np_a_matrix = transform trustworthiness to belief
+      # np_b_matrix = transform belief to trustworthiness
+      np_a_matrix = (np_belief_source_matrix / (size_of_sources / np.log(size_of_sources))).T
+      np_b_matrix = np_belief_source_matrix
+      
+      return np_a_matrix, np_b_matrix
