@@ -71,13 +71,13 @@ def detect_inconsistencies(inconsistency_rule_file, pd_data):
 
 def measure_accuracy(resolved_inconsistencies, answers):
    correctly_resolved_inconsistencies = 0.0
-   print(answers.head())
+
    for resolved_inconsistency in resolved_inconsistencies:
       ### SUPER UGLY : NEED TO UPDAE THE CORRECTORS ###
       resolved_tuple = resolved_inconsistency[0] if type(resolved_inconsistency[0]) == tuple and type(resolved_inconsistency[0][0]) == str else resolved_inconsistency[0][0]
  
       pd_resolved_inconsistency = pd.Series(resolved_tuple, index = SPO_LIST)
-      answer = answers[(pd_resolved_inconsistency == answers).all(1)]
+      answer = answers[(pd_resolved_inconsistency == answers).all(1)][SPO_LIST]
       print(answer)
       if (pd_resolved_inconsistency == answers).all(1).any():
          print('[YES]\t'+','.join(pd_resolved_inconsistency)+' <-> '+','.join(answer))
