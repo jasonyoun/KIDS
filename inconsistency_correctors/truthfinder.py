@@ -7,6 +7,7 @@ import pandas    as pd
 from .voting     import Voting
 from .sums       import Sums
 from .investment import Investment
+from ..inconsistency_manager import measure_accuracy
 
 # constants
 MAX_NUM_ITERATIONS = 10
@@ -14,11 +15,15 @@ SPO_LIST           = ['Subject','Predicate','Object']
 
 class TruthFinder():
    @classmethod
-   def resolve_inconsistencies(cls, pd_data, inconsistencies):
-      pd_present_belief_vector       = cls.initialize_belief(pd_data)
+   def resolve_inconsistencies(cls, pd_data, inconsistencies, answers = None):
+      # preprocess
+      pd_source_size_data = pd_data.groupby('Source').size()
+      pd_grouped_data     = pd_data.groupby(SPO_LIST)['Source'].apply(set)
+
+      pd_present_belief_vector       = cls.initialize_belief(pd_grouped_data)
       np_present_belief_vector       = np.matrix(pd_present_belief_vector)
-      np_past_trustworthiness_vector = cls.initialize_trustworthiness(pd_data)
-      np_a_matrix, np_b_matrix       = cls.create_matrices(pd_data, inconsistencies)
+      np_past_trustworthiness_vector = cls.initialize_trustworthiness(pd_source_size_data)
+      np_a_matrix, np_b_matrix       = cls.create_matrices(pd_grouped_data, pd_source_size_data, inconsistencies)
 
       function_s  = np.vectorize(cls.function_s, otypes = [np.float])
       function_t  = np.vectorize(cls.function_t, otypes = [np.float])
@@ -32,26 +37,27 @@ class TruthFinder():
          delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
 
-         print("[{}] iteration {} and delta {}".format(cls.__name__, iteration, delta))
+         if answers is not None:
+            inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = Sums.find_tuple_with_max_belief(np_present_belief_vector, inconsistencies, pd_grouped_data)
+            accuracy = measure_accuracy(inconsistencies_with_max_belief, answers)
+            print("[{}] iteration, delta and accuracy : {} {} {}".format(cls.__name__, iteration, delta, accuracy))
+         else:
+            print("[{}] iteration and delta : {} {}".format(cls.__name__, iteration, delta))
          iteration = iteration + 1
       
-      pd_present_belief_vector     = pd.DataFrame(np_present_belief_vector, index = pd_present_belief_vector.index)
-      pd_grouped_data              = pd_data.groupby(SPO_LIST)['Source'].apply(set)
-      pd_present_belief_and_source = pd.concat([pd_present_belief_vector, pd_grouped_data], axis = 1)
-
-      inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = Sums.find_tuple_with_max_belief(inconsistencies, pd_present_belief_and_source)
+      inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = Sums.find_tuple_with_max_belief(np_present_belief_vector, inconsistencies, pd_grouped_data)
       return inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies, np_present_trustworthiness_vector
 
    @staticmethod
-   def initialize_trustworthiness(pd_data):
-      num_of_sources            = len(pd.unique(pd_data['Source']))
+   def initialize_trustworthiness(pd_source_size_data):
+      num_of_sources            = len(pd_source_size_data)
       np_trustworthiness_vector = np.full((num_of_sources, 1), -np.log(0.1))
 
       return np_trustworthiness_vector
 
    @staticmethod
-   def initialize_belief(pd_data):
-      return pd.DataFrame(pd_data.groupby(SPO_LIST)['Source'].apply(lambda x: 0))
+   def initialize_belief(pd_grouped_data):
+      return pd.DataFrame(pd_grouped_data.apply(lambda x: 0))
 
    @staticmethod
    def function_s(x):
@@ -69,13 +75,12 @@ class TruthFinder():
       return elements
 
    @staticmethod
-   def create_matrices(pd_data, inconsistencies):
-      pd_grouped_data = pd_data.groupby(SPO_LIST)['Source'].apply(set)
-      sources         = pd.unique(pd_data['Source']).tolist()
+   def create_matrices(pd_grouped_data, pd_source_size_data, inconsistencies):
+      sources = pd_source_size_data.index.tolist()
 
       pd_belief_source_matrix = pd_grouped_data.apply(Sums.create_source_vector, args = (sources,)) 
       np_belief_source_matrix = np.matrix(pd_belief_source_matrix.tolist()) 
-      size_of_sources         = np.array([Sums.get_source_size(pd_data, source) for source in sources])
+      size_of_sources         = np.array([pd_source_size_data[source] for source in sources])
       
       np_a_matrix = (np_belief_source_matrix / size_of_sources).T
 

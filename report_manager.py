@@ -3,71 +3,150 @@
 # import generic packages
 import pandas as pd
 import numpy as np
+import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 from matplotlib import pyplot, rcParams
+from scipy.stats import gamma
 
-COLUMN_NAMES = ['Subject','Predicate','Object','Source']
+#
+rcParams['font.family'] = 'sans-serif'
+rcParams['font.sans-serif'] = ['Arial']
 
-def plot_data_summary(pd_data, inconsistencies, np_trustworthiness_vector):
-   pd_data_copy = pd_data.copy()
-   pd_data_copy['Inconsistency'] = 'No'
-   
-   for inconsistency_tuples in inconsistencies:
+# constants
+SPO_LIST     = ['Subject','Predicate','Object']
+COLUMN_NAMES = SPO_LIST + ['Source']
+
+# IT IS NOT GENERIC (NEED TO UPDATE)
+data_category = { 'Liu': 'Genome-wide profile', 'Shaw': 'Genome-wide profile', 'Tamae': 'Genome-wide profile', 'CARD': 'KB', 'GO': 'KB' }
+
+def plot_pie_summary(pd_data, inconsistencies):
+   inconsistency_source_category = pd.Series(index = inconsistencies.keys())
+   '''
+   for inconsistency_tuples in inconsistencies.values():
       for inconsistency_tuple, sources in inconsistency_tuples:
          for source in sources:
-            pd_inconsistency_tuple = pd.Series(inconsistency_tuple + (source,),index=COLUMN_NAMES)
-            found_tuple = pd_data[(pd_data[COLUMN_NAMES] == pd_inconsistency_tuple).all(1)]
-            pd_data_copy.at[found_tuple.index.values[0],'Inconsistency'] = 'Yes'
+            inconsistency_source_category data_category[source]
 
-   pd_grouped_data = pd_data_copy[pd_data_copy['Inconsistency'] == 'No'].groupby(['Subject','Predicate','Object'])['Source'].apply(set)
-   sources = pd.unique(pd_data_copy['Source']).tolist()
+   plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+ 
+   plt.axis('equal')  
+   plt.savefig('integrated_data_summary.pdf')
+   plt.close()    
+   '''
 
-   pd_data_stat_column_names = ['Inconsistency', 'Single source', 'Multiple sources']
+def plot_trustworthiness(pd_data, np_trustworthiness_vector):
+   pd_data_copy = pd_data.copy()
+   
+   pd_grouped_data = pd_data_copy.groupby(SPO_LIST)['Source'].apply(set)
+   sources = pd_data.groupby('Source').size().index.tolist()
+   list_trustworthiness_vector = [float(trustworthiness) for trustworthiness in np_trustworthiness_vector]
+   pd_trustworthiness_vector = pd.Series(list_trustworthiness_vector, index = sources)
+
+   pd_data_stat_column_names = ['Single source', 'Multiple sources']
    pd_data_stat = pd.DataFrame(index=sources, columns=pd_data_stat_column_names)
    
    for source in sources:
-     matched_indices = (pd_data_copy[['Source','Inconsistency']] == pd.Series([source, 'Yes'], index=['Source','Inconsistency'])).all(1)
-     num_of_inconsistencies = sum(matched_indices)
+     matched_indices = (pd_data_copy['Source'] == source)
      num_of_tuples_with_one_source = sum(pd_grouped_data == {source})
-     num_of_rest = sum(pd_data_copy['Source'] == source) - num_of_inconsistencies - num_of_tuples_with_one_source
+     num_of_rest = sum(pd_data_copy['Source'] == source) - num_of_tuples_with_one_source
 
-     pd_data_stat.loc[source] = [num_of_inconsistencies, num_of_tuples_with_one_source, num_of_rest]
+     pd_data_stat.loc[source] = [num_of_tuples_with_one_source, num_of_rest]
     
-   generate_sankey_data(pd_data_copy)
-
-   rcParams['font.family'] = 'sans-serif'
-   rcParams['font.sans-serif'] = ['Sans']
    fig, ax1 = plt.subplots()
    ax1.set_yscale("log")
 
    dim  = len(pd_data_stat_column_names)
-   w    = 0.75
+   w    = 0.5
    dimw = w / dim
    
+   sorted_sources = pd_trustworthiness_vector.sort_values(ascending=False).index.tolist()
+   pd_data_stat = pd_data_stat.loc[sorted_sources]
+
    x = np.arange(len(sources))
    i = 0
    for column_name in pd_data_stat_column_names:
-      ax1.bar(x + i * dimw, pd_data_stat[column_name], dimw, label = column_name, bottom = 0.001)
+      ax1.bar(x + i * dimw + 0.5 * dimw, pd_data_stat[column_name], dimw, label = column_name, bottom = 0.001)
       i = i + 1
 
    ax2 = ax1.twinx()
-   list_trustworthiness_vector = [float(trustworthiness) for trustworthiness in np_trustworthiness_vector]
-   ax2.plot(x + dimw, list_trustworthiness_vector, marker = 'o', color = 'r', label = 'Trustworthiness')
+   ax2.plot(x + dimw, pd_trustworthiness_vector[sorted_sources].tolist(), marker = 'o', color = 'r', label = 'Trustworthiness')
    ax1.plot(np.nan, marker = 'o', color = 'r', label = 'Trustworthiness')
 
    ax1.set_xlabel('Sources')
    ax1.set_ylabel('Number of tuples')
    ax1.set_xticks(x + dimw)
-   ax1.set_xticklabels(sources)
+   ax1.set_xticklabels(sorted_sources)
    
-   ax2.set_ylabel('Trustworthiness')
+   ax2.set_ylabel('Relative trustworthiness')
    ax2.set_xticks(x + dimw)
    ax1.legend()
-   plt.savefig('data_summary.png')
+   plt.savefig('trustworthiness_data_summary.pdf')
    plt.close()
 
-def generate_sankey_data(pd_data):
-   pd_grouped_data = pd_data.groupby(['Source', 'Predicate', 'Inconsistency']).size()
+def plot_belief_of_inconsistencies(inconsistencies_with_max_belief, answer, inconsistency_out_file_prefix):
+   data = {0: [], 1: []}
+   colors = ['b','g']
+   labels = ['Correctly resolved tuple','Incorrectly resolved tuple']
+
+   for inconsistent_tuples_with_max_belief in inconsistencies_with_max_belief.values():
+      belief = inconsistent_tuples_with_max_belief[0][2]
+      
+      pd_claim = pd.Series(inconsistent_tuples_with_max_belief[0][0], index = SPO_LIST)
+      if (answer[SPO_LIST] == pd_claim).all(1).any():
+         data[0] = data[0] + [belief]
+      else:
+         data[1] = data[1] + [belief]
+
+   fig, ax = plt.subplots()
+   fig.xlim([0,1])
+   for i in data:
+      data_points = data[i]
+
+      x = np.linspace(-0.1, 1, 100)
+
+      ax.hist(data_points, normed=True, label=labels[i], histtype='stepfilled', alpha=0.5, color=colors[i])
+      for data_point in data_points:
+         ax.plot(data_point, 0, marker='o', markersize=4, color=colors[i])
+      ax.axvline(x=np.percentile(data_points, 25),linestyle='dotted',color=colors[i], label='25th percentile ('+"{0:.2f}".format(np.percentile(data_points, 25))+')')
+      ax.axvline(x=np.median(data_points),linestyle='dashed',color=colors[i], label='Median ('+"{0:.2f}".format(np.median(data_points))+')')
+      ax.axvline(x=np.mean(data_points),linestyle='dashdot',color=colors[i], label='Mean ('+"{0:.2f}".format(np.mean(data_points))+')')
+
+   ax.legend(loc=1)
+   fig.text(0.5, 0.0, 'Belief of inconsistent tuples', ha='center')
+   fig.text(0.0, 0.5, 'Probability density', va='center', rotation='vertical')
+
+   fig.tight_layout()
+   fig.savefig(inconsistency_out_file_prefix+'.distribution_belief_of_inconsistencies.pdf')
+   plt.close()
+
+def report_inconsistency_per_source(pd_data, inconsistencies):
+   pd_data_copy = pd_data.copy()
+   pd_data_copy['Inconsistency'] = 'No'
+   
+   for inconsistency_tuples in inconsistencies.values():
+      for inconsistency_tuple, sources in inconsistency_tuples:
+         for source in sources:
+            pd_inconsistency_tuple = pd.Series(inconsistency_tuple + (source,),index=COLUMN_NAMES)
+            matched_indices = (pd_data[COLUMN_NAMES] == pd_inconsistency_tuple).all(1)
+            if matched_indices.any():
+               found_tuple = pd_data[matched_indices]
+               pd_data_copy.at[found_tuple.index.values[0],'Inconsistency'] = 'Yes'
+
+   pd_source_size_data = pd_data_copy.groupby('Source').size()
+   for source in pd_source_size_data.index.tolist():
+      search_keyword = pd.Series([source, 'Yes'], index = ['Source', 'Inconsistency'])
+      num_of_inconsistencies = sum((pd_data_copy[['Source', 'Inconsistency']] == search_keyword).all(1)) 
+      print("{} {} {}".format(num_of_inconsistencies, pd_source_size_data[source], float(num_of_inconsistencies) / pd_source_size_data[source]))
+
+   return pd_data_copy
+
+def generate_sankey_data(pd_data, inconsistencies):
+   pd_data_copy = report_inconsistency_per_source(pd_data, inconsistencies)
+
+   pd_grouped_data = pd_data_copy.groupby(['Source', 'Predicate', 'Inconsistency']).size()
+   #pd_grouped_data = pd.DataFrame(pd_data_copy.groupby(['Source', 'Predicate', 'Inconsistency']).size())
+   #pd_grouped_data.at[pd_grouped_data['Inconsistency'] == 'Yes','Inconsistency'] = 'Inconsistent tuples ('+str(len(inconsistencies))+'unique tuples)'
+   #pd_grouepd_data.at[pd_grouped_data['Inconsistency'] == 'No','Inconsistency'] = 'Consistent tuples ('+str(pd_data.shape[0])+'unique tuples)'
    out_sankey_data = open('sankey_data_summary.txt','w')
 
    out_sankey_data.write(','.join(['source','type','target','value'])+'\n')
@@ -78,7 +157,7 @@ def save_resolved_inconsistencies(inconsistency_out_file, inconsistencies_with_m
    inconsistency_out = open(inconsistency_out_file, 'w')
 
    inconsistency_out.write('{}\n'.format('\t'.join(['Subject','Predicate','Object','Belief','Source size','Sources','Total source size','Conflicting tuple info'])))
-   for inconsistent_tuples_with_max_belief in inconsistencies_with_max_belief:
+   for inconsistent_tuples_with_max_belief in inconsistencies_with_max_belief.values():
       (selected_tuple, sources, belief) = inconsistent_tuples_with_max_belief[0]
       conflicting_tuple_info            = inconsistent_tuples_with_max_belief[1:]
 

@@ -5,7 +5,7 @@ import math
 
 class Voting():
 	@classmethod
-	def resolve_inconsistencies(cls, data, inconsistencies):
+	def resolve_inconsistencies(cls, data, inconsistencies, answers = None):
 		np_present_trustworthiness_vector = np.array(pd.Series(data.groupby('Source').size()))
 		inconsistent_tuples_with_max_occurrence = {}
 
