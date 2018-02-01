@@ -132,13 +132,15 @@ def report_inconsistency_per_source(pd_data, inconsistencies):
                found_tuple = pd_data[matched_indices]
                pd_data_copy.at[found_tuple.index.values[0],'Inconsistency'] = 'Yes'
 
-   pd_source_size_data = pd_data_copy.groupby('Source').size()
+   pd_source_size_data  = pd_data_copy.groupby('Source').size()
+   inconsistency_ratios = []
    for source in pd_source_size_data.index.tolist():
       search_keyword = pd.Series([source, 'Yes'], index = ['Source', 'Inconsistency'])
       num_of_inconsistencies = sum((pd_data_copy[['Source', 'Inconsistency']] == search_keyword).all(1)) 
-      print("{} {} {}".format(num_of_inconsistencies, pd_source_size_data[source], float(num_of_inconsistencies) / pd_source_size_data[source]))
+      print("[inconsistency ratio] {} {} {}".format(num_of_inconsistencies, pd_source_size_data[source], float(num_of_inconsistencies) / pd_source_size_data[source]))
+      inconsistency_ratios.append(float(num_of_inconsistencies) / pd_source_size_data[source])
 
-   return pd_data_copy
+   return pd_data_copy, (np.mean(inconsistency_ratios), np.std(inconsistency_ratios))
 
 def generate_sankey_data(pd_data, inconsistencies):
    pd_data_copy = report_inconsistency_per_source(pd_data, inconsistencies)

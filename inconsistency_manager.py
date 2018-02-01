@@ -90,6 +90,6 @@ def measure_trustworthiness(pd_data, answers):
    for source in sources:
       source_claims = pd_data[pd_data['Source'] == source][SPO_LIST]
       common = source_claims.merge(answers,on=SPO_LIST)
-      pd_trustworthiness[source] = "{0:.4f}".format(float(common.shape[0]) / float(source_claims.shape[0]))
+      pd_trustworthiness[source] = float(common.shape[0]) / float(source_claims.shape[0])
       
    return pd_trustworthiness
