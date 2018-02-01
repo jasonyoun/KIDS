@@ -81,7 +81,7 @@ def measure_accuracy(resolved_inconsistencies, answers):
       pd_resolved_inconsistency = pd.Series(resolved_tuple, index = SPO_LIST)
       if (pd_resolved_inconsistency == answers[SPO_LIST]).all(1).any():
          correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
-   return float(correctly_resolved_inconsistencies) / float(len(resolved_inconsistencies))
+   return "{0:.4f}".format(float(correctly_resolved_inconsistencies) / float(len(resolved_inconsistencies)))
 
 def measure_trustworthiness(pd_data, answers):
    sources = pd.unique(pd_data['Source']).tolist()
@@ -90,6 +90,6 @@ def measure_trustworthiness(pd_data, answers):
    for source in sources:
       source_claims = pd_data[pd_data['Source'] == source][SPO_LIST]
       common = source_claims.merge(answers,on=SPO_LIST)
-      pd_trustworthiness[source] = float(common.shape[0]) / float(source_claims.shape[0])
+      pd_trustworthiness[source] = "{0:.4f}".format(float(common.shape[0]) / float(source_claims.shape[0]))
       
    return pd_trustworthiness
