@@ -14,15 +14,14 @@ THRESHOLD          = np.power(0.1,10)
 class Investment(object):
    @classmethod
    def resolve_inconsistencies(cls, pd_data, inconsistencies, answers = None, exponent = 1.2):
-   	  # preprocess
+   	# preprocess
       pd_source_size_data = pd_data.groupby('Source').size()
       pd_grouped_data     = pd_data.groupby(SPO_LIST)['Source'].apply(set)
 
       # initialize
-      np_present_belief_vector       = Sums.normalize(cls.initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies))
-      np_past_trustworthiness_vector = cls.initialize_trustworthiness(pd_source_size_data)
-      np_a_matrix, np_b_matrix       = cls.create_matrices(pd_grouped_data, pd_source_size_data)
-      np_a_matrix                    = cls.update_a_matrix(np_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
+      np_present_belief_vector         = Sums.normalize(cls.initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies))
+      np_past_trustworthiness_vector   = cls.initialize_trustworthiness(pd_source_size_data)
+      np_default_a_matrix, np_b_matrix = cls.create_matrices(pd_grouped_data, pd_source_size_data)
 
       function_s  = np.vectorize(cls.function_s, otypes = [np.float])
 
@@ -30,10 +29,10 @@ class Investment(object):
       iteration = 1
 
       while delta > THRESHOLD and iteration < MAX_NUM_ITERATIONS:
+         np_a_matrix                       = cls.update_a_matrix(np_default_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
          np_present_trustworthiness_vector = Sums.normalize(np_a_matrix.dot(np_present_belief_vector))
          np_present_belief_vector          = Sums.normalize(function_s(np_b_matrix.dot(np_present_trustworthiness_vector), exponent))
          delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
-         np_a_matrix                    = cls.update_a_matrix(np_a_matrix, np_present_trustworthiness_vector, pd_source_size_data)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
 
          if answers is not None:
@@ -66,7 +65,7 @@ class Investment(object):
    @staticmethod
    def update_a_matrix(np_a_matrix, np_past_trustworthiness_vector, pd_source_size_data):
       np_a_matrix = (np_a_matrix.T / (np.array(pd_source_size_data) / np_past_trustworthiness_vector.T)).T
-      return np_a_matrix / np_a_matrix.sum(axis = 1)
+      return np_a_matrix / np_a_matrix.sum(axis = 0)
 
    @staticmethod
    def initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies):

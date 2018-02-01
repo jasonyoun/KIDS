@@ -98,7 +98,7 @@ def plot_belief_of_inconsistencies(inconsistencies_with_max_belief, answer, inco
          data[1] = data[1] + [belief]
 
    fig, ax = plt.subplots()
-   fig.xlim([0,1])
+   ax.set_xlim(0,1)
    for i in data:
       data_points = data[i]
 

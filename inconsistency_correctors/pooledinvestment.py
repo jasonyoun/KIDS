@@ -20,20 +20,19 @@ class PooledInvestment(object):
       pd_grouped_data     = pd_data.groupby(SPO_LIST)['Source'].apply(set)
 
       # initialize
-      np_present_belief_vector       = Investment.initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies)
-      np_past_trustworthiness_vector = Investment.initialize_trustworthiness(pd_source_size_data)
-      np_a_matrix, np_b_matrix       = Investment.create_matrices(pd_grouped_data, pd_source_size_data)
-      np_a_matrix                    = Investment.update_a_matrix(np_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
-
+      np_present_belief_vector         = Investment.initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies)
+      np_past_trustworthiness_vector   = Investment.initialize_trustworthiness(pd_source_size_data)
+      np_default_a_matrix, np_b_matrix = Investment.create_matrices(pd_grouped_data, pd_source_size_data)
+      
       delta     = 1.0
       iteration = 1
 
       while delta > THRESHOLD and iteration < MAX_NUM_ITERATIONS:
+         np_a_matrix                       = Investment.update_a_matrix(np_default_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
          np_present_trustworthiness_vector = np_a_matrix.dot(np_present_belief_vector)
          claims                            = pd_grouped_data.index.tolist()
          np_present_belief_vector          = cls.normalize(np_b_matrix.dot(np_present_trustworthiness_vector), claims, inconsistencies, exponent)
          delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
-         np_a_matrix                    = Investment.update_a_matrix(np_a_matrix, np_present_trustworthiness_vector, pd_source_size_data)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
 
          if answers is not None:
