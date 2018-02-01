@@ -29,9 +29,9 @@ class PooledInvestment(object):
 
       while delta > THRESHOLD and iteration < MAX_NUM_ITERATIONS:
          np_a_matrix                       = Investment.update_a_matrix(np_default_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
-         np_present_trustworthiness_vector = np_a_matrix.dot(np_present_belief_vector)
+         np_present_trustworthiness_vector = Sums.normalize(np_a_matrix.dot(np_present_belief_vector))
          claims                            = pd_grouped_data.index.tolist()
-         np_present_belief_vector          = cls.normalize(np_b_matrix.dot(np_present_trustworthiness_vector), claims, inconsistencies, exponent)
+         np_present_belief_vector          = Sums.normalize(cls.normalize(np_b_matrix.dot(np_present_trustworthiness_vector), claims, inconsistencies, exponent))
          delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
 

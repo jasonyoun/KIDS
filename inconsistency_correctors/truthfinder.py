@@ -15,7 +15,7 @@ SPO_LIST           = ['Subject','Predicate','Object']
 
 class TruthFinder():
    @classmethod
-   def resolve_inconsistencies(cls, pd_data, inconsistencies, answers = None):
+   def resolve_inconsistencies(cls, pd_data, inconsistencies, answers = None, rho = 0.5, gamma = 0.3):
       # preprocess
       pd_source_size_data = pd_data.groupby('Source').size()
       pd_grouped_data     = pd_data.groupby(SPO_LIST)['Source'].apply(set)
@@ -23,7 +23,7 @@ class TruthFinder():
       pd_present_belief_vector       = cls.initialize_belief(pd_grouped_data)
       np_present_belief_vector       = np.matrix(pd_present_belief_vector)
       np_past_trustworthiness_vector = cls.initialize_trustworthiness(pd_source_size_data)
-      np_a_matrix, np_b_matrix       = cls.create_matrices(pd_grouped_data, pd_source_size_data, inconsistencies)
+      np_a_matrix, np_b_matrix       = cls.create_matrices(pd_grouped_data, pd_source_size_data, inconsistencies, rho)
 
       function_s  = np.vectorize(cls.function_s, otypes = [np.float])
       function_t  = np.vectorize(cls.function_t, otypes = [np.float])
@@ -32,7 +32,7 @@ class TruthFinder():
       iteration = 1
 
       while delta > np.power(0.1,10) and iteration < MAX_NUM_ITERATIONS:
-         np_present_belief_vector          = function_s(np_b_matrix.dot(np_past_trustworthiness_vector))
+         np_present_belief_vector          = function_s(np_b_matrix.dot(np_past_trustworthiness_vector), gamma)
          np_present_trustworthiness_vector = function_t(np_a_matrix.dot(np_present_belief_vector))
          delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
          np_past_trustworthiness_vector = np_present_trustworthiness_vector
@@ -60,22 +60,22 @@ class TruthFinder():
       return pd.DataFrame(pd_grouped_data.apply(lambda x: 0))
 
    @staticmethod
-   def function_s(x):
-      return 1 / (1 + np.exp(-0.3 * x))
+   def function_s(x, gamma = 0.3):
+      return 1 / (1 + np.exp(-gamma * x))
 
    @staticmethod
    def function_t(x):
       return - np.log(1 - x)
 
    @staticmethod
-   def modify_source_vector(elements, inconsistencies):
+   def modify_source_vector(elements, inconsistencies, rho = 0.5):
       for idx in range(len(elements)):
          if elements[idx] != 1 and TruthFinder.source_has_conflicting_belief(elements.index[idx], elements.name, inconsistencies):
-            elements[idx] = -0.5
+            elements[idx] = -rho
       return elements
 
    @staticmethod
-   def create_matrices(pd_grouped_data, pd_source_size_data, inconsistencies):
+   def create_matrices(pd_grouped_data, pd_source_size_data, inconsistencies, rho = 0.5):
       sources = pd_source_size_data.index.tolist()
 
       pd_belief_source_matrix = pd_grouped_data.apply(Sums.create_source_vector, args = (sources,)) 
@@ -85,14 +85,26 @@ class TruthFinder():
       np_a_matrix = (np_belief_source_matrix / size_of_sources).T
 
       pd_belief_source_matrix = pd.DataFrame(np_belief_source_matrix, index = pd_grouped_data.index, columns = sources)
-      np_b_matrix = pd_belief_source_matrix.apply(TruthFinder.modify_source_vector, args = (inconsistencies,)).as_matrix()
+      np_b_matrix = pd_belief_source_matrix.apply(TruthFinder.modify_source_vector, args = (inconsistencies, rho)).as_matrix()
       
       return np_a_matrix, np_b_matrix
 
    @staticmethod
    def source_has_conflicting_belief(belief, source, inconsistencies):
       for inconsistent_tuples in inconsistencies.values():
-         for (inconsistent_tuple, sources) in inconsistent_tuples:
-            if tuple(belief) == inconsistent_tuple and source in sources:
+         index_of_found_belief = -1
+         for idx in range(len(inconsistent_tuples)):
+            (inconsistent_tuple, sources) = inconsistent_tuples[idx]
+            if tuple(belief) == tuple(inconsistent_tuple):
+               index_of_found_belief = idx
+               break
+         
+         if index_of_found_belief == -1:
+            continue
+
+         for idx in range(len(inconsistent_tuples)):
+            (inconsistent_tuple, sources) = inconsistent_tuples[idx]
+            if source in sources:
                return True
+
       return False
