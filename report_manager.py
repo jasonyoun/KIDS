@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 from matplotlib import pyplot, rcParams
 from scipy.stats import gamma
 
+# import from knowledge_scholar
+from .inconsistency_manager import get_belief_of_inconsistencies
+
 # set fonts
 rcParams['font.family'] = 'sans-serif'
 rcParams['font.sans-serif'] = ['Arial']
@@ -115,18 +118,9 @@ def plot_trustworthiness(pd_data, np_trustworthiness_vector):
    plt.close()
 
 def plot_belief_of_inconsistencies(inconsistencies_with_max_belief, answer, inconsistency_out_file_prefix):
-   data = {0: [], 1: []}
+   data   = get_belief_of_inconsistencies(inconsistencies_with_max_belief, answer)
    colors = ['b','g']
    labels = ['Correctly resolved tuple','Incorrectly resolved tuple']
-
-   for inconsistent_tuples_with_max_belief in inconsistencies_with_max_belief.values():
-      belief = inconsistent_tuples_with_max_belief[0][2]
-      
-      pd_claim = pd.Series(inconsistent_tuples_with_max_belief[0][0], index = SPO_LIST)
-      if (answer[SPO_LIST] == pd_claim).all(1).any():
-         data[0] = data[0] + [belief]
-      else:
-         data[1] = data[1] + [belief]
 
    fig, ax = plt.subplots()
    ax.set_xlim(0,1)

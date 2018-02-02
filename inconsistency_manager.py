@@ -93,3 +93,17 @@ def measure_trustworthiness(pd_data, answers):
       pd_trustworthiness[source] = float(common.shape[0]) / float(source_claims.shape[0])
       
    return pd_trustworthiness
+
+def get_belief_of_inconsistencies(inconsistencies_with_max_belief, answer):
+   data = {0: [], 1: []}
+
+   for inconsistent_tuples_with_max_belief in inconsistencies_with_max_belief.values():
+      belief = inconsistent_tuples_with_max_belief[0][2]
+      
+      pd_claim = pd.Series(inconsistent_tuples_with_max_belief[0][0], index = SPO_LIST)
+      if (answer[SPO_LIST] == pd_claim).all(1).any():
+         data[0] = data[0] + [belief]
+      else:
+         data[1] = data[1] + [belief]
+
+   return data
