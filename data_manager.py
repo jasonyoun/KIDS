@@ -64,3 +64,6 @@ def get_pd_of_statement(statement):
    feature_values  = [feature.get('value') for feature in statement]
    
    return pd.Series(feature_values, index = feature_names)
+
+def get_source_size(pd_data):
+   return pd_data.groupby('Source').size()

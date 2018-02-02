@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib import pyplot, rcParams
 from scipy.stats import gamma
 
-#
+# set fonts
 rcParams['font.family'] = 'sans-serif'
 rcParams['font.sans-serif'] = ['Arial']
 
@@ -17,7 +17,38 @@ SPO_LIST     = ['Subject','Predicate','Object']
 COLUMN_NAMES = SPO_LIST + ['Source']
 
 # IT IS NOT GENERIC (NEED TO UPDATE)
-data_category = { 'Liu': 'Genome-wide profile', 'Shaw': 'Genome-wide profile', 'Tamae': 'Genome-wide profile', 'CARD': 'KB', 'GO': 'KB' }
+data_category = { 'Liu': 'MIC profile', 'Shaw': 'Expression profile', 'Tamae': 'MIC profile', 'CARD': 'KB', 'GO': 'KB' }
+
+def plot_network_of_inconsistency(inconsistencies):
+   pd_nodes = pd.DataFrame(columns = ['name'])
+   pd_edges = pd.DataFrame(columns = ['source','target'])
+
+   pd_nodes_idx = 0
+   pd_edges_idx = 0
+   for inconsistent_tuples in inconsistencies.values():
+      inconsistent_sources = []
+      for inconsistent_tuple, sources in inconsistent_tuples:
+         for source in sources:
+            pd_nodes.loc[pd_nodes_idx] = source
+            pd_nodes_idx = pd_nodes_idx + 1
+            inconsistent_sources.append(source)
+      s = inconsistent_sources[0]
+      for t in inconsistent_sources[1:]:
+         pd_edges.loc[pd_edges_idx] = [s, t]
+         pd_edges_idx = pd_edges_idx + 1
+
+   print(pd_nodes.head())
+   print(pd_edges.head())
+   print(pd_nodes.shape)
+   print(pd_edges.shape)
+   pd_grouped_nodes = pd.DataFrame(pd_nodes.groupby('name').size())
+   for source in pd_grouped_nodes.index:
+      pd_grouped_nodes.loc[source]['group'] = data_category[source]
+
+   pd_grouped_edges = pd.DataFrame(pd_edges.groupby(['source', 'target']).size())
+
+   print(pd_grouped_nodes)
+   print(pd_grouped_edges)
 
 def plot_pie_summary(pd_data, inconsistencies):
    inconsistency_source_category = pd.Series(index = inconsistencies.keys())
@@ -143,7 +174,7 @@ def report_inconsistency_per_source(pd_data, inconsistencies):
    return pd_data_copy, (np.mean(inconsistency_ratios), np.std(inconsistency_ratios))
 
 def generate_sankey_data(pd_data, inconsistencies):
-   pd_data_copy = report_inconsistency_per_source(pd_data, inconsistencies)
+   pd_data_copy, inconsistency_stat = report_inconsistency_per_source(pd_data, inconsistencies)
 
    pd_grouped_data = pd_data_copy.groupby(['Source', 'Predicate', 'Inconsistency']).size()
    #pd_grouped_data = pd.DataFrame(pd_data_copy.groupby(['Source', 'Predicate', 'Inconsistency']).size())
