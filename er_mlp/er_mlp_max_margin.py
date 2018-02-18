@@ -3,7 +3,6 @@ import pickle as pickle
 import pandas as pd
 import sys
 sys.path.insert(0, '../data')
-from sklearn.model_selection import train_test_split
 import tensorflow as tf
 from sklearn import utils
 from sklearn.model_selection import StratifiedKFold

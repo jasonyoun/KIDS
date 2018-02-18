@@ -9,7 +9,6 @@ from sklearn import utils
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_curve, auc, precision_recall_curve
 import matplotlib.pyplot as plt
-from imblearn.over_sampling import RandomOverSampler
 import random
 from tensorflow.python import debug as tf_debug
 
