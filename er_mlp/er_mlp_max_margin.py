@@ -5,7 +5,6 @@ import sys
 sys.path.insert(0, '../data')
 import tensorflow as tf
 from sklearn import utils
-from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_curve, auc, precision_recall_curve
 import random
 from tensorflow.python import debug as tf_debug
