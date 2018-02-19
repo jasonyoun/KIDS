@@ -108,6 +108,8 @@ class ERMLP:
         layer_1_corrupted_pre_act = tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b'])
         if add_layers>0:
             for i in range(1, add_layers+1):
+                layer_1_correct_pre_act = tf.nn.relu(layer_1_correct_pre_act)
+                layer_1_corrupted_pre_act = tf.nn.relu(layer_1_corrupted_pre_act)
                 layer_1_correct_pre_act = tf.add(tf.matmul(layer_1_correct_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
                 layer_1_corrupted_pre_act = tf.add(tf.matmul(layer_1_corrupted_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
 
@@ -156,6 +158,7 @@ class ERMLP:
         layer_1_pre_act = tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b'])
         if add_layers>0:
             for i in range(1, add_layers+1):
+                layer_1_pre_act = tf.nn.relu(layer_1_pre_act)
                 layer_1_pre_act = tf.add(tf.matmul(layer_1_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
 
 
