@@ -3,7 +3,9 @@ import pickle as pickle
 import pandas as pd
 import sys
 import os
-abs_path_to_data = os.path.dirname(__file__)
+directory = os.path.dirname(__file__)
+print(__file__)
+print(directory)
 abs_path_to_data = os.path.join(directory, '..', 'data')
 sys.path.insert(0, abs_path_to_data)
 #sys.path.insert(0, '../data')
@@ -27,13 +29,13 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word('../data/raw/{}/entities.txt'.format(DATA_TYPE),EMBEDDING_SIZE, '../data/raw/{}/initEmbed.mat'.format(DATA_TYPE) )
         indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word('../data/raw/{}/relations.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
     else:
-        entity_dic = processor.machine_translate(abs_path_to_data+'../data/raw/{}/entities.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
-        pred_dic = processor.machine_translate(abs_path_to_data+'../data/raw/{}/relations.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
+        entity_dic = processor.machine_translate(directory+'../data/raw/{}/entities.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
+        pred_dic = processor.machine_translate(directory+'../data/raw/{}/relations.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
 
     # load the data
-    train_df = processor.load(abs_path_to_data+'../data/raw/{}/train.txt'.format(DATA_TYPE))
-    test_df = processor.load(abs_path_to_data+'../data/raw/{}/test.txt'.format(DATA_TYPE))
-    dev_df = processor.load(abs_path_to_data+'../data/raw/{}/dev.txt'.format(DATA_TYPE))
+    train_df = processor.load(directory+'../data/raw/{}/train.txt'.format(DATA_TYPE))
+    test_df = processor.load(directory+'../data/raw/{}/test.txt'.format(DATA_TYPE))
+    dev_df = processor.load(directory+'../data/raw/{}/dev.txt'.format(DATA_TYPE))
 
     # numerically represent the data 
     print("Index:")
