@@ -26,8 +26,8 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     print("machine translation...")
     indexed_entities, num_entity_words, entity_dic,indexed_predicates, indexed_pred_word_embeddings, pred_dic,num_pred_words,num_entity_words = None,None,None,None,None,None,None,None
     if WORD_EMBEDDING:
-        indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word('../data/raw/{}/entities.txt'.format(DATA_TYPE),EMBEDDING_SIZE, '../data/raw/{}/initEmbed.mat'.format(DATA_TYPE) )
-        indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word('../data/raw/{}/relations.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
+        indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word(directory+'../data/raw/{}/entities.txt'.format(DATA_TYPE),EMBEDDING_SIZE, directory+'../data/raw/{}/initEmbed.mat'.format(DATA_TYPE) )
+        indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word(directory+'../data/raw/{}/relations.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
     else:
         entity_dic = processor.machine_translate(directory+'../data/raw/{}/entities.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
         pred_dic = processor.machine_translate(directory+'../data/raw/{}/relations.txt'.format(DATA_TYPE),EMBEDDING_SIZE)
