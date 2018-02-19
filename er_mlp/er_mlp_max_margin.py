@@ -121,7 +121,6 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         for i in range(params['num_preds']):
             predicate_indices = np.where(predicates == i)[0]
             if np.shape(predicate_indices)[0] == 0:
-                print('inside')
                 continue
             else:
                 predicates_included.append(i)
