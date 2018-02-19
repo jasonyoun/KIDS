@@ -2,8 +2,11 @@ import pickle as pickle
 import er_mlp_max_margin
 import itertools
 import sys  
+import os
+directory = os.path.dirname(__file__)
 sys.stdout.flush()
 name = 'configs_972.txt'
+name = os.path.join(directory, name)
 file_name = open(name,'rb')
 configs = pickle.load(file_name)
 x= configs[int(sys.argv[1])]
