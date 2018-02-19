@@ -3,14 +3,22 @@ import sys
 import pickle as pickle
 sys.stdout.flush()
 
-embedding_size_list = [50,60,70]
-layer_size_list = [50,60,70]
-learning_rate_list = [0.001,.01,0.1]
-corrupt_size_list = [5, 10, 15]
-lambda_list = [0.00001,0.0001, 0.001]
-optimizer_list = [0,1]
-act_function = [0,1]
-total_configs = list(itertools.product(embedding_size_list,layer_size_list,learning_rate_list,corrupt_size_list,lambda_list, optimizer_list, act_function))
+# embedding_size_list = [50,60,70]
+# layer_size_list = [50,60,70]
+# learning_rate_list = [0.001,.01,0.1]
+# corrupt_size_list = [5, 10, 15]
+# lambda_list = [0.00001,0.0001, 0.001]
+# optimizer_list = [0,1]
+# act_function = [0,1]
+embedding_size_list = [60]
+layer_size_list = [60]
+learning_rate_list = [.01]
+corrupt_size_list = [10]
+lambda_list = [0.0001,0.0002,0.0003,0.0004,0.0005,0.0006,0.0007,0.0008,0.0009, 0.001]
+optimizer_list = [1]
+act_function = [1]
+add_layers = [0,1,2,3]
+total_configs = list(itertools.product(embedding_size_list,layer_size_list,learning_rate_list,corrupt_size_list,lambda_list, optimizer_list, act_function, add_layers))
 
 def save_object( obj, filename):
     with open(filename, 'wb') as output:

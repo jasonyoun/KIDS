@@ -5,7 +5,7 @@ import sys
 import os
 directory = os.path.dirname(__file__)
 sys.stdout.flush()
-name = 'configs_972.txt'
+name = 'configs_40.txt'
 name = os.path.join(directory, name)
 file_name = open(name,'rb')
 configs = pickle.load(file_name)
@@ -27,8 +27,9 @@ CORRUPT_SIZE = x[3]
 LAMBDA = x[4]
 OPTIMIZER = x[5]
 ACT_FUNCTION = x[6]
+ADD_LAYERS = x[7]
 accuracy, auc = er_mlp_max_margin.run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
-    LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION )
+    LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS )
 
 print('accuracy: ')
 print(accuracy)
