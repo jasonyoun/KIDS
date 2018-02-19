@@ -8,6 +8,9 @@ print(__file__)
 print(directory)
 abs_path_to_data = os.path.join(directory, '..', 'data')
 sys.path.insert(0, abs_path_to_data)
+# if directory != '':
+#     directory = directory+'/'
+# print(directory)
 #sys.path.insert(0, '../data')
 import tensorflow as tf
 from sklearn import utils
