@@ -27,8 +27,12 @@ CORRUPT_SIZE = x[3]
 LAMBDA = x[4]
 OPTIMIZER = x[5]
 ACT_FUNCTION = x[6]
-accuracy = er_mlp_max_margin.run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
+accuracy, auc = er_mlp_max_margin.run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
     LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION )
 
 print('accuracy: ')
 print(accuracy)
+print('auc: ')
+print(auc)
+
+

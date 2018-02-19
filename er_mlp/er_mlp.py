@@ -41,15 +41,19 @@ class ERMLP:
             'C': tf.Variable(tf.truncated_normal([3*self.params['embedding_size'],self.params['layer_size']],stddev=1.0 / math.sqrt(self.params['embedding_size'])), name='C'),
             'B': tf.Variable(tf.ones([self.params['layer_size'],1]))
         }
+        if self.params['add_layers']>0:
+            for i in range(1, self.params['add_layers']+1):
+                weights['C'+str(i)] = tf.Variable(tf.truncated_normal([self.params['layer_size'],self.params['layer_size']],stddev=1.0 / math.sqrt(self.params['embedding_size'])), name='C'+str(i))
+
 
         # The bias for the first layer
         print("biases")
         biases = {
-            'b': tf.Variable(tf.zeros([1,self.params['layer_size']]),name='b')#,    
-
-        # incase we need an output bias
-        #    'out': tf.Variable(tf.random_normal([1]))
+            'b': tf.Variable(tf.zeros([1,self.params['layer_size']]),name='b')
         }
+        if self.params['add_layers']>0:
+            for i in range(1, self.params['add_layers']+1):
+                biases['b'+str(i)] = tf.Variable(tf.zeros([1,self.params['layer_size']]),name='b'+str(i))
 
         # The constants:
         constants = None
@@ -68,7 +72,7 @@ class ERMLP:
     # the neural network that is used during training. Along with the evaluation of a triplet,
     # the evaluation of a corrupted triplet is calculated as well so that we can calulcate
     # the contrastive max margin loss
-    def inference_for_max_margin_training(self,_triplets, _weights, _biases, _constants, _flip, _act_function):
+    def inference_for_max_margin_training(self,_triplets, _weights, _biases, _constants, _flip, _act_function, add_layers):
         pred_emb = None
         entity_emb = None
         if self.params['word_embedding']:
@@ -100,15 +104,23 @@ class ERMLP:
         # and multipling it by the weight vector 
         layer_1_correct = None
         layer_1_corrupted = None
+        layer_1_correct_pre_act = tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b'])
+        layer_1_corrupted_pre_act = tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b'])
+        if add_layers>0:
+            for i in range(1, add_layers+1):
+                layer_1_correct_pre_act = tf.add(tf.matmul(layer_1_correct_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
+                layer_1_corrupted_pre_act = tf.add(tf.matmul(layer_1_corrupted_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
+
+
         print('activation function:')
         if _act_function==0:
             print(str(_act_function)+ 'tanh')
-            layer_1_correct = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b']))
-            layer_1_corrupted = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b']))
+            layer_1_correct = tf.tanh(layer_1_correct_pre_act)
+            layer_1_corrupted = tf.tanh(layer_1_corrupted_pre_act)
         else:
             print(str(_act_function)+ 'sigmoid')
-            layer_1_correct = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b']))
-            layer_1_corrupted = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b']))
+            layer_1_correct = tf.sigmoid(layer_1_correct_pre_act)
+            layer_1_corrupted = tf.sigmoid(layer_1_corrupted_pre_act)
 
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
         out_correct = tf.matmul(layer_1_correct,_weights['B'])
@@ -118,7 +130,7 @@ class ERMLP:
         return out
 
     # Similar to the network used for training, but without evaluating the corrupted triplet. This is used during testing
-    def inference(self,_triplets, _weights, _biases, _constants,_act_function):
+    def inference(self,_triplets, _weights, _biases, _constants,_act_function, add_layers):
         pred_emb = None
         entity_emb = None
         if self.params['word_embedding']:
@@ -141,13 +153,22 @@ class ERMLP:
         # calculation of the first layer involves concatenating the three embeddings for each sample
         # and multipling it by the weight vector 
         layer_1 = None
+        layer_1_pre_act = tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b'])
+        if add_layers>0:
+            for i in range(1, add_layers+1):
+                layer_1_pre_act = tf.add(tf.matmul(layer_1_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
+
+
+
         print('activation function:')
         if _act_function==0:
             print(str(_act_function)+ 'tanh')
-            layer_1 = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
+            #layer_1 = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
+            layer_1 = tf.tanh(layer_1_pre_act)
         else:
             print(str(_act_function)+ 'sigmoid')
-            layer_1 = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
+            #layer_1 = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
+            layer_1 = tf.sigmoid(layer_1_pre_act)
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
         out = tf.matmul(layer_1,_weights['B'])
         return out

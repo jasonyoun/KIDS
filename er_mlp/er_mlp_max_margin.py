@@ -17,13 +17,14 @@ from sklearn import utils
 from sklearn.metrics import roc_curve, auc, precision_recall_curve
 import random
 from tensorflow.python import debug as tf_debug
+from scipy import interp
 
 from data_processor import DataProcessor
 from er_mlp import ERMLP
 
 
 
-def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION ):
+def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS ):
     # numerically represent the entities, predicates, and words
     processor = DataProcessor()
     print("machine translation...")
@@ -66,7 +67,8 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         'learning_rate':LEARNING_RATE,
         'batch_size': BATCH_SIZE,
         'indexed_entities':indexed_entities,
-        'indexed_predicates': indexed_predicates
+        'indexed_predicates': indexed_predicates, 
+        'add_layers': ADD_LAYERS
     }
 
     er_mlp = ERMLP(er_mlp_params)
@@ -79,10 +81,10 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     # A boolean to determine if we want to corrupt the head or tail
     flip_placeholder = tf.placeholder(tf.bool)
 
-    training_predictions = er_mlp.inference_for_max_margin_training(training_triplets, weights, biases, constants, flip_placeholder, ACT_FUNCTION)
+    training_predictions = er_mlp.inference_for_max_margin_training(training_triplets, weights, biases, constants, flip_placeholder, ACT_FUNCTION, ADD_LAYERS)
 
     print('network for predictions')
-    predictions = er_mlp.inference(triplets, weights, biases, constants, ACT_FUNCTION)
+    predictions = er_mlp.inference(triplets, weights, biases, constants, ACT_FUNCTION, ADD_LAYERS)
 
     print('calculate cost')
     cost = er_mlp.loss(training_predictions)
@@ -111,6 +113,31 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
 
     data_train = indexed_data_training[:,:3]
 
+    def roc_auc_stats( Y, predictions,predicates, params):
+        fpr = dict()
+        tpr = dict()
+        roc_auc = dict()
+        predicates_included = []
+        for i in range(params['num_preds']):
+            predicate_indices = np.where(predicates == i)[0]
+            if np.shape(predicate_indices)[0] == 0:
+                print('inside')
+                continue
+            else:
+                predicates_included.append(i)
+            predicate_predictions = predictions[predicate_indices]
+            predicate_labels = Y[predicate_indices]
+            fpr[i], tpr[i] , _ = roc_curve(predicate_labels.ravel(), predicate_predictions.ravel())
+            roc_auc[i] = auc(fpr[i], tpr[i])
+        all_fpr = np.unique(np.concatenate([fpr[i] for i in predicates_included]))
+        mean_tpr = np.zeros_like(all_fpr)
+        for i in predicates_included:
+            mean_tpr += interp(all_fpr, fpr[i], tpr[i])
+        mean_tpr /= len(predicates_included)
+        fpr["macro"] = all_fpr
+        tpr["macro"] = mean_tpr
+        roc_auc["macro"] = auc(fpr["macro"], tpr["macro"])
+        return roc_auc["macro"]
 
     def determine_threshold(indexed_data_dev):
         # use the dev set to compute the best threshold for classification
@@ -131,6 +158,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         classifications = er_mlp.classify(predictions_list,threshold, predicates_test)
         accuracy = sum(1 for x,y in zip(labels_test,classifications) if x == y) / len(labels_test)
         return accuracy, classifications, labels_test, predicates_test, predictions_list
+
 
     iter_list = []
     cost_list = []
@@ -155,8 +183,10 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         if epoch % DISPLAY_STEP == 0:
             current_threshold = determine_threshold(indexed_data_dev)
             current_accuracy, c_, l_, p_, pr_ = test_model(indexed_data_test, current_threshold)
+            current_auc = roc_auc_stats(l_,pr_,p_, er_mlp_params)
             print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, TRAINING_EPOCHS, avg_cost,current_cost ))
             print("current accuracy:"+ str(current_accuracy))
+            print("current auc:"+ str(current_auc))
 
     print("determine threshold for classification")
     # use the dev set to compute the best threshold for classification
@@ -213,7 +243,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         name = str(BATCH_SIZE)+str(DATA_TYPE)+str(WORD_EMBEDDING)+str(TRAINING_EPOCHS)+'.txt'
         file_name = open(name,'rb')
 
-    return accuracy
+    return accuracy, roc_auc_stats(labels_test,predictions_list,predicates_test, er_mlp_params)
 
 if __name__ == "__main__":
     WORD_EMBEDDING = False
@@ -228,8 +258,9 @@ if __name__ == "__main__":
     LAMBDA = 0.0001
     OPTIMIZER = 1
     ACT_FUNCTION = 0
+    ADD_LAYERS=2
     run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
-        LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION )
+        LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS)
 
 
 
