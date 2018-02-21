@@ -110,6 +110,10 @@ class ERMLP:
             for i in range(1, add_layers+1):
                 layer_1_correct_pre_act = tf.nn.relu(layer_1_correct_pre_act)
                 layer_1_corrupted_pre_act = tf.nn.relu(layer_1_corrupted_pre_act)
+
+                layer_1_correct_pre_act = tf.nn.dropout(tf.nn.relu(layer_1_correct_pre_act),0.5)
+                layer_1_corrupted_pre_act = tf.nn.dropout(tf.nn.relu(layer_1_corrupted_pre_act),0.5)
+
                 layer_1_correct_pre_act = tf.add(tf.matmul(layer_1_correct_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
                 layer_1_corrupted_pre_act = tf.add(tf.matmul(layer_1_corrupted_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
 
