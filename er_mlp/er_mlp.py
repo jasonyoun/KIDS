@@ -12,10 +12,10 @@ class ERMLP:
         # self.training_triplets = tf.placeholder(tf.int32, shape=(None, 4))
 
         # The testing triplets: subject, predicate, object
-        triplets = tf.placeholder(tf.int32, shape=(None, 3))
+        triplets = tf.placeholder(tf.int32, shape=(None, 3), name='triplets')
 
         # The tuth value for the triplet used for evaluation
-        y = tf.placeholder(tf.float32, [None, 1])
+        y = tf.placeholder(tf.float32, [None, 1], name='y')
 
         # A boolean to determine if we want to corrupt the head or tail
         # self.flip_placeholder = tf.placeholder(tf.bool)
@@ -39,7 +39,7 @@ class ERMLP:
             'E': tf.Variable(tf.random_uniform([E_size,self.params['embedding_size']], -0.001, 0.001), name='E'),
             'P': tf.Variable(tf.random_uniform([P_size,self.params['embedding_size']], -0.001, 0.001), name='P'),
             'C': tf.Variable(tf.truncated_normal([3*self.params['embedding_size'],self.params['layer_size']],stddev=1.0 / math.sqrt(self.params['embedding_size'])), name='C'),
-            'B': tf.Variable(tf.ones([self.params['layer_size'],1]))
+            'B': tf.Variable(tf.ones([self.params['layer_size'],1]), name='B')
         }
         if self.params['add_layers']>0:
             for i in range(1, self.params['add_layers']+1):
@@ -72,7 +72,7 @@ class ERMLP:
     # the neural network that is used during training. Along with the evaluation of a triplet,
     # the evaluation of a corrupted triplet is calculated as well so that we can calulcate
     # the contrastive max margin loss
-    def inference_for_max_margin_training(self,_triplets, _weights, _biases, _constants, _flip, _act_function, add_layers):
+    def inference_for_max_margin_training(self,_triplets, _weights, _biases, _constants, _flip):
         pred_emb = None
         entity_emb = None
         if self.params['word_embedding']:
@@ -106,37 +106,37 @@ class ERMLP:
         layer_1_corrupted = None
         layer_1_correct_pre_act = tf.add(tf.matmul(tf.concat( [sub_correct_emb,pred_emb,obj_correct_emb],1),_weights['C']),_biases['b'])
         layer_1_corrupted_pre_act = tf.add(tf.matmul(tf.concat( [sub_corrupted_emb,pred_emb,obj_corrupt_emb],1),_weights['C']),_biases['b'])
-        if add_layers>0:
-            for i in range(1, add_layers+1):
+        if self.params['add_layers']>0:
+            for i in range(1, self.params['add_layers']+1):
                 layer_1_correct_pre_act = tf.nn.relu(layer_1_correct_pre_act)
                 layer_1_corrupted_pre_act = tf.nn.relu(layer_1_corrupted_pre_act)
 
-                layer_1_correct_pre_act = tf.nn.dropout(tf.nn.relu(layer_1_correct_pre_act),0.5)
-                layer_1_corrupted_pre_act = tf.nn.dropout(tf.nn.relu(layer_1_corrupted_pre_act),0.5)
+                layer_1_correct_pre_act = tf.nn.dropout(tf.nn.relu(layer_1_correct_pre_act),self.params['drop_out_percent'])
+                layer_1_corrupted_pre_act = tf.nn.dropout(tf.nn.relu(layer_1_corrupted_pre_act),self.params['drop_out_percent'])
 
                 layer_1_correct_pre_act = tf.add(tf.matmul(layer_1_correct_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
                 layer_1_corrupted_pre_act = tf.add(tf.matmul(layer_1_corrupted_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
 
 
         print('activation function:')
-        if _act_function==0:
-            print(str(_act_function)+ 'tanh')
+        if self.params['act_function']==0:
+            print(str(self.params['act_function'])+ 'tanh')
             layer_1_correct = tf.tanh(layer_1_correct_pre_act)
             layer_1_corrupted = tf.tanh(layer_1_corrupted_pre_act)
         else:
-            print(str(_act_function)+ 'sigmoid')
+            print(str(self.params['act_function'])+ 'sigmoid')
             layer_1_correct = tf.sigmoid(layer_1_correct_pre_act)
             layer_1_corrupted = tf.sigmoid(layer_1_corrupted_pre_act)
 
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
         out_correct = tf.matmul(layer_1_correct,_weights['B'])
         out_corrupted = tf.matmul(layer_1_corrupted,_weights['B'])
-        out = tf.concat([out_correct, out_corrupted],axis=1)
+        out = tf.concat([out_correct, out_corrupted],axis=1, name='inference_for_max_margin_training')
         #out = tf.stack([out_correct, out_corrupted])
         return out
 
     # Similar to the network used for training, but without evaluating the corrupted triplet. This is used during testing
-    def inference(self,_triplets, _weights, _biases, _constants,_act_function, add_layers):
+    def inference(self,_triplets, _weights, _biases, _constants):
         pred_emb = None
         entity_emb = None
         if self.params['word_embedding']:
@@ -160,24 +160,24 @@ class ERMLP:
         # and multipling it by the weight vector 
         layer_1 = None
         layer_1_pre_act = tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b'])
-        if add_layers>0:
-            for i in range(1, add_layers+1):
+        if self.params['add_layers']>0:
+            for i in range(1, self.params['add_layers']+1):
                 layer_1_pre_act = tf.nn.relu(layer_1_pre_act)
                 layer_1_pre_act = tf.add(tf.matmul(layer_1_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
 
 
 
         print('activation function:')
-        if _act_function==0:
-            print(str(_act_function)+ 'tanh')
+        if self.params['act_function']==0:
+            print(str(self.params['act_function'])+ 'tanh')
             #layer_1 = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
             layer_1 = tf.tanh(layer_1_pre_act)
         else:
-            print(str(_act_function)+ 'sigmoid')
+            print(str(self.params['act_function'])+ 'sigmoid')
             #layer_1 = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
             layer_1 = tf.sigmoid(layer_1_pre_act)
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
-        out = tf.matmul(layer_1,_weights['B'])
+        out = tf.matmul(layer_1,_weights['B'], name='inference')
         return out
 
     # determine the best threshold to use for classification
@@ -210,25 +210,25 @@ class ERMLP:
         one = tf.constant(1,dtype=tf.float32)
         max_with_margin_sum =tf.div(tf.reduce_sum(tf.maximum(tf.add(tf.subtract(predictions[:,1],predictions[:, 0]),1), 0)), batch_size)
         l2 = tf.reduce_sum([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
-        return max_with_margin_sum + (self.params['lambda'] * l2)
+        return tf.add(max_with_margin_sum, tf.multiply(self.params['lambda'], l2),name='loss1')
 
     def loss_cross_entropy(self,predictions, y):  
         l2 = tf.reduce_sum([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
         cost = tf.nn.sigmoid_cross_entropy_with_logits(logits=predictions, labels=y)
-        return tf.reduce_mean(cost) + (self.params['lambda'] *  l2)
+        return tf.add(tf.reduce_mean(cost), tf.multiply(self.params['lambda'], l2),name='loss')
 
     def loss_weighted_cross_entropy(self,predictions, y):  
         ratio = 6689.0/ (117340.0 + 6689.0)
         pos_weight = 1.0 / ratio
         l2 = tf.reduce_sum([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
         cost = tf.nn.weighted_cross_entropy_with_logits(logits=predictions, targets=y, pos_weight=pos_weight)
-        return tf.reduce_mean(cost)+ (self.params['lambda'] * l2)
+        return tf.add(tf.reduce_mean(cost), tf.multiply((self.params['lambda'], l2)),name='loss')
 
     def train_adam(self,loss):
-        return tf.train.AdamOptimizer(learning_rate = self.params['learning_rate']).minimize(loss)
+        return tf.train.AdamOptimizer(learning_rate = self.params['learning_rate']).minimize(loss, name='optimizer1')
 
     def train_adagrad(self,loss):
-        return tf.train.AdagradOptimizer(learning_rate = self.params['learning_rate']).minimize(loss)
+        return tf.train.AdagradOptimizer(learning_rate = self.params['learning_rate']).minimize(loss, name='optimizer')
 
     def classify(self, predictions_list,threshold, predicates):
         classifications = []

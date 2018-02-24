@@ -68,7 +68,8 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         'batch_size': BATCH_SIZE,
         'indexed_entities':indexed_entities,
         'indexed_predicates': indexed_predicates, 
-        'add_layers': ADD_LAYERS
+        'add_layers': ADD_LAYERS,
+        'act_function':ACT_FUNCTION
     }
 
     er_mlp = ERMLP(er_mlp_params)
@@ -81,10 +82,10 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     # A boolean to determine if we want to corrupt the head or tail
     flip_placeholder = tf.placeholder(tf.bool)
 
-    training_predictions = er_mlp.inference_for_max_margin_training(training_triplets, weights, biases, constants, flip_placeholder, ACT_FUNCTION, ADD_LAYERS)
+    training_predictions = er_mlp.inference_for_max_margin_training(training_triplets, weights, biases, constants, flip_placeholder)
 
     print('network for predictions')
-    predictions = er_mlp.inference(triplets, weights, biases, constants, ACT_FUNCTION, ADD_LAYERS)
+    predictions = er_mlp.inference(triplets, weights, biases, constants)
 
     print('calculate cost')
     cost = er_mlp.loss(training_predictions)
