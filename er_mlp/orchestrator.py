@@ -202,7 +202,7 @@ class Orchestrator:
 
     def predict(self, data):
         processor = DataProcessor()
-        indexed_data = processor.create_indexed_triplets_training(data,self.graph['entity_dic'],self.graph['pred_dic'] )
+        indexed_data = processor.create_indexed_triplets_training(data,self.params['entity_dic'],self.params['pred_dic'] )
         with tf.Session() as sess:
             saver = tf.train.import_meta_graph(MODELS_DIR+'/'+self.model_id+'/'+self.model_id+'.meta')
             saver.restore(sess, MODELS_DIR+'/'+self.model_id+'/'+self.model_id)

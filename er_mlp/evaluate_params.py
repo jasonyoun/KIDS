@@ -3,8 +3,11 @@ import er_mlp_max_margin
 import itertools
 import sys  
 import os
+from data_processor import DataProcessor
 from orchestrator import Orchestrator
 directory = os.path.dirname(__file__)
+if directory != '':
+    directory = directory+'/'
 sys.stdout.flush()
 name = 'configs_40.txt'
 name = os.path.join(directory, name)
@@ -52,12 +55,18 @@ params = {
 }   
 model_id='1519444328362'
 
-orch = Orchestrator(model_id=model_id)
+orch = Orchestrator(params=params)
 print(orch.get_model_id())
 orch.load_data()
 orch.create_network()
 orch.train_network(dataset='train')
 accuracy,auc = orch.eval_network(dataset='test')
+
+# processor = DataProcessor()
+# predict_df = processor.load(directory+'../data/raw/{}/test.txt'.format(DATA_TYPE))
+# print(orch.predict(predict_df.as_matrix()))
+orch.delete_model()
+
 
 print('accuracy: ')
 print(accuracy)
