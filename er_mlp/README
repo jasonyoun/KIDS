@@ -1,0 +1,15 @@
+Quick Start
+
+Grid search:
+
+The first step will be to build the array of configurations that we will want to run.
+
+1. Update er_mlp/create_configs_grid_search.py with the configs that you would want to set for grid search. The file is pretty self explanatory. The execute this script. A pkl file will be created. THis will be an array of configurations.
+
+2. Update er_mlp/evaluate_params.py with the new config filename (line 9). Additionally, the datatype will need to be changed to map to your data.
+
+3. To run grid search, enter the following:
+
+sbatch -t 480 --mem=4000 --array=0-[[length-1 of the configuration array size]] array_jobs.sh
+
+(make sure the array parameter matches the size of the array configuration)
