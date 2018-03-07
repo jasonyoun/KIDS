@@ -21,8 +21,9 @@ class Sums(object):
       np_past_trustworthiness_vector = None
       np_a_matrix, np_b_matrix       = cls.create_matrices(pd_grouped_data, pd_source_size_data)
 
-      delta     = 1.0
-      iteration = 1
+      delta         = 1.0
+      past_accuracy = 0.0
+      iteration     = 1
 
       # update until it reaches convergence
       while delta > THRESHOLD and iteration < MAX_NUM_ITERATIONS:
@@ -34,7 +35,12 @@ class Sums(object):
          if answers is not None:
             inconsistencies_with_max_belief, pd_present_belief_vector_without_inconsistencies = Sums.find_tuple_with_max_belief(np_present_belief_vector, inconsistencies, pd_grouped_data)
             accuracy = measure_accuracy(inconsistencies_with_max_belief, answers)
-            print("[{}] iteration, delta and accuracy : {} {} {}".format(cls.__name__, iteration, delta, accuracy))
+            
+            if past_accuracy == accuracy:
+               print("[{}] accuracy saturation {} {} {}".format(cls.__name__, iteration, delta, accuracy))
+            else:
+               print("[{}] iteration, delta and accuracy : {} {} {}".format(cls.__name__, iteration, delta, accuracy))
+            past_accuracy = accuracy
          else:
             print("[{}] iteration and delta : {} {}".format(cls.__name__, iteration, delta))
          iteration = iteration + 1
