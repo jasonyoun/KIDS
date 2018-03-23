@@ -9,7 +9,7 @@ from .sums import Sums
 from ..inconsistency_manager import measure_accuracy
 
 SPO_LIST           = ['Subject', 'Predicate', 'Object']
-MAX_NUM_ITERATIONS = 20
+MAX_NUM_ITERATIONS = 8
 THRESHOLD          = np.power(0.1,10)
 
 class PooledInvestment(object):

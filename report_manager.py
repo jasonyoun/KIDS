@@ -20,9 +20,10 @@ SPO_LIST     = ['Subject','Predicate','Object']
 COLUMN_NAMES = SPO_LIST + ['Source']
 
 # IT IS NOT GENERIC (NEED TO UPDATE)
-data_category = { 'Liu': 'MIC profile', 'Shaw': 'Expression profile', 'Tamae': 'MIC profile', 'CARD': 'KB', 'GO': 'KB' }
+data_category = { 'Soo': '', 'Liu': 'MIC profile', 'Shaw': 'Expression profile', 'Tamae': 'MIC profile', 'CARD': 'KB', 'GO': 'KB' }
 
 def plot_network_of_inconsistency(inconsistencies):
+   return 
    pd_nodes = pd.DataFrame(columns = ['name'])
    pd_edges = pd.DataFrame(columns = ['source','target'])
 

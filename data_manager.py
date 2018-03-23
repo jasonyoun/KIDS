@@ -6,13 +6,12 @@ import xml.etree.ElementTree as ET
 
 SPO_LIST = ['Subject', 'Predicate', 'Object']
 
-def integrate_data(data_path_file, map_file, data_rule_file):
-   pd_data_paths        = pd.read_csv(data_path_file, sep = '\t', comment = '#')
+def integrate_data(pd_data_paths, map_file, data_rule_file):
    list_integrated_data = []
 
    for idx, row in pd_data_paths.iterrows():
       pd_data           = pd.read_csv(row['Path'],'\t')
-      pd_data           = _convert_data(pd_data, row['Source'], map_file)
+      pd_data           = _convert_data(pd_data, map_file)
       pd_data['Source'] = row['Source']
 
       list_integrated_data.append(pd_data)
@@ -25,15 +24,16 @@ def integrate_data(data_path_file, map_file, data_rule_file):
    
    return pd_integrated_data
 
-def _convert_data(pd_data, source_name, map_file):
+def _convert_data(pd_data, map_file):
    pd_map = pd.read_csv(map_file, '\t')
 
    if 'Predicate' not in list(pd_data.columns.values):
       pd_data['Predicate'] = 'has'
    
    for idx, row in pd_map.iterrows():
-      indices          = (pd_data[SPO_LIST] == row[source_name]).values
-      pd_data[indices] = row['Destination']
+      for var in ['Subject', 'Object']:
+         indices          = (pd_data[var] == row['Source']).values
+         pd_data.loc[indices,var] = row['Target']
 
    return pd_data
 
