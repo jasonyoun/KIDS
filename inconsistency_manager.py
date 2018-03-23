@@ -78,15 +78,21 @@ def measure_accuracy(resolved_inconsistencies, answers):
 
    for inconsistency_id in resolved_inconsistencies:
       resolved_inconsistency = resolved_inconsistencies[inconsistency_id]
-      resolved_tuple = resolved_inconsistency[0][0]
-      conflict_tuple = resolved_inconsistency[1][0]
+      resolved_tuple  = resolved_inconsistency[0][0]
+      resolved_belief = resolved_inconsistency[0][2]
+      conflict_tuple  = resolved_inconsistency[1][0]
+      conflict_belief = resolved_inconsistency[1][2]
+
       pd_resolved_inconsistency = pd.Series(resolved_tuple, index = SPO_LIST)
       pd_conflict_inconsistency = pd.Series(conflict_tuple, index = SPO_LIST)
+
       if (pd_resolved_inconsistency == answers[SPO_LIST]).all(1).any():
          correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
          total_attempted_resolution = total_attempted_resolution + 1
+         print("TRUE\t{}\t{}".format(resolved_belief, conflict_belief))
       elif (pd_conflict_inconsistency == answers[SPO_LIST]).all(1).any():
          total_attempted_resolution = total_attempted_resolution + 1
+         print("FALSE\t{}\t{}".format(resolved_belief, conflict_belief))
 
    print("{} {}".format(correctly_resolved_inconsistencies, total_attempted_resolution))
    return "{0:.4f}".format(float(correctly_resolved_inconsistencies) / float(total_attempted_resolution))
