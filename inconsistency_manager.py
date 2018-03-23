@@ -72,7 +72,7 @@ def detect_inconsistencies(inconsistency_rule_file, pd_data):
 
    return inconsistencies
 
-def measure_accuracy(resolved_inconsistencies, answers):
+def measure_accuracy(resolved_inconsistencies, answers, iteration=0):
    correctly_resolved_inconsistencies = 0.0
    total_attempted_resolution = 0.0
 
@@ -89,10 +89,10 @@ def measure_accuracy(resolved_inconsistencies, answers):
       if (pd_resolved_inconsistency == answers[SPO_LIST]).all(1).any():
          correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
          total_attempted_resolution = total_attempted_resolution + 1
-         print("TRUE\t{}\t{}".format(resolved_belief, conflict_belief))
+         print("{}\tTRUE\t{}\t{}".format(iteration, resolved_belief, conflict_belief))
       elif (pd_conflict_inconsistency == answers[SPO_LIST]).all(1).any():
          total_attempted_resolution = total_attempted_resolution + 1
-         print("FALSE\t{}\t{}".format(resolved_belief, conflict_belief))
+         print("{}\tFALSE\t{}\t{}".format(iteration, resolved_belief, conflict_belief))
 
    print("{} {}".format(correctly_resolved_inconsistencies, total_attempted_resolution))
    return "{0:.4f}".format(float(correctly_resolved_inconsistencies) / float(total_attempted_resolution))
