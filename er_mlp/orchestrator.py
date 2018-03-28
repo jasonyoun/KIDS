@@ -137,6 +137,7 @@ class Orchestrator:
         if self.init:
             sess.run(init_all)
             saver.save(sess,MODELS_DIR+'/'+self.model_id+'/'+self.model_id)
+            self.init=False
 
     def train_network(self, dataset='train'):
 
