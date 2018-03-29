@@ -1,0 +1,3 @@
+relationName	humanFormat	populate	generalizations	domain	range	antisymmetric	mutexExceptions	knownNegatives	inverse	seedInstances	seedExtractionPatterns	nrOfValues	nrOfInverseValues	requiredForDomain	requiredForRange	editDate	author	description	freebaseID	coment
+represses	{{}}	true	{}	object	object	true	(empty set)	(empty set)	(empty set)	(empty set)	any	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE
+activates	{{}}	true	{}	object	object	true	(empty set)	(empty set)	(empty set)	(empty set)	any	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE	NO_THEO_VALUE

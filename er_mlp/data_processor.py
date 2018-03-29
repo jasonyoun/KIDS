@@ -28,6 +28,31 @@ class DataProcessor:
         indexed_data = [[entity_dic[training_data[i][0]], pred_dic[training_data[i][1]], entity_dic[training_data[i][2]], training_data[i][3]] for i in range(len(training_data))]
         return np.array(indexed_data)
 
+    def create_entity_dic(self,training_data):
+        entity_set = set()
+        for i in range(len(training_data)):
+            entity_set.add(training_data[i][0])
+            entity_set.add(training_data[i][2])
+        dic = {}
+        index_id = 0
+        for e in entity_set:
+            if e not in dic:
+                dic[e] = index_id
+                index_id+=1
+        return dic
+
+    def create_relation_dic(self,training_data):
+        dic = {}
+        relation_set = set()
+        for i in range(len(training_data)):
+            relation_set.add(training_data[i][1])
+        index_id = 0
+        for r in relation_set:
+            if r not in dic:
+                dic[r] = index_id
+                index_id+=1
+        return dic
+
     def machine_translate_using_word(self,fname,embedding_size, initEmbedFile=None):
         f = open(fname, encoding='utf8')
         entities = [l.split() for l in f.read().strip().split('\n')]

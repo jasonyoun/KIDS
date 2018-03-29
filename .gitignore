@@ -1,4 +1,7 @@
-er_mlp/results/*
-er_mlp/fig/*
+archive/er_mlp/results/*
+archive/er_mlp/fig/*
 *__pycache__
 **/.DS_Store
+archive/er_mlp/models/*
+!README
+data/*

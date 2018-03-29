@@ -136,7 +136,7 @@ class ERMLP:
         return out
 
     # Similar to the network used for training, but without evaluating the corrupted triplet. This is used during testing
-    def inference(self,_triplets, _weights, _biases, _constants, training=False):
+    def inference(self,_triplets, _weights, _biases, _constants):
         pred_emb = None
         entity_emb = None
         if self.params['word_embedding']:
@@ -163,8 +163,6 @@ class ERMLP:
         if self.params['add_layers']>0:
             for i in range(1, self.params['add_layers']+1):
                 layer_1_pre_act = tf.nn.relu(layer_1_pre_act)
-                if training:
-                    layer_1_pre_act = tf.nn.dropout(tf.nn.relu(layer_1_pre_act),self.params['drop_out_percent'])
                 layer_1_pre_act = tf.add(tf.matmul(layer_1_pre_act,_weights['C'+str(i)]),_biases['b'+str(i)])
 
 
