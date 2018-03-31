@@ -81,7 +81,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
 
     processor = DataProcessor()
     # load the data
-    df = processor.load(directory+DATA_PATH+'data.txt')
+    df = processor.load(DATA_PATH+'data.txt')
     # numerically represent the entities, predicates, and words
     entity_dic = processor.create_entity_dic(df.as_matrix())
     pred_dic = processor.create_relation_dic(df.as_matrix())
