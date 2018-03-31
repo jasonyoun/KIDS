@@ -1,0 +1,5 @@
+L1=0.0006,0.001,0.0013
+L2=0.0006,0.001,0.0013
+rank_mode=Path,Rel
+negative_mode=topK,expX,Sqr,Tri
+loss_mode=log,exp,hinge

@@ -22,16 +22,18 @@ lambda_list = json.loads(config['DEFAULT']['LAMBDA'])
 optimizer_list =  json.loads(config['DEFAULT']['OPTIMIZER'])
 act_function =  json.loads(config['DEFAULT']['ACT_FUNCTION'])
 add_layers =  json.loads(config['DEFAULT']['ADD_LAYERS'])
-drop_out_precent =  json.loads(config['DEFAULT']['ADD_LAYERS'])
+drop_out_precent =  json.loads(config['DEFAULT']['DROP_OUT_PERCENT'])
 total_configs = list(itertools.product(embedding_size_list,layer_size_list,learning_rate_list,corrupt_size_list,lambda_list, optimizer_list, act_function, add_layers, drop_out_precent))
 
 x= total_configs[int(sys.argv[2])]
+print('current configuration: ')
+print(x)
 DATA_PATH = sys.argv[1]
-WORD_EMBEDDING = False
-DATA_TYPE = 'ecoli'
-TRAINING_EPOCHS = 100
-BATCH_SIZE = 500
-DISPLAY_STEP = 1
+WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
+DATA_TYPE = config['DEFAULT']['DATA_TYPE']
+TRAINING_EPOCHS = config.getint('DEFAULT','TRAINING_EPOCHS')
+BATCH_SIZE = config.getint('DEFAULT','BATCH_SIZE')
+DISPLAY_STEP =  config.getint('DEFAULT','DISPLAY_STEP')
 EMBEDDING_SIZE = x[0]
 LAYER_SIZE = x[1]
 LEARNING_RATE = x[2]  

@@ -22,6 +22,7 @@ import random
 from data_processor import DataProcessor
 from er_mlp import ERMLP
 from sklearn.model_selection import StratifiedKFold
+#from sklearn.cross_validation import StratifiedKFold
 
 SPLITS=2
 OVER_SAMPLE=True
@@ -125,6 +126,8 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     print(np.shape(indexed_data))
     labels = Y.reshape((np.shape(Y)[0],1))
     Y_scores = np.zeros(labels.shape)
+    # skf = StratifiedKFold(Y, n_folds=SPLITS, shuffle=True)
+    # for trainIdx, testIdx in skf:
     for trainIdx, testIdx in skf.split(X, Y):
         data_train = X[trainIdx]
         labels_train = Y[trainIdx]

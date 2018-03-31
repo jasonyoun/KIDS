@@ -2,7 +2,7 @@
 
 #SBATCH --account=ucd149
 #SBATCH --partition=gpu-shared
-#SBATCH --time 01:40:00
+#SBATCH --time 00:10:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=6
 #SBATCH --gres=gpu:k80:1
@@ -26,7 +26,7 @@ cp "${LUSTRE_SCRATCH}/singularity/images/tensorflow-gpu.img" ./
 export SINGULARITY_SHELL='/bin/bash'
 printenv
 cd ~/research/Hypothesis-Generation/er_mlp
-time -p singularity exec /oasis/scratch/comet/mkandes/temp_project/singularity/images/tensorflow-gpu.img python3 -u  run.py DATA_PATH $SLURM_ARRAY_TASK_ID
+time -p singularity exec /oasis/scratch/comet/mkandes/temp_project/singularity/images/tensorflow-gpu.img python3 -u  run.py $1 $SLURM_ARRAY_TASK_ID
 #hostname
 #python3 -u  run_max_margin.py $SLURM_ARRAY_TASK_ID
 # sbatch --array=0-971 array_jobs.sh
