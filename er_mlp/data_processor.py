@@ -9,7 +9,7 @@ import scipy.io as spio
 class DataProcessor:
     
     def load(self,filename):
-        df = pd.read_csv(filename,sep='\t',encoding ='latin-1',header=0)
+        df = pd.read_csv(filename,sep='\t',encoding ='latin-1',header=None)
         return df
 
     def create_dic_index(self,dic):
@@ -53,7 +53,7 @@ class DataProcessor:
                 index_id+=1
         return dic
 
-    def machine_translate_using_word(self,fname,embedding_size, initEmbedFile=None):
+    def machine_translate_using_word(self,fname,embedding_size, initEmbedFile=None, separator='_'):
         f = open(fname, encoding='utf8')
         entities = [l.split() for l in f.read().strip().split('\n')]
         f.close()

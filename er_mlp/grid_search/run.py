@@ -43,6 +43,7 @@ OPTIMIZER = x[5]
 ACT_FUNCTION = x[6]
 ADD_LAYERS = x[7]
 DROP_OUT_PERCENT = x[8]
+SAVE_MODEL=False
 
 
 er_mlp_cross_entropy.run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \

@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 import random
 import math
+from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
 
 class ERMLP:
     def __init__(self,params):
@@ -183,7 +184,7 @@ class ERMLP:
         return out
 
     # determine the best threshold to use for classification
-    def compute_threshold(self, predictions_list, dev_labels,predicates):
+    def compute_threshold(self, predictions_list, dev_labels,predicates, f1=False):
         min_score = np.min(predictions_list) 
         max_score = np.max(predictions_list) 
         best_threshold = np.zeros(self.params['num_preds']);
@@ -198,9 +199,13 @@ class ERMLP:
             for i in range(self.params['num_preds']):
                 predicate_indices = np.where(predicates == i)[0]
                 predicate_predictions = predictions_list[predicate_indices]
-                predictions = (predicate_predictions >= score) * 2 -1
+                # predictions = (predicate_predictions >= score) * 2 -1
+                predictions = (predicate_predictions >= score)
                 predicate_labels = dev_labels[predicate_indices]
                 accuracy = np.mean(predictions == predicate_labels)
+                if f1:
+                    accuracy = f1_score(predicate_labels,predictions)
+                # accuracy = np.mean(predictions == predicate_labels)
                 if accuracy > best_accuracy[i]:
                     best_threshold[i] = score
                     best_accuracy[i] = accuracy
@@ -238,7 +243,7 @@ class ERMLP:
             if(predictions_list[i][0] >= threshold[predicates[i]]):
                 classifications.append(1)
             else:
-                classifications.append(-1)
+                classifications.append(0)
         return classifications
 
     # each training batch will include the number of samples multiplied by the number 
