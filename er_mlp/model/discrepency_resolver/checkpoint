@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/nicholasjoodi/Documents/ucdavis/research/HypothesisGeneration/er_mlp/model/discrepency_resolver/model"
+all_model_checkpoint_paths: "/Users/nicholasjoodi/Documents/ucdavis/research/HypothesisGeneration/er_mlp/model/discrepency_resolver/model"
