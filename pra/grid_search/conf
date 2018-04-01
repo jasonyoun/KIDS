@@ -82,7 +82,7 @@ pairwise_loss=false
 	# optimizing partial ordering or relevance (default=false)
 	false	//optimizing relevance
 	true	//optimizing partial ordering
-negative_mode=all
+negative_mode=Sqr
 	# how to select negative entities
 	all		//use all negative samples
 	,topK	//take top K*rNega samples ranked by plain weighting
@@ -91,7 +91,7 @@ negative_mode=all
 	,Tri	// take x^3: 0,1,8,27,64,125,...th negative samples
 	,poly	// take x^a:
 	,expX	// take a^x
-negative_weight=1
+negative_weight=20
 	# the weight shared by all negative samples
 
 cache_data=true

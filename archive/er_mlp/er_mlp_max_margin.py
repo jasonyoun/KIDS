@@ -14,7 +14,7 @@ if directory != '':
 #sys.path.insert(0, '../data')
 import tensorflow as tf
 from sklearn import utils
-from sklearn.metrics import roc_curve, auc, precision_recall_curve
+from sklearn.metrics import roc_curve, auc, precision_recall_curve,roc_auc_score
 import random
 from tensorflow.python import debug as tf_debug
 from scipy import interp
@@ -137,6 +137,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         fpr["macro"] = all_fpr
         tpr["macro"] = mean_tpr
         roc_auc["macro"] = auc(fpr["macro"], tpr["macro"])
+        print(roc_auc["macro"])
         return roc_auc["macro"]
 
     def determine_threshold(indexed_data_dev):
@@ -247,7 +248,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
 
 if __name__ == "__main__":
     WORD_EMBEDDING = False
-    DATA_TYPE = 'ecoli'
+    DATA_TYPE = 'freebase'
     EMBEDDING_SIZE = 60 # size of each embeddings
     LAYER_SIZE = 60 # number of columns in the first layer
     TRAINING_EPOCHS = 5 
@@ -258,7 +259,8 @@ if __name__ == "__main__":
     LAMBDA = 0.0001
     OPTIMIZER = 1
     ACT_FUNCTION = 0
-    ADD_LAYERS=2
+    ADD_LAYERS=0
+    DROP_OUT_PERCENT=0.1
     run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
         LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS)
 
