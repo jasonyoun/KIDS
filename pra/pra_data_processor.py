@@ -22,7 +22,7 @@ class DataProcessor:
         self.data_path = data_path
 
     def load(self):
-        df = pd.read_csv(self.data_path+'/data.txt',sep='\t',encoding ='latin-1',header=0)
+        df = pd.read_csv(self.data_path+'/data.txt',sep='\t',encoding ='latin-1')
         return df
 
     def create_selected_relations_file(self, data ):
@@ -52,17 +52,21 @@ class DataProcessor:
             entity_set.add(self.data[i][2])
         return entity_set
 
-    def create_triplets_generalizations_file(self ):
+    def create_triplets_generalizations_file(self, positive=True ):
         positives = self.data[self.data[:,3] == 1]
+        filename = 'ecoli_generalizations.csv'
+        if not positive:
+            positives = self.data[self.data[:,3] == -1]
+            filename = 'ecoli_generalizations_neg.csv'
         entity_set = self.create_entity_set()
-        with open('ecoli_generalizations.csv', 'w') as csvfile:
+        with open(filename, 'w') as csvfile:
             writer = csv.writer(csvfile, delimiter='\t',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(['Entity', 'Relation','Value','Iteration of Promotion','Probability','Source','Candidate Source'])
             for row in positives:
                 writer.writerow([row[0], row[1], row[2], '', '1.0', '', ''])
             for k in entity_set:
-                writer.writerow([k, 'generalizations', 'object', '', '0.2', '', ''])
+                writer.writerow([k, 'generalizations', 'object', '', '1.0', '', ''])
 
 
 
@@ -72,4 +76,5 @@ if __name__ == "__main__":
     processor.create_selected_relations_file(df.as_matrix())
     processor.create_relations_file()
     processor.create_triplets_generalizations_file()
+    processor.create_triplets_generalizations_file(positive=False)
 

@@ -123,5 +123,5 @@ with tf.Session() as sess:
         for row in c:
             if (test_df.shape[1]==4):
                 _file.write("classification: "+str(int(row[0]))+ ', prediction: '+str(row[1])+', label: '+str(int(row[2]))+'\n' )
-            if (test_df.shape[1]==4):
+            else:
                 _file.write("classification: "+str(int(row[0]))+ ', prediction: '+str(row[1])+'\n' )

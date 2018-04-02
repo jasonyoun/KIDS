@@ -44,12 +44,12 @@ test_samples=./queriesR_test/<target_relation>
 
 
 ##################### edu.cmu.pra.LearnerPRA
-target_relation=represses
+target_relation=THE_RELATION
 	# (optional) what relation we are training for 
 	# _competeswith athleteplaysforteam citylocatedinstate  
 	# _specializationof agentcompeteswithagent
 	
-graph_folder=./graphs/
+graph_folder=./graphs/pos/
 	# where is the graph NELL446svo NELL165
 	
 model=./models/<target_relation>
@@ -218,3 +218,5 @@ col2=nSampling
 
 valueCol=mrr,MAP,tRW,tCV
 	# the metrics to be shown in the report
+
+given_negative_samples=true
