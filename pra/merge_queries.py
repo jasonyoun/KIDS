@@ -7,7 +7,7 @@ import random
 import scipy.io as spio
 import csv
 
-DATA_PATH='/Users/nicholasjoodi/Documents/ucdavis/research/HypothesisGeneration/data/ecoli_for_param_opt_processed/p100/d1/temp/'
+DATA_PATH=sys.argv[1]
 with open(DATA_PATH+'/selected_relations') as f:
     relations = f.readlines()
 # you may also want to remove whitespace characters like `\n` at the end of each line

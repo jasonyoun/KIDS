@@ -97,11 +97,3 @@ while read p; do
 done <"$base_dir/""relations.txt"
 
 
-
-
-
-# sed -i -e 's/activates/represses/g' conf
-
-# java -cp "$prev_current_dir/"pra.jar edu.cmu.lti.util.run.TunnerSweep 
-
-# cp -R sCV.scores represses_sCV.scores

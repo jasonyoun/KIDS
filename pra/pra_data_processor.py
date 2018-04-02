@@ -9,17 +9,17 @@ import csv
 
 class DataProcessor:
 
-
     def get_inverse(self, relation):
         if relation in self.known_inverses_dic:
             return self.known_inverses_dic[relation]
         else:
             return ''
-    def __init__(self,data_path):
+    def __init__(self,data_path, data_file="/data.txt"):
         self.known_inverses_dic = {}
         # self.known_inverses_dic['activates'] = 'represses'
         # self.known_inverses_dic['represses'] = 'activates'
         self.data_path = data_path
+        self.data_dile =data_file
 
     def load(self):
         df = pd.read_csv(self.data_path+'/data.txt',sep='\t',encoding ='latin-1')
@@ -71,7 +71,10 @@ class DataProcessor:
 
 
 if __name__ == "__main__":
-    processor = DataProcessor(sys.argv[1])
+    if len(sys.argv)==3:
+        processor = DataProcessor(sys.argv[1],sys.argv[2] )
+    else:
+        processor = DataProcessor(sys.argv[1])
     df = processor.load()
     processor.create_selected_relations_file(df.as_matrix())
     processor.create_relations_file()

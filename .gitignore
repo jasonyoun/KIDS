@@ -5,3 +5,4 @@ archive/er_mlp/fig/*
 archive/er_mlp/models/*
 !README
 data/*
+pra/model/*/instance/*
