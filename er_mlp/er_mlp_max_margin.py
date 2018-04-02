@@ -182,11 +182,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
             print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, TRAINING_EPOCHS, avg_cost,current_cost ))
 
     print("determine threshold for classification")
-    # use the dev set to compute the best threshold for classification
-    threshold = determine_threshold(indexed_data_dev)
     
-
-
     thresholds = determine_threshold(indexed_dev_data)
     test_model(indexed_train_data, indexed_test_data, thresholds, _type='final')
 
@@ -225,7 +221,7 @@ if __name__ == "__main__":
     ACT_FUNCTION = 0
     ADD_LAYERS=0
     DROP_OUT_PERCENT=0.1
-    DATA_PATH = '/Users/nicholasjoodi/Documents/ucdavis/research/HypothesisGeneration/archive/data/raw/freebase'
+    DATA_PATH = '/Users/nicholasjoodi/Documents/ucdavis/research/HypothesisGeneration/archive/data/raw/freebase/'
     run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
         LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS)
 
