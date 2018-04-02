@@ -184,7 +184,7 @@ class ERMLP:
         return out
 
     # determine the best threshold to use for classification
-    def compute_threshold(self, predictions_list, dev_labels,predicates, f1=False):
+    def compute_threshold(self, predictions_list, dev_labels,predicates, f1=False,cross_margin=False):
         min_score = np.min(predictions_list) 
         max_score = np.max(predictions_list) 
         best_threshold = np.zeros(self.params['num_preds']);
@@ -201,6 +201,8 @@ class ERMLP:
                 predicate_predictions = predictions_list[predicate_indices]
                 # predictions = (predicate_predictions >= score) * 2 -1
                 predictions = (predicate_predictions >= score)
+                if cross_margin:
+                    predictions = (predicate_predictions >= score) * 2 -1
                 predicate_labels = dev_labels[predicate_indices]
                 accuracy = np.mean(predictions == predicate_labels)
                 if f1:
@@ -237,13 +239,16 @@ class ERMLP:
     def train_adagrad(self,loss):
         return tf.train.AdagradOptimizer(learning_rate = self.params['learning_rate']).minimize(loss, name='optimizer')
 
-    def classify(self, predictions_list,threshold, predicates):
+    def classify(self, predictions_list,threshold, predicates, cross_margin=False):
         classifications = []
         for i in range(len(predictions_list)):
             if(predictions_list[i][0] >= threshold[predicates[i]]):
                 classifications.append(1)
             else:
-                classifications.append(0)
+                if cross_margin:
+                    classifications.append(1)
+                else:
+                    classifications.append(0)
         return classifications
 
     # each training batch will include the number of samples multiplied by the number 
