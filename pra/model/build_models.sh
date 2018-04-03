@@ -32,8 +32,12 @@ cp "$base_dir""/conf" $instance_dir
 
 
 cd $instance_dir
+sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
+sed -i -e "s|blocked_field=THE_BLOCKED_FIELD|blocked_field=0|g" conf
 relation=$(head -n 1 "$DATA_PATH/""relations.txt")
 sed -i -e "s|THE_RELATION|$relation|g" conf
+
+sed -i -e "s|task=_TASK_|task=sCV|g" conf
 
 echo "process data "
 echo ""
@@ -63,9 +67,9 @@ mkdir queriesR_train
 
 java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_train/ true false
 
-mkdir queriesR_test
+# mkdir queriesR_test
 
-java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_test/ false false
+# java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_test/ false false
 
 sed -i -e "s|/graphs/pos|/graphs/neg|g" conf
 
@@ -79,9 +83,9 @@ mkdir queriesR_train_neg
 
 java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_train_neg/ true false
 
-mkdir queriesR_test_neg
+# mkdir queriesR_test_neg
 
-java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_test_neg/ false false
+# java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_test_neg/ false false
 
 sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 
@@ -89,7 +93,7 @@ sed -i -e "s|pra.jar|$prev_current_dir/pra.jar|g" conf
 
 python3 "$prev_current_dir/"merge_queries.py $instance_dir
 
-echo "run sweep "
+echo "Train models "
 echo ""
 mkdir models
 sed -i -e "s|$relation|THE_RELATION|g" conf
@@ -104,5 +108,9 @@ while read p; do
 	sed -i -e "s|$p|THE_RELATION|g" conf
   	
 done <"$DATA_PATH""/relations.txt"
+
+sed -i -e "s|task=sCV|task=_TASK_|g" conf
+
+sed -i -e "s|blocked_field=0|blocked_field=THE_BLOCKED_FIELD|g" conf
 
 

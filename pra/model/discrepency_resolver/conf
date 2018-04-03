@@ -15,7 +15,7 @@ cmd=java -Xms1G -Xmx1G -cp pra.jar edu.cmu.pra.LearnerPRA
 
 ##################### edu.cmu.lti.util.run.Learner
 num_threads=1
-task=sCV
+task=_TASK_
 	# decide the type of task to perform (default=sCV)
 	train	// train using trainFile
 	, test	//test using testFile
@@ -175,7 +175,7 @@ num_walkers=10000
 min_particle=0.0001
 	#particle filtering
 
-blocked_field=0
+blocked_field=THE_BLOCKED_FIELD
 	# the field in query file which leads to the target node
 	
 RW_renormalize=false
