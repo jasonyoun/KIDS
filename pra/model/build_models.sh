@@ -4,8 +4,13 @@ set -e
 
 # ./run.sh /Users/nicholasjoodi/Documents/ucdavis/research/HypothesisGeneration/data/ecoli_for_param_opt_processed/p100/d1/
 
-
-
+is_contained () {
+  local e word="$1"
+  shift
+  for e; do [[ "$e" == "$word" ]] && return 0; done
+  return 1
+}
+no_negatives=("something to search for" "a string" "test2000")
 base_dir="$1"
 current_dir=$(pwd)
 base_dir="$current_dir""/$base_dir"
@@ -30,8 +35,7 @@ cp "$base_dir""/conf" $instance_dir
 
 cd $instance_dir
 sed -i -e "s|blocked_field=THE_BLOCKED_FIELD|blocked_field=0|g" conf
-relation=$(head -n 1 "$DATA_PATH/""relations.txt")
-sed -i -e "s|THE_RELATION|$relation|g" conf
+sed -i -e "s|THE_RELATION|$start_relation|g" conf
 
 sed -i -e "s|task=_TASK_|task=train|g" conf
 
@@ -61,64 +65,49 @@ mkdir queriesR_train
 
 java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_train/ true false
 
-# mkdir queriesR_test
+if [ \( -f "$instance_dir/"ecoli_generalizations_neg.csv \) -a  \( "$use_negatives"=true \) ]; then	
+	echo "create negative queries "
+	echo ""
+	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
+	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations_neg.csv 0.1 edges
 
-# java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_test/ false false
-# if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ]; then	
-# 	echo "create negative queries "
-# 	echo ""
-# 	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
-# 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations_neg.csv 0.1 edges
+	mkdir graphs/neg
 
-# 	mkdir graphs/neg
+	mv ecoli_generalizations_neg.csv.p0.1.edges graphs/neg/.
 
-# 	mv ecoli_generalizations_neg.csv.p0.1.edges graphs/neg/.
+	sed -i -e "s|/graphs/pos|/graphs/neg|g" conf
 
-# 	sed -i -e "s|/graphs/pos|/graphs/neg|g" conf
-
-# 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/neg edges
+	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/neg edges
 
 
-# 	mkdir queriesR_train_neg
+	mkdir queriesR_train_neg
 
-# 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_train_neg/ true false
+	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_train_neg/ true false
 
 
-# 	sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
+	sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 
-# 	python3 "$prev_current_dir/"merge_queries.py $instance_dir
+	python3 "$prev_current_dir/"merge_queries.py $instance_dir
 
-# else
-# 	sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
-# fi
+else
+	sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
+fi
 
 sed -i -e "s|pra-classification-neg-mode.jar|$prev_current_dir/pra-classification-neg-mode.jar|g" conf
 
 echo "Train models "
 echo ""
 mkdir models
-sed -i -e "s|$relation|THE_RELATION|g" conf
+sed -i -e "s|$start_relation|THE_RELATION|g" conf
 while read p; do
 	sed -i -e "s|THE_RELATION|$p|g" conf
-	# first_line=$(head -n 1 "queriesR_train/""$p")
-	# echo $first_line
-	# count=$(echo '$first_line' | awk -F$'\t' '{print NF-1;}')
-	# echo $count 
-	# echo $count 
-	# echo $count 
-	# echo $count 
-	# echo $count 
-	# echo $p 
-	# echo $p 
-	# echo $p 
-	# echo $p 
-	# echo $p 
 
-	# if [$count  -eq 1]; then
-	# 	sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
-	# else
-	# 	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
-	# fi
+	is_contained $p "${no_negatives[@]}"
+	if [ \( $?  -eq 1 \) \( "$use_negatives"=true \) ]; then
+		sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
+	else
+		sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
+	fi
 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.LearnerPRA
 
 	model=$(find `pwd pos/$p` -name train.model)

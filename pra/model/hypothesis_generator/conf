@@ -176,7 +176,7 @@ min_particle=0.0001
 	#particle filtering
 
 #blocked_field=THE_BLOCKED_FIELD
-blocked_field=0
+blocked_field=THE_BLOCKED_FIELD
 	# the field in query file which leads to the target node
 	
 RW_renormalize=false
