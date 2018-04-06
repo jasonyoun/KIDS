@@ -24,40 +24,34 @@ fi
 echo "copy over configuration "
 echo $1
 mkdir $instance_dir
-# cp pra.jar $instance_dir
-
-# cp pra_data_processor.py $instance_dir
 
 cp "$base_dir""/conf" $instance_dir
 
 
 cd $instance_dir
-sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
 sed -i -e "s|blocked_field=THE_BLOCKED_FIELD|blocked_field=0|g" conf
 relation=$(head -n 1 "$DATA_PATH/""relations.txt")
 sed -i -e "s|THE_RELATION|$relation|g" conf
 
-sed -i -e "s|task=_TASK_|task=sCV|g" conf
+sed -i -e "s|task=_TASK_|task=train|g" conf
 
 echo "process data "
 echo ""
 python3 "$prev_current_dir/"pra_data_processor.py $DATA_PATH $train_file
 
-java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
+java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
 
-java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations_neg.csv 0.1 edges
 
 mkdir graphs
 mkdir graphs/pos
-mkdir graphs/neg
+
 
 sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 
 mv ecoli_generalizations.csv.p0.1.edges graphs/pos/.
 
-mv ecoli_generalizations_neg.csv.p0.1.edges graphs/neg/.
 
-java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/pos edges
+java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/pos edges
 
 
 echo "create positive queries "
@@ -65,33 +59,40 @@ echo ""
 
 mkdir queriesR_train
 
-java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_train/ true false
+java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_train/ true false
 
 # mkdir queriesR_test
 
 # java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_test/ false false
+# if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ]; then	
+# 	echo "create negative queries "
+# 	echo ""
+# 	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
+# 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations_neg.csv 0.1 edges
 
-sed -i -e "s|/graphs/pos|/graphs/neg|g" conf
+# 	mkdir graphs/neg
 
-java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/neg edges
+# 	mv ecoli_generalizations_neg.csv.p0.1.edges graphs/neg/.
 
-echo "create negative queries "
-echo ""
+# 	sed -i -e "s|/graphs/pos|/graphs/neg|g" conf
+
+# 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/neg edges
 
 
-mkdir queriesR_train_neg
+# 	mkdir queriesR_train_neg
 
-java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_train_neg/ true false
+# 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_train_neg/ true false
 
-# mkdir queriesR_test_neg
 
-# java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_test_neg/ false false
+# 	sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 
-sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
+# 	python3 "$prev_current_dir/"merge_queries.py $instance_dir
 
-sed -i -e "s|pra.jar|$prev_current_dir/pra.jar|g" conf
+# else
+# 	sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
+# fi
 
-python3 "$prev_current_dir/"merge_queries.py $instance_dir
+sed -i -e "s|pra-classification-neg-mode.jar|$prev_current_dir/pra-classification-neg-mode.jar|g" conf
 
 echo "Train models "
 echo ""
@@ -99,17 +100,37 @@ mkdir models
 sed -i -e "s|$relation|THE_RELATION|g" conf
 while read p; do
 	sed -i -e "s|THE_RELATION|$p|g" conf
+	# first_line=$(head -n 1 "queriesR_train/""$p")
+	# echo $first_line
+	# count=$(echo '$first_line' | awk -F$'\t' '{print NF-1;}')
+	# echo $count 
+	# echo $count 
+	# echo $count 
+	# echo $count 
+	# echo $count 
+	# echo $p 
+	# echo $p 
+	# echo $p 
+	# echo $p 
+	# echo $p 
 
-	java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.LearnerPRA
+	# if [$count  -eq 1]; then
+	# 	sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
+	# else
+	# 	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
+	# fi
+	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.LearnerPRA
 
-	model=$(find `pwd pos/$p` -name model.avg.full)
+	model=$(find `pwd pos/$p` -name train.model)
 	mv $model "models/""$p"
+
+	rm -rfd pos/$p
 
 	sed -i -e "s|$p|THE_RELATION|g" conf
   	
-done <"$DATA_PATH""/relations.txt"
+done <"selected_relations"
 
-sed -i -e "s|task=sCV|task=_TASK_|g" conf
+sed -i -e "s|task=train|task=_TASK_|g" conf
 
 sed -i -e "s|blocked_field=0|blocked_field=THE_BLOCKED_FIELD|g" conf
 

@@ -9,7 +9,7 @@ split_summary=false
 starting_id=0
 print_std_dev=false
 	# also print the standard deviations of the evaluation measures
-cmd=java -Xms1G -Xmx1G -cp pra.jar edu.cmu.pra.LearnerPRA
+cmd=java -Xms1G -Xmx1G -cp pra-classification-neg-mode.jar edu.cmu.pra.LearnerPRA
 #cmd=perl ../../pra.20G.pl
 	# the command used to run an experiment during parameter tuning
 
@@ -44,7 +44,7 @@ test_samples=./queriesR_test/<target_relation>
 
 
 ##################### edu.cmu.pra.LearnerPRA
-target_relation=activates
+target_relation=represses
 	# (optional) what relation we are training for 
 	# _competeswith athleteplaysforteam citylocatedinstate  
 	# _specializationof agentcompeteswithagent
@@ -59,7 +59,7 @@ model_folder=./models/
 
 prediction_folder=./predictions/
 
-top_prediction_results=5
+top_prediction_results=1000
 	
 #subgraph_store=
 	# subgraphs that can be loaded/unloaded
@@ -91,6 +91,7 @@ negative_mode=Sqr
 	,Tri	// take x^3: 0,1,8,27,64,125,...th negative samples
 	,poly	// take x^a:
 	,expX	// take a^x
+	,none
 negative_weight=20
 	# the weight shared by all negative samples
 
@@ -105,7 +106,7 @@ output_training_data_folder=./training_data/
 max_num_exploration_particles=1000000
 
 ################## edu.cmu.pra.model.PRAModel	########################################
-max_steps=3
+max_steps=4
 	# max length of relation paths	-0
 bias=true
 	# add a bias term in the scoring function. can improve log-likelihood (default=true)
@@ -139,7 +140,7 @@ cache_RW=false
 ################## edu.cmu.pra.model.EntityRank
 entity_rank=false
 	# whether to use entity rank or not
-min_ER_steps=3
+min_ER_steps=5
 	# max length of entity rank paths (default=3)
 ER_time_gap=2
 	# only generates entity rank one for every N years, in order to save memory (default=1)
@@ -168,21 +169,22 @@ RW_mode=LVParticle
 	
 truncate=0.003
 	# absolute truncation
-beam_width=10000
+beam_width=100000
 	#beam truncation
-num_walkers=10000
+num_walkers=100000
 	#sampling
 min_particle=0.0001
 	#particle filtering
 
-blocked_field=THE_BLOCKED_FIELD
+#blocked_field=THE_BLOCKED_FIELD
+blocked_field=0
 	# the field in query file which leads to the target node
 	
 RW_renormalize=false
 damping_factor=1.0
 	
 ##################### Optimization  #####################
-max_train_iteration=1000
+max_train_iteration=100000
 
 epsCvg=0.00001
 	# 0.002
@@ -219,4 +221,4 @@ col2=nSampling
 valueCol=mrr,MAP,tRW,tCV
 	# the metrics to be shown in the report
 
-given_negative_samples=true
+#given_negative_samples=true

@@ -1,0 +1,87 @@
+import sys
+import numpy as np
+import pandas as pd
+import re
+import pickle as pickle
+import random
+import scipy.io as spio
+import csv
+from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
+from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+
+
+with open('selected_relations') as f:
+    relations = f.readlines()
+relations = [x.strip() for x in relations] 
+print(relations)
+
+index=0
+predicates_dic = {}
+for r in relations:
+    predicates_dic[r] =  index
+    index+=1
+
+combined_scores_array = None
+combined_predicates_array = None
+combined_labels_array = None
+combined_classifications_array = None
+start = 0
+for k,v in predicates_dic.items():
+    with open('scores/'+k, "r") as _file, open('queriesR_labels/'+k, "r") as l_file, open('classifications/'+k, "r") as c_file:
+        scores = _file.readlines()
+        scores = [x.strip().split('\t')[0] for x in scores] 
+        labels = l_file.readlines()
+        labels = [x.strip().split('\t')[2] for x in labels] 
+        classifications = c_file.readlines()
+
+        classifications = [x.strip().split('\t')[0] for x in classifications] 
+
+        predicates = [v for x in scores] 
+        predicates_array = np.array(predicates)
+        scores_array = np.array(scores)
+        labels_array = np.array(labels)
+        classifications_array = np.array(classifications)
+        if start ==0:
+            combined_scores_array = scores_array
+            combined_predicates_array = predicates_array
+            combined_labels_array = labels_array
+            combined_classifications_array = classifications_array
+            start+=1
+        else:
+            combined_scores_array = np.append(combined_scores_array,scores_array)
+            combined_predicates_array = np.append(combined_predicates_array,predicates_array)
+            combined_labels_array = np.append(combined_labels_array,labels_array)
+            combined_classifications_array = np.append(combined_classifications_array,classifications_array)
+
+combined_scores_array = np.transpose(combined_scores_array).astype(float)
+combined_predicates_array = np.transpose(combined_predicates_array).astype(int)
+combined_labels_array = np.transpose(combined_labels_array).astype(int)
+combined_classifications_array = np.transpose(combined_classifications_array).astype(int)
+
+
+combined_labels_array[:][combined_labels_array[:] == -1] = 0
+print(combined_labels_array)
+print(combined_scores_array)
+print(combined_classifications_array)
+print(combined_predicates_array)
+mean_average_precision_test = pr_stats(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array)
+roc_auc_test = roc_auc_stats(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array)
+fl_measure_test = f1_score(combined_labels_array, combined_classifications_array)
+accuracy_test = accuracy_score(combined_labels_array, combined_classifications_array)
+plot_pr(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, '.')
+plot_roc(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array, '.')
+
+print("test mean average precision:"+ str(mean_average_precision_test))
+print("test f1 measure:"+ str(fl_measure_test))
+print("test accuracy:"+ str(accuracy_test))
+print("test roc auc:"+ str(roc_auc_test))
+
+
+
+
+
+
+
+
+
+

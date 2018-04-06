@@ -6,3 +6,4 @@ archive/er_mlp/models/*
 !README
 data/*
 pra/model/*/instance/*
+*/predict_example/*
