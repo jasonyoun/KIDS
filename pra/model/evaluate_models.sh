@@ -27,8 +27,7 @@ cd $instance_dir
 sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
 
 sed -i -e "s|blocked_field=THE_BLOCKED_FIELD|blocked_field=-1|g" conf
-relation=$(head -n 1 "$DATA_PATH/""relations.txt")
-sed -i -e "s|THE_RELATION|$relation|g" conf
+sed -i -e "s|THE_RELATION|$start_relation|g" conf
 
 sed -i -e "s|task=_TASK_|task=predict|g" conf
 
@@ -80,8 +79,8 @@ mkdir thresholds
 mkdir classifications
 
 echo 'configure'
-sed -i -e "s|$relation|THE_RELATION|g" conf
-# java -cp "$prev_current_dir/"pra.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_test/ false false
+sed -i -e "s|$start_relation|THE_RELATION|g" conf
+
 echo "Determine thresholds "
 echo ""
 sed -i -e "s|test_samples=./queriesR_test/|test_samples=./queriesR_dev/|g" conf
@@ -104,7 +103,7 @@ done <"selected_relations"
 sed -i -e "s|test_samples=./queriesR_dev/|test_samples=./queriesR_test/|g" conf
 echo "Test models "
 echo ""
-sed -i -e "s|$relation|THE_RELATION|g" conf
+sed -i -e "s|$start_relation|THE_RELATION|g" conf
 while read p; do
 	sed -i -e "s|THE_RELATION|$p|g" conf
 	grep  -i "\t""$p""\t" "$DATA_PATH""/""$test_file" | awk  -F '\t'  '{print"c$"$1 "\tc$" $3}' > "queriesR_test/""$p"
