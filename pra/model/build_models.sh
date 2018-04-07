@@ -4,11 +4,17 @@ set -e
 
 # ./run.sh /Users/nicholasjoodi/Documents/ucdavis/research/HypothesisGeneration/data/ecoli_for_param_opt_processed/p100/d1/
 
-is_contained () {
-  local e word="$1"
+containsElement () {
+  local e match="$1" ret="false"
   shift
-  for e; do [[ "$e" == "$word" ]] && return 0; done
-  return 1
+  for e; 
+  do 
+	  if [[ "$e" == "$match" ]]; then
+	   ret="true" 
+	   break
+	  fi
+  done
+  echo "$ret"
 }
 no_negatives=("something to search for" "a string" "test2000")
 base_dir="$1"
@@ -65,7 +71,7 @@ mkdir queriesR_train
 
 java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_train/ true false
 
-if [ \( -f "$instance_dir/"ecoli_generalizations_neg.csv \) -a  \( "$use_negatives"=true \) ]; then	
+if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ] && [ "$use_negatives" == "true"  ]; then	
 	echo "create negative queries "
 	echo ""
 	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
@@ -102,10 +108,18 @@ sed -i -e "s|$start_relation|THE_RELATION|g" conf
 while read p; do
 	sed -i -e "s|THE_RELATION|$p|g" conf
 
-	is_contained $p "${no_negatives[@]}"
-	if [ \( $?  -eq 1 \) \( "$use_negatives"=true \) ]; then
+	does_not_have_negatives=$(containsElement $p "${no_negatives[@]}")
+	echo "$p"
+	echo "$p"
+	echo "$p"
+
+	echo "$does_not_have_negatives"
+
+	if  [  "$does_not_have_negatives" == "true" ] || [ "$use_negatives" != "true"  ]; then
+		echo 'inside'
 		sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
 	else
+		echo 'outside'
 		sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
 	fi
 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.LearnerPRA

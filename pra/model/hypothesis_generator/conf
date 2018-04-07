@@ -220,4 +220,4 @@ col2=nSampling
 valueCol=mrr,MAP,tRW,tCV
 	# the metrics to be shown in the report
 
-#given_negative_samples=true
+given_negative_samples=true
