@@ -16,7 +16,6 @@ containsElement () {
   done
   echo "$ret"
 }
-no_negatives=("something to search for" "a string" "test2000")
 base_dir="$1"
 current_dir=$(pwd)
 base_dir="$current_dir""/$base_dir"

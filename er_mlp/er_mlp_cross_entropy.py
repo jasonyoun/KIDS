@@ -27,7 +27,7 @@ from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 # from sklearn.model_selection import StratifiedKFold
 #from sklearn.cross_validation import StratifiedKFold
 
-
+OVER_SAMPLE=True
 
 def over_sample(X, Y):
     s = X[:,0]
