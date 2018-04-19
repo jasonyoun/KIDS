@@ -46,7 +46,7 @@ sed -i -e "s|task=_TASK_|task=train|g" conf
 
 echo "process data "
 echo ""
-python3 "$prev_current_dir/"pra_data_processor.py $DATA_PATH $train_file
+python3 "$prev_current_dir/"pra_data_processor.py $DATA_PATH $train_file $no_negatives
 
 java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
 

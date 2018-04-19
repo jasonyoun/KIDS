@@ -7,18 +7,49 @@ import random
 import scipy.io as spio
 import csv
 
+def create_type_subsets_dic(data_array):
+    type_dic = {}
+    subsets_dic = {}
+    for row in data_array:
+        clean_row(row)
+        if row[1] not in subsets_dic:
+            subsets_dic[row[1]] = set()
+        subsets_dic[row[1]].add(row[2])
+        type_dic[row[2]] = row[1]
+    return type_dic,subsets_dic
+
+def clean_row(row):
+
+    for i in range(np.shape(row)[0]):
+        if isinstance(row[i], str):
+            row[i] = row[i].strip()
+
 class DataProcessor:
 
-    # def get_inverse(self, relation):
-    #     if relation in self.known_inverses_dic:
-    #         return self.known_inverses_dic[relation]
-    #     else:
-    #         return ''
     def __init__(self,data_path, data_file="/data.txt"):
-        # self.known_inverses_dic = {}
-        # self.known_inverses_dic['activates'] = 'represses'
-        # self.known_inverses_dic['represses'] = 'activates'
         self.data_path = data_path
+        print('create subsets dic')
+        print('')
+        my_file = "entity_full_names.txt"
+        df = pd.read_csv(self.data_path+'/'+my_file,sep=':',encoding ='latin-1',header=None)
+        data_array = df.as_matrix()
+        self.type_dic,self.subsets_dic = create_type_subsets_dic(data_array)
+
+        my_file = "domain_range.txt"
+        df = pd.read_csv(self.data_path+'/'+my_file,sep='\t',encoding ='latin-1',header=None)
+        data_array = df.as_matrix()
+        self.domain_range_dic = {}
+        for row in data_array:
+            self.domain_range_dic[row[0].strip()] = (row[1].strip(), row[2].strip())
+
+        self.no_negatives = set()
+        self.no_negatives.add('has')
+        self.no_negatives.add('is')
+        self.no_negatives.add('is#SPACE#involved#SPACE#in')
+        self.no_negatives.add('upregulated#SPACE#by#SPACE#antibiotic')
+        self.no_negatives.add('targeted#SPACE#by')
+
+
 
     def load(self, data_file='data.txt'):
         df = pd.read_csv(self.data_path+'/'+data_file,sep='\t',encoding ='latin-1',header=None)
@@ -54,7 +85,7 @@ class DataProcessor:
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(['relationName', 'humanFormat','populate','generalizations','domain','range','antisymmetric','mutexExceptions','knownNegatives','inverse','seedInstances','seedExtractionPatterns','nrOfValues','nrOfInverseValues','requiredForDomain','requiredForRange','editDate','author','description','freebaseID','coment' ])
             for r in self.selected_relation_set:
-                writer.writerow([r, '{{}}', 'true', '{}', 'object', 'object', 'true']+ ['(empty set)']*2+['']+['(empty set)']*2+['any']+['NO_THEO_VALUE']*8)
+                writer.writerow(['concept:'+r, '{{}}', 'true', '{}', 'object', 'object', 'true']+ ['concept:'+self.domain_range_dic[r][0],'concept:'+self.domain_range_dic[r][1]]+['']+['(empty set)']*2+['any']+['NO_THEO_VALUE']*8)
 
 
     def create_triplets_generalizations_file(self, data, positive=True ):
@@ -82,14 +113,21 @@ class DataProcessor:
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(['Entity', 'Relation','Value','Iteration of Promotion','Probability','Source','Candidate Source'])
             for row in positives:
-                writer.writerow([row[0], row[1], row[2], '', '1.0', '', ''])
+                if not positive:
+                    if row[1] in self.no_negatives:
+                        print(row[1])
+                        print('no negative')
+                        continue
+                # print(row[0])
+                # print(row[1])
+                writer.writerow(['concept:'+self.type_dic[row[0]]+':'+row[0], 'concept:'+row[1], 'concept:'+self.type_dic[row[2]]+':'+row[2], '', '1.0', '', ''])
             for k in self.entity_set:
-                writer.writerow([k, 'generalizations', 'object', '', '1.0', '', ''])
+                writer.writerow(['concept:'+k, 'generalizations', 'concept:'+self.type_dic[k], '', '1.0', '', ''])
 
 
 
 if __name__ == "__main__":
-    if len(sys.argv)==3:
+    if len(sys.argv)>=3:
         processor = DataProcessor(sys.argv[1],sys.argv[2] )
     else:
         processor = DataProcessor(sys.argv[1])

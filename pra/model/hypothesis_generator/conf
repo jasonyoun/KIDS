@@ -1,5 +1,5 @@
 #####################	edu.cmu.lti.util.run.Tunner 
-num_processes=1
+num_processes=4
 	# number of working processes for tuning parameters in parallel (default=4)
 tunner_mode=sweep
 	# the type of parameter tuning (default=sweep)
