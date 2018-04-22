@@ -51,7 +51,9 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     indexed_train_data = processor.create_indexed_triplets_training(train_df.as_matrix(),entity_dic,pred_dic )
     indexed_test_data = processor.create_indexed_triplets_test(test_df.as_matrix(),entity_dic,pred_dic )
     indexed_dev_data = processor.create_indexed_triplets_test(dev_df.as_matrix(),entity_dic,pred_dic )
+    print(np.shape(indexed_test_data))
     indexed_test_data[:,3][indexed_test_data[:,3] == 0] = -1
+    print(indexed_test_data)
     indexed_dev_data[:,3][indexed_dev_data[:,3] == 0] = -1
 
 
@@ -122,7 +124,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     sess.run(init_all)
 
 
-    data_train = indexed_data_training[:,:3]
+    data_train = indexed_train_data[:,:3]
 
 
     def determine_threshold(indexed_data_dev, f1=False):
@@ -136,18 +138,21 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         return threshold
     
     def test_model( indexed_data_test,threshold, _type='current'):
-        
         data_test = indexed_data_test[:,:3]
         labels_test = indexed_data_test[:,3]
         labels_test = labels_test.reshape((np.shape(labels_test)[0],1))
+        labels_test[:][labels_test[:] == -1] = 0
         predicates_test = indexed_data_test[:,1]
         predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
         mean_average_precision_test = pr_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test)
         roc_auc_test = roc_auc_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test)
-        classifications_test = er_mlp.classify(predictions_list_test,threshold, predicates_test,, cross_margin=True)
+        classifications_test = er_mlp.classify(predictions_list_test,threshold, predicates_test, cross_margin=True)
         classifications_test = np.array(classifications_test).astype(int)
+        classifications_test[:][classifications_test[:] == -1] = 0
         labels_test = labels_test.astype(int)
         fl_measure_test = f1_score(labels_test, classifications_test)
+        print(classifications_test)
+        print(labels_test)
         accuracy_test = accuracy_score(labels_test, classifications_test)
 
         print(_type+" test mean average precision:"+ str(mean_average_precision_test))
@@ -184,7 +189,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     print("determine threshold for classification")
     
     thresholds = determine_threshold(indexed_dev_data)
-    test_model(indexed_train_data, indexed_test_data, thresholds, _type='final')
+    test_model( indexed_test_data, thresholds, _type='final')
 
 
     if SAVE_MODEL:

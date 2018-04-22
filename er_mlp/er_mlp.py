@@ -246,7 +246,7 @@ class ERMLP:
                 classifications.append(1)
             else:
                 if cross_margin:
-                    classifications.append(1)
+                    classifications.append(-1)
                 else:
                     classifications.append(0)
         return classifications
