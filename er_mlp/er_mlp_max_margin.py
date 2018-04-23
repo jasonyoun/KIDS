@@ -16,20 +16,21 @@ if directory != '':
 #sys.path.insert(0, '../data')
 import tensorflow as tf
 from sklearn import utils
-from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
+from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score, confusion_matrix
 import random
 from tensorflow.python import debug as tf_debug
 from scipy import interp
 import random
 from data_processor import DataProcessor
+from data_orchestrator import DataOrchestrator
 from er_mlp import ERMLP
-from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, plot_cost
 # from sklearn.model_selection import StratifiedKFold
 #from sklearn.cross_validation import StratifiedKFold
 
 
 
-def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS, DROP_OUT_PERCENT,DATA_PATH, SAVE_MODEL=False, MODEL_SAVE_DIRECTORY=None  ):
+def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS, DROP_OUT_PERCENT,DATA_PATH, SAVE_MODEL=False, MODEL_SAVE_DIRECTORY=None,USE_RANGE=True, USE_NEG=True ):
     # numerically represent the entities, predicates, and words
     processor = DataProcessor()
 
@@ -43,12 +44,12 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word(DATA_PATH+'/entities.txt',EMBEDDING_SIZE)
         indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word(DATA_PATH+'/relations.txt',EMBEDDING_SIZE)
     else:
-        entity_dic = processor.machine_translate(DATA_PATH+'/entities.txt',EMBEDDING_SIZE)
-        pred_dic = processor.machine_translate(DATA_PATH+'/relations.txt',EMBEDDING_SIZE)
+        entity_dic = processor.machine_translate(DATA_PATH+'/entities.txt',EMBEDDING_SIZE,separator='#SPACE#|#COMMA#|#SEMICOLON#|\W+')
+        pred_dic = processor.machine_translate(DATA_PATH+'/relations.txt',EMBEDDING_SIZE,separator='#SPACE#|#COMMA#|#SEMICOLON#|\W+')
 
     # numerically represent the data 
     print("Index:")
-    indexed_train_data = processor.create_indexed_triplets_training(train_df.as_matrix(),entity_dic,pred_dic )
+    indexed_train_data = processor.create_indexed_triplets_test(train_df.as_matrix(),entity_dic,pred_dic )
     indexed_test_data = processor.create_indexed_triplets_test(test_df.as_matrix(),entity_dic,pred_dic )
     indexed_dev_data = processor.create_indexed_triplets_test(dev_df.as_matrix(),entity_dic,pred_dic )
     print(np.shape(indexed_test_data))
@@ -123,8 +124,12 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     #sess = tf_debug.LocalCLIDebugWrapperSession(sess)
     sess.run(init_all)
 
-
-    data_train = indexed_train_data[:,:3]
+    print(np.shape(indexed_train_data))
+    data_orch = DataOrchestrator( indexed_train_data, DATA_PATH,pred_dic,entity_dic, corruption_size=CORRUPT_SIZE, shuffle=True, use_range=USE_RANGE, use_neg=USE_NEG)
+    data_train = indexed_train_data[indexed_train_data[:,3] == 1  ]
+    data_train = data_train[:,:3]
+    print(np.shape(data_train))
+    batches_per_epoch = np.floor(len(data_train) / BATCH_SIZE).astype(np.int16)
 
 
     def determine_threshold(indexed_data_dev, f1=False):
@@ -141,24 +146,44 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         data_test = indexed_data_test[:,:3]
         labels_test = indexed_data_test[:,3]
         labels_test = labels_test.reshape((np.shape(labels_test)[0],1))
-        labels_test[:][labels_test[:] == -1] = 0
+        # labels_test[:][labels_test[:] == -1] = 0
         predicates_test = indexed_data_test[:,1]
         predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
-        mean_average_precision_test = pr_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test)
-        roc_auc_test = roc_auc_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test)
+        mean_average_precision_test = pr_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test,pred_dic)
+        roc_auc_test = roc_auc_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test,pred_dic)
         classifications_test = er_mlp.classify(predictions_list_test,threshold, predicates_test, cross_margin=True)
         classifications_test = np.array(classifications_test).astype(int)
-        classifications_test[:][classifications_test[:] == -1] = 0
+        confusion_test = confusion_matrix(labels_test, classifications_test)
+        # classifications_test[:][classifications_test[:] == -1] = 0
         labels_test = labels_test.astype(int)
         fl_measure_test = f1_score(labels_test, classifications_test)
-        print(classifications_test)
-        print(labels_test)
+        # print(classifications_test)
+        # print(labels_test)
         accuracy_test = accuracy_score(labels_test, classifications_test)
+
+        for i in range(NUM_PREDS):
+            for key, value in pred_dic.items():
+                if value == i:
+                    pred_name =key
+            indices, = np.where(predicates_test == i)
+            classifications_predicate = classifications_test[indices]
+            labels_predicate = labels_test[indices]
+            fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
+            accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
+            confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
+            print(" - test f1 measure for "+pred_name+ ":"+ str(fl_measure_predicate))
+            print(" - test accuracy for "+pred_name+ ":"+ str(accuracy_predicate))
+            print(" - test confusion matrix for "+pred_name+ ":")
+            print(confusion_predicate)
+            print(" ")
 
         print(_type+" test mean average precision:"+ str(mean_average_precision_test))
         print(_type+" test f1 measure:"+ str(fl_measure_test))
         print(_type+" test accuracy:"+ str(accuracy_test))
         print(_type+" test roc auc:"+ str(roc_auc_test))
+        print(_type+"test confusion matrix:")
+        print(confusion_test)
+
 
 
     iter_list = []
@@ -168,12 +193,18 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     current_accuracy = None
     current_threshold = None
     print("Begin training...")
+
+
     for epoch in range(TRAINING_EPOCHS):
+        if epoch == 0:
+            thresholds = determine_threshold(indexed_dev_data)
+            test_model( indexed_test_data, thresholds, _type='current')
         avg_cost = 0.
         total_batch = int(data_train.shape[0] / BATCH_SIZE)
         for i in range(total_batch):
-            batch_xs = er_mlp.get_training_batch_with_corrupted(data_train)
+            # batch_xs = er_mlp.get_training_batch_with_corrupted(data_train)
             flip = bool(random.getrandbits(1))
+            batch_xs = data_orch.get_next_training_batch(BATCH_SIZE,flip)
             _, current_cost= sess.run([optimizer, cost], feed_dict={training_triplets: batch_xs, flip_placeholder: flip})
             avg_cost +=current_cost/total_batch
             # print(current_cost)
@@ -185,11 +216,14 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
             thresholds = determine_threshold(indexed_dev_data)
             test_model( indexed_test_data, thresholds, _type='current')
             print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, TRAINING_EPOCHS, avg_cost,current_cost ))
+            print ("")
+        data_orch.reset_data_index()
 
     print("determine threshold for classification")
     
     thresholds = determine_threshold(indexed_dev_data)
     test_model( indexed_test_data, thresholds, _type='final')
+    plot_cost(iter_list,cost_list,MODEL_SAVE_DIRECTORY)
 
 
     if SAVE_MODEL:

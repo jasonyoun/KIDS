@@ -77,7 +77,7 @@ class DataProcessor:
             for e in entities:
                 #e[0] = e[0].lstrip("_")
                 words = []
-                for s in e[0].split('_'):
+                for s in re.split(separator,e[0]):
                     words.append(s)
                     if s not in word_ids:
                         word_ids[s] = word_index_id
