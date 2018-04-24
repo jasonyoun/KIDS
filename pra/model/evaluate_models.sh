@@ -132,7 +132,7 @@ done <"selected_relations"
 python3 "$prev_current_dir/"evaluate.py 
 
 
-sed -i -e "s|task=sCV|task=_TASK_|g" conf
+sed -i -e "s|task=predict|task=_TASK_|g" conf
 sed -i -e "s|blocked_field=-1|blocked_field=THE_BLOCKED_FIELD|g" conf
 
 
