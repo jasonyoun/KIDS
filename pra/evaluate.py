@@ -6,7 +6,7 @@ import pickle as pickle
 import random
 import scipy.io as spio
 import csv
-from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
+from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score,confusion_matrix
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 
 
@@ -57,19 +57,30 @@ combined_scores_array = np.transpose(combined_scores_array).astype(float)
 combined_predicates_array = np.transpose(combined_predicates_array).astype(int)
 combined_labels_array = np.transpose(combined_labels_array).astype(int)
 combined_classifications_array = np.transpose(combined_classifications_array).astype(int)
-
-
 combined_labels_array[:][combined_labels_array[:] == -1] = 0
-print(combined_labels_array)
-print(combined_scores_array)
-print(combined_classifications_array)
-print(combined_predicates_array)
-mean_average_precision_test = pr_stats(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array)
-roc_auc_test = roc_auc_stats(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array)
+for i in range(len(predicates_dic)):
+    for key, value in predicates_dic.items():
+        if value == i:
+            pred_name =key
+    indices, = np.where(combined_predicates_array == i)
+    classifications_predicate = combined_classifications_array[indices]
+    labels_predicate = combined_labels_array[indices]
+    classifications_predicate[:][classifications_predicate[:] == -1] = 0
+    fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
+    accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
+    confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
+    print(" - test f1 measure for "+pred_name+ ":"+ str(fl_measure_predicate))
+    print(" - test accuracy for "+pred_name+ ":"+ str(accuracy_predicate))
+    print(" - test confusion matrix for "+pred_name+ ":")
+    print(confusion_predicate)
+    print(" ")
+
+mean_average_precision_test = pr_stats(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic)
+roc_auc_test = roc_auc_stats(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic)
 fl_measure_test = f1_score(combined_labels_array, combined_classifications_array)
 accuracy_test = accuracy_score(combined_labels_array, combined_classifications_array)
 plot_pr(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, '.')
-plot_roc(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array, '.')
+plot_roc(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, '.')
 
 print("test mean average precision:"+ str(mean_average_precision_test))
 print("test f1 measure:"+ str(fl_measure_test))

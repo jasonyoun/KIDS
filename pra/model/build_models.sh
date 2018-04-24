@@ -40,6 +40,7 @@ cp "$base_dir""/conf" $instance_dir
 
 cd $instance_dir
 sed -i -e "s|blocked_field=THE_BLOCKED_FIELD|blocked_field=0|g" conf
+sed -i -e "s|target_relation=.*|target_relation=$start_relation|g" conf
 sed -i -e "s|THE_RELATION|$start_relation|g" conf
 
 sed -i -e "s|task=_TASK_|task=train|g" conf
