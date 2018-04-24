@@ -32,7 +32,6 @@ if [ -d "$instance_dir" ]; then
   rm -rfd $instance_dir
 fi
 echo "copy over configuration "
-echo $1
 mkdir $instance_dir
 
 cp "$base_dir""/conf" $instance_dir
@@ -47,7 +46,7 @@ sed -i -e "s|task=_TASK_|task=train|g" conf
 
 echo "process data "
 echo ""
-python3 "$prev_current_dir/"pra_data_processor.py $DATA_PATH $train_file $no_negatives
+python3 "$prev_current_dir/"pra_data_processor.py $DATA_PATH $train_file
 
 java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
 

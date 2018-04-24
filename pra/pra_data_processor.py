@@ -26,7 +26,7 @@ def clean_row(row):
 
 class DataProcessor:
 
-    def __init__(self,data_path, data_file="/data.txt"):
+    def __init__(self,data_path, data_file):
         self.data_path = data_path
         print('create subsets dic')
         print('')
@@ -51,7 +51,7 @@ class DataProcessor:
 
 
 
-    def load(self, data_file='data.txt'):
+    def load(self, data_file):
         df = pd.read_csv(self.data_path+'/'+data_file,sep='\t',encoding ='latin-1',header=None)
         return df
 
@@ -66,16 +66,18 @@ class DataProcessor:
             for r in selected_relation_set:
                 the_file.write(r+'\n')
 
-    def create_sets(self, data ):
-        dic = {}
-        relation_set = set()
-        for i in range(len(data)):
-            relation_set.add(data[i][1])
-        self.relation_set = relation_set
+    def create_sets(self ):
+        entities_file = self.data_path+"/entities.txt"
+        relations_file = self.data_path+"/relations.txt"
         entity_set = set()
-        for i in range(len(data)):
-            entity_set.add(data[i][0])
-            entity_set.add(data[i][2])
+        relation_set = set()
+        with open(entities_file) as f:
+            for line in f:
+                entity_set.add(line.strip())
+        with open(relations_file) as f:
+            for line in f:
+                relation_set.add(line.strip())
+        self.relation_set = relation_set
         self.entity_set = entity_set
 
 
@@ -115,8 +117,6 @@ class DataProcessor:
             for row in positives:
                 if not positive:
                     if row[1] in self.no_negatives:
-                        print(row[1])
-                        print('no negative')
                         continue
                 # print(row[0])
                 # print(row[1])
@@ -127,14 +127,10 @@ class DataProcessor:
 
 
 if __name__ == "__main__":
-    if len(sys.argv)>=3:
-        processor = DataProcessor(sys.argv[1],sys.argv[2] )
-    else:
-        processor = DataProcessor(sys.argv[1])
-    df = processor.load()
+    processor = DataProcessor(sys.argv[1],sys.argv[2] )
     test_df = processor.load('test.txt')
     processor.create_selected_relations_file(test_df.as_matrix())
-    processor.create_sets(df.as_matrix())
+    processor.create_sets()
     processor.create_relations_file()
     train_df = processor.load('train.txt')
     shape = np.shape(train_df.as_matrix())

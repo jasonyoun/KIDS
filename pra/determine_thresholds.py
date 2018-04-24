@@ -41,6 +41,7 @@ thresholds_file = 'thresholds/'+relation
 labels_file = 'queriesR_labels/'+relation
 if len(sys.argv)>2:
     labels_file = 'queriesR_'+sys.argv[2]+'_labels/'+relation
+    scores_file = sys.argv[2]+'_scores/'+relation
 
 with open(labels_file, "r") as l_file:
     labels = l_file.readlines()

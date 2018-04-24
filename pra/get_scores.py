@@ -9,7 +9,6 @@ import csv
 from sklearn.linear_model import LogisticRegression
 relation = sys.argv[1]
 print(relation)
-print(sys.argv[2])
 use_calibration = False
 if len(sys.argv)>2:
     calibration = sys.argv[2]

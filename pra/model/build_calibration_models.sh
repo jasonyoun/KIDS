@@ -39,33 +39,33 @@ sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 echo 'clean space'
 
 
-if [ -d "queriesR_dev" ]; then
-  rm -rfd queriesR_dev
-fi
-if [ -d "queriesR_dev_labels" ]; then
-  rm -rfd queriesR_dev_labels
-fi
+# if [ -d "queriesR_dev" ]; then
+#   rm -rfd queriesR_dev
+# fi
+# if [ -d "queriesR_dev_labels" ]; then
+#   rm -rfd queriesR_dev_labels
+# fi
 
 
-if [ -d "dev_scores" ]; then
-  rm -rfd dev_scores
-fi
+# if [ -d "dev_scores" ]; then
+#   rm -rfd dev_scores
+# fi
 
-if [ -d "dev_predictions" ]; then
-  rm -rfd dev_predictions
-fi
+# if [ -d "dev_predictions" ]; then
+#   rm -rfd dev_predictions
+# fi
 
-if [ -d "calibrations" ]; then
-  rm -rfd calibrations
-fi
+# if [ -d "calibrations" ]; then
+#   rm -rfd calibrations
+# fi
 
 
 echo 'create folders'
-mkdir queriesR_dev
-mkdir dev_predictions
-mkdir dev_scores
-mkdir queriesR_dev_labels
-mkdir calibrations
+mkdir -p queriesR_dev
+mkdir -p dev_predictions
+mkdir -p dev_scores
+mkdir -p queriesR_dev_labels
+mkdir -p calibrations
 
 echo 'configure'
 sed -i -e "s|$start_relation|THE_RELATION|g" conf

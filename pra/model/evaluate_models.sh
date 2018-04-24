@@ -38,52 +38,61 @@ sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 
 echo 'clean space'
 
-if [ -d "queriesR_test" ]; then
-  rm -rfd queriesR_test
-fi
+# if [ -d "queriesR_test" ]; then
+#   rm -rfd queriesR_test
+# fi
 
-if [ -d "queriesR_dev" ]; then
-  rm -rfd queriesR_dev
-fi
-if [ -d "queriesR_dev_labels" ]; then
-  rm -rfd queriesR_dev_labels
-fi
+# if [ -d "queriesR_dev" ]; then
+#   rm -rfd queriesR_dev
+# fi
+# if [ -d "queriesR_dev_labels" ]; then
+#   rm -rfd queriesR_dev_labels
+# fi
 
-if [ -d "queriesR_labels" ]; then
-  rm -rfd queriesR_labels
-fi
+# if [ -d "queriesR_labels" ]; then
+#   rm -rfd queriesR_labels
+# fi
 
-if [ -d "scores" ]; then
-  rm -rfd scores
-fi
+# if [ -d "scores" ]; then
+#   rm -rfd scores
+# fi
 
-if [ -d "predictions" ]; then
-  rm -rfd predictions
-fi
+# if [ -d "predictions" ]; then
+#   rm -rfd predictions
+# fi
+# if [ -d "dev_predictions" ]; then
+#   rm -rfd dev_predictions
+# fi
+# if [ -d "dev_scores" ]; then
+#   rm -rfd dev_scores
+# fi
 
-if [ -d "thresholds" ]; then
-  rm -rfd thresholds
-fi
+# if [ -d "thresholds" ]; then
+#   rm -rfd thresholds
+# fi
 
-if [ -d "classifications" ]; then
-  rm -rfd classifications
-fi
+# if [ -d "classifications" ]; then
+#   rm -rfd classifications
+# fi
 
 echo 'create folders'
-mkdir queriesR_test
-mkdir queriesR_labels
-mkdir queriesR_dev
-mkdir predictions
-mkdir scores
-mkdir queriesR_dev_labels
-mkdir thresholds
-mkdir classifications
+mkdir -p queriesR_test
+mkdir -p queriesR_labels
+mkdir -p queriesR_dev
+mkdir -p predictions
+mkdir -p scores
+mkdir -p dev_predictions
+mkdir -p dev_scores
+mkdir -p queriesR_dev_labels
+mkdir -p thresholds
+mkdir -p classifications
 
 echo 'configure'
 sed -i -e "s|$start_relation|THE_RELATION|g" conf
 if  [  "$use_calibration" != "use_calibration" ] ; then
 	echo "Determine thresholds "
 	echo ""
+	sed -i -e "s|prediction_folder=./predictions/|prediction_folder=./dev_predictions/|g" conf
 	sed -i -e "s|test_samples=./queriesR_test/|test_samples=./queriesR_dev/|g" conf
 	while read p; do
 		sed -i -e "s|THE_RELATION|$p|g" conf
@@ -101,7 +110,7 @@ if  [  "$use_calibration" != "use_calibration" ] ; then
 	done <"selected_relations"
 fi
 
-
+sed -i -e "s|prediction_folder=./dev_predictions/|prediction_folder=./predictions/|g" conf
 sed -i -e "s|test_samples=./queriesR_dev/|test_samples=./queriesR_test/|g" conf
 echo "Test models "
 echo ""
