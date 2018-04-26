@@ -8,9 +8,17 @@ import scipy.io as spio
 import csv
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score,confusion_matrix
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+import argparse
+
+parser = argparse.ArgumentParser(description='evaluate the results')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
+
+args = parser.parse_args()
+print(args.dir)
 
 
-with open('selected_relations') as f:
+with open('./selected_relations') as f:
     relations = f.readlines()
 relations = [x.strip() for x in relations] 
 print(relations)
@@ -27,7 +35,7 @@ combined_labels_array = None
 combined_classifications_array = None
 start = 0
 for k,v in predicates_dic.items():
-    with open('scores/'+k, "r") as _file, open('queriesR_labels/'+k, "r") as l_file, open('classifications/'+k, "r") as c_file:
+    with open(args.dir+'/scores/'+k, "r") as _file, open(args.dir+'/queriesR_labels/'+k, "r") as l_file, open(args.dir+'/classifications/'+k, "r") as c_file:
         scores = _file.readlines()
         scores = [x.strip().split('\t')[0] for x in scores] 
         labels = l_file.readlines()
@@ -79,8 +87,8 @@ mean_average_precision_test = pr_stats(len(relations), combined_labels_array, co
 roc_auc_test = roc_auc_stats(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic)
 fl_measure_test = f1_score(combined_labels_array, combined_classifications_array)
 accuracy_test = accuracy_score(combined_labels_array, combined_classifications_array)
-plot_pr(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, '.')
-plot_roc(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, '.')
+plot_pr(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, args.dir+'/')
+plot_roc(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, args.dir+'/')
 
 print("test mean average precision:"+ str(mean_average_precision_test))
 print("test f1 measure:"+ str(fl_measure_test))

@@ -16,6 +16,7 @@ prev_current_dir="$current_dir""/.."
 echo "Content of DATA_PATH is $DATA_PATH"
 test_file="test.txt"
 dev_file="dev.txt"
+dev_folder="dev"
 
 instance_dir+="$base_dir""/instance/"
 
@@ -28,7 +29,7 @@ sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
 
 sed -i -e "s|blocked_field=THE_BLOCKED_FIELD|blocked_field=-1|g" conf
 sed -i -e "s|target_relation=.*|target_relation=$start_relation|g" conf
-sed -i -e "s|THE_RELATION|$start_relation|g" conf
+sed -i -e "s|target_relation=THE_RELATION|target_relation=$start_relation|g" conf
 
 sed -i -e "s|task=_TASK_|task=predict|g" conf
 
@@ -39,59 +40,48 @@ sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 echo 'clean space'
 
 
-# if [ -d "queriesR_dev" ]; then
-#   rm -rfd queriesR_dev
-# fi
-# if [ -d "queriesR_dev_labels" ]; then
-#   rm -rfd queriesR_dev_labels
-# fi
-
-
-# if [ -d "dev_scores" ]; then
-#   rm -rfd dev_scores
-# fi
-
-# if [ -d "dev_predictions" ]; then
-#   rm -rfd dev_predictions
-# fi
-
-# if [ -d "calibrations" ]; then
-#   rm -rfd calibrations
-# fi
 
 
 echo 'create folders'
-mkdir -p queriesR_dev
-mkdir -p dev_predictions
-mkdir -p dev_scores
-mkdir -p queriesR_dev_labels
 mkdir -p calibrations
+mkdir -p $dev_folder
+mkdir -p $dev_folder/queriesR_test
+mkdir -p $dev_folder/predictions
+mkdir -p $dev_folder/scores
+mkdir -p $dev_folder/queriesR_labels
+mkdir -p $dev_folder/queriesR_tail
+mkdir -p $dev_folder/thresholds
+
+
+
 
 echo 'configure'
-sed -i -e "s|$start_relation|THE_RELATION|g" conf
+sed -i -e "s|target_relation=$start_relation|target_relation=THE_RELATION|g" conf
 
-sed -i -e "s|prediction_folder=./predictions/|prediction_folder=./dev_predictions/|g" conf
 
 echo "calibrate "
 echo ""
-sed -i -e "s|test_samples=./queriesR_test/|test_samples=./queriesR_dev/|g" conf
+	sed -i -e "s|prediction_folder=.*/|prediction_folder=./$dev_folder/predictions/|g" conf
+	sed -i -e "s|test_samples=.*|test_samples=./$dev_folder/queriesR_test/<target_relation>|g" conf
 while read p; do
-	sed -i -e "s|THE_RELATION|$p|g" conf
-	grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file" | awk -F '\t'  '{print"c$"$1 "\tc$" $3}' > "queriesR_dev/""$p"
-	grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file"| awk -F '\t'  '{print"c$"$1 "\tc$" $3 "\t" $4}' > "queriesR_dev_labels/""$p"
+	sed -i -e "s|target_relation=THE_RELATION|target_relation=$p|g" conf
+	python3 "$prev_current_dir/"create_test_queries.py --data_file "$DATA_PATH""/""$dev_file" --predicate $p --dir $dev_folder
+	#grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file" | awk -F '\t'  '{print"c$"$1 "\t"}' | awk '!seen[$0]++'  > "./$dev_folder/queriesR_test/""$p"
+	grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file"| awk -F '\t'  '{print"c$"$1 "\tc$" $3}' > "./$dev_folder/queriesR_tail/""$p"
+	grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file"| awk -F '\t'  '{print"c$"$1 "\tc$" $3 "\t" $4}' > "./$dev_folder/queriesR_labels/""$p"
 
-	java -cp "$prev_current_dir/"pra-classification-neg-mode.jar  edu.cmu.pra.LearnerPRA
+	java -cp "$prev_current_dir/"pra_neg_mode_classification.jar  edu.cmu.pra.LearnerPRA
 
-	python3 "$prev_current_dir/"get_scores.py $p dev
+	python3 "$prev_current_dir/"get_scores.py --predicate $p --dir dev
 
-	python3 "$prev_current_dir/"calibrate.py $p dev
+	python3 "$prev_current_dir/"calibrate.py  --predicate $p --dir dev
 
-	sed -i -e "s|$p|THE_RELATION|g" conf
+	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
   	
 done <"selected_relations"
 
 sed -i -e "s|task=sCV|task=_TASK_|g" conf
 sed -i -e "s|blocked_field=-1|blocked_field=THE_BLOCKED_FIELD|g" conf
-sed -i -e "s|prediction_folder=./dev_predictions/|prediction_folder=./predictions/|g" conf
+sed -i -e "s|prediction_folder=./$dev_folder/predictions/|prediction_folder=.*/|g" conf
 
 

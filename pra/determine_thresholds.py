@@ -7,10 +7,16 @@ import random
 import scipy.io as spio
 import csv
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
+import argparse
 
+parser = argparse.ArgumentParser(description='determine the threshold')
+parser.add_argument('--predicate', nargs='?',required=True,
+                    help='the predicate that we will get the scores for')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
 
-
-
+args = parser.parse_args()
+print(args.dir)
 
 def compute_threshold( predictions_list, dev_labels, f1=False):
     min_score = np.min(predictions_list) 
@@ -32,16 +38,13 @@ def compute_threshold( predictions_list, dev_labels, f1=False):
     return best_threshold
 
 
-relation = sys.argv[1]
+relation = args.predicate
 
-scores_file = 'scores/'+relation
+scores_file = args.dir+'/scores/'+relation
 
-thresholds_file = 'thresholds/'+relation
+thresholds_file = args.dir+'/thresholds/'+relation
 
-labels_file = 'queriesR_labels/'+relation
-if len(sys.argv)>2:
-    labels_file = 'queriesR_'+sys.argv[2]+'_labels/'+relation
-    scores_file = sys.argv[2]+'_scores/'+relation
+labels_file = args.dir+'/queriesR_labels/'+relation
 
 with open(labels_file, "r") as l_file:
     labels = l_file.readlines()

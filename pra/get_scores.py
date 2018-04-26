@@ -7,23 +7,30 @@ import random
 import scipy.io as spio
 import csv
 from sklearn.linear_model import LogisticRegression
-relation = sys.argv[1]
+import argparse
+
+
+parser = argparse.ArgumentParser(description='parse and generate the scores file')
+parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
+parser.add_argument('--predicate', nargs='?',required=True,
+                    help='the predicate that we will get the scores for')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
+
+args = parser.parse_args()
+print(args.dir)
+relation = args.predicate
 print(relation)
-use_calibration = False
-if len(sys.argv)>2:
-    calibration = sys.argv[2]
-    if calibration=='use_calibration':
-        use_calibration=True
-        with open('calibrations/'+relation+'.pkl', 'rb') as pickle_file:
-            log_reg = pickle.load(pickle_file)
-queries_file = 'queriesR_test/'+relation
+use_calibration = args.use_calibration
+if use_calibration:
+    with open('calibrations/'+relation+'.pkl', 'rb') as pickle_file:
+        log_reg = pickle.load(pickle_file)
+
+queries_file = args.dir+'/queriesR_test/'+relation
+queries_tail = args.dir+'/queriesR_tail/'+relation
 print(relation)
-fname='predictions/'+relation
-scores_file = 'scores/'+relation
-if len(sys.argv)>2 and sys.argv[2] != 'use_calibration':
-    queries_file = 'queriesR_'+sys.argv[2]+'/'+relation
-    fname=sys.argv[2]+'_predictions/'+relation
-    scores_file = sys.argv[2]+'_scores/'+relation
+fname=args.dir+'/predictions/'+relation
+scores_file = args.dir+'/scores/'+relation
 
 with open(fname) as f:
     lines = f.readlines()
@@ -31,32 +38,32 @@ with open(fname) as f:
 with open(queries_file, "r") as l_file:
     queries = l_file.readlines()
 
+with open(queries_tail, "r") as l_file:
+    queries_tail = l_file.readlines()
+
 scores = []
 valid = []
+entities_scores_dic = {}
 for line in lines:
-    tail_entity = queries.pop(0).strip().split('\t')[1]
-    line.strip()
     words = line.split('\t')
-    del words[0]
-    del words[0]
-    found = False
-    for word in words:
-        score_and_entity= word.split(',')
-        tail_entity_star = '*'+tail_entity
-        if score_and_entity[1].strip()==tail_entity.strip() or score_and_entity[1].strip()==tail_entity_star.strip()  :
-            found = True
-            break
-    if found:
-        # if use_calibration:
-        #     print(np.array(float(score_and_entity[0])))
-        #     score = log_reg.predict_proba( np.array(float(score_and_entity[0])).reshape(1, -1))
-        # else:
-        score = float(score_and_entity[0])
-        # _file.write(str(score)+'\t1\n')
-        scores.append(score)
+    subject = words[0]
+    if subject not in entities_scores_dic:
+        entities_scores_dic[subject] = {}
+    for i in range(2,len(words)):
+        score_and_entity= words[i].split(',')
+        entity = score_and_entity[1].replace('*','').strip()
+        score = float(score_and_entity[0].strip())
+        entities_scores_dic[subject][entity]= score
+
+scores = []
+valid = []
+for line in queries_tail:
+    subject = line.split('\t')[0].strip()
+    tail = line.split('\t')[1].strip()
+    if tail in entities_scores_dic[subject]:
+        scores.append(entities_scores_dic[subject][tail])
         valid.append(1)
     else:
-        # _file.write(str(0.0)+'\t0\n')
         scores.append(0.0)
         valid.append(0)
 

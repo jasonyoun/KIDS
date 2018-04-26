@@ -28,6 +28,23 @@ from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 
 config = configparser.ConfigParser()
 configuration = sys.argv[1]+'.ini'
+calibrated = False
+if len(sys.argv)>3:
+    if sys.argv[3] == 'use_calibration':
+        calibrated=True
+
+def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test):
+    thresholds = []
+    for i in range(num_preds):
+        indices, = np.where(predicates_test == i)
+        predictions_predicate = predictions_list_test[indices]
+        log_reg = calibration_models[i]
+        p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
+        predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
+        thresholds.append(.5)
+    print(predictions_list_test)
+    return predictions_list_test,thresholds
+
 print('./'+configuration)
 config.read('./'+configuration)
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
@@ -60,6 +77,8 @@ with tf.Session() as sess:
     entity_dic = params['entity_dic']
     pred_dic = params['pred_dic']
     thresholds = params['thresholds']
+    if calibrated:
+        calibration_models = params['calibrated_models']
     num_preds = len(pred_dic)
     num_entities= len(entity_dic)
     graph = tf.get_default_graph()
@@ -105,6 +124,10 @@ with tf.Session() as sess:
     data_test = indexed_data_test[:,:3]
     predicates_test = indexed_data_test[:,1]
     predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test})
+    
+    if calibrated:
+        predictions_list_test,thresholds = calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test)
+
     print(np.shape(predictions_list_test))
     classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test)
     classifications_test = np.array(classifications_test).astype(int)
@@ -120,8 +143,8 @@ with tf.Session() as sess:
         c = np.concatenate((c,labels_test),axis=1)
 
     with open(PREDICT_FOLDER+"/predictions.txt", 'w') as _file:
-        for row in c:
+        for i in range(np.shape(c)[0]):
             if (test_df.shape[1]==4):
-                _file.write("classification: "+str(int(row[0]))+ ', prediction: '+str(row[1])+', label: '+str(int(row[2]))+'\n' )
+                _file.write("predicate: "+str(predicates_test[i])+"\tclassification: "+str(int(c[i][0]))+ '\tprediction: '+str(c[i][1])+'\tlabel: '+str(int(c[i][2]))+'\n' )
             else:
-                _file.write("classification: "+str(int(row[0]))+ ', prediction: '+str(row[1])+'\n' )
+                _file.write("predicate: "+str(predicates_test[i])+"\tclassification: "+str(int(c[i][0]))+ '\tprediction: '+str(c[i][1])+'\n' )

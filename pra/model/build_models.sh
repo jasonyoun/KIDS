@@ -25,6 +25,8 @@ prev_current_dir="$current_dir""/.."
 
 echo "Content of DATA_PATH is $DATA_PATH"
 train_file="train.txt"
+train_folder="train"
+
 
 instance_dir+="$base_dir""/instance/"
 
@@ -40,7 +42,7 @@ cp "$base_dir""/conf" $instance_dir
 cd $instance_dir
 sed -i -e "s|blocked_field=THE_BLOCKED_FIELD|blocked_field=0|g" conf
 sed -i -e "s|target_relation=.*|target_relation=$start_relation|g" conf
-sed -i -e "s|THE_RELATION|$start_relation|g" conf
+sed -i -e "s|target_relation=THE_RELATION|target_relation=$start_relation|g" conf
 
 sed -i -e "s|task=_TASK_|task=train|g" conf
 
@@ -51,8 +53,8 @@ python3 "$prev_current_dir/"pra_data_processor.py $DATA_PATH $train_file
 java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
 
 
-mkdir graphs
-mkdir graphs/pos
+mkdir -p graphs
+mkdir -p graphs/pos
 
 
 sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
@@ -65,10 +67,11 @@ java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.c
 
 echo "create positive queries "
 echo ""
+mkdir -p $train_folder
 
-mkdir queriesR_train
+mkdir -p "$train_folder""/queriesR_train"
 
-java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos ./queriesR_train/ true false
+java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos "$train_folder""/queriesR_train/" true false
 
 if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ] && [ "$use_negatives" == "true"  ]; then	
 	echo "create negative queries "
@@ -85,14 +88,14 @@ if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ] && [ "$use_negatives" ==
 	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/neg edges
 
 
-	mkdir queriesR_train_neg
+	mkdir "$train_folder""/queriesR_train_neg"
 
-	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg ./queriesR_train_neg/ true false
+	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg "$train_folder""/queriesR_train_neg/" true false
 
 
 	sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 
-	python3 "$prev_current_dir/"merge_queries.py $instance_dir
+	python3 "$prev_current_dir/"merge_queries.py --dir $train_folder
 
 else
 	sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
@@ -103,13 +106,11 @@ sed -i -e "s|pra-classification-neg-mode.jar|$prev_current_dir/pra-classificatio
 echo "Train models "
 echo ""
 mkdir models
-sed -i -e "s|$start_relation|THE_RELATION|g" conf
+sed -i -e "s|target_relation=$start_relation|target_relation=THE_RELATION|g" conf
 while read p; do
-	sed -i -e "s|THE_RELATION|$p|g" conf
+	sed -i -e "s|target_relation=THE_RELATION|target_relation=$p|g" conf
 
 	does_not_have_negatives=$(containsElement $p "${no_negatives[@]}")
-	echo "$p"
-	echo "$p"
 	echo "$p"
 
 	echo "$does_not_have_negatives"
@@ -128,7 +129,7 @@ while read p; do
 
 	rm -rfd pos/$p
 
-	sed -i -e "s|$p|THE_RELATION|g" conf
+	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
   	
 done <"selected_relations"
 

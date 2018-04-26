@@ -7,27 +7,36 @@ import random
 import scipy.io as spio
 import csv
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
+import argparse
 
-relation = sys.argv[1]
-use_calibration = False
-if len(sys.argv)>2:
-    calibration = sys.argv[2]
-    if calibration=='use_calibration':
-        use_calibration=True
-scores_file = 'scores/'+relation
+parser = argparse.ArgumentParser(description='parse and generate the scores file')
+parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
+parser.add_argument('--predicate', nargs='?',required=True,
+                    help='the predicate that we will get the scores for')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
 
-thresholds_file = 'thresholds/'+relation
+args = parser.parse_args()
+print(args.dir)
 
-classifications_file = 'classifications/'+relation
+relation = args.predicate
+use_calibration = args.use_calibration
+
+
+scores_file = args.dir+'/scores/'+relation
+
+thresholds_file = 'dev/thresholds/'+relation
+
+classifications_file = args.dir+'/classifications/'+relation
 
 
 with open(scores_file, "r") as _file:
-	scores = _file.readlines()
+    scores = _file.readlines()
 if use_calibration:
     threshold=0.5
 else:
-	with open(thresholds_file, "r") as _file:
-	    threshold = float(_file.readline().strip())
+    with open(thresholds_file, "r") as _file:
+        threshold = float(_file.readline().strip())
 
 
 

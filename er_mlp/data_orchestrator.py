@@ -62,7 +62,6 @@ def create_predicate_to_entity_to_subject_set(data_array, positive=True ):
     return predicate_to_entity_to_subjects
 
 
-data_directory = '/Users/nicholasjoodi/Documents/ucdavis/computerScience/VisualRecognition/diagrams_with_google_label/'
 class DataOrchestrator:
 
     def __init__(self, data_set, data_path,predicate_dic,entity_dic, corruption_size=20, shuffle=True, use_range=True, use_neg=True):

@@ -7,9 +7,15 @@ import random
 import scipy.io as spio
 import csv
 import os.path
+import argparse
 
-DATA_PATH=sys.argv[1]
-with open(DATA_PATH+'/selected_relations') as f:
+parser = argparse.ArgumentParser(description='evaluate the results')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
+args = parser.parse_args()
+print(args.dir)
+
+with open('./selected_relations') as f:
     relations = f.readlines()
 relations = [x.strip() for x in relations] 
 _relations = []
@@ -19,13 +25,13 @@ for r in relations:
 relations +=_relations
 
 for r in relations:
-    pos_df = pd.read_csv(DATA_PATH+'queriesR_train/'+r,sep='\t',encoding ='latin-1', 
+    pos_df = pd.read_csv(args.dir+'/queriesR_train/'+r,sep='\t',encoding ='latin-1', 
                   names = ["subject", "object"])
-    if not os.path.isfile(DATA_PATH+'queriesR_train_neg/'+r):
+    if not os.path.isfile(args.dir+'/queriesR_train_neg/'+r):
     	continue
-    neg_df = pd.read_csv(DATA_PATH+'queriesR_train_neg/'+r,sep='\t',encoding ='latin-1', 
+    neg_df = pd.read_csv(args.dir+'/queriesR_train_neg/'+r,sep='\t',encoding ='latin-1', 
                   names = ["subject", "object"])
     result = pd.merge(pos_df, neg_df, how='left', on="subject")
-    result.to_csv(DATA_PATH+'queriesR_train/'+r, sep='\t', index=False,header=False)
+    result.to_csv(args.dir+'/queriesR_train/'+r, sep='\t', index=False,header=False)
 
 
