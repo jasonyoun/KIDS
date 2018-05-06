@@ -10,6 +10,9 @@ base_dir="$1"
 current_dir=$(pwd)
 base_dir="$current_dir""/$base_dir"
 prev_current_dir="$current_dir""/.."
+io_util_dir='io_util/'
+pra_imp_dir='pra_imp/'
+data_handler_dir='data_handler/'
 
 . "$base_dir/"config.sh
 
@@ -39,7 +42,6 @@ sed -i -e "s|task=_TASK_|task=predict|g" conf
 sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 
 
-
 echo 'create folders'
 mkdir -p $dev_folder
 mkdir -p $test_folder
@@ -57,30 +59,8 @@ mkdir -p $dev_folder/thresholds
 mkdir -p $dev_folder/classifications
 mkdir -p $test_folder/classifications
 
-echo 'configure'
+sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
 sed -i -e "s|target_relation=$start_relation|target_relation=THE_RELATION|g" conf
-if  [  "$use_calibration" != "use_calibration" ] ; then
-	echo "Determine thresholds "
-	echo ""
-	sed -i -e "s|prediction_folder=.*/|prediction_folder=./$dev_folder/predictions/|g" conf
-	sed -i -e "s|test_samples=.*|test_samples=./$dev_folder/queriesR_test/<target_relation>|g" conf
-	while read p; do
-		sed -i -e "s|target_relation=THE_RELATION|target_relation=$p|g" conf
-		echo $p
-		python3 "$prev_current_dir/"create_test_queries.py --data_file "$DATA_PATH""/""$dev_file" --predicate $p --dir $dev_folder
-		#grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file" | awk -F '\t'  '{print"c$"$1 "\t"}' | awk '!seen[$0]++'  > "./$dev_folder/queriesR_test/""$p"
-		grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file"| awk -F '\t'  '{print"c$"$1 "\tc$" $3}' > "./$dev_folder/queriesR_tail/""$p"
-		grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file"| awk -F '\t'  '{print"c$"$1 "\tc$" $3 "\t" $4}' > "./$dev_folder/queriesR_labels/""$p"
-
-		java -cp "$prev_current_dir/"pra_neg_mode_classification.jar edu.cmu.pra.LearnerPRA
-		python3 "$prev_current_dir/"get_scores.py --predicate $p --dir $dev_folder
-
-		python3 "$prev_current_dir/"determine_thresholds.py --predicate  $p --dir $dev_folder
-
-		sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
-	  	
-	done <"selected_relations"
-fi
 
 sed -i -e "s|prediction_folder=.*|prediction_folder=./test/predictions/|g" conf
 sed -i -e "s|test_samples=.*|test_samples=./test/queriesR_test/<target_relation>|g" conf
@@ -89,24 +69,25 @@ echo ""
 sed -i -e "s|target_relation=$start_relation|target_relation=THE_RELATION|g" conf
 while read p; do
 	sed -i -e "s|target_relation=THE_RELATION|target_relation=$p|g" conf
-	python3 "$prev_current_dir/"create_test_queries.py --data_file "$DATA_PATH""/""$test_file" --predicate $p --dir $test_folder
+	python3 $prev_current_dir/$io_util_dir/create_test_queries.py --data_file "$DATA_PATH""/""$test_file" --predicate $p --dir $test_folder
+	#grep  -i "\t""$p""\t" "$DATA_PATH""/""$test_file" | awk -F '\t'  '{print"c$"$1 "\tc$" $3}' > $test_folder"/queriesR_test/""$p"
 	#grep  -i "\t""$p""\t" "$DATA_PATH""/""$test_file" | awk  -F '\t'  '{print"c$"$1 "\t"}'  | awk '!seen[$0]++'  > "$test_folder/queriesR_test/""$p"
 	grep  -i "\t""$p""\t" "$DATA_PATH""/""$test_file"| awk   -F '\t' '{print"c$"$1 "\tc$" $3}' > "$test_folder/queriesR_tail/""$p"
 	grep  -i "\t""$p""\t" "$DATA_PATH""/""$test_file"| awk   -F '\t' '{print"c$"$1 "\tc$" $3 "\t" $4}' > "$test_folder/queriesR_labels/""$p"
-	java -cp "$prev_current_dir/"pra_neg_mode_classification.jar edu.cmu.pra.LearnerPRA
+	java -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.LearnerPRA
 	if  [  "$use_calibration" != "use_calibration" ] ; then
-		python3 "$prev_current_dir/"get_scores.py --predicate $p --dir $test_folder
-		python3 "$prev_current_dir/"classify.py --predicate $p --dir $test_folder
+		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $test_folder
+		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $test_folder
 	else
-		python3 "$prev_current_dir/"get_scores.py --predicate $p --dir $test_folder --use_calibration
-		python3 "$prev_current_dir/"classify.py --predicate $p --dir $test_folder --use_calibration
+		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $test_folder --use_calibration
+		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $test_folder --use_calibration
 	fi
 
 	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
   	
 done <"selected_relations"
 
-python3 "$prev_current_dir/"evaluate.py --dir $test_folder
+python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $test_folder
 
 
 sed -i -e "s|task=predict|task=_TASK_|g" conf

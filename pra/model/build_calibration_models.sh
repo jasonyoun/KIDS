@@ -17,6 +17,9 @@ echo "Content of DATA_PATH is $DATA_PATH"
 test_file="test.txt"
 dev_file="dev.txt"
 dev_folder="dev"
+io_util_dir='io_util/'
+pra_imp_dir='pra_imp/'
+data_handler_dir='data_handler/'
 
 instance_dir+="$base_dir""/instance/"
 
@@ -61,20 +64,22 @@ sed -i -e "s|target_relation=$start_relation|target_relation=THE_RELATION|g" con
 
 echo "calibrate "
 echo ""
+	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
 	sed -i -e "s|prediction_folder=.*/|prediction_folder=./$dev_folder/predictions/|g" conf
 	sed -i -e "s|test_samples=.*|test_samples=./$dev_folder/queriesR_test/<target_relation>|g" conf
 while read p; do
 	sed -i -e "s|target_relation=THE_RELATION|target_relation=$p|g" conf
-	python3 "$prev_current_dir/"create_test_queries.py --data_file "$DATA_PATH""/""$dev_file" --predicate $p --dir $dev_folder
+	#grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file" | awk -F '\t'  '{print"c$"$1 "\tc$" $3}' > $dev_folder"/queriesR_test/""$p"
+	python3 $prev_current_dir/$io_util_dir/create_test_queries.py --data_file "$DATA_PATH""/""$dev_file" --predicate $p --dir $dev_folder
 	#grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file" | awk -F '\t'  '{print"c$"$1 "\t"}' | awk '!seen[$0]++'  > "./$dev_folder/queriesR_test/""$p"
 	grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file"| awk -F '\t'  '{print"c$"$1 "\tc$" $3}' > "./$dev_folder/queriesR_tail/""$p"
 	grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file"| awk -F '\t'  '{print"c$"$1 "\tc$" $3 "\t" $4}' > "./$dev_folder/queriesR_labels/""$p"
 
-	java -cp "$prev_current_dir/"pra_neg_mode_classification.jar  edu.cmu.pra.LearnerPRA
+	java -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar  edu.cmu.pra.LearnerPRA
 
-	python3 "$prev_current_dir/"get_scores.py --predicate $p --dir dev
+	python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir dev
 
-	python3 "$prev_current_dir/"calibrate.py  --predicate $p --dir dev
+	python3 $prev_current_dir/$io_util_dir/calibrate.py  --predicate $p --dir dev
 
 	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
   	

@@ -20,6 +20,9 @@ base_dir="$1"
 current_dir=$(pwd)
 base_dir="$current_dir""/$base_dir"
 prev_current_dir="$current_dir""/.."
+io_util_dir='io_util/'
+pra_imp_dir='pra_imp/'
+data_handler_dir='data_handler/'
 
 . "$base_dir/"config.sh
 
@@ -48,9 +51,9 @@ sed -i -e "s|task=_TASK_|task=train|g" conf
 
 echo "process data "
 echo ""
-python3 "$prev_current_dir/"pra_data_processor.py $DATA_PATH $train_file
+python3 $prev_current_dir/$data_handler_dir/pra_data_processor.py $DATA_PATH $train_file
 
-java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
+java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
 
 
 mkdir -p graphs
@@ -62,7 +65,7 @@ sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 mv ecoli_generalizations.csv.p0.1.edges graphs/pos/.
 
 
-java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/pos edges
+java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/pos edges
 
 
 echo "create positive queries "
@@ -71,13 +74,13 @@ mkdir -p $train_folder
 
 mkdir -p "$train_folder""/queriesR_train"
 
-java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos "$train_folder""/queriesR_train/" true false
+java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos "$train_folder""/queriesR_train/" true false
 
 if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ] && [ "$use_negatives" == "true"  ]; then	
 	echo "create negative queries "
 	echo ""
 	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
-	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations_neg.csv 0.1 edges
+	java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations_neg.csv 0.1 edges
 
 	mkdir graphs/neg
 
@@ -85,23 +88,23 @@ if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ] && [ "$use_negatives" ==
 
 	sed -i -e "s|/graphs/pos|/graphs/neg|g" conf
 
-	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/neg edges
+	java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.SmallJobs indexGraph ./graphs/neg edges
 
 
 	mkdir "$train_folder""/queriesR_train_neg"
 
-	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg "$train_folder""/queriesR_train_neg/" true false
+	java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.SmallJobs createQueries ./graphs/neg "$train_folder""/queriesR_train_neg/" true false
 
 
 	sed -i -e "s|/graphs/neg|/graphs/pos|g" conf
 
-	python3 "$prev_current_dir/"merge_queries.py --dir $train_folder
+	python3 $prev_current_dir/$io_util_dir/merge_queries.py --dir $train_folder
 
 else
 	sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
 fi
 
-sed -i -e "s|pra-classification-neg-mode.jar|$prev_current_dir/pra-classification-neg-mode.jar|g" conf
+sed -i -e "s|pra_neg_mode_v4.jar|$prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar|g" conf
 
 echo "Train models "
 echo ""
@@ -122,7 +125,7 @@ while read p; do
 		echo 'outside'
 		sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
 	fi
-	java -Xms6G -Xmx6G -cp "$prev_current_dir/"pra-classification-neg-mode.jar edu.cmu.pra.LearnerPRA
+	java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.LearnerPRA
 
 	model=$(find `pwd pos/$p` -name train.model)
 	mv $model "models/""$p"
