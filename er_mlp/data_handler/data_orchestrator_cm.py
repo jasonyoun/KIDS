@@ -106,6 +106,7 @@ class DataOrchestrator:
         self.predicate_to_entity_to_pos_subjects_per_epoch = self.predicate_to_entity_to_pos_subjects.copy()
 
 
+
     def shuffle_data(self):
         np.random.shuffle(self.pos_data_set)
 
@@ -158,6 +159,7 @@ class DataOrchestrator:
                 corrupted = generate_neg(subject,self.type_dic,self.domain_range_dic,set_of_neg_objects,set_of_pos_objects,_range,self.entity_dic, self.use_range,self.use_neg)
                 batch.append([subject, predicate, correct_object, corrupted])
         return batch
+
 
 
 

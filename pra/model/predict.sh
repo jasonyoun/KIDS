@@ -77,7 +77,7 @@ while read p; do
   	
 done <"selected_relations"
 
-python3 $prev_current_dir/$pra_imp_dir/evaluate.py --dir $prediction_folder
+python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder
 
 
 sed -i -e "s|task=predict|task=_TASK_|g" conf

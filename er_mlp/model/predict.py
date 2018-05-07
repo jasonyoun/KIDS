@@ -7,14 +7,15 @@ directory = os.path.dirname(__file__)
 print(__file__)
 print(directory)
 import configparser
-abs_path_er_mlp= os.path.join(directory, '..')
-abs_path_metrics= os.path.join(directory, '../utils')
+abs_path_er_mlp= os.path.join(directory, '../er_mlp_imp')
 sys.path.insert(0, abs_path_er_mlp)
+abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
+abs_path_data= os.path.join(directory, '../data_handler')
+sys.path.insert(0, abs_path_data)
+from data_processor import DataProcessor
 if directory != '':
     directory = directory+'/'
-# print(directory)
-#sys.path.insert(0, '../data')
 import tensorflow as tf
 from sklearn import utils
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
@@ -22,7 +23,6 @@ import random
 from tensorflow.python import debug as tf_debug
 from scipy import interp
 import random
-from data_processor import DataProcessor
 from er_mlp import ERMLP
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 
@@ -33,17 +33,23 @@ if len(sys.argv)>3:
     if sys.argv[3] == 'use_calibration':
         calibrated=True
 
-def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test):
+def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic):
+    thresholds_dic = {}
     thresholds = []
-    for i in range(num_preds):
+    index=0
+    for k,i in pred_dic.items():
         indices, = np.where(predicates_test == i)
-        predictions_predicate = predictions_list_test[indices]
-        log_reg = calibration_models[i]
-        p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
-        predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
-        thresholds.append(.5)
+        if np.shape(indices)[0]!=0 :
+            predictions_predicate = predictions_list_test[indices]
+            log_reg = calibration_models[i]
+            p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
+            predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
+            print(predictions_list_test[indices])
+            thresholds_dic[i]=.5
+            thresholds.append(.5)
+        index+=1
     print(predictions_list_test)
-    return predictions_list_test,thresholds
+    return predictions_list_test,thresholds,thresholds_dic
 
 print('./'+configuration)
 config.read('./'+configuration)
@@ -126,10 +132,10 @@ with tf.Session() as sess:
     predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test})
     
     if calibrated:
-        predictions_list_test,thresholds = calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test)
+        predictions_list_test,thresholds, thresholds_dic = calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic)
 
     print(np.shape(predictions_list_test))
-    classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test)
+    classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test,pred_dic=pred_dic,thresholds_dic=thresholds_dic)
     classifications_test = np.array(classifications_test).astype(int)
     classifications_test = classifications_test.reshape((np.shape(classifications_test)[0],1))
     print(np.shape(classifications_test))

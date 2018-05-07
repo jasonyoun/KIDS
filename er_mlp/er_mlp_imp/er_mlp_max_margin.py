@@ -6,10 +6,10 @@ import os
 directory = os.path.dirname(__file__)
 print(__file__)
 print(directory)
-abs_path_er_mlp= os.path.join(directory, '..')
-sys.path.insert(0, abs_path_er_mlp)
-abs_path_metrics= os.path.join(directory, 'utils')
+abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
+abs_path_data= os.path.join(directory, '../data_handler')
+sys.path.insert(0, abs_path_data)
 if directory != '':
     directory = directory+'/'
 # print(directory)
@@ -22,7 +22,7 @@ from tensorflow.python import debug as tf_debug
 from scipy import interp
 import random
 from data_processor import DataProcessor
-from data_orchestrator import DataOrchestrator
+from data_orchestrator_cm import DataOrchestrator
 from er_mlp import ERMLP
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, plot_cost
 # from sklearn.model_selection import StratifiedKFold
@@ -166,16 +166,17 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
                 if value == i:
                     pred_name =key
             indices, = np.where(predicates_test == i)
-            classifications_predicate = classifications_test[indices]
-            labels_predicate = labels_test[indices]
-            fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
-            accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
-            confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
-            print(" - test f1 measure for "+pred_name+ ":"+ str(fl_measure_predicate))
-            print(" - test accuracy for "+pred_name+ ":"+ str(accuracy_predicate))
-            print(" - test confusion matrix for "+pred_name+ ":")
-            print(confusion_predicate)
-            print(" ")
+            if np.shape(indices)[0]!=0:
+                classifications_predicate = classifications_test[indices]
+                labels_predicate = labels_test[indices]
+                fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
+                accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
+                confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
+                print(" - test f1 measure for "+pred_name+ ":"+ str(fl_measure_predicate))
+                print(" - test accuracy for "+pred_name+ ":"+ str(accuracy_predicate))
+                print(" - test confusion matrix for "+pred_name+ ":")
+                print(confusion_predicate)
+                print(" ")
 
         print(_type+" test mean average precision:"+ str(mean_average_precision_test))
         print(_type+" test f1 measure:"+ str(fl_measure_test))

@@ -198,20 +198,21 @@ class ERMLP:
         while(score <= max_score):
             for i in range(self.params['num_preds']):
                 predicate_indices = np.where(predicates == i)[0]
-                predicate_predictions = predictions_list[predicate_indices]
-                # predictions = (predicate_predictions >= score) * 2 -1
-                predictions = (predicate_predictions >= score)
-                if cross_margin:
-                    predictions = (predicate_predictions >= score) * 2 -1
-                predicate_labels = dev_labels[predicate_indices]
-                accuracy = np.mean(predictions == predicate_labels)
-                if f1:
-                    accuracy = f1_score(predicate_labels,predictions)
-                # accuracy = np.mean(predictions == predicate_labels)
-                if accuracy > best_accuracy[i]:
-                    best_threshold[i] = score
-                    best_accuracy[i] = accuracy
-                score += increment
+                if np.shape(predicate_indices)[0]!=0:
+                    predicate_predictions = predictions_list[predicate_indices]
+                    # predictions = (predicate_predictions >= score) * 2 -1
+                    predictions = (predicate_predictions >= score)
+                    if cross_margin:
+                        predictions = (predicate_predictions >= score) * 2 -1
+                    predicate_labels = dev_labels[predicate_indices]
+                    accuracy = np.mean(predictions == predicate_labels)
+                    if f1:
+                        accuracy = f1_score(predicate_labels,predictions)
+                    # accuracy = np.mean(predictions == predicate_labels)
+                    if accuracy > best_accuracy[i]:
+                        best_threshold[i] = score
+                        best_accuracy[i] = accuracy
+                    score += increment
         return best_threshold
 
     def loss(self, predictions): 
@@ -239,16 +240,26 @@ class ERMLP:
     def train_adagrad(self,loss):
         return tf.train.AdagradOptimizer(learning_rate = self.params['learning_rate']).minimize(loss, name='optimizer')
 
-    def classify(self, predictions_list,threshold, predicates, cross_margin=False):
+    def classify(self, predictions_list,threshold, predicates, cross_margin=False,pred_dic=None,thresholds_dic=None):
         classifications = []
-        for i in range(len(predictions_list)):
-            if(predictions_list[i][0] >= threshold[predicates[i]]):
-                classifications.append(1)
-            else:
-                if cross_margin:
-                    classifications.append(-1)
+        if thresholds_dic is None:
+            for i in range(len(predictions_list)):
+                if(predictions_list[i][0] >= threshold[predicates[i]]):
+                    classifications.append(1)
                 else:
-                    classifications.append(0)
+                    if cross_margin:
+                        classifications.append(-1)
+                    else:
+                        classifications.append(0)
+        else:
+            for i in range(len(predictions_list)):
+                if(predictions_list[i][0] >= thresholds_dic[predicates[i]]):
+                    classifications.append(1)
+                else:
+                    if cross_margin:
+                        classifications.append(-1)
+                    else:
+                        classifications.append(0)
         return classifications
 
     # each training batch will include the number of samples multiplied by the number 

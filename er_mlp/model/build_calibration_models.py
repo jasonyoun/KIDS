@@ -8,7 +8,8 @@ print(__file__)
 print(directory)
 import configparser
 abs_path_er_mlp= os.path.join(directory, '..')
-abs_path_metrics= os.path.join(directory, '../utils')
+abs_path_metrics= os.path.join(directory, '../../utils')
+abs_path_er_mlp= os.path.join(directory, '../er_mlp_imp')
 sys.path.insert(0, abs_path_er_mlp)
 sys.path.insert(0, abs_path_metrics)
 if directory != '':
@@ -22,6 +23,8 @@ import random
 from tensorflow.python import debug as tf_debug
 from scipy import interp
 import random
+abs_path_data= os.path.join(directory, '../data_handler')
+sys.path.insert(0, abs_path_data)
 from data_processor import DataProcessor
 from er_mlp import ERMLP
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
@@ -106,17 +109,18 @@ with tf.Session() as sess:
     predicates_dev = indexed_data_dev[:,1]
     predictions_list_dev = sess.run(predictions, feed_dict={triplets: data_dev, y: labels_dev})
     model_dic = {}
-    for i in range(num_preds):
+    for k,i in pred_dic.items():
         # for key, value in pred_dic.items():
         #     if value == i:
         #         pred_name =key
         indices, = np.where(predicates_dev == i)
-        predictions_predicate = predictions_list_dev[indices]
-        labels_predicate = labels_dev[indices]
-        log_reg = LogisticRegression()
-        log_reg.fit( predictions_predicate, labels_predicate.ravel() )  
-        # p_calibrated = lr.predict_proba( p_test.reshape( -1, 1 ))[:,1]
-        model_dic[i] = log_reg
+        if np.shape(indices)[0]!=0:
+            predictions_predicate = predictions_list_dev[indices]
+            labels_predicate = labels_dev[indices]
+            log_reg = LogisticRegression()
+            log_reg.fit( predictions_predicate, labels_predicate.ravel() )  
+            # p_calibrated = lr.predict_proba( p_test.reshape( -1, 1 ))[:,1]
+            model_dic[i] = log_reg
 
     save_object = {
         'thresholds':thresholds,

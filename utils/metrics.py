@@ -151,7 +151,6 @@ def plot_pr(num_preds, Y, predictions,predicates,pred_dic, directory):
     for i in range(num_preds):
         predicate_indices = np.where(predicates == i)[0]
         if np.shape(predicate_indices)[0] == 0:
-            print('inside')
             continue
         else:
             predicates_included.append(i)

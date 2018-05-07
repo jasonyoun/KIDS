@@ -4,7 +4,7 @@ import sys
 import os
 import configparser
 directory = os.path.dirname(__file__)
-abs_path_er_mlp= os.path.join(directory, '..')
+abs_path_er_mlp= os.path.join(directory, '../er_mlp_imp')
 sys.path.insert(0, abs_path_er_mlp)
 import er_mlp_cross_entropy
 import er_mlp_max_margin

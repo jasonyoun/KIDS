@@ -7,14 +7,10 @@ directory = os.path.dirname(__file__)
 print(__file__)
 print(directory)
 import configparser
-abs_path_er_mlp= os.path.join(directory, '..')
-abs_path_metrics= os.path.join(directory, '../utils')
+abs_path_data= os.path.join(directory, '../data_handler')
+sys.path.insert(0, abs_path_data)
+abs_path_er_mlp= os.path.join(directory, '../er_mlp_imp')
 sys.path.insert(0, abs_path_er_mlp)
-sys.path.insert(0, abs_path_metrics)
-if directory != '':
-    directory = directory+'/'
-# print(directory)
-#sys.path.insert(0, '../data')
 import tensorflow as tf
 from sklearn import utils
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score, confusion_matrix
@@ -22,9 +18,13 @@ import random
 from tensorflow.python import debug as tf_debug
 from scipy import interp
 import random
-from data_processor import DataProcessor
 from er_mlp import ERMLP
+abs_path_metrics= os.path.join(directory, '../../utils')
+sys.path.insert(0, abs_path_metrics)
+from data_processor import DataProcessor
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+if directory != '':
+    directory = directory+'/'
 
 config = configparser.ConfigParser()
 configuration = sys.argv[1]+'.ini'
@@ -52,17 +52,23 @@ ACT_FUNCTION = config.getint('DEFAULT','ACT_FUNCTION')
 ADD_LAYERS = config.getint('DEFAULT','ADD_LAYERS')
 DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
 
-def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test):
+def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic):
+    thresholds_dic = {}
     thresholds = []
-    for i in range(num_preds):
+    index=0
+    for k,i in pred_dic.items():
         indices, = np.where(predicates_test == i)
-        predictions_predicate = predictions_list_test[indices]
-        log_reg = calibration_models[i]
-        p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
-        predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
-        thresholds.append(.5)
+        if np.shape(indices)[0]!=0 :
+            predictions_predicate = predictions_list_test[indices]
+            log_reg = calibration_models[i]
+            p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
+            predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
+            print(predictions_list_test[indices])
+            thresholds_dic[i]=.5
+            thresholds.append(.5)
+        index+=1
     print(predictions_list_test)
-    return predictions_list_test,thresholds
+    return predictions_list_test,thresholds,thresholds_dic
 
 print("begin tensor seesion")
 with tf.Session() as sess:
@@ -77,6 +83,7 @@ with tf.Session() as sess:
     thresholds = params['thresholds']
     if calibrated:
         calibration_models = params['calibrated_models']
+        print(calibration_models)
     num_preds = len(pred_dic)
     num_entities= len(entity_dic)
     graph = tf.get_default_graph()
@@ -123,13 +130,15 @@ with tf.Session() as sess:
     predicates_test = indexed_data_test[:,1]
     predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
     if calibrated:
-        predictions_list_test,thresholds = calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test)
+        predictions_list_test,thresholds, thresholds_dic = calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic)
+    else:
+        thresholds_dic=None
 
 
 
     mean_average_precision_test = pr_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
     roc_auc_test = roc_auc_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
-    classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test)
+    classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test,pred_dic=pred_dic,thresholds_dic=thresholds_dic)
     classifications_test = np.array(classifications_test).astype(int)
     labels_test = labels_test.astype(int)
     fl_measure_test = f1_score(labels_test, classifications_test)
@@ -143,16 +152,17 @@ with tf.Session() as sess:
             if value == i:
                 pred_name =key
         indices, = np.where(predicates_test == i)
-        classifications_predicate = classifications_test[indices]
-        labels_predicate = labels_test[indices]
-        fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
-        accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
-        confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
-        print(" - test f1 measure for "+pred_name+ ":"+ str(fl_measure_predicate))
-        print(" - test accuracy for "+pred_name+ ":"+ str(accuracy_predicate))
-        print(" - test confusion matrix for "+pred_name+ ":")
-        print(confusion_predicate)
-        print(" ")
+        if np.shape(indices)[0]!=0:
+            classifications_predicate = classifications_test[indices]
+            labels_predicate = labels_test[indices]
+            fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
+            accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
+            confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
+            print(" - test f1 measure for "+pred_name+ ":"+ str(fl_measure_predicate))
+            print(" - test accuracy for "+pred_name+ ":"+ str(accuracy_predicate))
+            print(" - test confusion matrix for "+pred_name+ ":")
+            print(confusion_predicate)
+            print(" ")
     
     print("test mean average precision:"+ str(mean_average_precision_test))
     print("test f1 measure:"+ str(fl_measure_test))

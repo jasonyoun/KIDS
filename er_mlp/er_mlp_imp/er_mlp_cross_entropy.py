@@ -6,10 +6,10 @@ import os
 directory = os.path.dirname(__file__)
 print(__file__)
 print(directory)
-abs_path_er_mlp= os.path.join(directory, '..')
-sys.path.insert(0, abs_path_er_mlp)
-abs_path_metrics= os.path.join(directory, 'utils')
+abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
+abs_path_data= os.path.join(directory, '../data_handler')
+sys.path.insert(0, abs_path_data)
 if directory != '':
     directory = directory+'/'
 # print(directory)
@@ -23,41 +23,52 @@ from scipy import interp
 import random
 from data_processor import DataProcessor
 from er_mlp import ERMLP
-from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, plot_cost
+from data_orchestrator_ce import DataOrchestrator
 # from sklearn.model_selection import StratifiedKFold
 #from sklearn.cross_validation import StratifiedKFold
 
 OVER_SAMPLE=True
 
-def over_sample(X, Y):
-    s = X[:,0]
-    s = s.reshape((np.shape(s)[0],1))
-    p = X[:,1]
-    p = p.reshape((np.shape(p)[0],1))
-    o = X[:,2]
-    o = o.reshape((np.shape(o)[0],1))
-    t = Y.reshape((np.shape(Y)[0],1))
-    combined_data = np.concatenate((s,p,o,t), axis=1)
-    positive_samples = combined_data[combined_data[:,3] == 1]
-    negative_samples = combined_data[combined_data[:,3] == 0]
-    allIdx = np.array(range(0,np.shape(positive_samples)[0]))
-    idx = np.random.choice(allIdx,size=np.shape(negative_samples)[0],replace=True)
-    os_positive_samples = positive_samples[idx]
-    combined_data = np.concatenate((os_positive_samples,negative_samples), axis=0)
-    ret_X = combined_data[:,:3]
-    ret_Y = combined_data[:,3]
-    print(np.shape(positive_samples))
-    print(np.shape(os_positive_samples))
-    print(np.shape(negative_samples))
-    print(np.shape(combined_data))
-    return ret_X,ret_Y
+def over_sample(data_X, data_Y,pred_dic):
+    ret_X_list =[]
+    ret_Y_list =[]
+    for k,v in pred_dic.items():
+        predicate_indices = np.where(data_X[:,1] == v)[0]
+        if np.shape(predicate_indices)[0]!=0:
+            X = data_X[predicate_indices]
+            Y = data_Y[predicate_indices]
+            s = X[:,0]
+            s = s.reshape((np.shape(s)[0],1))
+            p = X[:,1]
+            p = p.reshape((np.shape(p)[0],1))
+            o = X[:,2]
+            o = o.reshape((np.shape(o)[0],1))
+            t = Y.reshape((np.shape(Y)[0],1))
+            combined_data = np.concatenate((s,p,o,t), axis=1)
+            positive_samples = combined_data[combined_data[:,3] == 1]
+            negative_samples = combined_data[combined_data[:,3] == 0]
+            allIdx = np.array(range(0,np.shape(positive_samples)[0]))
+            idx = np.random.choice(allIdx,size=np.shape(negative_samples)[0],replace=True)
+            os_positive_samples = positive_samples[idx]
+            combined_data = np.concatenate((os_positive_samples,negative_samples), axis=0)
+            ret_X = combined_data[:,:3]
+            ret_Y = combined_data[:,3]
+            print(np.shape(positive_samples))
+            print(np.shape(os_positive_samples))
+            print(np.shape(negative_samples))
+            print(np.shape(combined_data))
+            ret_X_list.append(ret_X)
+            ret_Y_list.append(ret_Y)
+    #return np.column_stack((np.concatenate(ret_X_list,axis=0),np.concatenate(ret_Y_list,axis=0)))
+    return np.concatenate(ret_X_list,axis=0),np.concatenate(ret_Y_list,axis=0)
 
 
 def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS, DROP_OUT_PERCENT,DATA_PATH, SAVE_MODEL=False, MODEL_SAVE_DIRECTORY=None ):
 
     processor = DataProcessor()
     # load the data
-    train_df = processor.load(DATA_PATH+'train.txt')
+    train_df = processor.load(DATA_PATH+'train_cross_local.txt')
     test_df = processor.load(DATA_PATH+'test.txt')
     dev_df = processor.load(DATA_PATH+'dev.txt')
     # numerically represent the entities, predicates, and words
@@ -69,8 +80,8 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word(DATA_PATH+'/entities.txt',EMBEDDING_SIZE)
         indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word(DATA_PATH+'/relations.txt',EMBEDDING_SIZE)
     else:
-        entity_dic = processor.machine_translate(DATA_PATH+'/entities.txt',EMBEDDING_SIZE)
-        pred_dic = processor.machine_translate(DATA_PATH+'/relations.txt',EMBEDDING_SIZE)
+        entity_dic = processor.machine_translate(DATA_PATH+'/entities.txt',EMBEDDING_SIZE,separator='#SPACE#|#COMMA#|#SEMICOLON#|\W+')
+        pred_dic = processor.machine_translate(DATA_PATH+'/relations.txt',EMBEDDING_SIZE,separator='#SPACE#|#COMMA#|#SEMICOLON#|\W+')
 
 
     # numerically represent the data 
@@ -107,6 +118,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     }
     data_train = indexed_train_data[:,:3]
     labels_train = indexed_train_data[:,3]
+    before_over_sampled_indexed_train_data = indexed_train_data[:,:]
     print('indexed_train_data')
     print(np.shape(indexed_train_data))
     labels_train = labels_train.reshape((np.shape(labels_train)[0],1))
@@ -154,9 +166,12 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     sess.run(init_all)
 
     if OVER_SAMPLE:
-        data_train,labels_train = over_sample(data_train,labels_train)
+        # indexed_train_data = over_sample(data_train,labels_train,pred_dic)
+        data_train,labels_train = over_sample(data_train,labels_train,pred_dic)
 
-    def determine_threshold(indexed_data_dev, f1=True):
+
+
+    def determine_threshold(indexed_data_dev, f1=False):
         # use the dev set to compute the best threshold for classification
         data_dev = indexed_data_dev[:,:3]
         predicates_dev = indexed_data_dev[:,1]
@@ -172,8 +187,8 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         labels_train= labels_train.reshape((np.shape(labels_train)[0],1))
         predicates_train = indexed_train_data[:,1]
         predictions_list_train = sess.run(predictions, feed_dict={triplets: data_train, y: labels_train})
-        mean_average_precision_train = pr_stats(NUM_PREDS, labels_train, predictions_list_train,predicates_train)
-        roc_auc_train = roc_auc_stats(NUM_PREDS, labels_train, predictions_list_train,predicates_train)
+        mean_average_precision_train = pr_stats(NUM_PREDS, labels_train, predictions_list_train,predicates_train,pred_dic)
+        roc_auc_train = roc_auc_stats(NUM_PREDS, labels_train, predictions_list_train,predicates_train,pred_dic)
         
         classifications_train = er_mlp.classify(predictions_list_train,threshold, predicates_train)
         classifications_train = np.array(classifications_train).astype(int)
@@ -190,13 +205,14 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         labels_test = labels_test.reshape((np.shape(labels_test)[0],1))
         predicates_test = indexed_data_test[:,1]
         predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
-        mean_average_precision_test = pr_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test)
-        roc_auc_test = roc_auc_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test)
+        mean_average_precision_test = pr_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test,pred_dic)
+        roc_auc_test = roc_auc_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test,pred_dic)
         classifications_test = er_mlp.classify(predictions_list_test,threshold, predicates_test)
         classifications_test = np.array(classifications_test).astype(int)
         labels_test = labels_test.astype(int)
         fl_measure_test = f1_score(labels_test, classifications_test)
         accuracy_test = accuracy_score(labels_test, classifications_test)
+
 
         print(_type+" test mean average precision:"+ str(mean_average_precision_test))
         print(_type+" test f1 measure:"+ str(fl_measure_test))
@@ -204,6 +220,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         print(_type+" test roc auc:"+ str(roc_auc_test))
 
 
+    # data_orch = DataOrchestrator( indexed_train_data,shuffle=True)
 
     iter_list = []
     cost_list = []
@@ -217,10 +234,13 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         total_batch = int(data_train.shape[0] / BATCH_SIZE)
         for i in range(total_batch):
             randidx = np.random.randint(int(data_train.shape[0]), size = BATCH_SIZE)
-
+            # train_batch = data_orch.get_next_training_batch(BATCH_SIZE)
             batch_xs = data_train[randidx, :]
             batch_ys = labels_train[randidx]
             batch_ys = batch_ys.reshape((np.shape(batch_ys)[0],1))
+            # batch_xs = train_batch[:, :3]
+            # batch_ys = train_batch[:,3]
+            # batch_ys = batch_ys.reshape((np.shape(batch_ys)[0],1))
 
             _, current_cost= sess.run([optimizer, cost], feed_dict={triplets: batch_xs, y:batch_ys})
             avg_cost +=current_cost/total_batch
@@ -230,12 +250,14 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         # Display progress
         if epoch % DISPLAY_STEP == 0:
             thresholds = determine_threshold(indexed_dev_data)
-            test_model(indexed_train_data, indexed_test_data, thresholds, _type='current')
+            test_model(before_over_sampled_indexed_train_data, indexed_test_data, thresholds, _type='current')
             print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, TRAINING_EPOCHS, avg_cost,current_cost ))
 
+        # data_orch.reset_data_index()
+
     thresholds = determine_threshold(indexed_dev_data)
-    test_model(indexed_train_data, indexed_test_data, thresholds, _type='final')
-    
+    test_model(before_over_sampled_indexed_train_data, indexed_test_data, thresholds, _type='final')
+    plot_cost(iter_list,cost_list,MODEL_SAVE_DIRECTORY)
     if SAVE_MODEL:
 
 
