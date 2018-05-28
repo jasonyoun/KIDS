@@ -59,6 +59,8 @@ mkdir -p $dev_folder/queriesR_tail
 mkdir -p $dev_folder/thresholds
 mkdir -p $dev_folder/classifications
 mkdir -p $test_folder/classifications
+mkdir -p $dev_folder/thresholds_calibration
+echo "$dev_folder/thresholds_calibration"
 
 echo 'configure'
 sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
@@ -77,8 +79,13 @@ while read p; do
 	grep  -i "\t""$p""\t" "$DATA_PATH""/""$dev_file"| awk -F '\t'  '{print"c$"$1 "\tc$" $3 "\t" $4}' > "./$dev_folder/queriesR_labels/""$p"
 
 	java -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.LearnerPRA
-	python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $dev_folder
-	python3 $prev_current_dir/$io_util_dir/determine_thresholds.py --predicate  $p --dir $dev_folder
+	if  [  "$use_calibration" != "use_calibration" ] ; then
+		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $dev_folder
+		python3 $prev_current_dir/$io_util_dir/determine_thresholds.py --predicate  $p --dir $dev_folder
+	else
+		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $dev_folder --use_calibration
+		python3 $prev_current_dir/$io_util_dir/determine_thresholds.py --predicate  $p --dir $dev_folder  --use_calibration
+	fi
 
 	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
   	

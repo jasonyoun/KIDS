@@ -26,6 +26,8 @@ use_calibration = args.use_calibration
 scores_file = args.dir+'/scores/'+relation
 
 thresholds_file = 'dev/thresholds/'+relation
+if use_calibration:
+    thresholds_file = 'dev/thresholds_calibration/'+relation
 
 classifications_file = args.dir+'/classifications/'+relation
 

@@ -67,6 +67,7 @@ class DataProcessor:
                 entity_index_id+=1
         indexed_entities =None
         if (initEmbedFile):
+            print('initembed')
             mat = spio.loadmat(initEmbedFile, squeeze_me=True)
             indexed_entities = [ [mat['tree'][i][()][0] - 1] if isinstance(mat['tree'][i][()][0],int) else [x - 1 for x in mat['tree'][i][()][0]] for i in range(len(mat['tree'])) ]
             num_words = len(mat['words'])

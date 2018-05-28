@@ -29,6 +29,8 @@ from data_processor import DataProcessor
 from er_mlp import ERMLP
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 from sklearn.linear_model import LogisticRegression
+from sklearn.isotonic import IsotonicRegression as IR
+from imblearn.over_sampling import RandomOverSampler,SMOTE
 
 config = configparser.ConfigParser()
 configuration = sys.argv[1]+'.ini'
@@ -107,8 +109,10 @@ with tf.Session() as sess:
     labels_dev = indexed_data_dev[:,3]
     labels_dev = labels_dev.reshape((np.shape(labels_dev)[0],1))
     predicates_dev = indexed_data_dev[:,1]
+    preds = np.array(np.shape(predicates_dev))
     predictions_list_dev = sess.run(predictions, feed_dict={triplets: data_dev, y: labels_dev})
     model_dic = {}
+    calibrated_predictions = np.zeros_like(predictions_list_dev)
     for k,i in pred_dic.items():
         # for key, value in pred_dic.items():
         #     if value == i:
@@ -117,16 +121,28 @@ with tf.Session() as sess:
         if np.shape(indices)[0]!=0:
             predictions_predicate = predictions_list_dev[indices]
             labels_predicate = labels_dev[indices]
-            log_reg = LogisticRegression()
-            log_reg.fit( predictions_predicate, labels_predicate.ravel() )  
-            # p_calibrated = lr.predict_proba( p_test.reshape( -1, 1 ))[:,1]
-            model_dic[i] = log_reg
+            ir = IR(out_of_bounds='clip'  )
+            # log_reg = LogisticRegression()
+            ros = SMOTE(ratio='minority')
+            X_train, y_train = ros.fit_sample(predictions_predicate, labels_predicate.ravel() )
+            ir.fit( X_train.ravel(), y_train.ravel()  )
+            # log_reg.fit( predictions_predicate, labels_predicate.ravel() )  
+            # predictions_predicate = np.squeeze(predictions_predicate).reshape(-1, 1)
+            preds = ir.transform( predictions_predicate.ravel() )
+            # preds = log_reg.predict_proba(predictions_predicate)[:,1]
+            preds= preds.reshape((np.shape(preds)[0],1))
+            calibrated_predictions[indices] = preds
+            model_dic[i] = ir
+
+    
+    calibrated_thresholds = er_mlp.compute_threshold(preds,labels_dev,predicates_dev,f1=True)
 
     save_object = {
-        'thresholds':thresholds,
+        'thresholds_calibrated':calibrated_thresholds,
         'entity_dic': entity_dic,
         'pred_dic': pred_dic,
-        'calibrated_models': model_dic
+        'calibrated_models': model_dic,
+        'thresholds':thresholds
     }
     if WORD_EMBEDDING:
         save_object['indexed_entities'] = indexed_entities

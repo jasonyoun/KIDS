@@ -7,7 +7,7 @@ import pickle as pickle
 import random
 import scipy.io as spio
 import csv
-from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score,confusion_matrix
+from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score,confusion_matrix, precision_score, recall_score
 directory = os.path.dirname(__file__)
 abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
@@ -17,10 +17,10 @@ import argparse
 parser = argparse.ArgumentParser(description='evaluate the results')
 parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
                     help='base directory')
-
+parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
 args = parser.parse_args()
 print(args.dir)
-
+use_calibration = args.use_calibration
 
 with open('./selected_relations') as f:
     relations = f.readlines()
@@ -80,9 +80,13 @@ for i in range(len(predicates_dic)):
     classifications_predicate[:][classifications_predicate[:] == -1] = 0
     fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
     accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
+    recall_predicate = recall_score(labels_predicate, classifications_predicate)
+    precision_predicate = precision_score(labels_predicate, classifications_predicate)
     confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
     print(" - test f1 measure for "+pred_name+ ":"+ str(fl_measure_predicate))
     print(" - test accuracy for "+pred_name+ ":"+ str(accuracy_predicate))
+    print(" - test precision for "+pred_name+ ":"+ str(precision_predicate))
+    print(" - test recall for "+pred_name+ ":"+ str(recall_predicate))
     print(" - test confusion matrix for "+pred_name+ ":")
     print(confusion_predicate)
     print(" ")
@@ -91,13 +95,22 @@ mean_average_precision_test = pr_stats(len(relations), combined_labels_array, co
 roc_auc_test = roc_auc_stats(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic)
 fl_measure_test = f1_score(combined_labels_array, combined_classifications_array)
 accuracy_test = accuracy_score(combined_labels_array, combined_classifications_array)
-plot_pr(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, args.dir+'/')
-plot_roc(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, args.dir+'/')
+recall_test = recall_score(combined_labels_array, combined_classifications_array)
+precision_test = precision_score(combined_labels_array, combined_classifications_array)
+confusion_test = confusion_matrix(combined_labels_array, combined_classifications_array)
+calib_file_name='_calibrated' if use_calibration else '_not_calibrated'
+plot_pr(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, args.dir+'/',name_of_file='pra'+calib_file_name)
+plot_roc(len(relations), combined_labels_array, combined_scores_array,combined_predicates_array,predicates_dic, args.dir+'/',name_of_file='pra'+calib_file_name)
 
 print("test mean average precision:"+ str(mean_average_precision_test))
 print("test f1 measure:"+ str(fl_measure_test))
 print("test accuracy:"+ str(accuracy_test))
+print("test precision:"+ str(precision_test))
+print("test recall:"+ str(recall_test))
 print("test roc auc:"+ str(roc_auc_test))
+print("test confusion matrix:")
+print(confusion_test)
+print(" ")
 
 
 

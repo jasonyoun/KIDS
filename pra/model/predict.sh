@@ -69,14 +69,23 @@ while read p; do
 
 	# python3 "$prev_current_dir/"get_scores.py --predicate $p --dir $prediction_folder --use_calibration
 	# python3 "$prev_current_dir/"classify.py --predicate $p --dir $prediction_folder --use_calibration
-
-	python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder  --use_calibration
-	python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder  --use_calibration
+	if  [  "$use_calibration" != "use_calibration" ] ; then
+		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder
+		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder
+	else
+		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder --use_calibration
+		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder --use_calibration
+	fi
 
 	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
   	
 done <"selected_relations"
 
+if  [  "$use_calibration" != "use_calibration" ] ; then
+	python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder
+else
+	python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder --use_calibration
+fi
 python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder
 
 

@@ -10,6 +10,8 @@ import random
 from scipy import interp
 import random
 import matplotlib.pyplot as plt
+import datetime
+import time
 
 
 def roc_auc_stats(num_preds, Y, predictions,predicates,pred_dic):
@@ -80,7 +82,9 @@ def pr_stats(num_preds, Y, predictions,predicates,pred_dic):
 
 
 
-def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory):
+def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_file='model'):
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('_%Y_%m_%d_%H_%M_%S')
     baseline = np.zeros(np.shape(predictions))
     baseline_fpr, baseline_tpr , _ = roc_curve(Y.ravel(), baseline.ravel())
     baseline_aucROC = auc(baseline_fpr, baseline_tpr)
@@ -122,10 +126,12 @@ def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory):
     pred_name = None
     lines = []
     labels = []
+    saved_data_points= {}
     for i in predicates_included:
         for key, value in pred_dic.items():
             if value == i:
                 pred_name =key
+        saved_data_points[pred_name] = (fpr[i], tpr[i],roc_auc[i])
         l, = plt.plot(fpr[i], tpr[i], lw=2)
         lines.append(l)
         labels.append('ROC for class {} (area = {:.3f})'.format(pred_name, roc_auc[i]))
@@ -133,11 +139,15 @@ def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory):
     plt.ylabel("True Positive Rate")
     plt.title("Predicate ROC")
     plt.legend(lines,labels,loc="upper right",prop={'size': 6})
-    filename = directory+'/er_mlp_predicate_roc.png'
+    filename = directory+'/roc_'+name_of_file+st+'.png'
     plt.savefig(filename)
+    with open(directory+'/roc_'+name_of_file+st+'.pkl', 'wb') as output:
+        pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
     print("saved:{!s}".format(filename))
 
-def plot_pr(num_preds, Y, predictions,predicates,pred_dic, directory):
+def plot_pr(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_file='model'):
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('_%Y_%m_%d_%H_%M_%S')
     baseline = np.zeros(np.shape(predictions))
     baseline_precision, baseline_recall , _ = precision_recall_curve(Y.ravel(), baseline.ravel())
     baseline_aucPR = auc(baseline_recall, baseline_precision)
@@ -165,10 +175,12 @@ def plot_pr(num_preds, Y, predictions,predicates,pred_dic, directory):
     pred_name = None
     lines = []
     labels = []
+    saved_data_points= {}
     for i in predicates_included:
         for key, value in pred_dic.items():
             if value == i:
                 pred_name =key
+        saved_data_points[pred_name] = (recall[i], precision[i],ap[i])
         l, = plt.plot(recall[i], precision[i], lw=2)
         lines.append(l)
         labels.append('Precision-recall for class {} (area = {:.3f})'.format(pred_name, aucPR[i]))
@@ -176,9 +188,11 @@ def plot_pr(num_preds, Y, predictions,predicates,pred_dic, directory):
     plt.ylabel("Precision")
     plt.title("Precision Recall (mAP = {:.3f})".format( mean_average_precision))
     plt.legend(lines,labels,loc="upper right",prop={'size': 6})
-    filename = directory+'/er_mlp_pr.png'
+    filename = directory+'/pr_'+name_of_file+st+'.png'
     plt.savefig(filename)
     print("saved:{!s}".format(filename))
+    with open(directory+'/pr_'+name_of_file+st+'.pkl', 'wb') as output:
+        pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
 
 def plot_cost( iterations, cost_list, directory):
     plt.figure()

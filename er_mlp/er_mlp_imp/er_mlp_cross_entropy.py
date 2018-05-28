@@ -60,15 +60,15 @@ def over_sample(data_X, data_Y,pred_dic):
             print(np.shape(combined_data))
             ret_X_list.append(ret_X)
             ret_Y_list.append(ret_Y)
-    #return np.column_stack((np.concatenate(ret_X_list,axis=0),np.concatenate(ret_Y_list,axis=0)))
-    return np.concatenate(ret_X_list,axis=0),np.concatenate(ret_Y_list,axis=0)
+    return np.column_stack((np.concatenate(ret_X_list,axis=0),np.concatenate(ret_Y_list,axis=0)))
+    # return np.concatenate(ret_X_list,axis=0),np.concatenate(ret_Y_list,axis=0)
 
 
-def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS, DROP_OUT_PERCENT,DATA_PATH, SAVE_MODEL=False, MODEL_SAVE_DIRECTORY=None ):
+def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS, DROP_OUT_PERCENT,DATA_PATH, SAVE_MODEL=False, MODEL_SAVE_DIRECTORY=None,TRAIN_FILE='train.txt' ):
 
     processor = DataProcessor()
     # load the data
-    train_df = processor.load(DATA_PATH+'train_cross_local.txt')
+    train_df = processor.load(DATA_PATH+TRAIN_FILE)
     test_df = processor.load(DATA_PATH+'test.txt')
     dev_df = processor.load(DATA_PATH+'dev.txt')
     # numerically represent the entities, predicates, and words
@@ -166,12 +166,12 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     sess.run(init_all)
 
     if OVER_SAMPLE:
-        # indexed_train_data = over_sample(data_train,labels_train,pred_dic)
-        data_train,labels_train = over_sample(data_train,labels_train,pred_dic)
+        indexed_train_data = over_sample(data_train,labels_train,pred_dic)
+        # data_train,labels_train = over_sample(data_train,labels_train,pred_dic)
 
 
 
-    def determine_threshold(indexed_data_dev, f1=False):
+    def determine_threshold(indexed_data_dev, f1=True):
         # use the dev set to compute the best threshold for classification
         data_dev = indexed_data_dev[:,:3]
         predicates_dev = indexed_data_dev[:,1]
@@ -220,7 +220,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         print(_type+" test roc auc:"+ str(roc_auc_test))
 
 
-    # data_orch = DataOrchestrator( indexed_train_data,shuffle=True)
+    data_orch = DataOrchestrator( indexed_train_data,shuffle=True)
 
     iter_list = []
     cost_list = []
@@ -233,14 +233,14 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
         avg_cost = 0.
         total_batch = int(data_train.shape[0] / BATCH_SIZE)
         for i in range(total_batch):
-            randidx = np.random.randint(int(data_train.shape[0]), size = BATCH_SIZE)
-            # train_batch = data_orch.get_next_training_batch(BATCH_SIZE)
-            batch_xs = data_train[randidx, :]
-            batch_ys = labels_train[randidx]
-            batch_ys = batch_ys.reshape((np.shape(batch_ys)[0],1))
-            # batch_xs = train_batch[:, :3]
-            # batch_ys = train_batch[:,3]
+            # randidx = np.random.randint(int(data_train.shape[0]), size = BATCH_SIZE)
+            train_batch = data_orch.get_next_training_batch(BATCH_SIZE)
+            # batch_xs = data_train[randidx, :]
+            # batch_ys = labels_train[randidx]
             # batch_ys = batch_ys.reshape((np.shape(batch_ys)[0],1))
+            batch_xs = train_batch[:, :3]
+            batch_ys = train_batch[:,3]
+            batch_ys = batch_ys.reshape((np.shape(batch_ys)[0],1))
 
             _, current_cost= sess.run([optimizer, cost], feed_dict={triplets: batch_xs, y:batch_ys})
             avg_cost +=current_cost/total_batch
@@ -253,7 +253,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
             test_model(before_over_sampled_indexed_train_data, indexed_test_data, thresholds, _type='current')
             print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, TRAINING_EPOCHS, avg_cost,current_cost ))
 
-        # data_orch.reset_data_index()
+        data_orch.reset_data_index()
 
     thresholds = determine_threshold(indexed_dev_data)
     test_model(before_over_sampled_indexed_train_data, indexed_test_data, thresholds, _type='final')

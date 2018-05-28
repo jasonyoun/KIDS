@@ -8,6 +8,8 @@ import scipy.io as spio
 import csv
 from sklearn.linear_model import LogisticRegression
 import argparse
+from sklearn.isotonic import IsotonicRegression as IR
+from imblearn.over_sampling import RandomOverSampler,SMOTE
 
 
 parser = argparse.ArgumentParser(description='parse and generate the scores file')
@@ -51,29 +53,11 @@ for line in lines:
         entities_scores_dic[subject] = {}
     del words[0]
     del words[0]
-    # for score_and_entity in words
-    # if len(words)>2:
-        # print(words[2])
-        # print(words[2].split(','))
     for score_and_entity in words:
         score_and_entity = score_and_entity.split(',')
-        # print(score_and_entity)
-        # print(score_and_entity[1])
-        # print(score_and_entity)
-        # print(score_and_entity[1])
         entity = score_and_entity[1].replace('*','').strip()
         score = float(score_and_entity[0].strip())
         entities_scores_dic[subject][entity]= score
-    # if len(words)>3:
-    #     print(words[3])
-    #     for score_and_entity in words[3].split(' '):
-    #         score_and_entity = score_and_entity.split(',')
-    #         entity = score_and_entity[1].replace('*','').strip()
-    #         score = float(score_and_entity[0].strip())
-    #         print(subject)
-    #         print(entity)
-    #         entities_scores_dic[subject][entity]= score
-# print(entities_scores_dic)
 
 scores = []
 valid = []
@@ -93,8 +77,10 @@ if use_calibration:
     valid_array =  np.array(valid)
     indices, = np.where(valid_array[:] > 0.)
     the_scores = scores_array[indices].reshape(-1, 1)
-    scores =log_reg.predict_proba( the_scores)[:,1]
-    print(scores)
+
+    scores=log_reg.transform( the_scores.ravel() )
+
+    # scores =log_reg.predict_proba( the_scores)[:,1]
     scores_array[indices] = scores
 else:
     scores_array = np.array(scores)

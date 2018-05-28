@@ -13,7 +13,7 @@ abs_path_er_mlp= os.path.join(directory, '../er_mlp_imp')
 sys.path.insert(0, abs_path_er_mlp)
 import tensorflow as tf
 from sklearn import utils
-from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score, confusion_matrix
+from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
 import random
 from tensorflow.python import debug as tf_debug
 from scipy import interp
@@ -51,10 +51,9 @@ OPTIMIZER = config.getint('DEFAULT','OPTIMIZER')
 ACT_FUNCTION = config.getint('DEFAULT','ACT_FUNCTION')
 ADD_LAYERS = config.getint('DEFAULT','ADD_LAYERS')
 DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
+MAX_MARGIN_TRAINING = config.getboolean('DEFAULT','MAX_MARGIN_TRAINING')
 
 def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic):
-    thresholds_dic = {}
-    thresholds = []
     index=0
     for k,i in pred_dic.items():
         indices, = np.where(predicates_test == i)
@@ -64,11 +63,8 @@ def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,pr
             p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
             predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
             print(predictions_list_test[indices])
-            thresholds_dic[i]=.5
-            thresholds.append(.5)
-        index+=1
     print(predictions_list_test)
-    return predictions_list_test,thresholds,thresholds_dic
+    return predictions_list_test
 
 print("begin tensor seesion")
 with tf.Session() as sess:
@@ -83,6 +79,7 @@ with tf.Session() as sess:
     thresholds = params['thresholds']
     if calibrated:
         calibration_models = params['calibrated_models']
+        thresholds = params['thresholds_calibrated']
         print(calibration_models)
     num_preds = len(pred_dic)
     num_entities= len(entity_dic)
@@ -130,22 +127,26 @@ with tf.Session() as sess:
     predicates_test = indexed_data_test[:,1]
     predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
     if calibrated:
-        predictions_list_test,thresholds, thresholds_dic = calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic)
-    else:
-        thresholds_dic=None
+        predictions_list_test= calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic)
+
 
 
 
     mean_average_precision_test = pr_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
     roc_auc_test = roc_auc_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
-    classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test,pred_dic=pred_dic,thresholds_dic=thresholds_dic)
+    classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test)
+    print(labels_test)
     classifications_test = np.array(classifications_test).astype(int)
     labels_test = labels_test.astype(int)
     fl_measure_test = f1_score(labels_test, classifications_test)
     accuracy_test = accuracy_score(labels_test, classifications_test)
     confusion_test = confusion_matrix(labels_test, classifications_test)
-    plot_pr(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY)
-    plot_roc(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY)
+    precision_test = precision_score(labels_test, classifications_test)
+    recall_test = recall_score(labels_test, classifications_test)
+    calib_file_name='_calibrated' if calibrated else '_not_calibrated'
+    training_file_name='_cm' if MAX_MARGIN_TRAINING else '_ce'
+    plot_pr(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY,name_of_file='er_mlp'+calib_file_name+training_file_name)
+    plot_roc(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY,name_of_file='er_mlp'+calib_file_name+training_file_name)
 
     for i in range(num_preds):
         for key, value in pred_dic.items():
@@ -158,8 +159,12 @@ with tf.Session() as sess:
             fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
             accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
             confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
+            precision_predicate = precision_score(labels_predicate, classifications_predicate)
+            recall_predicate = recall_score(labels_predicate, classifications_predicate)
             print(" - test f1 measure for "+pred_name+ ":"+ str(fl_measure_predicate))
             print(" - test accuracy for "+pred_name+ ":"+ str(accuracy_predicate))
+            print(" - test precision for "+pred_name+ ":"+ str(precision_predicate))
+            print(" - test recall for "+pred_name+ ":"+ str(recall_predicate))
             print(" - test confusion matrix for "+pred_name+ ":")
             print(confusion_predicate)
             print(" ")
@@ -168,6 +173,8 @@ with tf.Session() as sess:
     print("test f1 measure:"+ str(fl_measure_test))
     print("test accuracy:"+ str(accuracy_test))
     print("test roc auc:"+ str(roc_auc_test))
+    print("test precision:"+ str(precision_test))
+    print("test recall:"+ str(recall_test))
     print("test confusion matrix:")
     print(confusion_test)
     print("thresholds: ")

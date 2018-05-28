@@ -85,7 +85,7 @@ def get_x_y(which,er_mlp,pra):
 
     p_features = np.squeeze(p_features)
     # print(np.shape(p_features))
-
+    print(p_features)
     predicates_pra= p_features[:,0]
 
     predicates_pra = predicates_pra.astype(int)
@@ -110,7 +110,9 @@ def get_x_y(which,er_mlp,pra):
     combined_array = np.vstack(combined_list)
     y = np.vstack(labels_list)
     predicates = np.hstack(predicates_list)
-    return pred_dic,combined_array,y,predicates
+    y[:][y[:] == -1] = 0
+    # np.savetxt(which+'_blah.txt',combined_array)
+    return pred_dic,combined_array[:,[0,2,3]],y,predicates
 
     
 

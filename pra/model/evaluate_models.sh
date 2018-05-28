@@ -87,7 +87,12 @@ while read p; do
   	
 done <"selected_relations"
 
-python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $test_folder
+if  [  "$use_calibration" != "use_calibration" ] ; then
+	python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $test_folder
+else
+	python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $test_folder --use_calibration
+
+fi
 
 
 sed -i -e "s|task=predict|task=_TASK_|g" conf

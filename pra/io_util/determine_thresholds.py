@@ -14,22 +14,24 @@ parser.add_argument('--predicate', nargs='?',required=True,
                     help='the predicate that we will get the scores for')
 parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
                     help='base directory')
+parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
 
 args = parser.parse_args()
 print(args.dir)
+use_calibration = args.use_calibration
 
-def compute_threshold( predictions_list, dev_labels, f1=False):
+def compute_threshold( predictions_list, dev_labels, f1=True):
     min_score = np.min(predictions_list) 
     max_score = np.max(predictions_list) 
     best_threshold = min_score
     best_accuracy = -1
     score = min_score
-    increment = 0.01
+    increment = 0.0001
     while(score <= max_score):
         predictions = (predictions_list >= score) * 2 -1
         accuracy = np.mean(predictions == dev_labels)
         if f1:
-            accuracy = accuracy_score(dev_labels,predictions)
+            accuracy = f1_score(dev_labels,predictions)
         # accuracy = np.mean(predictions == dev_labels)
         if accuracy > best_accuracy:
             best_threshold = score
@@ -43,7 +45,8 @@ relation = args.predicate
 scores_file = args.dir+'/scores/'+relation
 
 thresholds_file = args.dir+'/thresholds/'+relation
-
+if use_calibration:
+    thresholds_file = args.dir+'/thresholds_calibration/'+relation
 labels_file = args.dir+'/queriesR_labels/'+relation
 
 with open(labels_file, "r") as l_file:

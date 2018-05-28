@@ -34,22 +34,17 @@ if len(sys.argv)>3:
         calibrated=True
 
 def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic):
-    thresholds_dic = {}
-    thresholds = []
-    index=0
+
     for k,i in pred_dic.items():
         indices, = np.where(predicates_test == i)
         if np.shape(indices)[0]!=0 :
             predictions_predicate = predictions_list_test[indices]
             log_reg = calibration_models[i]
-            p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
+            p_calibrated=log_reg.transform( predictions_predicate.ravel() )
+            # p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
             predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
-            print(predictions_list_test[indices])
-            thresholds_dic[i]=.5
-            thresholds.append(.5)
-        index+=1
     print(predictions_list_test)
-    return predictions_list_test,thresholds,thresholds_dic
+    return predictions_list_test
 
 print('./'+configuration)
 config.read('./'+configuration)
@@ -85,6 +80,7 @@ with tf.Session() as sess:
     thresholds = params['thresholds']
     if calibrated:
         calibration_models = params['calibrated_models']
+        thresholds = params['thresholds_calibrated']
     num_preds = len(pred_dic)
     num_entities= len(entity_dic)
     graph = tf.get_default_graph()
@@ -132,10 +128,10 @@ with tf.Session() as sess:
     predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test})
     
     if calibrated:
-        predictions_list_test,thresholds, thresholds_dic = calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic)
+        predictions_list_test = calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic)
 
     print(np.shape(predictions_list_test))
-    classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test,pred_dic=pred_dic,thresholds_dic=thresholds_dic)
+    classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test)
     classifications_test = np.array(classifications_test).astype(int)
     classifications_test = classifications_test.reshape((np.shape(classifications_test)[0],1))
     print(np.shape(classifications_test))

@@ -27,7 +27,7 @@ data_handler_dir='data_handler/'
 . "$base_dir/"config.sh
 
 echo "Content of DATA_PATH is $DATA_PATH"
-train_file="train.txt"
+# train_file="train.txt"
 train_folder="train"
 
 
@@ -51,8 +51,11 @@ sed -i -e "s|task=_TASK_|task=train|g" conf
 
 echo "process data "
 echo ""
-python3 $prev_current_dir/$data_handler_dir/pra_data_processor.py $DATA_PATH $train_file
-
+if  [  "$is_freebase" == "true" ] ; then
+	python3 $prev_current_dir/$data_handler_dir/pra_data_processor.py $DATA_PATH $train_file $is_freebase
+else
+	python3 $prev_current_dir/$data_handler_dir/pra_data_processor.py $DATA_PATH $train_file
+fi
 java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
 
 

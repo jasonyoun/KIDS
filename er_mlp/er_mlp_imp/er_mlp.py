@@ -187,12 +187,14 @@ class ERMLP:
     def compute_threshold(self, predictions_list, dev_labels,predicates, f1=False,cross_margin=False):
         min_score = np.min(predictions_list) 
         max_score = np.max(predictions_list) 
+        # print(min_score)
+        # print(max_score)
         best_threshold = np.zeros(self.params['num_preds']);
         best_accuracy = np.zeros(self.params['num_preds']);
         for i in range(self.params['num_preds']):
             best_threshold[i]= min_score;
             best_accuracy[i] = -1;
-
+        # print(predictions_list)
         score = min_score
         increment = 0.01
         while(score <= max_score):
@@ -213,6 +215,7 @@ class ERMLP:
                         best_threshold[i] = score
                         best_accuracy[i] = accuracy
                     score += increment
+        # print(best_threshold)
         return best_threshold
 
     def loss(self, predictions): 
@@ -220,46 +223,36 @@ class ERMLP:
         one = tf.constant(1,dtype=tf.float32)
         max_with_margin_sum =tf.div(tf.reduce_sum(tf.maximum(tf.add(tf.subtract(predictions[:,1],predictions[:, 0]),1), 0)), batch_size)
         l2 = tf.reduce_sum([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
-        return tf.add(max_with_margin_sum, tf.multiply(self.params['lambda'], l2),name='loss1')
+        return tf.add(max_with_margin_sum, tf.multiply(self.params['lambda'], l2))
 
     def loss_cross_entropy(self,predictions, y):  
         l2 = tf.reduce_sum([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
         cost = tf.nn.sigmoid_cross_entropy_with_logits(logits=predictions, labels=y)
-        return tf.add(tf.reduce_mean(cost), tf.multiply(self.params['lambda'], l2),name='loss')
+        return tf.add(tf.reduce_mean(cost), tf.multiply(self.params['lambda'], l2))
 
     def loss_weighted_cross_entropy(self,predictions, y):  
         ratio = 6689.0/ (117340.0 + 6689.0)
         pos_weight = 1.0 / ratio
         l2 = tf.reduce_sum([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
         cost = tf.nn.weighted_cross_entropy_with_logits(logits=predictions, targets=y, pos_weight=pos_weight)
-        return tf.add(tf.reduce_mean(cost), tf.multiply((self.params['lambda'], l2)),name='loss')
+        return tf.add(tf.reduce_mean(cost), tf.multiply((self.params['lambda'], l2)))
 
     def train_adam(self,loss):
-        return tf.train.AdamOptimizer(learning_rate = self.params['learning_rate']).minimize(loss, name='optimizer1')
+        return tf.train.AdamOptimizer(learning_rate = self.params['learning_rate']).minimize(loss)
 
     def train_adagrad(self,loss):
-        return tf.train.AdagradOptimizer(learning_rate = self.params['learning_rate']).minimize(loss, name='optimizer')
+        return tf.train.AdagradOptimizer(learning_rate = self.params['learning_rate']).minimize(loss)
 
-    def classify(self, predictions_list,threshold, predicates, cross_margin=False,pred_dic=None,thresholds_dic=None):
+    def classify(self, predictions_list,threshold, predicates, cross_margin=False):
         classifications = []
-        if thresholds_dic is None:
-            for i in range(len(predictions_list)):
-                if(predictions_list[i][0] >= threshold[predicates[i]]):
-                    classifications.append(1)
+        for i in range(len(predictions_list)):
+            if(predictions_list[i][0] >= threshold[predicates[i]]):
+                classifications.append(1)
+            else:
+                if cross_margin:
+                    classifications.append(-1)
                 else:
-                    if cross_margin:
-                        classifications.append(-1)
-                    else:
-                        classifications.append(0)
-        else:
-            for i in range(len(predictions_list)):
-                if(predictions_list[i][0] >= thresholds_dic[predicates[i]]):
-                    classifications.append(1)
-                else:
-                    if cross_margin:
-                        classifications.append(-1)
-                    else:
-                        classifications.append(0)
+                    classifications.append(0)
         return classifications
 
     # each training batch will include the number of samples multiplied by the number 

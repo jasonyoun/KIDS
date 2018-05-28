@@ -8,6 +8,8 @@ import scipy.io as spio
 import csv
 from sklearn.linear_model import LogisticRegression
 import argparse
+from sklearn.isotonic import IsotonicRegression as IR
+from imblearn.over_sampling import RandomOverSampler,SMOTE
 
 parser = argparse.ArgumentParser(description='calibrate')
 parser.add_argument('--predicate', nargs='?',required=True,
@@ -48,15 +50,26 @@ for i in labels:
 
 scores_array = np.array(scores_split)
 labels_array = np.array(labels_split)
-# indices, = np.where(scores_array[:,1] != 0)
-# scores_array = scores_array[indices]
-# labels_array = labels_array[indices]
-log_reg = LogisticRegression()
-log_reg.fit( scores_array[:,0].reshape(-1, 1), labels_array.ravel() )  
+indices, = np.where(scores_array[:,1] != 0)
+scores_array = scores_array[indices]
+labels_array = labels_array[indices]
+labels_array[:][labels_array[:] == -1] = 0
+# print(labels_array)
+print(np.shape(scores_array))
+print(np.shape(labels_array))
+ir = IR(out_of_bounds='clip'  )
+ros = SMOTE(ratio='minority')
+X_train, y_train = ros.fit_sample(scores_array[:,0].reshape(-1, 1), labels_array.ravel() )
+print(np.shape(X_train))
+print(np.shape(y_train))
+ir.fit( X_train.ravel(), y_train.ravel()  )
+
+# log_reg = LogisticRegression()
+# log_reg.fit( scores_array[:,0].reshape(-1, 1), labels_array.ravel() )  
 
 
 with open('calibrations/'+relation+'.pkl', 'wb') as output:
-    pickle.dump(log_reg, output, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(ir, output, pickle.HIGHEST_PROTOCOL)
 
 
 
