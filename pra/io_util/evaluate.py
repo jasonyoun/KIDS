@@ -112,6 +112,11 @@ print("test confusion matrix:")
 print(confusion_test)
 print(" ")
 
+_file =  args.dir+"/classifications_pra.txt"
+with open(_file, 'w') as t_f:
+    for row in classifications:
+        t_f.write(str(row)+'\n')
+
 
 
 

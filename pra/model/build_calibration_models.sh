@@ -79,7 +79,11 @@ while read p; do
 
 	python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir dev
 
-	python3 $prev_current_dir/$io_util_dir/calibrate.py  --predicate $p --dir dev
+	if  [  "$is_freebase" == "true" ] ; then
+		python3 $prev_current_dir/$io_util_dir/calibrate.py  --predicate $p --dir dev --freebase
+	else
+		python3 $prev_current_dir/$io_util_dir/calibrate.py  --predicate $p --dir dev
+	fi
 
 	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
   	

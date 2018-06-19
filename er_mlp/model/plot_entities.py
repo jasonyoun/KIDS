@@ -296,12 +296,12 @@ with tf.Session() as sess:
     # print(np.shape(entitys))
     # print(np.shape(entity_embeddings))
     # limit=500
-    vector_dim = 60
+    vector_dim = 50
     # Reshaping embedding
     embedding = entity_embeddings.reshape(limit, vector_dim)
 
     tsne = TSNE(perplexity=30.0, n_components=3, init='pca', n_iter=5000)
 
     low_dim_embedding = tsne.fit_transform(embedding)
-    plot_with_labels(low_dim_embedding, entitys,labels, filename=MODEL_SAVE_DIRECTORY+'/tsne_entities_random.png')
+    plot_with_labels(low_dim_embedding, entitys,labels, filename=MODEL_SAVE_DIRECTORY+'/tsne_entities_classification.png')
 

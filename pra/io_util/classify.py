@@ -34,11 +34,12 @@ classifications_file = args.dir+'/classifications/'+relation
 
 with open(scores_file, "r") as _file:
     scores = _file.readlines()
-if use_calibration:
-    threshold=0.5
-else:
-    with open(thresholds_file, "r") as _file:
-        threshold = float(_file.readline().strip())
+# if use_calibration:
+
+#     threshold=0.5
+# else:
+with open(thresholds_file, "r") as _file:
+    threshold = float(_file.readline().strip())
 
 
 

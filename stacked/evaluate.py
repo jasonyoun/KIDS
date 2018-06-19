@@ -22,22 +22,39 @@ parser.add_argument('--er_mlp', metavar='er_mlp_model (er_mlp_model_2)', nargs='
                     help='The er-mlp models to add')
 parser.add_argument('--dir', metavar='dir', nargs='?', action='store',required=True,
                     help='directory to store the model')
+parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
 
 args = parser.parse_args()
 print(args)
+use_calibration = args.use_calibration
+if use_calibration:
+    with open(args.dir+'/calibrations.pkl', 'rb') as pickle_file:
+        log_reg = pickle.load(pickle_file)
 
+# def classify( predictions_list,threshold, predicates):
+#     classifications = []
+#     for i in range(len(predictions_list)):
+#         # print(predictions_list[i])
+#         # print(threshold[predicates[i]])
+#         if(predictions_list[i] >= threshold[predicates[i]]):
+#             classifications.append(1)
+#         else:
+#             classifications.append(0)
+#     return np.array(classifications)
 def classify( predictions_list,threshold, predicates):
     classifications = []
     for i in range(len(predictions_list)):
         # print(predictions_list[i])
         # print(threshold[predicates[i]])
-        if(predictions_list[i] >= threshold[predicates[i]]):
+        if(predictions_list[i] >= threshold):
             classifications.append(1)
         else:
             classifications.append(0)
     return np.array(classifications)
 
 fn = open(args.dir+'/threshold.pkl','rb')
+if use_calibration:
+    fn = open(args.dir+'/calibrated_threshold.pkl','rb')
 threshold = pickle.load(fn)
 
 print(threshold)
@@ -49,24 +66,25 @@ pred_dic,test_x,test_y,predicates = features.get_x_y('test',args.er_mlp,args.pra
 print(test_y)
 # y_hat = clf.predict(test_x)
 probabilities = clf.predict_proba( test_x)
-print(probabilities)
 # print(probabilities)
 probabilities = probabilities[:,1]
+if use_calibration:
+    # scores=log_reg.transform( probabilities.ravel() )
+    scores =log_reg.predict_proba( probabilities.reshape(-1,1))[:,1]
+    probabilities = scores
 
-# print(probabilities)
-#classifications = classify(probabilities,threshold,predicates)
+# np.set_printoptions(threshold=np.nan)
+print('probabilities')
+print(probabilities)
+print('test_y')
+print(test_y)
+
 classifications = clf.predict( test_x)
-# classifications = y_hat
-# print(y_hat)
-np.savetxt('labels.txt',test_y)
-# np.savetxt('classifications.txt',y_hat)
-# print(y_hat)
-# print(probabilities)
-# print(average_precision_score(test_y,probabilities))
+# classifications = classify(probabilities,threshold,predicates)
 plot_roc(len(pred_dic), test_y, probabilities,predicates,pred_dic, args.dir)
 plot_pr(len(pred_dic), test_y, probabilities,predicates,pred_dic, args.dir)
-roc_auc_stats(len(pred_dic), test_y, probabilities,predicates,pred_dic)
-ap = pr_stats(len(pred_dic), test_y, probabilities,predicates,pred_dic)
+auc_test = roc_auc_stats(len(pred_dic), test_y, probabilities,predicates,pred_dic)
+ap_test = pr_stats(len(pred_dic), test_y, probabilities,predicates,pred_dic)
 
 
 fl_measure_test = f1_score(test_y, classifications)
@@ -97,14 +115,22 @@ for i in range(len(pred_dic)):
         print(confusion_predicate)
         print(" ")
 
+_file =  args.dir+"/classifications_stacked.txt"
+with open(_file, 'w') as t_f:
+    for row in classifications:
+        t_f.write(str(row)+'\n')
+
+
 print("test f1 measure:"+ str(fl_measure_test))
 print("test accuracy:"+ str(accuracy_test))
 print("test precision:"+ str(precision_test))
 print("test recall:"+ str(recall_test))
 print("test confusion matrix:")
+print('test auc: '+str(auc_test))
+print('test ap: '+str(ap_test))
 print(confusion_test)
 
-print(ap)
+print(ap_test)
 
     
 

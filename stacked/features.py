@@ -85,7 +85,7 @@ def get_x_y(which,er_mlp,pra):
 
     p_features = np.squeeze(p_features)
     # print(np.shape(p_features))
-    print(p_features)
+    # print(p_features)
     predicates_pra= p_features[:,0]
 
     predicates_pra = predicates_pra.astype(int)

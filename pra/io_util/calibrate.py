@@ -16,6 +16,7 @@ parser.add_argument('--predicate', nargs='?',required=True,
                     help='the predicate that we will get the scores for')
 parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
                     help='base directory')
+parser.add_argument('--freebase',action='store_const',default=False,const=True)
 
 args = parser.parse_args()
 print(args.dir)
@@ -49,23 +50,34 @@ for i in labels:
 
 
 scores_array = np.array(scores_split)
+print('scores array before')
+print(np.shape(scores_array))
 labels_array = np.array(labels_split)
 indices, = np.where(scores_array[:,1] != 0)
 scores_array = scores_array[indices]
+print('scores array after')
+print(np.shape(scores_array))
 labels_array = labels_array[indices]
 labels_array[:][labels_array[:] == -1] = 0
 # print(labels_array)
 print(np.shape(scores_array))
 print(np.shape(labels_array))
 ir = IR(out_of_bounds='clip'  )
-ros = SMOTE(ratio='minority')
-X_train, y_train = ros.fit_sample(scores_array[:,0].reshape(-1, 1), labels_array.ravel() )
+if args.freebase:
+	X_train = scores_array[:,0]
+	y_train = labels_array
+else:
+    # X_train = scores_array[:,0]
+    # y_train = labels_array
+	ros = SMOTE(ratio='minority')
+	X_train, y_train = ros.fit_sample(scores_array[:,0].reshape(-1, 1), labels_array.ravel() )
+
 print(np.shape(X_train))
 print(np.shape(y_train))
 ir.fit( X_train.ravel(), y_train.ravel()  )
 
 # log_reg = LogisticRegression()
-# log_reg.fit( scores_array[:,0].reshape(-1, 1), labels_array.ravel() )  
+# log_reg.fit( X_train.reshape(-1, 1), y_train.ravel() )  
 
 
 with open('calibrations/'+relation+'.pkl', 'wb') as output:

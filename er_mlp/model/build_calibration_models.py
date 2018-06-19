@@ -53,6 +53,7 @@ OPTIMIZER = config.getint('DEFAULT','OPTIMIZER')
 ACT_FUNCTION = config.getint('DEFAULT','ACT_FUNCTION')
 ADD_LAYERS = config.getint('DEFAULT','ADD_LAYERS')
 DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
+IS_FREEBASE = config.getboolean('DEFAULT','IS_FREEBASE')
 
 print("begin tensor seesion")
 with tf.Session() as sess:
@@ -123,19 +124,29 @@ with tf.Session() as sess:
             labels_predicate = labels_dev[indices]
             ir = IR(out_of_bounds='clip'  )
             # log_reg = LogisticRegression()
-            ros = SMOTE(ratio='minority')
-            X_train, y_train = ros.fit_sample(predictions_predicate, labels_predicate.ravel() )
+            if not  IS_FREEBASE:
+                ros = SMOTE(ratio='minority')
+                X_train, y_train = ros.fit_sample(predictions_predicate, labels_predicate.ravel() )
+                # X_train = predictions_predicate
+                # y_train = labels_predicate
+            else:
+                X_train = predictions_predicate
+                y_train = labels_predicate
             ir.fit( X_train.ravel(), y_train.ravel()  )
-            # log_reg.fit( predictions_predicate, labels_predicate.ravel() )  
+            # log_reg.fit( X_train, y_train.ravel() )  
             # predictions_predicate = np.squeeze(predictions_predicate).reshape(-1, 1)
             preds = ir.transform( predictions_predicate.ravel() )
             # preds = log_reg.predict_proba(predictions_predicate)[:,1]
             preds= preds.reshape((np.shape(preds)[0],1))
             calibrated_predictions[indices] = preds
             model_dic[i] = ir
+            # model_dic[i] = log_reg
 
-    
-    calibrated_thresholds = er_mlp.compute_threshold(preds,labels_dev,predicates_dev,f1=True)
+    if IS_FREEBASE:
+        calibrated_thresholds = er_mlp.compute_threshold(calibrated_predictions,labels_dev,predicates_dev,f1=False)
+    else:
+        calibrated_thresholds = er_mlp.compute_threshold(calibrated_predictions,labels_dev,predicates_dev,f1=True)
+    print(calibrated_thresholds)
 
     save_object = {
         'thresholds_calibrated':calibrated_thresholds,

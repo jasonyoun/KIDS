@@ -114,6 +114,7 @@ def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fi
     roc_auc["macro"] = auc(fpr["macro"], tpr["macro"])
     plt.figure()
     plt.plot(fpr["macro"], tpr["macro"], lw=2, color='darkorange', label="Macro Average ROC curve (AUC:{:.3f})".format(roc_auc["macro"]))
+    saved_data_points = (fpr["macro"],  tpr["macro"],roc_auc["macro"])
     plt.plot(baseline_fpr, baseline_tpr, lw=2, color='green', label="baseline (AUC:{:.3f})".format(baseline_aucROC))
     plt.xlabel("False Positive Rate")
     plt.ylabel("True Positive Rate")
@@ -121,6 +122,8 @@ def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fi
     plt.legend(loc="lower right",prop={'size': 6})
     filename = directory+'/er_mlp_roc.png'
     plt.savefig(filename)
+    with open(directory+'/roc_macro_'+name_of_file+st+'.pkl', 'wb') as output:
+        pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
     print("saved:{!s}".format(filename))
     plt.figure()
     pred_name = None
@@ -181,7 +184,8 @@ def plot_pr(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fil
             if value == i:
                 pred_name =key
         saved_data_points[pred_name] = (recall[i], precision[i],ap[i])
-        l, = plt.plot(recall[i], precision[i], lw=2)
+        l, = plt.step(recall[i], precision[i], lw=2,where='post')
+        # l, = plt.plot(recall[i], precision[i], lw=2)
         lines.append(l)
         labels.append('Precision-recall for class {} (area = {:.3f})'.format(pred_name, aucPR[i]))
     plt.xlabel("Recall")

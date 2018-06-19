@@ -184,39 +184,73 @@ class ERMLP:
         return out
 
     # determine the best threshold to use for classification
+    # def compute_threshold(self, predictions_list, dev_labels,predicates, f1=False,cross_margin=False):
+    #     min_score = np.min(predictions_list) 
+    #     max_score = np.max(predictions_list) 
+    #     # print(min_score)
+    #     # print(max_score)
+    #     best_threshold = np.zeros(self.params['num_preds']);
+    #     best_accuracy = np.zeros(self.params['num_preds']);
+    #     for i in range(self.params['num_preds']):
+    #         best_threshold[i]= min_score;
+    #         best_accuracy[i] = -1;
+    #     # print(predictions_list)
+    #     score = min_score
+    #     increment = 0.01
+    #     while(score <= max_score):
+    #         for i in range(self.params['num_preds']):
+    #             predicate_indices = np.where(predicates == i)[0]
+    #             # print(np.shape(predicate_indices))
+    #             # print(np.shape(predictions_list))
+    #             # print(np.shape(predicates))
+    #             if np.shape(predicate_indices)[0]!=0:
+    #                 predicate_predictions = predictions_list[predicate_indices]
+    #                 # predictions = (predicate_predictions >= score) * 2 -1
+    #                 predictions = (predicate_predictions >= score)
+    #                 if cross_margin:
+    #                     predictions = (predicate_predictions >= score) * 2 -1
+    #                 predicate_labels = dev_labels[predicate_indices]
+    #                 accuracy = accuracy_score(predictions,predicate_labels)
+    #                 if f1:
+    #                     accuracy = f1_score(predicate_labels,predictions)
+    #                 # accuracy = np.mean(predictions == predicate_labels)
+    #                 if accuracy > best_accuracy[i]:
+    #                     best_threshold[i] = score
+    #                     best_accuracy[i] = accuracy
+    #                 score += increment
+    #     # print(best_threshold)
+    #     return best_threshold
+
+    # determine the best threshold to use for classification
     def compute_threshold(self, predictions_list, dev_labels,predicates, f1=False,cross_margin=False):
-        min_score = np.min(predictions_list) 
-        max_score = np.max(predictions_list) 
-        # print(min_score)
-        # print(max_score)
         best_threshold = np.zeros(self.params['num_preds']);
         best_accuracy = np.zeros(self.params['num_preds']);
+        dev_labels[:][dev_labels[:] == 0] = -1
+        predictions_list[:][predictions_list[:] == 0] = -1
         for i in range(self.params['num_preds']):
-            best_threshold[i]= min_score;
-            best_accuracy[i] = -1;
-        # print(predictions_list)
-        score = min_score
-        increment = 0.01
-        while(score <= max_score):
-            for i in range(self.params['num_preds']):
-                predicate_indices = np.where(predicates == i)[0]
-                if np.shape(predicate_indices)[0]!=0:
-                    predicate_predictions = predictions_list[predicate_indices]
-                    # predictions = (predicate_predictions >= score) * 2 -1
-                    predictions = (predicate_predictions >= score)
-                    if cross_margin:
-                        predictions = (predicate_predictions >= score) * 2 -1
-                    predicate_labels = dev_labels[predicate_indices]
-                    accuracy = np.mean(predictions == predicate_labels)
+            predicate_indices = np.where(predicates == i)[0]
+            if np.shape(predicate_indices)[0]!=0:
+                predicate_predictions = predictions_list[predicate_indices]
+                accuracies = np.zeros(np.shape(predicate_predictions))
+                predicate_labels = dev_labels[predicate_indices]
+                predicate_predictions = predicate_predictions.reshape(-1,1)
+                predicate_labels = predicate_labels.reshape(-1,1)
+                both = np.column_stack((predicate_predictions,predicate_labels))
+                both = both[both[:,0].argsort()]
+                predicate_predictions = both[:,0].ravel()
+                predicate_labels = both[:,1].ravel()
+                for j in range(np.shape(predicate_predictions)[0]):
+
+                    score = predicate_predictions[j]
+                    predictions = (predicate_predictions >= score) * 2 -1
+                    accuracy = accuracy_score(predictions, predicate_labels)
                     if f1:
                         accuracy = f1_score(predicate_labels,predictions)
-                    # accuracy = np.mean(predictions == predicate_labels)
-                    if accuracy > best_accuracy[i]:
-                        best_threshold[i] = score
-                        best_accuracy[i] = accuracy
-                    score += increment
-        # print(best_threshold)
+                    accuracies[j] = accuracy
+                indices=np.argmax(accuracies)
+                best_threshold[i]= np.mean(predicate_predictions[indices])
         return best_threshold
+
 
     def loss(self, predictions): 
         batch_size = tf.constant(self.params['batch_size'],dtype=tf.float32)

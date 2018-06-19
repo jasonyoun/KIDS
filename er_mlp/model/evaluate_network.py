@@ -60,7 +60,8 @@ def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,pr
         if np.shape(indices)[0]!=0 :
             predictions_predicate = predictions_list_test[indices]
             log_reg = calibration_models[i]
-            p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
+            # p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
+            p_calibrated = log_reg.transform( predictions_predicate.ravel() )
             predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
             print(predictions_list_test[indices])
     print(predictions_list_test)
@@ -179,3 +180,8 @@ with tf.Session() as sess:
     print(confusion_test)
     print("thresholds: ")
     print(thresholds)
+
+_file =  sys.argv[1]+"/classifications_er_mlp.txt"
+with open(_file, 'w') as t_f:
+    for row in classifications_test:
+        t_f.write(str(row)+'\n')

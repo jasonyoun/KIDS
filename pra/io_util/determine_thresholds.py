@@ -8,6 +8,7 @@ import scipy.io as spio
 import csv
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
 import argparse
+import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser(description='determine the threshold')
 parser.add_argument('--predicate', nargs='?',required=True,
@@ -20,24 +21,27 @@ args = parser.parse_args()
 print(args.dir)
 use_calibration = args.use_calibration
 
+
 def compute_threshold( predictions_list, dev_labels, f1=True):
-    min_score = np.min(predictions_list) 
-    max_score = np.max(predictions_list) 
-    best_threshold = min_score
+    predictions_list = predictions_list.reshape(-1,1)
+    dev_labels = dev_labels.reshape(-1,1)
+    both = np.column_stack((predictions_list,dev_labels))
+    both = both[both[:,0].argsort()]
+    predictions_list = both[:,0].ravel()
+    dev_labels = both[:,1].ravel()
     best_accuracy = -1
-    score = min_score
-    increment = 0.0001
-    while(score <= max_score):
+    accuracies = np.zeros(np.shape(predictions_list))
+    for i in range(np.shape(predictions_list)[0]):
+        score = predictions_list[i]
         predictions = (predictions_list >= score) * 2 -1
-        accuracy = np.mean(predictions == dev_labels)
+        accuracy = accuracy_score(predictions, dev_labels)
         if f1:
             accuracy = f1_score(dev_labels,predictions)
-        # accuracy = np.mean(predictions == dev_labels)
-        if accuracy > best_accuracy:
-            best_threshold = score
-            best_accuracy = accuracy
-        score += increment
+        accuracies[i] = accuracy
+    indices=np.argmax(accuracies)
+    best_threshold = np.mean(predictions_list[indices])
     return best_threshold
+
 
 
 relation = args.predicate
