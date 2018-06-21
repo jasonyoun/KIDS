@@ -23,16 +23,24 @@ abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
 from data_processor import DataProcessor
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+import argparse
 if directory != '':
     directory = directory+'/'
 
 config = configparser.ConfigParser()
-configuration = sys.argv[1]+'.ini'
+parser = argparse.ArgumentParser(description='build network')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
+
+args = parser.parse_args()
+model_instance_dir='model_instance/'
+model_save_dir=model_instance_dir+args.dir
+configuration = model_save_dir+'/'+args.dir.replace('/','')+'.ini'
 
 print('./'+configuration)
 config.read('./'+configuration)
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
-MODEL_SAVE_DIRECTORY=config['DEFAULT']['MODEL_SAVE_DIRECTORY']
+MODEL_SAVE_DIRECTORY=model_save_dir
 DATA_PATH=config['DEFAULT']['DATA_PATH']
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
 DATA_TYPE = config['DEFAULT']['DATA_TYPE']
@@ -48,7 +56,7 @@ OPTIMIZER = config.getint('DEFAULT','OPTIMIZER')
 ACT_FUNCTION = config.getint('DEFAULT','ACT_FUNCTION')
 ADD_LAYERS = config.getint('DEFAULT','ADD_LAYERS')
 DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
-MAX_MARGIN_TRAINING = config.getboolean('DEFAULT','MAX_MARGIN_TRAINING')
+F1_FOR_THRESHOLD=config.getboolean('DEFAULT','F1_FOR_THRESHOLD')
 
 
 print("begin tensor seesion")
@@ -107,7 +115,7 @@ with tf.Session() as sess:
     labels_dev = labels_dev.reshape((np.shape(labels_dev)[0],1))
     predicates_dev = indexed_data_dev[:,1]
     predictions_list_dev = sess.run(predictions, feed_dict={triplets: data_dev, y: labels_dev})
-    thresholds = er_mlp.compute_threshold(predictions_list_dev,labels_dev,predicates_dev,f1=True)
+    thresholds = er_mlp.compute_threshold(predictions_list_dev,labels_dev,predicates_dev,f1=F1_FOR_THRESHOLD)
     print('thresholds')
     print(thresholds)
     save_object = {

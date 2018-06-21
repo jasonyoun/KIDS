@@ -120,6 +120,9 @@ def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fi
     plt.ylabel("True Positive Rate")
     plt.title("ROC")
     plt.legend(loc="lower right",prop={'size': 6})
+    directory = directory+'/fig'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     filename = directory+'/er_mlp_roc.png'
     plt.savefig(filename)
     with open(directory+'/roc_macro_'+name_of_file+st+'.pkl', 'wb') as output:
@@ -142,6 +145,7 @@ def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fi
     plt.ylabel("True Positive Rate")
     plt.title("Predicate ROC")
     plt.legend(lines,labels,loc="upper right",prop={'size': 6})
+
     filename = directory+'/roc_'+name_of_file+st+'.png'
     plt.savefig(filename)
     with open(directory+'/roc_'+name_of_file+st+'.pkl', 'wb') as output:
@@ -192,7 +196,11 @@ def plot_pr(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fil
     plt.ylabel("Precision")
     plt.title("Precision Recall (mAP = {:.3f})".format( mean_average_precision))
     plt.legend(lines,labels,loc="upper right",prop={'size': 6})
+    directory = directory+'/fig'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     filename = directory+'/pr_'+name_of_file+st+'.png'
+
     plt.savefig(filename)
     print("saved:{!s}".format(filename))
     with open(directory+'/pr_'+name_of_file+st+'.pkl', 'wb') as output:
@@ -204,6 +212,9 @@ def plot_cost( iterations, cost_list, directory):
     plt.xlabel("Iteration #")
     plt.ylabel("Loss")
     plt.title("Loss per Iteration of Training")
+    directory = directory+'/fig'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     filename = directory+'/cost_.png'
     plt.savefig(filename)
 

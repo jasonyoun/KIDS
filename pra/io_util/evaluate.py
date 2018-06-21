@@ -22,6 +22,7 @@ args = parser.parse_args()
 print(args.dir)
 use_calibration = args.use_calibration
 
+
 with open('./selected_relations') as f:
     relations = f.readlines()
 relations = [x.strip() for x in relations] 

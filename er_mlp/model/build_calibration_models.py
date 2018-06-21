@@ -31,13 +31,23 @@ from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 from sklearn.linear_model import LogisticRegression
 from sklearn.isotonic import IsotonicRegression as IR
 from imblearn.over_sampling import RandomOverSampler,SMOTE
+import argparse
+
 
 config = configparser.ConfigParser()
-configuration = sys.argv[1]+'.ini'
+parser = argparse.ArgumentParser(description='build calibration models')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
+
+args = parser.parse_args()
+model_instance_dir='model_instance/'
+model_save_dir=model_instance_dir+args.dir
+configuration = model_save_dir+'/'+args.dir.replace('/','')+'.ini'
+
 print('./'+configuration)
 config.read('./'+configuration)
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
-MODEL_SAVE_DIRECTORY=config['DEFAULT']['MODEL_SAVE_DIRECTORY']
+MODEL_SAVE_DIRECTORY=model_save_dir
 DATA_PATH=config['DEFAULT']['DATA_PATH']
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
 DATA_TYPE = config['DEFAULT']['DATA_TYPE']
@@ -53,7 +63,9 @@ OPTIMIZER = config.getint('DEFAULT','OPTIMIZER')
 ACT_FUNCTION = config.getint('DEFAULT','ACT_FUNCTION')
 ADD_LAYERS = config.getint('DEFAULT','ADD_LAYERS')
 DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
-IS_FREEBASE = config.getboolean('DEFAULT','IS_FREEBASE')
+F1_FOR_THRESHOLD = config.getboolean('DEFAULT','F1_FOR_THRESHOLD')
+USE_SMOLT_SAMPLING=config.getboolean('DEFAULT','USE_SMOLT_SAMPLING')
+LOG_REG_CALIBRATE= config.getboolean('DEFAULT','LOG_REG_CALIBRATE')
 
 print("begin tensor seesion")
 with tf.Session() as sess:
@@ -115,37 +127,30 @@ with tf.Session() as sess:
     model_dic = {}
     calibrated_predictions = np.zeros_like(predictions_list_dev)
     for k,i in pred_dic.items():
-        # for key, value in pred_dic.items():
-        #     if value == i:
-        #         pred_name =key
         indices, = np.where(predicates_dev == i)
         if np.shape(indices)[0]!=0:
             predictions_predicate = predictions_list_dev[indices]
             labels_predicate = labels_dev[indices]
-            ir = IR(out_of_bounds='clip'  )
-            # log_reg = LogisticRegression()
-            if not  IS_FREEBASE:
+
+            if USE_SMOLT_SAMPLING:
                 ros = SMOTE(ratio='minority')
                 X_train, y_train = ros.fit_sample(predictions_predicate, labels_predicate.ravel() )
-                # X_train = predictions_predicate
-                # y_train = labels_predicate
             else:
                 X_train = predictions_predicate
                 y_train = labels_predicate
-            ir.fit( X_train.ravel(), y_train.ravel()  )
-            # log_reg.fit( X_train, y_train.ravel() )  
-            # predictions_predicate = np.squeeze(predictions_predicate).reshape(-1, 1)
-            preds = ir.transform( predictions_predicate.ravel() )
-            # preds = log_reg.predict_proba(predictions_predicate)[:,1]
+            if LOG_REG_CALIBRATE:
+                clf = LogisticRegression()
+                clf.fit( X_train, y_train.ravel() )  
+                preds = clf.predict_proba(predictions_predicate)[:,1]
+            else:
+                clf = IR(out_of_bounds='clip'  )
+                clf.fit( X_train.ravel(), y_train.ravel()  )
+                preds = clf.transform( predictions_predicate.ravel() )
             preds= preds.reshape((np.shape(preds)[0],1))
             calibrated_predictions[indices] = preds
-            model_dic[i] = ir
-            # model_dic[i] = log_reg
+            model_dic[i] = clf
 
-    if IS_FREEBASE:
-        calibrated_thresholds = er_mlp.compute_threshold(calibrated_predictions,labels_dev,predicates_dev,f1=False)
-    else:
-        calibrated_thresholds = er_mlp.compute_threshold(calibrated_predictions,labels_dev,predicates_dev,f1=True)
+    calibrated_thresholds = er_mlp.compute_threshold(calibrated_predictions,labels_dev,predicates_dev,f1=F1_FOR_THRESHOLD)
     print(calibrated_thresholds)
 
     save_object = {

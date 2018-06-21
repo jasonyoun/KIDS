@@ -23,20 +23,28 @@ abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
 from data_processor import DataProcessor
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats,plot_cost
+import argparse
 if directory != '':
     directory = directory+'/'
 
 config = configparser.ConfigParser()
-configuration = sys.argv[1]+'.ini'
+parser = argparse.ArgumentParser(description='Continue training')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
+
+args = parser.parse_args()
+model_instance_dir='model_instance/'
+model_save_dir=model_instance_dir+args.dir
+configuration = model_save_dir+'/'+args.dir.replace('/','')+'.ini'
 
 print('./'+configuration)
 config.read('./'+configuration)
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
-MODEL_SAVE_DIRECTORY=config['DEFAULT']['MODEL_SAVE_DIRECTORY']
+MODEL_SAVE_DIRECTORY=model_save_dir
 DATA_PATH=config['DEFAULT']['DATA_PATH']
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
 DATA_TYPE = config['DEFAULT']['DATA_TYPE']
-TRAINING_EPOCHS = 5
+TRAINING_EPOCHS = config.getint('DEFAULT','CONTINUE_TRAINING_EPOCHS')
 BATCH_SIZE = config.getint('DEFAULT','BATCH_SIZE')
 DISPLAY_STEP =  config.getint('DEFAULT','DISPLAY_STEP')
 EMBEDDING_SIZE = config.getint('DEFAULT','EMBEDDING_SIZE')
@@ -48,9 +56,9 @@ OPTIMIZER = config.getint('DEFAULT','OPTIMIZER')
 ACT_FUNCTION = config.getint('DEFAULT','ACT_FUNCTION')
 ADD_LAYERS = config.getint('DEFAULT','ADD_LAYERS')
 DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
-MAX_MARGIN_TRAINING = config.getboolean('DEFAULT','MAX_MARGIN_TRAINING')
 TRAIN_FILE = config['DEFAULT']['TRAIN_FILE']
-SAVE_MODEL=True
+SAVE_MODEL=config.getboolean('DEFAULT','SAVE_MODEL')
+F1_FOR_THRESHOLD=config.getboolean('DEFAULT','F1_FOR_THRESHOLD')
 
 
 print("begin tensor seesion")
@@ -139,7 +147,6 @@ with tf.Session() as sess:
         data_test = indexed_data_test[:,:3]
         labels_test = indexed_data_test[:,3]
         labels_test = labels_test.reshape((np.shape(labels_test)[0],1))
-        # labels_test[:][labels_test[:] == -1] = 0
         predicates_test = indexed_data_test[:,1]
         predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
         mean_average_precision_test = pr_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
@@ -147,11 +154,8 @@ with tf.Session() as sess:
         classifications_test = er_mlp.classify(predictions_list_test,threshold, predicates_test, cross_margin=True)
         classifications_test = np.array(classifications_test).astype(int)
         confusion_test = confusion_matrix(labels_test, classifications_test)
-        # classifications_test[:][classifications_test[:] == -1] = 0
         labels_test = labels_test.astype(int)
         fl_measure_test = f1_score(labels_test, classifications_test)
-        # print(classifications_test)
-        # print(labels_test)
         accuracy_test = accuracy_score(labels_test, classifications_test)
 
         for i in range(num_preds):
@@ -189,7 +193,7 @@ with tf.Session() as sess:
 
     for epoch in range(TRAINING_EPOCHS):
         if epoch == 0:
-            thresholds = determine_threshold(indexed_dev_data)
+            thresholds = determine_threshold(indexed_dev_data,f1=F1_FOR_THRESHOLD)
             test_model( indexed_test_data, thresholds, _type='current')
         avg_cost = 0.
         total_batch = int(data_train.shape[0] / BATCH_SIZE)
@@ -205,7 +209,7 @@ with tf.Session() as sess:
             iteration+=1
         # Display progress
         if epoch % DISPLAY_STEP == 0:
-            thresholds = determine_threshold(indexed_dev_data)
+            thresholds = determine_threshold(indexed_dev_data,f1=F1_FOR_THRESHOLD)
             test_model( indexed_test_data, thresholds, _type='current')
             print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, TRAINING_EPOCHS, avg_cost,current_cost ))
             print ("")
@@ -213,7 +217,7 @@ with tf.Session() as sess:
 
     print("determine threshold for classification")
     
-    thresholds = determine_threshold(indexed_dev_data)
+    thresholds = determine_threshold(indexed_dev_data,f1=F1_FOR_THRESHOLD)
     test_model( indexed_test_data, thresholds, _type='final')
     plot_cost(iter_list,cost_list,MODEL_SAVE_DIRECTORY)
 

@@ -8,13 +8,18 @@ set -e
 use_calibration="$2"
 base_dir="$1"
 current_dir=$(pwd)
-base_dir="$current_dir""/$base_dir"
+model_instance_dir=$current_dir/model_instance
+cd $model_instance_dir
+base_dir="$model_instance_dir""/$base_dir"
 prev_current_dir="$current_dir""/.."
-prediction_folder="predictions"
+
 io_util_dir='io_util/'
 pra_imp_dir='pra_imp/'
 
 . "$base_dir/"config.sh
+
+prediction_folder=${predict_file%.txt}
+echo $prediction_folder
 
 echo "Content of DATA_PATH is $DATA_PATH"
 test_file="data.txt"
@@ -44,6 +49,7 @@ echo 'clean space'
 
 echo 'create folders'
 mkdir -p $prediction_folder
+cp $DATA_PATH/$predict_file $prediction_folder/data.txt
 mkdir -p $prediction_folder/queriesR_test
 mkdir -p $prediction_folder/queriesR_tail
 mkdir -p $prediction_folder/queriesR_labels
@@ -73,7 +79,7 @@ while read p; do
 		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder
 		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder
 	else
-		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder --use_calibration
+		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder --use_calibration   --log_reg_calibrate $log_reg_calibrate
 		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder --use_calibration
 	fi
 

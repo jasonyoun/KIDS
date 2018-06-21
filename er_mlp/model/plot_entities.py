@@ -39,15 +39,22 @@ font = {
 matplotlib.rc('font', **font)
 
 config = configparser.ConfigParser()
-configuration = sys.argv[1]+'.ini'
-calibrated = False
-if len(sys.argv)>2:
-    if sys.argv[2] == 'use_calibration':
-        calibrated=True
-print('./'+configuration)
+parser = argparse.ArgumentParser(description='evaluate')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
+parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
+
+
+
+args = parser.parse_args()
+calibrated = args.use_calibration
+model_instance_dir='model_instance/'
+model_save_dir=model_instance_dir+args.dir+'/'
+configuration = model_save_dir+args.dir.replace('/','')+'.ini'
+
 config.read('./'+configuration)
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
-MODEL_SAVE_DIRECTORY=config['DEFAULT']['MODEL_SAVE_DIRECTORY']
+MODEL_SAVE_DIRECTORY=model_save_dir
 DATA_PATH=config['DEFAULT']['DATA_PATH']
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
 DATA_TYPE = config['DEFAULT']['DATA_TYPE']
@@ -63,21 +70,8 @@ OPTIMIZER = config.getint('DEFAULT','OPTIMIZER')
 ACT_FUNCTION = config.getint('DEFAULT','ACT_FUNCTION')
 ADD_LAYERS = config.getint('DEFAULT','ADD_LAYERS')
 DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
-MAX_MARGIN_TRAINING = config.getboolean('DEFAULT','MAX_MARGIN_TRAINING')
 
 
-# def plot_with_labels(low_dim_embs, labels, filename='tsne_entities_random.png'):
-#     plt.figure(figsize=(18, 18)) 
-#     for i, label in enumerate(labels):
-#         x, y = low_dim_embs[i, :]
-#         plt.scatter(x, y)
-#         plt.annotate(label,
-#                  xy=(x, y),
-#                  xytext=(5, 2),
-#                  textcoords='offset points',
-#                  ha='right',
-#                  va='bottom')
-#     plt.savefig(filename)
 
 
 
@@ -191,111 +185,42 @@ with tf.Session() as sess:
     for k,v in entity_dic.items():
         id_entity_dic[v] = k
 
-    # pred_embeddings = P.eval()
-    # pred_embeddings_keep =[]
-    # embedding = np.array([])
-    # preds = [None] * len(pred_dic)
-    # for k, v in pred_dic.items():
-    #     preds.append(k)
-    #     pred_embeddings_keep.append(pred_embeddings[pred_dic[k]])
-    # limit = len(pred_embeddings_keep)
-    # preds = [x for x in preds if x is not None]
-
-    # pred_embeddings = np.vstack(pred_embeddings_keep)
-
-    # entity_embeddings = E.eval()
     entity_embeddings_keep =[]
     embedding = np.array([])
     entitys = [None] * len(entity_dic)
     labels = [None] * len(entity_dic)
-    # for k,v in entity_dic.items():
-        # print(v, end=',')
-
     count=0
     for k in subsets_dic['gene']:
-        # if count< 2000:
-        #     count+=1
-        # else:
-        #     break
         entitys.append('r')
         labels.append('gene')
         entity_embeddings_keep.append(entity_embeddings[k])
-    # one of {'b', 'g', 'r', 'c', 'm', 'y', 'k', 'w'};
     count=0
     for k in subsets_dic['molecular_function']:
-        # if count< 2000:
-        #     count+=1
-        # else:
-        #     break
         entitys.append('b')
         labels.append('molecular_function')
         entity_embeddings_keep.append(entity_embeddings[k])
 
     count=0
     for k in subsets_dic['biological_process']:
-        # print(str(k)+id_entity_dic[k],end=',')
-        # if count< 2000:
-        #     count+=1
-        # else:
-        #     break
-        # if k < np.shape(entity_embeddings)[0]: 
         entitys.append('g')
         labels.append('biological_process')
-        # print(id_entity_dic[k])
-        # print(np.shape(entity_embeddings))
         entity_embeddings_keep.append(entity_embeddings[k])
 
     count=0
     for k in subsets_dic['cellular_component']:
-        # if count< 2000:
-        #     count+=1
-        # else:
-        #     break
         entitys.append('m')
         labels.append('cellular_component')
         entity_embeddings_keep.append(entity_embeddings[k])
 
     count=0
     for k in subsets_dic['antibiotic']:
-        # if count< 2000:
-        #     count+=1
-        # else:
-        #     break
         entitys.append('y')
         labels.append('antibiotic')
         entity_embeddings_keep.append(entity_embeddings[k])
     limit = len(entity_embeddings_keep)
     entitys = [x for x in entitys if x is not None]
-    # entitys = preds +entitys
     entity_embeddings = np.vstack(entity_embeddings_keep)
-    # entity_embeddings = np.vstack((pred_embeddings,entity_embeddings))
-    
 
-    # for p,t in predicate_to_entity_to_triplets_set.items():
-    #     for k,v in t.items():
-    #         if count< 50:
-    #             count+=1
-    #         else:
-    #             continue
-    #         entity_embeddings_keep.append(entity_embeddings[entity_dic[k]])
-    #         entitys[entity_dic[k]] = k
-    #         for e in v: 
-    #             if e_count< 10:
-    #                 e_count+=1
-    #             else:
-    #                 break
-    #             entity_embeddings_keep.append(entity_embeddings[entity_dic[e]])
-    #             entitys[entity_dic[e]] = e
-    # limit = len(entity_embeddings_keep)+limit
-    # entitys = [x for x in entitys if x is not None]
-    # entitys = entitys +preds
-
-    # entity_embeddings = np.vstack(entity_embeddings_keep)
-    # entity_embeddings = np.vstack((entity_embeddings,pred_embeddings_keep))
-    # print(entity_embeddings)
-    # print(np.shape(entitys))
-    # print(np.shape(entity_embeddings))
-    # limit=500
     vector_dim = 50
     # Reshaping embedding
     embedding = entity_embeddings.reshape(limit, vector_dim)

@@ -129,11 +129,11 @@ class ERMLP:
             layer_1_correct = tf.sigmoid(layer_1_correct_pre_act)
             layer_1_corrupted = tf.sigmoid(layer_1_corrupted_pre_act)
 
-        #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
         out_correct = tf.matmul(layer_1_correct,_weights['B'])
+        out_correct = tf.sigmoid(out_correct)
         out_corrupted = tf.matmul(layer_1_corrupted,_weights['B'])
+        out_corrupted = tf.sigmoid(out_corrupted)
         out = tf.concat([out_correct, out_corrupted],axis=1, name='inference_for_max_margin_training')
-        #out = tf.stack([out_correct, out_corrupted])
         return out
 
     # Similar to the network used for training, but without evaluating the corrupted triplet. This is used during testing
@@ -181,45 +181,9 @@ class ERMLP:
             layer_1 = tf.sigmoid(layer_1_pre_act)
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
         out = tf.matmul(layer_1,_weights['B'], name='inference')
+        out = tf.sigmoid(out)
         return out
 
-    # determine the best threshold to use for classification
-    # def compute_threshold(self, predictions_list, dev_labels,predicates, f1=False,cross_margin=False):
-    #     min_score = np.min(predictions_list) 
-    #     max_score = np.max(predictions_list) 
-    #     # print(min_score)
-    #     # print(max_score)
-    #     best_threshold = np.zeros(self.params['num_preds']);
-    #     best_accuracy = np.zeros(self.params['num_preds']);
-    #     for i in range(self.params['num_preds']):
-    #         best_threshold[i]= min_score;
-    #         best_accuracy[i] = -1;
-    #     # print(predictions_list)
-    #     score = min_score
-    #     increment = 0.01
-    #     while(score <= max_score):
-    #         for i in range(self.params['num_preds']):
-    #             predicate_indices = np.where(predicates == i)[0]
-    #             # print(np.shape(predicate_indices))
-    #             # print(np.shape(predictions_list))
-    #             # print(np.shape(predicates))
-    #             if np.shape(predicate_indices)[0]!=0:
-    #                 predicate_predictions = predictions_list[predicate_indices]
-    #                 # predictions = (predicate_predictions >= score) * 2 -1
-    #                 predictions = (predicate_predictions >= score)
-    #                 if cross_margin:
-    #                     predictions = (predicate_predictions >= score) * 2 -1
-    #                 predicate_labels = dev_labels[predicate_indices]
-    #                 accuracy = accuracy_score(predictions,predicate_labels)
-    #                 if f1:
-    #                     accuracy = f1_score(predicate_labels,predictions)
-    #                 # accuracy = np.mean(predictions == predicate_labels)
-    #                 if accuracy > best_accuracy[i]:
-    #                     best_threshold[i] = score
-    #                     best_accuracy[i] = accuracy
-    #                 score += increment
-    #     # print(best_threshold)
-    #     return best_threshold
 
     # determine the best threshold to use for classification
     def compute_threshold(self, predictions_list, dev_labels,predicates, f1=False,cross_margin=False):

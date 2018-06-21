@@ -18,7 +18,9 @@ containsElement () {
 }
 base_dir="$1"
 current_dir=$(pwd)
-base_dir="$current_dir""/$base_dir"
+model_instance_dir=$current_dir/model_instance
+cd $model_instance_dir
+base_dir="$model_instance_dir""/$base_dir"
 prev_current_dir="$current_dir""/.."
 io_util_dir='io_util/'
 pra_imp_dir='pra_imp/'
@@ -51,10 +53,10 @@ sed -i -e "s|task=_TASK_|task=train|g" conf
 
 echo "process data "
 echo ""
-if  [  "$is_freebase" == "true" ] ; then
-	python3 $prev_current_dir/$data_handler_dir/pra_data_processor.py $DATA_PATH $train_file $is_freebase
+if  [  "$use_domain" == "true" ] ; then
+	python3 $prev_current_dir/$data_handler_dir/pra_data_processor.py --data_path $DATA_PATH --train_file $train_file --use_domain
 else
-	python3 $prev_current_dir/$data_handler_dir/pra_data_processor.py $DATA_PATH $train_file
+	python3 $prev_current_dir/$data_handler_dir/pra_data_processor.py --data_path $DATA_PATH --train_file $train_file
 fi
 java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.data.WKnowledge createEdgeFile "$instance_dir/"ecoli_generalizations.csv 0.1 edges
 
@@ -79,7 +81,7 @@ mkdir -p "$train_folder""/queriesR_train"
 
 java -Xms6G -Xmx6G -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.SmallJobs createQueries ./graphs/pos "$train_folder""/queriesR_train/" true false
 
-if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ] && [ "$use_negatives" == "true"  ]; then	
+if [ -f "$instance_dir/"ecoli_generalizations_neg.csv ] && [ "$use_negatives" == true  ]; then	
 	echo "create negative queries "
 	echo ""
 	sed -i -e "s|given_negative_samples=false|given_negative_samples=true|g" conf
@@ -121,7 +123,7 @@ while read p; do
 
 	echo "$does_not_have_negatives"
 
-	if  [  "$does_not_have_negatives" == "true" ] || [ "$use_negatives" != "true"  ]; then
+	if  [  "$does_not_have_negatives" == true ] || [ "$use_negatives" != true  ]; then
 		echo 'inside'
 		sed -i -e "s|given_negative_samples=true|given_negative_samples=false|g" conf
 	else

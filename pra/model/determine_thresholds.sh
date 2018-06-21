@@ -8,7 +8,9 @@ set -e
 use_calibration="$2"
 base_dir="$1"
 current_dir=$(pwd)
-base_dir="$current_dir""/$base_dir"
+model_instance_dir=$current_dir/model_instance
+cd $model_instance_dir
+base_dir="$model_instance_dir""/$base_dir"
 prev_current_dir="$current_dir""/.."
 io_util_dir='io_util/'
 pra_imp_dir='pra_imp/'
@@ -83,7 +85,7 @@ while read p; do
 		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $dev_folder
 		python3 $prev_current_dir/$io_util_dir/determine_thresholds.py --predicate  $p --dir $dev_folder
 	else
-		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $dev_folder --use_calibration
+		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $dev_folder --use_calibration  --log_reg_calibrate $log_reg_calibrate
 		python3 $prev_current_dir/$io_util_dir/determine_thresholds.py --predicate  $p --dir $dev_folder  --use_calibration
 	fi
 

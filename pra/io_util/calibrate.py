@@ -16,11 +16,15 @@ parser.add_argument('--predicate', nargs='?',required=True,
                     help='the predicate that we will get the scores for')
 parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
                     help='base directory')
-parser.add_argument('--freebase',action='store_const',default=False,const=True)
+parser.add_argument('--use_smolt_sampling', metavar='use_smolt_sampling', nargs='?', default='false',
+                    help='use smolt sampling')
+parser.add_argument('--log_reg_calibrate', metavar='log_reg_calibrate', nargs='?', default='false',
+                    help='use logistic regression for calibration, isotonic regression otherwise')
 
 args = parser.parse_args()
 print(args.dir)
-
+use_smolt_sampling = True if args.use_smolt_sampling=='true' else False
+log_reg_calibrate = True if args.log_reg_calibrate=='true' else False
 relation = args.predicate
 
 queries_file = args.dir+'/queriesR_test/'+relation
@@ -60,28 +64,27 @@ print(np.shape(scores_array))
 labels_array = labels_array[indices]
 labels_array[:][labels_array[:] == -1] = 0
 # print(labels_array)
-print(np.shape(scores_array))
-print(np.shape(labels_array))
-ir = IR(out_of_bounds='clip'  )
-if args.freebase:
-	X_train = scores_array[:,0]
-	y_train = labels_array
+if use_smolt_sampling:
+    ros = SMOTE(ratio='minority')
+    X_train, y_train = ros.fit_sample(scores_array[:,0].reshape(-1, 1), labels_array.ravel() )
 else:
-    # X_train = scores_array[:,0]
-    # y_train = labels_array
-	ros = SMOTE(ratio='minority')
-	X_train, y_train = ros.fit_sample(scores_array[:,0].reshape(-1, 1), labels_array.ravel() )
+    X_train = scores_array[:,0]
+    y_train = labels_array
 
-print(np.shape(X_train))
-print(np.shape(y_train))
-ir.fit( X_train.ravel(), y_train.ravel()  )
+if log_reg_calibrate:
+    clf = LogisticRegression()
+    clf.fit( X_train.reshape(-1, 1), y_train.ravel() ) 
+else:
+    clf = IR(out_of_bounds='clip'  )
+    clf.fit( X_train.ravel(), y_train.ravel()  )
+
 
 # log_reg = LogisticRegression()
 # log_reg.fit( X_train.reshape(-1, 1), y_train.ravel() )  
 
 
 with open('calibrations/'+relation+'.pkl', 'wb') as output:
-    pickle.dump(ir, output, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(clf, output, pickle.HIGHEST_PROTOCOL)
 
 
 

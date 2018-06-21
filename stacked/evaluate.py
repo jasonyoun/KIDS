@@ -14,64 +14,92 @@ abs_path_metrics= os.path.join(directory, '../utils')
 sys.path.insert(0, abs_path_metrics)
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 import features
+import configparser
 
 parser = argparse.ArgumentParser(description='build stacked ensemble')
-parser.add_argument('--pra', metavar='pra_model (pra_model_2)', nargs='+',action='store',required=True,
-                    help='The pra models to add')
-parser.add_argument('--er_mlp', metavar='er_mlp_model (er_mlp_model_2)', nargs='+', action='store',required=True,
-                    help='The er-mlp models to add')
 parser.add_argument('--dir', metavar='dir', nargs='?', action='store',required=True,
                     help='directory to store the model')
 parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
 
 args = parser.parse_args()
+config = configparser.ConfigParser()
+model_instance_dir='model_instance/'
+model_save_dir=model_instance_dir+args.dir+'/'
+configuration = model_save_dir+args.dir.replace('/','')+'.ini'
+print('./'+configuration)
+config.read('./'+configuration)
+
+er_mlp_model_dir = config['DEFAULT']['er_mlp_model_dir']
+pra_model_dir = config['DEFAULT']['pra_model_dir']
+F1_FOR_THRESHOLD = config.getboolean('DEFAULT','F1_FOR_THRESHOLD')
+USE_SMOTE_SAMPLING=config.getboolean('DEFAULT','USE_SMOTE_SAMPLING')
+LOG_REG_CALIBRATE= config.getboolean('DEFAULT','LOG_REG_CALIBRATE')
+TEST_DIR = config['DEFAULT']['TEST_DIR']
+
+args = parser.parse_args()
 print(args)
 use_calibration = args.use_calibration
 if use_calibration:
-    with open(args.dir+'/calibrations.pkl', 'rb') as pickle_file:
-        log_reg = pickle.load(pickle_file)
+    with open(model_save_dir+'/calibrations.pkl', 'rb') as pickle_file:
+        clf_dic = pickle.load(pickle_file)
 
-# def classify( predictions_list,threshold, predicates):
-#     classifications = []
-#     for i in range(len(predictions_list)):
-#         # print(predictions_list[i])
-#         # print(threshold[predicates[i]])
-#         if(predictions_list[i] >= threshold[predicates[i]]):
-#             classifications.append(1)
-#         else:
-#             classifications.append(0)
-#     return np.array(classifications)
 def classify( predictions_list,threshold, predicates):
     classifications = []
     for i in range(len(predictions_list)):
-        # print(predictions_list[i])
-        # print(threshold[predicates[i]])
         if(predictions_list[i] >= threshold):
             classifications.append(1)
         else:
             classifications.append(0)
     return np.array(classifications)
 
-fn = open(args.dir+'/threshold.pkl','rb')
+fn = open(model_save_dir+'/threshold.pkl','rb')
 if use_calibration:
-    fn = open(args.dir+'/calibrated_threshold.pkl','rb')
+    fn = open(model_save_dir+'/calibrated_threshold.pkl','rb')
 threshold = pickle.load(fn)
 
 print(threshold)
 
-fn = open(args.dir+'/model.pkl','rb')
-clf = pickle.load(fn)
-pred_dic,test_x,test_y,predicates = features.get_x_y('test',args.er_mlp,args.pra)
-# test_y[:][test_y[:] == -1] = 0
+fn = open(model_save_dir+'/model.pkl','rb')
+model_dic = pickle.load(fn)
+pred_dic,test_x,test_y,predicates_test = features.get_x_y(TEST_DIR,er_mlp_model_dir,pra_model_dir)
 print(test_y)
-# y_hat = clf.predict(test_x)
-probabilities = clf.predict_proba( test_x)
-# print(probabilities)
-probabilities = probabilities[:,1]
+
+test_y[:][test_y[:] == -1] = 0
+best_thresholds = np.zeros(len(pred_dic));
+probabilities = np.zeros_like(predicates_test)
+probabilities = probabilities.reshape((np.shape(probabilities)[0],1))
+standard_classifications = np.zeros_like(predicates_test)
+threshold_classifications = np.zeros_like(predicates_test)
+for k,i in pred_dic.items():
+    indices, = np.where(predicates_test == i)
+    if np.shape(indices)[0]!=0:
+        clf = model_dic[i]
+        X = test_x[indices]
+        y = test_y[indices]
+        predicates = predicates_test[indices]
+
+        preds = clf.predict_proba(X)[:,1]
+        preds_class =clf.predict(X)
+        preds= preds.reshape((np.shape(preds)[0],1))
+        probabilities[indices] = preds
+        standard_classifications[indices]=preds_class
+        threshold_classifications[indices] = classify(preds,threshold[i],predicates)
+
 if use_calibration:
-    # scores=log_reg.transform( probabilities.ravel() )
-    scores =log_reg.predict_proba( probabilities.reshape(-1,1))[:,1]
-    probabilities = scores
+    for k,i in pred_dic.items():
+        indices, = np.where(predicates_test == i)
+        if np.shape(indices)[0]!=0:
+            clf = clf_dic[i]
+            X = probabilities[indices]
+            if LOG_REG_CALIBRATE:
+                preds = clf.predict_proba(X)[:,1]
+            else:
+                preds = clf.transform( X.ravel() )
+            preds= preds.reshape((np.shape(preds)[0],1))
+            probabilities[indices] = preds
+
+    # scores =log_reg.predict_proba( probabilities.reshape(-1,1))[:,1]
+    # probabilities = scores
 
 # np.set_printoptions(threshold=np.nan)
 print('probabilities')
@@ -79,10 +107,10 @@ print(probabilities)
 print('test_y')
 print(test_y)
 
-classifications = clf.predict( test_x)
-# classifications = classify(probabilities,threshold,predicates)
-plot_roc(len(pred_dic), test_y, probabilities,predicates,pred_dic, args.dir)
-plot_pr(len(pred_dic), test_y, probabilities,predicates,pred_dic, args.dir)
+# classifications = standard_classifications
+classifications = threshold_classifications
+plot_roc(len(pred_dic), test_y, probabilities,predicates,pred_dic, model_save_dir)
+plot_pr(len(pred_dic), test_y, probabilities,predicates,pred_dic, model_save_dir)
 auc_test = roc_auc_stats(len(pred_dic), test_y, probabilities,predicates,pred_dic)
 ap_test = pr_stats(len(pred_dic), test_y, probabilities,predicates,pred_dic)
 
@@ -115,7 +143,7 @@ for i in range(len(pred_dic)):
         print(confusion_predicate)
         print(" ")
 
-_file =  args.dir+"/classifications_stacked.txt"
+_file =  model_save_dir+"/classifications_stacked.txt"
 with open(_file, 'w') as t_f:
     for row in classifications:
         t_f.write(str(row)+'\n')

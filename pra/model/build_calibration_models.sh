@@ -8,7 +8,9 @@ set -e
 
 base_dir="$1"
 current_dir=$(pwd)
-base_dir="$current_dir""/$base_dir"
+model_instance_dir=$current_dir/model_instance
+cd $model_instance_dir
+base_dir="$model_instance_dir""/$base_dir"
 prev_current_dir="$current_dir""/.."
 
 . "$base_dir/"config.sh
@@ -79,11 +81,7 @@ while read p; do
 
 	python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir dev
 
-	if  [  "$is_freebase" == "true" ] ; then
-		python3 $prev_current_dir/$io_util_dir/calibrate.py  --predicate $p --dir dev --freebase
-	else
-		python3 $prev_current_dir/$io_util_dir/calibrate.py  --predicate $p --dir dev
-	fi
+	python3 $prev_current_dir/$io_util_dir/calibrate.py  --predicate $p --dir dev --use_smolt_sampling $use_smolt_sampling --log_reg_calibrate $log_reg_calibrate
 
 	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
   	

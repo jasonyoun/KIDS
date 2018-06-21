@@ -6,6 +6,7 @@ import pickle as pickle
 import random
 import scipy.io as spio
 import csv
+import argparse
 
 def create_type_subsets_dic(data_array):
     type_dic = {}
@@ -26,12 +27,12 @@ def clean_row(row):
 
 class DataProcessor:
 
-    def __init__(self,data_path, data_file,freebase=False):
-        self.freebase = freebase
+    def __init__(self,data_path, data_file,use_domain=False):
+        self.use_domain = use_domain
         self.data_path = data_path
         print('create subsets dic')
         print('')
-        if not self.freebase:
+        if self.use_domain:
             my_file = "entity_full_names.txt"
             df = pd.read_csv(self.data_path+'/'+my_file,sep=':',encoding ='latin-1',header=None)
             data_array = df.as_matrix()
@@ -89,7 +90,7 @@ class DataProcessor:
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(['relationName', 'humanFormat','populate','generalizations','domain','range','antisymmetric','mutexExceptions','knownNegatives','inverse','seedInstances','seedExtractionPatterns','nrOfValues','nrOfInverseValues','requiredForDomain','requiredForRange','editDate','author','description','freebaseID','coment' ])
             for r in self.relation_set:
-                if not self.freebase:
+                if self.use_domain:
                     writer.writerow(['concept:'+r, '{{}}', 'true', '{"object"}', self.domain_range_dic[r][0], self.domain_range_dic[r][1], 'true']+ ['concept:'+self.domain_range_dic[r][0],'concept:'+self.domain_range_dic[r][1]]+['']+['(empty set)']*2+['any']+['NO_THEO_VALUE']*8)
                 else:
                      writer.writerow([r, '{{}}', 'true', '{}', 'object', 'object', 'true']+ ['(empty set)']*2+['']+['(empty set)']*2+['any']+['NO_THEO_VALUE']*8)
@@ -125,7 +126,7 @@ class DataProcessor:
                 # print(row[0])
                 # print(row[1])
                 
-            if not self.freebase:
+            if self.use_domain:
                 for row in positives:
                     writer.writerow(['concept:'+self.type_dic[row[0]]+':'+row[0], 'concept:'+row[1], 'concept:'+self.type_dic[row[2]]+':'+row[2], '', '1.0', '', ''])
                 for k in self.entity_set:
@@ -141,18 +142,25 @@ class DataProcessor:
 
 
 if __name__ == "__main__":
-    freebase=False
-    if len(sys.argv)>3:
-        freebase=True
-    processor = DataProcessor(sys.argv[1],sys.argv[2],freebase=freebase )
+    # $DATA_PATH $train_file $use_domain
+    parser = argparse.ArgumentParser(description='Process data')
+    parser.add_argument('--data_path', metavar='dir', nargs='?', default='./',
+                        help='data directory')
+    parser.add_argument('--train_file', metavar='dir', nargs='?', default='./',
+                        help='The train file')
+    parser.add_argument('--use_domain',action='store_const',default=False,const=True)
+
+    args = parser.parse_args()
+    print(args.data_path)
+    processor = DataProcessor(args.data_path,args.train_file,use_domain=args.use_domain )
     test_df = processor.load('test.txt')
     processor.create_selected_relations_file(test_df.as_matrix())
     processor.create_sets()
     processor.create_relations_file()
-    train_df = processor.load(sys.argv[2] )
+    train_df = processor.load(args.train_file )
     shape = np.shape(train_df.as_matrix())
     processor.create_triplets_generalizations_file(train_df.as_matrix())
-    if not freebase:
+    if args.use_domain:
         if (shape[1]==4):
             processor.create_triplets_generalizations_file(train_df.as_matrix(),positive=False)
 

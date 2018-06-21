@@ -4,16 +4,12 @@ import pandas as pd
 import sys
 import os
 directory = os.path.dirname(__file__)
-print(__file__)
-print(directory)
 abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
 abs_path_data= os.path.join(directory, '../data_handler')
 sys.path.insert(0, abs_path_data)
 if directory != '':
     directory = directory+'/'
-# print(directory)
-#sys.path.insert(0, '../data')
 import tensorflow as tf
 from sklearn import utils
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score, confusion_matrix
@@ -25,34 +21,28 @@ from data_processor import DataProcessor
 from data_orchestrator_cm import DataOrchestrator
 from er_mlp import ERMLP
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, plot_cost
-# from sklearn.model_selection import StratifiedKFold
-#from sklearn.cross_validation import StratifiedKFold
 
 
 
-def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS, DROP_OUT_PERCENT,DATA_PATH, SAVE_MODEL=False, MODEL_SAVE_DIRECTORY=None,USE_RANGE=True, USE_NEG=True,TRAIN_FILE='train.txt', IS_FREEBASE=False ):
+def run_model(params):
     # numerically represent the entities, predicates, and words
     processor = DataProcessor()
 
-    train_df = processor.load(DATA_PATH+TRAIN_FILE)
-    if IS_FREEBASE:
+    train_df = processor.load(params['DATA_PATH']+params['TRAIN_FILE'])
+    if len(train_df.columns)<4:
         train_df['one'] =1
 
-    test_df = processor.load(DATA_PATH+'test.txt')
-    dev_df = processor.load(DATA_PATH+'dev.txt')
+    test_df = processor.load(params['DATA_PATH']+'test.txt')
+    dev_df = processor.load(params['DATA_PATH']+'dev.txt')
 
     print("machine translation...")
-    indexed_entities, num_entity_words, entity_dic,indexed_predicates, indexed_pred_word_embeddings, pred_dic,num_pred_words,num_entity_words = None,None,None,None,None,None,None,None
-    if WORD_EMBEDDING:
-        if IS_FREEBASE:
-            indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word(DATA_PATH+'/entities.txt',EMBEDDING_SIZE,initEmbedFile=DATA_PATH+'/initEmbed.mat')
-            indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word(DATA_PATH+'/relations.txt',EMBEDDING_SIZE)
-        else:
-            indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word(DATA_PATH+'/entities.txt',EMBEDDING_SIZE,separator='#SPACE#|#COMMA#|#SEMICOLON#|\W+')
-            indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word(DATA_PATH+'/relations.txt',EMBEDDING_SIZE,separator='#SPACE#|#COMMA#|#SEMICOLON#|\W+')
+    # indexed_entities, num_entity_words, entity_dic,indexed_predicates, indexed_pred_word_embeddings, pred_dic,num_pred_words,num_entity_words = None,None,None,None,None,None,None,None
+    if params['WORD_EMBEDDING']:
+        indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word(params['DATA_PATH']+'/entities.txt',params['EMBEDDING_SIZE'])
+        indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word(params['DATA_PATH']+'/relations.txt',params['EMBEDDING_SIZE'])
     else:
-        entity_dic = processor.machine_translate(DATA_PATH+'/entities.txt',EMBEDDING_SIZE)
-        pred_dic = processor.machine_translate(DATA_PATH+'/relations.txt',EMBEDDING_SIZE)
+        entity_dic = processor.machine_translate(params['DATA_PATH']+'/entities.txt',params['EMBEDDING_SIZE'])
+        pred_dic = processor.machine_translate(params['DATA_PATH']+'/relations.txt',params['EMBEDDING_SIZE'])
 
     # numerically represent the data 
     print("Index:")
@@ -71,22 +61,22 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     NUM_PREDS = len(pred_dic)
 
     er_mlp_params = {
-        'word_embedding': WORD_EMBEDDING,
-        'embedding_size': EMBEDDING_SIZE,
-        'layer_size': LAYER_SIZE,
-        'corrupt_size': CORRUPT_SIZE,
-        'lambda': LAMBDA,
+        'word_embedding': params['WORD_EMBEDDING'],
+        'embedding_size': params['EMBEDDING_SIZE'],
+        'layer_size': params['LAYER_SIZE'],
+        'corrupt_size': params['CORRUPT_SIZE'],
+        'lambda': params['LAMBDA'],
         'num_entities':NUM_ENTITIES,
         'num_preds':NUM_PREDS,
         'num_entity_words':num_entity_words,
         'num_pred_words':num_pred_words,
         'indexed_entities':indexed_entities,
         'indexed_predicates': indexed_predicates, 
-        'learning_rate':LEARNING_RATE,
-        'batch_size': BATCH_SIZE,
-        'add_layers': ADD_LAYERS,
-        'act_function':ACT_FUNCTION,
-        'drop_out_percent': DROP_OUT_PERCENT
+        'learning_rate':params['LEARNING_RATE'],
+        'batch_size': params['BATCH_SIZE'],
+        'add_layers': params['ADD_LAYERS'],
+        'act_function':params['ACT_FUNCTION'],
+        'drop_out_percent': params['DROP_OUT_PERCENT']
     }
 
     er_mlp = ERMLP(er_mlp_params)
@@ -113,7 +103,7 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     tf.add_to_collection('cost', cost)
 
     print('optimizer')
-    if OPTIMIZER == 0:
+    if params['OPTIMIZER'] == 0:
         print('adagrad')
         optimizer = er_mlp.train_adagrad(cost)
     else:
@@ -134,11 +124,10 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     sess.run(init_all)
 
     print(np.shape(indexed_train_data))
-    # data_orch = DataOrchestrator( indexed_train_data, DATA_PATH,pred_dic,entity_dic, corruption_size=CORRUPT_SIZE, shuffle=True, use_range=USE_RANGE, use_neg=USE_NEG,is_freebase=IS_FREEBASE)
     data_train = indexed_train_data[indexed_train_data[:,3] == 1  ]
     data_train = data_train[:,:3]
     print(np.shape(data_train))
-    batches_per_epoch = np.floor(len(data_train) / BATCH_SIZE).astype(np.int16)
+    batches_per_epoch = np.floor(len(data_train) / params['BATCH_SIZE']).astype(np.int16)
 
 
     def determine_threshold(indexed_data_dev, f1=False):
@@ -205,12 +194,12 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
     print("Begin training...")
 
 
-    for epoch in range(TRAINING_EPOCHS):
+    for epoch in range(params['TRAINING_EPOCHS']):
         if epoch == 0:
-            thresholds = determine_threshold(indexed_dev_data)
+            thresholds = determine_threshold(indexed_dev_data,f1=params['F1_FOR_THRESHOLD'])
             test_model( indexed_test_data, thresholds, _type='current')
         avg_cost = 0.
-        total_batch = int(data_train.shape[0] / BATCH_SIZE)
+        total_batch = int(data_train.shape[0] / params['BATCH_SIZE'])
         for i in range(total_batch):
             batch_xs = er_mlp.get_training_batch_with_corrupted(data_train)
             flip = bool(random.getrandbits(1))
@@ -222,57 +211,39 @@ def run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, LAYER_SIZE,TRAINING_EPOC
             iter_list.append(iteration)
             iteration+=1
         # Display progress
-        if epoch % DISPLAY_STEP == 0:
-            thresholds = determine_threshold(indexed_dev_data)
+        if epoch % params['DISPLAY_STEP'] == 0:
+            thresholds = determine_threshold(indexed_dev_data,f1=params['F1_FOR_THRESHOLD'])
             test_model( indexed_test_data, thresholds, _type='current')
-            print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, TRAINING_EPOCHS, avg_cost,current_cost ))
+            print ("Epoch: %03d/%03d cost: %.9f - current_cost: %.9f" % (epoch, params['TRAINING_EPOCHS'], avg_cost,current_cost ))
             print ("")
         # data_orch.reset_data_index()
 
     print("determine threshold for classification")
     
-    thresholds = determine_threshold(indexed_dev_data)
+    thresholds = determine_threshold(indexed_dev_data,f1=params['F1_FOR_THRESHOLD'])
     test_model( indexed_test_data, thresholds, _type='final')
-    plot_cost(iter_list,cost_list,MODEL_SAVE_DIRECTORY)
+    plot_cost(iter_list,cost_list,params['MODEL_SAVE_DIRECTORY'])
 
 
-    if SAVE_MODEL:
+    if params['SAVE_MODEL']:
 
 
-        saver.save(sess,MODEL_SAVE_DIRECTORY+'/model')
-        print('model saved in: '+MODEL_SAVE_DIRECTORY)
+        saver.save(sess,params['MODEL_SAVE_DIRECTORY']+'/model')
+        print('model saved in: '+params['MODEL_SAVE_DIRECTORY'])
         save_object = {
             'thresholds':thresholds,
             'entity_dic': entity_dic,
             'pred_dic': pred_dic
         }
-        if WORD_EMBEDDING:
+        if params['WORD_EMBEDDING']:
             save_object['indexed_entities'] = indexed_entities
             save_object['indexed_predicates'] = indexed_predicates
             save_object['num_pred_words'] = num_pred_words
             save_object['num_entity_words'] = num_entity_words
-        with open(MODEL_SAVE_DIRECTORY+'/params.pkl', 'wb') as output:
+        with open(params['MODEL_SAVE_DIRECTORY']+'/params.pkl', 'wb') as output:
             pickle.dump(save_object, output, pickle.HIGHEST_PROTOCOL)
 
 
-if __name__ == "__main__":
-    WORD_EMBEDDING = False
-    DATA_TYPE = 'freebase'
-    EMBEDDING_SIZE = 60 # size of each embeddings
-    LAYER_SIZE = 60 # number of columns in the first layer
-    TRAINING_EPOCHS = 5 
-    BATCH_SIZE = 500
-    LEARNING_RATE = 0.01  
-    DISPLAY_STEP = 1
-    CORRUPT_SIZE = 10
-    LAMBDA = 0.0001
-    OPTIMIZER = 1
-    ACT_FUNCTION = 0
-    ADD_LAYERS=0
-    DROP_OUT_PERCENT=0.1
-    DATA_PATH = '/Users/nicholasjoodi/Documents/ucdavis/research/HypothesisGeneration/archive/data/raw/freebase/'
-    run_model(WORD_EMBEDDING,DATA_TYPE, EMBEDDING_SIZE, \
-        LAYER_SIZE, TRAINING_EPOCHS, BATCH_SIZE, LEARNING_RATE, DISPLAY_STEP, CORRUPT_SIZE, LAMBDA, OPTIMIZER, ACT_FUNCTION, ADD_LAYERS)
 
 
 

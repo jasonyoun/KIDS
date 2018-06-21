@@ -23,19 +23,29 @@ abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
 from data_processor import DataProcessor
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+import argparse
 if directory != '':
     directory = directory+'/'
 
+
+
 config = configparser.ConfigParser()
-configuration = sys.argv[1]+'.ini'
-calibrated = False
-if len(sys.argv)>2:
-    if sys.argv[2] == 'use_calibration':
-        calibrated=True
+parser = argparse.ArgumentParser(description='evaluate')
+parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
+                    help='base directory')
+parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
+
+
+
+args = parser.parse_args()
+calibrated = args.use_calibration
+model_instance_dir='model_instance/'
+model_save_dir=model_instance_dir+args.dir
+configuration = model_save_dir+'/'+args.dir.replace('/','')+'.ini'
 print('./'+configuration)
 config.read('./'+configuration)
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
-MODEL_SAVE_DIRECTORY=config['DEFAULT']['MODEL_SAVE_DIRECTORY']
+MODEL_SAVE_DIRECTORY=model_save_dir
 DATA_PATH=config['DEFAULT']['DATA_PATH']
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
 DATA_TYPE = config['DEFAULT']['DATA_TYPE']
@@ -51,7 +61,7 @@ OPTIMIZER = config.getint('DEFAULT','OPTIMIZER')
 ACT_FUNCTION = config.getint('DEFAULT','ACT_FUNCTION')
 ADD_LAYERS = config.getint('DEFAULT','ADD_LAYERS')
 DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
-MAX_MARGIN_TRAINING = config.getboolean('DEFAULT','MAX_MARGIN_TRAINING')
+LOG_REG_CALIBRATE= config.getboolean('DEFAULT','LOG_REG_CALIBRATE')
 
 def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,predicates_test,pred_dic):
     index=0
@@ -59,12 +69,13 @@ def calibrate_probabilties(predictions_list_test,num_preds,calibration_models,pr
         indices, = np.where(predicates_test == i)
         if np.shape(indices)[0]!=0 :
             predictions_predicate = predictions_list_test[indices]
-            log_reg = calibration_models[i]
-            # p_calibrated = log_reg.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
-            p_calibrated = log_reg.transform( predictions_predicate.ravel() )
+            clf = calibration_models[i]
+            if LOG_REG_CALIBRATE:
+                p_calibrated = clf.predict_proba( predictions_predicate.reshape( -1, 1 ))[:,1]
+            else:
+                p_calibrated = clf.transform( predictions_predicate.ravel() )
             predictions_list_test[indices] = p_calibrated.reshape((np.shape(p_calibrated)[0],1))
             print(predictions_list_test[indices])
-    print(predictions_list_test)
     return predictions_list_test
 
 print("begin tensor seesion")
@@ -136,7 +147,6 @@ with tf.Session() as sess:
     mean_average_precision_test = pr_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
     roc_auc_test = roc_auc_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
     classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test)
-    print(labels_test)
     classifications_test = np.array(classifications_test).astype(int)
     labels_test = labels_test.astype(int)
     fl_measure_test = f1_score(labels_test, classifications_test)
@@ -145,9 +155,8 @@ with tf.Session() as sess:
     precision_test = precision_score(labels_test, classifications_test)
     recall_test = recall_score(labels_test, classifications_test)
     calib_file_name='_calibrated' if calibrated else '_not_calibrated'
-    training_file_name='_cm' if MAX_MARGIN_TRAINING else '_ce'
-    plot_pr(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY,name_of_file='er_mlp'+calib_file_name+training_file_name)
-    plot_roc(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY,name_of_file='er_mlp'+calib_file_name+training_file_name)
+    plot_pr(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY+'/test/',name_of_file='er_mlp'+calib_file_name)
+    plot_roc(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY+'/test/',name_of_file='er_mlp'+calib_file_name)
 
     for i in range(num_preds):
         for key, value in pred_dic.items():
@@ -181,7 +190,7 @@ with tf.Session() as sess:
     print("thresholds: ")
     print(thresholds)
 
-_file =  sys.argv[1]+"/classifications_er_mlp.txt"
+_file =  model_save_dir+"/classifications_er_mlp.txt"
 with open(_file, 'w') as t_f:
     for row in classifications_test:
         t_f.write(str(row)+'\n')

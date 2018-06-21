@@ -18,6 +18,8 @@ parser.add_argument('--predicate', nargs='?',required=True,
                     help='the predicate that we will get the scores for')
 parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
                     help='base directory')
+parser.add_argument('--log_reg_calibrate', metavar='log_reg_calibrate', nargs='?', default='false',
+                    help='use logistic regression for calibration, isotonic regression otherwise')
 
 args = parser.parse_args()
 print(args.dir)
@@ -25,8 +27,11 @@ relation = args.predicate
 print(relation)
 use_calibration = args.use_calibration
 if use_calibration:
+    log_reg_calibrate = True if args.log_reg_calibrate=='true' else False
     with open('calibrations/'+relation+'.pkl', 'rb') as pickle_file:
-        log_reg = pickle.load(pickle_file)
+        clf = pickle.load(pickle_file)
+
+
 
 queries_file = args.dir+'/queriesR_test/'+relation
 queries_tail = args.dir+'/queriesR_tail/'+relation
@@ -77,10 +82,11 @@ if use_calibration:
     valid_array =  np.array(valid)
     indices, = np.where(valid_array[:] > 0.)
     the_scores = scores_array[indices].reshape(-1, 1)
+    if log_reg_calibrate:
+        scores =clf.predict_proba( the_scores)[:,1]
+    else:
+        scores=clf.transform( the_scores.ravel() )
 
-    scores=log_reg.transform( the_scores.ravel() )
-
-    # scores =log_reg.predict_proba( the_scores)[:,1]
     scores_array[indices] = scores
 else:
     scores_array = np.array(scores)
