@@ -60,8 +60,8 @@ def determine_thresholds(predictions_dev,dev_y):
     return best_threshold
 
 pred_dic,dev_x,dev_y,predicates_dev = features.get_x_y('dev',er_mlp_model_dir,pra_model_dir)
-dev_y[:][dev_y[:] == -1] = 0
-predictions_dev = np.zeros_like(predicates_dev)
+# dev_y[:][dev_y[:] == -1] = 0
+predictions_dev = np.zeros_like(predicates_dev,dtype=float)
 predictions_dev = predictions_dev.reshape((np.shape(predictions_dev)[0],1))
 best_thresholds = np.zeros(len(pred_dic));
 for k,i in pred_dic.items():

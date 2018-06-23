@@ -106,7 +106,9 @@ def perform_randomized_search(pred_dic,train_x,train_y,test_x,test_y):
                 print("std: "+str(results['std_test_average_precision'][run]))
                 print(results['params'][run])
                 print("")
-                AP_params = results['params'][run]
+                if i==1:
+                    print(results['params'][run])
+                    AP_params = results['params'][run]
         print("")
         print("")
         print("accuracy")
@@ -138,7 +140,7 @@ def perform_randomized_search(pred_dic,train_x,train_y,test_x,test_y):
 pred_dic,train_x,train_y,predicates_train = features.get_x_y(TRAIN_DIR,args.er_mlp,args.pra)
 pred_dic,test_x,test_y,predicates_test = features.get_x_y(TEST_DIR,args.er_mlp,args.pra)
 model_dic = {}
-predictions_test = np.zeros_like(predicates_test)
+predictions_test = np.zeros_like(predicates_test,dtype=float)
 predictions_test = predictions_test.reshape((np.shape(predictions_test)[0],1))
 for k,i in pred_dic.items():
     test_indices, = np.where(predicates_test == i)
@@ -162,12 +164,11 @@ for k,i in pred_dic.items():
             config['RANDOM_SEARCH_BEST_PARAMS'+'_'+k]={'n_estimators':AP_params['n_estimators'],'learning_rate':AP_params['learning_rate'] }
         clf = AdaBoostClassifier(DecisionTreeClassifier(max_depth=1),
                 n_estimators=config.getint('RANDOM_SEARCH_BEST_PARAMS'+'_'+k,'n_estimators'),learning_rate=config.getfloat('RANDOM_SEARCH_BEST_PARAMS'+'_'+k,'learning_rate'),random_state=0)
-        clf.fit(train_x, train_y.ravel())
+        clf.fit(train_x_predicate, train_y_predicate.ravel())
         preds = clf.predict_proba(test_x_predicate)[:,1]
         preds= preds.reshape((np.shape(preds)[0],1))
-        predictions_test[test_indices] = preds
+        predictions_test[test_indices] = preds[:]
         model_dic[i] = clf
-
 
 score = pr_stats(len(pred_dic), test_y, predictions_test,predicates_test,pred_dic)
 roc_ = roc_auc_stats(len(pred_dic), test_y, predictions_test,predicates_test,pred_dic)

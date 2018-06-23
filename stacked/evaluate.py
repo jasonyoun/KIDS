@@ -57,16 +57,14 @@ if use_calibration:
     fn = open(model_save_dir+'/calibrated_threshold.pkl','rb')
 threshold = pickle.load(fn)
 
-print(threshold)
 
 fn = open(model_save_dir+'/model.pkl','rb')
 model_dic = pickle.load(fn)
 pred_dic,test_x,test_y,predicates_test = features.get_x_y(TEST_DIR,er_mlp_model_dir,pra_model_dir)
-print(test_y)
 
-test_y[:][test_y[:] == -1] = 0
+# test_y[:][test_y[:] == -1] = 0
 best_thresholds = np.zeros(len(pred_dic));
-probabilities = np.zeros_like(predicates_test)
+probabilities = np.zeros_like(predicates_test,dtype=float)
 probabilities = probabilities.reshape((np.shape(probabilities)[0],1))
 standard_classifications = np.zeros_like(predicates_test)
 threshold_classifications = np.zeros_like(predicates_test)
@@ -102,11 +100,6 @@ if use_calibration:
     # probabilities = scores
 
 # np.set_printoptions(threshold=np.nan)
-print('probabilities')
-print(probabilities)
-print('test_y')
-print(test_y)
-
 # classifications = standard_classifications
 classifications = threshold_classifications
 plot_roc(len(pred_dic), test_y, probabilities,predicates,pred_dic, model_save_dir)

@@ -9,7 +9,6 @@ sys.path.insert(0, abs_path_er_mlp)
 import er_mlp_cross_entropy
 import er_mlp_max_margin
 import argparse
-sys.stdout.flush()
 config = configparser.ConfigParser()
 
 parser = argparse.ArgumentParser(description='build network')

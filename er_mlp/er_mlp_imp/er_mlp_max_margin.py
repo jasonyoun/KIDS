@@ -147,6 +147,7 @@ def run_model(params):
         # labels_test[:][labels_test[:] == -1] = 0
         predicates_test = indexed_data_test[:,1]
         predictions_list_test = sess.run(predictions, feed_dict={triplets: data_test, y: labels_test})
+        # print(predictions_list_test)
         mean_average_precision_test = pr_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test,pred_dic)
         roc_auc_test = roc_auc_stats(NUM_PREDS, labels_test, predictions_list_test,predicates_test,pred_dic)
         classifications_test = er_mlp.classify(predictions_list_test,threshold, predicates_test, cross_margin=True)

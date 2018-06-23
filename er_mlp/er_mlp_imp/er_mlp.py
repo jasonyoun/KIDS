@@ -124,15 +124,19 @@ class ERMLP:
             print(str(self.params['act_function'])+ 'tanh')
             layer_1_correct = tf.tanh(layer_1_correct_pre_act)
             layer_1_corrupted = tf.tanh(layer_1_corrupted_pre_act)
+            out_correct = tf.matmul(layer_1_correct,_weights['B'])
+            out_corrupted = tf.matmul(layer_1_corrupted,_weights['B'])
+            # out_correct = tf.sigmoid(out_correct)
+            # out_corrupted = tf.sigmoid(out_corrupted)
         else:
             print(str(self.params['act_function'])+ 'sigmoid')
             layer_1_correct = tf.sigmoid(layer_1_correct_pre_act)
             layer_1_corrupted = tf.sigmoid(layer_1_corrupted_pre_act)
+            out_correct = tf.matmul(layer_1_correct,_weights['B'])
+            out_corrupted = tf.matmul(layer_1_corrupted,_weights['B'])
+            # out_correct = tf.tanh(out_correct)
+            # out_corrupted = tf.tanh(out_corrupted)
 
-        out_correct = tf.matmul(layer_1_correct,_weights['B'])
-        out_correct = tf.sigmoid(out_correct)
-        out_corrupted = tf.matmul(layer_1_corrupted,_weights['B'])
-        out_corrupted = tf.sigmoid(out_corrupted)
         out = tf.concat([out_correct, out_corrupted],axis=1, name='inference_for_max_margin_training')
         return out
 
@@ -175,13 +179,16 @@ class ERMLP:
             print(str(self.params['act_function'])+ 'tanh')
             #layer_1 = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
             layer_1 = tf.tanh(layer_1_pre_act)
+            out = tf.matmul(layer_1,_weights['B'], name='inference')
+            out = tf.sigmoid(out)
         else:
             print(str(self.params['act_function'])+ 'sigmoid')
             #layer_1 = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
             layer_1 = tf.sigmoid(layer_1_pre_act)
+            out = tf.matmul(layer_1,_weights['B'], name='inference')
+            out = tf.tanh(out)
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
-        out = tf.matmul(layer_1,_weights['B'], name='inference')
-        out = tf.sigmoid(out)
+        # out = tf.sigmoid(out)
         return out
 
 
