@@ -102,7 +102,6 @@ def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fi
         predicate_labels = Y[predicate_indices]
 
         fpr[i], tpr[i] , _ = roc_curve(predicate_labels.ravel(), predicate_predictions.ravel())
-        print(np.shape(fpr[i]))
         roc_auc[i] = auc(fpr[i], tpr[i])
     all_fpr = np.unique(np.concatenate([fpr[i] for i in predicates_included]))
     mean_tpr = np.zeros_like(all_fpr)
@@ -123,7 +122,7 @@ def plot_roc(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fi
     directory = directory+'/fig'
     if not os.path.exists(directory):
         os.makedirs(directory)
-    filename = directory+'/er_mlp_roc.png'
+    filename = directory+'/roc.png'
     plt.savefig(filename)
     with open(directory+'/roc_macro_'+name_of_file+st+'.pkl', 'wb') as output:
         pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
@@ -205,6 +204,29 @@ def plot_pr(num_preds, Y, predictions,predicates,pred_dic, directory,name_of_fil
     print("saved:{!s}".format(filename))
     with open(directory+'/pr_'+name_of_file+st+'.pkl', 'wb') as output:
         pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
+
+def save_to_text_file(results,directory):
+    with open(directory+'/results.txt', 'w') as t_f:
+        t_f.write('Overall metrics: \n\n')
+        for metric,value in results['overall'].items():
+            t_f.write('{}: {}\n'.format(metric,value))
+        t_f.write('----------------------------------\n')
+        t_f.write('Predicates\n\n')
+        for predicate,metrics in results['predicate'].items():
+            t_f.write('metrics for {}: \n'.format(predicate))
+            for metric,value in metrics.items():
+                t_f.write('{}: {}\n'.format(metric,value))
+            t_f.write('----------------------------------\n')
+
+def save_results( results, directory):
+
+    directory = directory+'/results'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    with open(directory+'/results.pkl', 'wb') as output:
+        pickle.dump(results, output, pickle.HIGHEST_PROTOCOL)
+    save_to_text_file(results,directory)
 
 def plot_cost( iterations, cost_list, directory):
     plt.figure()

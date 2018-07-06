@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from scipy import interp
 abs_path_metrics= os.path.join(directory, '../utils')
 sys.path.insert(0, abs_path_metrics)
-from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, save_results
 import features
 import configparser
 
@@ -100,8 +100,10 @@ if use_calibration:
     # probabilities = scores
 
 # np.set_printoptions(threshold=np.nan)
-# classifications = standard_classifications
-classifications = threshold_classifications
+classifications = standard_classifications
+# classifications = threshold_classifications
+results = {}
+results['predicate'] = {}
 plot_roc(len(pred_dic), test_y, probabilities,predicates,pred_dic, model_save_dir)
 plot_pr(len(pred_dic), test_y, probabilities,predicates,pred_dic, model_save_dir)
 auc_test = roc_auc_stats(len(pred_dic), test_y, probabilities,predicates,pred_dic)
@@ -113,6 +115,15 @@ accuracy_test = accuracy_score(test_y, classifications)
 recall_test = recall_score(test_y, classifications)
 precision_test = precision_score(test_y, classifications)
 confusion_test = confusion_matrix(test_y, classifications)
+results['overall'] = {
+    'map':ap_test,
+    'roc_auc':auc_test,
+    'f1':fl_measure_test,
+    'accuracy': accuracy_test,
+    'cm': confusion_test,
+    'precision': precision_test,
+    'recall': recall_test
+}  
 for i in range(len(pred_dic)):
     for key, value in pred_dic.items():
         if value == i:
@@ -122,6 +133,7 @@ for i in range(len(pred_dic)):
         print(indices)
         print(classifications)
         classifications_predicate = classifications[indices]
+        predicate_predictions = probabilities[indices]
         labels_predicate = test_y[indices]
         fl_measure_predicate= f1_score(labels_predicate, classifications_predicate)
         accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
@@ -135,11 +147,27 @@ for i in range(len(pred_dic)):
         print(" - predicate confusion matrix for "+pred_name+ ":")
         print(confusion_predicate)
         print(" ")
+        fpr_pred, tpr_pred , _ = roc_curve(labels_predicate.ravel(), predicate_predictions.ravel())
+        roc_auc_pred = auc(fpr_pred, tpr_pred)
+        ap_pred = average_precision_score(labels_predicate.ravel(), predicate_predictions.ravel())
+        results['predicate'][pred_name] = {
+            'map':ap_pred,
+            'roc_auc':roc_auc_pred,
+            'f1':fl_measure_predicate,
+            'accuracy': accuracy_predicate,
+            'cm': confusion_predicate,
+            'precision': precision_predicate,
+            'recall': recall_predicate
+        }  
 
-_file =  model_save_dir+"/classifications_stacked.txt"
+directory = model_save_dir+'/test'
+if not os.path.exists(directory):
+    os.makedirs(directory)
+_file =  directory+"/classifications_stacked.txt"
 with open(_file, 'w') as t_f:
     for row in classifications:
         t_f.write(str(row)+'\n')
+save_results(results,directory)
 
 
 print("test f1 measure:"+ str(fl_measure_test))

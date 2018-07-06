@@ -136,6 +136,8 @@ class ERMLP:
             out_corrupted = tf.matmul(layer_1_corrupted,_weights['B'])
             # out_correct = tf.tanh(out_correct)
             # out_corrupted = tf.tanh(out_corrupted)
+        out_correct = tf.sigmoid(out_correct)
+        out_corrupted = tf.sigmoid(out_corrupted)
 
         out = tf.concat([out_correct, out_corrupted],axis=1, name='inference_for_max_margin_training')
         return out
@@ -180,15 +182,15 @@ class ERMLP:
             #layer_1 = tf.tanh(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
             layer_1 = tf.tanh(layer_1_pre_act)
             out = tf.matmul(layer_1,_weights['B'], name='inference')
-            out = tf.sigmoid(out)
+            # out = tf.sigmoid(out)
         else:
             print(str(self.params['act_function'])+ 'sigmoid')
             #layer_1 = tf.sigmoid(tf.add(tf.matmul(tf.concat( [sub_emb,pred_emb,obj_emb],axis=1),_weights['C']),_biases['b']))
             layer_1 = tf.sigmoid(layer_1_pre_act)
             out = tf.matmul(layer_1,_weights['B'], name='inference')
-            out = tf.tanh(out)
+            # out = tf.tanh(out)
         #out = tf.add(tf.matmul(tf.transpose(_weights['B']),layer_1),biases['out'])
-        # out = tf.sigmoid(out)
+        out = tf.sigmoid(out)
         return out
 
 
@@ -226,7 +228,7 @@ class ERMLP:
     def loss(self, predictions): 
         batch_size = tf.constant(self.params['batch_size'],dtype=tf.float32)
         one = tf.constant(1,dtype=tf.float32)
-        max_with_margin_sum =tf.div(tf.reduce_sum(tf.maximum(tf.add(tf.subtract(predictions[:,1],predictions[:, 0]),1), 0)), batch_size)
+        max_with_margin_sum =tf.div(tf.reduce_sum(tf.maximum(tf.add(tf.subtract(predictions[:,1],predictions[:, 0]),self.params['margin']), 0)), batch_size)
         l2 = tf.reduce_sum([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
         return tf.add(max_with_margin_sum, tf.multiply(self.params['lambda'], l2))
 

@@ -46,6 +46,7 @@ print('configuration: ')
 RUN_RANDOM_SEARCH=config.getboolean('DEFAULT','RUN_RANDOM_SEARCH')
 TRAIN_DIR = config['DEFAULT']['TRAIN_DIR']
 TEST_DIR = config['DEFAULT']['TEST_DIR']
+DEV_DIR = config['DEFAULT']['DEV_DIR']
 MODEL_SAVE_DIRECTORY=model_save_dir
 F1_FOR_THRESHOLD = config.getboolean('DEFAULT','F1_FOR_THRESHOLD')
 USE_SMOTE_SAMPLING=config.getboolean('DEFAULT','USE_SMOTE_SAMPLING')
@@ -68,7 +69,7 @@ config['DEFAULT']['PRA_MODEL_DIR']=args.pra
 
 def perform_randomized_search(pred_dic,train_x,train_y,test_x,test_y):
 
-    def get_results_of_search(results, count=20):
+    def get_results_of_search(results, count=5):
         # print(results)
         print("")
         print("")
@@ -109,6 +110,7 @@ def perform_randomized_search(pred_dic,train_x,train_y,test_x,test_y):
                 if i==1:
                     print(results['params'][run])
                     AP_params = results['params'][run]
+
         print("")
         print("")
         print("accuracy")
@@ -138,7 +140,7 @@ def perform_randomized_search(pred_dic,train_x,train_y,test_x,test_y):
     return AP_params
 
 pred_dic,train_x,train_y,predicates_train = features.get_x_y(TRAIN_DIR,args.er_mlp,args.pra)
-pred_dic,test_x,test_y,predicates_test = features.get_x_y(TEST_DIR,args.er_mlp,args.pra)
+pred_dic,test_x,test_y,predicates_test = features.get_x_y(DEV_DIR,args.er_mlp,args.pra)
 model_dic = {}
 predictions_test = np.zeros_like(predicates_test,dtype=float)
 predictions_test = predictions_test.reshape((np.shape(predictions_test)[0],1))

@@ -22,7 +22,7 @@ from er_mlp import ERMLP
 abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
 from data_processor import DataProcessor
-from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, save_results
 import argparse
 if directory != '':
     directory = directory+'/'
@@ -143,7 +143,6 @@ with tf.Session() as sess:
 
 
 
-
     mean_average_precision_test = pr_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
     roc_auc_test = roc_auc_stats(num_preds, labels_test, predictions_list_test,predicates_test,pred_dic)
     classifications_test = er_mlp.classify(predictions_list_test,thresholds, predicates_test)
@@ -157,7 +156,17 @@ with tf.Session() as sess:
     calib_file_name='_calibrated' if calibrated else '_not_calibrated'
     plot_pr(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY+'/test/',name_of_file='er_mlp'+calib_file_name)
     plot_roc(len(pred_dic), labels_test, predictions_list_test,predicates_test,pred_dic, MODEL_SAVE_DIRECTORY+'/test/',name_of_file='er_mlp'+calib_file_name)
-
+    results = {}
+    results['overall'] = {
+        'map':mean_average_precision_test,
+        'roc_auc':roc_auc_test,
+        'f1':fl_measure_test,
+        'accuracy': accuracy_test,
+        'cm': confusion_test,
+        'precision': precision_test,
+        'recall': recall_test
+    }  
+    results['predicate'] = {}
     for i in range(num_preds):
         for key, value in pred_dic.items():
             if value == i:
@@ -178,6 +187,19 @@ with tf.Session() as sess:
             print(" - test confusion matrix for "+pred_name+ ":")
             print(confusion_predicate)
             print(" ")
+            predicate_predictions = predictions_list_test[indices]
+            fpr_pred, tpr_pred , _ = roc_curve(labels_predicate.ravel(), predicate_predictions.ravel())
+            roc_auc_pred = auc(fpr_pred, tpr_pred)
+            ap_pred = average_precision_score(labels_predicate.ravel(), predicate_predictions.ravel())
+            results['predicate'][pred_name] = {
+                'map':ap_pred,
+                'roc_auc':roc_auc_pred,
+                'f1':fl_measure_predicate,
+                'accuracy': accuracy_predicate,
+                'cm': confusion_predicate,
+                'precision': precision_predicate,
+                'recall': recall_predicate
+            }  
     
     print("test mean average precision:"+ str(mean_average_precision_test))
     print("test f1 measure:"+ str(fl_measure_test))
@@ -189,8 +211,10 @@ with tf.Session() as sess:
     print(confusion_test)
     print("thresholds: ")
     print(thresholds)
+    save_results(results,MODEL_SAVE_DIRECTORY+'/test/')
 
-_file =  model_save_dir+"/classifications_er_mlp.txt"
+
+_file =   MODEL_SAVE_DIRECTORY+'/test/classifications_er_mlp.txt'
 with open(_file, 'w') as t_f:
     for row in classifications_test:
         t_f.write(str(row)+'\n')
