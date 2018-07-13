@@ -6,7 +6,6 @@ import re
 import pickle as pickle
 import random
 import scipy.io as spio
-import csv
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score,confusion_matrix, precision_score, recall_score
 directory = os.path.dirname(__file__)
 abs_path_metrics= os.path.join(directory, '../../utils')

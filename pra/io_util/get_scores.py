@@ -5,7 +5,6 @@ import re
 import pickle as pickle
 import random
 import scipy.io as spio
-import csv
 from sklearn.linear_model import LogisticRegression
 import argparse
 from sklearn.isotonic import IsotonicRegression as IR

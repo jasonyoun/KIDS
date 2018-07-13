@@ -5,7 +5,6 @@ import re
 import pickle as pickle
 import random
 import scipy.io as spio
-import csv
 import os.path
 import argparse
 

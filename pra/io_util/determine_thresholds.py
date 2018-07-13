@@ -5,7 +5,6 @@ import re
 import pickle as pickle
 import random
 import scipy.io as spio
-import csv
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
 import argparse
 import matplotlib.pyplot as plt
