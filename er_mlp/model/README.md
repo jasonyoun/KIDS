@@ -7,7 +7,7 @@ Code to create model instances
 ```
 python3 build_network.py fold_0
 ```
-** a folder to store the model containing .ini file with the same name needs to be created in the model_instance directory. This will take a few hours to run.
+* a folder to store the model containing .ini file with the same name needs to be created in the model_instance directory. This will take a few hours to run.
 
 ## Create thresholds for classification:
 
