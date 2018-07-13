@@ -40,7 +40,7 @@ The model and its associated files will be automatically created in [root]/stack
 
 ## run_report.sh
 
-After the above experiments have been run, you can then exectute the run_report script
+After the above experiments have been run, you can then execute the run_report script
 
 ```
 ./run_report.sh --results_dir [[results folder]] --dir [[space separated experiment folders]]
