@@ -1,0 +1,9 @@
+sklearn==0.19.1
+tensorflow==1.6.0
+matplotlin==2.2.2
+numpy==1.14.3
+pandas==0.22.0
+pickle==4.0
+configparser==3.5.0
+argparse==1.0
+imblearn==0.3.3
