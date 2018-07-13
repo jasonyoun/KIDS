@@ -42,8 +42,6 @@ config.read('./'+configuration)
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
 MODEL_SAVE_DIRECTORY=model_save_dir
 DATA_PATH=config['DEFAULT']['DATA_PATH']
-WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
-DATA_TYPE = config['DEFAULT']['DATA_TYPE']
 TRAINING_EPOCHS = config.getint('DEFAULT','CONTINUE_TRAINING_EPOCHS')
 BATCH_SIZE = config.getint('DEFAULT','BATCH_SIZE')
 DISPLAY_STEP =  config.getint('DEFAULT','DISPLAY_STEP')
@@ -115,6 +113,8 @@ with tf.Session() as sess:
     er_mlp = ERMLP(er_mlp_params)
 
     train_df = processor.load(DATA_PATH+TRAIN_FILE)
+    if len(train_df.columns)<4:
+        train_df['one'] =1
 
     indexed_train_data = processor.create_indexed_triplets_test(train_df.as_matrix(),entity_dic,pred_dic )
     data_train = indexed_train_data[indexed_train_data[:,3] == 1  ]

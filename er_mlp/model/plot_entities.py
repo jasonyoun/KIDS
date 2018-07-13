@@ -33,6 +33,9 @@ import  data_orchestrator_cm
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.patches as mpatches
 import pylab as plot
+import argparse
+from sklearn.decomposition import PCA
+
 font = {
         'size'   : 15}
 
@@ -49,8 +52,8 @@ parser.add_argument('--use_calibration',action='store_const',default=False,const
 args = parser.parse_args()
 calibrated = args.use_calibration
 model_instance_dir='model_instance/'
-model_save_dir=model_instance_dir+args.dir+'/'
-configuration = model_save_dir+args.dir.replace('/','')+'.ini'
+model_save_dir=model_instance_dir+args.dir
+configuration = model_save_dir+'/'+args.dir.replace('/','')+'.ini'
 
 config.read('./'+configuration)
 WORD_EMBEDDING = config.getboolean('DEFAULT','WORD_EMBEDDING')
@@ -75,7 +78,7 @@ DROP_OUT_PERCENT = config.getfloat('DEFAULT','ADD_LAYERS')
 
 
 
-def plot_with_labels(low_dim_embs, colors,labels, filename='tsne_entities_random.png'):
+def plot_with_labels(low_dim_embs, colors,labels, filename='pca_entities_random.png'):
     fig =plt.figure(figsize=(18, 18)) 
     ax = fig.add_subplot(111, projection='3d')
     label = ['gene','molecular function','biological process','cellular component','antibiotic']
@@ -100,7 +103,7 @@ def plot_with_labels(low_dim_embs, colors,labels, filename='tsne_entities_random
     ax.set_xlabel('Component 1')
     ax.set_ylabel('Component 2')
     ax.set_zlabel('Component 3')
-    plt.title("Entity Embedding t-SNE Dimensional Reduction ")
+    plt.title("Entity Embedding PCA Dimensional Reduction ")
     plt.savefig(filename)
 def create_predicate_to_entity_to_triplets_set(data_array ):
     predicate_to_entity_to_triplets = {}
@@ -224,9 +227,9 @@ with tf.Session() as sess:
     vector_dim = 50
     # Reshaping embedding
     embedding = entity_embeddings.reshape(limit, vector_dim)
-
+    pca = PCA(n_components=3)
     tsne = TSNE(perplexity=30.0, n_components=3, init='pca', n_iter=5000)
-
-    low_dim_embedding = tsne.fit_transform(embedding)
+    low_dim_embedding = pca.fit_transform(embedding)
+    # low_dim_embedding = tsne.fit_transform(embedding)
     plot_with_labels(low_dim_embedding, entitys,labels, filename=MODEL_SAVE_DIRECTORY+'/tsne_entities_classification.png')
 
