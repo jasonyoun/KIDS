@@ -3,8 +3,8 @@ archive/er_mlp/fig/*
 *__pycache__
 **/.DS_Store
 archive/er_mlp/models/*
-!README
 pra/model/model_instance/*
 */predict_example/*
 er_mlp/model/model_instance/*
 stacked/model_instance/*
+!README
