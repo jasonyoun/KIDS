@@ -74,19 +74,15 @@ loss_mode=log
 	,log // log loss
 	,exp	//exp loss
 	,hinge	//hinge loss
-L1=0.008
+L1=0.01
 	#L1 regularization 
-L2=0.0001
-
-#L1=0.006
-	#L1 regularization 
-#L2=0.0169
-
+L2=0.01
+	#L2 regularization 
 pairwise_loss=false
 	# optimizing partial ordering or relevance (default=false)
 	false	//optimizing relevance
 	true	//optimizing partial ordering
-negative_mode=all
+negative_mode=Sqr
 	# how to select negative entities
 	all		//use all negative samples
 	,topK	//take top K*rNega samples ranked by plain weighting
@@ -102,7 +98,7 @@ cache_data=true
 
 inspect_data=true
 
-output_training_data=false
+output_training_data=true
 output_training_data_folder=./training_data/
 
 #max_num_exploration_queries=400
@@ -136,7 +132,7 @@ bias_value=1
 	# to avoid creating infite long paths, the path creation precedure
 	# will prevent going forward-backward with zero-cost relations
 	
-min_feature_hit=3
+min_feature_hit=1
 min_feature_accuracy=0.01
 cache_RW=false
 
