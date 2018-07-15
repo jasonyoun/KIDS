@@ -4,7 +4,7 @@ Inspired by Google Knowledge Vault, this project leverages deep learning and ran
 
 ## Quick start:
 * First, to run these experiments, you will need to install the python dependencies located in requirements.txt. Second, we used the original PRA implementation from Ni et al. This will require Java 7 or higher.
-* This project is composed of three different approaches to link prediciton. To make it easier to reproduce the experiments, please navigate to the run directory that contains helper shell scripts.
+* This project is composed of three different approaches to link prediciton. To make it easier to reproduce the experiments, please navigate to the [run](https://github.com/IBPA/Hypothesis-Generation/tree/master/run) directory that contains helper shell scripts.
 
 
 ## Code layout
