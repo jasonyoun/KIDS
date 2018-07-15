@@ -40,7 +40,7 @@ The model and its associated files will be automatically created in [root]/stack
 
 ## run_report.sh
 
-After the above experiments have been run, you can then execute the run_report script
+After the above experiments have been run, you can then execute the run_report script. Note: this feature has been implemented for the project experiments since we are performing k fold cross validation. For results of freebase, those results can be found in the test directory of the actual model instance. A results.txt along with figures will are provided for each model instance.
 
 ```
 ./run_report.sh --results_dir [[results folder]] --dir [[space separated experiment folders]]
