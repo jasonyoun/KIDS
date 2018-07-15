@@ -4,7 +4,6 @@ archive/er_mlp/fig/*
 **/.DS_Store
 archive/er_mlp/models/*
 !README
-data/*
 pra/model/model_instance/*
 */predict_example/*
 er_mlp/model/model_instance/*

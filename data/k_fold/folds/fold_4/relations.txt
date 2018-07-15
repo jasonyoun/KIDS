@@ -1,0 +1,12 @@
+activates
+is
+represses
+is#SPACE#involved#SPACE#in
+upregulated#SPACE#by#SPACE#antibiotic
+confers#SPACE#resistance#SPACE#to#SPACE#antibiotic
+has
+targeted#SPACE#by
+not#SPACE#upregulated#SPACE#by#SPACE#antibiotic
+not#SPACE#confers#SPACE#resistance#SPACE#to#SPACE#antibiotic
+not#SPACE#activates
+not#SPACE#represses

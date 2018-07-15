@@ -1,0 +1,12 @@
+activates	gene	gene
+represses	gene	gene
+upregulated#SPACE#by#SPACE#antibiotic	gene	antibiotic
+confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	gene	antibiotic
+is	gene	cellular_component
+is#SPACE#involved#SPACE#in	gene	biological_process
+has	gene	molecular_function
+targeted#SPACE#by	gene	antibiotic
+not#SPACE#upregulated#SPACE#by#SPACE#antibiotic	gene	antibiotic
+not#SPACE#confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	gene	antibiotic
+not#SPACE#activates	gene	gene
+not#SPACE#represses	gene	gene
