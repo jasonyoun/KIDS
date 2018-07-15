@@ -4,16 +4,12 @@ import pandas as pd
 import sys
 import os
 directory = os.path.dirname(__file__)
-print(__file__)
-print(directory)
 abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
 abs_path_data= os.path.join(directory, '../data_handler')
 sys.path.insert(0, abs_path_data)
 if directory != '':
     directory = directory+'/'
-# print(directory)
-#sys.path.insert(0, '../data')
 import tensorflow as tf
 from sklearn import utils
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
@@ -25,8 +21,6 @@ from data_processor import DataProcessor
 from er_mlp import ERMLP
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, plot_cost
 from data_orchestrator_ce import DataOrchestrator
-# from sklearn.model_selection import StratifiedKFold
-#from sklearn.cross_validation import StratifiedKFold
 
 OVER_SAMPLE=True
 
