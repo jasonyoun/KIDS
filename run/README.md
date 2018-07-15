@@ -1,6 +1,6 @@
 # run
 
-This directory contains shell scripts to create, train, and evalue models
+This directory contains shell scripts to create, train, and evalue models. Note: Each experiment has its configurations set in the configurations folder. To observe a description of each parameter that you can set for each model, oberve the configurations for the fold_0 experiment. Comments are provided.
 
 ## run_er_mlp.sh
 To create, train, and evaluate the ER-MLP over a particular experiment, run:
