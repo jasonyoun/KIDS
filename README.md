@@ -48,7 +48,7 @@ In this output file (a set of consistent knowledge), the knowledge is represente
 * Source size: number of sources supporting this knowledge
 * Sources: the list of sources supporting this knowledge
 
-### inconsistency_out.txt
+### 5. inconsistency_out.txt
 In this output file (a set of inconsistent knowledge), the knowledge is represented in triple format (Subject, Predicate, Object). The first six columns are for the fact with the highest belief (i.e. one that the inconsistency corrector think it is correct) among conflicting facts.
 * Subject:
 * Predicate:
