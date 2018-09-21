@@ -8,10 +8,8 @@ import pandas as pd
 # import from knowledge_scholar package
 from modules.data_manager                              import integrate_data
 from modules.inconsistency_manager                     import detect_inconsistencies
-from modules.report_manager                            import plot_trustworthiness, plot_pie_summary, save_resolved_inconsistencies, save_integrated_data, plot_network_of_inconsistency
-from modules.inconsistency_correctors.truthfinder      import TruthFinder
+from modules.report_manager                            import plot_trustworthiness, save_resolved_inconsistencies, save_integrated_data
 from modules.inconsistency_correctors.averagelog       import AverageLog
-from modules.inconsistency_correctors.pooledinvestment import PooledInvestment
   
 # COMMAND LINE ARGUMENTS
 data_path_file          = sys.argv[1]
