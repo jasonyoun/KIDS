@@ -1,0 +1,11 @@
+Path	Source
+~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/hiTRN/hiTRN.txt	hiTRN
+~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/GO/GO.txt	GO
+#~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/Shaw_et_al/Shaw_et_al.txt	Shaw
+#~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/Zhou_et_al/Zhou_et_al.txt	Zhou
+#~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/Nichols_et_al/Nichols_et_al.txt	Nichols
+#~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/Tamae_et_al/Tamae_et_al_KO_Antibiotics.txt	Tamae
+#~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/Liu_et_al/Liu_et_al_KO_Antibiotics.txt	Liu
+#~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/Girgis_et_al/Girgis_et_al.txt	Girgis
+#~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/Soo_et_al/Soo_et_al.txt	Soo
+#~/Dropbox/Projects/UCD/2017-10_AI_Biology/Datasets/CARD/CARD_Antibiotics_Resistance_Ecoli_Genes.txt	CARD
