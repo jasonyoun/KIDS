@@ -8,17 +8,15 @@
 * Python numpy package
 * Python pandas package
 
-Tip: once you install python TensorFlow, you can simply install all other required python packages by
+Tip: You can simply install all required python packages by
 <code>pip install -r requirements.txt</code>.
 
 ### Step 2: Download the dataset
 Then you download the dataset from [here](https://www.dropbox.com/sh/h6kgo1nwjovh6j4/AACvGqeuPPEr9rTfNbfzMdqpa?dl=0) into your local machine.
 
 ### Step 3: Run the script to integrate data
-Step 3a. Modify file paths in <code>data/data_path_file.txt</cod> based on where you placed the dataset in Step 2. 
-Step 3b. Run the script <code>script_to_integrate_data.py</code> in the repo (after you clone it in your machine) with the following command:
-
-<code>python script_to_integrate_data.py data/data_path_file.txt data/data_map.txt data/data_rules.xml data/inconsistency_rules.xml out.txt inconsistency.txt</code>
+Modify file paths in <code>data/data_path_file.txt</cod> based on where you placed the dataset in Step 2. 
+Then run the script <code>script_to_integrate_data.py</code> in the repo (after you clone it in your machine) with the following command <code>python script_to_integrate_data.py data/data_path_file.txt data/data_map.txt data/data_rules.xml data/inconsistency_rules.xml out.txt inconsistency.txt</code>
 
 * <code>data/data_path_file.txt</code> is the file that lists locations of all the datasets to integrate.
 * <code>data/data_map.txt</code> is essentially the name map table (Fig. 1 in the Manuscript.docx) that lists all the synonyms.
