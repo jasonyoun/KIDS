@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 
 # import from knowledge_scholar package
-from modules.data_manager import integrate_data
+from modules.data_manager import DataManager
 from modules.inconsistency_manager import detect_inconsistencies
 from modules.report_manager import plot_trustworthiness, save_resolved_inconsistencies, save_integrated_data
 from modules.inconsistency_correctors.averagelog import AverageLog
@@ -35,7 +35,7 @@ inconsistency_out_file = sys.argv[6]
 
 # integrate data from multiple sources
 pd_data_paths = pd.read_csv(data_path_file, sep = '\t', comment = '#')
-pd_data = integrate_data(pd_data_paths, map_file, data_rule_file)
+pd_data = DataManager(pd_data_paths, map_file, data_rule_file).integrate_data()
 
 # detect inconsistencies
 inconsistencies = detect_inconsistencies(inconsistency_rule_file, pd_data)

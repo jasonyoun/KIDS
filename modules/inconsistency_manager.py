@@ -4,7 +4,7 @@ import pandas as pd
 import math
 from collections import Counter
 import xml.etree.ElementTree as ET
-from .data_manager import get_pd_of_statement
+from .utilities import get_pd_of_statement
 
 SPO_LIST = ['Subject','Predicate','Object']
 
