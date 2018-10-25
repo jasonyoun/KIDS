@@ -5,7 +5,7 @@ import math
 from collections import Counter
 
 from .sums       import Sums
-from ..inconsistency_manager import measure_accuracy
+from ..utilities import measure_accuracy
 
 MAX_NUM_ITERATIONS = 10
 SPO_LIST           = ['Subject','Predicate','Object']

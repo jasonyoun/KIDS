@@ -21,7 +21,7 @@ import pandas as pd
 
 # import from knowledge_scholar package
 from modules.data_manager import DataManager
-from modules.inconsistency_manager import detect_inconsistencies
+from modules.inconsistency_manager import InconsistencyManager
 from modules.report_manager import plot_trustworthiness, save_resolved_inconsistencies, save_integrated_data
 from modules.inconsistency_correctors.averagelog import AverageLog
 
@@ -33,12 +33,12 @@ inconsistency_rule_file = sys.argv[4]
 data_out_file = sys.argv[5]
 inconsistency_out_file = sys.argv[6]
 
-# integrate data from multiple sources
+# perform 1) knowledge integration and 2) knowledge rule application
 pd_data_paths = pd.read_csv(data_path_file, sep = '\t', comment = '#')
 pd_data = DataManager(pd_data_paths, map_file, data_rule_file).integrate_data()
 
-# detect inconsistencies
-inconsistencies = detect_inconsistencies(inconsistency_rule_file, pd_data)
+# perform inconsistency detection
+inconsistencies = InconsistencyManager(inconsistency_rule_file).detect_inconsistencies(pd_data)
 
 # correct inconsistencies
 resolve_inconsistencies_result = AverageLog.resolve_inconsistencies(pd_data, inconsistencies)

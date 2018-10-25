@@ -1,125 +1,142 @@
+"""
+Filename: inconsistency_manager.py
+
+Authors:
+	Minseung Kim - msgkim@ucdavis.edu
+
+Description:
+	Detect the inconsistencies.
+
+To-do:
+	1. Move _SPO_LIST to global file.
+"""
+
 import operator
 import numpy as np
 import pandas as pd
 import math
 from collections import Counter
-import xml.etree.ElementTree as ET
 from .utilities import get_pd_of_statement
+import xml.etree.ElementTree as ET
 
-SPO_LIST = ['Subject','Predicate','Object']
+class InconsistencyManager:
+	"""
+	Class for detecting the inconsistencies.
+	"""
 
-def _data_has_conflict_values(all_feature_values, conflict_feature_values):
-	unique_feature_values  = pd.unique(all_feature_values)
-	num_of_conflict_values = 0
+	_SPO_LIST = ['Subject', 'Predicate', 'Object']
 
-	for conflict_feature_value in conflict_feature_values:
-		if conflict_feature_value in unique_feature_values:
-			num_of_conflict_values = num_of_conflict_values + 1
+	def __init__(self, inconsistency_rule_file):
+		"""
+		Class constructor foro InconsistencyManager.
 
-	return num_of_conflict_values > 1
+		Inputs:
+			inconsistency_rule_file: XML file name containing the inconsistency rules
+		"""
+		self.inconsistency_rule_file = inconsistency_rule_file
 
-def detect_inconsistencies(inconsistency_rule_file, pd_data):
-	inconsistency_rules = ET.parse(inconsistency_rule_file).getroot()
-	inconsistencies     = {}
-	inconsistency_id    = 0
+	def detect_inconsistencies(self, pd_data):
+		"""
+		Detect the inconsistencies among the data using the provided rule file.
 
-	for inconsistency_rule in inconsistency_rules:
-		inconsistency_rule_name = inconsistency_rule.get('name')
-		condition_statement     = inconsistency_rule.find('condition')
+		Inputs:
+			pd_data: data to detect inconsistency from
 
-		# CHECK IF CONDITION IS MET
-		pd_condition_specific_data = pd_data.copy()
-		if condition_statement is not None:
-			pd_condition_statement     = get_pd_of_statement(condition_statement)
-			indices_meeting_condition  = (pd_data[pd_condition_statement.index] == pd_condition_statement).all(1).values
-			pd_condition_specific_data = pd_data[indices_meeting_condition].copy()
+					       Subject     Predicate Object Source
+					0          lrp  no represses   fadD  hiTRN
+					1          fur  no represses   yfeD  hiTRN
+					2          fnr  no represses   ybhN  hiTRN
+					3          crp  no represses   uxuR  hiTRN
 
-			if pd_condition_specific_data.shape[0] == 0:
-				print("[inconsistency rule] {} is skipped because there are no data meeting condition.".format(inconsistency_rule_name))
+		Returns:
+			inconsistencies: Dictionary containing inconsistency_id as key
+				and list of inconsistent triples + source as value
+
+				{
+				0: [(('Subject 1', 'Predicate 1', 'Object 1'), ['Source 1']),
+					(('Subject 1', '!Predicate 1', 'Object 1'), ['Source 2'])],
+				1: [(('Subject 2', 'Predicate 2', 'Object 2'), ['Source 1']),
+					('Subject 2', '!Predicate 2', 'Object 2'), ['Sourcec 2'])],
+										...
+				}
+		"""
+		inconsistency_rules = ET.parse(self.inconsistency_rule_file).getroot()
+		inconsistencies = {}
+		inconsistency_id = 0
+
+		# iterate over each inconsistency rule
+		for inconsistency_rule in inconsistency_rules:
+			inconsistency_rule_name = inconsistency_rule.get('name')
+			condition_statement = inconsistency_rule.find('condition')
+
+			print("[inconsistency rule] Processing inconsisency rule '{}'.".format(inconsistency_rule_name))
+
+			# check if condition is met
+			pd_condition_specific_data = pd_data.copy()
+
+			if condition_statement is not None:
+				pd_condition_statement = get_pd_of_statement(condition_statement)
+				indices_meeting_condition = (pd_data[pd_condition_statement.index] == pd_condition_statement).all(1).values
+				pd_condition_specific_data = pd_data[indices_meeting_condition].copy()
+
+				# skip to the next rule if condition statement exists and there are no data meeting the condition
+				if pd_condition_specific_data.shape[0] == 0:
+					print("[inconsistency rule] '{}' is skipped because there are no data meeting condition.".format(inconsistency_rule_name))
+					continue
+
+			# check if data has conflicts
+			inconsistency_statement = inconsistency_rule.find('inconsistency')
+			conflict_feature_name = inconsistency_statement.get('name') # Subject / Predicate / Object
+			conflict_feature_values = [inconsistency_feature.get('value') for inconsistency_feature in inconsistency_statement]
+
+			# skip to the next rule if there are no conflicts
+			if self._data_has_conflict_values(pd_data[conflict_feature_name], conflict_feature_values) == False:
+				print("[inconsistency rule] '{}' is skipped because there are no conflicts.".format(inconsistency_rule_name))
 				continue
 
-		# CHECK IF DATA HAS CONFLICTS
-		inconsistency_statement = inconsistency_rule.find('inconsistency')
-		conflict_feature_name   = inconsistency_statement.get('name')
-		conflict_feature_values = [inconsistency_feature.get('value') for inconsistency_feature in inconsistency_statement]
+			rest_feature_names = [feature_name for feature_name in self._SPO_LIST if feature_name != conflict_feature_name]
+			pd_grouped_data = pd_data.groupby(rest_feature_names)[conflict_feature_name].apply(set)
 
-		if _data_has_conflict_values(pd_data[conflict_feature_name], conflict_feature_values) == False:
-			print("[inconsistency rule] {} is skipped because there are no conflicts.".format(inconsistency_rule_name))
-			continue
+			def has_conflict_values(x, conflict_feature_values):
+				return x.intersection(conflict_feature_values)
 
-		rest_feature_names = [feature_name for feature_name in SPO_LIST if feature_name != conflict_feature_name]
-		pd_grouped_data    = pd_data.groupby(rest_feature_names)[conflict_feature_name].apply(set)
+			pd_nconflict_data = pd_grouped_data.apply(has_conflict_values, args=(set(conflict_feature_values), ))
+			pd_filtered_data = pd_nconflict_data[pd_nconflict_data.apply(len) > 1]
 
-		def has_conflict_values(x, conflict_feature_values):
-			return x.intersection(conflict_feature_values)
+			# create inconsistency triple list
+			for row_idx in range(pd_filtered_data.shape[0]):
+				pd_conflict_data = pd.Series(pd_filtered_data.index[row_idx], index=rest_feature_names)
 
-		pd_nconflict_data = pd_grouped_data.apply(has_conflict_values, args = (set(conflict_feature_values), ))
-		pd_filtered_data  = pd_nconflict_data[pd_nconflict_data.apply(len) > 1]
+				conflict_tuples = []
+				for conflict_value in pd_filtered_data[row_idx]:
+					pd_conflict_data[conflict_feature_name] = conflict_value
+					sources = pd.unique(pd_condition_specific_data[(pd_condition_specific_data[self._SPO_LIST] == pd_conflict_data).all(1)]['Source'])
+					conflict_tuples.append((tuple(pd_conflict_data[self._SPO_LIST]), sources.tolist()))
 
-		# CREATE INCONSISTENCY TRIPLE LIST
-		for row_idx in range(pd_filtered_data.shape[0]):
-			pd_conflict_data = pd.Series(pd_filtered_data.index[row_idx], index = rest_feature_names)
+				inconsistencies[inconsistency_id] = conflict_tuples
+				inconsistency_id = inconsistency_id + 1
 
-			conflict_tuples = []
-			for conflict_value in pd_filtered_data[row_idx]:
-				pd_conflict_data[conflict_feature_name] = conflict_value
-				sources = pd.unique(pd_condition_specific_data[(pd_condition_specific_data[SPO_LIST] == pd_conflict_data).all(1)]['Source'])
-				conflict_tuples.append((tuple(pd_conflict_data[SPO_LIST]), sources.tolist()))
+		print("[inconsistency detection summary] found {} inconsistencies.".format(len(inconsistencies)))
 
-			inconsistencies[inconsistency_id] = conflict_tuples
-			inconsistency_id = inconsistency_id + 1
+		return inconsistencies
 
-	print("[inconsistency detection summary] found {} inconsistencies.".format(len(inconsistencies)))
+	def _data_has_conflict_values(self, all_feature_values, conflict_feature_values):
+		"""
+		(Private) Check is data has conflicting values.
 
-	return inconsistencies
+		Inputs:
+			all_feature_values: column from one of Subject/Predicate/Object
+			conflict_feature_values: list containing the conflicting feature values
+				['response to antibiotic', 'no response to antibiotic']
 
-def measure_accuracy(resolved_inconsistencies, answers, iteration=0):
-	correctly_resolved_inconsistencies = 0.0
-	total_attempted_resolution = 0.0
+		Returns:
+			True if data has conflicting values, False otherwise.
+		"""
+		unique_feature_values  = pd.unique(all_feature_values)
+		num_of_conflict_values = 0
 
-	for inconsistency_id in resolved_inconsistencies:
-		resolved_inconsistency = resolved_inconsistencies[inconsistency_id]
-		resolved_tuple  = resolved_inconsistency[0][0]
-		resolved_belief = resolved_inconsistency[0][2]
-		conflict_tuple  = resolved_inconsistency[1][0]
-		conflict_belief = resolved_inconsistency[1][2]
+		for conflict_feature_value in conflict_feature_values:
+			if conflict_feature_value in unique_feature_values:
+				num_of_conflict_values = num_of_conflict_values + 1
 
-		pd_resolved_inconsistency = pd.Series(resolved_tuple, index = SPO_LIST)
-		pd_conflict_inconsistency = pd.Series(conflict_tuple, index = SPO_LIST)
-
-		if (pd_resolved_inconsistency == answers[SPO_LIST]).all(1).any():
-			correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
-			total_attempted_resolution = total_attempted_resolution + 1
-			print("{}\tTRUE\t{}\t{}".format(iteration, resolved_belief, conflict_belief))
-		elif (pd_conflict_inconsistency == answers[SPO_LIST]).all(1).any():
-			total_attempted_resolution = total_attempted_resolution + 1
-			print("{}\tFALSE\t{}\t{}".format(iteration, resolved_belief, conflict_belief))
-
-	print("{} {}".format(correctly_resolved_inconsistencies, total_attempted_resolution))
-	accuracy = 0 if float(total_attempted_resolution) == 0 else float(correctly_resolved_inconsistencies) / float(total_attempted_resolution)
-	return "{0:.4f}".format(accuracy)
-
-def measure_trustworthiness(pd_data, answers):
-	sources = pd.unique(pd_data['Source']).tolist()
-	pd_trustworthiness = pd.Series(index = sources)
-
-	for source in sources:
-		source_claims = pd_data[pd_data['Source'] == source][SPO_LIST]
-		common = source_claims.merge(answers,on=SPO_LIST)
-		pd_trustworthiness[source] = float(common.shape[0]) / float(source_claims.shape[0])
-
-	return pd_trustworthiness
-
-def get_belief_of_inconsistencies(inconsistencies_with_max_belief, answer):
-	data = {0: [], 1: []}
-
-	for inconsistent_tuples_with_max_belief in inconsistencies_with_max_belief.values():
-		belief = inconsistent_tuples_with_max_belief[0][2]
-
-		pd_claim = pd.Series(inconsistent_tuples_with_max_belief[0][0], index = SPO_LIST)
-		if (answer[SPO_LIST] == pd_claim).all(1).any():
-			data[0] = data[0] + [belief]
-		else:
-			data[1] = data[1] + [belief]
-
-	return data
+		return num_of_conflict_values > 1

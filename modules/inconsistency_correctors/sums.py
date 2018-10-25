@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import math
 from operator import itemgetter
-from ..inconsistency_manager import measure_accuracy
+from ..utilities import measure_accuracy
 
 MAX_NUM_ITERATIONS = 10
 SPO_LIST = ['Subject','Predicate','Object']

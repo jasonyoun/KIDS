@@ -12,6 +12,7 @@ Description:
 
 To-do:
 	1. Maybe split integrate_data() into two functions name_map() and data_rule()
+	2. Move _SPO_LIST to global file.
 """
 
 #!/usr/bin/python
@@ -172,8 +173,7 @@ class DataManager:
 		# drop the duplicates
 		pd_new_data = pd_new_data.drop_duplicates()
 
-		print("[data integration] {} new tuples are added based on \
-			the data rule.".format(pd_new_data.shape[0]-pd_data.shape[0]))
+		print("[data integration] {} new tuples are added based on the data rule.".format(pd_new_data.shape[0]-pd_data.shape[0]))
 
 		return pd_new_data
 

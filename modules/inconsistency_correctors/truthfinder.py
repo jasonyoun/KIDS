@@ -7,7 +7,7 @@ import pandas    as pd
 from .voting     import Voting
 from .sums       import Sums
 from .investment import Investment
-from ..inconsistency_manager import measure_accuracy
+from ..utilities import measure_accuracy
 
 # constants
 MAX_NUM_ITERATIONS = 10

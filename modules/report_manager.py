@@ -10,7 +10,7 @@ from matplotlib import pyplot, rcParams
 from scipy.stats import gamma
 
 # import from knowledge_scholar
-from .inconsistency_manager import get_belief_of_inconsistencies
+from .utilities import get_belief_of_inconsistencies
 
 # set fonts
 rcParams['font.family'] = 'sans-serif'
