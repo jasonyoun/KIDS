@@ -42,7 +42,9 @@ inconsistencies = InconsistencyManager(inconsistency_rule_file).detect_inconsist
 
 # correct inconsistencies
 resolve_inconsistencies_result = AverageLog.resolve_inconsistencies(pd_data, inconsistencies)
-inconsistencies_with_max_belief, pd_belief_vector_without_inconsistencies, np_trustworthiness_vector = resolve_inconsistencies_result
+inconsistencies_with_max_belief = resolve_inconsistencies_result[0]
+pd_belief_and_source_without_inconsistencies = resolve_inconsistencies_result[1]
+np_trustworthiness_vector = resolve_inconsistencies_result[2]
 
 # report data integration results
 plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies)
@@ -51,4 +53,4 @@ plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies)
 save_resolved_inconsistencies(inconsistency_out_file, inconsistencies_with_max_belief)
 
 # save integrated data
-save_integrated_data(data_out_file, pd_belief_vector_without_inconsistencies)
+save_integrated_data(data_out_file, pd_belief_and_source_without_inconsistencies)
