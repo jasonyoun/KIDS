@@ -17,20 +17,20 @@ rcParams['font.family'] = 'sans-serif'
 rcParams['font.sans-serif'] = ['Arial']
 
 # constants
-SPO_LIST     = ['Subject','Predicate','Object']
+SPO_LIST = ['Subject','Predicate','Object']
 COLUMN_NAMES = SPO_LIST + ['Source']
 
 # IT IS NOT GENERIC (NEED TO UPDATE)
 data_category = { 'Soo'    : 'Phenotype microarray',
-					'Shaw'   : 'Expression profile',
-					'Zhou'   : 'Phenotype microarray',
-					'Nichols': 'Growth profile',
-					'Liu'    : 'MIC profile',
-					'Tamae'  : 'MIC profile',
-					'Girgis' : 'Transposon',
-					'CARD'   : 'KB',
-					'GO'     : 'KB',
-					'hiTRN'  : 'KB' }
+				  'Shaw'   : 'Expression profile',
+				  'Zhou'   : 'Phenotype microarray',
+				  'Nichols': 'Growth profile',
+				  'Liu'    : 'MIC profile',
+				  'Tamae'  : 'MIC profile',
+				  'Girgis' : 'Transposon',
+				  'CARD'   : 'KB',
+				  'GO'     : 'KB',
+				  'hiTRN'  : 'KB' }
 
 def plot_network_of_inconsistency(pd_data, inconsistencies):
 	pd_grouped_data  = pd_data.groupby('Source').apply(len)
@@ -94,23 +94,22 @@ def plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies):
 	pd_grouped_data = pd_data_copy.groupby(SPO_LIST)['Source'].apply(set)
 	sources = pd_data.groupby('Source').size().index.tolist()
 	list_trustworthiness_vector = [float(trustworthiness) for trustworthiness in np_trustworthiness_vector]
-	pd_trustworthiness_vector = pd.Series(list_trustworthiness_vector, index = sources)
+	pd_trustworthiness_vector = pd.Series(list_trustworthiness_vector, index=sources)
 
 	pd_data_stat_column_names = ['Single source', 'Multiple sources', 'Inconsistencies']
 	pd_data_stat = pd.DataFrame(index=sources, columns=pd_data_stat_column_names)
 
 	for source in sources:
-	  matched_indices = (pd_data_copy['Source'] == source)
-	  num_of_tuples_with_one_source = sum(pd_grouped_data == {source})
-	  num_of_rest = sum(pd_data_copy['Source'] == source) - num_of_tuples_with_one_source
-
-	  pd_data_stat.loc[source] = [num_of_tuples_with_one_source, num_of_rest, get_inconsistencies_of_source(source, inconsistencies)]
+		matched_indices = (pd_data_copy['Source'] == source)
+		num_of_tuples_with_one_source = sum(pd_grouped_data == {source})
+		num_of_rest = sum(pd_data_copy['Source'] == source) - num_of_tuples_with_one_source
+		pd_data_stat.loc[source] = [num_of_tuples_with_one_source, num_of_rest, get_inconsistencies_of_source(source, inconsistencies)]
 
 	fig, ax1 = plt.subplots()
 	ax1.set_yscale("log")
 
-	dim  = len(pd_data_stat_column_names)
-	w    = 0.5
+	dim = len(pd_data_stat_column_names)
+	w = 0.5
 	dimw = w / dim
 
 	sorted_sources = pd_trustworthiness_vector.sort_values(ascending=False).index.tolist()
@@ -118,10 +117,11 @@ def plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies):
 
 	print(pd_data_stat)
 	print(pd_trustworthiness_vector)
+
 	x = np.arange(len(sources))
 	i = -1
 	for column_name in pd_data_stat_column_names:
-		ax1.bar(x + i * dimw, pd_data_stat[column_name], dimw, label = column_name, bottom = 0.001)
+		ax1.bar(x + i * dimw, pd_data_stat[column_name], dimw, label=column_name, bottom=0.001)
 		i += 1
 	#ax2 = ax1.twinx()
 	#ax2.plot(x, pd_trustworthiness_vector[sorted_sources].tolist(), marker = 'o', color = 'r', label = 'Trustworthiness')

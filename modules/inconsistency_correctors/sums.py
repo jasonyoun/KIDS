@@ -6,11 +6,7 @@ Authors:
 	Jason Youn - jyoun@ucdavis.edu
 
 Description:
-<<<<<<< HEAD
-	Resolve inconsistencies Using Hubs and Authorities algorithm (a.k.a. Sums).
-=======
 	Resolve inconsistencies using Hubs and Authorities algorithm (a.k.a. Sums).
->>>>>>> inconsistency_manager
 
 To-do:
 	1. Change np.matrix into np.array for future compatibility.
@@ -228,13 +224,8 @@ class Sums(object):
 
 		Returns:
 			np_a_matrix: collection of union of one-hot vectors of shape (b, a)
-<<<<<<< HEAD
-			np_b_matrix: transpose of np_a_matrix
-=======
-				transform belief to trustworthiness
 			np_b_matrix: transpose of np_a_matrix
 				transform trustworthiness to belief
->>>>>>> inconsistency_manager
 		"""
 		sources = pd_source_size_data.index.tolist()
 		pd_belief_source_matrix = pd_grouped_data.apply(Sums.create_source_vector, args=(sources,))

@@ -17,11 +17,7 @@ import pandas as pd
 import math
 from collections import Counter
 
-<<<<<<< HEAD
-from .sums       import Sums
-=======
 from .sums import Sums
->>>>>>> inconsistency_manager
 from ..utilities import measure_accuracy
 
 MAX_NUM_ITERATIONS = 10
