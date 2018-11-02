@@ -14,15 +14,16 @@ To-do:
 """
 
 import operator
+import math
 import numpy as np
 import pandas as pd
-import math
+import logging as log
 from operator import itemgetter
 from ..utilities import measure_accuracy
 
 MAX_NUM_ITERATIONS = 10
 SPO_LIST = ['Subject','Predicate','Object']
-THRESHOLD = np.power(0.1,10)
+THRESHOLD = np.power(0.1, 10)
 
 class Sums(object):
 	@classmethod
@@ -54,6 +55,8 @@ class Sums(object):
 			np_present_trustworthiness_vector: vector containing trustworthiness
 				of all the sources
 		"""
+		log.info('Resolving inconsistencies using Sums')
+
 		# preprocess
 		pd_source_size_data = pd_data.groupby('Source').size() # number of triples per each source
 		pd_grouped_data = pd_data.groupby(SPO_LIST)['Source'].apply(set)
@@ -81,12 +84,12 @@ class Sums(object):
 				accuracy = measure_accuracy(inconsistencies_with_max_belief, answers)
 
 				if past_accuracy == accuracy:
-					print("[{}] accuracy saturation {} {} {}".format(cls.__name__, iteration, delta, accuracy))
+					log.info('\taccuracy saturation {} {} {}'.format(iteration, delta, accuracy))
 				else:
-					print("[{}] iteration, delta and accuracy : {} {} {}".format(cls.__name__, iteration, delta, accuracy))
+					log.info('\titeration, delta, accuracy : {} {} {}'.format(iteration, delta, accuracy))
 				past_accuracy = accuracy
 			else:
-				print("[{}] iteration and delta : {} {}".format(cls.__name__, iteration, delta))
+				log.info('\titeration, delta : {} {}'.format(iteration, delta))
 
 			# update iteration
 			iteration = iteration + 1
@@ -150,7 +153,7 @@ class Sums(object):
 			# for each inconsistency id, loop through their contents
 			for inconsistent_tuple, sources in inconsistent_tuples:
 				belief = pd_present_belief_and_source.loc[inconsistent_tuple].values[0]
-				# print('[inconsistency id {}] {} {}'.format(inconsistency_id,' '.join(inconsistent_tuple), belief))
+				# log.debug('{} {}'.format(inconsistent_tuple, belief))
 				inconsistent_tuples_with_max_belief.append((inconsistent_tuple, sources, belief))
 				pd_present_belief_and_source_without_inconsistencies = pd_present_belief_and_source_without_inconsistencies.drop(inconsistent_tuple)
 

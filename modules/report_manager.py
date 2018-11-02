@@ -1,3 +1,16 @@
+"""
+Filename: report_manager.py
+
+Authors:
+	Minseung Kim - msgkim@ucdavis.edu
+
+Description:
+	Functions for generating a report.
+
+To-do:
+	1. put function comments and do a bit of a cleanup
+"""
+
 #!/usr/bin/python
 
 # import generic packages
@@ -6,6 +19,7 @@ import numpy as np
 import math
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
+import logging as log
 from matplotlib import pyplot, rcParams
 from scipy.stats import gamma
 
@@ -115,8 +129,8 @@ def plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies):
 	sorted_sources = pd_trustworthiness_vector.sort_values(ascending=False).index.tolist()
 	pd_data_stat = pd_data_stat.loc[sorted_sources]
 
-	print(pd_data_stat)
-	print(pd_trustworthiness_vector)
+	log.debug(pd_data_stat)
+	log.debug(pd_trustworthiness_vector)
 
 	x = np.arange(len(sources))
 	i = -1
@@ -183,7 +197,7 @@ def report_inconsistency_per_source(pd_data, inconsistencies):
 	for source in pd_source_size_data.index.tolist():
 		search_keyword = pd.Series([source, 'Yes'], index = ['Source', 'Inconsistency'])
 		num_of_inconsistencies = sum((pd_data_copy[['Source', 'Inconsistency']] == search_keyword).all(1))
-		print("[inconsistency ratio] {} {} {}".format(num_of_inconsistencies, pd_source_size_data[source], float(num_of_inconsistencies) / pd_source_size_data[source]))
+		log.debug('{} {} {}'.format(num_of_inconsistencies, pd_source_size_data[source], float(num_of_inconsistencies) / pd_source_size_data[source]))
 		inconsistency_ratios.append(float(num_of_inconsistencies) / pd_source_size_data[source])
 
 	return pd_data_copy, (np.mean(inconsistency_ratios), np.std(inconsistency_ratios))
@@ -212,20 +226,21 @@ def save_resolved_inconsistencies(inconsistency_out_file, inconsistencies_with_m
 		total_source_size = np.sum([len(inconsistent_tuple_with_max_belief[1]) for inconsistent_tuple_with_max_belief in inconsistent_tuples_with_max_belief])
 		mean_belief_of_conflicting_tuple = np.mean([_tuple_[2] for _tuple_ in conflicting_tuple_info])
 
-		print('[inconsistency resolution] {}\t{}\t{}\t{}\t{}\t{}\t{}'.format('\t'.join(selected_tuple),
-																			"{0:.10f}".format(belief),
-																			len(sources),
-																			",".join(sources),
-																			total_source_size,
-																			"{0:.10f}".format(mean_belief_of_conflicting_tuple),
-																			"{0:.10f}".format(belief - mean_belief_of_conflicting_tuple)))
+		log.debug('{}\t{}\t{}\t{}\t{}\t{}\t{}'.format('\t'.join(selected_tuple),
+													  '{0:.10f}'.format(belief),
+													  len(sources),
+													  ','.join(sources),
+													  total_source_size,
+													  '{0:.10f}'.format(mean_belief_of_conflicting_tuple),
+													  '{0:.10f}'.format(belief - mean_belief_of_conflicting_tuple)))
+
 		inconsistency_out.write('{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format('\t'.join(selected_tuple),
-																			"{0:.10f}".format(belief),
+																			'{0:.10f}'.format(belief),
 																			len(sources),
-																			",".join(sources),
+																			','.join(sources),
 																			total_source_size,
-																			"{0:.10f}".format(mean_belief_of_conflicting_tuple),
-																			"{0:.10f}".format(belief - mean_belief_of_conflicting_tuple),
+																			'{0:.10f}'.format(mean_belief_of_conflicting_tuple),
+																			'{0:.10f}'.format(belief - mean_belief_of_conflicting_tuple),
 																			conflicting_tuple_info))
 
 	inconsistency_out.close()

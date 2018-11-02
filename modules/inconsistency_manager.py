@@ -12,9 +12,10 @@ To-do:
 """
 
 import operator
+import math
 import numpy as np
 import pandas as pd
-import math
+import logging as log
 from collections import Counter
 from .utilities import get_pd_of_statement
 import xml.etree.ElementTree as ET
@@ -64,12 +65,14 @@ class InconsistencyManager:
 		inconsistencies = {}
 		inconsistency_id = 0
 
+		log.info('Detecting inconsistencies using inconsisty rule {}'.format(self.inconsistency_rule_file))
+
 		# iterate over each inconsistency rule
 		for inconsistency_rule in inconsistency_rules:
 			inconsistency_rule_name = inconsistency_rule.get('name')
 			condition_statement = inconsistency_rule.find('condition')
 
-			print("[inconsistency rule] Processing inconsisency rule '{}'.".format(inconsistency_rule_name))
+			log.debug('Processing inconsisency rule \'{}\''.format(inconsistency_rule_name))
 
 			# check if condition is met
 			pd_condition_specific_data = pd_data.copy()
@@ -81,7 +84,7 @@ class InconsistencyManager:
 
 				# skip to the next rule if condition statement exists and there are no data meeting the condition
 				if pd_condition_specific_data.shape[0] == 0:
-					print("[inconsistency rule] '{}' is skipped because there are no data meeting condition.".format(inconsistency_rule_name))
+					log.debug('Skipping \'{}\' because there are no data meeting condition'.format(inconsistency_rule_name))
 					continue
 
 			# check if data has conflicts
@@ -91,7 +94,7 @@ class InconsistencyManager:
 
 			# skip to the next rule if there are no conflicts
 			if self._data_has_conflict_values(pd_data[conflict_feature_name], conflict_feature_values) == False:
-				print("[inconsistency rule] '{}' is skipped because there are no conflicts.".format(inconsistency_rule_name))
+				log.debug('Skipping \'{}\' because there are no conflicts'.format(inconsistency_rule_name))
 				continue
 
 			rest_feature_names = [feature_name for feature_name in self._SPO_LIST if feature_name != conflict_feature_name]
@@ -116,7 +119,7 @@ class InconsistencyManager:
 				inconsistencies[inconsistency_id] = conflict_tuples
 				inconsistency_id = inconsistency_id + 1
 
-		print("[inconsistency detection summary] found {} inconsistencies.".format(len(inconsistencies)))
+		log.info('Found {} inconsistencies'.format(len(inconsistencies)))
 
 		return inconsistencies
 

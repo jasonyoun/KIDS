@@ -11,18 +11,19 @@ To-do:
 """
 
 import operator
+import math
 import numpy as np
 import pandas as pd
-import math
+import logging as log
 from collections import Counter
 
 from .investment import Investment
 from .sums import Sums
 from ..utilities import measure_accuracy
 
-SPO_LIST = ['Subject', 'Predicate', 'Object']
 MAX_NUM_ITERATIONS = 8
-THRESHOLD = np.power(0.1,10)
+SPO_LIST = ['Subject', 'Predicate', 'Object']
+THRESHOLD = np.power(0.1, 10)
 
 class PooledInvestment(object):
 	@classmethod
@@ -55,6 +56,8 @@ class PooledInvestment(object):
 			np_present_trustworthiness_vector: vector containing trustworthiness
 				of all the sources
 		"""
+		log.info('Resolving inconsistencies using Pooled Investment')
+
 		# preprocess
 		pd_source_size_data = pd_data.groupby('Source').size()
 		pd_grouped_data = pd_data.groupby(SPO_LIST)['Source'].apply(set)
@@ -82,12 +85,12 @@ class PooledInvestment(object):
 				accuracy = measure_accuracy(inconsistencies_with_max_belief, answers)
 
 				if past_accuracy == accuracy:
-					print("[{}] accuracy saturation {} {} {}".format(cls.__name__, iteration, delta, accuracy))
+					log.info('\taccuracy saturation {} {} {}'.format(iteration, delta, accuracy))
 				else:
-					print("[{}] iteration, delta and accuracy : {} {} {}".format(cls.__name__, iteration, delta, accuracy))
+					log.info('\titeration, delta, accuracy : {} {} {}'.format(iteration, delta, accuracy))
 				past_accuracy = accuracy
 			else:
-				print("[{}] iteration and delta : {} {}".format(cls.__name__, iteration, delta))
+				log.info('\titeration, delta : {} {}'.format(iteration, delta))
 
 			# update iteration
 			iteration = iteration + 1

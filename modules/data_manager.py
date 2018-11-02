@@ -20,6 +20,7 @@ To-do:
 import pandas as pd
 import numpy as np
 import xml.etree.ElementTree as ET
+import logging as log
 from .utilities import get_pd_of_statement
 
 class DataManager:
@@ -32,16 +33,16 @@ class DataManager:
 	#######################################
 	SPO_LIST = ['Subject', 'Predicate', 'Object']
 
-	def __init__(self, pd_data_paths, map_file, data_rule_file):
+	def __init__(self, data_paths, map_file, data_rule_file):
 		"""
 		Class constructor for DataManager.
 
 		Inputs:
-			pd_data_paths: path & source for each dataset
+			data_paths: path & source for each dataset
 			map_file: data name mapping file name
 			data_rule_file: data rule file name
 		"""
-		self.pd_data_paths = pd_data_paths
+		self.pd_data_paths = pd.read_csv(data_paths, sep = '\t', comment = '#')
 		self.map_file = map_file
 		self.data_rule_file = data_rule_file
 
@@ -64,29 +65,34 @@ class DataManager:
 
 		# iterate over each dataset and perform name mappipng
 		for idx, row in self.pd_data_paths.iterrows():
-			pd_data = pd.read_csv(row['Path'], '\t')
-			pd_data = self._name_map_data(pd_data)
-			pd_data['Source'] = row['Source']
+			str_source = row['Source']
+			str_path = row['Path']
 
+			log.info('Processing source {} using {}'.format(str_source, str_path))
+
+			pd_data = pd.read_csv(str_path, '\t')
+			pd_data = self._name_map_data(pd_data, str_source)
+			pd_data['Source'] = str_source
 			list_integrated_data.append(pd_data)
 
-			print("[data integration] Added {} tuples from source {}.".format(pd_data.shape[0],row['Source']))
+			log.info('Added {} tuples from source {}'.format(pd_data.shape[0], str_source))
 
 		# apply data rule
 		pd_integrated_data = pd.concat(list_integrated_data)
 		pd_integrated_data = self._apply_data_rule(pd_integrated_data)
 		pd_integrated_data.index = range(pd_integrated_data.shape[0]) # update the index
 
-		print("[data integration] Total of {} tuples are integrated.".format(pd_integrated_data.shape[0]))
+		log.info('Total of {} tuples integrated.'.format(pd_integrated_data.shape[0]))
 
 		return pd_integrated_data
 
-	def _name_map_data(self, pd_data):
+	def _name_map_data(self, pd_data, str_source):
 		"""
 		(Private) Perform name mapping given data from single source.
 
 		Inputs:
 			pd_data: all the data from single source
+			str_source: source name that is being processed
 
 		Returns:
 			pd_converted_data: name mapped data
@@ -119,18 +125,14 @@ class DataManager:
 				new_x['Subject'] = dict_map[x['Subject']]
 				new_x['Object']  = dict_map[x['Object']]
 			else:
-				###########################
-				# do we do anything here? #
-				###########################
+				# we should've covered everything by now
 				pass
 
 			return new_x
 
-		pd_converted_data = pd_data.apply(has_mapping_name, axis=1, args=(dict_map, ))
+		log.info('Applying name mapping to data from source {}'.format(str_source))
 
-		########################################
-		# put a log here about processing data #
-		########################################
+		pd_converted_data = pd_data.apply(has_mapping_name, axis=1, args=(dict_map, ))
 
 		return pd_converted_data
 
@@ -147,8 +149,12 @@ class DataManager:
 		data_rules  = ET.parse(self.data_rule_file).getroot()
 		pd_new_data = pd_data.copy()
 
+		log.info('Applying data rule to infer new data using {}'.format(self.data_rule_file))
+
 		# iterate over each data rule
 		for data_rule in data_rules:
+			log.debug('Processing data rule {}'.format(data_rule.get('name')))
+
 			# find all the triples that meets the data rule's if statement
 			if_statement = data_rule.find('if')
 			pd_if_statement = get_pd_of_statement(if_statement)
@@ -156,9 +162,7 @@ class DataManager:
 			pd_rule_specific_new_data = pd_data[indices_meeting_if].copy()
 
 			if pd_rule_specific_new_data.shape[0] == 0:
-				###########################
-				# do we do anything here? #
-				###########################
+				log.debug('\tNo new data inferred using this data rule')
 				continue
 
 			# get the then statement that we are going to apply
@@ -170,18 +174,12 @@ class DataManager:
 			# append the new data to the original
 			pd_new_data = pd_new_data.append(pd_rule_specific_new_data)
 
+			log.debug('\t{} new tuples found using this data rule'.format(pd_rule_specific_new_data.shape[0]))
+
 		# drop the duplicates
 		pd_new_data = pd_new_data.drop_duplicates()
 
-		print("[data integration] {} new tuples are added based on the data rule.".format(pd_new_data.shape[0]-pd_data.shape[0]))
+		log.info('Total of {} new tuples added based on the data rule after dropping the duplicates'
+			.format(pd_new_data.shape[0]-pd_data.shape[0]))
 
 		return pd_new_data
-
-	# def _get_source_size(self, pd_data):
-	# 	"""
-	# 	(Private) Get size of the source.
-
-	# 	Inputs:
-	# 		pd_data:
-	# 	"""
-	# 	return pd_data.groupby('Source').size()

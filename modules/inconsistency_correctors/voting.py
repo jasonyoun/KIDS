@@ -12,9 +12,10 @@ To-do:
 """
 
 import operator
+import math
 import numpy as np
 import pandas as pd
-import math
+import logging as log
 
 class Voting():
 	@classmethod
@@ -43,6 +44,8 @@ class Voting():
 			np_present_trustworthiness_vector: vector containing trustworthiness
 				of all the sources
 		"""
+		log.info('Resolving inconsistencies using Voting')
+
 		np_present_trustworthiness_vector = np.array(pd.Series(data.groupby('Source').size()))
 		inconsistent_tuples_with_max_occurrence = {}
 

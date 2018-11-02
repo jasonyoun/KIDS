@@ -7,9 +7,13 @@ Authors:
 
 Description:
 	Collection of utility functions.
+
+To-do:
+	1. clean-up and put comments
 """
 
 import pandas as pd
+import logging as log
 
 def get_pd_of_statement(statement):
 	"""
@@ -43,12 +47,12 @@ def measure_accuracy(resolved_inconsistencies, answers, iteration=0):
 		if (pd_resolved_inconsistency == answers[SPO_LIST]).all(1).any():
 			correctly_resolved_inconsistencies = correctly_resolved_inconsistencies + 1
 			total_attempted_resolution = total_attempted_resolution + 1
-			print("{}\tTRUE\t{}\t{}".format(iteration, resolved_belief, conflict_belief))
+			log.debug('{}\tTRUE\t{}\t{}'.format(iteration, resolved_belief, conflict_belief))
 		elif (pd_conflict_inconsistency == answers[SPO_LIST]).all(1).any():
 			total_attempted_resolution = total_attempted_resolution + 1
-			print("{}\tFALSE\t{}\t{}".format(iteration, resolved_belief, conflict_belief))
+			log.debug('{}\tFALSE\t{}\t{}'.format(iteration, resolved_belief, conflict_belief))
 
-	print("{} {}".format(correctly_resolved_inconsistencies, total_attempted_resolution))
+	log.debug('{} {}'.format(correctly_resolved_inconsistencies, total_attempted_resolution))
 	accuracy = 0 if float(total_attempted_resolution) == 0 else float(correctly_resolved_inconsistencies) / float(total_attempted_resolution)
 	return "{0:.4f}".format(accuracy)
 
