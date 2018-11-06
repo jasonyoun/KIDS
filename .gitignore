@@ -8,8 +8,3 @@ pra/model/model_instance/*
 er_mlp/model/model_instance/*
 stacked/model_instance/*
 !README
-__pycache__/
-.tags
-.tags_sorted_by_file
-*.pyo
-*.pyc
