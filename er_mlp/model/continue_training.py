@@ -196,9 +196,16 @@ with tf.Session() as sess:
             thresholds = determine_threshold(indexed_dev_data,f1=F1_FOR_THRESHOLD)
             test_model( indexed_test_data, thresholds, _type='current')
         avg_cost = 0.
-        total_batch = int(data_train.shape[0] / BATCH_SIZE)
+        total_batch = int(np.ceil(data_train.shape[0] / BATCH_SIZE))
+
+        # shuffle the training data for each epoch
+        np.random.shuffle(data_train)
+
         for i in range(total_batch):
-            batch_xs = er_mlp.get_training_batch_with_corrupted(data_train)
+            start_idx = i*BATCH_SIZE
+            end_idx = (i+1)*BATCH_SIZE
+
+            batch_xs = er_mlp.get_training_batch_with_corrupted(data_train[start_idx:end_idx])
             flip = bool(random.getrandbits(1))
             # batch_xs = data_orch.get_next_training_batch(BATCH_SIZE,flip)
             _, current_cost= sess.run([optimizer, cost], feed_dict={training_triplets: batch_xs, flip_placeholder: flip})
