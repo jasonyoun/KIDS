@@ -22,6 +22,7 @@ import time
 import numpy as np
 import pickle as pickle
 import pandas as pd
+import logging as log
 import matplotlib.pyplot as plt
 from sklearn import utils
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
@@ -81,7 +82,7 @@ def roc_auc_stats(num_preds, Y, predictions, predicates, pred_dic):
 			if value == i:
 				pred_name = key
 
-		print(' - roc auc for class {} (area = {:.3f})'.format(pred_name, roc_auc[i]))
+		log.info('ROC auc for class {} (area = {:.3f})'.format(pred_name, roc_auc[i]))
 
 	fpr['macro'] = all_fpr
 	tpr['macro'] = mean_tpr
@@ -151,7 +152,7 @@ def pr_stats(num_preds, Y, predictions, predicates, pred_dic):
 			if value == i:
 				pred_name = key
 
-		print(' - PR auc for class {} (area = {:.3f})'.format(pred_name, aucPR[i]))
+		log.info('PR auc for class {} (area = {:.3f})'.format(pred_name, aucPR[i]))
 
 	# calculate mAP
 	mean_average_precision = sum_ap / len(predicates_included)

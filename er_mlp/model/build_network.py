@@ -9,30 +9,14 @@ Description:
 	Build and run the ER MLP network.
 
 To-do:
-	1. use logging instead of print.
-	2. change directory adding strings to something more professional.
 """
+import model_global
 import os
-import sys
 import argparse
-import itertools
 import configparser
-directory = os.path.dirname(__file__)
-abs_path_er_mlp = os.path.join(directory, '../er_mlp_imp')
-sys.path.insert(0, abs_path_er_mlp)
-import er_mlp_cross_entropy
 import er_mlp_max_margin
-import pickle as pickle
-
-def set_logging():
-	"""
-	Configure logging.
-	"""
-	log.basicConfig(format='(%(levelname)s) %(filename)s: %(message)s', level=log.DEBUG)
-
-	# set logging level to WARNING for matplotlib
-	logger = log.getLogger('matplotlib')
-	logger.setLevel(log.WARNING)
+import logging as log
+from data_processor import DataProcessor
 
 def parse_argument():
 	"""
@@ -54,17 +38,19 @@ def parse_argument():
 
 if __name__ == '__main__':
 	# set log and parse args
-	# set_logging()
+	model_global.set_logging()
 	args = parse_argument()
 
 	# directory and filename setup
-	model_instance_dir = 'model_instance/'
-	model_save_dir = model_instance_dir + args.dir + '/'
-	configuration = model_save_dir + args.dir.replace('/', '') + '.ini'
+	model_instance_dir = 'model_instance'
+	model_save_dir = os.path.join(model_instance_dir, args.dir)
+	configuration = os.path.join(model_save_dir, '{}.ini'.format(args.dir))
 
 	# read configuration
+	log.info('Reading the configuration from \'{}\'...'.format(configuration))
+
 	config = configparser.ConfigParser()
-	config.read('./' + configuration)
+	config.read(configuration)
 
 	WORD_EMBEDDING = config.getboolean('DEFAULT', 'WORD_EMBEDDING')
 	TRAINING_EPOCHS = config.getint('DEFAULT', 'TRAINING_EPOCHS')
@@ -73,7 +59,6 @@ if __name__ == '__main__':
 	EMBEDDING_SIZE = config.getint('DEFAULT', 'EMBEDDING_SIZE')
 	LAYER_SIZE = config.getint('DEFAULT', 'LAYER_SIZE')
 	LEARNING_RATE = config.getfloat('DEFAULT', 'LEARNING_RATE')
-	MARGIN = config.getfloat('DEFAULT', 'MARGIN')
 	CORRUPT_SIZE = config.getint('DEFAULT', 'CORRUPT_SIZE')
 	LAMBDA = config.getfloat('DEFAULT', 'LAMBDA')
 	OPTIMIZER = config.getint('DEFAULT', 'OPTIMIZER')
@@ -88,6 +73,7 @@ if __name__ == '__main__':
 	F1_FOR_THRESHOLD = config.getboolean('DEFAULT', 'F1_FOR_THRESHOLD')
 	USE_SMOLT_SAMPLING = config.getboolean('DEFAULT', 'USE_SMOLT_SAMPLING')
 	LOG_REG_CALIBRATE = config.getboolean('DEFAULT', 'LOG_REG_CALIBRATE')
+	MARGIN = config.getfloat('DEFAULT', 'MARGIN')
 
 	params = {
 		'WORD_EMBEDDING': WORD_EMBEDDING,

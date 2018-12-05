@@ -16,11 +16,17 @@ import random
 import numpy as np
 import pandas as pd
 import scipy.io as spio
+import logging as log
 
 class DataProcessor:
 	"""
 	Collection of functions to process the data.
 	"""
+	def __init__(self):
+		"""
+		Constructor for DataProcessor class.
+		"""
+		pass
 
 	def load(self, filename):
 		"""
@@ -32,6 +38,7 @@ class DataProcessor:
 		Returns:
 			df: dataframe containing the data
 		"""
+		log.info('Loading data from \'{}\'...'.format(filename))
 		df = pd.read_csv(filename, sep='\t', encoding ='latin-1', header=None)
 
 		return df
@@ -128,9 +135,13 @@ class DataProcessor:
 			item_dic: dictionary whose key is entity / relation and
 				value is the index assigned to that entity / relation
 		"""
+		# some inits
 		item_dic = {}
 		item_index_id = 0
 
+		log.info('Performing machine translation for items in \'{}\' using word embedding...'.format(fname))
+
+		# open file
 		with open(fname, encoding='utf8') as f:
 			items = [l.split() for l in f.read().strip().split('\n')]
 
@@ -142,7 +153,7 @@ class DataProcessor:
 				item_index_id += 1
 
 		if initEmbedFile:
-			print('using init embed file')
+			log.info('Using init embed file \'{}\' for word embedding...'.format(initEmbedFile))
 			mat = spio.loadmat(initEmbedFile, squeeze_me=True)
 			indexed_items = [[mat['tree'][i][()][0] - 1] if isinstance(mat['tree'][i][()][0],int) else [x - 1 for x in mat['tree'][i][()][0]] for i in range(len(mat['tree'])) ]
 			num_words = len(mat['words'])
@@ -192,9 +203,13 @@ class DataProcessor:
 			entity_dic: dictionary of entities where the key is entity,
 			and the value is a index id assigned to that specific entity.
 		"""
+		# some inits
 		entity_dic = {}
 		entity_index_id = 0
 
+		log.info('Performing machine translation for items in \'{}\' without using word embedding...'.format(fname))
+
+		# open file
 		with open(fname, encoding='utf-8') as f:
 			entities = [l.split() for l in f.read().strip().split('\n')]
 

@@ -1,8 +1,5 @@
-archive/er_mlp/results/*
-archive/er_mlp/fig/*
 *__pycache__
 **/.DS_Store
-archive/er_mlp/models/*
 pra/model/model_instance/*
 */predict_example/*
 er_mlp/model/model_instance/*

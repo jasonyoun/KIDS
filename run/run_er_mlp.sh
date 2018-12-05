@@ -5,7 +5,7 @@ set -e
 
 # directories set
 config_dir="$1"
-current_dir=$(pwd)
+current_dir=`pwd`
 er_mlp_model_dir="../er_mlp/model"
 er_mlp_instance_dir="$er_mlp_model_dir/model_instance/"
 
