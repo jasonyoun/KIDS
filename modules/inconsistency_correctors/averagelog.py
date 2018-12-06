@@ -33,6 +33,13 @@ class AverageLog(object):
 
 		Inputs:
 			pd_data: integrated data that needs inconsistencies resolved
+
+				       Subject     Predicate Object Source
+				0          lrp  no represses   fadD  hiTRN
+				1          fur  no represses   yfeD  hiTRN
+				2          fnr  no represses   ybhN  hiTRN
+				3          crp  no represses   uxuR  hiTRN
+
 			inconsistencies: Dictionary containing inconsistency_id as key
 				and list of inconsistent triples + source as value
 
@@ -43,6 +50,7 @@ class AverageLog(object):
 					('Subject 2', '!Predicate 2', 'Object 2'), ['Sourcec 2'])],
 										...
 				}
+
 			answers: 
 
 		Returns:

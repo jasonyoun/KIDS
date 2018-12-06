@@ -11,6 +11,7 @@ Description:
 To-do:
 	1. check file existence and sanity check
 	2. output intermediate and output files into a separate output folder
+	3. do more cleanup for report_manager.py and others
 """
 
 #!/usr/bin/python
@@ -29,12 +30,12 @@ from modules.report_manager import plot_trustworthiness, save_resolved_inconsist
 from modules.inconsistency_correctors.averagelog import AverageLog
 
 # default file paths
-DATA_PATH_STR = './data/data_path_file.txt'
-MAP_STR = './data/data_map.txt'
-DATA_RULE_STR = './data/data_rules.xml'
-INCONSISTENCY_RULES_STR = './data/inconsistency_rules.xml'
-DATA_OUT_STR = 'out.txt'
-INCONSISTENCY_OUT_STR = 'inconsistency.txt'
+DEFAULT_DATA_PATH_STR = './data/data_path_file.txt'
+DEFAULT_MAP_STR = './data/data_map.txt'
+DEFAULT_DATA_RULE_STR = './data/data_rules.xml'
+DEFAULT_INCONSISTENCY_RULES_STR = './data/inconsistency_rules.xml'
+DEFAULT_DATA_OUT_STR = 'out.txt'
+DEFAULT_INCONSISTENCY_OUT_STR = 'inconsistency.txt'
 
 def set_logging():
 	"""
@@ -57,27 +58,27 @@ def parse_argument():
 
 	parser.add_argument(
 		'--data_path',
-		default=DATA_PATH_STR,
+		default=DEFAULT_DATA_PATH_STR,
 		help='Path to the file data_path_file.txt')
 	parser.add_argument(
 		'--map',
-		default=MAP_STR,
+		default=DEFAULT_MAP_STR,
 		help='Path to the file data_map.txt')
 	parser.add_argument(
 		'--data_rule',
-		default=DATA_RULE_STR,
+		default=DEFAULT_DATA_RULE_STR,
 		help='Path to the file data_rules.xml')
 	parser.add_argument(
 		'--inconsistency_rule',
-		default=INCONSISTENCY_RULES_STR,
+		default=DEFAULT_INCONSISTENCY_RULES_STR,
 		help='Path to the file inconsistency_rules.xml')
 	parser.add_argument(
 		'--data_out',
-		default=DATA_OUT_STR,
+		default=DEFAULT_DATA_OUT_STR,
 		help='Path to save the integrated data file')
 	parser.add_argument(
 		'--inconsistency_out',
-		default=INCONSISTENCY_OUT_STR,
+		default=DEFAULT_INCONSISTENCY_OUT_STR,
 		help='Path to save the inconsistencies file')
 
 	return parser.parse_args()
