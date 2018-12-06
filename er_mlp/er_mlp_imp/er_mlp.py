@@ -33,21 +33,31 @@ class ERMLP:
 	def __init__(self, params, sess=None, meta_graph=None, model_restore=None):
 		"""
 		Constructor for class ERMLP.
+		If restoring the previously saved model, none of sess, meta_graph,
+		and model_restore can be None.
 
 		Inputs:
 			params: dictionary containing all the parameters
+			sess: (optional) tensorflor session
+			meta_graph: (optional) filepath for meta graph
+			model_restore: (optional) filepath fo model to restore
 		"""
 		self.params = params
 
-		###########################################
-		# check both meta_graph and model_restore #
-		###########################################
-		if meta_graph is None:
-			self._create_tensor_terms()
-		else:
+		if None not in (sess, meta_graph, model_restore):
 			self._load_tensor_terms(sess, meta_graph, model_restore)
+		else:
+			self._create_tensor_terms()
 
 	def _load_tensor_terms(self, sess, meta_graph, model_restore):
+		"""
+		(Private) Load tensor terms from previously saved model.
+
+		Inputs:
+			sess: tensorflor session
+			meta_graph: filepath for meta graph
+			model_restore: filepath fo model to restore
+		"""
 		saver = tf.train.import_meta_graph(meta_graph)
 		saver.restore(sess, model_restore)
 
@@ -92,9 +102,7 @@ class ERMLP:
 			E_vocab_size = self.params['num_entities']
 			P_vocab_size = self.params['num_preds']
 
-		weights_stddev = 1.0 / math.sqrt(self.params['embedding_size'])
-		log.debug('Using standard deviation of {} for weights'.format(weights_stddev))
-
+		# xavier initializer
 		initializer = tf.contrib.layers.xavier_initializer()
 
 		self.weights = {
@@ -102,8 +110,7 @@ class ERMLP:
 			'E': tf.Variable(tf.random_uniform([E_vocab_size, self.params['embedding_size']], -0.001, 0.001), name='E'),
 			'P': tf.Variable(tf.random_uniform([P_vocab_size, self.params['embedding_size']], -0.001, 0.001), name='P'),
 			# weights and biases of the network
-			# 'C': tf.Variable(tf.truncated_normal([3*self.params['embedding_size'], self.params['layer_size']], stddev=weights_stddev), name='C'),
-			'C': tf.Variable(initializer([3*self.params['embedding_size'], self.params['layer_size']]), name='C'),
+			'C': tf.Variable(initializer([3 * self.params['embedding_size'], self.params['layer_size']]), name='C'),
 			'B': tf.Variable(tf.ones([self.params['layer_size'], 1]), name='B')
 		}
 
@@ -111,7 +118,6 @@ class ERMLP:
 		if self.params['add_layers'] > 0:
 			for i in range(1, self.params['add_layers'] + 1):
 				self.weights['C{}'.format(i)] = tf.Variable(
-					# tf.truncated_normal([self.params['layer_size'], self.params['layer_size']], stddev=weights_stddev), name='C{}'.format(i))
 					initializer([self.params['layer_size'], self.params['layer_size']]), name='C{}'.format(i))
 
 		##########
@@ -144,8 +150,6 @@ class ERMLP:
 		else:
 			self.constants = None
 
-		return self.train_triplets, self.flip_placeholder
-
 	def inference_for_max_margin_training(self):
 		"""
 		Neural network that is used for training. Along with the evaluation of a triplet,
@@ -166,7 +170,7 @@ class ERMLP:
 			entity_embedded_word_ids = tf.nn.embedding_lookup(self.weights['E'], self.constants['padded_entity_indices'])
 
 			# calculate weighted version of these embeddings
-			# _constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
+			# self.constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
 			# entity_weighted_sum_of_embeddings.get_shape() = (8333, 2, 50)
 			pred_weighted_sum_of_embeddings = tf.multiply(pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
 			entity_weighted_sum_of_embeddings = tf.multiply(entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
@@ -185,8 +189,8 @@ class ERMLP:
 		# for each term of each sample, select the required embedding
 		# and remove the extra dimension caused by the selection
 		sub_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, sub))
-		obj_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, obj))
 		pred_emb = tf.squeeze(tf.nn.embedding_lookup(pred_emb, pred))
+		obj_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, obj))
 		corrupt_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, corrupt))
 		sub_correct_emb = sub_emb
 		obj_correct_emb = obj_emb
@@ -208,8 +212,8 @@ class ERMLP:
 				correct_dropout = tf.nn.dropout(correct_post_act, self.params['drop_out_percent'])
 				corrupted_dropout = tf.nn.dropout(corrupted_post_act, self.params['drop_out_percent'])
 
-				correct_pre_act = tf.add(tf.matmul(correct_dropout, self.weights['C'+str(i)]), self.biases['b'+str(i)])
-				corrupted_pre_act = tf.add(tf.matmul(corrupted_dropout, self.weights['C'+str(i)]), self.biases['b'+str(i)])
+				correct_pre_act = tf.add(tf.matmul(correct_dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
+				corrupted_pre_act = tf.add(tf.matmul(corrupted_dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
 
 		if self.params['act_function'] == 0:
 			# tanh
@@ -228,6 +232,7 @@ class ERMLP:
 		out_correct = tf.sigmoid(out_correct_pre_act)
 		out_corrupted = tf.sigmoid(out_corrupted_pre_act)
 
+		# given batch_size = 5,000 and corrupt_size = 100, self.train_predictions will have shape (500,000 x 2)
 		self.train_predictions = tf.concat([out_correct, out_corrupted], axis=1, name='inference_for_max_margin_training')
 
 		return self.train_predictions
@@ -284,9 +289,9 @@ class ERMLP:
 
 				if training:
 					dropout = tf.nn.dropout(post_act, self.params['drop_out_percent'])
-					pre_act = tf.add(tf.matmul(dropout, self.weights['C'+str(i)]), self.biases['b'+str(i)])
+					pre_act = tf.add(tf.matmul(dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
 				else:
-					pre_act = tf.add(tf.matmul(post_act, self.weights['C'+str(i)]), self.biases['b'+str(i)])
+					pre_act = tf.add(tf.matmul(post_act, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
 
 		if self.params['act_function'] == 0:
 			# tanh
