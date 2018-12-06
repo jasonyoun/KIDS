@@ -17,7 +17,6 @@ To-do:
 	5. cross_margin inside compute_threshold() is not used. why?
 """
 
-import sys
 import math
 import random
 import numpy as np
@@ -40,26 +39,17 @@ class ERMLP:
 		"""
 		self.params = params
 
-		# load tensors if we're restoring the model
-		# otherwise, create new tensors
-		if None not in (sess, meta_graph, model_restore):
-			self.sess = sess
-			self._load_tensor_terms(meta_graph, model_restore)
-		else:
+		###########################################
+		# check both meta_graph and model_restore #
+		###########################################
+		if meta_graph is None:
 			self._create_tensor_terms()
+		else:
+			self._load_tensor_terms(sess, meta_graph, model_restore)
 
-	def _load_tensor_terms(self, meta_graph, model_restore):
-		"""
-		(Private) Load tensors and restore the model.
-
-		Inputs:
-			meta_graph: path to meta graph file
-			model_restore: path to model file to restore
-		"""
-		log.info('Restoring previously saved model...')
-
+	def _load_tensor_terms(self, sess, meta_graph, model_restore):
 		saver = tf.train.import_meta_graph(meta_graph)
-		saver.restore(self.sess, model_restore)
+		saver.restore(sess, model_restore)
 
 		# load tensors
 		graph = tf.get_default_graph()
@@ -102,7 +92,9 @@ class ERMLP:
 			E_vocab_size = self.params['num_entities']
 			P_vocab_size = self.params['num_preds']
 
-		# use Xavier initializer
+		weights_stddev = 1.0 / math.sqrt(self.params['embedding_size'])
+		log.debug('Using standard deviation of {} for weights'.format(weights_stddev))
+
 		initializer = tf.contrib.layers.xavier_initializer()
 
 		self.weights = {
@@ -110,7 +102,8 @@ class ERMLP:
 			'E': tf.Variable(tf.random_uniform([E_vocab_size, self.params['embedding_size']], -0.001, 0.001), name='E'),
 			'P': tf.Variable(tf.random_uniform([P_vocab_size, self.params['embedding_size']], -0.001, 0.001), name='P'),
 			# weights and biases of the network
-			'C': tf.Variable(initializer([3 * self.params['embedding_size'], self.params['layer_size']]), name='C'),
+			# 'C': tf.Variable(tf.truncated_normal([3*self.params['embedding_size'], self.params['layer_size']], stddev=weights_stddev), name='C'),
+			'C': tf.Variable(initializer([3*self.params['embedding_size'], self.params['layer_size']]), name='C'),
 			'B': tf.Variable(tf.ones([self.params['layer_size'], 1]), name='B')
 		}
 
@@ -118,6 +111,7 @@ class ERMLP:
 		if self.params['add_layers'] > 0:
 			for i in range(1, self.params['add_layers'] + 1):
 				self.weights['C{}'.format(i)] = tf.Variable(
+					# tf.truncated_normal([self.params['layer_size'], self.params['layer_size']], stddev=weights_stddev), name='C{}'.format(i))
 					initializer([self.params['layer_size'], self.params['layer_size']]), name='C{}'.format(i))
 
 		##########
@@ -150,11 +144,17 @@ class ERMLP:
 		else:
 			self.constants = None
 
+		return self.train_triplets, self.flip_placeholder
+
 	def inference_for_max_margin_training(self):
 		"""
 		Neural network that is used for training. Along with the evaluation of a triplet,
 		the evaluation of a corrupted triplet is calculated as well so that we can calulcate
 		the contrastive max margin loss.
+
+		Returns:
+			train_predictions: concatenation of correct output in
+				1st column and corrupted output in the 2nd column
 		"""
 		log.info('Building the network to be used for training...')
 
@@ -166,7 +166,7 @@ class ERMLP:
 			entity_embedded_word_ids = tf.nn.embedding_lookup(self.weights['E'], self.constants['padded_entity_indices'])
 
 			# calculate weighted version of these embeddings
-			# self.constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
+			# _constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
 			# entity_weighted_sum_of_embeddings.get_shape() = (8333, 2, 50)
 			pred_weighted_sum_of_embeddings = tf.multiply(pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
 			entity_weighted_sum_of_embeddings = tf.multiply(entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
@@ -185,8 +185,8 @@ class ERMLP:
 		# for each term of each sample, select the required embedding
 		# and remove the extra dimension caused by the selection
 		sub_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, sub))
-		pred_emb = tf.squeeze(tf.nn.embedding_lookup(pred_emb, pred))
 		obj_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, obj))
+		pred_emb = tf.squeeze(tf.nn.embedding_lookup(pred_emb, pred))
 		corrupt_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, corrupt))
 		sub_correct_emb = sub_emb
 		obj_correct_emb = obj_emb
@@ -208,8 +208,8 @@ class ERMLP:
 				correct_dropout = tf.nn.dropout(correct_post_act, self.params['drop_out_percent'])
 				corrupted_dropout = tf.nn.dropout(corrupted_post_act, self.params['drop_out_percent'])
 
-				correct_pre_act = tf.add(tf.matmul(correct_dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
-				corrupted_pre_act = tf.add(tf.matmul(corrupted_dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
+				correct_pre_act = tf.add(tf.matmul(correct_dropout, self.weights['C'+str(i)]), self.biases['b'+str(i)])
+				corrupted_pre_act = tf.add(tf.matmul(corrupted_dropout, self.weights['C'+str(i)]), self.biases['b'+str(i)])
 
 		if self.params['act_function'] == 0:
 			# tanh
@@ -228,8 +228,9 @@ class ERMLP:
 		out_correct = tf.sigmoid(out_correct_pre_act)
 		out_corrupted = tf.sigmoid(out_corrupted_pre_act)
 
-		# given batch_size = 5,000 and corrupt_size = 100, self.train_predictions will have shape (500,000 x 2)
 		self.train_predictions = tf.concat([out_correct, out_corrupted], axis=1, name='inference_for_max_margin_training')
+
+		return self.train_predictions
 
 	def inference(self, training=False):
 		"""
@@ -283,9 +284,9 @@ class ERMLP:
 
 				if training:
 					dropout = tf.nn.dropout(post_act, self.params['drop_out_percent'])
-					pre_act = tf.add(tf.matmul(dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
+					pre_act = tf.add(tf.matmul(dropout, self.weights['C'+str(i)]), self.biases['b'+str(i)])
 				else:
-					pre_act = tf.add(tf.matmul(post_act, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
+					pre_act = tf.add(tf.matmul(post_act, self.weights['C'+str(i)]), self.biases['b'+str(i)])
 
 		if self.params['act_function'] == 0:
 			# tanh
@@ -302,11 +303,12 @@ class ERMLP:
 
 		return self.test_predictions
 
-	def determine_threshold(self, indexed_data_dev, f1=False):
+	def determine_threshold(self, sess, indexed_data_dev, f1=False):
 		"""
 		Use the dev set to compute the best thresholds for classification.
 
 		Inputs:
+			sess:	
 			indexed_data_dev: development data set
 			f1: True is using F1 score, False if using accuracy score
 
@@ -317,7 +319,7 @@ class ERMLP:
 		data_dev = indexed_data_dev[:, :3]
 		labels_dev = np.reshape(indexed_data_dev[:, 3], (-1, 1))
 
-		predictions_dev = self.sess.run(self.test_predictions, feed_dict={self.test_triplets: data_dev, self.y: labels_dev})
+		predictions_dev = sess.run(self.test_predictions, feed_dict={self.test_triplets: data_dev, self.y: labels_dev})
 
 		predicates_dev = indexed_data_dev[:, 1]
 		threshold = self.compute_threshold(predictions_dev, labels_dev, predicates_dev, f1)
@@ -512,7 +514,7 @@ class ERMLP:
 
 		return weights, padded_indices
 
-	def test_model(self, indexed_data_test, pred_dic, threshold, _type='current'):
+	def test_model(self, sess, indexed_data_test, pred_dic, threshold, _type='current'):
 		"""
 		Test the model using the optimal threshold found.
 
@@ -525,7 +527,7 @@ class ERMLP:
 		predicates_test = indexed_data_test[:, 1]
 		labels_test = np.reshape(indexed_data_test[:, 3], (-1, 1))
 
-		predictions_test = self.sess.run(self.test_predictions, feed_dict={self.test_triplets: data_test, self.y: labels_test})
+		predictions_test = sess.run(self.test_predictions, feed_dict={self.test_triplets: data_test, self.y: labels_test})
 
 		# find mAP and auc
 		mean_average_precision_test = pr_stats(self.params['num_preds'], labels_test, predictions_test, predicates_test, pred_dic)
