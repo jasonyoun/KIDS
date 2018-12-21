@@ -149,7 +149,7 @@ def plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies):
 	#ax2.set_ylabel('Relative trustworthiness')
 	#ax2.set_xticks(x)
 	ax1.legend()
-	plt.savefig('trustworthiness_data_summary.pdf')
+	plt.savefig('./output/trustworthiness_data_summary.pdf')
 	plt.close()
 
 def plot_belief_of_inconsistencies(inconsistencies_with_max_belief, answer, inconsistency_out_file_prefix):

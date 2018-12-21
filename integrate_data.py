@@ -1,5 +1,5 @@
 """
-Filename: script_to_integrate_data.py
+Filename: integrate_data.py
 
 Authors:
 	Minseung Kim - msgkim@ucdavis.edu
@@ -24,18 +24,18 @@ import pandas as pd
 import logging as log
 
 # import from knowledge_scholar package
-from modules.data_manager import DataManager
-from modules.inconsistency_manager import InconsistencyManager
-from modules.report_manager import plot_trustworthiness, save_resolved_inconsistencies, save_integrated_data
-from modules.inconsistency_correctors.averagelog import AverageLog
+from integrate_modules.data_manager import DataManager
+from integrate_modules.inconsistency_manager import InconsistencyManager
+from integrate_modules.report_manager import plot_trustworthiness, save_resolved_inconsistencies, save_integrated_data
+from integrate_modules.inconsistency_correctors.averagelog import AverageLog
 
 # default file paths
 DEFAULT_DATA_PATH_STR = './data/data_path_file.txt'
 DEFAULT_MAP_STR = './data/data_map.txt'
 DEFAULT_DATA_RULE_STR = './data/data_rules.xml'
 DEFAULT_INCONSISTENCY_RULES_STR = './data/inconsistency_rules.xml'
-DEFAULT_DATA_OUT_STR = 'out.txt'
-DEFAULT_INCONSISTENCY_OUT_STR = 'inconsistency.txt'
+DEFAULT_DATA_OUT_STR = './output/out.txt'
+DEFAULT_INCONSISTENCY_OUT_STR = './output/inconsistency.txt'
 
 def set_logging():
 	"""
