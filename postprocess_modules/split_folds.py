@@ -56,7 +56,7 @@ class SplitFolds():
 
 		# generate a pool to be used later in random sampling assuming a closed world
 		cra_genes = self.pd_data[self.pd_data['Predicate'].isin([self.CRTA_STR])]['Subject'].unique()
-		genes_pool_closed_world = np.array(list(set(genes) - set(cra_genes)))
+		genes_pool_closed_world = np.array(list(set(genes.tolist()) - set(cra_genes.tolist())))
 
 		# extract pos / neg data based on the label
 		pos_data = self.pd_data[self.pd_data['Label'] == '1']

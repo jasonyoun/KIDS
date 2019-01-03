@@ -140,8 +140,8 @@ class ExtractInfo():
 			entity_dic[range_type] = np.append(entity_dic[range_type], ranges)
 
 		for key, value in entity_dic.items():
-			entity_dic[key] = list(set(value))
-			log.debug('Count of entity type \'{}\': {}'.format(key, len(entity_dic[key])))
+			entity_dic[key] = np.unique(value)
+			log.debug('Count of entity type \'{}\': {}'.format(key, entity_dic[key].shape[0]))
 
 		return entity_dic
 

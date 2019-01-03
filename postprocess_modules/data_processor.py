@@ -75,6 +75,9 @@ class DataProcessor():
 		label_group = pd_data.groupby('Label')
 		log.debug('Size of data grouped by label: \n{}'.format(label_group.size()))
 
+		# drop duplicates that results from removing the temporal info and using the Label column
+		pd_data = pd_data.drop_duplicates(subset=['Subject', 'Predicate', 'Object'], keep=False)
+
 		return pd_data
 
 	def _remove_temporal_info(self, pd_data):
