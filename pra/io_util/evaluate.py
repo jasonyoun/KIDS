@@ -9,15 +9,15 @@ Description:
 
 To-do:
 """
-import sys
 import os
+import sys
+import argparse
 import numpy as np
-from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
 directory = os.path.dirname(__file__)
 abs_path_metrics= os.path.join(directory, '../../utils')
 sys.path.insert(0, abs_path_metrics)
+from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, save_results
-import argparse
 
 def parse_argument():
 	"""
@@ -112,21 +112,25 @@ if __name__ == "__main__":
 		labels_predicate = combined_labels_array[indices]
 		predicate_predictions = combined_scores_array[indices]
 		classifications_predicate[:][classifications_predicate[:] == -1] = 0
+
 		fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
 		accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
 		recall_predicate = recall_score(labels_predicate, classifications_predicate)
 		precision_predicate = precision_score(labels_predicate, classifications_predicate)
 		confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
-		print(" - test f1 measure for " + pred_name + ":" + str(fl_measure_predicate))
-		print(" - test accuracy for " + pred_name + ":" + str(accuracy_predicate))
-		print(" - test precision for " + pred_name + ":" + str(precision_predicate))
-		print(" - test recall for " + pred_name + ":" + str(recall_predicate))
-		print(" - test confusion matrix for " + pred_name + ":")
+
+		print(' - test f1 measure for {}: {}'.format(pred_name, fl_measure_predicate))
+		print(' - test accuracy for {}: {}'.format(pred_name, accuracy_predicate))
+		print(' - test precision for {}: {}'.format(pred_name, precision_predicate))
+		print(' - test recall for {}: {}'.format(pred_name, recall_predicate))
+		print(' - test confusion matrix for {}:'.format(pred_name))
 		print(confusion_predicate)
-		print(" ")
+		print(' ')
+
 		fpr_pred, tpr_pred, _ = roc_curve(labels_predicate.ravel(), predicate_predictions.ravel())
 		roc_auc_pred = auc(fpr_pred, tpr_pred)
 		ap_pred = average_precision_score(labels_predicate.ravel(), predicate_predictions.ravel())
+
 		results['predicate'][pred_name] = {
 			'map': ap_pred,
 			'roc_auc': roc_auc_pred,
@@ -145,8 +149,9 @@ if __name__ == "__main__":
 	precision_test = precision_score(combined_labels_array, combined_classifications_array)
 	confusion_test = confusion_matrix(combined_labels_array, combined_classifications_array)
 	calib_file_name = '_calibrated' if use_calibration else '_not_calibrated'
-	plot_pr(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic, args.dir + '/', name_of_file='pra' + calib_file_name)
-	plot_roc(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic, args.dir + '/', name_of_file='pra' + calib_file_name)
+	plot_pr(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic, args.dir, name_of_file='pra' + calib_file_name)
+	plot_roc(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic, args.dir, name_of_file='pra' + calib_file_name)
+
 	results['overall'] = {
 		'map': mean_average_precision_test,
 		'roc_auc': roc_auc_test,
@@ -157,18 +162,18 @@ if __name__ == "__main__":
 		'recall': recall_test
 	}
 
-	print("test mean average precision:" + str(mean_average_precision_test))
-	print("test f1 measure:" + str(fl_measure_test))
-	print("test accuracy:" + str(accuracy_test))
-	print("test precision:" + str(precision_test))
-	print("test recall:" + str(recall_test))
-	print("test roc auc:" + str(roc_auc_test))
-	print("test confusion matrix:")
+	print('test mean average precision: {}'.format(mean_average_precision_test))
+	print('test f1 measure: {}'.format(fl_measure_test))
+	print('test accuracy: {}'.format(accuracy_test))
+	print('test roc auc: {}'.format(roc_auc_test))
+	print('test precision: {}'.format(precision_test))
+	print('test recall: {}'.format(recall_test))
+	print('test confusion matrix:')
 	print(confusion_test)
-	print(" ")
+	print(' ')
 	save_results(results, args.dir)
 
-	_file =  args.dir + "/classifications_pra.txt"
+	_file = args.dir + "/classifications_pra.txt"
 	with open(_file, 'w') as t_f:
 		for row in classifications:
 			t_f.write(str(row) + '\n')
