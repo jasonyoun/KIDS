@@ -1,12 +1,49 @@
-import sys
-import numpy as np
-import pandas as pd
-import re
-import pickle as pickle
-import random
-import scipy.io as spio
+"""
+Filename: pra_data_processor.py
+
+Authors:
+	Nicholas Joodi - npjoodi@ucdavis.edu
+
+Description:
+	Process data to be used by PRA program.
+
+To-do
+"""
 import csv
 import argparse
+import numpy as np
+import pandas as pd
+
+def parse_argument():
+	"""
+	Parse input arguments.
+
+	Returns:
+		- parsed arguments
+	"""
+	parser = argparse.ArgumentParser(description='Process data')
+
+	parser.add_argument(
+		'--data_path',
+		metavar='dir',
+		nargs='?',
+		default='./',
+		help='data directory')
+
+	parser.add_argument(
+		'--train_file',
+		metavar='dir',
+		nargs='?',
+		default='./',
+		help='The train file')
+
+	parser.add_argument(
+		'--use_domain',
+		action='store_const',
+		default=False,
+		const=True)
+
+	return parser.parse_args()
 
 def create_type_subsets_dic(data_array):
 	"""
@@ -58,8 +95,7 @@ class DataProcessor:
 		"""
 		self.use_domain = use_domain
 		self.data_path = data_path
-		print('create subsets dic')
-		print('')
+
 		if self.use_domain:
 			my_file = "entity_full_names.txt"
 			df = pd.read_csv(self.data_path + '/' + my_file, sep=':', encoding='latin-1', header=None)
@@ -275,18 +311,8 @@ class DataProcessor:
 				for k in self.entity_set:
 					writer.writerow([k, 'generalizations', 'object', '', '1.0', '', ''])
 
-
 if __name__ == "__main__":
-	# $DATA_PATH $train_file $use_domain
-	parser = argparse.ArgumentParser(description='Process data')
-	parser.add_argument('--data_path', metavar='dir', nargs='?', default='./',
-						help='data directory')
-	parser.add_argument('--train_file', metavar='dir', nargs='?', default='./',
-						help='The train file')
-	parser.add_argument('--use_domain', action='store_const', default=False, const=True)
-
-	args = parser.parse_args()
-	print(args.data_path)
+	args = parse_argument()
 
 	processor = DataProcessor(args.data_path, use_domain=args.use_domain)
 	test_df = processor.load('test.txt')
