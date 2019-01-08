@@ -15,8 +15,3 @@ cd $pra_dir
 ./determine_thresholds.sh $config_dir
 ./predict.sh $config_dir
 ./evaluate_models.sh $config_dir
-
-
-
-
-

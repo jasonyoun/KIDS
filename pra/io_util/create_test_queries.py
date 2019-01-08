@@ -1,122 +1,113 @@
-import sys
-import numpy as np
-import pandas as pd
-import re
-import pickle as pickle
+"""
+Filename: create_test_queries.py
+
+Authors:
+	Nicholas Joodi - npjoodi@ucdavis.edu
+	Jason Youn - jyoun@ucdavis.edu
+
+Description:
+	Create test queries based on the data file passes as input.
+
+To-do:
+"""
 import random
-import scipy.io as spio
-from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
 import argparse
 
-parser = argparse.ArgumentParser(description='generate test queries')
-parser.add_argument('--predicate', nargs='?',required=True,
-                    help='the predicate that we will get the scores for')
-parser.add_argument('--data_file', metavar='dir', nargs='?', default='dev.txt',
-                    help='base directory')
+def parse_argument():
+	"""
+	Parse input arguments.
 
-parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
-                    help='base directory')
+	Returns:
+		- parsed arguments
+	"""
+	parser = argparse.ArgumentParser(description='generate test queries')
 
-args = parser.parse_args()
-print(args.dir)
+	parser.add_argument(
+		'--predicate',
+		nargs='?',
+		required=True,
+		help='the predicate that we will get the scores for')
 
-relation = args.predicate
+	parser.add_argument(
+		'--data_file',
+		metavar='dir',
+		nargs='?',
+		default='dev.txt',
+		help='file path containing the data')
 
+	parser.add_argument(
+		'--dir',
+		metavar='dir',
+		nargs='?',
+		default='./',
+		help='base directory')
 
-data_file = args.data_file
-
-
-
-with open(data_file, "r") as _file:
-    lines = _file.readlines()
-
-queries = {}
-queries_neg = {}
-queries_copy = {}
-for line in lines:
-    columns = line.strip().split('\t')
-    columns = [x.strip() for x in columns]
-    if columns[1]==relation:
-        subject = "c$"+columns[0]
-        subject_copy = "c$"+columns[0]
-        _object =  "c$"+columns[2]
-        _object_copy =  "c$"+columns[2]
-        if columns[3]=='1':
-            if subject not in queries:
-                queries[subject] = set()
-                # queries_copy[subject_copy] = set()
-                queries[subject].add(_object)
-                # queries_copy[subject].add(_object_copy)
-            else:
-                queries[subject].add(_object)
-                # queries_copy[subject_copy].add(_object_copy)
-        else:
-            if subject not in queries_neg:
-                queries_neg[subject] = set()
-                # queries_copy[subject_copy] = set()
-                queries_neg[subject].add(_object)
-                # queries_copy[subject_copy].add(_object_copy)
-            else:
-                queries_neg[subject].add(_object)
-                # queries_copy[subject_copy].add(_object_copy)
+	return parser.parse_args()
 
 
+if __name__ == "__main__":
+	args = parse_argument()
+	relation = args.predicate
+	data_file = args.data_file
 
+	with open(data_file, "r") as _file:
+		lines = _file.readlines()
 
+	queries = {}
+	queries_neg = {}
 
+	for line in lines:
+		columns = line.strip().split('\t')
+		columns = [x.strip() for x in columns]
 
-with open(args.dir+"/queriesR_test/"+relation, "w") as _file:
-    for k,v in queries.items():
-        # v_copy = type(v)(v) 
-        o = random.sample(v,1)[0]
-        _file.write(k+'\t'+o)
-        v.remove(o)
-        for o in v:
-            _file.write(' '+o)
-        _file.write('\t')
-        if k in queries_neg:
-            neg_v = queries_neg[k]
-            o = random.sample(neg_v,1)[0]
-            _file.write(o)
-            neg_v.remove(o)
-            for o in neg_v:
-                _file.write(' '+o)
-        _file.write('\n')
-    for k,v in queries_neg.items():
-        if k not in queries:
-            o = random.sample(v,1)[0]
-            _file.write(k+'\t\t'+o)
-            v.remove(o)
-            for o in v:
-                _file.write(' '+o)
-            _file.write('\n')
+		if columns[1] == relation:
+			subject = "c$" + columns[0]
+			_object =  "c$" + columns[2]
 
+			if columns[3] == '1': # positive queries
+				if subject not in queries:
+					queries[subject] = set()
+					queries[subject].add(_object)
+				else:
+					queries[subject].add(_object)
+			else: # negative queries
+				if subject not in queries_neg:
+					queries_neg[subject] = set()
+					queries_neg[subject].add(_object)
+				else:
+					queries_neg[subject].add(_object)
 
-    # few_more=15
-    # count=0
-    # for k,v in queries_copy.items():
-    #     v_copy = type(v)(v) 
-    #     _file.write(k+'\t'+random.sample(v,1)[0])
-    #     for o in v:
-    #         _file.write(' '+o)
-    #     _file.write('\n')
-    #     if count < few_more:
-    #         count+=1
-    #     else:
-    #         break
+	with open(args.dir + "/queriesR_test/" + relation, "w") as _file:
+		# positive queries
+		for k, v in queries.items():
+			o = random.sample(v, 1)[0]
+			_file.write(k + '\t' + o)
+			v.remove(o)
 
-        # v_copy_copy = type(v_copy)(v_copy) 
-        # _file.write(k+'\t'+v_copy.pop())
-        # for o in v_copy:
-        #     _file.write(' '+o)
-        # _file.write('\n')
+			for o in v:
+				_file.write(' ' + o)
 
-        # _file.write(k+'\t'+v_copy_copy.pop())
-        # for o in v_copy_copy:
-        #     _file.write(' '+o)
-        # _file.write('\n')
+			_file.write('\t')
 
+			if k in queries_neg:
+				neg_v = queries_neg[k]
+				o = random.sample(neg_v, 1)[0]
+				_file.write(o)
+				neg_v.remove(o)\
 
+				for o in neg_v:
+					_file.write(' ' + o)
 
+			_file.write('\n')
 
+		# negative queries
+		for k, v in queries_neg.items():
+			if k not in queries:
+				o = random.sample(v, 1)[0]
+				_file.write(k + '\t\t' + o)
+				v.remove(o)
 
+				for o in v:
+					_file.write(' ' + o)
+
+				_file.write('\n')

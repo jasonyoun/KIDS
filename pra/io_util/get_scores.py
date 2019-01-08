@@ -1,101 +1,130 @@
-import sys
-import numpy as np
-import pandas as pd
-import re
-import pickle as pickle
-import random
-import scipy.io as spio
-from sklearn.linear_model import LogisticRegression
+"""
+Filename: get_scores.py
+
+Authors:
+	Nicholas Joodi - npjoodi@ucdavis.edu
+
+Description:
+	Given a prediction for a graph, get the scores for each triple.
+
+To-do:
+"""
 import argparse
-from sklearn.isotonic import IsotonicRegression as IR
-from imblearn.over_sampling import RandomOverSampler,SMOTE
+import numpy as np
+import pickle as pickle
 
+def parse_argument():
+	"""
+	Parse input arguments.
 
-parser = argparse.ArgumentParser(description='parse and generate the scores file')
-parser.add_argument('--use_calibration',action='store_const',default=False,const=True)
-parser.add_argument('--predicate', nargs='?',required=True,
-                    help='the predicate that we will get the scores for')
-parser.add_argument('--dir', metavar='dir', nargs='?', default='./',
-                    help='base directory')
-parser.add_argument('--log_reg_calibrate', metavar='log_reg_calibrate', nargs='?', default='false',
-                    help='use logistic regression for calibration, isotonic regression otherwise')
+	Returns:
+		- parsed arguments
+	"""
+	parser = argparse.ArgumentParser(description='parse and generate the scores file')
 
-args = parser.parse_args()
-print(args.dir)
-relation = args.predicate
-print(relation)
-use_calibration = args.use_calibration
-if use_calibration:
-    log_reg_calibrate = True if args.log_reg_calibrate=='true' else False
-    with open('calibrations/'+relation+'.pkl', 'rb') as pickle_file:
-        clf = pickle.load(pickle_file)
+	parser.add_argument(
+		'--use_calibration',
+		action='store_const',
+		default=False,
+		const=True)
 
+	parser.add_argument(
+		'--predicate',
+		nargs='?',
+		required=True,
+		help='the predicate that we will get the scores for')
 
+	parser.add_argument(
+		'--dir',
+		metavar='dir',
+		nargs='?',
+		default='./',
+		help='base directory')
 
-queries_file = args.dir+'/queriesR_test/'+relation
-queries_tail = args.dir+'/queriesR_tail/'+relation
-print(relation)
-fname=args.dir+'/predictions/'+relation
-scores_file = args.dir+'/scores/'+relation
+	parser.add_argument(
+		'--log_reg_calibrate',
+		metavar='log_reg_calibrate',
+		nargs='?',
+		default='false',
+		help='use logistic regression for calibration, isotonic regression otherwise')
 
-with open(fname) as f:
-    lines = f.readlines()
+	return parser.parse_args()
 
-with open(queries_file, "r") as l_file:
-    queries = l_file.readlines()
+if __name__ == "__main__":
+	args = parse_argument()
+	relation = args.predicate
+	use_calibration = args.use_calibration
 
-with open(queries_tail, "r") as l_file:
-    queries_tail = l_file.readlines()
+	if use_calibration:
+		log_reg_calibrate = True if args.log_reg_calibrate == 'true' else False
 
-scores = []
-valid = []
-entities_scores_dic = {}
-for line in lines:
-    words = line.split('\t')
-    subject = words[0]
-    if subject not in entities_scores_dic:
-        entities_scores_dic[subject] = {}
-    del words[0]
-    del words[0]
-    for score_and_entity in words:
-        score_and_entity = score_and_entity.split(',')
-        entity = score_and_entity[1].replace('*','').strip()
-        score = float(score_and_entity[0].strip())
-        entities_scores_dic[subject][entity]= score
+		with open('calibrations/' + relation + '.pkl', 'rb') as pickle_file:
+			clf = pickle.load(pickle_file)
 
-scores = []
-valid = []
-for line in queries_tail:
-    subject = line.split('\t')[0].strip()
-    tail = line.split('\t')[1].strip()
-    if tail in entities_scores_dic[subject]:
-        scores.append(entities_scores_dic[subject][tail])
-        valid.append(1)
-    else:
-        scores.append(0.0)
-        valid.append(0)
+	queries_file = args.dir + '/queriesR_test/' + relation
+	queries_tail = args.dir + '/queriesR_tail/' + relation
 
+	fname = args.dir + '/predictions/' + relation
+	scores_file = args.dir + '/scores/' + relation
 
-if use_calibration:
-    scores_array = np.array(scores)
-    valid_array =  np.array(valid)
-    indices, = np.where(valid_array[:] > 0.)
-    the_scores = scores_array[indices].reshape(-1, 1)
-    if log_reg_calibrate:
-        scores =clf.predict_proba( the_scores)[:,1]
-    else:
-        scores=clf.transform( the_scores.ravel() )
+	with open(fname) as f:
+		lines = f.readlines()
 
-    scores_array[indices] = scores
-else:
-    scores_array = np.array(scores)
-    valid_array =  np.array(valid)
+	with open(queries_file, "r") as l_file:
+		queries = l_file.readlines()
 
-with open(scores_file, "w") as _file:
-    for i in range(np.shape(scores_array)[0]):
-        _file.write(str(scores_array[i])+'\t'+str(valid_array[i])+'\n')
+	with open(queries_tail, "r") as l_file:
+		queries_tail = l_file.readlines()
 
-#
+	entities_scores_dic = {}
 
+	for line in lines:
+		words = line.split('\t')
+		subject = words[0]
 
+		if subject not in entities_scores_dic:
+			entities_scores_dic[subject] = {}
 
+		del words[0]
+		del words[0]
+
+		for score_and_entity in words:
+			score_and_entity = score_and_entity.split(',')
+			entity = score_and_entity[1].replace('*', '').strip()
+			score = float(score_and_entity[0].strip())
+			entities_scores_dic[subject][entity]= score
+
+	scores = []
+	valid = []
+
+	for line in queries_tail:
+		subject = line.split('\t')[0].strip()
+		tail = line.split('\t')[1].strip()
+
+		if tail in entities_scores_dic[subject]:
+			scores.append(entities_scores_dic[subject][tail])
+			valid.append(1)
+		else:
+			scores.append(0.0)
+			valid.append(0)
+
+	if use_calibration:
+		scores_array = np.array(scores)
+		valid_array =  np.array(valid)
+		indices, = np.where(valid_array[:] > 0.)
+		the_scores = scores_array[indices].reshape(-1, 1)
+
+		if log_reg_calibrate:
+			scores = clf.predict_proba(the_scores)[:, 1]
+		else:
+			scores = clf.transform(the_scores.ravel())
+
+		scores_array[indices] = scores
+	else:
+		scores_array = np.array(scores)
+		valid_array = np.array(valid)
+
+	# write the scores to the file
+	with open(scores_file, "w") as _file:
+		for i in range(np.shape(scores_array)[0]):
+			_file.write(str(scores_array[i]) + '\t' + str(valid_array[i]) + '\n')

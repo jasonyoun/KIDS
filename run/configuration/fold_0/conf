@@ -1,4 +1,4 @@
-#####################	edu.cmu.lti.util.run.Tunner 
+#####################	edu.cmu.lti.util.run.Tunner
 num_processes=4
 	# number of working processes for tuning parameters in parallel (default=4)
 tunner_mode=sweep
@@ -45,25 +45,25 @@ test_samples=./queriesR_test/<target_relation>
 
 ##################### edu.cmu.pra.LearnerPRA
 target_relation=THE_RELATION
-	# (optional) what relation we are training for 
-	# _competeswith athleteplaysforteam citylocatedinstate  
+	# (optional) what relation we are training for
+	# _competeswith athleteplaysforteam citylocatedinstate
 	# _specializationof agentcompeteswithagent
-	
+
 graph_folder=./graphs/pos/
 	# where is the graph NELL446svo NELL165
-	
+
 model=./models/<target_relation>
 	# a weight file can be loaded for prediction
-	
+
 model_folder=./models/
 
 prediction_folder=./predictions/
 
 top_prediction_results=1000
-	
+
 #subgraph_store=
 	# subgraphs that can be loaded/unloaded
-		
+
 rank_mode=Path
 	# the loss function during training (default=P)
 	Path	//PathRank: each relation path has a weight
@@ -75,11 +75,11 @@ loss_mode=log
 	,exp	//exp loss
 	,hinge	//hinge loss
 L1=0.008
-	#L1 regularization 
+	#L1 regularization
 L2=0.0001
 
 #L1=0.006
-	#L1 regularization 
+	#L1 regularization
 #L2=0.0169
 
 pairwise_loss=false
@@ -119,7 +119,7 @@ bias_value=1
 #blocked_paths=1:a(_Author)p(Cites)p
 	# some paths are not allowed in the path tree: idSeed,path;idSeed,path;...
 	# a(_Author)p(Cites)p   _Author>Cites
-	
+
 #and_paths=1~_generalizations
 	# the targets have to be in the result of this path
 
@@ -135,7 +135,7 @@ bias_value=1
 	# (regular relations each have cost 1)
 	# to avoid creating infite long paths, the path creation precedure
 	# will prevent going forward-backward with zero-cost relations
-	
+
 min_feature_hit=1
 min_feature_accuracy=0.01
 cache_RW=false
@@ -169,7 +169,7 @@ RW_mode=LVParticle
 	Particle, 	//particle filtering
 	LVParticle, //particle filtering (low variance)
 	Exact, 		//none
-	
+
 truncate=0.003
 	# absolute truncation
 beam_width=10000
@@ -182,10 +182,10 @@ min_particle=0.0001
 #blocked_field=THE_BLOCKED_FIELD
 blocked_field=THE_BLOCKED_FIELD
 	# the field in query file which leads to the target node
-	
+
 RW_renormalize=false
 damping_factor=1.0
-	
+
 ##################### Optimization  #####################
 max_train_iteration=1000
 
@@ -201,7 +201,7 @@ num_stable=2
 
 feature_comments=../../mFeatureComments.read
 	# add explanations to selected relation paths
-	
+
 LBFGS_history=false
 
 
@@ -209,16 +209,16 @@ LBFGS_history=false
 #publish_folder=./www/test/
 publish_folder=/afs/cs.cmu.edu/user/nlao/www/demo/wk/test/
 	# the folder where report is to be copied to
-		
+
 reporter_keys=agentcompeteswithagent
 #reporter_keys=athleteplaysforteam,athleteplaysinleague,athleteplayssport,stadiumlocatedincity,teamhomestadium,teamplaysincity,teamplaysinleague,teamplayssport,competeswith,hasofficeincity,journalistwritesforpublication,professionistypeofprofession,teamwontrophy,worksfor
 	# the key words to search and group results
 
 #result_filter=max_steps=3_0
 	# only consider a subset of runs for which paramter string contains this filter string
-	
+
 col1=target_relation
-	
+
 col2=nSampling
 
 valueCol=mrr,MAP,tRW,tCV
