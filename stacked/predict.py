@@ -27,7 +27,6 @@ args = parser.parse_args()
 print(args)
 
 
-
 fn = open(args.dir+'/model.pkl','rb')
 clf = pickle.load(fn)
 pred_dic,test_x,test_y,predicates = features.get_x_y('test',args.er_mlp,args.pra)
@@ -44,7 +43,3 @@ print(average_precision_score(test_y,probabilities))
 with open(args.dir+"/predictions.txt", 'w') as _file:
     for i in range(np.shape(y_hat)[0]):
         _file.write("predicate: "+str(predicates[i])+"\tclassification: "+str(int(y_hat[i]))+ '\tprediction: '+str(probabilities[i])+'\tlabel: '+str(int(test_y[i]))+'\n' )
-
-    
-
-

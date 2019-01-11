@@ -1,105 +1,135 @@
-import argparse
+"""
+Filename: features.py
+
+Authors:
+	Nicholas Joodi - npjoodi@ucdavis.edu
+
+Description:
+	Read the model predictions and parser them.
+
+To-do:
+"""
+import os
+import sys
 import numpy as np
 import pickle as pickle
-import pandas as pd
-import sys
-import os
 directory = os.path.dirname(__file__)
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, accuracy_score, f1_score
-import matplotlib.pyplot as plt
-from scipy import interp
-
-
-
-
 
 ER_MLP_MODEL_HOME='../er_mlp/model/model_instance/'
 PRA_MODEL_HOME='../pra/model/model_instance/'
-def get_x_y(which,er_mlp,pra):
 
-    er_mlp_features_array_list=[]
-    model_base_dir = ER_MLP_MODEL_HOME+er_mlp
-    fn = open(model_base_dir+'/params.pkl','rb')
-    params = pickle.load(fn)
-    pred_dic = params['pred_dic']
-    pred_index_dic = {}
-    for k,v in pred_dic.items():
-        pred_index_dic[v] = k
+def get_x_y(which, er_mlp, pra):
+	"""
+	Load the model predictions information.
 
-    with open(model_base_dir+'/'+which+'/predictions.txt', "r") as _file:
-        predictions = _file.readlines()
-    predictions = [x.strip() for x in predictions] 
+	Inputs:
+		which: which data are we accessing (train_local, dev, etc.)
+		er_mlp: directory of the er_mlp model
+		pra: directory of the pra model
 
-    er_mlp_features = []
-    labels = []
-    for line in predictions:
-        strings =  line.split('\t')
-        predicate = int(strings[0].replace('predicate: ',''))
-        pred = float(strings[2].replace('prediction: ',''))
-        label = int(strings[3].replace('label: ',''))
-        labels.append([label])
-        er_mlp_features.append([predicate,pred,1])
+	Returns:
+		pred_dic: dictionary where key is a predicate and value is the
+			index assigned to that specific predicate
+		x: numpy array where
+			x[:, 0] = er_mlp prediction raw output
+			x[:, 1] = pra prediction raw output
+			x[:, 2] = valid / invalid depending on pra
+		y: numpy array containing the ground truth label
+		predicates: numpy array containing which predicate
+			the (x, y) pair belong to using the indexing from pred_dic
+	"""
+	model_base_dir = os.path.join(ER_MLP_MODEL_HOME, er_mlp)
+	fn = open(os.path.join(model_base_dir, 'params.pkl'), 'rb')
+	params = pickle.load(fn)
+	pred_dic = params['pred_dic']
 
+	##########
+	# er_mlp #
+	##########
+	# open predictions and process it
+	with open(os.path.join(os.path.join(model_base_dir, which), 'predictions.txt'), "r") as _file:
+		predictions = _file.readlines()
+	predictions = [x.strip() for x in predictions]
 
-    er_mlp_features_array = np.array(er_mlp_features)
-    er_mlp_features_array_list.append(er_mlp_features_array)
+	labels = []
+	er_mlp_features = []
 
-    if len(er_mlp_features_array)>1:
-        e_features = np.vstack(er_mlp_features_array)
-    else:
-        e_features = er_mlp_features_array
+	for line in predictions:
+		strings = line.split('\t')
+		predicate = int(strings[0].replace('predicate: ', ''))
+		pred = float(strings[2].replace('prediction: ', ''))
+		label = int(strings[3].replace('label: ', ''))
 
-    labels_array = np.array(labels)
+		labels.append([label])
+		er_mlp_features.append([predicate, pred, 1]) # all valid
 
-    pra_features_array_list = []
-    model_base_dir = PRA_MODEL_HOME+'/'+pra+'/instance/'
+	# convert to numpy arrays
+	labels_array = np.array(labels)
+	er_mlp_features_array = np.array(er_mlp_features)
 
-    pra_features = []
-    for k,v in pred_dic.items():
-        if os.path.isfile(model_base_dir+'/'+which+'/scores/'+k):
-            with open(model_base_dir+'/'+which+'/scores/'+k, "r") as _file:
-                predictions = _file.readlines()
-                predictions = [x.strip() for x in predictions] 
-                for line in predictions:
-                    strings =  line.split('\t')
-                    pred = float(strings[0].strip())
-                    valid = int(strings[1].strip())
-                    pra_features.append([int(v),pred,valid])
+	if len(er_mlp_features_array) > 1:
+		e_features = np.vstack(er_mlp_features_array)
+	else:
+		e_features = er_mlp_features_array
 
-    pra_features_array = np.array(pra_features)
-    pra_features_array_list.append(pra_features_array)
+	#######
+	# pra #
+	#######
+	pra_features_array_list = []
+	model_base_dir = os.path.join(os.path.join(PRA_MODEL_HOME, pra), 'instance')
 
-    if len(pra_features_array_list)>1:
-        p_features = np.vstack(pra_features_array_list)
-    else:
-        p_features = pra_features_array_list
+	pra_features = []
 
-    p_features = np.squeeze(p_features)
-    predicates_pra= p_features[:,0]
+	for k, v in pred_dic.items():
+		scores_file = os.path.join(model_base_dir, which)
+		scores_file = os.path.join(scores_file, 'scores')
+		scores_file = os.path.join(scores_file, k)
 
-    predicates_pra = predicates_pra.astype(int)
-    predicates_er_mlp= e_features[:,0]
-    predicates_er_mlp = predicates_er_mlp.astype(int)
-    p_predicate_indices = np.where(predicates_pra[:] == 0)[0]
-    combined_list = []
-    labels_list = []
-    predicates_list = []
-    for k,v in pred_dic.items():
-        p_predicate_indices = np.where(predicates_pra[:] == v)[0]
-        e_predicate_indices = np.where(predicates_er_mlp[:] == v)[0]
-        labels_list.append(labels_array[e_predicate_indices])
-        predicates_list.append(predicates_er_mlp[e_predicate_indices])
-        combined_list.append(np.hstack((e_features[e_predicate_indices][:,1:],p_features[p_predicate_indices][:,1:])))
+		if os.path.isfile(scores_file):
+			with open(scores_file, "r") as _file:
+				predictions = _file.readlines()
+				predictions = [x.strip() for x in predictions]
 
-    combined_array = np.vstack(combined_list)
-    y = np.vstack(labels_list)
-    predicates = np.hstack(predicates_list)
-    y[:][y[:] == -1] = 0
-    # np.savetxt(which+'_blah.txt',combined_array)
-    return pred_dic,combined_array[:,[0,2,3]],y,predicates
+				for line in predictions:
+					strings = line.split('\t')
+					pred = float(strings[0].strip())
+					valid = int(strings[1].strip())
+					pra_features.append([int(v), pred, valid])
 
-    
+	pra_features_array = np.array(pra_features)
+	pra_features_array_list.append(pra_features_array)
 
+	if len(pra_features_array_list) > 1:
+		p_features = np.vstack(pra_features_array_list)
+	else:
+		p_features = pra_features_array_list
 
+	p_features = np.squeeze(p_features)
+
+	##################################
+	# process the extracted features #
+	##################################
+	predicates_er_mlp = e_features[:, 0]
+	predicates_er_mlp = predicates_er_mlp.astype(int)
+
+	predicates_pra = p_features[:, 0]
+	predicates_pra = predicates_pra.astype(int)
+
+	labels_list = []
+	combined_list = []
+	predicates_list = []
+
+	for k, v in pred_dic.items():
+		p_predicate_indices = np.where(predicates_pra[:] == v)[0]
+		e_predicate_indices = np.where(predicates_er_mlp[:] == v)[0]
+		labels_list.append(labels_array[e_predicate_indices])
+		predicates_list.append(predicates_er_mlp[e_predicate_indices])
+		combined_list.append(np.hstack((e_features[e_predicate_indices][:, 1:], p_features[p_predicate_indices][:, 1:])))
+
+	y = np.vstack(labels_list)
+	y[:][y[:] == -1] = 0
+	predicates = np.hstack(predicates_list)
+	combined_array = np.vstack(combined_list)
+	x = combined_array[:, [0, 2, 3]]
+
+	return pred_dic, x, y, predicates
