@@ -307,7 +307,14 @@ def plot_pr(num_preds, Y, predictions, predicates, pred_dic, directory, name_of_
 		pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
 
 def save_to_text_file(results, directory):
-	with open(directory + '/results.txt', 'w') as t_f:
+	"""
+	Save the results to the text file.
+
+	Inputs:
+		results: same as that in save_results()
+		directory: that in save_results() + 'results'
+	"""
+	with open(os.path.join(directory, 'results.txt'), 'w') as t_f:
 		t_f.write('Overall metrics: \n\n')
 
 		for metric, value in results['overall'].items():
@@ -325,11 +332,21 @@ def save_to_text_file(results, directory):
 			t_f.write('----------------------------------\n')
 
 def save_results(results, directory):
-	directory = directory+'/results'
+	"""
+	Save evaluation results to the specified directory.
+
+	Inputs:
+		results: python dictionary where there are keys like
+			results['overall'], results['predicate'][pred_name]
+			and each key again has a value of dictionary
+			containing different evaluation results.
+		directory: folder to save the results
+	"""
+	directory = os.path.join(directory, 'results')
 	if not os.path.exists(directory):
 		os.makedirs(directory)
 
-	with open(directory + '/results.pkl', 'wb') as output:
+	with open(os.path.join(directory, 'results.pkl'), 'wb') as output:
 		pickle.dump(results, output, pickle.HIGHEST_PROTOCOL)
 
 	save_to_text_file(results, directory)

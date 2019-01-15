@@ -8,6 +8,7 @@ Description:
 	Evaluate the performance of the stacked model.
 
 To-do:
+	1. Fix variable predicates so that it works in general case.
 """
 import os
 import sys
@@ -47,7 +48,7 @@ def parse_argument():
 
 	return parser.parse_args()
 
-def classify(predictions_list, threshold, predicates):
+def classify(predictions_list, threshold):
 	classifications = []
 
 	for i in range(len(predictions_list)):
@@ -86,9 +87,8 @@ if __name__ == "__main__":
 	fn = open(os.path.join(model_save_dir, 'model.pkl'),'rb')
 	model_dic = pickle.load(fn)
 	pred_dic, test_x, test_y, predicates_test = features.get_x_y(TEST_DIR, er_mlp_model_dir, pra_model_dir)
-
 	# test_y[:][test_y[:] == -1] = 0
-	best_thresholds = np.zeros(len(pred_dic))
+
 	probabilities = np.zeros_like(predicates_test, dtype=float)
 	probabilities = probabilities.reshape((np.shape(probabilities)[0], 1))
 	standard_classifications = np.zeros_like(predicates_test)
@@ -96,6 +96,7 @@ if __name__ == "__main__":
 
 	for k, i in pred_dic.items():
 		indices, = np.where(predicates_test == i)
+
 		if np.shape(indices)[0] != 0:
 			clf = model_dic[i]
 			X = test_x[indices]
@@ -107,7 +108,7 @@ if __name__ == "__main__":
 			preds = preds.reshape((np.shape(preds)[0], 1))
 			probabilities[indices] = preds
 			standard_classifications[indices] = preds_class
-			threshold_classifications[indices] = classify(preds, threshold[i], predicates)
+			threshold_classifications[indices] = classify(preds, threshold[i])
 
 	if use_calibration:
 		for k, i in pred_dic.items():
@@ -127,7 +128,10 @@ if __name__ == "__main__":
 		# scores =log_reg.predict_proba( probabilities.reshape(-1,1))[:,1]
 		# probabilities = scores
 
+	# classification using the adaboost
 	classifications = standard_classifications
+
+	# classification using the threshold and probability
 	# classifications = threshold_classifications
 
 	results = {}

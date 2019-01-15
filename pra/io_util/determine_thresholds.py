@@ -63,13 +63,17 @@ def compute_threshold(predictions_list, dev_labels, f1=True):
 	predictions_list = both[:, 0].ravel()
 	dev_labels = both[:, 1].ravel()
 	accuracies = np.zeros(np.shape(predictions_list))
+
 	for i in range(np.shape(predictions_list)[0]):
 		score = predictions_list[i]
 		predictions = (predictions_list >= score) * 2 - 1
 		accuracy = accuracy_score(predictions, dev_labels)
+
 		if f1:
 			accuracy = f1_score(dev_labels,predictions)
+
 		accuracies[i] = accuracy
+		
 	indices = np.argmax(accuracies)
 	best_threshold = np.mean(predictions_list[indices])
 

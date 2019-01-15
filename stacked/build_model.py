@@ -96,6 +96,25 @@ if __name__ == "__main__":
 	RS_LR_INCREMENT = config.getfloat('RANDOM_SEARCH_LEARNING_RATE', 'INCREMENT')
 
 	def perform_randomized_search(pred_dic, train_x, train_y, test_x, test_y):
+		"""
+		Given the train & test set, perform randomized search to find
+		best n_estimators & learning_rate for the adaboost algorithm.
+
+		Inputs:
+			pred_dic: dictionary where key is a predicate and value is the
+				index assigned to that specific predicate
+			train_x: numpy array where
+				train_x[:, 0] = er_mlp prediction raw output
+				train_x[:, 1] = pra prediction raw output
+				train_x[:, 2] = valid / invalid depending on pra
+			train_y: numpy array containing the ground truth label
+			test_x: same as train_x but for test data
+			test_y: same as train_y but for test data
+
+		Returns:
+			dictionary of numpy (masked) ndarrays
+			containing the search results
+		"""
 
 		def get_results_of_search(results, count=5):
 			# roc_auc
@@ -224,7 +243,7 @@ if __name__ == "__main__":
 					'n_estimators': AP_params['n_estimators'],
 					'learning_rate': AP_params['learning_rate']}
 
-			# build & fit model
+			# build & fit model using the best parameters
 			clf = AdaBoostClassifier(
 				DecisionTreeClassifier(max_depth=1),
 				n_estimators=config.getint('RANDOM_SEARCH_BEST_PARAMS_{}'.format(k), 'n_estimators'),
@@ -240,10 +259,11 @@ if __name__ == "__main__":
 
 			model_dic[i] = clf
 
-	score = pr_stats(len(pred_dic), test_y, predictions_test, predicates_test, pred_dic)
-	roc_ = roc_auc_stats(len(pred_dic), test_y, predictions_test, predicates_test, pred_dic)
-	print('score: {}'.format(score))
-	print('roc_: {}'.format(roc_))
+	mAP = pr_stats(len(pred_dic), test_y, predictions_test, predicates_test, pred_dic)
+	auROC = roc_auc_stats(len(pred_dic), test_y, predictions_test, predicates_test, pred_dic)
+
+	print('mAP: {}'.format(mAP))
+	print('auROC: {}'.format(auROC))
 
 	with open(os.path.join(model_save_dir, 'model.pkl'), 'wb') as output:
 		pickle.dump(model_dic, output, pickle.HIGHEST_PROTOCOL)
