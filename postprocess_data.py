@@ -31,6 +31,8 @@ DEFAULT_DRR_PATH_STR = './data/domain_relation_range.txt'
 
 # default file names
 DEFAULT_ENTITIES_TXT_STR = 'entities.txt'
+DEFAULT_OUTPUT_FOLDS_DIR = os.path.join(DEFAULT_OUTPUT_PATH_STR, 'folds')
+DEFAULT_ALL_DATA_TXT_STR = 'data.txt'
 
 # number of folds to split the dataset into
 NUM_FOLDS = 5
@@ -81,11 +83,17 @@ if __name__ == '__main__':
 	# read data and reformat it
 	pd_data = DataProcessor(args.data_path).reformat_data()
 
+	# save the reformatted data
+	if not os.path.exists(DEFAULT_OUTPUT_FOLDS_DIR):
+		os.makedirs(DEFAULT_OUTPUT_FOLDS_DIR)
+
+	pd_data.to_csv(os.path.join(DEFAULT_OUTPUT_FOLDS_DIR, DEFAULT_ALL_DATA_TXT_STR), sep='\t', index=False, header=None)
+
 	# separate dataset into entities and relations
 	ei = ExtractInfo(pd_data, args.drr_path)
 	ei.save_all_entities(os.path.join(args.output_path, DEFAULT_ENTITIES_TXT_STR))
 
 	# split the dataset into specified folds
-	sf = SplitFolds(pd_data, NUM_FOLDS)
-	data_split_fold_dic = sf.split_into_folds(ei.get_entity_by_type('gene'))
+	sf = SplitFolds(pd_data, NUM_FOLDS, ei.get_entity_by_type('gene'))
+	data_split_fold_dic = sf.split_into_folds()
 	sf.save_folds(data_split_fold_dic, args.output_path)

@@ -76,6 +76,7 @@ class DataProcessor():
 		log.debug('Size of data grouped by label: \n{}'.format(label_group.size()))
 
 		# drop duplicates that results from removing the temporal info and using the Label column
+		log.info('Dropping duplicates...')
 		pd_data = pd_data.drop_duplicates(subset=['Subject', 'Predicate', 'Object'], keep=False)
 
 		return pd_data

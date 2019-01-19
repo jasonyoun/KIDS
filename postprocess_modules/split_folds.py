@@ -26,7 +26,7 @@ class SplitFolds():
 	COLUMNS = ['Subject', 'Predicate', 'Object', 'Label']
 	CRTA_STR = 'confers resistance to antibiotic'
 
-	def __init__(self, pd_data, num_folds):
+	def __init__(self, pd_data, num_folds, genes):
 		"""
 		Class constructor for SplitFolds.
 
@@ -34,17 +34,30 @@ class SplitFolds():
 			pd_data: integrated data where
 				pd_data.columns.values = ['Subject' 'Predicate' 'Object' 'Label']
 			num_folds: number of folds to split the data into
+			genes: numpy array containing unique entities
+				(to be used for closed-world assumption)
 		"""
 		self.pd_data = pd_data
 		self.num_folds = num_folds
 
-	def split_into_folds(self, genes):
+		# generate a pool to be used later in random sampling assuming a closed world
+		cra_genes = self.pd_data[self.pd_data['Predicate'].isin([self.CRTA_STR])]['Subject'].unique()
+		self.genes_pool_closed_world = np.array(list(set(genes.tolist()) - set(cra_genes.tolist())))
+
+		# extract pos / neg data based on the label
+		pos_data = self.pd_data[self.pd_data['Label'] == '1']
+		neg_data = self.pd_data[self.pd_data['Label'] == '-1']
+
+		# positive data with only or without any CRA edge
+		self.pos_data_cra_only = pos_data[pos_data['Predicate'].isin([self.CRTA_STR])]
+		self.pos_data_except_cra = pos_data[~pos_data['Predicate'].isin([self.CRTA_STR])]
+
+		# negative data with only CRA edge
+		self.neg_data_cra_only = neg_data[neg_data['Predicate'].isin([self.CRTA_STR])]
+
+	def split_into_folds(self):
 		"""
 		Perform data split.
-
-		Inputs:
-			genes: numpy array containing unique entities
-				(to be used for closed-world assumption)
 
 		Returns:
 			data_split_fold_dic: dictionary where the key is
@@ -54,52 +67,36 @@ class SplitFolds():
 		"""
 		data_split_fold_dic = {}
 
-		# generate a pool to be used later in random sampling assuming a closed world
-		cra_genes = self.pd_data[self.pd_data['Predicate'].isin([self.CRTA_STR])]['Subject'].unique()
-		genes_pool_closed_world = np.array(list(set(genes.tolist()) - set(cra_genes.tolist())))
-
-		# extract pos / neg data based on the label
-		pos_data = self.pd_data[self.pd_data['Label'] == '1']
-		neg_data = self.pd_data[self.pd_data['Label'] == '-1']
-
-		# positive data except CRA edge
-		pos_data_cra_only = pos_data[pos_data['Predicate'].isin([self.CRTA_STR])]
-		pos_data_except_cra = pos_data[~pos_data['Predicate'].isin([self.CRTA_STR])]
-
-		# negative data with only CRA edge
-		neg_data_cra_only = neg_data[neg_data['Predicate'].isin([self.CRTA_STR])]
-
 		# allocate 80% of positive CRA edges to allocate to train & dev
-		num_pos_cra_train_dev = int(pos_data_cra_only.shape[0] * 0.08)
+		num_pos_cra_train_dev = int(self.pos_data_cra_only.shape[0] * 0.08)
 
 		# distribute CRA edges among train / dev / test for specified folds
 		k = 0
-		for train_dev_index, test_index in KFold(n_splits=self.num_folds).split(pos_data_cra_only):
+		for train_dev_index, test_index in KFold(n_splits=self.num_folds).split(self.pos_data_cra_only):
 			np.random.shuffle(train_dev_index)
 
 			train_index = train_dev_index[num_pos_cra_train_dev:]
 			dev_index = train_dev_index[0:num_pos_cra_train_dev]
 
-			data_split_fold_dic['fold_{}_train'.format(k)] = pos_data_cra_only.iloc[train_index, :]
-			data_split_fold_dic['fold_{}_dev_without_neg'.format(k)] = pos_data_cra_only.iloc[dev_index, :]
-			data_split_fold_dic['fold_{}_test_without_neg'.format(k)] = pos_data_cra_only.iloc[test_index, :]
+			data_split_fold_dic['fold_{}_train'.format(k)] = self.pos_data_cra_only.iloc[train_index, :]
+			data_split_fold_dic['fold_{}_train_local_without_neg'.format(k)] = self.pos_data_cra_only.iloc[train_index, :]
+			data_split_fold_dic['fold_{}_dev_without_neg'.format(k)] = self.pos_data_cra_only.iloc[dev_index, :]
+			data_split_fold_dic['fold_{}_test_without_neg'.format(k)] = self.pos_data_cra_only.iloc[test_index, :]
 
 			k += 1
 
 		# fill up train with other positive predicates for all folds
 		for k in range(self.num_folds):
 			data_split_fold_dic['fold_{}_train'.format(k)] = \
-				data_split_fold_dic['fold_{}_train'.format(k)].append(pos_data_except_cra)
+				data_split_fold_dic['fold_{}_train'.format(k)].append(self.pos_data_except_cra)
 
 		# need to do random sampling to generate 49 negatives for each positive
 		for k in range(self.num_folds):
 			log.info('Processing fold: {}'.format(k))
 
-			data_split_fold_dic = self._random_sample_negs(
-				k, data_split_fold_dic, neg_data_cra_only, genes_pool_closed_world, 'dev')
-
-			data_split_fold_dic = self._random_sample_negs(
-				k, data_split_fold_dic, neg_data_cra_only, genes_pool_closed_world, 'test')
+			data_split_fold_dic = self._random_sample_negs(k, data_split_fold_dic, 'train_local')
+			data_split_fold_dic = self._random_sample_negs(k, data_split_fold_dic, 'dev')
+			data_split_fold_dic = self._random_sample_negs(k, data_split_fold_dic, 'test')
 
 		for key, value in data_split_fold_dic.items() :
 			log.debug('Shape of {}: {}'.format(key, value.shape[0]))
@@ -129,10 +126,11 @@ class SplitFolds():
 				os.makedirs(each_fold_parent_dir)
 
 			data_split_fold_dic['fold_{}_train'.format(k)].to_csv(os.path.join(each_fold_parent_dir, 'train.txt'), sep='\t', index=False, header=None)
+			data_split_fold_dic['fold_{}_train_local'.format(k)].to_csv(os.path.join(each_fold_parent_dir, 'train_local.txt'), sep='\t', index=False, header=None)
 			data_split_fold_dic['fold_{}_dev'.format(k)].to_csv(os.path.join(each_fold_parent_dir, 'dev.txt'), sep='\t', index=False, header=None)
 			data_split_fold_dic['fold_{}_test'.format(k)].to_csv(os.path.join(each_fold_parent_dir, 'test.txt'), sep='\t', index=False, header=None)
 
-	def _random_sample_negs(self, cur_fold, data_split_fold_dic, neg_data_cra_only, closed_world_sub_pool, dtype, num_negs=49):
+	def _random_sample_negs(self, cur_fold, data_split_fold_dic, dtype, num_negs=49):
 		"""
 		(Private) Randomly 'num_negs' known negatives for each positive.
 		If there are not enough known negatives, randomly sample negatives
@@ -141,9 +139,7 @@ class SplitFolds():
 		Inputs:
 			cur_fold: fold # currently being processed
 			data_split_fold_dic: dictionary processed in 'split_into_folds()'
-			neg_data_cra_only: negatives where the relation is only CRTA
-			closed_world_sub_pool: pool of subjects assuming a closed world
-			dtype: data type (i.e. 'dev' or 'test')
+			dtype: data type (i.e. 'dev' | 'test' | 'train_local')
 			num_negs: number of negatives to sample per positive
 
 		Returns:
@@ -166,7 +162,7 @@ class SplitFolds():
 
 			# find negative samples which has same object as the positive SPO
 			# but different subject than that in positive SPO
-			neg_samples = neg_data_cra_only[neg_data_cra_only['Object'].isin([obj])]
+			neg_samples = self.neg_data_cra_only[self.neg_data_cra_only['Object'].isin([obj])]
 			neg_samples = neg_samples[~neg_samples['Subject'].isin([sub])]
 
 			# shuffle the negative samples in case there are more than 1 negative samples,
@@ -179,11 +175,11 @@ class SplitFolds():
 			# append the randomly sampled negative SPOs after the positive SPO
 			if neg_samples.shape[0] > num_negs: # all negatives can be sample from known negatives
 				new_with_neg_cra = new_with_neg_cra.append(neg_samples.iloc[0:num_negs, :])
-			else: # not all negatives can be sample from known negatives
+			else: # not all negatives can be sampled from known negatives
 				# find how many negatives has to be added assuming closed world
 				num_additional_subjs = num_negs - neg_samples.shape[0]
-				selected_subjs = np.random.choice(closed_world_sub_pool, num_additional_subjs, replace=False)
-				log.debug('Number of additional subjects: {}'.format(num_additional_subjs))
+				selected_subjs = np.random.choice(self.genes_pool_closed_world, num_additional_subjs, replace=False)
+				log.debug('Number of additional subjects for object {}: {}'.format(obj, num_additional_subjs))
 
 				# if we still have some known negatives, append it now
 				if neg_samples.shape[0] > 0:
