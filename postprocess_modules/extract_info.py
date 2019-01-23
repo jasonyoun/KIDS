@@ -76,6 +76,25 @@ class ExtractInfo():
 
 		np.savetxt(file_path, all_entities, fmt='%s')
 
+	def save_entity_full_names(self, file_path):
+		"""
+		Save entity full names to the specified file location.
+		ex) concept:gene:gene_type
+
+		Inputs:
+			file_path: file path to save the entity full names to
+		"""
+		log.info('Saving entity full names to \'{}\'...'.format(file_path))
+
+		entity_full_names = np.array([])
+
+		for entity_type in list(self.entity_dic.keys()):
+			pd_entities_for_type = pd.DataFrame(self.entity_dic[entity_type])
+			pd_entities_for_type.iloc[:, 0] = 'concept:{}:'.format(entity_type) + pd_entities_for_type.iloc[:, 0]
+			entity_full_names = np.append(entity_full_names, pd_entities_for_type.values.ravel())
+
+		np.savetxt(file_path, entity_full_names, fmt='%s')
+
 	def _read_drr(self, drr_path, get_overlap_only=True):
 		"""
 		(Private) Read the domain / relation / range text file.

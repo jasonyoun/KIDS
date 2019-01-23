@@ -31,6 +31,7 @@ DEFAULT_DRR_PATH_STR = './data/domain_relation_range.txt'
 
 # default file names
 DEFAULT_ENTITIES_TXT_STR = 'entities.txt'
+DEFAULT_ENTITY_FULL_NAMES_TXT_STR = 'entity_full_names.txt'
 DEFAULT_OUTPUT_FOLDS_DIR = os.path.join(DEFAULT_OUTPUT_PATH_STR, 'folds')
 DEFAULT_ALL_DATA_TXT_STR = 'data.txt'
 
@@ -92,6 +93,7 @@ if __name__ == '__main__':
 	# separate dataset into entities and relations
 	ei = ExtractInfo(pd_data, args.drr_path)
 	ei.save_all_entities(os.path.join(args.output_path, DEFAULT_ENTITIES_TXT_STR))
+	ei.save_entity_full_names(os.path.join(args.output_path, DEFAULT_ENTITY_FULL_NAMES_TXT_STR))
 
 	# split the dataset into specified folds
 	sf = SplitFolds(pd_data, NUM_FOLDS, ei.get_entity_by_type('gene'))

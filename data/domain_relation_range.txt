@@ -7,7 +7,7 @@ gene	represses	gene
 gene	no represses	gene
 gene	activates	gene
 gene	no activates	gene
-gene	has	molecular function
-gene	is involved in	biological process
-gene	is part of	cellular component
+gene	has	molecular_function
+gene	is involved in	biological_process
+gene	is part of	cellular_component
 gene	targeted by	antibiotic
