@@ -30,18 +30,18 @@ class ExtractInfo():
 	RELATION_STR = 'Relation'
 	RANGE_STR = 'Range'
 
-	def __init__(self, pd_data, drr_path):
+	def __init__(self, pd_data, dr_path):
 		"""
 		Class constructor for ExtractInfo.
 
 		Inputs:
 			pd_data: integrated data where
 				pd_data.columns.values = ['Subject' 'Predicate' 'Object' 'Label']
-			drr_path: path to the text file which contains the
-				domain / relation / range relationship
+			dr_path: path to the text file which contains the
+				relation / domain / range relationship
 		"""
 		self.pd_data = pd_data
-		self.pd_drr, self.relations, self.entity_types = self._read_drr(drr_path)
+		self.pd_dr, self.relations, self.entity_types = self._read_dr(dr_path)
 		self.entity_dic = self._fill_entity_dic()
 
 	def get_entity_by_type(self, entity_type):
@@ -89,29 +89,29 @@ class ExtractInfo():
 		entity_full_names = np.array([])
 
 		for entity_type in list(self.entity_dic.keys()):
-			pd_entities_for_type = pd.DataFrame(self.entity_dic[entity_type])
+			pd_entities_for_type = pd.DataFrame(np.copy(self.entity_dic[entity_type]))
 			pd_entities_for_type.iloc[:, 0] = 'concept:{}:'.format(entity_type) + pd_entities_for_type.iloc[:, 0]
 			entity_full_names = np.append(entity_full_names, pd_entities_for_type.values.ravel())
 
 		np.savetxt(file_path, entity_full_names, fmt='%s')
 
-	def _read_drr(self, drr_path, get_overlap_only=True):
+	def _read_dr(self, dr_path, get_overlap_only=True):
 		"""
-		(Private) Read the domain / relation / range text file.
+		(Private) Read the relation / domain / range text file.
 
 		Inputs:
-			drr_path: file path of the text file containing the
+			dr_path: file path of the text file containing the
 				domain / relation / range information
 			get_overlap_only: True if only getting the DRR
 				info that is available in the dataset
 				(used to skip negative relations)
 
 		Returns:
-			pd_drr: dataframe containing the DRR info
+			pd_dr: dataframe containing the domain / range info
 			all_relations_list: list containing all the relations
 			entity_types: list containing all the unique entity types
 		"""
-		pd_drr = pd.read_csv(drr_path, sep = '\t')
+		pd_dr = pd.read_csv(dr_path, sep = '\t')
 
 		# get all the relations in the dataset working on
 		relation_group = self.pd_data.groupby(self.PRED_STR)
@@ -119,19 +119,19 @@ class ExtractInfo():
 
 		# find unique entity types
 		entity_types = []
-		for dr_tuple, _ in pd_drr.groupby([self.DOMAIN_STR, self.RANGE_STR]):
+		for dr_tuple, _ in pd_dr.groupby([self.DOMAIN_STR, self.RANGE_STR]):
 			entity_types.extend(list(dr_tuple))
 		entity_types = list(set(entity_types))
 
 		# get only the (domain / relation / range) data
 		# that is available in the dataset
 		if get_overlap_only:
-			matching_relations_idx = pd_drr[self.RELATION_STR].isin(all_relations_list)
-			pd_drr = pd_drr[matching_relations_idx].reset_index(drop=True)
+			matching_relations_idx = pd_dr[self.RELATION_STR].isin(all_relations_list)
+			pd_dr = pd_dr[matching_relations_idx].reset_index(drop=True)
 
-		log.debug('(Domain / Relation / Range) to process:\n{}'.format(pd_drr))
+		log.debug('(Relation / Domain /  Range) to process:\n{}'.format(pd_dr))
 
-		return pd_drr, all_relations_list, entity_types
+		return pd_dr, all_relations_list, entity_types
 
 	def _fill_entity_dic(self):
 		"""
@@ -148,7 +148,7 @@ class ExtractInfo():
 		# entity dictionary based on their domain / range type
 		for relation in self.relations:
 			log.debug('Processing relation: {}'.format(relation))
-			single_grr = self.pd_drr.loc[self.pd_drr[self.RELATION_STR] == relation]
+			single_grr = self.pd_dr.loc[self.pd_dr[self.RELATION_STR] == relation]
 
 			domain_type = single_grr[self.DOMAIN_STR].item()
 			range_type = single_grr[self.RANGE_STR].item()

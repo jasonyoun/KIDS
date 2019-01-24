@@ -27,7 +27,7 @@ from postprocess_modules.split_folds import SplitFolds
 # default file paths
 DEFAULT_OUTPUT_PATH_STR = './output'
 DEFAULT_DATA_PATH_STR = './output/out.txt'
-DEFAULT_DRR_PATH_STR = './data/domain_range.txt'
+DEFAULT_DR_PATH_STR = './data/domain_range.txt'
 
 # default file names
 DEFAULT_ENTITIES_TXT_STR = 'entities.txt'
@@ -64,8 +64,8 @@ def parse_argument():
 		help='Path to the integrated data file to process')
 
 	parser.add_argument(
-		'--drr_path',
-		default=DEFAULT_DRR_PATH_STR,
+		'--dr_path',
+		default=DEFAULT_DR_PATH_STR,
 		help='Path to the file containing (domain / relation / range) info')
 
 	return parser.parse_args()
@@ -91,7 +91,7 @@ if __name__ == '__main__':
 	pd_data.to_csv(os.path.join(DEFAULT_OUTPUT_FOLDS_DIR, DEFAULT_ALL_DATA_TXT_STR), sep='\t', index=False, header=None)
 
 	# separate dataset into entities and relations
-	ei = ExtractInfo(pd_data, args.drr_path)
+	ei = ExtractInfo(pd_data, args.dr_path)
 	ei.save_all_entities(os.path.join(args.output_path, DEFAULT_ENTITIES_TXT_STR))
 	ei.save_entity_full_names(os.path.join(args.output_path, DEFAULT_ENTITY_FULL_NAMES_TXT_STR))
 

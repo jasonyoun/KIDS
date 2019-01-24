@@ -40,31 +40,34 @@ sed  -i -E 's| |#SPACE#|g' $entities_filepath
 sed  -i -E 's|,|#COMMA#|g' $entities_filepath
 
 # process data.txt
+sed  -i -E 's|:|#SEMICOLON#|g' $data_filepath
 sed  -i -E 's| |#SPACE#|g' $data_filepath
 sed  -i -E 's|,|#COMMA#|g' $data_filepath
-sed  -i -E 's|:|#SEMICOLON#|g' $data_filepath
 
 # process domain_range.txt
 cp $dr_filepath $dr_copy_filepath
 sed -i '1d' $dr_copy_filepath # remove first line
 
+sed  -i -E 's|:|#SEMICOLON#|g' $dr_copy_filepath
 sed  -i -E 's| |#SPACE#|g' $dr_copy_filepath
 sed  -i -E 's|,|#COMMA#|g' $dr_copy_filepath
-sed  -i -E 's|:|#SEMICOLON#|g' $dr_copy_filepath
 
 # generate relations.txt file
-cut -f 2 $dr_copy_filepath > $relations_filepath
+cut -f 1 $dr_copy_filepath > $relations_filepath
 
 # process folds
 for ((i=0; i<num_folds; i++)); do
 	fold_i="fold_$i"
 	copy_to="$folds_dir/$fold_i"
 
+	# process the original files
+	find $copy_to -type f -exec sed  -i -E 's|:|#SEMICOLON#|g' {} \;
+	find $copy_to -type f -exec sed  -i -E 's| |#SPACE#|g' {} \;
+	find $copy_to -type f -exec sed  -i -E 's|,|#COMMA#|g' {} \;
+
+	# copy the common files into each fold directories
 	cp $entities_filepath "$copy_to"
 	cp $entity_full_names_filepath "$copy_to"
 	cp $dr_copy_filepath "$copy_to"
 	cp $relations_filepath "$copy_to"
 done
-
-# remove copy
-rm $dr_copy_filepath
