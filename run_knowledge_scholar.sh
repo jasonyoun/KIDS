@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# exit immediately if a command exits with a non-zero status
+set -e
+
+# directories & files
+current_dir=`pwd`
+data_dir="$current_dir/data"
+output_dir="$current_dir/output"
+folds_dir="$output_dir/folds"
+
+dr_filename="domain_range.txt"
+data_filename="data.txt"
+entities_filename="entities.txt"
+entity_full_names_filename="entity_full_names.txt"
+relations_filename="relations.txt"
+
+dr_filepath="$data_dir/$dr_filename"
+entities_filepath="$output_dir/$entities_filename"
+entity_full_names_filepath="$output_dir/$entity_full_names_filename"
+relations_filepath="$output_dir/$relations_filename"
+dr_copy_filepath="$output_dir/$dr_filename"
+data_filepath="$folds_dir/$data_filename"
+
+# variables
+num_folds=5
+
+# run programs
+python3 integrate_data.py
+python3 postprocess_data.py
+
+# process entity_full_names.txt
+sed  -i -E 's|(.+:.+:.+)(:)(.+)|\1#SEMICOLON#\3|g' $entity_full_names_filepath
+sed  -i -E 's| |#SPACE#|g' $entity_full_names_filepath
+sed  -i -E 's|,|#COMMA#|g' $entity_full_names_filepath
+
+# process entities.txt
+sed  -i -E 's|:|#SEMICOLON#|g' $entities_filepath
+sed  -i -E 's| |#SPACE#|g' $entities_filepath
+sed  -i -E 's|,|#COMMA#|g' $entities_filepath
+
+# process data.txt
+sed  -i -E 's| |#SPACE#|g' $data_filepath
+sed  -i -E 's|,|#COMMA#|g' $data_filepath
+sed  -i -E 's|:|#SEMICOLON#|g' $data_filepath
+
+# process domain_range.txt
+cp $dr_filepath $dr_copy_filepath
+sed -i '1d' $dr_copy_filepath # remove first line
+
+sed  -i -E 's| |#SPACE#|g' $dr_copy_filepath
+sed  -i -E 's|,|#COMMA#|g' $dr_copy_filepath
+sed  -i -E 's|:|#SEMICOLON#|g' $dr_copy_filepath
+
+# generate relations.txt file
+cut -f 2 $dr_copy_filepath > $relations_filepath
+
+# process folds
+for ((i=0; i<num_folds; i++)); do
+	fold_i="fold_$i"
+	copy_to="$folds_dir/$fold_i"
+
+	cp $entities_filepath "$copy_to"
+	cp $entity_full_names_filepath "$copy_to"
+	cp $dr_copy_filepath "$copy_to"
+	cp $relations_filepath "$copy_to"
+done
+
+# remove copy
+rm $dr_copy_filepath
