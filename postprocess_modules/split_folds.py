@@ -10,8 +10,8 @@ Description:
 To-do:
 	1. Make it generalizable by removing gene specific items.
 """
-
 import os
+import sys
 import numpy as np
 import pandas as pd
 import logging as log
@@ -26,7 +26,7 @@ class SplitFolds():
 	COLUMNS = ['Subject', 'Predicate', 'Object', 'Label']
 	CRTA_STR = 'confers resistance to antibiotic'
 
-	def __init__(self, pd_data, num_folds, genes):
+	def __init__(self, pd_data, num_folds, all_genes):
 		"""
 		Class constructor for SplitFolds.
 
@@ -34,19 +34,39 @@ class SplitFolds():
 			pd_data: integrated data where
 				pd_data.columns.values = ['Subject' 'Predicate' 'Object' 'Label']
 			num_folds: number of folds to split the data into
-			genes: numpy array containing unique entities
+			all_genes: numpy array containing unique entities
 				(to be used for closed-world assumption)
 		"""
-		self.pd_data = pd_data
+		self.pd_data = pd_data.sample(frac=1).reset_index(drop=True)
 		self.num_folds = num_folds
+		self.all_genes = all_genes
 
-		# generate a pool to be used later in random sampling assuming a closed world
-		cra_genes = self.pd_data[self.pd_data['Predicate'].isin([self.CRTA_STR])]['Subject'].unique()
-		self.genes_pool_closed_world = np.array(list(set(genes.tolist()) - set(cra_genes.tolist())))
+		self._extract_CRAs()
+
+		# appened to the cra only negatives with synthetically generated negatives
+		self.updated_neg_data_cra_only, num_pos_to_remove_dic = self._generate_synthetic_negs()
+
+		# we have some positives to remove to balance pos and neg
+		if num_pos_to_remove_dic:
+			self._update_data(num_pos_to_remove_dic)
+			self._extract_CRAs()
+
+	def _update_data(self, num_pos_to_remove_dic):
+
+		for obj, count in num_pos_to_remove_dic.items():
+			indices = self.pos_data_cra_only.index[self.pos_data_cra_only['Object'].isin([obj])].tolist()
+			chosen_indices = indices[0:count]
+			self.pd_data = self.pd_data.drop(self.pd_data.index[chosen_indices])
+
+		# self.pd_data = self.pd_data.reset_index(drop=True)
+		self.pd_data = self.pd_data.sample(frac=1).reset_index(drop=True)
+
+	def _extract_CRAs(self):
+		self.all_cra = self.pd_data[self.pd_data['Predicate'].isin([self.CRTA_STR])]
 
 		# extract pos / neg data based on the label
-		pos_data = self.pd_data[self.pd_data['Label'] == '1']
-		neg_data = self.pd_data[self.pd_data['Label'] == '-1']
+		pos_data = self.pd_data[self.pd_data['Label'].astype(str) == '1']
+		neg_data = self.pd_data[self.pd_data['Label'].astype(str) == '-1']
 
 		# positive data with only or without any CRA edge
 		self.pos_data_cra_only = pos_data[pos_data['Predicate'].isin([self.CRTA_STR])]
@@ -54,6 +74,7 @@ class SplitFolds():
 
 		# negative data with only CRA edge
 		self.neg_data_cra_only = neg_data[neg_data['Predicate'].isin([self.CRTA_STR])]
+
 
 	def split_into_folds(self):
 		"""
@@ -130,6 +151,49 @@ class SplitFolds():
 			data_split_fold_dic['fold_{}_dev'.format(k)].to_csv(os.path.join(each_fold_parent_dir, 'dev.txt'), sep='\t', index=False, header=None)
 			data_split_fold_dic['fold_{}_test'.format(k)].to_csv(os.path.join(each_fold_parent_dir, 'test.txt'), sep='\t', index=False, header=None)
 
+	def _generate_synthetic_negs(self, num_negs=49):
+		num_pos_to_remove_dic = {}
+		random_sampled_negs = pd.DataFrame(columns=self.COLUMNS)
+
+		objs_values = self.pos_data_cra_only['Object'].value_counts().keys().tolist()
+		objs_counts = self.pos_data_cra_only['Object'].value_counts().tolist()
+		objs_value_counts_dic = dict(zip(objs_values, objs_counts))
+
+		for obj, count in objs_value_counts_dic.items():
+			num_negs_needed = num_negs * count
+			num_known_neg_samples = self.neg_data_cra_only[self.neg_data_cra_only['Object'].isin([obj])].shape[0]
+
+			# if we don't have enough known negatives to sample for given object
+			if num_known_neg_samples < num_negs_needed:
+				cra_same_obj = self.all_cra[self.all_cra['Object'].isin([obj])]
+				known_genes = cra_same_obj['Subject'].unique()
+				random_picked_subjs = np.array(list(set(self.all_genes.tolist()) - set(known_genes.tolist())))
+
+				# find how many random subjects we need
+				num_random_subjs = num_negs_needed - num_known_neg_samples
+
+				log.debug('Number of randomly sampled subjects for {}: {}'.format(obj, num_random_subjs))
+
+				if (random_picked_subjs.shape[0] < num_random_subjs):
+					log.warning('Not enough negatives to randomly pick for {}'.format(obj))
+
+					num_pos_to_remove_dic[obj] = int(np.ceil((num_random_subjs - random_picked_subjs.shape[0]) / num_negs))
+					num_random_subjs -= (num_negs * num_pos_to_remove_dic[obj])
+
+				# fill randomly samples negatives using closed world assumption
+				random_generated_neg_cra = pd.DataFrame(0, index=np.arange(num_random_subjs), columns=self.COLUMNS)
+				random_generated_neg_cra['Subject'] = np.random.choice(random_picked_subjs, num_random_subjs, replace=False)
+				random_generated_neg_cra['Predicate'] = self.CRTA_STR
+				random_generated_neg_cra['Object'] = obj
+				random_generated_neg_cra['Label'] = '-1'
+
+				random_sampled_negs = random_sampled_negs.append(random_generated_neg_cra)
+
+		updated_neg_data_cra_only = pd.concat([self.neg_data_cra_only, random_sampled_negs])
+		updated_neg_data_cra_only = updated_neg_data_cra_only.sample(frac=1).reset_index(drop=True)
+
+		return updated_neg_data_cra_only, num_pos_to_remove_dic
+
 	def _random_sample_negs(self, cur_fold, data_split_fold_dic, dtype, num_negs=49):
 		"""
 		(Private) Randomly 'num_negs' known negatives for each positive.
@@ -147,6 +211,7 @@ class SplitFolds():
 		"""
 
 		# init
+		known_negatives_dic = {}
 		new_with_neg_cra = pd.DataFrame(columns=self.COLUMNS)
 
 		# find how many total positives there are
@@ -157,42 +222,25 @@ class SplitFolds():
 		for i in range(pos_size):
 			# actual positive SPO that we're working on
 			pos_spo = data_split_fold_dic['fold_{}_{}_without_neg'.format(cur_fold, dtype)].iloc[i, :]
-			sub = pos_spo['Subject']
 			obj = pos_spo['Object']
-
-			# find negative samples which has same object as the positive SPO
-			# but different subject than that in positive SPO
-			neg_samples = self.neg_data_cra_only[self.neg_data_cra_only['Object'].isin([obj])]
-			neg_samples = neg_samples[~neg_samples['Subject'].isin([sub])]
-
-			# shuffle the negative samples in case there are more than 1 negative samples,
-			if neg_samples.shape[0] > 0:
-				neg_samples = neg_samples.sample(frac=1).reset_index(drop=True)
 
 			# append the original positive SPO
 			new_with_neg_cra = new_with_neg_cra.append(pos_spo)
 
-			# append the randomly sampled negative SPOs after the positive SPO
-			if neg_samples.shape[0] > num_negs: # all negatives can be sample from known negatives
-				new_with_neg_cra = new_with_neg_cra.append(neg_samples.iloc[0:num_negs, :])
-			else: # not all negatives can be sampled from known negatives
-				# find how many negatives has to be added assuming closed world
-				num_additional_subjs = num_negs - neg_samples.shape[0]
-				selected_subjs = np.random.choice(self.genes_pool_closed_world, num_additional_subjs, replace=False)
-				log.debug('Number of additional subjects for object {}: {}'.format(obj, num_additional_subjs))
+			# before, append negatives find known negatives
+			# and save to the dictionary if it already does not exist
+			if obj not in known_negatives_dic:
+				# find negative samples which has same object as the positive SPO
+				# but different subject than that in positive SPO
+				known_negatives_dic[obj] = self.updated_neg_data_cra_only[self.updated_neg_data_cra_only['Object'].isin([obj])]
 
-				# if we still have some known negatives, append it now
-				if neg_samples.shape[0] > 0:
-					new_with_neg_cra = new_with_neg_cra.append(neg_samples)
+			if known_negatives_dic[obj].shape[0] < num_negs:
+				sys.exit('We are supposed to have enough negatives now!')
 
-				# fill rest of the space with randomly samples negatives from closed world assumption
-				random_generated_neg_cra = pd.DataFrame(0, index=np.arange(num_additional_subjs), columns=self.COLUMNS)
-				random_generated_neg_cra['Subject'] = selected_subjs
-				random_generated_neg_cra['Predicate'] = self.CRTA_STR
-				random_generated_neg_cra['Object'] = obj
-				random_generated_neg_cra['Label'] = '-1'
+			new_with_neg_cra = new_with_neg_cra.append(known_negatives_dic[obj].iloc[0:num_negs, :])
 
-				new_with_neg_cra = new_with_neg_cra.append(random_generated_neg_cra)
+			# remove used known negatives
+			known_negatives_dic[obj] = known_negatives_dic[obj].iloc[num_negs:, :]
 
 		log.debug('Newly sampled {} with negative samples: {}'.format(dtype, new_with_neg_cra.shape[0]))
 
