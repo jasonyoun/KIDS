@@ -32,7 +32,6 @@ DEFAULT_DR_PATH_STR = './data/domain_range.txt'
 # default file names
 DEFAULT_ENTITIES_TXT_STR = 'entities.txt'
 DEFAULT_ENTITY_FULL_NAMES_TXT_STR = 'entity_full_names.txt'
-DEFAULT_OUTPUT_FOLDS_DIR = os.path.join(DEFAULT_OUTPUT_PATH_STR, 'folds')
 DEFAULT_ALL_DATA_TXT_STR = 'data.txt'
 
 # number of folds to split the dataset into
@@ -85,10 +84,7 @@ if __name__ == '__main__':
 	pd_data = DataProcessor(args.data_path).reformat_data()
 
 	# save the reformatted data
-	if not os.path.exists(DEFAULT_OUTPUT_FOLDS_DIR):
-		os.makedirs(DEFAULT_OUTPUT_FOLDS_DIR)
-
-	pd_data.to_csv(os.path.join(DEFAULT_OUTPUT_FOLDS_DIR, DEFAULT_ALL_DATA_TXT_STR), sep='\t', index=False, header=None)
+	pd_data.to_csv(os.path.join(DEFAULT_OUTPUT_PATH_STR, DEFAULT_ALL_DATA_TXT_STR), sep='\t', index=False, header=None)
 
 	# separate dataset into entities and relations
 	ei = ExtractInfo(pd_data, args.dr_path)

@@ -13,14 +13,17 @@ dr_filename="domain_range.txt"
 data_filename="data.txt"
 entities_filename="entities.txt"
 entity_full_names_filename="entity_full_names.txt"
+entity_full_names_copy_filename="entity_full_names_copy.txt"
 relations_filename="relations.txt"
 
 dr_filepath="$data_dir/$dr_filename"
 entities_filepath="$output_dir/$entities_filename"
 entity_full_names_filepath="$output_dir/$entity_full_names_filename"
+entity_full_names_copy_filepath="$output_dir/$entity_full_names_copy_filename"
 relations_filepath="$output_dir/$relations_filename"
 dr_copy_filepath="$output_dir/$dr_filename"
-data_filepath="$folds_dir/$data_filename"
+data_filepath="$output_dir/$data_filename"
+data_copy_filepath="$folds_dir/$data_filename"
 
 # variables
 num_folds=5
@@ -30,9 +33,10 @@ python3 integrate_data.py
 python3 postprocess_data.py
 
 # process entity_full_names.txt
-sed  -i -E 's|(.+:.+:.+)(:)(.+)|\1#SEMICOLON#\3|g' $entity_full_names_filepath
-sed  -i -E 's| |#SPACE#|g' $entity_full_names_filepath
-sed  -i -E 's|,|#COMMA#|g' $entity_full_names_filepath
+cp $entity_full_names_filepath $entity_full_names_copy_filepath
+sed  -i -E 's|(.+:.+:.+)(:)(.+)|\1#SEMICOLON#\3|g' $entity_full_names_copy_filepath
+sed  -i -E 's| |#SPACE#|g' $entity_full_names_copy_filepath
+sed  -i -E 's|,|#COMMA#|g' $entity_full_names_copy_filepath
 
 # process entities.txt
 sed  -i -E 's|:|#SEMICOLON#|g' $entities_filepath
@@ -40,9 +44,10 @@ sed  -i -E 's| |#SPACE#|g' $entities_filepath
 sed  -i -E 's|,|#COMMA#|g' $entities_filepath
 
 # process data.txt
-sed  -i -E 's|:|#SEMICOLON#|g' $data_filepath
-sed  -i -E 's| |#SPACE#|g' $data_filepath
-sed  -i -E 's|,|#COMMA#|g' $data_filepath
+cp $data_filepath $data_copy_filepath
+sed  -i -E 's|:|#SEMICOLON#|g' $data_copy_filepath
+sed  -i -E 's| |#SPACE#|g' $data_copy_filepath
+sed  -i -E 's|,|#COMMA#|g' $data_copy_filepath
 
 # process domain_range.txt
 cp $dr_filepath $dr_copy_filepath
@@ -67,7 +72,9 @@ for ((i=0; i<num_folds; i++)); do
 
 	# copy the common files into each fold directories
 	cp $entities_filepath "$copy_to"
-	cp $entity_full_names_filepath "$copy_to"
+	cp $entity_full_names_copy_filepath "$copy_to"
 	cp $dr_copy_filepath "$copy_to"
 	cp $relations_filepath "$copy_to"
 done
+
+rm $entity_full_names_copy_filepath
