@@ -72,7 +72,7 @@ for ((i=0; i<num_folds; i++)); do
 
 	# copy the common files into each fold directories
 	cp $entities_filepath "$copy_to"
-	cp $entity_full_names_copy_filepath "$copy_to"
+	cp $entity_full_names_copy_filepath "$copy_to/$entity_full_names_filename"
 	cp $dr_copy_filepath "$copy_to"
 	cp $relations_filepath "$copy_to"
 done

@@ -90,7 +90,7 @@ class ExtractInfo():
 
 		for entity_type in list(self.entity_dic.keys()):
 			pd_entities_for_type = pd.DataFrame(np.copy(self.entity_dic[entity_type]))
-			pd_entities_for_type.iloc[:, 0] = 'concept:{}:'.format(entity_type) + pd_entities_for_type.iloc[:, 0]
+			pd_entities_for_type.iloc[:, 0] = 'concept:{}:'.format(entity_type) + pd_entities_for_type.iloc[:, 0].astype(str)
 			entity_full_names = np.append(entity_full_names, pd_entities_for_type.values.ravel())
 
 		np.savetxt(file_path, entity_full_names, fmt='%s')

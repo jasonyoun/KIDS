@@ -61,23 +61,20 @@ class DataProcessor():
 
 		# remove temporal information
 		pd_data = self._remove_temporal_info(pd_data)
-
-		# now drop duplicates resulting from absence of temporal info
-		log.info('Dropping duplicates...')
-		pd_data.drop_duplicates(inplace=True)
-
-		predicate_group = pd_data.groupby('Predicate')
-		log.debug('Size of data grouped by predicates: \n{}'.format(predicate_group.size()))
+		pd_data = pd_data.drop_duplicates(keep='first')
 
 		# fill label column
 		pd_data = self._fill_label_column(pd_data)
 
-		label_group = pd_data.groupby('Label')
-		log.debug('Size of data grouped by label: \n{}'.format(label_group.size()))
-
 		# drop duplicates that results from removing the temporal info and using the Label column
 		log.info('Dropping duplicates...')
 		pd_data = pd_data.drop_duplicates(subset=['Subject', 'Predicate', 'Object'], keep=False)
+
+		predicate_group = pd_data.groupby('Predicate')
+		log.debug('Size of data grouped by predicates: \n{}'.format(predicate_group.size()))
+
+		label_group = pd_data.groupby('Label')
+		log.debug('Size of data grouped by label: \n{}'.format(label_group.size()))
 
 		return pd_data
 

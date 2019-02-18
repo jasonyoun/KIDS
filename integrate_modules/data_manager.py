@@ -71,6 +71,15 @@ class DataManager:
 			log.info('Processing source {} using {}'.format(str_source, str_path))
 
 			pd_data = pd.read_csv(str_path, '\t')
+
+			# drop missing values if there's any
+			before = pd_data.shape[0]
+			pd_data = pd_data.dropna()
+			after = pd_data.shape[0]
+
+			if (before - after) > 0:
+				log.warning('Dropping {} missing values.'.format(before-after))
+
 			pd_data = self._name_map_data(pd_data, str_source)
 			pd_data['Source'] = str_source
 			list_integrated_data.append(pd_data)
