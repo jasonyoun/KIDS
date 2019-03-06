@@ -185,10 +185,10 @@ class DataManager:
 
 			log.debug('\t{} new tuples found using this data rule'.format(pd_rule_specific_new_data.shape[0]))
 
-		# drop the duplicates
-		pd_new_data = pd_new_data.drop_duplicates()
+		# # drop the duplicates
+		# pd_new_data = pd_new_data.drop_duplicates()
 
-		log.info('Total of {} new tuples added based on the data rule after dropping the duplicates'
-			.format(pd_new_data.shape[0]-pd_data.shape[0]))
+		# log.info('Total of {} new tuples added based on the data rule after dropping the duplicates'
+		# 	.format(pd_new_data.shape[0]-pd_data.shape[0]))
 
 		return pd_new_data

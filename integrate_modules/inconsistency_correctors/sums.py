@@ -147,6 +147,7 @@ class Sums(object):
 
 		# loop through each inconsistency
 		for inconsistency_id in inconsistencies:
+			if inconsistency_id % 100 == 0: print('{}/{}'.format(inconsistency_id, len(inconsistencies)))
 			inconsistent_tuples = inconsistencies[inconsistency_id]
 			inconsistent_tuples_with_max_belief = []
 
