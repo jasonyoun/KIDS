@@ -75,7 +75,6 @@ class SplitFolds():
 		# negative data with only CRA edge
 		self.neg_data_cra_only = neg_data[neg_data['Predicate'].isin([self.CRTA_STR])]
 
-
 	def split_into_folds(self):
 		"""
 		Perform data split.
@@ -88,16 +87,15 @@ class SplitFolds():
 		"""
 		data_split_fold_dic = {}
 
-		# allocate 80% of positive CRA edges to allocate to train & dev
-		num_pos_cra_train_dev = int(self.pos_data_cra_only.shape[0] * 0.08)
-
 		# distribute CRA edges among train / dev / test for specified folds
 		k = 0
 		for train_dev_index, test_index in KFold(n_splits=self.num_folds).split(self.pos_data_cra_only):
 			np.random.shuffle(train_dev_index)
 
-			train_index = train_dev_index[num_pos_cra_train_dev:]
-			dev_index = train_dev_index[0:num_pos_cra_train_dev]
+			# allocate 90% of train_dev_index into train
+			num_train = int(0.9 * train_dev_index.shape[0])
+			train_index = train_dev_index[0:num_train]
+			dev_index = train_dev_index[num_train:]
 
 			data_split_fold_dic['fold_{}_train'.format(k)] = self.pos_data_cra_only.iloc[train_index, :]
 			data_split_fold_dic['fold_{}_train_local_without_neg'.format(k)] = self.pos_data_cra_only.iloc[train_index, :]
