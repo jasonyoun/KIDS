@@ -73,7 +73,7 @@ def compute_threshold(predictions_list, dev_labels, f1=True):
 			accuracy = f1_score(dev_labels,predictions)
 
 		accuracies[i] = accuracy
-		
+
 	indices = np.argmax(accuracies)
 	best_threshold = np.mean(predictions_list[indices])
 

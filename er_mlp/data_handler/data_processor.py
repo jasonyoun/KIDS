@@ -39,7 +39,7 @@ class DataProcessor:
 			df: dataframe containing the data
 		"""
 		log.info('Loading data from \'{}\'...'.format(filename))
-		df = pd.read_csv(filename, sep='\t', encoding ='latin-1', header=None)
+		df = pd.read_csv(filename, sep='\t', encoding ='latin-1', names=['Subjct', 'Predicate', 'Object', 'Label'])
 
 		return df
 

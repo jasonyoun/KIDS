@@ -232,9 +232,10 @@ if __name__ == "__main__":
 				print('No training data for predicate: {}'.format(k))
 				sys.exit()
 
+			# use smote sampling to balance positives and negatives
 			if USE_SMOTE_SAMPLING:
 				ros = SMOTE(ratio='minority')
-				train_x_predicate, train_y_predicate = ros.fit_sample(train_x_predicate, train_y_predicate.ravel() )
+				train_x_predicate, train_y_predicate = ros.fit_sample(train_x_predicate, train_y_predicate.ravel())
 				train_y_predicate = train_y_predicate.reshape(-1, 1)
 
 			if RUN_RANDOM_SEARCH:

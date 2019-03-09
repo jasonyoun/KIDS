@@ -111,7 +111,8 @@ class ERMLP:
 			'P': tf.Variable(tf.random_uniform([P_vocab_size, self.params['embedding_size']], -0.001, 0.001), name='P'),
 			# weights and biases of the network
 			'C': tf.Variable(initializer([3 * self.params['embedding_size'], self.params['layer_size']]), name='C'),
-			'B': tf.Variable(tf.ones([self.params['layer_size'], 1]), name='B')
+			'B': tf.Variable(initializer([self.params['layer_size'], 1]), name='B')
+			# 'B': tf.Variable(tf.ones([self.params['layer_size'], 1]), name='B')
 		}
 
 		# add more layers if necessary
