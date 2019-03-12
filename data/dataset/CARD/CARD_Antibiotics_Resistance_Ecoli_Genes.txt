@@ -81,7 +81,6 @@ acrA	confers resistance to antibiotic	Triclosan
 acrB	confers resistance to antibiotic	Triclosan
 tolC	confers resistance to antibiotic	Triclosan
 fabI	targeted by	Triclosan
-msbA	confers resistance to antibiotic	Metronidazole
 mgtA	confers resistance to antibiotic	Azithromycin
 rho	targeted by	Bicyclomycin
 ompC	confers resistance to antibiotic	Cefazolin
@@ -98,7 +97,6 @@ uhpA	confers resistance to antibiotic	Fosfomycin
 ptsI	confers resistance to antibiotic	Fosfomycin
 murA	confers resistance to antibiotic	Fosfomycin
 nadD	confers resistance to antibiotic	Fusidic acid
-fusA	confers resistance to antibiotic	Fusidic acid
 kdpD	confers resistance to antibiotic	Kanamycin
 kdpE	confers resistance to antibiotic	Kanamycin
 parC	confers resistance to antibiotic	Levofloxacin
@@ -147,10 +145,4 @@ tolC	confers resistance to antibiotic	Rifampin
 rpoB	targeted by	Rifampin
 rpoB	confers resistance to antibiotic	Rifamycin SV
 dnaA	confers resistance to antibiotic	Rifamycin SV
-mipA	confers resistance to antibiotic	Streptomycin
-acrA	confers resistance to antibiotic	Triclosan
-acrB	confers resistance to antibiotic	Triclosan
-tolC	confers resistance to antibiotic	Triclosan
-fabI	confers resistance to antibiotic	Triclosan
-fabG	confers resistance to antibiotic	Triclosan
 gyrA	confers resistance to antibiotic	Triclosan

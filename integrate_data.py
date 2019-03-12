@@ -29,7 +29,7 @@ from integrate_modules.inconsistency_manager import InconsistencyManager
 from integrate_modules.report_manager import plot_trustworthiness, save_resolved_inconsistencies, save_integrated_data
 from integrate_modules.inconsistency_correctors.averagelog import AverageLog
 
-# default file paths
+# default arguments
 DEFAULT_DATA_PATH_STR = './data/data_path_file.txt'
 DEFAULT_MAP_STR = './data/data_map.txt'
 DEFAULT_DATA_RULE_STR = './data/data_rules.xml'
@@ -80,6 +80,11 @@ def parse_argument():
 		'--inconsistency_out',
 		default=DEFAULT_INCONSISTENCY_OUT_STR,
 		help='Path to save the inconsistencies file')
+	parser.add_argument(
+		'--use_temporal',
+		default=False,
+		action='store_true',
+		help='Remove temporal data unless this option is set')
 
 	return parser.parse_args()
 
@@ -89,7 +94,12 @@ if __name__ == '__main__':
 	args = parse_argument()
 
 	# perform 1) knowledge integration and 2) knowledge rule application
-	pd_data = DataManager(args.data_path, args.map, args.data_rule).integrate_data()
+	dm = DataManager(args.data_path, args.map, args.data_rule)
+	pd_data = dm.integrate_data()
+
+	# remove temporal data in predicate
+	if not args.use_temporal:
+		pd_data = dm.drop_temporal_info(pd_data)
 
 	# perform inconsistency detection
 	inconsistencies = InconsistencyManager(args.inconsistency_rule).detect_inconsistencies(pd_data)

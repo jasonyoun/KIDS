@@ -13,6 +13,7 @@ Description:
 To-do:
 	1. Maybe split integrate_data() into two functions name_map() and data_rule()
 	2. Move _SPO_LIST to global file.
+	3. Define remove temporal info predicates in the xml file.
 """
 
 #!/usr/bin/python
@@ -32,6 +33,10 @@ class DataManager:
 	# we probably need to get rid of this #
 	#######################################
 	SPO_LIST = ['Subject', 'Predicate', 'Object']
+	CRA_STR = 'confers resistance to antibiotic'
+	CNRA_STR = 'confers no resistance to antibiotic'
+	UA_STR = 'upregulated by antibiotic'
+	NUA_STR = 'not upregulated by antibiotic'
 
 	def __init__(self, data_paths, map_file, data_rule_file):
 		"""
@@ -94,6 +99,25 @@ class DataManager:
 		log.info('Total of {} tuples integrated.'.format(pd_integrated_data.shape[0]))
 
 		return pd_integrated_data
+
+	def drop_temporal_info(self, pd_data):
+		"""
+		Remove temporal data in the predicate.
+
+		Inputs:
+			pd_data: integrated data using self.pd_data()
+
+		Returns:
+			pandas dataframe whose predicate does not contain temporal information
+		"""
+
+		pd_data.loc[pd_data['Predicate'].str.startswith(self.CRA_STR), 'Predicate'] = self.CRA_STR
+		pd_data.loc[pd_data['Predicate'].str.startswith(self.CNRA_STR), 'Predicate'] = self.CNRA_STR
+
+		pd_data.loc[pd_data['Predicate'].str.startswith(self.UA_STR), 'Predicate'] = self.UA_STR
+		pd_data.loc[pd_data['Predicate'].str.startswith(self.NUA_STR), 'Predicate'] = self.NUA_STR
+
+		return pd_data.drop_duplicates()
 
 	def _name_map_data(self, pd_data, str_source):
 		"""
@@ -185,10 +209,10 @@ class DataManager:
 
 			log.debug('\t{} new tuples found using this data rule'.format(pd_rule_specific_new_data.shape[0]))
 
-		# # drop the duplicates
-		# pd_new_data = pd_new_data.drop_duplicates()
+		# drop the duplicates
+		pd_new_data = pd_new_data.drop_duplicates()
 
-		# log.info('Total of {} new tuples added based on the data rule after dropping the duplicates'
-		# 	.format(pd_new_data.shape[0]-pd_data.shape[0]))
+		log.info('Total of {} new tuples added based on the data rule after dropping the duplicates'
+			.format(pd_new_data.shape[0] - pd_data.shape[0]))
 
 		return pd_new_data

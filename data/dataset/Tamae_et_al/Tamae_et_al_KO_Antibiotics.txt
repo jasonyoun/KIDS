@@ -773,7 +773,6 @@ ycbL	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 entC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yjfK	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 kdpB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-astC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yahL	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 panE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ybjO	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -889,7 +888,6 @@ yecC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cysU	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 prpE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yjtD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-cspD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ygjV	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 arpA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 apaG	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -1224,7 +1222,6 @@ yedA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 priC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ymfJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ypeC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-mdtQ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yfcZ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 crl	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 satP	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -1299,7 +1296,6 @@ yegJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rmuC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 aldB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 gspJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-gpt	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 sseB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rpe	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 mdtO	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -1349,7 +1345,6 @@ hokC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 gatR_1	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 moeB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 maeB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-nrdF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 queE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 vsr	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 murP	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -1393,7 +1388,6 @@ yibL	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 metF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 deoB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yggR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-mltB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yehP	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ppk	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 adiC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -1790,7 +1784,6 @@ ybbV	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 sdaC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yghE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yecF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-ymgE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ycdX	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yaeR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 damX	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -1814,7 +1807,6 @@ pgaB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cspA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ycbF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 mak	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-ahpC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 smf	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 torT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 slyX	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -1900,7 +1892,6 @@ yqeG	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 dmlA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ykfF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cobC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-rarA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cutC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yjcC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 fdrA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -1941,7 +1932,6 @@ osmB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 fic	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rpmF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yobB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-yaaW	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yieE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ytfJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yagJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2179,7 +2169,6 @@ avtA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 kptA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 lexA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cadA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-purF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 pgpA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ycgJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yegH	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2371,7 +2360,6 @@ ygiZ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 lsrR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rraA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rpsT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-bioH	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ybcQ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 lysR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rpiB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2401,7 +2389,6 @@ ansP	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ybiT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 mglC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yafO	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-rfbC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yliE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 emrY	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 hycA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2436,7 +2423,6 @@ rpsO	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 selD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 sad	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 glpF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-ftnA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ycgM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ydcR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 hsdM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2686,7 +2672,6 @@ yfdR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yegT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 wcaC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yifE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-cysK	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 metH	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 slyB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 fecB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2752,7 +2737,6 @@ ycaP	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ydjI	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 tktA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 fadA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-chbA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 nikB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 coaE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 dhaM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2802,7 +2786,6 @@ yeeN	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yraI	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 dinD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 lacI	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-nagE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rpoN	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 thrA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 mog	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2894,7 +2877,6 @@ fsaA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yjdM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 envR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 leuB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-yjiP	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ppiC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yfcV	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 evgS	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2968,7 +2950,6 @@ clsC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 galS	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ygbE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rfbX	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-acrE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ycgZ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 eutM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cysD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -2976,7 +2957,6 @@ ycdU	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yciV	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ypdB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 racC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-bcsZ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 mdtP	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 pykF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 pbl	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3005,11 +2985,9 @@ rppH	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 sugE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ecnB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yiiX	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-rbn	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ygdG	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cdd	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 typA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-zupT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cbpA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cusS	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yecM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3020,7 +2998,6 @@ yegE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 wcaK	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 fau	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rimM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-fimA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 purT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 fliQ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yadV	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3104,7 +3081,6 @@ ulaG	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ydiE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ybiC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 purH	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-pphB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ycjM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ybiO	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 mdoD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3140,7 +3116,6 @@ entB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 preT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 groL	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 tus	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-yaiT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 livK	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 mrcA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 focA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3189,7 +3164,6 @@ yccE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ygbJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 hisF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yfgD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-deaD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yfaQ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yddB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yicJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3353,7 +3327,6 @@ ansA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 nuoN	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yoaA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 truA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-yaiF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 patA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 lysU	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ycfK	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3361,7 +3334,6 @@ yceG	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 xylH	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ydaQ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ydeJ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-fruB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 flhC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 betB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 araC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3374,11 +3346,8 @@ cbrC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yoeF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 flgI	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 pheA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-srlE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 glf	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-dsdX	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rffD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-fnr	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 stpA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 asmA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yraN	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3494,7 +3463,6 @@ mtfA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yfdN	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yidI	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yfdF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-nuoM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ybaS	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 recE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 lpcA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3526,7 +3494,6 @@ metR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cusF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 hypT	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ytfF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-soxR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 treB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ycaI	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 emrD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3837,7 +3804,6 @@ yfjI	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 gltP	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yeeS	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 osmC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-rarA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ynfC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 frvA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 mpl	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3846,7 +3812,6 @@ yfiE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 sucD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yddK	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 norW	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-ygaX	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 hybA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 rlpA	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ydfV	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -3964,7 +3929,6 @@ yiaM	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 trpR	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 phnO	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 trmL	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-modC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yoaC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 bluF	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 cra	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -4014,7 +3978,6 @@ htpG	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 fucO	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ypjD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yfeK	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-ydaG	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 narX	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 arpB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ivy	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
@@ -4114,7 +4077,6 @@ ydjE	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 phnD	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 dusC	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ybbB	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
-ygeK	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 sgcQ	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 yeeO	Ciprofloxacin	confers no resistance to antibiotic after 18 hours
 ynbC	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -4631,7 +4593,6 @@ ycbL	Vancomycin	confers no resistance to antibiotic after 18 hours
 entC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yjfK	Vancomycin	confers no resistance to antibiotic after 18 hours
 kdpB	Vancomycin	confers no resistance to antibiotic after 18 hours
-astC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yahL	Vancomycin	confers no resistance to antibiotic after 18 hours
 panE	Vancomycin	confers no resistance to antibiotic after 18 hours
 ybjO	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -4748,7 +4709,6 @@ yecC	Vancomycin	confers no resistance to antibiotic after 18 hours
 cysU	Vancomycin	confers no resistance to antibiotic after 18 hours
 prpE	Vancomycin	confers no resistance to antibiotic after 18 hours
 yjtD	Vancomycin	confers no resistance to antibiotic after 18 hours
-cspD	Vancomycin	confers no resistance to antibiotic after 18 hours
 ygjV	Vancomycin	confers no resistance to antibiotic after 18 hours
 arpA	Vancomycin	confers no resistance to antibiotic after 18 hours
 apaG	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -5081,7 +5041,6 @@ yedA	Vancomycin	confers no resistance to antibiotic after 18 hours
 priC	Vancomycin	confers no resistance to antibiotic after 18 hours
 ymfJ	Vancomycin	confers no resistance to antibiotic after 18 hours
 ypeC	Vancomycin	confers no resistance to antibiotic after 18 hours
-mdtQ	Vancomycin	confers no resistance to antibiotic after 18 hours
 yfcZ	Vancomycin	confers no resistance to antibiotic after 18 hours
 crl	Vancomycin	confers no resistance to antibiotic after 18 hours
 satP	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -5155,7 +5114,6 @@ yegJ	Vancomycin	confers no resistance to antibiotic after 18 hours
 rmuC	Vancomycin	confers no resistance to antibiotic after 18 hours
 aldB	Vancomycin	confers no resistance to antibiotic after 18 hours
 gspJ	Vancomycin	confers no resistance to antibiotic after 18 hours
-gpt	Vancomycin	confers no resistance to antibiotic after 18 hours
 sseB	Vancomycin	confers no resistance to antibiotic after 18 hours
 rpe	Vancomycin	confers no resistance to antibiotic after 18 hours
 mdtO	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -5205,7 +5163,6 @@ hokC	Vancomycin	confers no resistance to antibiotic after 18 hours
 gatR_1	Vancomycin	confers no resistance to antibiotic after 18 hours
 moeB	Vancomycin	confers no resistance to antibiotic after 18 hours
 maeB	Vancomycin	confers no resistance to antibiotic after 18 hours
-nrdF	Vancomycin	confers no resistance to antibiotic after 18 hours
 queE	Vancomycin	confers no resistance to antibiotic after 18 hours
 vsr	Vancomycin	confers no resistance to antibiotic after 18 hours
 murP	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -5249,7 +5206,6 @@ yibL	Vancomycin	confers no resistance to antibiotic after 18 hours
 metF	Vancomycin	confers no resistance to antibiotic after 18 hours
 deoB	Vancomycin	confers no resistance to antibiotic after 18 hours
 yggR	Vancomycin	confers no resistance to antibiotic after 18 hours
-mltB	Vancomycin	confers no resistance to antibiotic after 18 hours
 yehP	Vancomycin	confers no resistance to antibiotic after 18 hours
 ppk	Vancomycin	confers no resistance to antibiotic after 18 hours
 adiC	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -5647,7 +5603,6 @@ ybbV	Vancomycin	confers no resistance to antibiotic after 18 hours
 sdaC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yghE	Vancomycin	confers no resistance to antibiotic after 18 hours
 yecF	Vancomycin	confers no resistance to antibiotic after 18 hours
-ymgE	Vancomycin	confers no resistance to antibiotic after 18 hours
 ycdX	Vancomycin	confers no resistance to antibiotic after 18 hours
 yaeR	Vancomycin	confers no resistance to antibiotic after 18 hours
 damX	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -5671,7 +5626,6 @@ pgaB	Vancomycin	confers no resistance to antibiotic after 18 hours
 cspA	Vancomycin	confers no resistance to antibiotic after 18 hours
 ycbF	Vancomycin	confers no resistance to antibiotic after 18 hours
 mak	Vancomycin	confers no resistance to antibiotic after 18 hours
-ahpC	Vancomycin	confers no resistance to antibiotic after 18 hours
 smf	Vancomycin	confers no resistance to antibiotic after 18 hours
 torT	Vancomycin	confers no resistance to antibiotic after 18 hours
 slyX	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -5756,7 +5710,6 @@ yqeG	Vancomycin	confers no resistance to antibiotic after 18 hours
 dmlA	Vancomycin	confers no resistance to antibiotic after 18 hours
 ykfF	Vancomycin	confers no resistance to antibiotic after 18 hours
 cobC	Vancomycin	confers no resistance to antibiotic after 18 hours
-rarA	Vancomycin	confers no resistance to antibiotic after 18 hours
 cutC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yjcC	Vancomycin	confers no resistance to antibiotic after 18 hours
 fdrA	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -5797,7 +5750,6 @@ osmB	Vancomycin	confers no resistance to antibiotic after 18 hours
 fic	Vancomycin	confers no resistance to antibiotic after 18 hours
 rpmF	Vancomycin	confers no resistance to antibiotic after 18 hours
 yobB	Vancomycin	confers no resistance to antibiotic after 18 hours
-yaaW	Vancomycin	confers no resistance to antibiotic after 18 hours
 yieE	Vancomycin	confers no resistance to antibiotic after 18 hours
 ytfJ	Vancomycin	confers no resistance to antibiotic after 18 hours
 yagJ	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6036,7 +5988,6 @@ avtA	Vancomycin	confers no resistance to antibiotic after 18 hours
 kptA	Vancomycin	confers no resistance to antibiotic after 18 hours
 lexA	Vancomycin	confers no resistance to antibiotic after 18 hours
 cadA	Vancomycin	confers no resistance to antibiotic after 18 hours
-purF	Vancomycin	confers no resistance to antibiotic after 18 hours
 pgpA	Vancomycin	confers no resistance to antibiotic after 18 hours
 ycgJ	Vancomycin	confers no resistance to antibiotic after 18 hours
 yegH	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6227,7 +6178,6 @@ ygiZ	Vancomycin	confers no resistance to antibiotic after 18 hours
 lsrR	Vancomycin	confers no resistance to antibiotic after 18 hours
 rraA	Vancomycin	confers no resistance to antibiotic after 18 hours
 rpsT	Vancomycin	confers no resistance to antibiotic after 18 hours
-bioH	Vancomycin	confers no resistance to antibiotic after 18 hours
 ybcQ	Vancomycin	confers no resistance to antibiotic after 18 hours
 lysR	Vancomycin	confers no resistance to antibiotic after 18 hours
 rpiB	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6257,7 +6207,6 @@ ansP	Vancomycin	confers no resistance to antibiotic after 18 hours
 ybiT	Vancomycin	confers no resistance to antibiotic after 18 hours
 mglC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yafO	Vancomycin	confers no resistance to antibiotic after 18 hours
-rfbC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yliE	Vancomycin	confers no resistance to antibiotic after 18 hours
 emrY	Vancomycin	confers no resistance to antibiotic after 18 hours
 hycA	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6292,7 +6241,6 @@ rpsO	Vancomycin	confers no resistance to antibiotic after 18 hours
 selD	Vancomycin	confers no resistance to antibiotic after 18 hours
 sad	Vancomycin	confers no resistance to antibiotic after 18 hours
 glpF	Vancomycin	confers no resistance to antibiotic after 18 hours
-ftnA	Vancomycin	confers no resistance to antibiotic after 18 hours
 ycgM	Vancomycin	confers no resistance to antibiotic after 18 hours
 ydcR	Vancomycin	confers no resistance to antibiotic after 18 hours
 hsdM	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6546,7 +6494,6 @@ yfdR	Vancomycin	confers no resistance to antibiotic after 18 hours
 yegT	Vancomycin	confers no resistance to antibiotic after 18 hours
 wcaC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yifE	Vancomycin	confers no resistance to antibiotic after 18 hours
-cysK	Vancomycin	confers no resistance to antibiotic after 18 hours
 metH	Vancomycin	confers no resistance to antibiotic after 18 hours
 slyB	Vancomycin	confers no resistance to antibiotic after 18 hours
 fecB	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6612,7 +6559,6 @@ recN	Vancomycin	confers no resistance to antibiotic after 18 hours
 ycaP	Vancomycin	confers no resistance to antibiotic after 18 hours
 tktA	Vancomycin	confers no resistance to antibiotic after 18 hours
 fadA	Vancomycin	confers no resistance to antibiotic after 18 hours
-chbA	Vancomycin	confers no resistance to antibiotic after 18 hours
 nikB	Vancomycin	confers no resistance to antibiotic after 18 hours
 coaE	Vancomycin	confers no resistance to antibiotic after 18 hours
 dhaM	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6662,7 +6608,6 @@ yeeN	Vancomycin	confers no resistance to antibiotic after 18 hours
 yraI	Vancomycin	confers no resistance to antibiotic after 18 hours
 dinD	Vancomycin	confers no resistance to antibiotic after 18 hours
 lacI	Vancomycin	confers no resistance to antibiotic after 18 hours
-nagE	Vancomycin	confers no resistance to antibiotic after 18 hours
 rpoN	Vancomycin	confers no resistance to antibiotic after 18 hours
 thrA	Vancomycin	confers no resistance to antibiotic after 18 hours
 mog	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6754,7 +6699,6 @@ fsaA	Vancomycin	confers no resistance to antibiotic after 18 hours
 yjdM	Vancomycin	confers no resistance to antibiotic after 18 hours
 envR	Vancomycin	confers no resistance to antibiotic after 18 hours
 leuB	Vancomycin	confers no resistance to antibiotic after 18 hours
-yjiP	Vancomycin	confers no resistance to antibiotic after 18 hours
 ppiC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yfcV	Vancomycin	confers no resistance to antibiotic after 18 hours
 evgS	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6834,7 +6778,6 @@ ycdU	Vancomycin	confers no resistance to antibiotic after 18 hours
 yciV	Vancomycin	confers no resistance to antibiotic after 18 hours
 ypdB	Vancomycin	confers no resistance to antibiotic after 18 hours
 racC	Vancomycin	confers no resistance to antibiotic after 18 hours
-bcsZ	Vancomycin	confers no resistance to antibiotic after 18 hours
 mdtP	Vancomycin	confers no resistance to antibiotic after 18 hours
 pykF	Vancomycin	confers no resistance to antibiotic after 18 hours
 pbl	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6862,11 +6805,9 @@ rppH	Vancomycin	confers no resistance to antibiotic after 18 hours
 sugE	Vancomycin	confers no resistance to antibiotic after 18 hours
 ecnB	Vancomycin	confers no resistance to antibiotic after 18 hours
 yiiX	Vancomycin	confers no resistance to antibiotic after 18 hours
-rbn	Vancomycin	confers no resistance to antibiotic after 18 hours
 ygdG	Vancomycin	confers no resistance to antibiotic after 18 hours
 cdd	Vancomycin	confers no resistance to antibiotic after 18 hours
 typA	Vancomycin	confers no resistance to antibiotic after 18 hours
-zupT	Vancomycin	confers no resistance to antibiotic after 18 hours
 cbpA	Vancomycin	confers no resistance to antibiotic after 18 hours
 cusS	Vancomycin	confers no resistance to antibiotic after 18 hours
 yecM	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6877,7 +6818,6 @@ yegE	Vancomycin	confers no resistance to antibiotic after 18 hours
 wcaK	Vancomycin	confers no resistance to antibiotic after 18 hours
 fau	Vancomycin	confers no resistance to antibiotic after 18 hours
 rimM	Vancomycin	confers no resistance to antibiotic after 18 hours
-fimA	Vancomycin	confers no resistance to antibiotic after 18 hours
 purT	Vancomycin	confers no resistance to antibiotic after 18 hours
 fliQ	Vancomycin	confers no resistance to antibiotic after 18 hours
 yadV	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6963,7 +6903,6 @@ ulaG	Vancomycin	confers no resistance to antibiotic after 18 hours
 ydiE	Vancomycin	confers no resistance to antibiotic after 18 hours
 ybiC	Vancomycin	confers no resistance to antibiotic after 18 hours
 purH	Vancomycin	confers no resistance to antibiotic after 18 hours
-pphB	Vancomycin	confers no resistance to antibiotic after 18 hours
 ycjM	Vancomycin	confers no resistance to antibiotic after 18 hours
 ybiO	Vancomycin	confers no resistance to antibiotic after 18 hours
 mdoD	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -6998,7 +6937,6 @@ entB	Vancomycin	confers no resistance to antibiotic after 18 hours
 preT	Vancomycin	confers no resistance to antibiotic after 18 hours
 groL	Vancomycin	confers no resistance to antibiotic after 18 hours
 tus	Vancomycin	confers no resistance to antibiotic after 18 hours
-yaiT	Vancomycin	confers no resistance to antibiotic after 18 hours
 livK	Vancomycin	confers no resistance to antibiotic after 18 hours
 mrcA	Vancomycin	confers no resistance to antibiotic after 18 hours
 focA	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7047,7 +6985,6 @@ yccE	Vancomycin	confers no resistance to antibiotic after 18 hours
 ygbJ	Vancomycin	confers no resistance to antibiotic after 18 hours
 hisF	Vancomycin	confers no resistance to antibiotic after 18 hours
 yfgD	Vancomycin	confers no resistance to antibiotic after 18 hours
-deaD	Vancomycin	confers no resistance to antibiotic after 18 hours
 yfaQ	Vancomycin	confers no resistance to antibiotic after 18 hours
 yddB	Vancomycin	confers no resistance to antibiotic after 18 hours
 yicJ	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7211,7 +7148,6 @@ ansA	Vancomycin	confers no resistance to antibiotic after 18 hours
 nuoN	Vancomycin	confers no resistance to antibiotic after 18 hours
 yoaA	Vancomycin	confers no resistance to antibiotic after 18 hours
 truA	Vancomycin	confers no resistance to antibiotic after 18 hours
-yaiF	Vancomycin	confers no resistance to antibiotic after 18 hours
 patA	Vancomycin	confers no resistance to antibiotic after 18 hours
 lysU	Vancomycin	confers no resistance to antibiotic after 18 hours
 ycfK	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7219,7 +7155,6 @@ yceG	Vancomycin	confers no resistance to antibiotic after 18 hours
 xylH	Vancomycin	confers no resistance to antibiotic after 18 hours
 ydaQ	Vancomycin	confers no resistance to antibiotic after 18 hours
 ydeJ	Vancomycin	confers no resistance to antibiotic after 18 hours
-fruB	Vancomycin	confers no resistance to antibiotic after 18 hours
 flhC	Vancomycin	confers no resistance to antibiotic after 18 hours
 betB	Vancomycin	confers no resistance to antibiotic after 18 hours
 araC	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7232,11 +7167,8 @@ cbrC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yoeF	Vancomycin	confers no resistance to antibiotic after 18 hours
 flgI	Vancomycin	confers no resistance to antibiotic after 18 hours
 pheA	Vancomycin	confers no resistance to antibiotic after 18 hours
-srlE	Vancomycin	confers no resistance to antibiotic after 18 hours
 glf	Vancomycin	confers no resistance to antibiotic after 18 hours
-dsdX	Vancomycin	confers no resistance to antibiotic after 18 hours
 rffD	Vancomycin	confers no resistance to antibiotic after 18 hours
-fnr	Vancomycin	confers no resistance to antibiotic after 18 hours
 stpA	Vancomycin	confers no resistance to antibiotic after 18 hours
 asmA	Vancomycin	confers no resistance to antibiotic after 18 hours
 yraN	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7351,7 +7283,6 @@ mtfA	Vancomycin	confers no resistance to antibiotic after 18 hours
 yfdN	Vancomycin	confers no resistance to antibiotic after 18 hours
 yidI	Vancomycin	confers no resistance to antibiotic after 18 hours
 yfdF	Vancomycin	confers no resistance to antibiotic after 18 hours
-nuoM	Vancomycin	confers no resistance to antibiotic after 18 hours
 ybaS	Vancomycin	confers no resistance to antibiotic after 18 hours
 recE	Vancomycin	confers no resistance to antibiotic after 18 hours
 lpcA	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7383,7 +7314,6 @@ metR	Vancomycin	confers no resistance to antibiotic after 18 hours
 cusF	Vancomycin	confers no resistance to antibiotic after 18 hours
 hypT	Vancomycin	confers no resistance to antibiotic after 18 hours
 ytfF	Vancomycin	confers no resistance to antibiotic after 18 hours
-soxR	Vancomycin	confers no resistance to antibiotic after 18 hours
 treB	Vancomycin	confers no resistance to antibiotic after 18 hours
 ycaI	Vancomycin	confers no resistance to antibiotic after 18 hours
 emrD	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7693,7 +7623,6 @@ yfjI	Vancomycin	confers no resistance to antibiotic after 18 hours
 gltP	Vancomycin	confers no resistance to antibiotic after 18 hours
 yeeS	Vancomycin	confers no resistance to antibiotic after 18 hours
 osmC	Vancomycin	confers no resistance to antibiotic after 18 hours
-rarA	Vancomycin	confers no resistance to antibiotic after 18 hours
 ynfC	Vancomycin	confers no resistance to antibiotic after 18 hours
 frvA	Vancomycin	confers no resistance to antibiotic after 18 hours
 mpl	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7702,7 +7631,6 @@ yfiE	Vancomycin	confers no resistance to antibiotic after 18 hours
 sucD	Vancomycin	confers no resistance to antibiotic after 18 hours
 yddK	Vancomycin	confers no resistance to antibiotic after 18 hours
 norW	Vancomycin	confers no resistance to antibiotic after 18 hours
-ygaX	Vancomycin	confers no resistance to antibiotic after 18 hours
 hybA	Vancomycin	confers no resistance to antibiotic after 18 hours
 rlpA	Vancomycin	confers no resistance to antibiotic after 18 hours
 ydfV	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7820,7 +7748,6 @@ yiaM	Vancomycin	confers no resistance to antibiotic after 18 hours
 trpR	Vancomycin	confers no resistance to antibiotic after 18 hours
 phnO	Vancomycin	confers no resistance to antibiotic after 18 hours
 trmL	Vancomycin	confers no resistance to antibiotic after 18 hours
-modC	Vancomycin	confers no resistance to antibiotic after 18 hours
 yoaC	Vancomycin	confers no resistance to antibiotic after 18 hours
 bluF	Vancomycin	confers no resistance to antibiotic after 18 hours
 cra	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7870,7 +7797,6 @@ htpG	Vancomycin	confers no resistance to antibiotic after 18 hours
 fucO	Vancomycin	confers no resistance to antibiotic after 18 hours
 ypjD	Vancomycin	confers no resistance to antibiotic after 18 hours
 yfeK	Vancomycin	confers no resistance to antibiotic after 18 hours
-ydaG	Vancomycin	confers no resistance to antibiotic after 18 hours
 narX	Vancomycin	confers no resistance to antibiotic after 18 hours
 arpB	Vancomycin	confers no resistance to antibiotic after 18 hours
 ivy	Vancomycin	confers no resistance to antibiotic after 18 hours
@@ -7970,7 +7896,6 @@ ydjE	Vancomycin	confers no resistance to antibiotic after 18 hours
 phnD	Vancomycin	confers no resistance to antibiotic after 18 hours
 dusC	Vancomycin	confers no resistance to antibiotic after 18 hours
 ybbB	Vancomycin	confers no resistance to antibiotic after 18 hours
-ygeK	Vancomycin	confers no resistance to antibiotic after 18 hours
 sgcQ	Vancomycin	confers no resistance to antibiotic after 18 hours
 yeeO	Vancomycin	confers no resistance to antibiotic after 18 hours
 ynbC	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -8482,7 +8407,6 @@ ycbL	Rifampicin	confers no resistance to antibiotic after 18 hours
 entC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yjfK	Rifampicin	confers no resistance to antibiotic after 18 hours
 kdpB	Rifampicin	confers no resistance to antibiotic after 18 hours
-astC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yahL	Rifampicin	confers no resistance to antibiotic after 18 hours
 panE	Rifampicin	confers no resistance to antibiotic after 18 hours
 ybjO	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -8599,7 +8523,6 @@ yecC	Rifampicin	confers no resistance to antibiotic after 18 hours
 cysU	Rifampicin	confers no resistance to antibiotic after 18 hours
 prpE	Rifampicin	confers no resistance to antibiotic after 18 hours
 yjtD	Rifampicin	confers no resistance to antibiotic after 18 hours
-cspD	Rifampicin	confers no resistance to antibiotic after 18 hours
 ygjV	Rifampicin	confers no resistance to antibiotic after 18 hours
 arpA	Rifampicin	confers no resistance to antibiotic after 18 hours
 apaG	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -8927,7 +8850,6 @@ yedA	Rifampicin	confers no resistance to antibiotic after 18 hours
 priC	Rifampicin	confers no resistance to antibiotic after 18 hours
 ymfJ	Rifampicin	confers no resistance to antibiotic after 18 hours
 ypeC	Rifampicin	confers no resistance to antibiotic after 18 hours
-mdtQ	Rifampicin	confers no resistance to antibiotic after 18 hours
 yfcZ	Rifampicin	confers no resistance to antibiotic after 18 hours
 crl	Rifampicin	confers no resistance to antibiotic after 18 hours
 satP	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -9001,7 +8923,6 @@ yegJ	Rifampicin	confers no resistance to antibiotic after 18 hours
 rmuC	Rifampicin	confers no resistance to antibiotic after 18 hours
 aldB	Rifampicin	confers no resistance to antibiotic after 18 hours
 gspJ	Rifampicin	confers no resistance to antibiotic after 18 hours
-gpt	Rifampicin	confers no resistance to antibiotic after 18 hours
 sseB	Rifampicin	confers no resistance to antibiotic after 18 hours
 mdtO	Rifampicin	confers no resistance to antibiotic after 18 hours
 ydhT	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -9049,7 +8970,6 @@ hokC	Rifampicin	confers no resistance to antibiotic after 18 hours
 gatR_1	Rifampicin	confers no resistance to antibiotic after 18 hours
 moeB	Rifampicin	confers no resistance to antibiotic after 18 hours
 maeB	Rifampicin	confers no resistance to antibiotic after 18 hours
-nrdF	Rifampicin	confers no resistance to antibiotic after 18 hours
 queE	Rifampicin	confers no resistance to antibiotic after 18 hours
 vsr	Rifampicin	confers no resistance to antibiotic after 18 hours
 murP	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -9093,7 +9013,6 @@ yibL	Rifampicin	confers no resistance to antibiotic after 18 hours
 metF	Rifampicin	confers no resistance to antibiotic after 18 hours
 deoB	Rifampicin	confers no resistance to antibiotic after 18 hours
 yggR	Rifampicin	confers no resistance to antibiotic after 18 hours
-mltB	Rifampicin	confers no resistance to antibiotic after 18 hours
 yehP	Rifampicin	confers no resistance to antibiotic after 18 hours
 ppk	Rifampicin	confers no resistance to antibiotic after 18 hours
 adiC	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -9487,7 +9406,6 @@ ybbV	Rifampicin	confers no resistance to antibiotic after 18 hours
 sdaC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yghE	Rifampicin	confers no resistance to antibiotic after 18 hours
 yecF	Rifampicin	confers no resistance to antibiotic after 18 hours
-ymgE	Rifampicin	confers no resistance to antibiotic after 18 hours
 ycdX	Rifampicin	confers no resistance to antibiotic after 18 hours
 yaeR	Rifampicin	confers no resistance to antibiotic after 18 hours
 damX	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -9511,7 +9429,6 @@ pgaB	Rifampicin	confers no resistance to antibiotic after 18 hours
 cspA	Rifampicin	confers no resistance to antibiotic after 18 hours
 ycbF	Rifampicin	confers no resistance to antibiotic after 18 hours
 mak	Rifampicin	confers no resistance to antibiotic after 18 hours
-ahpC	Rifampicin	confers no resistance to antibiotic after 18 hours
 smf	Rifampicin	confers no resistance to antibiotic after 18 hours
 torT	Rifampicin	confers no resistance to antibiotic after 18 hours
 slyX	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -9597,7 +9514,6 @@ yqeG	Rifampicin	confers no resistance to antibiotic after 18 hours
 dmlA	Rifampicin	confers no resistance to antibiotic after 18 hours
 ykfF	Rifampicin	confers no resistance to antibiotic after 18 hours
 cobC	Rifampicin	confers no resistance to antibiotic after 18 hours
-rarA	Rifampicin	confers no resistance to antibiotic after 18 hours
 cutC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yjcC	Rifampicin	confers no resistance to antibiotic after 18 hours
 fdrA	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -9636,7 +9552,6 @@ ibpA	Rifampicin	confers no resistance to antibiotic after 18 hours
 osmB	Rifampicin	confers no resistance to antibiotic after 18 hours
 fic	Rifampicin	confers no resistance to antibiotic after 18 hours
 yobB	Rifampicin	confers no resistance to antibiotic after 18 hours
-yaaW	Rifampicin	confers no resistance to antibiotic after 18 hours
 yieE	Rifampicin	confers no resistance to antibiotic after 18 hours
 ytfJ	Rifampicin	confers no resistance to antibiotic after 18 hours
 yagJ	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -9873,7 +9788,6 @@ avtA	Rifampicin	confers no resistance to antibiotic after 18 hours
 kptA	Rifampicin	confers no resistance to antibiotic after 18 hours
 lexA	Rifampicin	confers no resistance to antibiotic after 18 hours
 cadA	Rifampicin	confers no resistance to antibiotic after 18 hours
-purF	Rifampicin	confers no resistance to antibiotic after 18 hours
 pgpA	Rifampicin	confers no resistance to antibiotic after 18 hours
 ycgJ	Rifampicin	confers no resistance to antibiotic after 18 hours
 yegH	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10063,7 +9977,6 @@ ygiZ	Rifampicin	confers no resistance to antibiotic after 18 hours
 lsrR	Rifampicin	confers no resistance to antibiotic after 18 hours
 rraA	Rifampicin	confers no resistance to antibiotic after 18 hours
 rpsT	Rifampicin	confers no resistance to antibiotic after 18 hours
-bioH	Rifampicin	confers no resistance to antibiotic after 18 hours
 ybcQ	Rifampicin	confers no resistance to antibiotic after 18 hours
 lysR	Rifampicin	confers no resistance to antibiotic after 18 hours
 rpiB	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10093,7 +10006,6 @@ ansP	Rifampicin	confers no resistance to antibiotic after 18 hours
 ybiT	Rifampicin	confers no resistance to antibiotic after 18 hours
 mglC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yafO	Rifampicin	confers no resistance to antibiotic after 18 hours
-rfbC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yliE	Rifampicin	confers no resistance to antibiotic after 18 hours
 emrY	Rifampicin	confers no resistance to antibiotic after 18 hours
 hycA	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10128,7 +10040,6 @@ rpsO	Rifampicin	confers no resistance to antibiotic after 18 hours
 selD	Rifampicin	confers no resistance to antibiotic after 18 hours
 sad	Rifampicin	confers no resistance to antibiotic after 18 hours
 glpF	Rifampicin	confers no resistance to antibiotic after 18 hours
-ftnA	Rifampicin	confers no resistance to antibiotic after 18 hours
 ycgM	Rifampicin	confers no resistance to antibiotic after 18 hours
 ydcR	Rifampicin	confers no resistance to antibiotic after 18 hours
 hsdM	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10378,7 +10289,6 @@ yfdR	Rifampicin	confers no resistance to antibiotic after 18 hours
 yegT	Rifampicin	confers no resistance to antibiotic after 18 hours
 wcaC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yifE	Rifampicin	confers no resistance to antibiotic after 18 hours
-cysK	Rifampicin	confers no resistance to antibiotic after 18 hours
 metH	Rifampicin	confers no resistance to antibiotic after 18 hours
 slyB	Rifampicin	confers no resistance to antibiotic after 18 hours
 fecB	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10443,7 +10353,6 @@ ycaP	Rifampicin	confers no resistance to antibiotic after 18 hours
 ydjI	Rifampicin	confers no resistance to antibiotic after 18 hours
 tktA	Rifampicin	confers no resistance to antibiotic after 18 hours
 fadA	Rifampicin	confers no resistance to antibiotic after 18 hours
-chbA	Rifampicin	confers no resistance to antibiotic after 18 hours
 nikB	Rifampicin	confers no resistance to antibiotic after 18 hours
 coaE	Rifampicin	confers no resistance to antibiotic after 18 hours
 dhaM	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10493,7 +10402,6 @@ yeeN	Rifampicin	confers no resistance to antibiotic after 18 hours
 yraI	Rifampicin	confers no resistance to antibiotic after 18 hours
 dinD	Rifampicin	confers no resistance to antibiotic after 18 hours
 lacI	Rifampicin	confers no resistance to antibiotic after 18 hours
-nagE	Rifampicin	confers no resistance to antibiotic after 18 hours
 rpoN	Rifampicin	confers no resistance to antibiotic after 18 hours
 thrA	Rifampicin	confers no resistance to antibiotic after 18 hours
 mog	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10585,7 +10493,6 @@ fsaA	Rifampicin	confers no resistance to antibiotic after 18 hours
 yjdM	Rifampicin	confers no resistance to antibiotic after 18 hours
 envR	Rifampicin	confers no resistance to antibiotic after 18 hours
 leuB	Rifampicin	confers no resistance to antibiotic after 18 hours
-yjiP	Rifampicin	confers no resistance to antibiotic after 18 hours
 ppiC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yfcV	Rifampicin	confers no resistance to antibiotic after 18 hours
 evgS	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10663,7 +10570,6 @@ ycdU	Rifampicin	confers no resistance to antibiotic after 18 hours
 yciV	Rifampicin	confers no resistance to antibiotic after 18 hours
 ypdB	Rifampicin	confers no resistance to antibiotic after 18 hours
 racC	Rifampicin	confers no resistance to antibiotic after 18 hours
-bcsZ	Rifampicin	confers no resistance to antibiotic after 18 hours
 mdtP	Rifampicin	confers no resistance to antibiotic after 18 hours
 pykF	Rifampicin	confers no resistance to antibiotic after 18 hours
 pbl	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10690,11 +10596,9 @@ rppH	Rifampicin	confers no resistance to antibiotic after 18 hours
 sugE	Rifampicin	confers no resistance to antibiotic after 18 hours
 ecnB	Rifampicin	confers no resistance to antibiotic after 18 hours
 yiiX	Rifampicin	confers no resistance to antibiotic after 18 hours
-rbn	Rifampicin	confers no resistance to antibiotic after 18 hours
 ygdG	Rifampicin	confers no resistance to antibiotic after 18 hours
 cdd	Rifampicin	confers no resistance to antibiotic after 18 hours
 typA	Rifampicin	confers no resistance to antibiotic after 18 hours
-zupT	Rifampicin	confers no resistance to antibiotic after 18 hours
 cbpA	Rifampicin	confers no resistance to antibiotic after 18 hours
 cusS	Rifampicin	confers no resistance to antibiotic after 18 hours
 yecM	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10705,7 +10609,6 @@ yegE	Rifampicin	confers no resistance to antibiotic after 18 hours
 wcaK	Rifampicin	confers no resistance to antibiotic after 18 hours
 fau	Rifampicin	confers no resistance to antibiotic after 18 hours
 rimM	Rifampicin	confers no resistance to antibiotic after 18 hours
-fimA	Rifampicin	confers no resistance to antibiotic after 18 hours
 purT	Rifampicin	confers no resistance to antibiotic after 18 hours
 fliQ	Rifampicin	confers no resistance to antibiotic after 18 hours
 yadV	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10791,7 +10694,6 @@ ulaG	Rifampicin	confers no resistance to antibiotic after 18 hours
 ydiE	Rifampicin	confers no resistance to antibiotic after 18 hours
 ybiC	Rifampicin	confers no resistance to antibiotic after 18 hours
 purH	Rifampicin	confers no resistance to antibiotic after 18 hours
-pphB	Rifampicin	confers no resistance to antibiotic after 18 hours
 ycjM	Rifampicin	confers no resistance to antibiotic after 18 hours
 ybiO	Rifampicin	confers no resistance to antibiotic after 18 hours
 mdoD	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10827,7 +10729,6 @@ entB	Rifampicin	confers no resistance to antibiotic after 18 hours
 preT	Rifampicin	confers no resistance to antibiotic after 18 hours
 groL	Rifampicin	confers no resistance to antibiotic after 18 hours
 tus	Rifampicin	confers no resistance to antibiotic after 18 hours
-yaiT	Rifampicin	confers no resistance to antibiotic after 18 hours
 livK	Rifampicin	confers no resistance to antibiotic after 18 hours
 mrcA	Rifampicin	confers no resistance to antibiotic after 18 hours
 focA	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -10876,7 +10777,6 @@ yccE	Rifampicin	confers no resistance to antibiotic after 18 hours
 ygbJ	Rifampicin	confers no resistance to antibiotic after 18 hours
 hisF	Rifampicin	confers no resistance to antibiotic after 18 hours
 yfgD	Rifampicin	confers no resistance to antibiotic after 18 hours
-deaD	Rifampicin	confers no resistance to antibiotic after 18 hours
 yfaQ	Rifampicin	confers no resistance to antibiotic after 18 hours
 yddB	Rifampicin	confers no resistance to antibiotic after 18 hours
 yicJ	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11037,7 +10937,6 @@ ansA	Rifampicin	confers no resistance to antibiotic after 18 hours
 nuoN	Rifampicin	confers no resistance to antibiotic after 18 hours
 yoaA	Rifampicin	confers no resistance to antibiotic after 18 hours
 truA	Rifampicin	confers no resistance to antibiotic after 18 hours
-yaiF	Rifampicin	confers no resistance to antibiotic after 18 hours
 patA	Rifampicin	confers no resistance to antibiotic after 18 hours
 lysU	Rifampicin	confers no resistance to antibiotic after 18 hours
 ycfK	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11045,7 +10944,6 @@ yceG	Rifampicin	confers no resistance to antibiotic after 18 hours
 xylH	Rifampicin	confers no resistance to antibiotic after 18 hours
 ydaQ	Rifampicin	confers no resistance to antibiotic after 18 hours
 ydeJ	Rifampicin	confers no resistance to antibiotic after 18 hours
-fruB	Rifampicin	confers no resistance to antibiotic after 18 hours
 flhC	Rifampicin	confers no resistance to antibiotic after 18 hours
 betB	Rifampicin	confers no resistance to antibiotic after 18 hours
 araC	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11058,11 +10956,8 @@ cbrC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yoeF	Rifampicin	confers no resistance to antibiotic after 18 hours
 flgI	Rifampicin	confers no resistance to antibiotic after 18 hours
 pheA	Rifampicin	confers no resistance to antibiotic after 18 hours
-srlE	Rifampicin	confers no resistance to antibiotic after 18 hours
 glf	Rifampicin	confers no resistance to antibiotic after 18 hours
-dsdX	Rifampicin	confers no resistance to antibiotic after 18 hours
 rffD	Rifampicin	confers no resistance to antibiotic after 18 hours
-fnr	Rifampicin	confers no resistance to antibiotic after 18 hours
 stpA	Rifampicin	confers no resistance to antibiotic after 18 hours
 asmA	Rifampicin	confers no resistance to antibiotic after 18 hours
 yraN	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11177,7 +11072,6 @@ mtfA	Rifampicin	confers no resistance to antibiotic after 18 hours
 yfdN	Rifampicin	confers no resistance to antibiotic after 18 hours
 yidI	Rifampicin	confers no resistance to antibiotic after 18 hours
 yfdF	Rifampicin	confers no resistance to antibiotic after 18 hours
-nuoM	Rifampicin	confers no resistance to antibiotic after 18 hours
 ybaS	Rifampicin	confers no resistance to antibiotic after 18 hours
 recE	Rifampicin	confers no resistance to antibiotic after 18 hours
 lpcA	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11209,7 +11103,6 @@ metR	Rifampicin	confers no resistance to antibiotic after 18 hours
 cusF	Rifampicin	confers no resistance to antibiotic after 18 hours
 hypT	Rifampicin	confers no resistance to antibiotic after 18 hours
 ytfF	Rifampicin	confers no resistance to antibiotic after 18 hours
-soxR	Rifampicin	confers no resistance to antibiotic after 18 hours
 treB	Rifampicin	confers no resistance to antibiotic after 18 hours
 ycaI	Rifampicin	confers no resistance to antibiotic after 18 hours
 emrD	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11517,7 +11410,6 @@ yfjI	Rifampicin	confers no resistance to antibiotic after 18 hours
 gltP	Rifampicin	confers no resistance to antibiotic after 18 hours
 yeeS	Rifampicin	confers no resistance to antibiotic after 18 hours
 osmC	Rifampicin	confers no resistance to antibiotic after 18 hours
-rarA	Rifampicin	confers no resistance to antibiotic after 18 hours
 ynfC	Rifampicin	confers no resistance to antibiotic after 18 hours
 frvA	Rifampicin	confers no resistance to antibiotic after 18 hours
 mpl	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11526,7 +11418,6 @@ yfiE	Rifampicin	confers no resistance to antibiotic after 18 hours
 sucD	Rifampicin	confers no resistance to antibiotic after 18 hours
 yddK	Rifampicin	confers no resistance to antibiotic after 18 hours
 norW	Rifampicin	confers no resistance to antibiotic after 18 hours
-ygaX	Rifampicin	confers no resistance to antibiotic after 18 hours
 hybA	Rifampicin	confers no resistance to antibiotic after 18 hours
 rlpA	Rifampicin	confers no resistance to antibiotic after 18 hours
 ydfV	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11642,7 +11533,6 @@ yiaM	Rifampicin	confers no resistance to antibiotic after 18 hours
 trpR	Rifampicin	confers no resistance to antibiotic after 18 hours
 phnO	Rifampicin	confers no resistance to antibiotic after 18 hours
 trmL	Rifampicin	confers no resistance to antibiotic after 18 hours
-modC	Rifampicin	confers no resistance to antibiotic after 18 hours
 yoaC	Rifampicin	confers no resistance to antibiotic after 18 hours
 bluF	Rifampicin	confers no resistance to antibiotic after 18 hours
 cra	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11692,7 +11582,6 @@ htpG	Rifampicin	confers no resistance to antibiotic after 18 hours
 fucO	Rifampicin	confers no resistance to antibiotic after 18 hours
 ypjD	Rifampicin	confers no resistance to antibiotic after 18 hours
 yfeK	Rifampicin	confers no resistance to antibiotic after 18 hours
-ydaG	Rifampicin	confers no resistance to antibiotic after 18 hours
 narX	Rifampicin	confers no resistance to antibiotic after 18 hours
 arpB	Rifampicin	confers no resistance to antibiotic after 18 hours
 ivy	Rifampicin	confers no resistance to antibiotic after 18 hours
@@ -11792,7 +11681,6 @@ ydjE	Rifampicin	confers no resistance to antibiotic after 18 hours
 phnD	Rifampicin	confers no resistance to antibiotic after 18 hours
 dusC	Rifampicin	confers no resistance to antibiotic after 18 hours
 ybbB	Rifampicin	confers no resistance to antibiotic after 18 hours
-ygeK	Rifampicin	confers no resistance to antibiotic after 18 hours
 sgcQ	Rifampicin	confers no resistance to antibiotic after 18 hours
 yeeO	Rifampicin	confers no resistance to antibiotic after 18 hours
 ynbC	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -12304,7 +12192,6 @@ ycbL	Ampicillin	confers no resistance to antibiotic after 18 hours
 entC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yjfK	Ampicillin	confers no resistance to antibiotic after 18 hours
 kdpB	Ampicillin	confers no resistance to antibiotic after 18 hours
-astC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yahL	Ampicillin	confers no resistance to antibiotic after 18 hours
 panE	Ampicillin	confers no resistance to antibiotic after 18 hours
 ybjO	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -12421,7 +12308,6 @@ yecC	Ampicillin	confers no resistance to antibiotic after 18 hours
 cysU	Ampicillin	confers no resistance to antibiotic after 18 hours
 prpE	Ampicillin	confers no resistance to antibiotic after 18 hours
 yjtD	Ampicillin	confers no resistance to antibiotic after 18 hours
-cspD	Ampicillin	confers no resistance to antibiotic after 18 hours
 ygjV	Ampicillin	confers no resistance to antibiotic after 18 hours
 arpA	Ampicillin	confers no resistance to antibiotic after 18 hours
 apaG	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -12756,7 +12642,6 @@ yedA	Ampicillin	confers no resistance to antibiotic after 18 hours
 priC	Ampicillin	confers no resistance to antibiotic after 18 hours
 ymfJ	Ampicillin	confers no resistance to antibiotic after 18 hours
 ypeC	Ampicillin	confers no resistance to antibiotic after 18 hours
-mdtQ	Ampicillin	confers no resistance to antibiotic after 18 hours
 yfcZ	Ampicillin	confers no resistance to antibiotic after 18 hours
 crl	Ampicillin	confers no resistance to antibiotic after 18 hours
 satP	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -12830,7 +12715,6 @@ yegJ	Ampicillin	confers no resistance to antibiotic after 18 hours
 rmuC	Ampicillin	confers no resistance to antibiotic after 18 hours
 aldB	Ampicillin	confers no resistance to antibiotic after 18 hours
 gspJ	Ampicillin	confers no resistance to antibiotic after 18 hours
-gpt	Ampicillin	confers no resistance to antibiotic after 18 hours
 sseB	Ampicillin	confers no resistance to antibiotic after 18 hours
 rpe	Ampicillin	confers no resistance to antibiotic after 18 hours
 mdtO	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -12880,7 +12764,6 @@ hokC	Ampicillin	confers no resistance to antibiotic after 18 hours
 gatR_1	Ampicillin	confers no resistance to antibiotic after 18 hours
 moeB	Ampicillin	confers no resistance to antibiotic after 18 hours
 maeB	Ampicillin	confers no resistance to antibiotic after 18 hours
-nrdF	Ampicillin	confers no resistance to antibiotic after 18 hours
 queE	Ampicillin	confers no resistance to antibiotic after 18 hours
 vsr	Ampicillin	confers no resistance to antibiotic after 18 hours
 murP	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -12924,7 +12807,6 @@ yibL	Ampicillin	confers no resistance to antibiotic after 18 hours
 metF	Ampicillin	confers no resistance to antibiotic after 18 hours
 deoB	Ampicillin	confers no resistance to antibiotic after 18 hours
 yggR	Ampicillin	confers no resistance to antibiotic after 18 hours
-mltB	Ampicillin	confers no resistance to antibiotic after 18 hours
 yehP	Ampicillin	confers no resistance to antibiotic after 18 hours
 ppk	Ampicillin	confers no resistance to antibiotic after 18 hours
 adiC	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -13320,7 +13202,6 @@ ybbV	Ampicillin	confers no resistance to antibiotic after 18 hours
 sdaC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yghE	Ampicillin	confers no resistance to antibiotic after 18 hours
 yecF	Ampicillin	confers no resistance to antibiotic after 18 hours
-ymgE	Ampicillin	confers no resistance to antibiotic after 18 hours
 ycdX	Ampicillin	confers no resistance to antibiotic after 18 hours
 yaeR	Ampicillin	confers no resistance to antibiotic after 18 hours
 damX	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -13344,7 +13225,6 @@ pgaB	Ampicillin	confers no resistance to antibiotic after 18 hours
 cspA	Ampicillin	confers no resistance to antibiotic after 18 hours
 ycbF	Ampicillin	confers no resistance to antibiotic after 18 hours
 mak	Ampicillin	confers no resistance to antibiotic after 18 hours
-ahpC	Ampicillin	confers no resistance to antibiotic after 18 hours
 smf	Ampicillin	confers no resistance to antibiotic after 18 hours
 torT	Ampicillin	confers no resistance to antibiotic after 18 hours
 slyX	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -13430,7 +13310,6 @@ yqeG	Ampicillin	confers no resistance to antibiotic after 18 hours
 dmlA	Ampicillin	confers no resistance to antibiotic after 18 hours
 ykfF	Ampicillin	confers no resistance to antibiotic after 18 hours
 cobC	Ampicillin	confers no resistance to antibiotic after 18 hours
-rarA	Ampicillin	confers no resistance to antibiotic after 18 hours
 cutC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yjcC	Ampicillin	confers no resistance to antibiotic after 18 hours
 fdrA	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -13469,7 +13348,6 @@ ibpA	Ampicillin	confers no resistance to antibiotic after 18 hours
 osmB	Ampicillin	confers no resistance to antibiotic after 18 hours
 fic	Ampicillin	confers no resistance to antibiotic after 18 hours
 yobB	Ampicillin	confers no resistance to antibiotic after 18 hours
-yaaW	Ampicillin	confers no resistance to antibiotic after 18 hours
 yieE	Ampicillin	confers no resistance to antibiotic after 18 hours
 ytfJ	Ampicillin	confers no resistance to antibiotic after 18 hours
 yagJ	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -13706,7 +13584,6 @@ avtA	Ampicillin	confers no resistance to antibiotic after 18 hours
 kptA	Ampicillin	confers no resistance to antibiotic after 18 hours
 lexA	Ampicillin	confers no resistance to antibiotic after 18 hours
 cadA	Ampicillin	confers no resistance to antibiotic after 18 hours
-purF	Ampicillin	confers no resistance to antibiotic after 18 hours
 pgpA	Ampicillin	confers no resistance to antibiotic after 18 hours
 ycgJ	Ampicillin	confers no resistance to antibiotic after 18 hours
 yegH	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -13898,7 +13775,6 @@ ygiZ	Ampicillin	confers no resistance to antibiotic after 18 hours
 lsrR	Ampicillin	confers no resistance to antibiotic after 18 hours
 rraA	Ampicillin	confers no resistance to antibiotic after 18 hours
 rpsT	Ampicillin	confers no resistance to antibiotic after 18 hours
-bioH	Ampicillin	confers no resistance to antibiotic after 18 hours
 ybcQ	Ampicillin	confers no resistance to antibiotic after 18 hours
 lysR	Ampicillin	confers no resistance to antibiotic after 18 hours
 rpiB	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -13928,7 +13804,6 @@ ansP	Ampicillin	confers no resistance to antibiotic after 18 hours
 ybiT	Ampicillin	confers no resistance to antibiotic after 18 hours
 mglC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yafO	Ampicillin	confers no resistance to antibiotic after 18 hours
-rfbC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yliE	Ampicillin	confers no resistance to antibiotic after 18 hours
 emrY	Ampicillin	confers no resistance to antibiotic after 18 hours
 hycA	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -13963,7 +13838,6 @@ rpsO	Ampicillin	confers no resistance to antibiotic after 18 hours
 selD	Ampicillin	confers no resistance to antibiotic after 18 hours
 sad	Ampicillin	confers no resistance to antibiotic after 18 hours
 glpF	Ampicillin	confers no resistance to antibiotic after 18 hours
-ftnA	Ampicillin	confers no resistance to antibiotic after 18 hours
 ycgM	Ampicillin	confers no resistance to antibiotic after 18 hours
 ydcR	Ampicillin	confers no resistance to antibiotic after 18 hours
 hsdM	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14214,7 +14088,6 @@ yfdR	Ampicillin	confers no resistance to antibiotic after 18 hours
 yegT	Ampicillin	confers no resistance to antibiotic after 18 hours
 wcaC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yifE	Ampicillin	confers no resistance to antibiotic after 18 hours
-cysK	Ampicillin	confers no resistance to antibiotic after 18 hours
 metH	Ampicillin	confers no resistance to antibiotic after 18 hours
 slyB	Ampicillin	confers no resistance to antibiotic after 18 hours
 fecB	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14281,7 +14154,6 @@ ycaP	Ampicillin	confers no resistance to antibiotic after 18 hours
 ydjI	Ampicillin	confers no resistance to antibiotic after 18 hours
 tktA	Ampicillin	confers no resistance to antibiotic after 18 hours
 fadA	Ampicillin	confers no resistance to antibiotic after 18 hours
-chbA	Ampicillin	confers no resistance to antibiotic after 18 hours
 nikB	Ampicillin	confers no resistance to antibiotic after 18 hours
 coaE	Ampicillin	confers no resistance to antibiotic after 18 hours
 dhaM	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14331,7 +14203,6 @@ yeeN	Ampicillin	confers no resistance to antibiotic after 18 hours
 yraI	Ampicillin	confers no resistance to antibiotic after 18 hours
 dinD	Ampicillin	confers no resistance to antibiotic after 18 hours
 lacI	Ampicillin	confers no resistance to antibiotic after 18 hours
-nagE	Ampicillin	confers no resistance to antibiotic after 18 hours
 rpoN	Ampicillin	confers no resistance to antibiotic after 18 hours
 thrA	Ampicillin	confers no resistance to antibiotic after 18 hours
 mog	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14423,7 +14294,6 @@ fsaA	Ampicillin	confers no resistance to antibiotic after 18 hours
 yjdM	Ampicillin	confers no resistance to antibiotic after 18 hours
 envR	Ampicillin	confers no resistance to antibiotic after 18 hours
 leuB	Ampicillin	confers no resistance to antibiotic after 18 hours
-yjiP	Ampicillin	confers no resistance to antibiotic after 18 hours
 ppiC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yfcV	Ampicillin	confers no resistance to antibiotic after 18 hours
 evgS	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14502,7 +14372,6 @@ ycdU	Ampicillin	confers no resistance to antibiotic after 18 hours
 yciV	Ampicillin	confers no resistance to antibiotic after 18 hours
 ypdB	Ampicillin	confers no resistance to antibiotic after 18 hours
 racC	Ampicillin	confers no resistance to antibiotic after 18 hours
-bcsZ	Ampicillin	confers no resistance to antibiotic after 18 hours
 mdtP	Ampicillin	confers no resistance to antibiotic after 18 hours
 pykF	Ampicillin	confers no resistance to antibiotic after 18 hours
 pbl	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14531,11 +14400,9 @@ rppH	Ampicillin	confers no resistance to antibiotic after 18 hours
 sugE	Ampicillin	confers no resistance to antibiotic after 18 hours
 ecnB	Ampicillin	confers no resistance to antibiotic after 18 hours
 yiiX	Ampicillin	confers no resistance to antibiotic after 18 hours
-rbn	Ampicillin	confers no resistance to antibiotic after 18 hours
 ygdG	Ampicillin	confers no resistance to antibiotic after 18 hours
 cdd	Ampicillin	confers no resistance to antibiotic after 18 hours
 typA	Ampicillin	confers no resistance to antibiotic after 18 hours
-zupT	Ampicillin	confers no resistance to antibiotic after 18 hours
 cbpA	Ampicillin	confers no resistance to antibiotic after 18 hours
 cusS	Ampicillin	confers no resistance to antibiotic after 18 hours
 yecM	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14546,7 +14413,6 @@ yegE	Ampicillin	confers no resistance to antibiotic after 18 hours
 wcaK	Ampicillin	confers no resistance to antibiotic after 18 hours
 fau	Ampicillin	confers no resistance to antibiotic after 18 hours
 rimM	Ampicillin	confers no resistance to antibiotic after 18 hours
-fimA	Ampicillin	confers no resistance to antibiotic after 18 hours
 purT	Ampicillin	confers no resistance to antibiotic after 18 hours
 fliQ	Ampicillin	confers no resistance to antibiotic after 18 hours
 yadV	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14631,7 +14497,6 @@ ulaG	Ampicillin	confers no resistance to antibiotic after 18 hours
 ydiE	Ampicillin	confers no resistance to antibiotic after 18 hours
 ybiC	Ampicillin	confers no resistance to antibiotic after 18 hours
 purH	Ampicillin	confers no resistance to antibiotic after 18 hours
-pphB	Ampicillin	confers no resistance to antibiotic after 18 hours
 ycjM	Ampicillin	confers no resistance to antibiotic after 18 hours
 ybiO	Ampicillin	confers no resistance to antibiotic after 18 hours
 mdoD	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14667,7 +14532,6 @@ entB	Ampicillin	confers no resistance to antibiotic after 18 hours
 preT	Ampicillin	confers no resistance to antibiotic after 18 hours
 groL	Ampicillin	confers no resistance to antibiotic after 18 hours
 tus	Ampicillin	confers no resistance to antibiotic after 18 hours
-yaiT	Ampicillin	confers no resistance to antibiotic after 18 hours
 livK	Ampicillin	confers no resistance to antibiotic after 18 hours
 mrcA	Ampicillin	confers no resistance to antibiotic after 18 hours
 focA	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14716,7 +14580,6 @@ yccE	Ampicillin	confers no resistance to antibiotic after 18 hours
 ygbJ	Ampicillin	confers no resistance to antibiotic after 18 hours
 hisF	Ampicillin	confers no resistance to antibiotic after 18 hours
 yfgD	Ampicillin	confers no resistance to antibiotic after 18 hours
-deaD	Ampicillin	confers no resistance to antibiotic after 18 hours
 yfaQ	Ampicillin	confers no resistance to antibiotic after 18 hours
 yddB	Ampicillin	confers no resistance to antibiotic after 18 hours
 yicJ	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14880,7 +14743,6 @@ ansA	Ampicillin	confers no resistance to antibiotic after 18 hours
 nuoN	Ampicillin	confers no resistance to antibiotic after 18 hours
 yoaA	Ampicillin	confers no resistance to antibiotic after 18 hours
 truA	Ampicillin	confers no resistance to antibiotic after 18 hours
-yaiF	Ampicillin	confers no resistance to antibiotic after 18 hours
 patA	Ampicillin	confers no resistance to antibiotic after 18 hours
 lysU	Ampicillin	confers no resistance to antibiotic after 18 hours
 ycfK	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14888,7 +14750,6 @@ yceG	Ampicillin	confers no resistance to antibiotic after 18 hours
 xylH	Ampicillin	confers no resistance to antibiotic after 18 hours
 ydaQ	Ampicillin	confers no resistance to antibiotic after 18 hours
 ydeJ	Ampicillin	confers no resistance to antibiotic after 18 hours
-fruB	Ampicillin	confers no resistance to antibiotic after 18 hours
 flhC	Ampicillin	confers no resistance to antibiotic after 18 hours
 betB	Ampicillin	confers no resistance to antibiotic after 18 hours
 araC	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -14901,11 +14762,8 @@ cbrC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yoeF	Ampicillin	confers no resistance to antibiotic after 18 hours
 flgI	Ampicillin	confers no resistance to antibiotic after 18 hours
 pheA	Ampicillin	confers no resistance to antibiotic after 18 hours
-srlE	Ampicillin	confers no resistance to antibiotic after 18 hours
 glf	Ampicillin	confers no resistance to antibiotic after 18 hours
-dsdX	Ampicillin	confers no resistance to antibiotic after 18 hours
 rffD	Ampicillin	confers no resistance to antibiotic after 18 hours
-fnr	Ampicillin	confers no resistance to antibiotic after 18 hours
 stpA	Ampicillin	confers no resistance to antibiotic after 18 hours
 asmA	Ampicillin	confers no resistance to antibiotic after 18 hours
 yraN	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -15020,7 +14878,6 @@ mtfA	Ampicillin	confers no resistance to antibiotic after 18 hours
 yfdN	Ampicillin	confers no resistance to antibiotic after 18 hours
 yidI	Ampicillin	confers no resistance to antibiotic after 18 hours
 yfdF	Ampicillin	confers no resistance to antibiotic after 18 hours
-nuoM	Ampicillin	confers no resistance to antibiotic after 18 hours
 ybaS	Ampicillin	confers no resistance to antibiotic after 18 hours
 recE	Ampicillin	confers no resistance to antibiotic after 18 hours
 lpcA	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -15052,7 +14909,6 @@ metR	Ampicillin	confers no resistance to antibiotic after 18 hours
 cusF	Ampicillin	confers no resistance to antibiotic after 18 hours
 hypT	Ampicillin	confers no resistance to antibiotic after 18 hours
 ytfF	Ampicillin	confers no resistance to antibiotic after 18 hours
-soxR	Ampicillin	confers no resistance to antibiotic after 18 hours
 treB	Ampicillin	confers no resistance to antibiotic after 18 hours
 ycaI	Ampicillin	confers no resistance to antibiotic after 18 hours
 emrD	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -15359,7 +15215,6 @@ yfjI	Ampicillin	confers no resistance to antibiotic after 18 hours
 gltP	Ampicillin	confers no resistance to antibiotic after 18 hours
 yeeS	Ampicillin	confers no resistance to antibiotic after 18 hours
 osmC	Ampicillin	confers no resistance to antibiotic after 18 hours
-rarA	Ampicillin	confers no resistance to antibiotic after 18 hours
 ynfC	Ampicillin	confers no resistance to antibiotic after 18 hours
 frvA	Ampicillin	confers no resistance to antibiotic after 18 hours
 mpl	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -15368,7 +15223,6 @@ yfiE	Ampicillin	confers no resistance to antibiotic after 18 hours
 sucD	Ampicillin	confers no resistance to antibiotic after 18 hours
 yddK	Ampicillin	confers no resistance to antibiotic after 18 hours
 norW	Ampicillin	confers no resistance to antibiotic after 18 hours
-ygaX	Ampicillin	confers no resistance to antibiotic after 18 hours
 hybA	Ampicillin	confers no resistance to antibiotic after 18 hours
 rlpA	Ampicillin	confers no resistance to antibiotic after 18 hours
 ydfV	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -15485,7 +15339,6 @@ yiaM	Ampicillin	confers no resistance to antibiotic after 18 hours
 trpR	Ampicillin	confers no resistance to antibiotic after 18 hours
 phnO	Ampicillin	confers no resistance to antibiotic after 18 hours
 trmL	Ampicillin	confers no resistance to antibiotic after 18 hours
-modC	Ampicillin	confers no resistance to antibiotic after 18 hours
 yoaC	Ampicillin	confers no resistance to antibiotic after 18 hours
 bluF	Ampicillin	confers no resistance to antibiotic after 18 hours
 cra	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -15535,7 +15388,6 @@ htpG	Ampicillin	confers no resistance to antibiotic after 18 hours
 fucO	Ampicillin	confers no resistance to antibiotic after 18 hours
 ypjD	Ampicillin	confers no resistance to antibiotic after 18 hours
 yfeK	Ampicillin	confers no resistance to antibiotic after 18 hours
-ydaG	Ampicillin	confers no resistance to antibiotic after 18 hours
 narX	Ampicillin	confers no resistance to antibiotic after 18 hours
 arpB	Ampicillin	confers no resistance to antibiotic after 18 hours
 ivy	Ampicillin	confers no resistance to antibiotic after 18 hours
@@ -15634,7 +15486,6 @@ ydjE	Ampicillin	confers no resistance to antibiotic after 18 hours
 phnD	Ampicillin	confers no resistance to antibiotic after 18 hours
 dusC	Ampicillin	confers no resistance to antibiotic after 18 hours
 ybbB	Ampicillin	confers no resistance to antibiotic after 18 hours
-ygeK	Ampicillin	confers no resistance to antibiotic after 18 hours
 sgcQ	Ampicillin	confers no resistance to antibiotic after 18 hours
 yeeO	Ampicillin	confers no resistance to antibiotic after 18 hours
 ynbC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -16152,7 +16003,6 @@ ycbL	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 entC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yjfK	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 kdpB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-astC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yahL	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 panE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ybjO	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -16269,7 +16119,6 @@ yecC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cysU	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 prpE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yjtD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-cspD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ygjV	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 arpA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 apaG	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -16601,7 +16450,6 @@ yedA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 priC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ymfJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ypeC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-mdtQ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yfcZ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 crl	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 satP	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -16675,7 +16523,6 @@ yegJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rmuC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 aldB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 gspJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-gpt	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 sseB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rpe	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 mdtO	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -16724,7 +16571,6 @@ hokC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 gatR_1	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 moeB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 maeB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-nrdF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 queE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 vsr	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 murP	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -16768,7 +16614,6 @@ yibL	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 metF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 deoB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yggR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-mltB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yehP	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ppk	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 adiC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -17165,7 +17010,6 @@ ybbV	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 sdaC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yghE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yecF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-ymgE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ycdX	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yaeR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 damX	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -17189,7 +17033,6 @@ pgaB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cspA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ycbF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 mak	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-ahpC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 smf	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 torT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 slyX	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -17275,7 +17118,6 @@ yqeG	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 dmlA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ykfF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cobC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-rarA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cutC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yjcC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 fdrA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -17315,7 +17157,6 @@ ibpA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 osmB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 fic	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yobB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-yaaW	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yieE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ytfJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yagJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -17554,7 +17395,6 @@ avtA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 kptA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 lexA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cadA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-purF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 pgpA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ycgJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yegH	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -17745,7 +17585,6 @@ ygiZ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 lsrR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rraA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rpsT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-bioH	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ybcQ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 lysR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rpiB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -17775,7 +17614,6 @@ ansP	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ybiT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 mglC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yafO	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-rfbC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yliE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 emrY	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 hycA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -17809,7 +17647,6 @@ rpsO	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 selD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 sad	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 glpF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-ftnA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ycgM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ydcR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 hsdM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18058,7 +17895,6 @@ yfdR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yegT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 wcaC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yifE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-cysK	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 metH	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 slyB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 fecB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18123,7 +17959,6 @@ recN	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ycaP	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 tktA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 fadA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-chbA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 nikB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 coaE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 dhaM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18173,7 +18008,6 @@ yeeN	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yraI	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 dinD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 lacI	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-nagE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rpoN	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 thrA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 mog	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18265,7 +18099,6 @@ fsaA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yjdM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 envR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 leuB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-yjiP	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ppiC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yfcV	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 evgS	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18345,7 +18178,6 @@ ycdU	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yciV	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ypdB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 racC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-bcsZ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 mdtP	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 pykF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 pbl	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18371,11 +18203,9 @@ rppH	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 sugE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ecnB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yiiX	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-rbn	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ygdG	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cdd	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 typA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-zupT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cbpA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cusS	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yecM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18386,7 +18216,6 @@ yegE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 wcaK	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 fau	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rimM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-fimA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 purT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 fliQ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yadV	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18470,7 +18299,6 @@ ulaG	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ydiE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ybiC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 purH	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-pphB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ycjM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ybiO	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 mdoD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18506,7 +18334,6 @@ entB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 preT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 groL	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 tus	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-yaiT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 livK	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 mrcA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 focA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18555,7 +18382,6 @@ yccE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ygbJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 hisF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yfgD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-deaD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yfaQ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yddB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yicJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18719,7 +18545,6 @@ ansA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 nuoN	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yoaA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 truA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-yaiF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 patA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 lysU	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ycfK	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18727,7 +18552,6 @@ yceG	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 xylH	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ydaQ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ydeJ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-fruB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 flhC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 betB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 araC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18740,11 +18564,8 @@ cbrC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yoeF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 flgI	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 pheA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-srlE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 glf	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-dsdX	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rffD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-fnr	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 stpA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 asmA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yraN	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18860,7 +18681,6 @@ mtfA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yfdN	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yidI	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yfdF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-nuoM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ybaS	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 recE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 lpcA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -18892,7 +18712,6 @@ metR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cusF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 hypT	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ytfF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-soxR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 treB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ycaI	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 emrD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -19201,7 +19020,6 @@ yfjI	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 gltP	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yeeS	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 osmC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-rarA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ynfC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 frvA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 mpl	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -19210,7 +19028,6 @@ yfiE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 sucD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yddK	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 norW	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-ygaX	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 hybA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 rlpA	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ydfV	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -19329,7 +19146,6 @@ yiaM	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 trpR	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 phnO	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 trmL	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-modC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yoaC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 bluF	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 cra	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -19379,7 +19195,6 @@ htpG	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 fucO	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ypjD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yfeK	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-ydaG	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 narX	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 arpB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ivy	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
@@ -19479,7 +19294,6 @@ ydjE	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 phnD	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 dusC	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ybbB	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
-ygeK	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 sgcQ	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 yeeO	Sulfamethoxazole	confers no resistance to antibiotic after 18 hours
 ynbC	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -20000,7 +19814,6 @@ ycbL	Gentamicin	confers no resistance to antibiotic after 18 hours
 entC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yjfK	Gentamicin	confers no resistance to antibiotic after 18 hours
 kdpB	Gentamicin	confers no resistance to antibiotic after 18 hours
-astC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yahL	Gentamicin	confers no resistance to antibiotic after 18 hours
 panE	Gentamicin	confers no resistance to antibiotic after 18 hours
 ybjO	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -20118,7 +19931,6 @@ yecC	Gentamicin	confers no resistance to antibiotic after 18 hours
 cysU	Gentamicin	confers no resistance to antibiotic after 18 hours
 prpE	Gentamicin	confers no resistance to antibiotic after 18 hours
 yjtD	Gentamicin	confers no resistance to antibiotic after 18 hours
-cspD	Gentamicin	confers no resistance to antibiotic after 18 hours
 ygjV	Gentamicin	confers no resistance to antibiotic after 18 hours
 arpA	Gentamicin	confers no resistance to antibiotic after 18 hours
 apaG	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -20457,7 +20269,6 @@ yedA	Gentamicin	confers no resistance to antibiotic after 18 hours
 priC	Gentamicin	confers no resistance to antibiotic after 18 hours
 ymfJ	Gentamicin	confers no resistance to antibiotic after 18 hours
 ypeC	Gentamicin	confers no resistance to antibiotic after 18 hours
-mdtQ	Gentamicin	confers no resistance to antibiotic after 18 hours
 yfcZ	Gentamicin	confers no resistance to antibiotic after 18 hours
 crl	Gentamicin	confers no resistance to antibiotic after 18 hours
 satP	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -20531,7 +20342,6 @@ yegJ	Gentamicin	confers no resistance to antibiotic after 18 hours
 rmuC	Gentamicin	confers no resistance to antibiotic after 18 hours
 aldB	Gentamicin	confers no resistance to antibiotic after 18 hours
 gspJ	Gentamicin	confers no resistance to antibiotic after 18 hours
-gpt	Gentamicin	confers no resistance to antibiotic after 18 hours
 sseB	Gentamicin	confers no resistance to antibiotic after 18 hours
 rpe	Gentamicin	confers no resistance to antibiotic after 18 hours
 mdtO	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -20581,7 +20391,6 @@ hokC	Gentamicin	confers no resistance to antibiotic after 18 hours
 gatR_1	Gentamicin	confers no resistance to antibiotic after 18 hours
 moeB	Gentamicin	confers no resistance to antibiotic after 18 hours
 maeB	Gentamicin	confers no resistance to antibiotic after 18 hours
-nrdF	Gentamicin	confers no resistance to antibiotic after 18 hours
 queE	Gentamicin	confers no resistance to antibiotic after 18 hours
 vsr	Gentamicin	confers no resistance to antibiotic after 18 hours
 murP	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -20625,7 +20434,6 @@ yibL	Gentamicin	confers no resistance to antibiotic after 18 hours
 metF	Gentamicin	confers no resistance to antibiotic after 18 hours
 deoB	Gentamicin	confers no resistance to antibiotic after 18 hours
 yggR	Gentamicin	confers no resistance to antibiotic after 18 hours
-mltB	Gentamicin	confers no resistance to antibiotic after 18 hours
 yehP	Gentamicin	confers no resistance to antibiotic after 18 hours
 ppk	Gentamicin	confers no resistance to antibiotic after 18 hours
 adiC	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21023,7 +20831,6 @@ ybbV	Gentamicin	confers no resistance to antibiotic after 18 hours
 sdaC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yghE	Gentamicin	confers no resistance to antibiotic after 18 hours
 yecF	Gentamicin	confers no resistance to antibiotic after 18 hours
-ymgE	Gentamicin	confers no resistance to antibiotic after 18 hours
 ycdX	Gentamicin	confers no resistance to antibiotic after 18 hours
 yaeR	Gentamicin	confers no resistance to antibiotic after 18 hours
 damX	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21047,7 +20854,6 @@ pgaB	Gentamicin	confers no resistance to antibiotic after 18 hours
 cspA	Gentamicin	confers no resistance to antibiotic after 18 hours
 ycbF	Gentamicin	confers no resistance to antibiotic after 18 hours
 mak	Gentamicin	confers no resistance to antibiotic after 18 hours
-ahpC	Gentamicin	confers no resistance to antibiotic after 18 hours
 smf	Gentamicin	confers no resistance to antibiotic after 18 hours
 torT	Gentamicin	confers no resistance to antibiotic after 18 hours
 slyX	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21132,7 +20938,6 @@ yqeG	Gentamicin	confers no resistance to antibiotic after 18 hours
 dmlA	Gentamicin	confers no resistance to antibiotic after 18 hours
 ykfF	Gentamicin	confers no resistance to antibiotic after 18 hours
 cobC	Gentamicin	confers no resistance to antibiotic after 18 hours
-rarA	Gentamicin	confers no resistance to antibiotic after 18 hours
 cutC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yjcC	Gentamicin	confers no resistance to antibiotic after 18 hours
 fdrA	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21172,7 +20977,6 @@ osmB	Gentamicin	confers no resistance to antibiotic after 18 hours
 fic	Gentamicin	confers no resistance to antibiotic after 18 hours
 rpmF	Gentamicin	confers no resistance to antibiotic after 18 hours
 yobB	Gentamicin	confers no resistance to antibiotic after 18 hours
-yaaW	Gentamicin	confers no resistance to antibiotic after 18 hours
 yieE	Gentamicin	confers no resistance to antibiotic after 18 hours
 ytfJ	Gentamicin	confers no resistance to antibiotic after 18 hours
 yagJ	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21411,7 +21215,6 @@ avtA	Gentamicin	confers no resistance to antibiotic after 18 hours
 kptA	Gentamicin	confers no resistance to antibiotic after 18 hours
 lexA	Gentamicin	confers no resistance to antibiotic after 18 hours
 cadA	Gentamicin	confers no resistance to antibiotic after 18 hours
-purF	Gentamicin	confers no resistance to antibiotic after 18 hours
 pgpA	Gentamicin	confers no resistance to antibiotic after 18 hours
 ycgJ	Gentamicin	confers no resistance to antibiotic after 18 hours
 yegH	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21601,7 +21404,6 @@ ygiZ	Gentamicin	confers no resistance to antibiotic after 18 hours
 lsrR	Gentamicin	confers no resistance to antibiotic after 18 hours
 rraA	Gentamicin	confers no resistance to antibiotic after 18 hours
 rpsT	Gentamicin	confers no resistance to antibiotic after 18 hours
-bioH	Gentamicin	confers no resistance to antibiotic after 18 hours
 ybcQ	Gentamicin	confers no resistance to antibiotic after 18 hours
 lysR	Gentamicin	confers no resistance to antibiotic after 18 hours
 rpiB	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21631,7 +21433,6 @@ ansP	Gentamicin	confers no resistance to antibiotic after 18 hours
 ybiT	Gentamicin	confers no resistance to antibiotic after 18 hours
 mglC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yafO	Gentamicin	confers no resistance to antibiotic after 18 hours
-rfbC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yliE	Gentamicin	confers no resistance to antibiotic after 18 hours
 emrY	Gentamicin	confers no resistance to antibiotic after 18 hours
 hycA	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21665,7 +21466,6 @@ rpsO	Gentamicin	confers no resistance to antibiotic after 18 hours
 selD	Gentamicin	confers no resistance to antibiotic after 18 hours
 sad	Gentamicin	confers no resistance to antibiotic after 18 hours
 glpF	Gentamicin	confers no resistance to antibiotic after 18 hours
-ftnA	Gentamicin	confers no resistance to antibiotic after 18 hours
 ycgM	Gentamicin	confers no resistance to antibiotic after 18 hours
 ydcR	Gentamicin	confers no resistance to antibiotic after 18 hours
 hsdM	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21920,7 +21720,6 @@ yfdR	Gentamicin	confers no resistance to antibiotic after 18 hours
 yegT	Gentamicin	confers no resistance to antibiotic after 18 hours
 wcaC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yifE	Gentamicin	confers no resistance to antibiotic after 18 hours
-cysK	Gentamicin	confers no resistance to antibiotic after 18 hours
 metH	Gentamicin	confers no resistance to antibiotic after 18 hours
 slyB	Gentamicin	confers no resistance to antibiotic after 18 hours
 fecB	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -21987,7 +21786,6 @@ ycaP	Gentamicin	confers no resistance to antibiotic after 18 hours
 ydjI	Gentamicin	confers no resistance to antibiotic after 18 hours
 tktA	Gentamicin	confers no resistance to antibiotic after 18 hours
 fadA	Gentamicin	confers no resistance to antibiotic after 18 hours
-chbA	Gentamicin	confers no resistance to antibiotic after 18 hours
 nikB	Gentamicin	confers no resistance to antibiotic after 18 hours
 coaE	Gentamicin	confers no resistance to antibiotic after 18 hours
 dhaM	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22037,7 +21835,6 @@ yeeN	Gentamicin	confers no resistance to antibiotic after 18 hours
 yraI	Gentamicin	confers no resistance to antibiotic after 18 hours
 dinD	Gentamicin	confers no resistance to antibiotic after 18 hours
 lacI	Gentamicin	confers no resistance to antibiotic after 18 hours
-nagE	Gentamicin	confers no resistance to antibiotic after 18 hours
 thrA	Gentamicin	confers no resistance to antibiotic after 18 hours
 mog	Gentamicin	confers no resistance to antibiotic after 18 hours
 moaE	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22128,7 +21925,6 @@ fsaA	Gentamicin	confers no resistance to antibiotic after 18 hours
 yjdM	Gentamicin	confers no resistance to antibiotic after 18 hours
 envR	Gentamicin	confers no resistance to antibiotic after 18 hours
 leuB	Gentamicin	confers no resistance to antibiotic after 18 hours
-yjiP	Gentamicin	confers no resistance to antibiotic after 18 hours
 ppiC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yfcV	Gentamicin	confers no resistance to antibiotic after 18 hours
 evgS	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22208,7 +22004,6 @@ ycdU	Gentamicin	confers no resistance to antibiotic after 18 hours
 yciV	Gentamicin	confers no resistance to antibiotic after 18 hours
 ypdB	Gentamicin	confers no resistance to antibiotic after 18 hours
 racC	Gentamicin	confers no resistance to antibiotic after 18 hours
-bcsZ	Gentamicin	confers no resistance to antibiotic after 18 hours
 mdtP	Gentamicin	confers no resistance to antibiotic after 18 hours
 pykF	Gentamicin	confers no resistance to antibiotic after 18 hours
 pbl	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22237,11 +22032,9 @@ rppH	Gentamicin	confers no resistance to antibiotic after 18 hours
 sugE	Gentamicin	confers no resistance to antibiotic after 18 hours
 ecnB	Gentamicin	confers no resistance to antibiotic after 18 hours
 yiiX	Gentamicin	confers no resistance to antibiotic after 18 hours
-rbn	Gentamicin	confers no resistance to antibiotic after 18 hours
 ygdG	Gentamicin	confers no resistance to antibiotic after 18 hours
 cdd	Gentamicin	confers no resistance to antibiotic after 18 hours
 typA	Gentamicin	confers no resistance to antibiotic after 18 hours
-zupT	Gentamicin	confers no resistance to antibiotic after 18 hours
 cbpA	Gentamicin	confers no resistance to antibiotic after 18 hours
 cusS	Gentamicin	confers no resistance to antibiotic after 18 hours
 yecM	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22252,7 +22045,6 @@ yegE	Gentamicin	confers no resistance to antibiotic after 18 hours
 wcaK	Gentamicin	confers no resistance to antibiotic after 18 hours
 fau	Gentamicin	confers no resistance to antibiotic after 18 hours
 rimM	Gentamicin	confers no resistance to antibiotic after 18 hours
-fimA	Gentamicin	confers no resistance to antibiotic after 18 hours
 purT	Gentamicin	confers no resistance to antibiotic after 18 hours
 fliQ	Gentamicin	confers no resistance to antibiotic after 18 hours
 yadV	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22337,7 +22129,6 @@ ulaG	Gentamicin	confers no resistance to antibiotic after 18 hours
 ydiE	Gentamicin	confers no resistance to antibiotic after 18 hours
 ybiC	Gentamicin	confers no resistance to antibiotic after 18 hours
 purH	Gentamicin	confers no resistance to antibiotic after 18 hours
-pphB	Gentamicin	confers no resistance to antibiotic after 18 hours
 ycjM	Gentamicin	confers no resistance to antibiotic after 18 hours
 ybiO	Gentamicin	confers no resistance to antibiotic after 18 hours
 mdoD	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22372,7 +22163,6 @@ entB	Gentamicin	confers no resistance to antibiotic after 18 hours
 preT	Gentamicin	confers no resistance to antibiotic after 18 hours
 groL	Gentamicin	confers no resistance to antibiotic after 18 hours
 tus	Gentamicin	confers no resistance to antibiotic after 18 hours
-yaiT	Gentamicin	confers no resistance to antibiotic after 18 hours
 livK	Gentamicin	confers no resistance to antibiotic after 18 hours
 mrcA	Gentamicin	confers no resistance to antibiotic after 18 hours
 focA	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22421,7 +22211,6 @@ yccE	Gentamicin	confers no resistance to antibiotic after 18 hours
 ygbJ	Gentamicin	confers no resistance to antibiotic after 18 hours
 hisF	Gentamicin	confers no resistance to antibiotic after 18 hours
 yfgD	Gentamicin	confers no resistance to antibiotic after 18 hours
-deaD	Gentamicin	confers no resistance to antibiotic after 18 hours
 yfaQ	Gentamicin	confers no resistance to antibiotic after 18 hours
 yddB	Gentamicin	confers no resistance to antibiotic after 18 hours
 yicJ	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22584,7 +22373,6 @@ ansA	Gentamicin	confers no resistance to antibiotic after 18 hours
 nuoN	Gentamicin	confers no resistance to antibiotic after 18 hours
 yoaA	Gentamicin	confers no resistance to antibiotic after 18 hours
 truA	Gentamicin	confers no resistance to antibiotic after 18 hours
-yaiF	Gentamicin	confers no resistance to antibiotic after 18 hours
 patA	Gentamicin	confers no resistance to antibiotic after 18 hours
 lysU	Gentamicin	confers no resistance to antibiotic after 18 hours
 ycfK	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22592,7 +22380,6 @@ yceG	Gentamicin	confers no resistance to antibiotic after 18 hours
 xylH	Gentamicin	confers no resistance to antibiotic after 18 hours
 ydaQ	Gentamicin	confers no resistance to antibiotic after 18 hours
 ydeJ	Gentamicin	confers no resistance to antibiotic after 18 hours
-fruB	Gentamicin	confers no resistance to antibiotic after 18 hours
 flhC	Gentamicin	confers no resistance to antibiotic after 18 hours
 betB	Gentamicin	confers no resistance to antibiotic after 18 hours
 araC	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22605,11 +22392,8 @@ cbrC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yoeF	Gentamicin	confers no resistance to antibiotic after 18 hours
 flgI	Gentamicin	confers no resistance to antibiotic after 18 hours
 pheA	Gentamicin	confers no resistance to antibiotic after 18 hours
-srlE	Gentamicin	confers no resistance to antibiotic after 18 hours
 glf	Gentamicin	confers no resistance to antibiotic after 18 hours
-dsdX	Gentamicin	confers no resistance to antibiotic after 18 hours
 rffD	Gentamicin	confers no resistance to antibiotic after 18 hours
-fnr	Gentamicin	confers no resistance to antibiotic after 18 hours
 stpA	Gentamicin	confers no resistance to antibiotic after 18 hours
 asmA	Gentamicin	confers no resistance to antibiotic after 18 hours
 yraN	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22724,7 +22508,6 @@ mtfA	Gentamicin	confers no resistance to antibiotic after 18 hours
 yfdN	Gentamicin	confers no resistance to antibiotic after 18 hours
 yidI	Gentamicin	confers no resistance to antibiotic after 18 hours
 yfdF	Gentamicin	confers no resistance to antibiotic after 18 hours
-nuoM	Gentamicin	confers no resistance to antibiotic after 18 hours
 ybaS	Gentamicin	confers no resistance to antibiotic after 18 hours
 recE	Gentamicin	confers no resistance to antibiotic after 18 hours
 lpcA	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -22756,7 +22539,6 @@ metR	Gentamicin	confers no resistance to antibiotic after 18 hours
 cusF	Gentamicin	confers no resistance to antibiotic after 18 hours
 hypT	Gentamicin	confers no resistance to antibiotic after 18 hours
 ytfF	Gentamicin	confers no resistance to antibiotic after 18 hours
-soxR	Gentamicin	confers no resistance to antibiotic after 18 hours
 treB	Gentamicin	confers no resistance to antibiotic after 18 hours
 ycaI	Gentamicin	confers no resistance to antibiotic after 18 hours
 emrD	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -23067,7 +22849,6 @@ yfjI	Gentamicin	confers no resistance to antibiotic after 18 hours
 gltP	Gentamicin	confers no resistance to antibiotic after 18 hours
 yeeS	Gentamicin	confers no resistance to antibiotic after 18 hours
 osmC	Gentamicin	confers no resistance to antibiotic after 18 hours
-rarA	Gentamicin	confers no resistance to antibiotic after 18 hours
 ynfC	Gentamicin	confers no resistance to antibiotic after 18 hours
 frvA	Gentamicin	confers no resistance to antibiotic after 18 hours
 mpl	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -23076,7 +22857,6 @@ yfiE	Gentamicin	confers no resistance to antibiotic after 18 hours
 sucD	Gentamicin	confers no resistance to antibiotic after 18 hours
 yddK	Gentamicin	confers no resistance to antibiotic after 18 hours
 norW	Gentamicin	confers no resistance to antibiotic after 18 hours
-ygaX	Gentamicin	confers no resistance to antibiotic after 18 hours
 hybA	Gentamicin	confers no resistance to antibiotic after 18 hours
 rlpA	Gentamicin	confers no resistance to antibiotic after 18 hours
 ydfV	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -23195,7 +22975,6 @@ yiaM	Gentamicin	confers no resistance to antibiotic after 18 hours
 trpR	Gentamicin	confers no resistance to antibiotic after 18 hours
 phnO	Gentamicin	confers no resistance to antibiotic after 18 hours
 trmL	Gentamicin	confers no resistance to antibiotic after 18 hours
-modC	Gentamicin	confers no resistance to antibiotic after 18 hours
 yoaC	Gentamicin	confers no resistance to antibiotic after 18 hours
 bluF	Gentamicin	confers no resistance to antibiotic after 18 hours
 cra	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -23245,7 +23024,6 @@ htpG	Gentamicin	confers no resistance to antibiotic after 18 hours
 fucO	Gentamicin	confers no resistance to antibiotic after 18 hours
 ypjD	Gentamicin	confers no resistance to antibiotic after 18 hours
 yfeK	Gentamicin	confers no resistance to antibiotic after 18 hours
-ydaG	Gentamicin	confers no resistance to antibiotic after 18 hours
 narX	Gentamicin	confers no resistance to antibiotic after 18 hours
 arpB	Gentamicin	confers no resistance to antibiotic after 18 hours
 ivy	Gentamicin	confers no resistance to antibiotic after 18 hours
@@ -23345,7 +23123,6 @@ ydjE	Gentamicin	confers no resistance to antibiotic after 18 hours
 phnD	Gentamicin	confers no resistance to antibiotic after 18 hours
 dusC	Gentamicin	confers no resistance to antibiotic after 18 hours
 ybbB	Gentamicin	confers no resistance to antibiotic after 18 hours
-ygeK	Gentamicin	confers no resistance to antibiotic after 18 hours
 sgcQ	Gentamicin	confers no resistance to antibiotic after 18 hours
 yeeO	Gentamicin	confers no resistance to antibiotic after 18 hours
 ynbC	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -23864,7 +23641,6 @@ ycbL	Metronidazole	confers no resistance to antibiotic after 18 hours
 entC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yjfK	Metronidazole	confers no resistance to antibiotic after 18 hours
 kdpB	Metronidazole	confers no resistance to antibiotic after 18 hours
-astC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yahL	Metronidazole	confers no resistance to antibiotic after 18 hours
 panE	Metronidazole	confers no resistance to antibiotic after 18 hours
 ybjO	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -23981,7 +23757,6 @@ yecC	Metronidazole	confers no resistance to antibiotic after 18 hours
 cysU	Metronidazole	confers no resistance to antibiotic after 18 hours
 prpE	Metronidazole	confers no resistance to antibiotic after 18 hours
 yjtD	Metronidazole	confers no resistance to antibiotic after 18 hours
-cspD	Metronidazole	confers no resistance to antibiotic after 18 hours
 ygjV	Metronidazole	confers no resistance to antibiotic after 18 hours
 arpA	Metronidazole	confers no resistance to antibiotic after 18 hours
 apaG	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -24315,7 +24090,6 @@ yedA	Metronidazole	confers no resistance to antibiotic after 18 hours
 priC	Metronidazole	confers no resistance to antibiotic after 18 hours
 ymfJ	Metronidazole	confers no resistance to antibiotic after 18 hours
 ypeC	Metronidazole	confers no resistance to antibiotic after 18 hours
-mdtQ	Metronidazole	confers no resistance to antibiotic after 18 hours
 yfcZ	Metronidazole	confers no resistance to antibiotic after 18 hours
 crl	Metronidazole	confers no resistance to antibiotic after 18 hours
 satP	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -24389,7 +24163,6 @@ yegJ	Metronidazole	confers no resistance to antibiotic after 18 hours
 rmuC	Metronidazole	confers no resistance to antibiotic after 18 hours
 aldB	Metronidazole	confers no resistance to antibiotic after 18 hours
 gspJ	Metronidazole	confers no resistance to antibiotic after 18 hours
-gpt	Metronidazole	confers no resistance to antibiotic after 18 hours
 sseB	Metronidazole	confers no resistance to antibiotic after 18 hours
 rpe	Metronidazole	confers no resistance to antibiotic after 18 hours
 mdtO	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -24438,7 +24211,6 @@ hokC	Metronidazole	confers no resistance to antibiotic after 18 hours
 gatR_1	Metronidazole	confers no resistance to antibiotic after 18 hours
 moeB	Metronidazole	confers no resistance to antibiotic after 18 hours
 maeB	Metronidazole	confers no resistance to antibiotic after 18 hours
-nrdF	Metronidazole	confers no resistance to antibiotic after 18 hours
 queE	Metronidazole	confers no resistance to antibiotic after 18 hours
 vsr	Metronidazole	confers no resistance to antibiotic after 18 hours
 murP	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -24482,7 +24254,6 @@ yibL	Metronidazole	confers no resistance to antibiotic after 18 hours
 metF	Metronidazole	confers no resistance to antibiotic after 18 hours
 deoB	Metronidazole	confers no resistance to antibiotic after 18 hours
 yggR	Metronidazole	confers no resistance to antibiotic after 18 hours
-mltB	Metronidazole	confers no resistance to antibiotic after 18 hours
 yehP	Metronidazole	confers no resistance to antibiotic after 18 hours
 ppk	Metronidazole	confers no resistance to antibiotic after 18 hours
 adiC	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -24873,7 +24644,6 @@ ybbV	Metronidazole	confers no resistance to antibiotic after 18 hours
 sdaC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yghE	Metronidazole	confers no resistance to antibiotic after 18 hours
 yecF	Metronidazole	confers no resistance to antibiotic after 18 hours
-ymgE	Metronidazole	confers no resistance to antibiotic after 18 hours
 ycdX	Metronidazole	confers no resistance to antibiotic after 18 hours
 yaeR	Metronidazole	confers no resistance to antibiotic after 18 hours
 damX	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -24897,7 +24667,6 @@ pgaB	Metronidazole	confers no resistance to antibiotic after 18 hours
 cspA	Metronidazole	confers no resistance to antibiotic after 18 hours
 ycbF	Metronidazole	confers no resistance to antibiotic after 18 hours
 mak	Metronidazole	confers no resistance to antibiotic after 18 hours
-ahpC	Metronidazole	confers no resistance to antibiotic after 18 hours
 smf	Metronidazole	confers no resistance to antibiotic after 18 hours
 torT	Metronidazole	confers no resistance to antibiotic after 18 hours
 slyX	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -24983,7 +24752,6 @@ yqeG	Metronidazole	confers no resistance to antibiotic after 18 hours
 dmlA	Metronidazole	confers no resistance to antibiotic after 18 hours
 ykfF	Metronidazole	confers no resistance to antibiotic after 18 hours
 cobC	Metronidazole	confers no resistance to antibiotic after 18 hours
-rarA	Metronidazole	confers no resistance to antibiotic after 18 hours
 cutC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yjcC	Metronidazole	confers no resistance to antibiotic after 18 hours
 fdrA	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25022,7 +24790,6 @@ ibpA	Metronidazole	confers no resistance to antibiotic after 18 hours
 osmB	Metronidazole	confers no resistance to antibiotic after 18 hours
 fic	Metronidazole	confers no resistance to antibiotic after 18 hours
 yobB	Metronidazole	confers no resistance to antibiotic after 18 hours
-yaaW	Metronidazole	confers no resistance to antibiotic after 18 hours
 yieE	Metronidazole	confers no resistance to antibiotic after 18 hours
 ytfJ	Metronidazole	confers no resistance to antibiotic after 18 hours
 yagJ	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25255,7 +25022,6 @@ avtA	Metronidazole	confers no resistance to antibiotic after 18 hours
 kptA	Metronidazole	confers no resistance to antibiotic after 18 hours
 lexA	Metronidazole	confers no resistance to antibiotic after 18 hours
 cadA	Metronidazole	confers no resistance to antibiotic after 18 hours
-purF	Metronidazole	confers no resistance to antibiotic after 18 hours
 pgpA	Metronidazole	confers no resistance to antibiotic after 18 hours
 ycgJ	Metronidazole	confers no resistance to antibiotic after 18 hours
 yegH	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25446,7 +25212,6 @@ ygiZ	Metronidazole	confers no resistance to antibiotic after 18 hours
 lsrR	Metronidazole	confers no resistance to antibiotic after 18 hours
 rraA	Metronidazole	confers no resistance to antibiotic after 18 hours
 rpsT	Metronidazole	confers no resistance to antibiotic after 18 hours
-bioH	Metronidazole	confers no resistance to antibiotic after 18 hours
 ybcQ	Metronidazole	confers no resistance to antibiotic after 18 hours
 lysR	Metronidazole	confers no resistance to antibiotic after 18 hours
 rpiB	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25476,7 +25241,6 @@ ansP	Metronidazole	confers no resistance to antibiotic after 18 hours
 ybiT	Metronidazole	confers no resistance to antibiotic after 18 hours
 mglC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yafO	Metronidazole	confers no resistance to antibiotic after 18 hours
-rfbC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yliE	Metronidazole	confers no resistance to antibiotic after 18 hours
 emrY	Metronidazole	confers no resistance to antibiotic after 18 hours
 hycA	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25511,7 +25275,6 @@ rpsO	Metronidazole	confers no resistance to antibiotic after 18 hours
 selD	Metronidazole	confers no resistance to antibiotic after 18 hours
 sad	Metronidazole	confers no resistance to antibiotic after 18 hours
 glpF	Metronidazole	confers no resistance to antibiotic after 18 hours
-ftnA	Metronidazole	confers no resistance to antibiotic after 18 hours
 ycgM	Metronidazole	confers no resistance to antibiotic after 18 hours
 ydcR	Metronidazole	confers no resistance to antibiotic after 18 hours
 hsdM	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25759,7 +25522,6 @@ yfdR	Metronidazole	confers no resistance to antibiotic after 18 hours
 yegT	Metronidazole	confers no resistance to antibiotic after 18 hours
 wcaC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yifE	Metronidazole	confers no resistance to antibiotic after 18 hours
-cysK	Metronidazole	confers no resistance to antibiotic after 18 hours
 metH	Metronidazole	confers no resistance to antibiotic after 18 hours
 slyB	Metronidazole	confers no resistance to antibiotic after 18 hours
 fecB	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25826,7 +25588,6 @@ ycaP	Metronidazole	confers no resistance to antibiotic after 18 hours
 ydjI	Metronidazole	confers no resistance to antibiotic after 18 hours
 tktA	Metronidazole	confers no resistance to antibiotic after 18 hours
 fadA	Metronidazole	confers no resistance to antibiotic after 18 hours
-chbA	Metronidazole	confers no resistance to antibiotic after 18 hours
 nikB	Metronidazole	confers no resistance to antibiotic after 18 hours
 coaE	Metronidazole	confers no resistance to antibiotic after 18 hours
 dhaM	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25876,7 +25637,6 @@ yeeN	Metronidazole	confers no resistance to antibiotic after 18 hours
 yraI	Metronidazole	confers no resistance to antibiotic after 18 hours
 dinD	Metronidazole	confers no resistance to antibiotic after 18 hours
 lacI	Metronidazole	confers no resistance to antibiotic after 18 hours
-nagE	Metronidazole	confers no resistance to antibiotic after 18 hours
 rpoN	Metronidazole	confers no resistance to antibiotic after 18 hours
 thrA	Metronidazole	confers no resistance to antibiotic after 18 hours
 mog	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -25968,7 +25728,6 @@ fsaA	Metronidazole	confers no resistance to antibiotic after 18 hours
 yjdM	Metronidazole	confers no resistance to antibiotic after 18 hours
 envR	Metronidazole	confers no resistance to antibiotic after 18 hours
 leuB	Metronidazole	confers no resistance to antibiotic after 18 hours
-yjiP	Metronidazole	confers no resistance to antibiotic after 18 hours
 ppiC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yfcV	Metronidazole	confers no resistance to antibiotic after 18 hours
 evgS	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26049,7 +25808,6 @@ ycdU	Metronidazole	confers no resistance to antibiotic after 18 hours
 yciV	Metronidazole	confers no resistance to antibiotic after 18 hours
 ypdB	Metronidazole	confers no resistance to antibiotic after 18 hours
 racC	Metronidazole	confers no resistance to antibiotic after 18 hours
-bcsZ	Metronidazole	confers no resistance to antibiotic after 18 hours
 mdtP	Metronidazole	confers no resistance to antibiotic after 18 hours
 pykF	Metronidazole	confers no resistance to antibiotic after 18 hours
 pbl	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26078,10 +25836,8 @@ rppH	Metronidazole	confers no resistance to antibiotic after 18 hours
 sugE	Metronidazole	confers no resistance to antibiotic after 18 hours
 ecnB	Metronidazole	confers no resistance to antibiotic after 18 hours
 yiiX	Metronidazole	confers no resistance to antibiotic after 18 hours
-rbn	Metronidazole	confers no resistance to antibiotic after 18 hours
 ygdG	Metronidazole	confers no resistance to antibiotic after 18 hours
 cdd	Metronidazole	confers no resistance to antibiotic after 18 hours
-zupT	Metronidazole	confers no resistance to antibiotic after 18 hours
 cbpA	Metronidazole	confers no resistance to antibiotic after 18 hours
 cusS	Metronidazole	confers no resistance to antibiotic after 18 hours
 yecM	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26092,7 +25848,6 @@ yegE	Metronidazole	confers no resistance to antibiotic after 18 hours
 wcaK	Metronidazole	confers no resistance to antibiotic after 18 hours
 fau	Metronidazole	confers no resistance to antibiotic after 18 hours
 rimM	Metronidazole	confers no resistance to antibiotic after 18 hours
-fimA	Metronidazole	confers no resistance to antibiotic after 18 hours
 purT	Metronidazole	confers no resistance to antibiotic after 18 hours
 fliQ	Metronidazole	confers no resistance to antibiotic after 18 hours
 yadV	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26177,7 +25932,6 @@ ulaG	Metronidazole	confers no resistance to antibiotic after 18 hours
 ydiE	Metronidazole	confers no resistance to antibiotic after 18 hours
 ybiC	Metronidazole	confers no resistance to antibiotic after 18 hours
 purH	Metronidazole	confers no resistance to antibiotic after 18 hours
-pphB	Metronidazole	confers no resistance to antibiotic after 18 hours
 ycjM	Metronidazole	confers no resistance to antibiotic after 18 hours
 ybiO	Metronidazole	confers no resistance to antibiotic after 18 hours
 mdoD	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26212,7 +25966,6 @@ entB	Metronidazole	confers no resistance to antibiotic after 18 hours
 preT	Metronidazole	confers no resistance to antibiotic after 18 hours
 groL	Metronidazole	confers no resistance to antibiotic after 18 hours
 tus	Metronidazole	confers no resistance to antibiotic after 18 hours
-yaiT	Metronidazole	confers no resistance to antibiotic after 18 hours
 livK	Metronidazole	confers no resistance to antibiotic after 18 hours
 mrcA	Metronidazole	confers no resistance to antibiotic after 18 hours
 focA	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26422,7 +26175,6 @@ ansA	Metronidazole	confers no resistance to antibiotic after 18 hours
 nuoN	Metronidazole	confers no resistance to antibiotic after 18 hours
 yoaA	Metronidazole	confers no resistance to antibiotic after 18 hours
 truA	Metronidazole	confers no resistance to antibiotic after 18 hours
-yaiF	Metronidazole	confers no resistance to antibiotic after 18 hours
 patA	Metronidazole	confers no resistance to antibiotic after 18 hours
 lysU	Metronidazole	confers no resistance to antibiotic after 18 hours
 ycfK	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26430,7 +26182,6 @@ yceG	Metronidazole	confers no resistance to antibiotic after 18 hours
 xylH	Metronidazole	confers no resistance to antibiotic after 18 hours
 ydaQ	Metronidazole	confers no resistance to antibiotic after 18 hours
 ydeJ	Metronidazole	confers no resistance to antibiotic after 18 hours
-fruB	Metronidazole	confers no resistance to antibiotic after 18 hours
 flhC	Metronidazole	confers no resistance to antibiotic after 18 hours
 betB	Metronidazole	confers no resistance to antibiotic after 18 hours
 araC	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26443,11 +26194,8 @@ cbrC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yoeF	Metronidazole	confers no resistance to antibiotic after 18 hours
 flgI	Metronidazole	confers no resistance to antibiotic after 18 hours
 pheA	Metronidazole	confers no resistance to antibiotic after 18 hours
-srlE	Metronidazole	confers no resistance to antibiotic after 18 hours
 glf	Metronidazole	confers no resistance to antibiotic after 18 hours
-dsdX	Metronidazole	confers no resistance to antibiotic after 18 hours
 rffD	Metronidazole	confers no resistance to antibiotic after 18 hours
-fnr	Metronidazole	confers no resistance to antibiotic after 18 hours
 stpA	Metronidazole	confers no resistance to antibiotic after 18 hours
 asmA	Metronidazole	confers no resistance to antibiotic after 18 hours
 yraN	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26563,7 +26311,6 @@ mtfA	Metronidazole	confers no resistance to antibiotic after 18 hours
 yfdN	Metronidazole	confers no resistance to antibiotic after 18 hours
 yidI	Metronidazole	confers no resistance to antibiotic after 18 hours
 yfdF	Metronidazole	confers no resistance to antibiotic after 18 hours
-nuoM	Metronidazole	confers no resistance to antibiotic after 18 hours
 ybaS	Metronidazole	confers no resistance to antibiotic after 18 hours
 recE	Metronidazole	confers no resistance to antibiotic after 18 hours
 lpcA	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26595,7 +26342,6 @@ metR	Metronidazole	confers no resistance to antibiotic after 18 hours
 cusF	Metronidazole	confers no resistance to antibiotic after 18 hours
 hypT	Metronidazole	confers no resistance to antibiotic after 18 hours
 ytfF	Metronidazole	confers no resistance to antibiotic after 18 hours
-soxR	Metronidazole	confers no resistance to antibiotic after 18 hours
 treB	Metronidazole	confers no resistance to antibiotic after 18 hours
 ycaI	Metronidazole	confers no resistance to antibiotic after 18 hours
 emrD	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26904,7 +26650,6 @@ yfjI	Metronidazole	confers no resistance to antibiotic after 18 hours
 gltP	Metronidazole	confers no resistance to antibiotic after 18 hours
 yeeS	Metronidazole	confers no resistance to antibiotic after 18 hours
 osmC	Metronidazole	confers no resistance to antibiotic after 18 hours
-rarA	Metronidazole	confers no resistance to antibiotic after 18 hours
 ynfC	Metronidazole	confers no resistance to antibiotic after 18 hours
 frvA	Metronidazole	confers no resistance to antibiotic after 18 hours
 mpl	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -26913,7 +26658,6 @@ yfiE	Metronidazole	confers no resistance to antibiotic after 18 hours
 sucD	Metronidazole	confers no resistance to antibiotic after 18 hours
 yddK	Metronidazole	confers no resistance to antibiotic after 18 hours
 norW	Metronidazole	confers no resistance to antibiotic after 18 hours
-ygaX	Metronidazole	confers no resistance to antibiotic after 18 hours
 hybA	Metronidazole	confers no resistance to antibiotic after 18 hours
 rlpA	Metronidazole	confers no resistance to antibiotic after 18 hours
 ydfV	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -27031,7 +26775,6 @@ yiaM	Metronidazole	confers no resistance to antibiotic after 18 hours
 trpR	Metronidazole	confers no resistance to antibiotic after 18 hours
 phnO	Metronidazole	confers no resistance to antibiotic after 18 hours
 trmL	Metronidazole	confers no resistance to antibiotic after 18 hours
-modC	Metronidazole	confers no resistance to antibiotic after 18 hours
 yoaC	Metronidazole	confers no resistance to antibiotic after 18 hours
 bluF	Metronidazole	confers no resistance to antibiotic after 18 hours
 cra	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -27081,7 +26824,6 @@ htpG	Metronidazole	confers no resistance to antibiotic after 18 hours
 fucO	Metronidazole	confers no resistance to antibiotic after 18 hours
 ypjD	Metronidazole	confers no resistance to antibiotic after 18 hours
 yfeK	Metronidazole	confers no resistance to antibiotic after 18 hours
-ydaG	Metronidazole	confers no resistance to antibiotic after 18 hours
 narX	Metronidazole	confers no resistance to antibiotic after 18 hours
 arpB	Metronidazole	confers no resistance to antibiotic after 18 hours
 ivy	Metronidazole	confers no resistance to antibiotic after 18 hours
@@ -27181,6 +26923,5 @@ ydjE	Metronidazole	confers no resistance to antibiotic after 18 hours
 phnD	Metronidazole	confers no resistance to antibiotic after 18 hours
 dusC	Metronidazole	confers no resistance to antibiotic after 18 hours
 ybbB	Metronidazole	confers no resistance to antibiotic after 18 hours
-ygeK	Metronidazole	confers no resistance to antibiotic after 18 hours
 sgcQ	Metronidazole	confers no resistance to antibiotic after 18 hours
 yeeO	Metronidazole	confers no resistance to antibiotic after 18 hours
