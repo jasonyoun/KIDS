@@ -1,8 +1,8 @@
 *__pycache__
 **/.DS_Store
-pra/model/model_instance/*
+# pra/model/model_instance/*
 */predict_example/*
-er_mlp/model/model_instance/*
+# er_mlp/model/model_instance/*
 stacked/model_instance/*
 !README
 __pycache__/
