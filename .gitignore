@@ -3,7 +3,7 @@
 # pra/model/model_instance/*
 */predict_example/*
 # er_mlp/model/model_instance/*
-stacked/model_instance/*
+# stacked/model_instance/*
 !README
 __pycache__/
 .tags

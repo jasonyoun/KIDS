@@ -1,4 +1,4 @@
-./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/M3_p1e+06_h1_LVParticle1e+04f_acc0.01_b1e+00__b/Path_all20_L1=8e-03_L2=1e-04/train_T8_a/	653	0.711000	100	0.984686	1.862175	1.901991	84.966309	3.8725744306960226	7	54	8.16495358642978	15	5.768
-./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic__b/predict_T8_a/	1.195
-./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic__b/predict_T8_a/	1.471
-./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic__b/predict_T8_a/	1.324
+./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/M3_p1e+06_h1_LVParticle1e+04f_acc0.01_b1e+00__b/Path_all20_L1=8e-03_L2=1e-04/train_T8_a/	632	8.410000	2893	0.981013	1.783228	1.832278	89.294304	3.8468118643347853	6	51	10.624789388258428	15	45.557
+./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic__b/predict_T8_a/	2.421
+./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic__b/predict_T8_a/	2.991
+./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic__b/predict_T8_a/	2.674

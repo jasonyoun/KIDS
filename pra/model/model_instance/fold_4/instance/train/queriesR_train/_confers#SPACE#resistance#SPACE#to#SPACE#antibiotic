@@ -1,85 +1,86 @@
-c$Phleomycin	c$sbmC c$mlaE c$fabF c$ddlB c$ydeU c$sgbU c$sapC c$secG c$proK c$pstC c$prpC c$rffC c$crl c$hemX c$cspA c$gpmM c$rffH c$talB
-c$Novobiocin	c$secB c$ubiF c$emrD c$acrB c$tktA c$yjfP c$wcaI c$waaQ c$yedL c$fur c$waaC c$slmA c$lpcA c$surA c$gyrB c$waaF c$fepE c$ydeP c$gspG c$racC c$bssS c$acrA c$yidA c$waaG c$alaS
-c$CHIR090	c$rpmG c$dedA c$hfq c$nagC c$ybhK c$rnb c$ompC c$gadX c$greA c$tolC c$waaB c$yifE c$purA c$cusS c$galF c$nikE c$cspE c$fabR c$rfe c$wzzE c$idnK c$dsbC c$rfaD c$acrR c$lepA c$pldA c$proQ c$wzc c$guaB c$acrB c$galT c$secG c$malS c$yfeD c$ygdD c$iraP c$srmB c$waaC c$galE c$rffG c$hicB c$rfaE c$yicR c$rng c$dinJ c$waaF c$ybeD c$fbp c$yfcA c$rffC c$rcsF c$waaP c$hslV c$waaG
-c$Cefsulodin	c$mlc c$mlaE c$yeaD c$hfq c$ptrB c$wcaI c$arcZ c$rffM c$tatC c$fkpB c$waaQ c$mlaC c$fcl c$mioC c$damX c$nlpD c$atpD c$thiK c$phoQ c$rpoS c$yqcC c$yajG c$yaiS c$purA c$ybgC c$dpiA c$ppiB c$ycgV c$yifL c$sspA c$rffH c$tatA c$pal c$pyrC c$dacA c$rbfA c$pstC c$secG c$mltD c$rbsK c$mlaA c$bamE c$hsrA c$purL c$ybgF c$purE c$mrcB c$fabH c$nlpI c$pdxA c$ftsP c$yqgC c$recF c$ampG c$pyrD c$pdxJ c$aroK c$rffC c$rapZ c$cpsG c$mtlR c$lpp c$waaP c$pstS c$rplA c$malK
-c$Ceftazidime	c$cyaY c$dadA c$tolQ c$ddlB c$dacA c$ybiY c$mzrA c$hyaC c$dusB c$ycjU c$pinE c$frdD c$potD c$zapA c$pspE c$treC c$dsdA c$hslU c$thiK c$cpxR c$ompA c$moaE c$zapB c$appA c$bamB c$yajG c$rimP c$fis c$ygcP c$yceA c$ytfJ c$tolB c$psiF c$tatB c$hyaB c$cobB c$fryC c$tolR c$tatA
-c$Tinidazole	c$wrbA c$mdtM
-c$Amoxicillin	c$eutE c$yibA c$secB c$pdxY c$ddlB c$dacA c$idnR c$narL c$yfiH c$dksA c$cysB c$atpB c$caiA c$ldhA c$atpE c$galR c$atpD c$feoC c$ycbC c$bamB c$napA c$allR c$nuoB c$ybgC c$atpC c$arsC c$sdhC c$prpC c$ygfZ c$tolB c$ppiB c$agaI c$glk c$ugpC c$lpoB c$atpF c$fes c$yfdG
-c$Fosfomycin	c$nuoF c$bluR c$mrp c$yciI c$yqiC c$glxK c$narL c$fdoI c$murA c$minC c$nuoH c$nfuA c$fkpB c$ybcQ c$ymdB c$nlpA c$hdfR c$mog c$fliS c$ygbK c$aroE c$aroC c$yifE c$ydcY c$arcA c$yaiS c$csgA c$fepG c$cspE c$uxaB c$yjjY c$ratB c$sdaC c$lldP c$nuoE c$yaiY c$prfC c$zntR c$stfR c$gspM c$yibI c$ihfB c$sspA c$recO c$flgK c$ygiB
-c$Minocycline	c$ohsC c$tolQ c$proQ c$dksA c$dsrB c$rnb c$npr c$waaQ c$rbsK c$mlaC c$hdfR c$mlaA c$yegV c$waaY c$tolC c$phoQ c$waaB c$waaC c$csiD c$rfaE c$fis c$ydfV c$rseB c$asmA c$ygcO c$mlaF c$rfe c$arfA c$phoP c$tolB c$ycbZ c$pgm c$rffD c$mlaD c$waaP c$waaI c$sspA c$rfaD c$waaG c$yeiQ
-c$Colistin	c$dcuC c$atpG c$dapF c$cydX c$cysB c$rsmF c$ycjU c$tatC c$lpxL c$rsmH c$dnaK c$ycbK c$tusC c$mlaA c$cedA c$pstA c$ybgF c$ylcG c$flhD c$waaC c$yciT c$tusD c$rfaE c$pgaC c$ybeY c$ygcO c$lpxD c$nusB c$surA c$rfaH c$ydjI c$rpoN c$proL c$yneE c$ybeD c$ppiB c$rpe c$xapR c$fdx c$recA c$gmhB c$rplA c$pstS c$rpmE c$rfaD
-c$Spectinomycin	c$ohsC c$guaB c$gltL c$pyrC c$dksA c$rseA c$rbfA c$deoD c$yecC c$proP c$pinE c$rpmJ c$hrpA c$yeaQ c$tfaD c$tolC c$yegW c$frlR c$sapD c$dsbA c$yifE c$yhcB c$lpcA c$ydfV c$pgl c$yidR c$trkA c$queA c$deoB c$bglH c$pyrE c$carB c$agaI c$serC c$rplA c$sthA c$pyrB c$rfaD
-c$Metronidazole	c$yciS c$ybcW c$yfiH c$fau c$gshB c$oxyR c$envZ c$pnp c$tolC c$amiA c$fur c$bdm c$plsX c$uvrA c$nudB c$ybeY c$fis c$lpxD c$nusB c$recJ c$ybjL c$rpmF c$elfD c$zwf c$tatB c$dinB c$gshA c$acrA c$gmhB c$deaD c$recG c$recO c$xseB c$rfaD c$ruvA c$fabF c$atpG c$acrB c$cysB c$rseA c$uvrC c$minC c$yciM c$nfuA c$lpxL c$ydhT c$xseA c$ybdN c$lon c$ylcG c$recR c$waaC c$yciT c$rfaE c$recF c$ybcN c$dam c$hscA c$xapR c$rssA c$dinG c$gltI c$pstS c$tolR c$hlpA c$rimK c$waaG c$rpiA
-c$Sulfamethoxazole	c$yciS c$dapF c$leuO c$rpsO c$yddK c$ycjU c$yfjR c$rsmH c$dnaK c$tusC c$wbbL c$yfgC c$degP c$bamB c$fur c$tusD c$nudB c$ybeY c$nusB c$ydjI c$rpmF c$ppiB c$dcd c$yiaD c$acrA c$recG c$rpmE c$gpmM c$hyfJ c$hns c$qmcA c$sucD c$atpG c$dksA c$ymfI c$rseA c$ycjG c$yciM c$lpxL c$folB c$rpmJ c$hipB c$cydB c$nlpC c$waaC c$recB c$rfaE c$ygcO c$yjjY c$tusB c$hscA c$xapR c$rplA c$pstS c$tolR
-c$Norfloxacin	c$rho c$recN c$dnaG c$gyrA c$recA c$ispE
-c$Dactinomycin	c$pal c$guaB c$yibF c$rsmH c$rbsK c$zapA c$bamE c$purL c$hemY c$yfgC c$purE c$bamB c$purA c$bamC c$hicB c$hupA c$ninE c$lpcA c$asmA c$pyrD c$waaF c$purD c$pyrE c$carB c$ppiB c$gpmM c$tolR c$rfaD c$lpxM c$ygfM
-c$Azithromycin	c$arcB c$yhdP c$rfaE c$tolQ c$lpcA c$surA c$mgrB c$tsx c$queA c$dam c$waaF c$bamE c$waaP c$tolC c$rplI c$ylcG c$pstS c$dnaJ c$fur c$nlpI c$waaG c$waaC c$rfaD
-c$Cephradine	c$ybaB c$cydX c$yfiH c$lpd c$rpsO c$rsmF c$ybjJ c$ycjU c$ycbK c$tusC c$tolC c$yfgC c$ubiG c$flhD c$plsX c$ihfA c$gor c$nusB c$surA c$rpmF c$acrZ c$rpoN c$iscS c$phoP c$mfd c$zwf c$recA c$emtA c$acrA c$ycdZ c$iscU c$gpmM c$qmcA c$xerC c$sucD c$fabF c$dacA c$acrB c$ycjG c$yciM c$lpxL c$zapB c$glnD c$rutA c$mrcB c$nlpC c$recB c$pgaC c$yfgD c$ygcO c$dam c$ygfZ c$ybeD c$tusB c$hscA c$rplA c$rimK
-c$Cloxacillin	c$mdtE
-c$Mitomycin#SPACE#C	c$ruvA c$uvrA c$fis c$acrB c$ruvC c$uvrB c$recC c$surA c$nuoJ c$rbfA c$lipB c$gnsB c$uvrC c$yecC c$rbsK c$lipA c$diaA c$recA c$waaY c$tolC c$eutN c$ubiX c$acrA c$aspA
-c$Doxycycline	c$tauA c$mlaE c$tolQ c$guaB c$acrB c$hfq c$dksA c$arcZ c$fixA c$rbsK c$mlaC c$hdfR c$mlaA c$hsrA c$waaY c$nlpD c$tolC c$purL c$ycfK c$phoQ c$ompA c$waaB c$atoS c$ygfI c$nlpI c$rfaE c$ninE c$mlaF c$ybcN c$arfA c$ymfA c$queA c$iscS c$phoP c$pyrE c$fhlA c$carB c$rpsF c$mlaD c$rbsR c$waaI c$acrA c$sspA c$rpmE c$ulaB c$pyrB c$waaG
-c$Mecillinam	c$cyaY c$ampD c$guaB c$ddlB c$dusB c$secG c$minC c$micM c$zapA c$hslU c$dsbB c$purL c$dsbA c$purE c$kdpB c$dnaJ c$mrcB c$yhcB c$waaC c$mpl c$arcB c$ridA c$ampG c$wzzE c$acrZ c$tolB c$pyrE c$yceG c$nagZ c$pcnB c$lpoB c$acrA c$yidD c$dsbC c$rffH c$pyrB c$ygiB c$smtA
-c$Radicicol	c$rbsD c$ybbB c$lon
-c$Cefoxitin	c$mltB c$purL c$lpd
-c$Polymyxin#SPACE#B	c$rffC c$yfcV c$seqA c$fis c$gmd c$yneK c$fepC c$mcaS c$dnaJ c$glnA c$fes c$fadD
-c$Oxacillin	c$tolQ c$pal c$asmA c$emrD c$acrB c$tktA c$ybgC c$dusB c$ratB c$yjhU c$tolB c$fbp c$tolC c$acrA c$yjgL c$frlD c$lpoB c$degP c$bamB c$mrcB c$yjhB
-c$Cerulenin	c$yciS c$guaA c$acrB c$hfq c$micM c$nepI c$yobA c$tolC c$waaI c$aspA c$acrA c$sspA c$ynaE c$ydfE c$fadD
-c$Streptonigrin	c$ruvA c$xerC c$gcvA c$ymgC c$ybaB c$yqiC c$acrB c$ruvC c$ptrB c$recC c$uvrC c$yciM c$ompN c$ymdB c$dgkA c$deoC c$tolC c$ygbK c$yfgC c$hemX c$ylcG c$recR c$fur c$mpl c$uvrA c$arcB c$recB c$pgaA c$rfaE c$hupA c$ninE c$lpcA c$asmA c$ydfA c$recJ c$yaaA c$ubiC c$ratB c$lipB c$waaF c$ratA c$trmH c$yfaW c$recN c$galU c$recG c$yfbN c$rfaD
-c$Lomefloxacin	c$ruvA c$yjiK c$acrB c$yhcD c$cyoA c$melB c$yfaD c$ompC c$ypdB c$yrbB c$ymdB c$rfaP c$uidA c$ydcL c$ybjI c$yecR c$ygeR c$yffB c$yegT c$treA c$agaR c$yfgI c$rob c$phoP c$recN c$ybgS c$exuR c$rhlE c$yeiU c$rfaG
-c$Thiolactomycin	c$rimP c$fepG c$guaA c$atpA c$ubiF c$atpC c$atpB c$dusB c$ratB c$ybjX c$ycbV c$atpE c$lipA c$citC c$tolC c$sspA c$ynaE c$atpF
-c$Doxycycline#SPACE#hyclate	c$glpF c$rfaB c$rseB c$dedA c$acrB c$rob c$rfe c$mdtJ c$phoP c$yrbB c$yihS c$rfaP c$yrbE c$rfaQ c$yfbJ c$ybiS c$yfgC c$potI c$rfaG
-c$Sulfathiazole	c$bcr c$phnC
-c$Neomycin	c$rffA c$gntK c$ackA c$tolQ c$yhdP c$atpG c$ddlB c$sapC c$leuO c$glnL c$dksA c$ycjG c$ompF c$slyA c$gshB c$tatC c$rsmH c$tusC c$wbbL c$bamE c$yiaA c$acpT c$fepC c$glnD c$fruB c$nlpC c$waaC c$recB c$tusD c$nudB c$ftsP c$lpxD c$ydjI c$rpoN c$acrE c$yneE c$ppiB c$xapR c$yjgA c$waaP c$dinG c$dedD c$ibpB c$lpxM c$rfaD
-c$Kanamycin	c$yccA c$hfq c$htpX c$yrbL c$yebE c$clpX c$yrfG c$dnaK c$lon c$yobA c$htpG c$hslU c$prlC c$fxsA c$dnaJ c$ybbN c$yjhP c$pspA c$clpP c$grcA c$hflX c$yjhQ c$mlaF c$ybjX c$ftsH c$ybbA c$queE c$miaA c$rpoD c$pspC c$clpB c$hslV c$yhiI c$ycjF c$ygiB
-c$Bacitracin	c$wcaD c$secB c$yhdP c$cvpA c$atpB c$tatC c$bamE c$atpD c$dsbB c$purL c$wcaF c$fepC c$rnhA c$fepD c$fabH c$purA c$wzxE c$rfaE c$ninE c$lpcA c$asmA c$surA c$cysH c$pyrD c$rpoN c$waaF c$purD c$cmk c$tolB c$rffC c$carB c$ppiB c$tatB c$serC c$fepB c$hns c$fes c$lpxM c$rfaD
-c$Sulfamethizole	c$npr c$gcvA c$nudB c$gcvP c$cpxA c$thyA c$hyaB c$fau
-c$Clarythromycin	c$rfaE c$yhdP c$ybeY c$asmA c$acrB c$ychJ c$csgF c$fimC c$dksA c$waaF c$hrpA c$rbsK c$bamE c$dsbB c$tolC c$rplI c$acrA c$dsbA c$pstS c$fur c$bamB
-c$Carbenicillin	c$tolQ c$purK c$guaB c$ninE c$pyrD c$pyrE c$carB c$yihI c$nlpD c$serC c$rbsR c$purL c$purM c$rpoS c$acrA c$nagA c$purE c$mrcB
-c$Bleomycin	c$rfaE c$cydX c$yfgC
-c$Sulfamonomethoxine	c$umpG
-c$Trimethoprim	c$waaQ c$mlaA c$lpoB c$yojN c$waaB c$waaG
-c$Triclosan	c$rfaE c$fabG c$acrB c$lpxD c$tolC c$ymfT c$yfgC c$acrA c$ubiG c$tolR c$tatC c$rfaD
-c$Vancomycin	c$pal c$cydX c$dksA c$lptB c$iscS c$tatC c$elfD c$rpmJ c$envZ c$tusB c$elaD c$tufA c$yfgC c$ylcG c$tolR c$hlpA c$lpxM c$waaC
-c$Doxorubicin	c$xerC c$acrB c$acrA c$yneE c$rpiA
-c$Bicyclomycin	c$ybdH c$yjbH c$yciE c$ybdN c$hisJ c$pqqL c$ygiW c$cysI c$cysB c$yghG c$ymjC c$rayT
-c$Sulfamethazine	c$ycgZ c$rbsR
-c$Chloramphenicol	c$ohsC c$elaD c$acrB c$nusB c$tolC c$hfq c$ubiG c$rplA c$micM c$alaS
-c$Enoxacin	c$cynT c$soxS
-c$Tunicamycin	c$yfcA c$guaA c$fepG c$lon c$atpD c$ubiC c$iscS c$chbG c$atpE
-c$Penicillin#SPACE#G	c$bfd
-c$Paromomycin	c$phoR c$arcA
-c$Geneticin	c$ntrB c$cpxA c$cpxR c$ntrC c$arcA
-c$Hygromycin#SPACE#B	c$kdpF c$kdpE c$kdpC c$cpxA c$kdpB
-c$Cefamandole	c$envZ c$ompR
-c$Sulfanilamide	c$luxS
-c$Levofloxacin	c$xerC c$ruvA c$parC c$lipA c$recA c$ruvC c$pgi c$ycgX
-c$Penimepicycline	c$ycgZ c$marA
-c$Ampicillin	c$slt
-c$Streptomycin	c$folB c$rfaE c$proL c$mfd
-c$Apramycin	c$yejG
-c$Sisomicin	c$yejG
-c$Spiramycin	c$ohsC
+c$Kanamycin	c$ybbA c$miaA c$ybjX c$hflX c$mutM c$lon c$yrdA c$yrfG c$hslV c$yhiI c$ycjF c$clpP c$queE c$hslU c$yrbL c$ygiB c$yjhP c$rpoD c$htpG c$clpB c$hslO c$ycfS c$fxsA c$dnaJ c$groS c$yjhQ c$yobA c$pspB c$hslR c$clpX c$ybeY
+c$Mitomycin#SPACE#C	c$ubiF c$uvrA c$ruvA c$ybaB c$rbsK c$rbfA c$xerC c$uvrB c$lipB c$nuoJ c$lipA c$recA c$fis c$diaA c$surA c$uvrC c$recC c$rpmF c$waaY c$dam c$ubiX c$yecC c$aspA c$tolC
+c$Fosfomycin	c$yjjY c$cpdA c$hdfR c$dcm c$sdaC c$zntR c$fkpB c$entE c$murA c$arcA c$stfR c$nuoH c$ratB c$ybcQ c$queA c$yqiC c$ulaB c$prfC c$ybiW c$ybfE c$adrA c$yggT c$uxaB c$fepG c$fdoI c$sspA c$intQ c$glxK c$glpR c$nfuA c$bluR c$nuoE c$ygbK c$ubiI c$mrp c$yaiY c$aroA c$ddlB c$yifE c$ydfJ c$csgA c$speB c$ybcM c$nuoF c$dctA c$ydcY c$fre c$yaiS c$recO c$yhbP c$ihfB
+c$Mecillinam	c$lpoB c$dsbB c$minC c$waaC c$ompG c$rffC c$arcB c$rcsB c$pyrB c$pyrE c$secG c$pdxA c$ridA c$ampD c$purE c$mepM c$guaB c$dsbA c$hslU c$ddlB c$dsbC c$ygiB c$pyrC c$nagZ c$tolB c$pal c$dusB c$purL c$ampG c$dnaJ c$rffH c$nagA c$wzzE c$yqiC c$yidD c$purD c$yceG c$acrZ c$carB c$micM c$purM c$cyaY c$yhcB c$kdpB
+c$CHIR090	c$rng c$srmB c$rpmE c$iraP c$lepA c$acrR c$gadX c$fadE c$waaG c$fabR c$rnb c$ygdD c$secG c$yhfW c$cusS c$guaB c$rplA c$ynjA c$hfq c$dsbC c$wzc c$ompC c$bamB c$hicB c$malS c$ybeD c$atl c$dusB c$apaH c$pldA c$waaB c$nagA c$xerD c$yfcA c$yicR c$waaP c$galF c$cspE c$idnK c$surA c$lpcA c$ybhK c$rcsF c$nagC c$nikE
+c$Neomycin	c$acrE c$dauA c$acrA c$rffA c$leuO c$fepB c$tusC c$waaC c$rsmH c$fepC c$lpxM c$glnG c$rppH c$ddlB c$fkpB c$yidP c$acpT c$rsmF c$yfgC c$dedD c$rfaD c$ompF c$ppiB c$dapF c$dksA c$wbbL c$yciT c$folB c$rpoN c$yneE c$nuoM c$ftsP c$gshB c$xapR c$xseB c$ymfA c$tusD c$waaP c$yhdP c$nusB c$atpG c$acrZ c$gntK c$gmhB c$yciM
+c$Lomefloxacin	c$rfaG c$yegT c$treA c$rob c$recN c$ygeR c$ybiA c$ydcL c$phoP c$dinI c$cyoA c$ymdA c$rfaP c$aroG c$yafD c$yjiS c$ompC c$rssB c$yecR c$yfgI c$ybjI c$yfiE c$ebgR c$yhcD c$yghD c$ybiS c$acrB c$proA c$exuR c$yrbE c$envZ c$yggD c$norR c$yeiU
+c$Triclosan	c$lpxD c$rfaD c$dksA c$acrA c$ubiG c$dnaJ c$cyaA c$tolR c$acrB c$rfaE c$fabI c$tatC c$rseA c$ymfT c$rfaH c$yfgC c$tolC
+c$Cefsulodin	c$arcZ c$waaQ c$rpoS c$mlaF c$phoQ c$cpsG c$rffC c$tolR c$mlaE c$pdxA c$nfsA c$tatC c$mltD c$ompA c$hfq c$pdxJ c$pyrC c$lpp c$tolB c$pal c$dapF c$ycgV c$hsrA c$mlaC c$purL c$atpD c$rbfA c$yeaD c$waaP c$mlc c$prfC c$nlpD c$yaiF c$purD c$rlpA c$ptrB c$nlpI c$thiK c$fur c$pstS c$sspA c$wcaI c$pstC c$lpoB c$tolQ c$damX c$dacA c$yqcC c$tatA c$secG c$pyrE c$pyrD c$mazG c$malK c$purE c$ybcL c$ycbC c$rplA c$wcaF c$mlaA c$ppiB c$mtlR c$ampG c$waaB c$ybgF c$aroK c$wzyE
+c$Dactinomycin	c$tolQ c$dmsB c$csiD c$rbsK c$tonB c$hflX c$zapA c$tolR c$hemY c$rsmH c$waaF c$lpxM c$purE c$cysB c$asmA c$yfgC c$bamB c$yibF c$rfaD c$tolB c$hicB c$pal c$bamE c$gltD c$purL c$purA c$purD c$ninE c$atpA c$carB c$lpcA c$purM
+c$Levofloxacin	c$ruvA c$recA c$lipA c$parC c$hepA c$recC c$ruvC c$xerC
+c$Spectinomycin	c$mltF c$agaI c$sthA c$pgl c$frlR c$bglH c$rfaE c$mlaE c$serC c$pyrB c$pyrD c$yeaQ c$guaA c$rseA c$asmA c$guaB c$yifE c$yecC c$pyrC c$ptsH c$rfaD c$ydfV c$dksA c$deoD c$ohsC c$rbfA c$queA c$rsmA c$tfaD c$rpmJ c$carB c$sapD c$gltL c$lpcA c$hrpA c$yhcB c$pinE
+c$Bacitracin	c$fes c$tolQ c$dsbB c$fepB c$tatB c$cpsG c$rffC c$tolR c$pyrE c$fepC c$secB c$lpxM c$waaF c$asmA c$wcaD c$ybgC c$cvpA c$pyrC c$fepD c$bamB c$rfaD c$ppiB c$pal c$wzxE c$atpB c$bamE c$atpD c$fcl c$rpoN c$purA c$purD c$rnhA c$surA c$ninE c$fabH c$carB c$lpcA
+c$Amoxicillin	c$agaI c$atpE c$lpoB c$arsC c$yibA c$mog c$cpsG c$yfiH c$tolR c$cysB c$yhiI c$galR c$ycbC c$ddlB c$uxuR c$feoC c$narL c$pldB c$tolB c$ppiB c$pal c$atpC c$dksA c$atpB c$ampC c$atpD c$napA c$eutE c$idnR c$bfr c$fadD c$caiA c$atpA c$sdhC c$yfdG
+c$Clarythromycin	c$rfaD c$lsrA c$dksA c$pstA c$acrA c$dsbB c$ohsC c$bamE c$ybgL c$dnaJ c$csgF c$rplI c$acrB c$yhdP c$waaF c$lpxM c$asmA c$yfgC c$ychJ c$ybeY c$fur
+c$Sulfamethizole	c$thyA c$cpxA c$gcvH c$gcvP c$hyaB c$npr c$gcvT
+c$Streptonigrin	c$deoC c$uvrA c$acrA c$recN c$xerC c$uvrB c$arcB c$pgaA c$ygbK c$recA c$hemX c$waaF c$ylcG c$ruvC c$uvrC c$asmA c$yfgC c$ratA c$recJ c$dgkA c$rfaD c$recG c$ruvA c$gcvA c$yfaW c$ratB c$lipB c$ydfA c$recR c$yqiC c$recB c$acrB c$trmH c$mpl c$ninE c$lpcA c$yaaA c$yfbN c$tolC c$hupA c$galU
+c$Doxycycline	c$arcZ c$rpoS c$waaQ c$rbsK c$mlaF c$rbsR c$rob c$phoQ c$hdfR c$waaG c$fhlA c$rfaE c$pyrB c$idnD c$guaB c$ompA c$hfq c$ygfI c$rpsF c$mlaA c$mfd c$ohsC c$mlaC c$ybjI c$purL c$queA c$waaB c$atoS c$ulaB c$pcm c$ymfA c$acrB c$waaI c$nlpD c$purD c$ninE c$fixA c$tauA c$carB c$tabA c$waaY c$hrpA c$nlpI c$sspA
+c$Ceftazidime	c$fryC c$lpoB c$tolQ c$hyaC c$hyaB c$cobB c$dsdA c$ytfJ c$dacA c$tolR c$zapA c$dadA c$tatA c$flgE c$ygbK c$gsiC c$fis c$ybiY c$zapB c$cysB c$hslU c$ybgC c$ompA c$ycjU c$ychJ c$bamB c$rimP c$moaE c$dusB c$mzrA c$ftsP c$frdD c$amiC c$appA c$ygcP c$psiF c$ybdL c$treC c$pinE
+c$Phleomycin	c$fabF c$atpE c$kefB c$prpC c$rpoS c$ymfQ c$ydeU c$proK c$rffC c$mlaE c$secG c$uhpT c$hemX c$ylcG c$ddlB c$yciB c$ycbJ c$crl c$yhfL c$sgbU c$rffH c$atoS c$nlpD c$talB c$ybeU c$cspA
+c$Azithromycin	c$tolQ c$acrA c$waaQ c$waaC c$arcB c$zapA c$tolR c$waaG c$waaF c$ylcG c$ycjU c$rfaD c$pstA c$ohsC c$bamE c$queA c$dnaJ c$rplI c$waaP c$yhdP c$surA c$lpcA c$dam c$nlpI c$fur c$pstS c$tolC
+c$Thiolactomycin	c$ubiF c$atpE c$atpC c$ybjX c$rimP c$atpB c$ratB c$waaQ c$dusB c$ycbV c$aceF c$aceE c$atpF c$cptA c$lipA c$ynaE c$guaA c$atpA c$fepG c$ubiC c$tolC c$sspA
+c$Cephradine	c$ubiG c$ybjJ c$cydB c$sucD c$tusC c$recA c$phoP c$lpd c$yceD c$hfq c$rlmE c$yfgC c$dapF c$dksA c$ybeD c$rutA c$rpoN c$gpmM c$recB c$iscS c$nusB c$plsX c$surA c$rpmF c$tolC c$yciM c$fabF c$acrA c$glnD c$yfgD c$rimK c$ygcO c$xerC c$ycdZ c$rplA c$ycjU c$ftnA c$rsmF c$tusB c$gor c$ihfA c$iscU c$ydgD c$pgaC c$flhD c$ygfZ c$tusD c$flgF c$cydX c$acrZ c$emtA c$qmcA c$ybeY
+c$Cerulenin	c$acrA c$waaQ c$yobA c$waaI c$ynaE c$aroK c$guaA c$fadD c$micM c$galM c$hfq c$yciS c$ydfE c$aspA c$sspA c$tolC c$nepI
+c$Minocycline	c$lpxL c$tolQ c$dsrB c$acrA c$ycbZ c$csiD c$waaQ c$mlaF c$phoQ c$ygcO c$rnb c$mlaE c$rfaE c$phoP c$fis c$asmA c$yfgC c$mlaA c$rfaD c$ydfV c$tolB c$pal c$mlaD c$mlaC c$npr c$waaB c$yhfS c$pgm c$acrB c$yegV c$rseB c$waaI c$waaP c$arfA c$talB c$lpcA c$waaY c$tolC c$proQ
+c$Lincomycin	c$cmr c$rbsR
+c$Vancomycin	c$hlpA c$rpmJ c$dksA c$lpxM c$yfgC
+c$Metronidazole	c$uvrA c$ybdN c$nfuA c$typA c$ygcO c$rimK c$lon c$waaG c$hlpA c$rfaE c$recA c$tatC c$rseA c$ybgC c$hfq c$yciS c$dedD c$rfaD c$recG c$dinB c$deaD c$ruvA c$yciT c$gshB c$xseB c$msbA c$gshA c$recO c$rpiA c$uvrD c$tolC c$yciM
+c$Novobiocin	c$ubiF c$wcaI c$gyrB c$acrA c$tktA c$serB c$waaQ c$slmA c$waaC c$nhaA c$waaG c$secB c$recF c$rfaD c$pqqL c$alaS c$dnaJ c$fepE c$emrD c$ygfZ c$lipA c$bssS c$surA c$fur c$tolC
+c$Sulfamethoxazole	c$recG c$dapF c$pstA c$dnaK c$yciT c$rimK c$ygcO c$gpmM c$fis c$degP c$zapB c$ylcG c$recC c$qmcA c$yciS c$ycjU c$ybeY c$pstS c$hns c$tolC c$yciM
+c$Carbenicillin	c$tolB c$cysE c$lpoB c$tolQ c$acrA c$purK c$rbsR c$tonB c$nagA c$yidD c$serC c$yihI c$pyrD c$nlpD c$cas1 c$purD c$purE c$ninE c$guaB c$purM c$pyrC
+c$Chloramphenicol	c$acrA c$ohsC c$ubiG c$alaS c$micM c$elaD c$rfaH c$tolC c$acrB
+c$Hygromycin#SPACE#B	c$cpxR c$kdpE c$kdpA c$cpxA c$kdpC c$kdpB
 c$5-Nitro-2-furaldehyde#SPACE#semicarbazone	c$mdtM
-c$Hygromycin#SPACE#	c$rpoS
-c$Cefoperazone	c$bcr
-c$Troleandomycin	c$phn c$rstB c$rstA
-c$Moxalactam	c$ycgZ
-c$Lincomycin	c$rbsR
+c$Cefamandole	c$envZ
+c$Trimethoprim	c$waaP c$lpoB c$acrZ c$yojN c$waaQ c$waaB c$mlaA c$shoB
+c$Geneticin	c$cpxR c$ntrC
+c$Colistin	c$lpxA c$acrE c$dnaK c$rimK c$ygcO c$tusC c$waaC c$waaG c$rsmH c$recA c$cedA c$hscA c$ylcG c$dcuC c$cysB c$ycbK c$ycjU c$rsmF c$mlaA c$lpxD c$rfaD c$ppiB c$dapF c$pstA c$pgaC c$yciT c$ybeD c$yneE c$rpoN c$ybgF c$flhD c$tusD c$rpmJ c$nusB c$ydjI c$yihL c$atpG c$cydX c$lpxC c$rpmF c$qmcA c$rfaH c$ybeY
+c$Penimepicycline	c$marA c$ycgZ
+c$Polymyxin#SPACE#B	c$fes c$seqA c$ygeO c$gmd c$dnaJ c$yneK c$yfcV c$rffC c$mcaS c$pdxA c$fepC c$fis c$cydX c$fadD
+c$Bicyclomycin	c$glpT c$ybdN c$yjbH c$trxA c$pqqL c$ybdH c$cysB c$yciE c$ymjC c$yghG c$cysI c$ygiW
+c$Streptomycin	c$proL c$folB c$ghrB c$yidD c$mfd
 c$Tetracycline	c$rpmJ c$ohsC
-c$Cefazolin	c$bdm
-c$Rolitetracycline	c$bcr
-c$Chlortetracycline	c$lamB
-c$Puromycin	c$lpoB
-c$Sulfadiazine	c$nudB c$luxS
-c$Gentamicins	c$yidD
-c$Nigericin	c$yceK c$sapD
-c$Nafcillin	c$bdm
+c$Oxacillin	c$tolB c$mrcB c$kgtP c$pal c$mngR c$acrA c$emrD c$acrB c$iscS c$yjhB c$hepA c$asmA c$ybgC c$tolC c$bamB
+c$Nigericin	c$yceK c$degP c$asmA
+c$Doxycycline#SPACE#hyclate	c$rfaG c$rfaB c$mdtJ c$rob c$rseB c$glpF c$yihS c$dedA c$potI c$yrbB c$rfe c$yfgC c$yeiU
+c$Tunicamycin	c$atpE c$iscS c$glnA c$guaA c$fadD c$atpD c$chbG c$fepG c$ubiC c$atpF c$yfcA
+c$Cefoperazone	c$bcr
+c$Furaltadone	c$mdtM c$yagT
+c$Ornidazole	c$ypjC
+c$Apramycin	c$yejG
+c$Cloxacillin	c$mdtE c$mdtF c$tolC
+c$Norfloxacin	c$recA c$rho c$gyrA c$recN c$ispE c$rpsU c$dnaG
+c$Cefoxitin	c$mltB c$lpd
+c$Ofloxacin	c$marA
 c$Oxycarboxin	c$luxS
-c$Oxytetracycline	c$bcr
-c$Sulfachloropyridazine	c$bcr
-c$Josamycin	c$yhfK c$cpdA
+c$Capreomycin	c$glnG c$glnL
+c$Sulfamethazine	c$ycgZ
 c$Dihydrostreptomycin	c$cpdA
-c$Furaltadone	c$yagT c$mdtM
-c$Cefmetazole	c$ycgZ
-c$Rifamycin#SPACE#SV	c$dnaA
+c$Oleandomycin	c$ydfW
+c$Rifamycin#SPACE#SV	c$rpoB
 c$Cephalothin	c$bdm
+c$Hygromycin#SPACE#	c$rpoS
+c$Spiramycin	c$ohsC c$bamE
+c$Gentamicins	c$yidD
+c$Tinidazole	c$wrbA
+c$Ampicillin	c$slt
+c$Cefazolin	c$bdm
+c$Radicicol	c$rbsD c$lon
+c$Sulfathiazole	c$bcr
+c$Puromycin	c$lpoB
+c$Sulfamonomethoxine	c$umpG c$fau
+c$Phenethicillin	c$ydaC
+c$Doxorubicin	c$recA c$yneE c$xerC c$rpiA c$tolC
+c$Oxytetracycline	c$bcr
+c$Enoxacin	c$proL c$soxS
+c$Josamycin	c$yhfK c$cpdA
+c$Paromomycin	c$arcA c$ntrB
+c$Sulfadiazine	c$luxS
+c$Troleandomycin	c$rstB c$phn c$arcB c$rstA
+c$Cefmetazole	c$ycgZ
+c$Chlortetracycline	c$lamB
+c$Sisomicin	c$yejG
+c$Sulfisoxazole	c$bcr
+c$Bleomycin	c$rfaE
+c$Rolitetracycline	c$bcr
