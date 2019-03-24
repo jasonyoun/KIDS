@@ -145,6 +145,10 @@ if __name__ == "__main__":
 					print(results['params'][run])
 					print("")
 
+					# # use F1 for reporting the results
+					# if i==1:
+					# 	AP_params = results['params'][run]
+
 			# average precision
 			print("")
 			print("")

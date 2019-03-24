@@ -227,6 +227,10 @@ class ERMLP:
 			pre_final_correct = tf.sigmoid(correct_pre_act)
 			pre_final_corrupted = tf.sigmoid(corrupted_pre_act)
 
+		if self.params['add_layers'] > 0:
+			pre_final_correct = tf.nn.dropout(pre_final_correct, self.params['drop_out_percent'])
+			pre_final_corrupted = tf.nn.dropout(pre_final_corrupted, self.params['drop_out_percent'])
+
 		out_correct_pre_act = tf.matmul(pre_final_correct, self.weights['B'])
 		out_corrupted_pre_act = tf.matmul(pre_final_corrupted, self.weights['B'])
 
@@ -302,6 +306,9 @@ class ERMLP:
 			# sigmoid
 			log.debug('Using sigmoid for pre-final layer activation')
 			pre_final = tf.sigmoid(pre_act)
+
+		if self.params['add_layers'] > 0 and training:
+			pre_final = tf.nn.dropout(pre_final, self.params['drop_out_percent'])
 
 		out_pre_act = tf.matmul(pre_final, self.weights['B'], name='inference')
 
