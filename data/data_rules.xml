@@ -1,5 +1,13 @@
 <?xml version="1.0"?>
 <rules>
+	<rule name="confers_resistance_to_antibiotic_after_30_mins">
+		<if>
+			<feature name="Predicate" value="confers resistance to antibiotic after 30 mins"></feature>
+		</if>
+		<then>
+			<feature name="Predicate" value="confers resistance to antibiotic"></feature>
+		</then>
+	</rule>
 	<rule name="confers_resistance_to_antibiotic_after_15_hours">
 		<if>
 			<feature name="Predicate" value="confers resistance to antibiotic after 15 hours"></feature>
@@ -38,6 +46,15 @@
 		</if>
 		<then>
 			<feature name="Predicate" value="confers resistance to antibiotic"></feature>
+		</then>
+	</rule>
+	<rule name="response_to_antibiotic_after_30_mins">
+		<if>
+			<feature name="Predicate" value="confers resistance to antibiotic after 30 mins"></feature>
+		</if>
+		<then>
+			<feature name="Predicate" value="has"></feature>
+			<feature name="Object" value="response to antibiotic"></feature>
 		</then>
 	</rule>
 	<rule name="response_to_antibiotic_after_15_hours">
