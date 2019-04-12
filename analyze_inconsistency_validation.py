@@ -101,6 +101,7 @@ if __name__ == '__main__':
 	belief_score = pd_data['Belief']
 	belief_difference = pd_data['Belief difference']
 	bd_unique = np.sort(belief_difference.unique())
+	print(bd_unique)
 
 	bd_list = []
 	f1_list = []
@@ -120,12 +121,19 @@ if __name__ == '__main__':
 		fn = cm_result[1, 0]
 		tn = cm_result[0, 0]
 
+		print('-----')
+		print(tp, fp)
+		print(fn, tn)
+		print('-----')
+
 		recall = calculate_recall(tp, fn)
 		precision = calculate_precision(tp, fp)
 		f1 = calculate_f1(recall, precision)
 
 		bd_list.append(bd)
 		f1_list.append(f1)
+
+		print(bd, f1, precision, recall)
 
 	print(bd_list)
 	print(f1_list)
@@ -137,9 +145,10 @@ if __name__ == '__main__':
 
 
 
-
+	print('-----------------------------------------------')
 
 	bs_unique = np.sort(belief_score.unique())
+	print(bs_unique)
 
 	bs_list = []
 	f1_list = []
@@ -159,12 +168,19 @@ if __name__ == '__main__':
 		fn = cm_result[1, 0]
 		tn = cm_result[0, 0]
 
+		print('-----')
+		print(tp, fp)
+		print(fn, tn)
+		print('-----')
+
 		recall = calculate_recall(tp, fn)
 		precision = calculate_precision(tp, fp)
 		f1 = calculate_f1(recall, precision)
 
 		bs_list.append(bs)
 		f1_list.append(f1)
+
+		print(bs, f1, precision, recall)
 
 	print(bs_list)
 	print(f1_list)
