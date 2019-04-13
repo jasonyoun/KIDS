@@ -108,7 +108,9 @@ class InconsistencyManager:
 
 			# create inconsistency triple list
 			for row_idx in range(pd_filtered_data.shape[0]):
-				if row_idx % 100 == 0: print('row_idx: {}/{}'.format(row_idx, pd_filtered_data.shape[0]))
+				if row_idx % 100 == 0:
+					log.debug('Creating list of inconsistencies: {}/{}'.format(row_idx, pd_filtered_data.shape[0]))
+
 				pd_conflict_data = pd.Series(pd_filtered_data.index[row_idx], index=rest_feature_names)
 
 				conflict_tuples = []

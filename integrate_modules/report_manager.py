@@ -250,6 +250,6 @@ def save_integrated_data(data_out_file, pd_belief_and_source_without_inconsisten
 
 	data_out.write('\t'.join(['Subject','Predicate','Object','Belief','Source size','Sources'])+'\n')
 	for tuple, belief_and_sources in pd_belief_and_source_without_inconsistencies.iterrows():
-		data_out.write('\t'.join(tuple)+'\t'+str("{0:.2f}".format(belief_and_sources[0]))+'\t'+str(len(belief_and_sources[1]))+'\t'+','.join(belief_and_sources[1])+'\n')
+		data_out.write('\t'.join(tuple)+'\t'+str("{0:.2f}".format(belief_and_sources.iloc[0]))+'\t'+str(len(belief_and_sources.iloc[1]))+'\t'+','.join(belief_and_sources.iloc[1])+'\n')
 
 	data_out.close()
