@@ -18,11 +18,17 @@ To-do:
 
 #!/usr/bin/python
 
+import os
+import sys
 import pandas as pd
 import numpy as np
 import xml.etree.ElementTree as ET
 import logging as log
-from .utilities import get_pd_of_statement
+
+directory = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(directory, './'))
+
+from utilities import get_pd_of_statement
 
 class DataManager:
 	"""
@@ -38,16 +44,17 @@ class DataManager:
 	UA_STR = 'upregulated by antibiotic'
 	NUA_STR = 'not upregulated by antibiotic'
 
-	def __init__(self, data_paths, map_file, data_rule_file):
+	def __init__(self, data_paths=None, map_file=None, data_rule_file=None):
 		"""
-		Class constructor for DataManager.
+		Class constructor for DataManager. All inputs are optional
+		since only name mapping may be used somewhere else.
 
 		Inputs:
-			data_paths: path & source for each dataset
-			map_file: data name mapping file name
-			data_rule_file: data rule file name
+			data_paths: (optional) path & source for each dataset
+			map_file: (optional) data name mapping file name
+			data_rule_file: (optional) data rule file name
 		"""
-		self.pd_data_paths = pd.read_csv(data_paths, sep = '\t', comment = '#')
+		self.data_paths = data_paths
 		self.map_file = map_file
 		self.data_rule_file = data_rule_file
 
@@ -68,8 +75,13 @@ class DataManager:
 		"""
 		list_integrated_data = []
 
+		if isinstance(self.data_paths, str):
+			pd_data_paths = pd.read_csv(self.data_paths, sep='\t', comment='#')
+		else:
+			pd_data_paths = self.data_paths
+
 		# iterate over each dataset and perform name mappipng
-		for idx, row in self.pd_data_paths.iterrows():
+		for idx, row in pd_data_paths.iterrows():
 			str_source = row['Source']
 			str_path = row['Path']
 
@@ -85,15 +97,16 @@ class DataManager:
 			if (before - after) > 0:
 				log.warning('Dropping {} missing values.'.format(before-after))
 
-			pd_data = self._name_map_data(pd_data, str_source)
+			pd_data = self.name_map_data(pd_data, str_source)
 			pd_data['Source'] = str_source
 			list_integrated_data.append(pd_data)
 
 			log.info('Added {} tuples from source {}'.format(pd_data.shape[0], str_source))
 
 		# apply data rule
-		pd_integrated_data = pd.concat(list_integrated_data)
-		pd_integrated_data = self._apply_data_rule(pd_integrated_data)
+		pd_integrated_data = pd.concat(list_integrated_data, sort=True)
+		if self.data_rule_file:
+			pd_integrated_data = self._apply_data_rule(pd_integrated_data)
 		pd_integrated_data.index = range(pd_integrated_data.shape[0]) # update the index
 
 		log.info('Total of {} tuples integrated.'.format(pd_integrated_data.shape[0]))
@@ -119,7 +132,7 @@ class DataManager:
 
 		return pd_data.drop_duplicates()
 
-	def _name_map_data(self, pd_data, str_source):
+	def name_map_data(self, pd_data, str_source):
 		"""
 		(Private) Perform name mapping given data from single source.
 
