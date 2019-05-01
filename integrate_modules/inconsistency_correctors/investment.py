@@ -83,7 +83,7 @@ class Investment(object):
 
 			if answers is not None:
 				inconsistencies_with_max_belief, pd_present_belief_and_source_without_inconsistencies = Sums.find_tuple_with_max_belief(np_present_belief_vector, inconsistencies, pd_grouped_data)
-				accuracy = measure_accuracy(inconsistencies_with_max_belief, answers)
+				accuracy = measure_accuracy(inconsistencies_with_max_belief, answers, SPO_LIST)
 
 				if past_accuracy == accuracy:
 					log.info('\taccuracy saturation {} {} {}'.format(iteration, delta, accuracy))

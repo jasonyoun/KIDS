@@ -26,8 +26,9 @@ import logging as log
 # import from knowledge_scholar package
 from integrate_modules.data_manager import DataManager
 from integrate_modules.inconsistency_manager import InconsistencyManager
-from integrate_modules.report_manager import plot_trustworthiness, save_resolved_inconsistencies, save_integrated_data
+from integrate_modules.report_manager import plot_trustworthiness
 from integrate_modules.inconsistency_correctors.averagelog import AverageLog
+from integrate_modules.inconsistency_correctors.inconsistency_corrector import InconsistencyCorrector
 
 # default arguments
 DEFAULT_DATA_PATH_STR = './data/data_path_file.txt'
@@ -102,19 +103,28 @@ if __name__ == '__main__':
 		pd_data = dm.drop_temporal_info(pd_data)
 
 	# perform inconsistency detection
-	inconsistencies = InconsistencyManager(args.inconsistency_rule).detect_inconsistencies(pd_data)
+	im = InconsistencyManager(args.inconsistency_rule)
+	inconsistencies = im.detect_inconsistencies(pd_data)
+
+	ic = InconsistencyCorrector('AverageLog')
+	resolve_inconsistencies_result = ic.resolve_inconsistencies(pd_data, inconsistencies)
 
 	# resolve inconsistencies
-	resolve_inconsistencies_result = AverageLog.resolve_inconsistencies(pd_data, inconsistencies)
-	inconsistencies_with_max_belief = resolve_inconsistencies_result[0]
-	pd_belief_and_source_without_inconsistencies = resolve_inconsistencies_result[1]
+	pd_resolved_inconsistencies = resolve_inconsistencies_result[0]
+	pd_without_inconsistencies = resolve_inconsistencies_result[1]
 	np_trustworthiness_vector = resolve_inconsistencies_result[2]
+
+
+	# im.reinstate_resolved_inconsistencies(
+	# 	pd_without_inconsistencies,
+	# 	pd_resolved_inconsistencies)
+
 
 	# report data integration results
 	plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies)
 
 	# save inconsistencies
-	save_resolved_inconsistencies(args.inconsistency_out, inconsistencies_with_max_belief)
+	pd_resolved_inconsistencies.to_csv(args.inconsistency_out, index=False, sep='\t')
 
 	# save integrated data
-	save_integrated_data(args.data_out, pd_belief_and_source_without_inconsistencies)
+	pd_without_inconsistencies.to_csv(args.data_out, index=False, sep='\t')

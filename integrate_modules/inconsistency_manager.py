@@ -9,6 +9,7 @@ Description:
 
 To-do:
 	1. Move _SPO_LIST to global file.
+	2. Move inconsistency correctors as sub class.
 """
 
 import operator
@@ -125,6 +126,10 @@ class InconsistencyManager:
 		log.info('Found {} inconsistencies'.format(len(inconsistencies)))
 
 		return inconsistencies
+
+	def reinstate_resolved_inconsistencies(self, pd_data_without_inconsistencies, pd_resolved_inconsistencies):
+		print(pd_data_without_inconsistencies.head())
+		print(pd_resolved_inconsistencies.head())
 
 	def _data_has_conflict_values(self, all_feature_values, conflict_feature_values):
 		"""
