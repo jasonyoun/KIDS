@@ -1,3 +1,17 @@
+"""
+Filename: inconsistency_corrector.py
+
+Authors:
+	Jason Youn - jyoun@ucdavis.edu
+
+Description:
+	Correct inconsistencies using different methods.
+
+To-do:
+	1. comments
+"""
+
+
 import sys
 import numpy as np
 import pandas as pd

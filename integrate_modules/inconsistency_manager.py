@@ -12,30 +12,36 @@ To-do:
 	2. Move inconsistency correctors as sub class.
 """
 
+import sys
 import operator
 import math
 import numpy as np
 import pandas as pd
 import logging as log
+import xml.etree.ElementTree as ET
 from collections import Counter
 from .utilities import get_pd_of_statement
-import xml.etree.ElementTree as ET
+from .inconsistency_correctors.inconsistency_corrector import InconsistencyCorrector
 
-class InconsistencyManager:
+class InconsistencyManager(InconsistencyCorrector):
 	"""
 	Class for detecting the inconsistencies.
 	"""
-
 	_SPO_LIST = ['Subject', 'Predicate', 'Object']
 
-	def __init__(self, inconsistency_rule_file):
+	def __init__(self, inconsistency_rule_file, resolver_mode='AverageLog'):
 		"""
 		Class constructor foro InconsistencyManager.
 
 		Inputs:
 			inconsistency_rule_file: XML file name containing the inconsistency rules
+			resolver_mode: string denoting which inconsistency resolution to use
+				(AverageLog | Investment | PooledInvestment | Sums | TruthFinder | Voting)
 		"""
 		self.inconsistency_rule_file = inconsistency_rule_file
+
+		# inherit InconsistencyCorrector
+		self.ic = InconsistencyCorrector(resolver_mode)
 
 	def detect_inconsistencies(self, pd_data):
 		"""
@@ -127,9 +133,18 @@ class InconsistencyManager:
 
 		return inconsistencies
 
-	def reinstate_resolved_inconsistencies(self, pd_data_without_inconsistencies, pd_resolved_inconsistencies):
-		print(pd_data_without_inconsistencies.head())
-		print(pd_resolved_inconsistencies.head())
+
+	def resolve_inconsistencies(self, pd_data, inconsistencies, **kwargs):
+		return self.ic.resolve_inconsistencies(pd_data, inconsistencies, **kwargs)
+
+
+	def reinstate_resolved_inconsistencies(self, pd_data_without_inconsistencies, pd_resolved_inconsistencies, mode='all'):
+		if mode == 'all':
+			pd_to_append = pd_resolved_inconsistencies.loc[:, ['Subject', 'Predicate', 'Object', 'Belief', 'Source size', 'Sources']]
+
+		pd_data_final = pd.concat([pd_data_without_inconsistencies, pd_to_append], ignore_index=True, sort=False)
+
+		return pd_data_final
 
 	def _data_has_conflict_values(self, all_feature_values, conflict_feature_values):
 		"""

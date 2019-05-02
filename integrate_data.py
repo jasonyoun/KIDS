@@ -27,8 +27,6 @@ import logging as log
 from integrate_modules.data_manager import DataManager
 from integrate_modules.inconsistency_manager import InconsistencyManager
 from integrate_modules.report_manager import plot_trustworthiness
-from integrate_modules.inconsistency_correctors.averagelog import AverageLog
-from integrate_modules.inconsistency_correctors.inconsistency_corrector import InconsistencyCorrector
 
 # default arguments
 DEFAULT_DATA_PATH_STR = './data/data_path_file.txt'
@@ -103,22 +101,18 @@ if __name__ == '__main__':
 		pd_data = dm.drop_temporal_info(pd_data)
 
 	# perform inconsistency detection
-	im = InconsistencyManager(args.inconsistency_rule)
+	im = InconsistencyManager(args.inconsistency_rule, resolver_mode='AverageLog')
 	inconsistencies = im.detect_inconsistencies(pd_data)
 
-	ic = InconsistencyCorrector('AverageLog')
-	resolve_inconsistencies_result = ic.resolve_inconsistencies(pd_data, inconsistencies)
-
-	# resolve inconsistencies
+	# perform inconsistency resolution and parse the results
+	resolve_inconsistencies_result = im.resolve_inconsistencies(pd_data, inconsistencies)
 	pd_resolved_inconsistencies = resolve_inconsistencies_result[0]
 	pd_without_inconsistencies = resolve_inconsistencies_result[1]
 	np_trustworthiness_vector = resolve_inconsistencies_result[2]
 
-
-	# im.reinstate_resolved_inconsistencies(
-	# 	pd_without_inconsistencies,
-	# 	pd_resolved_inconsistencies)
-
+	pd_data_final = im.reinstate_resolved_inconsistencies(
+		pd_without_inconsistencies,
+		pd_resolved_inconsistencies)
 
 	# report data integration results
 	plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies)
@@ -127,4 +121,4 @@ if __name__ == '__main__':
 	pd_resolved_inconsistencies.to_csv(args.inconsistency_out, index=False, sep='\t')
 
 	# save integrated data
-	pd_without_inconsistencies.to_csv(args.data_out, index=False, sep='\t')
+	pd_data_final.to_csv(args.data_out, index=False, sep='\t')
