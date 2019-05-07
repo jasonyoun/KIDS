@@ -30,7 +30,7 @@ pd.options.mode.chained_assignment = None
 DEFAULT_OUTPUT_DIR_STR = '../output'
 
 # default file names
-DEFAULT_INCONSISTENCY_FILE_TXT = '../output/inconsistency.txt'
+DEFAULT_INCONSISTENCY_FILE_TXT = '../output/resolved_inconsistencies.txt'
 DEFAULT_VALIDATION_FILE_TXT = '../data/inconsistency_validation/validation_results.txt'
 DEFAULT_ANALYSIS_RESULT_TXT = 'inconsistency_analysis.txt'
 DEFAULT_COMBINED_EXCEL = 'resolution_validation_combined.xlsx'

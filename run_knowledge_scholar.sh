@@ -28,8 +28,18 @@ data_copy_filepath="$folds_dir/$data_filename"
 # variables
 num_folds=5
 
-# run programs
-python3 integrate_data.py
+# do integration until wet-lab validation is needed
+python3 integrate_data.py --phase='until_val'
+
+# analyze wet-lab validation results
+cd ./tools
+python3 analyze_inconsistency_validation.py
+
+# do rest of the integration using the validation results
+cd ..
+python3 integrate_data.py --phase='after_val'
+
+# do post-processing
 python3 postprocess_data.py
 
 # process entity_full_names.txt

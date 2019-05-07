@@ -26,7 +26,7 @@ from postprocess_modules.split_folds import SplitFolds
 
 # default file paths
 DEFAULT_OUTPUT_PATH_STR = './output'
-DEFAULT_DATA_PATH_STR = './output/out.txt'
+DEFAULT_DATA_PATH_STR = './output/kg_final.txt'
 DEFAULT_DR_PATH_STR = './data/domain_range.txt'
 
 # default file names
