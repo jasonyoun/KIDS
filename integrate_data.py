@@ -33,8 +33,11 @@ DEFAULT_DATA_PATH_STR = './data/data_path_file.txt'
 DEFAULT_MAP_STR = './data/data_map.txt'
 DEFAULT_DATA_RULE_STR = './data/data_rules.xml'
 DEFAULT_INCONSISTENCY_RULES_STR = './data/inconsistency_rules.xml'
-DEFAULT_DATA_OUT_STR = './output/out.txt'
-DEFAULT_INCONSISTENCY_OUT_STR = './output/inconsistency.txt'
+DEFAULT_WITHOUT_INCONSISTSENCIES_STR = './output/kg_without_inconsistencies.txt'
+DEFAULT_RESOLVED_INCONSISTENCIES_STR = './output/resolved_inconsistencies.txt'
+DEFAULT_VALIDATED_INCONSISTENCIES_STR = './output/resolution_validation_combined.xlsx'
+DEFAULT_FINAL_KG_STR = './output/kg_final.txt'
+DEFAULT_PHASE_STR = 'all'
 
 def set_logging():
 	"""
@@ -72,18 +75,35 @@ def parse_argument():
 		default=DEFAULT_INCONSISTENCY_RULES_STR,
 		help='Path to the file inconsistency_rules.xml')
 	parser.add_argument(
-		'--data_out',
-		default=DEFAULT_DATA_OUT_STR,
-		help='Path to save the integrated data file')
+		'--without_inconsistsencies',
+		default=DEFAULT_WITHOUT_INCONSISTSENCIES_STR,
+		help='Path to save the knowledge graph without inconsistencies')
 	parser.add_argument(
-		'--inconsistency_out',
-		default=DEFAULT_INCONSISTENCY_OUT_STR,
+		'--resolved_inconsistencies',
+		default=DEFAULT_RESOLVED_INCONSISTENCIES_STR,
 		help='Path to save the inconsistencies file')
+	parser.add_argument(
+		'--validated_inconsistencies',
+		default=DEFAULT_VALIDATED_INCONSISTENCIES_STR,
+		help='Path for validationed inconsistencies file')
+	parser.add_argument(
+		'--data_out',
+		default=DEFAULT_FINAL_KG_STR,
+		help='Path to save the final knowledge graph')
 	parser.add_argument(
 		'--use_temporal',
 		default=False,
 		action='store_true',
 		help='Remove temporal data unless this option is set')
+	parser.add_argument(
+		'--phase',
+		default=DEFAULT_PHASE_STR,
+		help='Select one of three phase strings (until_val | after_val | all)')
+
+	# check for correct phase argument
+	phase_arg = parser.parse_args().phase
+	if phase_arg not in ['until_val', 'after_val', 'all']:
+		raise ValueError('Invalid phase argumnet \'{}\'!'.format(phase_arg))
 
 	return parser.parse_args()
 
@@ -92,33 +112,46 @@ if __name__ == '__main__':
 	set_logging()
 	args = parse_argument()
 
-	# perform 1) knowledge integration and 2) knowledge rule application
-	dm = DataManager(args.data_path, args.map, args.data_rule)
-	pd_data = dm.integrate_data()
-
-	# remove temporal data in predicate
-	if not args.use_temporal:
-		pd_data = dm.drop_temporal_info(pd_data)
-
-	# perform inconsistency detection
+	# construct InconsistencyManager class
 	im = InconsistencyManager(args.inconsistency_rule, resolver_mode='AverageLog')
-	inconsistencies = im.detect_inconsistencies(pd_data)
 
-	# perform inconsistency resolution and parse the results
-	resolve_inconsistencies_result = im.resolve_inconsistencies(pd_data, inconsistencies)
-	pd_resolved_inconsistencies = resolve_inconsistencies_result[0]
-	pd_without_inconsistencies = resolve_inconsistencies_result[1]
-	np_trustworthiness_vector = resolve_inconsistencies_result[2]
+	if args.phase == 'all' or args.phase == 'until_val':
+		# perform 1) knowledge integration and 2) knowledge rule application
+		dm = DataManager(args.data_path, args.map, args.data_rule)
+		pd_data = dm.integrate_data()
 
-	pd_data_final = im.reinstate_resolved_inconsistencies(
-		pd_without_inconsistencies,
-		pd_resolved_inconsistencies)
+		# remove temporal data in predicate
+		if not args.use_temporal:
+			pd_data = dm.drop_temporal_info(pd_data)
 
-	# report data integration results
-	plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies)
+		# perform inconsistency detection
+		inconsistencies = im.detect_inconsistencies(pd_data)
 
-	# save inconsistencies
-	pd_resolved_inconsistencies.to_csv(args.inconsistency_out, index=False, sep='\t')
+		# perform inconsistency resolution and parse the results
+		resolve_inconsistencies_result = im.resolve_inconsistencies(pd_data, inconsistencies)
+		pd_resolved_inconsistencies = resolve_inconsistencies_result[0]
+		pd_without_inconsistencies = resolve_inconsistencies_result[1]
+		np_trustworthiness_vector = resolve_inconsistencies_result[2]
 
-	# save integrated data
-	pd_data_final.to_csv(args.data_out, index=False, sep='\t')
+		# report data integration results
+		plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies)
+
+		# save results for wet lab validation
+		log.info('Saving knowledge graph without inconsistencies to \'{}\''.format(args.without_inconsistsencies))
+		pd_without_inconsistencies.to_csv(args.without_inconsistsencies, index=False, sep='\t')
+
+		log.info('Saving resolved inconsistencies to \'{}\''.format(args.resolved_inconsistencies))
+		pd_resolved_inconsistencies.to_csv(args.resolved_inconsistencies, index=False, sep='\t')
+
+	if args.phase == 'all' or args.phase == 'after_val':
+		# load previously saved results and validation results
+		pd_without_inconsistencies = pd.read_csv(args.without_inconsistsencies, sep = '\t')
+		pd_validated_inconsistencies = pd.read_excel(args.validated_inconsistencies, na_values=[], keep_default_na=False)
+
+		# insert resolved inconsistsencies back into the KG
+		pd_data_final = im.reinstate_resolved_inconsistencies(
+			pd_without_inconsistencies,
+			pd_validated_inconsistencies)
+
+		# save integrated data
+		pd_data_final.to_csv(args.data_out, index=False, sep='\t')

@@ -137,12 +137,33 @@ class InconsistencyManager(InconsistencyCorrector):
 	def resolve_inconsistencies(self, pd_data, inconsistencies, **kwargs):
 		return self.ic.resolve_inconsistencies(pd_data, inconsistencies, **kwargs)
 
+	def reinstate_resolved_inconsistencies(self, pd_data_without_inconsistencies, pd_validated_inconsistencies, mode='only_validated'):
+		# column names to use
+		final_column_names = ['Subject', 'Predicate', 'Object', 'Belief', 'Source size', 'Sources']
+		columns_to_drop = ['Total source size', 'Mean belief of conflicting tuples', 'Conflicting tuple info']
 
-	def reinstate_resolved_inconsistencies(self, pd_data_without_inconsistencies, pd_resolved_inconsistencies, mode='all'):
+		# drop unnecessary columns
+		pd_filtered = pd_validated_inconsistencies.drop(columns=columns_to_drop)
+
+		log.info('Number of data without inconsistencies: {}'.format(pd_data_without_inconsistencies.shape[0]))
+		log.info('Number of resolved inconsistencies: {}'.format(pd_filtered.shape[0]))
+
+		# select triplets to append depending on the selected mode
 		if mode == 'all':
-			pd_to_append = pd_resolved_inconsistencies.loc[:, ['Subject', 'Predicate', 'Object', 'Belief', 'Source size', 'Sources']]
+			pd_to_append = pd_filtered
+		elif mode == 'only_validated':
+			pd_to_append = pd_filtered[pd_filtered['Validation'] != '']
+			pd_to_append = pd_to_append[pd_to_append['Match'] == 'True']
+		else:
+			raise ValueError('Invalid mode \'{}\' passed'.format(mode))
 
+		log.info('Number of resolved inconsistencies to append: {}'.format(pd_to_append.shape[0]))
+
+		# append the selected triplets
+		pd_to_append = pd_to_append.loc[:, final_column_names]
 		pd_data_final = pd.concat([pd_data_without_inconsistencies, pd_to_append], ignore_index=True, sort=False)
+
+		log.info('Number of triplets in the final knowledge graph: {}'.format(pd_data_final.shape[0]))
 
 		return pd_data_final
 
