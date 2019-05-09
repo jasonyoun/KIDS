@@ -33,13 +33,17 @@ def parse_argument():
 		nargs='?',
 		default='./',
 		help='Base directory')
+	parser.add_argument(
+		'--logfile',
+		default='',
+		help='Path to save the log')
 
 	return parser.parse_args()
 
 if __name__ == '__main__':
 	# set log and parse args
-	model_global.set_logging()
 	args = parse_argument()
+	model_global.set_logging(args.logfile)
 
 	# directory and filename setup
 	model_instance_dir = 'model_instance'

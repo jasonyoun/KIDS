@@ -41,12 +41,15 @@ def parse_argument():
 		nargs='?',
 		default='./',
 		help='Base directory')
-
 	parser.add_argument(
 		'--use_calibration',
 		action='store_const',
 		default=False,
 		const=True)
+	parser.add_argument(
+		'--logfile',
+		default='',
+		help='Path to save the log')
 
 	return parser.parse_args()
 
@@ -69,8 +72,8 @@ def calibrate_probabilties(predictions_list_test, num_preds, calibration_models,
 
 if __name__ == '__main__':
 	# set log and parse args
-	model_global.set_logging()
 	args = parse_argument()
+	model_global.set_logging(args.logfile)
 
 	# some init
 	calibrated = args.use_calibration

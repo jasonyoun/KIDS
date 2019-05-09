@@ -30,7 +30,7 @@ import logging as log
 import tensorflow as tf
 from er_mlp import ERMLP
 from data_processor import DataProcessor
-from metrics import plot_cost
+from metrics import plot_cost, plot_map
 
 def run_model(params):
 	"""
@@ -144,6 +144,7 @@ def run_model(params):
 	# some variable initializations
 	iter_list = []
 	cost_list = []
+	map_list = []
 	iteration = 0
 
 	# init variables
@@ -189,13 +190,14 @@ def run_model(params):
 					train_writer.add_summary(train_summary, iteration)
 
 					thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
-					er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='current')
+					current_map = er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='current')
 					log.info('current cost: {}'.format(current_cost))
 				else:
 					_, current_cost = sess.run([optimizer, cost], feed_dict=feed_dict)
 
 				iter_list.append(iteration)
 				cost_list.append(current_cost)
+				map_list.append(current_map)
 
 				# update iteration
 				iteration += 1
@@ -210,6 +212,7 @@ def run_model(params):
 
 		# plot the cost graph
 		plot_cost(iter_list, cost_list, params['MODEL_SAVE_DIRECTORY'])
+		plot_map(iter_list, map_list, params['MODEL_SAVE_DIRECTORY'])
 
 		# save the model & parameters if prompted
 		if params['SAVE_MODEL']:

@@ -587,3 +587,5 @@ class ERMLP:
 		log.debug('{} test accuracy: {}'.format(_type, accuracy_test))
 		log.debug('{} test roc auc: {}'.format(_type, roc_auc_test))
 		log.debug('{} test confusion matrix: {}'.format(_type, confusion_test.tolist()))
+
+		return mean_average_precision_test

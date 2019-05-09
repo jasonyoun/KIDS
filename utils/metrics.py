@@ -370,5 +370,27 @@ def plot_cost(iterations, cost_list, directory):
 	if not os.path.exists(directory):
 		os.makedirs(directory)
 
-	filename = directory + '/cost_.png'
+	filename = directory + '/cost.png'
+	plt.savefig(filename)
+
+def plot_map(iterations, map_list, directory):
+	"""
+	Plot and save map graph.
+
+	Inputs:
+		iterations: list containing the iteration
+		map_list: list containing the map at each corresponding iteration
+		directory: directory to save the map plot
+	"""
+	plt.figure()
+	plt.plot(iterations, map_list, lw=1, color='darkorange')
+	plt.xlabel('Iteration #')
+	plt.ylabel('Loss')
+	plt.title('Loss per iteration of training')
+
+	directory = directory + '/fig'
+	if not os.path.exists(directory):
+		os.makedirs(directory)
+
+	filename = directory + '/map.png'
 	plt.savefig(filename)
