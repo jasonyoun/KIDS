@@ -185,19 +185,19 @@ def run_model(params):
 					er_mlp.flip_placeholder: flip}
 
 				# display progress
-				if iteration % params['DISPLAY_STEP'] == 0:
+				if (i == 0) and (epoch % params['DISPLAY_STEP'] == 0):
 					_, train_summary, current_cost = sess.run([optimizer, merged, cost], feed_dict=feed_dict)
 					train_writer.add_summary(train_summary, iteration)
 
 					thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
 					current_map = er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='current')
 					log.info('current cost: {}'.format(current_cost))
-				else:
-					_, current_cost = sess.run([optimizer, cost], feed_dict=feed_dict)
 
-				iter_list.append(iteration)
-				cost_list.append(current_cost)
-				map_list.append(current_map)
+					iter_list.append(iteration)
+					cost_list.append(current_cost)
+					map_list.append(current_map)
+				else:
+					sess.run(optimizer, feed_dict=feed_dict)
 
 				# update iteration
 				iteration += 1

@@ -1,618 +1,622 @@
-c$ybbA	c$Kanamycin
-c$uvrA	c$Metronidazole c$Mitomycin#SPACE#C c$Streptonigrin
-c$cpdA	c$Josamycin c$Dihydrostreptomycin c$Fosfomycin
-c$minC	c$Mecillinam
-c$rpmE	c$CHIR090
-c$tusC	c$Cephradine c$Colistin c$Neomycin
-c$lon	c$Kanamycin c$Metronidazole c$Radicicol
-c$rffC	c$Cefsulodin c$Phleomycin c$Mecillinam c$Polymyxin#SPACE#B c$Bacitracin
-c$ydcL	c$Lomefloxacin
-c$rfaE	c$Triclosan c$Bleomycin c$Metronidazole c$Minocycline c$Spectinomycin c$Doxycycline
-c$pdxA	c$Cefsulodin c$Mecillinam c$Polymyxin#SPACE#B
-c$waaF	c$Clarythromycin c$Dactinomycin c$Azithromycin c$Streptonigrin c$Bacitracin
-c$recC	c$Mitomycin#SPACE#C c$Levofloxacin c$Sulfamethoxazole
-c$asmA	c$Nigericin c$Clarythromycin c$Dactinomycin c$Minocycline c$Oxacillin c$Streptonigrin c$Spectinomycin c$Bacitracin
-c$ompA	c$Ceftazidime c$Cefsulodin c$Doxycycline
-c$entE	c$Fosfomycin
-c$yjiS	c$Lomefloxacin
-c$ompC	c$CHIR090 c$Lomefloxacin
-c$fepD	c$Bacitracin
-c$tolB	c$Amoxicillin c$Carbenicillin c$Cefsulodin c$Dactinomycin c$Minocycline c$Oxacillin c$Mecillinam
-c$pal	c$Amoxicillin c$Cefsulodin c$Dactinomycin c$Minocycline c$Oxacillin c$Mecillinam c$Bacitracin
-c$dksA	c$Triclosan c$Amoxicillin c$Vancomycin c$Cephradine c$Clarythromycin c$Spectinomycin c$Neomycin
-c$gcvH	c$Sulfamethizole
-c$ratB	c$Fosfomycin c$Streptonigrin c$Thiolactomycin
-c$atpD	c$Amoxicillin c$Cefsulodin c$Tunicamycin c$Bacitracin
-c$rbfA	c$Cefsulodin c$Mitomycin#SPACE#C c$Spectinomycin
-c$dnaJ	c$Triclosan c$Kanamycin c$Clarythromycin c$Novobiocin c$Mecillinam c$Azithromycin c$Polymyxin#SPACE#B
-c$wzzE	c$Mecillinam
-c$yqiC	c$Fosfomycin c$Mecillinam c$Streptonigrin
-c$pcm	c$Doxycycline
-c$frdD	c$Ceftazidime
-c$eutE	c$Amoxicillin
-c$purD	c$Carbenicillin c$Cefsulodin c$Dactinomycin c$Mecillinam c$Doxycycline c$Bacitracin
-c$talB	c$Phleomycin c$Minocycline
-c$surA	c$Cephradine c$Mitomycin#SPACE#C c$Novobiocin c$Azithromycin c$CHIR090 c$Bacitracin
-c$gntK	c$Neomycin
-c$tabA	c$Doxycycline
-c$uxaB	c$Fosfomycin
-c$fepG	c$Fosfomycin c$Thiolactomycin c$Tunicamycin
-c$nlpI	c$Cefsulodin c$Azithromycin c$Doxycycline
-c$tolC	c$Cephradine c$Chloramphenicol c$Mitomycin#SPACE#C c$Cerulenin c$Minocycline c$Streptonigrin c$Doxorubicin c$Triclosan c$Metronidazole c$Novobiocin c$Azithromycin c$Oxacillin c$Thiolactomycin c$Sulfamethoxazole c$Cloxacillin
-c$yciM	c$Cephradine c$Metronidazole c$Neomycin c$Sulfamethoxazole
-c$fabF	c$Cephradine c$Phleomycin
-c$pstC	c$Cefsulodin
-c$tolQ	c$Ceftazidime c$Carbenicillin c$Cefsulodin c$Dactinomycin c$Minocycline c$Azithromycin c$Bacitracin
-c$acrA	c$Cephradine c$Triclosan c$Carbenicillin c$Chloramphenicol c$Clarythromycin c$Cerulenin c$Novobiocin c$Minocycline c$Oxacillin c$Azithromycin c$Streptonigrin c$Neomycin
-c$glnD	c$Cephradine
-c$rbsR	c$Carbenicillin c$Lincomycin c$Doxycycline
-c$ydeU	c$Phleomycin
-c$waaC	c$Colistin c$Novobiocin c$Mecillinam c$Azithromycin c$Neomycin
-c$uvrB	c$Mitomycin#SPACE#C c$Streptonigrin
-c$ybiA	c$Lomefloxacin
-c$nuoE	c$Fosfomycin
-c$frlR	c$Spectinomycin
-c$hlpA	c$Vancomycin c$Metronidazole
-c$gsiC	c$Ceftazidime
-c$secB	c$Novobiocin c$Bacitracin
-c$purE	c$Carbenicillin c$Cefsulodin c$Dactinomycin c$Mecillinam
-c$yaiY	c$Fosfomycin
-c$guaB	c$Carbenicillin c$Mecillinam c$CHIR090 c$Spectinomycin c$Doxycycline
-c$dsbA	c$Mecillinam
-c$yrbL	c$Kanamycin
-c$ycjU	c$Cephradine c$Ceftazidime c$Colistin c$Azithromycin c$Sulfamethoxazole
-c$rpsF	c$Doxycycline
-c$mlaA	c$Colistin c$Cefsulodin c$Minocycline c$Trimethoprim c$Doxycycline
-c$pldB	c$Amoxicillin
-c$rfaD	c$Triclosan c$Metronidazole c$Colistin c$Clarythromycin c$Novobiocin c$Dactinomycin c$Minocycline c$Azithromycin c$Streptonigrin c$Spectinomycin c$Neomycin c$Bacitracin
-c$ppiB	c$Amoxicillin c$Colistin c$Cefsulodin c$Neomycin c$Bacitracin
-c$cpxA	c$Hygromycin#SPACE#B c$Sulfamethizole
-c$mdtM	c$5-Nitro-2-furaldehyde#SPACE#semicarbazone c$Furaltadone
-c$alaS	c$Chloramphenicol c$Novobiocin
-c$speB	c$Fosfomycin
-c$ampG	c$Cefsulodin c$Mecillinam
-c$ybiS	c$Lomefloxacin
-c$groS	c$Kanamycin
-c$atoS	c$Phleomycin c$Doxycycline
-c$gshB	c$Metronidazole c$Neomycin
-c$ygfZ	c$Cephradine c$Novobiocin
-c$waaI	c$Cerulenin c$Minocycline c$Doxycycline
-c$yhdP	c$Clarythromycin c$Azithromycin c$Neomycin
-c$fabI	c$Triclosan
-c$aroK	c$Cefsulodin c$Cerulenin
-c$yceG	c$Mecillinam
-c$envZ	c$Cefamandole c$Lomefloxacin
-c$yojN	c$Trimethoprim
-c$lpcA	c$Dactinomycin c$Minocycline c$Azithromycin c$Streptonigrin c$Spectinomycin c$CHIR090 c$Bacitracin
-c$hrpA	c$Spectinomycin c$Doxycycline
-c$ybdL	c$Ceftazidime
-c$rcsF	c$CHIR090
-c$ybeY	c$Kanamycin c$Cephradine c$Colistin c$Clarythromycin c$Sulfamethoxazole
-c$aspA	c$Mitomycin#SPACE#C c$Cerulenin
-c$ntrC	c$Geneticin
-c$lpxA	c$Colistin
-c$arsC	c$Amoxicillin
-c$dsrB	c$Minocycline
-c$ycgZ	c$Cefmetazole c$Penimepicycline c$Sulfamethazine
-c$waaQ	c$Cefsulodin c$Cerulenin c$Novobiocin c$Minocycline c$Azithromycin c$Trimethoprim c$Thiolactomycin c$Doxycycline
-c$rbsK	c$Mitomycin#SPACE#C c$Dactinomycin c$Doxycycline
-c$hflX	c$Kanamycin c$Dactinomycin
-c$recN	c$Streptonigrin c$Lomefloxacin c$Norfloxacin
-c$ygeO	c$Polymyxin#SPACE#B
-c$cpsG	c$Amoxicillin c$Cefsulodin c$Bacitracin
-c$tolR	c$Ceftazidime c$Amoxicillin c$Triclosan c$Cefsulodin c$Dactinomycin c$Azithromycin c$Bacitracin
-c$waaG	c$Metronidazole c$Colistin c$Novobiocin c$Azithromycin c$CHIR090 c$Doxycycline
-c$mlaE	c$Cefsulodin c$Phleomycin c$Minocycline c$Spectinomycin
-c$pyrB	c$Mecillinam c$Spectinomycin c$Doxycycline
-c$phoP	c$Cephradine c$Minocycline c$Lomefloxacin
-c$hemX	c$Phleomycin c$Streptonigrin
-c$hscA	c$Colistin
-c$trxA	c$Bicyclomycin
-c$lpd	c$Cephradine c$Cefoxitin
-c$yhiI	c$Amoxicillin c$Kanamycin
-c$queE	c$Kanamycin
-c$hfq	c$Cephradine c$Metronidazole c$Cefsulodin c$Cerulenin c$CHIR090 c$Doxycycline
-c$rlmE	c$Cephradine
-c$acpT	c$Neomycin
-c$yfgC	c$Cephradine c$Vancomycin c$Triclosan c$Clarythromycin c$Dactinomycin c$Minocycline c$Streptonigrin c$Doxycycline#SPACE#hyclate c$Neomycin
-c$ratA	c$Streptonigrin
-c$dedD	c$Metronidazole c$Neomycin
-c$dgkA	c$Streptonigrin
-c$dinB	c$Metronidazole
-c$ruvA	c$Metronidazole c$Mitomycin#SPACE#C c$Levofloxacin c$Streptonigrin
-c$crl	c$Phleomycin
-c$yjbH	c$Bicyclomycin
-c$wbbL	c$Neomycin
-c$mlaC	c$Cefsulodin c$Minocycline c$Doxycycline
-c$dusB	c$Ceftazidime c$Mecillinam c$CHIR090 c$Thiolactomycin
-c$folB	c$Streptomycin c$Neomycin
-c$apaH	c$CHIR090
-c$rffH	c$Phleomycin c$Mecillinam
-c$aceE	c$Thiolactomycin
-c$yeaD	c$Cefsulodin
-c$recB	c$Cephradine c$Streptonigrin
-c$acrB	c$Triclosan c$Chloramphenicol c$Clarythromycin c$Minocycline c$Oxacillin c$Streptonigrin c$Lomefloxacin c$Doxycycline
-c$purA	c$Dactinomycin c$Bacitracin
-c$prfC	c$Cefsulodin c$Fosfomycin
-c$rpmJ	c$Vancomycin c$Colistin c$Tetracycline c$Spectinomycin
-c$nusB	c$Cephradine c$Colistin c$Neomycin
-c$plsX	c$Cephradine
-c$ninE	c$Carbenicillin c$Dactinomycin c$Streptonigrin c$Doxycycline c$Bacitracin
-c$yggT	c$Fosfomycin
-c$yaaA	c$Streptonigrin
-c$psiF	c$Ceftazidime
-c$yggD	c$Lomefloxacin
-c$ubiX	c$Mitomycin#SPACE#C
-c$uvrD	c$Metronidazole
-c$pstS	c$Cefsulodin c$Azithromycin c$Sulfamethoxazole
-c$nikE	c$CHIR090
-c$glxK	c$Fosfomycin
-c$lpxL	c$Minocycline
-c$yceK	c$Nigericin
-c$gyrB	c$Novobiocin
-c$leuO	c$Neomycin
-c$serB	c$Novobiocin
-c$mdtJ	c$Doxycycline#SPACE#hyclate
-c$damX	c$Cefsulodin
-c$rimK	c$Cephradine c$Colistin c$Metronidazole c$Sulfamethoxazole
-c$xerC	c$Cephradine c$Mitomycin#SPACE#C c$Levofloxacin c$Streptonigrin c$Doxorubicin
-c$ghrB	c$Streptomycin
-c$yfcV	c$Polymyxin#SPACE#B
-c$atpF	c$Thiolactomycin c$Tunicamycin
-c$serC	c$Carbenicillin c$Spectinomycin
-c$secG	c$Cefsulodin c$Phleomycin c$Mecillinam c$CHIR090
-c$pyrD	c$Carbenicillin c$Cefsulodin c$Spectinomycin
-c$fis	c$Ceftazidime c$Mitomycin#SPACE#C c$Minocycline c$Sulfamethoxazole c$Polymyxin#SPACE#B
-c$guaA	c$Cerulenin c$Spectinomycin c$Thiolactomycin c$Tunicamycin
-c$hepA	c$Oxacillin c$Levofloxacin
-c$ruvC	c$Levofloxacin c$Streptonigrin
-c$cysB	c$Amoxicillin c$Ceftazidime c$Colistin c$Dactinomycin c$Bicyclomycin
-c$ycbC	c$Amoxicillin c$Cefsulodin
-c$wcaD	c$Bacitracin
-c$yifE	c$Fosfomycin c$Spectinomycin
-c$ygfI	c$Doxycycline
-c$rsmF	c$Cephradine c$Colistin c$Neomycin
-c$yjhP	c$Kanamycin
-c$recF	c$Novobiocin
-c$shoB	c$Trimethoprim
-c$ihfA	c$Cephradine
-c$mrcB	c$Oxacillin
-c$kgtP	c$Oxacillin
-c$rimP	c$Ceftazidime c$Thiolactomycin
-c$pstA	c$Colistin c$Clarythromycin c$Azithromycin c$Sulfamethoxazole
-c$pqqL	c$Novobiocin c$Bicyclomycin
-c$moaE	c$Ceftazidime
-c$ycfS	c$Kanamycin
-c$ybjI	c$Doxycycline c$Lomefloxacin
-c$bcr	c$Cefoperazone c$Sulfisoxazole c$Sulfathiazole c$Rolitetracycline c$Oxytetracycline
-c$nagA	c$Carbenicillin c$Mecillinam c$CHIR090
-c$nuoM	c$Neomycin
-c$ybgF	c$Colistin c$Cefsulodin
-c$yfcA	c$CHIR090 c$Tunicamycin
-c$rseB	c$Minocycline c$Doxycycline#SPACE#hyclate
-c$flgF	c$Cephradine
-c$proA	c$Lomefloxacin
-c$lipA	c$Mitomycin#SPACE#C c$Novobiocin c$Levofloxacin c$Thiolactomycin
-c$dedA	c$Doxycycline#SPACE#hyclate
-c$ydcY	c$Fosfomycin
-c$ydjI	c$Colistin
-c$cydX	c$Cephradine c$Colistin c$Polymyxin#SPACE#B
-c$msbA	c$Metronidazole
-c$atpA	c$Amoxicillin c$Dactinomycin c$Thiolactomycin
-c$micM	c$Chloramphenicol c$Cerulenin c$Mecillinam
-c$yhcB	c$Mecillinam c$Spectinomycin
-c$recO	c$Metronidazole c$Fosfomycin
-c$yfdG	c$Amoxicillin
-c$yagT	c$Furaltadone
-c$proQ	c$Minocycline
-c$ubiF	c$Mitomycin#SPACE#C c$Novobiocin c$Thiolactomycin
-c$fryC	c$Ceftazidime
-c$ypjC	c$Ornidazole
-c$rffA	c$Neomycin
-c$ubiG	c$Cephradine c$Triclosan c$Chloramphenicol
-c$yibA	c$Amoxicillin
-c$fepB	c$Neomycin c$Bacitracin
-c$hyaB	c$Ceftazidime c$Sulfamethizole
-c$rob	c$Doxycycline#SPACE#hyclate c$Lomefloxacin c$Doxycycline
-c$phoQ	c$Cefsulodin c$Minocycline c$Doxycycline
-c$gmd	c$Polymyxin#SPACE#B
-c$yejG	c$Sisomicin c$Apramycin
-c$zapA	c$Ceftazidime c$Dactinomycin c$Azithromycin
-c$fadE	c$CHIR090
-c$marA	c$Penimepicycline c$Ofloxacin
-c$rsmH	c$Colistin c$Dactinomycin c$Neomycin
-c$recA	c$Cephradine c$Metronidazole c$Colistin c$Mitomycin#SPACE#C c$Levofloxacin c$Streptonigrin c$Doxorubicin c$Norfloxacin
-c$glpT	c$Bicyclomycin
-c$yeaQ	c$Spectinomycin
-c$idnD	c$Doxycycline
-c$cyoA	c$Lomefloxacin
-c$dcuC	c$Colistin
-c$ycjF	c$Kanamycin
-c$hslU	c$Kanamycin c$Ceftazidime c$Mecillinam
-c$yciS	c$Metronidazole c$Cerulenin c$Sulfamethoxazole
-c$yciB	c$Phleomycin
-c$feoC	c$Amoxicillin
-c$mdtF	c$Cloxacillin
-c$lpxD	c$Triclosan c$Colistin
-c$htpG	c$Kanamycin
-c$dapF	c$Cephradine c$Colistin c$Cefsulodin c$Neomycin c$Sulfamethoxazole
-c$stfR	c$Fosfomycin
-c$yecR	c$Lomefloxacin
-c$ohsC	c$Spiramycin c$Tetracycline c$Chloramphenicol c$Clarythromycin c$Azithromycin c$Spectinomycin c$Doxycycline
-c$bamE	c$Spiramycin c$Clarythromycin c$Dactinomycin c$Azithromycin c$Bacitracin
-c$ampC	c$Amoxicillin
-c$pldA	c$CHIR090
-c$rpoN	c$Cephradine c$Colistin c$Neomycin c$Bacitracin
-c$lipB	c$Mitomycin#SPACE#C c$Streptonigrin
-c$ulaB	c$Fosfomycin c$Doxycycline
-c$gpmM	c$Cephradine c$Sulfamethoxazole
-c$ymfA	c$Neomycin c$Doxycycline
-c$waaP	c$Cefsulodin c$Minocycline c$Azithromycin c$Trimethoprim c$CHIR090 c$Neomycin
-c$trmH	c$Streptonigrin
-c$nlpD	c$Carbenicillin c$Cefsulodin c$Phleomycin c$Doxycycline
-c$yaiF	c$Cefsulodin
-c$ybfE	c$Fosfomycin
-c$yihL	c$Colistin
-c$mltB	c$Cefoxitin
-c$fadD	c$Amoxicillin c$Cerulenin c$Polymyxin#SPACE#B c$Tunicamycin
-c$rpmF	c$Cephradine c$Colistin c$Mitomycin#SPACE#C
-c$purM	c$Carbenicillin c$Dactinomycin c$Mecillinam
-c$sdhC	c$Amoxicillin
-c$luxS	c$Sulfadiazine c$Oxycarboxin
-c$fur	c$Cefsulodin c$Clarythromycin c$Novobiocin c$Azithromycin
-c$sspA	c$Cefsulodin c$Cerulenin c$Fosfomycin c$Thiolactomycin c$Doxycycline
-c$yeiU	c$Doxycycline#SPACE#hyclate c$Lomefloxacin
-c$rfaG	c$Doxycycline#SPACE#hyclate c$Lomefloxacin
-c$wcaI	c$Cefsulodin c$Novobiocin
-c$lpoB	c$Amoxicillin c$Ceftazidime c$Carbenicillin c$Cefsulodin c$Mecillinam c$Trimethoprim c$Puromycin
-c$ybdN	c$Metronidazole c$Bicyclomycin
-c$dmsB	c$Dactinomycin
-c$glnL	c$Capreomycin
-c$treA	c$Lomefloxacin
-c$cobB	c$Ceftazidime
-c$ymfQ	c$Phleomycin
-c$dacA	c$Ceftazidime c$Cefsulodin
-c$yciE	c$Bicyclomycin
-c$lepA	c$CHIR090
-c$acrR	c$CHIR090
-c$bglH	c$Spectinomycin
-c$pgaA	c$Streptonigrin
-c$pyrE	c$Cefsulodin c$Mecillinam c$Bacitracin
-c$ycdZ	c$Cephradine
-c$cedA	c$Colistin
-c$lpxM	c$Vancomycin c$Clarythromycin c$Dactinomycin c$Neomycin c$Bacitracin
-c$ylcG	c$Colistin c$Phleomycin c$Azithromycin c$Streptonigrin c$Sulfamethoxazole
-c$uvrC	c$Mitomycin#SPACE#C c$Streptonigrin
-c$rseA	c$Triclosan c$Metronidazole c$Spectinomycin
-c$yrbB	c$Doxycycline#SPACE#hyclate
-c$rplA	c$Cephradine c$Cefsulodin c$CHIR090
-c$ynjA	c$CHIR090
-c$cvpA	c$Bacitracin
-c$wzc	c$CHIR090
-c$cysI	c$Bicyclomycin
-c$rpoD	c$Kanamycin
-c$ptsH	c$Spectinomycin
-c$ydfV	c$Minocycline c$Spectinomycin
-c$mtlR	c$Cefsulodin
-c$iscU	c$Cephradine
-c$ydgD	c$Cephradine
-c$yciT	c$Colistin c$Metronidazole c$Neomycin c$Sulfamethoxazole
-c$gltD	c$Dactinomycin
-c$yfgI	c$Lomefloxacin
-c$ydfW	c$Oleandomycin
-c$sgbU	c$Phleomycin
-c$gcvT	c$Sulfamethizole
-c$dnaG	c$Norfloxacin
-c$ftsP	c$Ceftazidime c$Neomycin
-c$xseB	c$Metronidazole c$Neomycin
-c$tusD	c$Cephradine c$Colistin c$Neomycin
-c$cpxR	c$Geneticin c$Hygromycin#SPACE#B
-c$cspE	c$CHIR090
-c$rpoB	c$Rifamycin#SPACE#SV
-c$ybeU	c$Phleomycin
-c$atpG	c$Colistin c$Neomycin
-c$appA	c$Ceftazidime
-c$tauA	c$Doxycycline
-c$carB	c$Dactinomycin c$Mecillinam c$Spectinomycin c$Doxycycline c$Bacitracin
-c$gltL	c$Spectinomycin
-c$qmcA	c$Cephradine c$Colistin c$Sulfamethoxazole
-c$rfe	c$Doxycycline#SPACE#hyclate
-c$ubiC	c$Thiolactomycin c$Tunicamycin
-c$rfaH	c$Triclosan c$Colistin c$Chloramphenicol
-c$bdm	c$Cefazolin c$Cephalothin
-c$mltF	c$Spectinomycin
-c$atpE	c$Amoxicillin c$Phleomycin c$Thiolactomycin c$Tunicamycin
-c$acrE	c$Colistin c$Neomycin
-c$yjjY	c$Fosfomycin
-c$proL	c$Enoxacin c$Streptomycin
-c$ycbZ	c$Minocycline
-c$arcZ	c$Cefsulodin c$Doxycycline
-c$rpoS	c$Cefsulodin c$Phleomycin c$Hygromycin#SPACE# c$Doxycycline
-c$slmA	c$Novobiocin
-c$typA	c$Metronidazole
-c$dcm	c$Fosfomycin
-c$ygeR	c$Lomefloxacin
-c$arcB	c$Mecillinam c$Azithromycin c$Streptonigrin c$Troleandomycin
-c$dadA	c$Ceftazidime
-c$fhlA	c$Doxycycline
-c$hemY	c$Dactinomycin
+c$yffB	c$Lomefloxacin
+c$phoP	c$Lomefloxacin c$Doxycycline#SPACE#hyclate c$Cephradine
+c$ydhS	c$Lomefloxacin
+c$waaB	c$Cefsulodin c$Trimethoprim c$CHIR090 c$Doxycycline
+c$purD	c$Mecillinam c$Carbenicillin c$Bacitracin c$Doxycycline
+c$nlpC	c$Cephradine c$Neomycin
+c$rfaE	c$Bleomycin c$Clarythromycin c$Streptonigrin c$Bacitracin c$Triclosan c$Azithromycin c$Novobiocin c$Colistin c$Doxycycline
+c$lipA	c$Mitomycin#SPACE#C c$Levofloxacin c$Novobiocin c$Thiolactomycin
+c$tktA	c$Oxacillin c$Novobiocin
+c$rpiA	c$Metronidazole
+c$rcsF	c$Lomefloxacin c$CHIR090
+c$deoB	c$Spectinomycin
+c$ninE	c$Carbenicillin c$Bacitracin c$Doxycycline
 c$yrfG	c$Kanamycin
-c$sdaC	c$Fosfomycin
-c$cas1	c$Carbenicillin
-c$degP	c$Nigericin c$Sulfamethoxazole
-c$zapB	c$Ceftazidime c$Sulfamethoxazole
-c$tatC	c$Triclosan c$Metronidazole c$Cefsulodin
-c$ymdA	c$Lomefloxacin
-c$galR	c$Amoxicillin
-c$ybgC	c$Ceftazidime c$Metronidazole c$Oxacillin c$Bacitracin
-c$elaD	c$Chloramphenicol
-c$dsbC	c$Mecillinam c$CHIR090
-c$ygiB	c$Kanamycin c$Mecillinam
-c$ychJ	c$Ceftazidime c$Clarythromycin
-c$mfd	c$Streptomycin c$Doxycycline
-c$ygiW	c$Bicyclomycin
-c$murA	c$Fosfomycin
-c$atpC	c$Amoxicillin c$Thiolactomycin
-c$rssB	c$Lomefloxacin
-c$mngR	c$Oxacillin
-c$ybeD	c$Cephradine c$Colistin c$CHIR090
+c$ycgZ	c$Moxalactam c$Penimepicycline
+c$yjfP	c$Novobiocin
+c$ybeY	c$Clarythromycin c$Cephradine c$Kanamycin c$Colistin
+c$carB	c$Mecillinam c$Spectinomycin c$Dactinomycin c$Carbenicillin c$Doxycycline
+c$recG	c$Streptonigrin c$Metronidazole
 c$nuoH	c$Fosfomycin
-c$fxsA	c$Kanamycin
-c$purL	c$Cefsulodin c$Dactinomycin c$Mecillinam c$Doxycycline
-c$yhcD	c$Lomefloxacin
-c$queA	c$Fosfomycin c$Azithromycin c$Spectinomycin c$Doxycycline
-c$yhfS	c$Minocycline
-c$ydfA	c$Streptonigrin
-c$yidD	c$Carbenicillin c$Mecillinam c$Streptomycin c$Gentamicins
-c$yobA	c$Kanamycin c$Cerulenin
-c$kdpE	c$Hygromycin#SPACE#B
-c$mlc	c$Cefsulodin
-c$iscS	c$Cephradine c$Oxacillin c$Tunicamycin
-c$rnhA	c$Bacitracin
-c$cspA	c$Phleomycin
-c$rlpA	c$Cefsulodin
-c$fixA	c$Doxycycline
-c$fabH	c$Bacitracin
-c$wrbA	c$Tinidazole
-c$slt	c$Ampicillin
-c$ydfE	c$Cerulenin
-c$thiK	c$Cefsulodin
-c$nepI	c$Cerulenin
-c$miaA	c$Kanamycin
-c$glpR	c$Fosfomycin
-c$rng	c$CHIR090
-c$kefB	c$Phleomycin
-c$purK	c$Carbenicillin
-c$csiD	c$Dactinomycin c$Minocycline
-c$rbsD	c$Radicicol
-c$tonB	c$Carbenicillin c$Dactinomycin
-c$dsdA	c$Ceftazidime
-c$ygcO	c$Cephradine c$Metronidazole c$Colistin c$Minocycline c$Sulfamethoxazole
-c$aceF	c$Thiolactomycin
-c$ymjC	c$Bicyclomycin
-c$tatA	c$Ceftazidime c$Cefsulodin
-c$fabR	c$CHIR090
-c$ygdD	c$CHIR090
-c$ygbK	c$Ceftazidime c$Fosfomycin c$Streptonigrin
-c$yihS	c$Doxycycline#SPACE#hyclate
-c$fepC	c$Neomycin c$Polymyxin#SPACE#B c$Bacitracin
-c$glnG	c$Capreomycin c$Neomycin
-c$malK	c$Cefsulodin
-c$ybcL	c$Cefsulodin
-c$aroA	c$Fosfomycin
-c$rppH	c$Neomycin
-c$ddlB	c$Amoxicillin c$Fosfomycin c$Phleomycin c$Mecillinam c$Neomycin
-c$wcaF	c$Cefsulodin
-c$tusB	c$Cephradine
-c$ycbJ	c$Phleomycin
-c$fau	c$Sulfamonomethoxine
-c$recG	c$Metronidazole c$Streptonigrin c$Sulfamethoxazole
-c$clpB	c$Kanamycin
-c$hicB	c$Dactinomycin c$CHIR090
-c$mlaD	c$Minocycline
-c$pgaC	c$Cephradine c$Colistin
-c$deoD	c$Spectinomycin
-c$ydaC	c$Phenethicillin
-c$npr	c$Sulfamethizole c$Minocycline
-c$mzrA	c$Ceftazidime
-c$waaB	c$Cefsulodin c$Minocycline c$Trimethoprim c$CHIR090 c$Doxycycline
-c$yneE	c$Colistin c$Neomycin c$Doxorubicin
-c$nuoF	c$Fosfomycin
-c$flhD	c$Cephradine c$Colistin
-c$pspB	c$Kanamycin
-c$tfaD	c$Spectinomycin
-c$glpF	c$Doxycycline#SPACE#hyclate
-c$exuR	c$Lomefloxacin
-c$dctA	c$Fosfomycin
-c$yjhB	c$Oxacillin
-c$amiC	c$Ceftazidime
-c$acrZ	c$Cephradine c$Mecillinam c$Trimethoprim c$Neomycin
-c$potI	c$Doxycycline#SPACE#hyclate
-c$sapD	c$Spectinomycin
-c$galM	c$Cerulenin
-c$kdpB	c$Hygromycin#SPACE#B c$Mecillinam
-c$dam	c$Mitomycin#SPACE#C c$Azithromycin
-c$yhbP	c$Fosfomycin
-c$gmhB	c$Neomycin
-c$hupA	c$Streptonigrin
-c$sthA	c$Spectinomycin
-c$cysE	c$Carbenicillin
-c$srmB	c$CHIR090
-c$dsbB	c$Clarythromycin c$Mecillinam c$Bacitracin
-c$ybjJ	c$Cephradine
-c$cydB	c$Cephradine
-c$prpC	c$Phleomycin
-c$mlaF	c$Cefsulodin c$Minocycline c$Doxycycline
-c$sucD	c$Cephradine
-c$hdfR	c$Fosfomycin c$Doxycycline
-c$mog	c$Amoxicillin
-c$csgF	c$Clarythromycin
-c$yfiH	c$Amoxicillin
-c$gadX	c$CHIR090
-c$rnb	c$Minocycline c$CHIR090
-c$yhfK	c$Josamycin
-c$ynaE	c$Cerulenin c$Thiolactomycin
-c$ridA	c$Mecillinam
-c$ybiY	c$Ceftazidime
-c$rho	c$Norfloxacin
-c$hslV	c$Kanamycin
-c$mltD	c$Cefsulodin
-c$rfaP	c$Lomefloxacin
-c$aroG	c$Lomefloxacin
-c$yceD	c$Cephradine
-c$pdxJ	c$Cefsulodin
-c$narL	c$Amoxicillin
-c$pyrC	c$Carbenicillin c$Cefsulodin c$Mecillinam c$Spectinomycin c$Bacitracin
-c$recJ	c$Streptonigrin
-c$nagZ	c$Mecillinam
-c$arcA	c$Paromomycin c$Fosfomycin
-c$gcvA	c$Streptonigrin
-c$ycgV	c$Cefsulodin
-c$rfaB	c$Doxycycline#SPACE#hyclate
-c$atpB	c$Amoxicillin c$Thiolactomycin c$Bacitracin
-c$umpG	c$Sulfamonomethoxine
-c$yhfL	c$Phleomycin
-c$yfiE	c$Lomefloxacin
-c$yghD	c$Lomefloxacin
-c$pgm	c$Minocycline
+c$bamE	c$Vancomycin c$Clarythromycin c$Cefsulodin c$Dactinomycin c$Neomycin c$Azithromycin c$Spiramycin c$Colistin
+c$rpsO	c$Cephradine
+c$thiK	c$Cefsulodin c$Ceftazidime
+c$ycjX	c$Kanamycin
 c$rplI	c$Clarythromycin c$Azithromycin
-c$xapR	c$Neomycin
-c$yegV	c$Minocycline
-c$arfA	c$Minocycline
-c$lamB	c$Chlortetracycline
-c$mpl	c$Streptonigrin
-c$lpxC	c$Colistin
-c$adrA	c$Fosfomycin
-c$ygcP	c$Ceftazidime
-c$waaY	c$Mitomycin#SPACE#C c$Minocycline c$Doxycycline
-c$ybhK	c$CHIR090
-c$mdtE	c$Cloxacillin
-c$rpiA	c$Metronidazole c$Doxorubicin
-c$ntrB	c$Paromomycin
-c$hns	c$Sulfamethoxazole
-c$intQ	c$Fosfomycin
-c$agaI	c$Amoxicillin c$Spectinomycin
-c$deoC	c$Streptonigrin
-c$ybaB	c$Mitomycin#SPACE#C
-c$dauA	c$Neomycin
-c$dnaK	c$Colistin c$Sulfamethoxazole
-c$nfuA	c$Metronidazole c$Fosfomycin
-c$gcvP	c$Sulfamethizole
-c$hyaC	c$Ceftazidime
-c$yfgD	c$Cephradine
-c$ytfJ	c$Ceftazidime
-c$rstB	c$Troleandomycin
-c$bluR	c$Fosfomycin
-c$ompG	c$Mecillinam
-c$yqcC	c$Cefsulodin
-c$rcsB	c$Mecillinam
-c$cptA	c$Thiolactomycin
-c$flgE	c$Ceftazidime
-c$uhpT	c$Phleomycin
-c$yhfW	c$CHIR090
-c$mazG	c$Cefsulodin
-c$ampD	c$Mecillinam
-c$ubiI	c$Fosfomycin
-c$mrp	c$Fosfomycin
-c$kdpC	c$Hygromycin#SPACE#B
-c$clpP	c$Kanamycin
-c$ycbK	c$Colistin
-c$yidP	c$Neomycin
-c$ftnA	c$Cephradine
-c$gor	c$Cephradine
-c$yecC	c$Mitomycin#SPACE#C c$Spectinomycin
-c$ydfJ	c$Fosfomycin
-c$bamB	c$Ceftazidime c$Dactinomycin c$Oxacillin c$CHIR090 c$Bacitracin
-c$ompF	c$Neomycin
-c$cmr	c$Lincomycin
-c$wzxE	c$Bacitracin
-c$csgA	c$Fosfomycin
-c$malS	c$CHIR090
-c$atl	c$CHIR090
-c$hslO	c$Kanamycin
-c$ycbV	c$Thiolactomycin
-c$ebgR	c$Lomefloxacin
-c$chbG	c$Tunicamycin
-c$ybcM	c$Fosfomycin
-c$recR	c$Streptonigrin
-c$yjhQ	c$Kanamycin
-c$emrD	c$Novobiocin c$Oxacillin
-c$yicR	c$CHIR090
-c$yihI	c$Carbenicillin
-c$kdpA	c$Hygromycin#SPACE#B
-c$yrbE	c$Lomefloxacin
-c$wzyE	c$Cefsulodin
-c$bssS	c$Novobiocin
-c$diaA	c$Mitomycin#SPACE#C
-c$emtA	c$Cephradine
-c$fre	c$Fosfomycin
-c$yaiS	c$Fosfomycin
-c$cyaY	c$Mecillinam
-c$ispE	c$Norfloxacin
-c$norR	c$Lomefloxacin
-c$yfbN	c$Streptonigrin
-c$treC	c$Ceftazidime
-c$pinE	c$Ceftazidime c$Spectinomycin
-c$ihfB	c$Fosfomycin
-c$fes	c$Polymyxin#SPACE#B c$Bacitracin
-c$yegT	c$Lomefloxacin
-c$ybjX	c$Kanamycin c$Thiolactomycin
-c$pgl	c$Spectinomycin
-c$seqA	c$Polymyxin#SPACE#B
-c$tktA	c$Novobiocin
-c$ybdH	c$Bicyclomycin
-c$ybgL	c$Clarythromycin
-c$iraP	c$CHIR090
-c$tatB	c$Bacitracin
-c$mutM	c$Kanamycin
-c$cyaA	c$Triclosan
-c$proK	c$Phleomycin
-c$nhaA	c$Novobiocin
-c$mcaS	c$Polymyxin#SPACE#B
-c$yrdA	c$Kanamycin
-c$nuoJ	c$Mitomycin#SPACE#C
-c$dinI	c$Lomefloxacin
-c$glnA	c$Tunicamycin
-c$zntR	c$Fosfomycin
-c$nfsA	c$Cefsulodin
-c$cusS	c$CHIR090
-c$gyrA	c$Norfloxacin
+c$bamB	c$Oxacillin c$Amoxicillin c$Clarythromycin c$Bacitracin c$Ceftazidime c$Spiramycin
+c$waaF	c$Clarythromycin c$Streptonigrin c$Dactinomycin c$Polymyxin#SPACE#B c$Azithromycin c$Novobiocin
+c$fkpB	c$Fosfomycin c$Cefsulodin c$Neomycin
+c$dpiA	c$Amoxicillin c$Cefsulodin
 c$mepM	c$Mecillinam
-c$fkpB	c$Fosfomycin c$Neomycin
-c$yafD	c$Lomefloxacin
-c$uxuR	c$Amoxicillin
-c$yghG	c$Bicyclomycin
-c$lpp	c$Cefsulodin
-c$yibF	c$Dactinomycin
-c$lsrA	c$Clarythromycin
-c$deaD	c$Metronidazole
-c$thyA	c$Sulfamethizole
-c$hsrA	c$Cefsulodin
-c$parC	c$Levofloxacin
-c$yfaW	c$Streptonigrin
-c$soxS	c$Enoxacin
-c$rutA	c$Cephradine
-c$ybcQ	c$Fosfomycin
-c$fcl	c$Bacitracin
-c$phn	c$Troleandomycin
-c$yneK	c$Polymyxin#SPACE#B
-c$xerD	c$CHIR090
-c$fepE	c$Novobiocin
-c$napA	c$Amoxicillin
+c$rpoS	c$Hygromycin#SPACE# c$Cefsulodin c$Carbenicillin c$Phleomycin c$Doxycycline
 c$rsmA	c$Spectinomycin
-c$galF	c$CHIR090
-c$hslR	c$Kanamycin
-c$ybiW	c$Fosfomycin
-c$idnR	c$Amoxicillin
-c$idnK	c$CHIR090
-c$bfr	c$Amoxicillin
-c$clpX	c$Kanamycin
+c$cydX	c$Vancomycin c$Bleomycin c$Cephradine c$Polymyxin#SPACE#B c$Colistin
+c$lpcA	c$Streptonigrin c$Minocycline c$Spectinomycin c$Dactinomycin c$Bacitracin c$CHIR090 c$Azithromycin
+c$cpdA	c$Fosfomycin c$Josamycin c$Dihydrostreptomycin
+c$pstS	c$Azithromycin c$Colistin
+c$rpmE	c$CHIR090 c$Doxycycline c$Colistin
+c$phnC	c$Sulfathiazole
+c$moaE	c$Ceftazidime
+c$mlc	c$Cefsulodin
+c$rbfA	c$Mitomycin#SPACE#C c$Cefsulodin c$CHIR090
+c$pstA	c$Sulfamethoxazole c$Azithromycin c$Colistin
+c$secG	c$Mecillinam c$Cefsulodin c$Phleomycin c$CHIR090
+c$rfaB	c$Lomefloxacin
+c$ruvA	c$Lomefloxacin c$Streptonigrin c$Metronidazole c$Levofloxacin
+c$acrB	c$Mitomycin#SPACE#C c$Lomefloxacin c$Streptonigrin c$Doxorubicin c$Minocycline c$Cephradine c$Chloramphenicol c$Cerulenin c$Triclosan c$Azithromycin c$Doxycycline c$Oxacillin c$Clarythromycin c$CHIR090
+c$guaA	c$Spectinomycin c$Cerulenin c$Tunicamycin c$Thiolactomycin
+c$recA	c$Mitomycin#SPACE#C c$Metronidazole c$Doxorubicin c$Norfloxacin c$Cephradine c$Levofloxacin c$Colistin
+c$yfcV	c$Polymyxin#SPACE#B
+c$surA	c$Mitomycin#SPACE#C c$Cephradine c$CHIR090 c$Azithromycin c$Novobiocin c$Colistin
+c$acrR	c$CHIR090
+c$ulaB	c$Fosfomycin c$Doxycycline
+c$rpoN	c$Cephradine c$Bacitracin c$Neomycin c$Colistin
+c$ompR	c$Cefamandole
+c$arcB	c$Streptonigrin c$Mecillinam c$Troleandomycin
+c$ydfJ	c$Fosfomycin
+c$ebgR	c$Lomefloxacin
+c$ubiC	c$Streptonigrin c$Fosfomycin c$Tunicamycin
+c$zwf	c$Cephradine
+c$fepD	c$Bacitracin
+c$ycbJ	c$Phleomycin
+c$mlaA	c$Minocycline c$Cefsulodin c$Doxycycline
+c$gpmM	c$Streptonigrin c$Dactinomycin c$Cefsulodin c$Cephradine c$Neomycin
+c$thyA	c$Sulfamethizole
+c$luxS	c$Sulfadiazine
+c$yfgI	c$Lomefloxacin
+c$hslU	c$Mecillinam c$Ceftazidime
+c$ampG	c$Mecillinam c$Cefsulodin
+c$atpB	c$Amoxicillin c$Bacitracin c$Tunicamycin c$Thiolactomycin
+c$dnaA	c$Rifamycin#SPACE#SV
+c$recN	c$Mitomycin#SPACE#C c$Lomefloxacin c$Streptonigrin c$Norfloxacin
+c$tolB	c$Oxacillin c$Amoxicillin c$Carbenicillin c$Bacitracin c$Ceftazidime
+c$ubiF	c$Mitomycin#SPACE#C c$Phleomycin c$Novobiocin
+c$ntrB	c$Paromomycin c$Geneticin
+c$yfgC	c$Bleomycin c$Vancomycin c$Clarythromycin c$Doxycycline#SPACE#hyclate c$Cephradine c$Neomycin c$Azithromycin
+c$csgF	c$Clarythromycin
+c$ybjX	c$Kanamycin c$Thiolactomycin
+c$ompG	c$Mecillinam
+c$bdm	c$Cefazolin c$Nafcillin c$Cephalothin
+c$mrp	c$Fosfomycin
+c$hyaC	c$Ceftazidime
+c$yidQ	c$Cefsulodin
+c$degP	c$Nigericin
+c$psiF	c$Ceftazidime
+c$yafD	c$Lomefloxacin
+c$purM	c$Mecillinam c$Dactinomycin
+c$acrA	c$Oxacillin c$Mitomycin#SPACE#C c$Clarythromycin c$Mecillinam c$Doxorubicin c$Carbenicillin c$Cephradine c$Cerulenin c$Neomycin c$Azithromycin c$Doxycycline
+c$dksA	c$Vancomycin c$Amoxicillin c$Clarythromycin c$Minocycline c$Spectinomycin c$Cephradine c$Neomycin c$Azithromycin
+c$pstC	c$Cefsulodin
+c$grcA	c$Kanamycin
+c$groS	c$Kanamycin
+c$fur	c$Clarythromycin c$Streptonigrin c$Azithromycin
+c$hlpA	c$Vancomycin c$Metronidazole
+c$alaS	c$Chloramphenicol
+c$dnaJ	c$Clarythromycin c$Triclosan c$Polymyxin#SPACE#B c$Azithromycin c$Novobiocin
+c$tolQ	c$Amoxicillin c$Mecillinam c$Minocycline c$Dactinomycin c$Bacitracin c$Neomycin c$Ceftazidime c$Azithromycin c$Doxycycline
+c$ybiY	c$Ceftazidime
+c$rsmH	c$Dactinomycin c$Neomycin c$Colistin
+c$lpxD	c$Neomycin
+c$ybgL	c$Clarythromycin
+c$waaQ	c$Minocycline c$Azithromycin c$Novobiocin c$Thiolactomycin
+c$hrpA	c$Clarythromycin c$Spectinomycin c$Doxycycline
+c$ygbK	c$Streptonigrin c$Fosfomycin c$Ceftazidime
+c$yejG	c$Sisomicin
+c$asmA	c$Clarythromycin c$Minocycline c$Spectinomycin c$Dactinomycin c$Bacitracin c$Nigericin c$Azithromycin
+c$fepC	c$Polymyxin#SPACE#B
+c$nuoF	c$Fosfomycin
+c$rffD	c$Minocycline
+c$fadD	c$Amoxicillin c$Cerulenin c$Tunicamycin c$Polymyxin#SPACE#B
+c$appA	c$Ceftazidime
+c$mdtJ	c$Doxycycline#SPACE#hyclate
+c$pdxA	c$Mecillinam c$Cefsulodin c$Polymyxin#SPACE#B
+c$ldhA	c$Amoxicillin
+c$rppH	c$Neomycin
+c$hupA	c$Streptonigrin c$Dactinomycin
+c$glnD	c$Neomycin
+c$galE	c$CHIR090
+c$tolC	c$Mitomycin#SPACE#C c$Streptonigrin c$Doxorubicin c$Chloramphenicol c$Cephradine c$Cerulenin c$Sulfamethoxazole c$Triclosan c$Neomycin c$Thiolactomycin c$Doxycycline c$Oxacillin c$Metronidazole c$Spectinomycin c$CHIR090 c$Novobiocin c$Colistin
+c$mrcB	c$Oxacillin c$Cephradine c$Carbenicillin
+c$mlaD	c$Minocycline c$Cefsulodin c$Doxycycline
+c$ompC	c$Lomefloxacin c$CHIR090
+c$zapB	c$Cephradine c$Sulfamethoxazole c$Ceftazidime
+c$waaC	c$Neomycin c$Novobiocin c$Colistin
+c$yhdP	c$Vancomycin c$Clarythromycin c$Neomycin c$Azithromycin
+c$rfaD	c$Clarythromycin c$Streptonigrin c$Spectinomycin c$Dactinomycin c$Bacitracin c$Triclosan c$CHIR090 c$Azithromycin c$Novobiocin c$Colistin
+c$rseA	c$Metronidazole c$Triclosan
+c$yidD	c$Gentamicins c$Mecillinam c$Streptomycin c$Cefsulodin
+c$flhD	c$Colistin
+c$yciT	c$Metronidazole c$Sulfamethoxazole c$Colistin
+c$cpsG	c$Amoxicillin c$Dactinomycin c$Cefsulodin c$Bacitracin
+c$smtA	c$Mecillinam
+c$pyrD	c$Cefsulodin c$Bacitracin c$Doxycycline
+c$emtA	c$Cephradine
+c$rpoD	c$Norfloxacin c$Kanamycin
+c$recC	c$Metronidazole c$Streptonigrin c$Levofloxacin
+c$idnD	c$Doxycycline
+c$lipB	c$Mitomycin#SPACE#C c$Streptonigrin
+c$yciM	c$Streptonigrin c$Metronidazole c$Cephradine c$Sulfamethoxazole
+c$yggF	c$Lomefloxacin
+c$yihS	c$Doxycycline#SPACE#hyclate
+c$dusB	c$CHIR090 c$Thiolactomycin
+c$fhlA	c$Doxycycline
+c$rusA	c$Dactinomycin c$Bacitracin
+c$yhcB	c$Spectinomycin
+c$cusS	c$CHIR090
+c$rffC	c$Mecillinam c$Cefsulodin c$Bacitracin c$Phleomycin c$CHIR090
+c$sdaC	c$Fosfomycin
+c$nusB	c$Chloramphenicol c$Neomycin c$Colistin
+c$guaB	c$Mecillinam c$Dactinomycin c$Carbenicillin c$CHIR090
+c$waaP	c$Minocycline c$Cefsulodin c$Trimethoprim c$Neomycin c$CHIR090 c$Azithromycin c$Novobiocin
+c$rpmJ	c$Vancomycin c$Tetracycline c$Colistin
+c$yrbB	c$Lomefloxacin c$Doxycycline#SPACE#hyclate
+c$lon	c$Metronidazole c$Tunicamycin c$Kanamycin c$Radicicol
+c$agaI	c$Amoxicillin c$Spectinomycin
+c$tusC	c$Cephradine c$Neomycin c$Colistin
+c$clpP	c$Kanamycin
 c$caiA	c$Amoxicillin
-c$ymfT	c$Triclosan
-c$ptrB	c$Cefsulodin
+c$atpA	c$Amoxicillin c$Dactinomycin
+c$ymdB	c$Lomefloxacin c$Streptonigrin
+c$dnaK	c$Sulfamethoxazole c$Colistin
+c$ybeU	c$Phleomycin
+c$prpC	c$Phleomycin
+c$wzzE	c$Mecillinam c$CHIR090
+c$arcZ	c$Cefsulodin c$Doxycycline
+c$intQ	c$Fosfomycin
+c$dacA	c$Amoxicillin c$Cefsulodin c$Cephradine c$Ceftazidime
+c$phn	c$Troleandomycin
+c$yebE	c$Kanamycin
+c$hdfR	c$Minocycline c$Fosfomycin c$Doxycycline
+c$ompF	c$Neomycin
+c$yihL	c$Colistin
+c$sspA	c$Minocycline c$Cefsulodin c$Thiolactomycin c$Doxycycline
+c$yaiS	c$Fosfomycin c$Cefsulodin
+c$yfcA	c$Tunicamycin c$CHIR090
+c$purE	c$Mecillinam c$Dactinomycin c$Cefsulodin c$Carbenicillin
+c$hslO	c$Kanamycin
+c$atpG	c$Neomycin c$Colistin
+c$acrZ	c$Trimethoprim c$Cephradine c$Neomycin
+c$ybgC	c$Amoxicillin c$Metronidazole c$Bacitracin c$Ceftazidime
+c$lpxM	c$Vancomycin c$Clarythromycin c$Bacitracin c$Neomycin
+c$ppiB	c$Dactinomycin c$Bacitracin c$Colistin
+c$uxuR	c$Amoxicillin
+c$ratB	c$Oxacillin c$Streptonigrin c$Fosfomycin c$Thiolactomycin
+c$purK	c$Carbenicillin
+c$rbsK	c$Mitomycin#SPACE#C c$Clarythromycin c$Minocycline c$Cefsulodin c$Doxycycline
+c$waaI	c$Minocycline c$Cerulenin c$Doxycycline
+c$ybiW	c$Fosfomycin
+c$dinI	c$Lomefloxacin
+c$uidA	c$Lomefloxacin
+c$rfaH	c$Chloramphenicol c$Triclosan c$Colistin
+c$pal	c$Vancomycin c$Amoxicillin c$Mecillinam c$Minocycline c$Cefsulodin c$Dactinomycin c$Bacitracin
+c$uvrA	c$Streptonigrin c$Metronidazole
+c$ybgF	c$Cefsulodin c$Colistin
+c$rplA	c$Chloramphenicol c$Sulfamethoxazole c$CHIR090 c$Colistin
+c$ampC	c$Amoxicillin
+c$mltB	c$Cefoxitin
+c$cysB	c$Metronidazole c$Dactinomycin c$Bicyclomycin c$Colistin
+c$tatC	c$Metronidazole c$Cefsulodin c$Bacitracin c$Triclosan c$Colistin
+c$recB	c$Streptonigrin c$Sulfamethoxazole
+c$proL	c$Streptomycin c$Enoxacin c$Colistin
+c$yagT	c$Furaltadone
+c$tsx	c$Azithromycin
+c$lpoB	c$Amoxicillin c$Mecillinam c$Cefsulodin c$Carbenicillin c$Puromycin c$Ceftazidime
+c$ampD	c$Mecillinam
+c$glpF	c$Doxycycline#SPACE#hyclate
+c$nagA	c$Mecillinam c$Carbenicillin c$CHIR090
+c$ylcG	c$Vancomycin c$Streptonigrin c$Phleomycin c$Colistin
+c$hfq	c$Cefsulodin c$Cephradine c$CHIR090 c$Doxycycline
+c$mlaE	c$Minocycline c$Cefsulodin c$Phleomycin c$Doxycycline
+c$napA	c$Amoxicillin
+c$hyaB	c$Ceftazidime c$Sulfamethizole
+c$nuoE	c$Fosfomycin
+c$lpxL	c$Minocycline c$Colistin
+c$ridA	c$Mecillinam
+c$ntrC	c$Paromomycin c$Geneticin
+c$ptrB	c$Streptonigrin c$Cefsulodin
+c$ytfJ	c$Ceftazidime
+c$lpd	c$Cephradine c$Cefoxitin
+c$crl	c$Phleomycin
+c$mlaC	c$Minocycline c$Doxycycline
+c$yrbL	c$Kanamycin
+c$cas1	c$Carbenicillin
+c$rfe	c$Minocycline c$Doxycycline#SPACE#hyclate c$CHIR090
+c$fis	c$Mecillinam c$Sulfamethoxazole
+c$ybhQ	c$Dactinomycin
+c$ygcO	c$Metronidazole c$Minocycline c$Cefsulodin c$Cephradine c$Sulfamethoxazole c$Colistin
+c$ynfE	c$Fosfomycin
+c$ydfV	c$Minocycline c$Spectinomycin
+c$glnL	c$Capreomycin c$Neomycin
+c$msbA	c$Metronidazole
+c$amiC	c$Ceftazidime
+c$npr	c$Sulfamethizole
+c$sapC	c$Neomycin c$Phleomycin
+c$fes	c$Bacitracin
+c$ybjI	c$Lomefloxacin c$Doxycycline
+c$gltD	c$Dactinomycin
+c$exuR	c$Lomefloxacin
+c$rseB	c$Minocycline
+c$yidA	c$Novobiocin
+c$yhiI	c$Amoxicillin
+c$recJ	c$Streptonigrin
+c$atpF	c$Amoxicillin c$Tunicamycin
+c$bcr	c$Cefoperazone c$Oxytetracycline c$Sulfathiazole c$Rolitetracycline
+c$ybdH	c$Bicyclomycin
+c$phoQ	c$Minocycline c$Cefsulodin c$Doxycycline
+c$slt	c$Ampicillin
+c$atpD	c$Amoxicillin c$Cefsulodin c$Bacitracin c$Tunicamycin
+c$rob	c$Lomefloxacin c$Minocycline c$Doxycycline
+c$yedL	c$Novobiocin
+c$pqqL	c$Bicyclomycin c$Novobiocin
+c$pcnB	c$Mecillinam
+c$nlpD	c$Cefsulodin c$Carbenicillin c$Phleomycin c$Doxycycline
+c$recR	c$Streptonigrin
+c$melB	c$Lomefloxacin
+c$minC	c$Mecillinam c$Fosfomycin
+c$dsdA	c$Mecillinam
+c$xerC	c$Streptonigrin c$Doxorubicin c$Cephradine c$Levofloxacin
+c$ycfK	c$Doxycycline
+c$kefB	c$Phleomycin
+c$yjhP	c$Kanamycin
+c$pyrC	c$Mecillinam c$Spectinomycin c$Bacitracin c$Doxycycline
+c$idnR	c$Amoxicillin
+c$yfiH	c$Amoxicillin c$Cephradine
+c$yhdN	c$Kanamycin
+c$ygiW	c$Bicyclomycin
+c$ydgD	c$Cephradine
+c$ubiG	c$Cephradine c$Triclosan
+c$rho	c$Norfloxacin
+c$fabF	c$Cephradine c$Phleomycin
+c$dcuC	c$Colistin
+c$ydfE	c$Cerulenin
+c$lpp	c$Cefsulodin
+c$pyrB	c$Mecillinam c$Spectinomycin
+c$rsmF	c$Cephradine c$Colistin
+c$yajG	c$Cefsulodin c$Ceftazidime
+c$kdpF	c$Hygromycin#SPACE#B
+c$yifE	c$Fosfomycin c$Spectinomycin c$CHIR090
+c$nuoB	c$Amoxicillin
+c$yihI	c$Carbenicillin
+c$tusD	c$Cephradine
+c$csiD	c$Minocycline c$Dactinomycin
+c$serC	c$Spectinomycin c$Bacitracin
+c$rlmE	c$Cephradine c$Colistin
+c$tolR	c$Amoxicillin c$Azithromycin
+c$sapD	c$Spectinomycin c$Nigericin
+c$ptsH	c$Spectinomycin
+c$mdtM	c$5-Nitro-2-furaldehyde#SPACE#semicarbazone
+c$uvrC	c$Mitomycin#SPACE#C c$Metronidazole
+c$feoC	c$Amoxicillin c$Cefsulodin
+c$nuoJ	c$Mitomycin#SPACE#C
+c$citC	c$Thiolactomycin
+c$menA	c$Ceftazidime
+c$wcaI	c$Cefsulodin c$Novobiocin
+c$pgaC	c$Cephradine c$Neomycin c$Colistin
+c$fcl	c$Cefsulodin c$Bacitracin
+c$frlD	c$Oxacillin
+c$pyrE	c$Mecillinam c$Spectinomycin c$Dactinomycin c$Carbenicillin c$Bacitracin c$Doxycycline
+c$ymjC	c$Bicyclomycin
+c$acpT	c$Neomycin
+c$lexA	c$Mecillinam
+c$pgpC	c$Kanamycin
+c$ygiB	c$Mecillinam c$Fosfomycin c$Kanamycin
+c$yfiE	c$Lomefloxacin
+c$yfdG	c$Amoxicillin c$Mecillinam
+c$ybcQ	c$Fosfomycin
+c$fabH	c$Cefsulodin c$Bacitracin
+c$gnsB	c$Mitomycin#SPACE#C
+c$recF	c$Novobiocin
+c$zntR	c$Fosfomycin
+c$stfR	c$Fosfomycin
+c$cmk	c$Bacitracin
+c$tauA	c$Doxycycline
+c$ftsP	c$Neomycin c$Ceftazidime
+c$ycjG	c$Cephradine c$Neomycin
+c$hicB	c$Dactinomycin c$CHIR090
+c$yqgC	c$Cefsulodin
+c$ygcP	c$Ceftazidime
+c$nlpI	c$Cefsulodin c$Doxycycline
+c$purL	c$Cefsulodin c$Dactinomycin c$Bacitracin
+c$dedA	c$Doxycycline#SPACE#hyclate
+c$pgm	c$Minocycline
+c$gshB	c$Metronidazole c$Neomycin
+c$htpG	c$Kanamycin
+c$fepG	c$Fosfomycin c$Tunicamycin c$Thiolactomycin
+c$bfd	c$Penicillin#SPACE#G
+c$kdpE	c$Hygromycin#SPACE#B
+c$yeiU	c$Lomefloxacin c$Doxycycline#SPACE#hyclate
+c$dedD	c$Metronidazole
+c$gyrA	c$Norfloxacin c$Triclosan c$Levofloxacin
+c$rayT	c$Bicyclomycin
+c$fbp	c$Oxacillin c$CHIR090
+c$seqA	c$Polymyxin#SPACE#B
+c$kdpB	c$Mecillinam c$Carbenicillin
+c$fre	c$Fosfomycin
+c$gmhB	c$Neomycin c$Colistin
+c$ratA	c$Streptonigrin
+c$ycgX	c$Levofloxacin
+c$sthA	c$Spectinomycin
+c$rfaG	c$Lomefloxacin c$Doxycycline#SPACE#hyclate
+c$rbsR	c$Carbenicillin c$Lincomycin c$Sulfamethazine
+c$fepB	c$Bacitracin c$Neomycin
+c$mog	c$Amoxicillin c$Fosfomycin
+c$cobB	c$Ceftazidime
+c$hflX	c$Dactinomycin
+c$envZ	c$Lomefloxacin c$Cefamandole c$Triclosan
+c$fdx	c$Colistin
+c$yggD	c$Lomefloxacin
+c$slyA	c$Neomycin
+c$rpmF	c$Mitomycin#SPACE#C c$Cephradine c$Colistin
+c$srmB	c$CHIR090
+c$ompA	c$Cefsulodin c$Azithromycin c$Ceftazidime
+c$mlaF	c$Minocycline c$Cefsulodin c$Kanamycin c$Doxycycline
+c$recO	c$Metronidazole c$Fosfomycin
+c$sbmC	c$Phleomycin
+c$proA	c$Lomefloxacin
+c$hslV	c$Kanamycin c$CHIR090
+c$ycjU	c$Cephradine c$Sulfamethoxazole c$Ceftazidime c$Colistin
+c$zapA	c$Mecillinam c$Dactinomycin c$Ceftazidime
+c$purA	c$Dactinomycin c$Bacitracin c$CHIR090
+c$pgl	c$Spectinomycin
+c$yaaA	c$Streptonigrin
+c$waaG	c$Minocycline c$Trimethoprim c$Neomycin c$CHIR090 c$Novobiocin c$Doxycycline
+c$pldB	c$Amoxicillin
+c$yneE	c$Doxorubicin c$Neomycin c$Colistin
+c$waaY	c$Mitomycin#SPACE#C c$Minocycline c$Doxycycline
+c$cpxR	c$Hygromycin#SPACE#B c$Geneticin
+c$wbbL	c$Neomycin
+c$atpE	c$Amoxicillin c$Tunicamycin c$Phleomycin c$Thiolactomycin
+c$fliS	c$Fosfomycin
+c$kgtP	c$Oxacillin
+c$dnaG	c$Norfloxacin
+c$rstB	c$Troleandomycin
+c$yjiS	c$Lomefloxacin
+c$ybaV	c$Bicyclomycin
+c$dsbB	c$Clarythromycin c$Mecillinam c$Bacitracin
+c$ackA	c$Neomycin
+c$mutM	c$Kanamycin
+c$ypdB	c$Lomefloxacin
 c$gshA	c$Metronidazole
-c$rpsU	c$Norfloxacin
-c$fdoI	c$Fosfomycin
+c$ycbV	c$Thiolactomycin
+c$glnG	c$Neomycin
+c$ddlB	c$Amoxicillin c$Mecillinam c$Fosfomycin c$Cefsulodin c$Cephradine c$Neomycin
+c$pinE	c$Spectinomycin c$Ceftazidime
+c$ybaB	c$Mitomycin#SPACE#C c$Streptonigrin
+c$yccA	c$Kanamycin
+c$tfaD	c$Spectinomycin
+c$phoB	c$Paromomycin
+c$dsbC	c$Mecillinam c$CHIR090
+c$speB	c$Fosfomycin
+c$yhfW	c$CHIR090
+c$ohsC	c$Spectinomycin c$Tetracycline c$Spiramycin c$Doxycycline
+c$cyaA	c$Triclosan
+c$ycbK	c$Colistin
+c$yggT	c$Fosfomycin
+c$galT	c$CHIR090
+c$ycbZ	c$Minocycline
+c$dapF	c$Cephradine c$Neomycin c$Colistin
+c$kdpA	c$Hygromycin#SPACE#B
+c$ygfM	c$Dactinomycin
+c$prlC	c$Kanamycin
+c$yjjY	c$Fosfomycin c$Sulfamethoxazole
+c$ycgV	c$Cefsulodin
+c$glnA	c$Tunicamycin c$Polymyxin#SPACE#B
+c$clpX	c$Kanamycin c$CHIR090
+c$yhfS	c$Minocycline
+c$yifL	c$Cefsulodin
+c$iscS	c$Oxacillin c$Cephradine c$Tunicamycin
+c$lsrA	c$Clarythromycin
+c$atpC	c$Thiolactomycin
+c$cysI	c$Bicyclomycin
+c$yrbE	c$Lomefloxacin c$Doxycycline#SPACE#hyclate
+c$glk	c$Amoxicillin
+c$tatB	c$Bacitracin c$Ceftazidime
+c$parC	c$Levofloxacin
+c$ydfW	c$Oleandomycin
+c$rimP	c$Cefsulodin c$Ceftazidime c$Thiolactomycin
+c$sucD	c$Cephradine
+c$gspM	c$Fosfomycin
+c$yjgL	c$Oxacillin
+c$rpoB	c$Rifamycin#SPACE#SV
+c$yqiC	c$Streptonigrin c$Mecillinam c$Fosfomycin
+c$elaD	c$Vancomycin c$Chloramphenicol
+c$yciS	c$Metronidazole c$Sulfamethoxazole
+c$tusB	c$Cephradine
+c$uvrB	c$Mitomycin#SPACE#C c$Streptonigrin
+c$qmcA	c$Colistin
+c$mdtF	c$Cloxacillin
+c$rpe	c$Colistin
+c$yceA	c$Ceftazidime
+c$xapR	c$Neomycin
+c$rffM	c$Cefsulodin
+c$mfd	c$Cephradine c$Neomycin
+c$pcm	c$Doxycycline
+c$malK	c$Cefsulodin
+c$potI	c$Doxycycline#SPACE#hyclate
+c$ybjJ	c$Cephradine
+c$hns	c$Sulfamethoxazole
+c$ulaD	c$Fosfomycin
+c$ybdN	c$Metronidazole c$Bicyclomycin
+c$fabI	c$Triclosan
+c$rcsD	c$Mecillinam
+c$yeaD	c$Cefsulodin
+c$lpxA	c$Colistin
+c$chbG	c$Tunicamycin
+c$umpG	c$Sulfamonomethoxine
+c$rimK	c$Metronidazole c$Sulfamethoxazole
+c$ynjA	c$CHIR090
+c$yidP	c$Neomycin
+c$folB	c$Streptomycin c$Neomycin
+c$ispE	c$Norfloxacin
+c$pldA	c$CHIR090
+c$tatA	c$Cefsulodin c$Ceftazidime
+c$pspA	c$Mecillinam c$Kanamycin
+c$idnK	c$CHIR090
+c$ompN	c$Streptonigrin
+c$fadE	c$CHIR090
+c$racC	c$Novobiocin
+c$glxK	c$Fosfomycin
+c$ynaE	c$Oxacillin c$Cerulenin c$Thiolactomycin
+c$yjiY	c$Minocycline
+c$yaiY	c$Fosfomycin
+c$acrE	c$Neomycin c$Colistin
+c$malS	c$CHIR090
+c$nfuA	c$Metronidazole
+c$cysE	c$Carbenicillin
+c$rnb	c$Minocycline c$CHIR090
+c$mazG	c$Cefsulodin
+c$yfbJ	c$Doxycycline#SPACE#hyclate
+c$yjbI	c$Blasticidin#SPACE#S
+c$fimC	c$Clarythromycin
+c$frlR	c$Spectinomycin
+c$pdxJ	c$Cefsulodin
+c$mzrA	c$Ceftazidime
+c$cspE	c$Fosfomycin
+c$ybeD	c$Cephradine c$Thiolactomycin
+c$dinG	c$Neomycin
+c$ruvC	c$Streptonigrin c$Levofloxacin
+c$pgaA	c$Streptonigrin
+c$yfgD	c$Cephradine
+c$ibpB	c$Neomycin
+c$yjhB	c$Oxacillin
+c$rffH	c$Cefsulodin c$Phleomycin
+c$treA	c$Lomefloxacin
+c$pspB	c$Kanamycin
+c$yfaD	c$Lomefloxacin
+c$pdxY	c$Amoxicillin
+c$ycdZ	c$Cephradine
+c$mpl	c$Mecillinam
+c$yceK	c$Nigericin
+c$queA	c$Minocycline c$Fosfomycin c$Spectinomycin c$Azithromycin c$Doxycycline
+c$yceD	c$Cephradine
+c$ygeR	c$Lomefloxacin
+c$rnhA	c$Bacitracin
+c$aceF	c$Thiolactomycin
+c$talB	c$Phleomycin
+c$arcA	c$Streptonigrin c$Mecillinam c$Paromomycin c$Geneticin
+c$prfC	c$Cefsulodin c$Neomycin
+c$rfaP	c$Lomefloxacin c$Doxycycline#SPACE#hyclate
+c$dgkA	c$Streptonigrin
+c$gor	c$Metronidazole
+c$narL	c$Fosfomycin
+c$greA	c$CHIR090
+c$yciE	c$Bicyclomycin
 c$rstA	c$Troleandomycin
-c$nagC	c$CHIR090
+c$rssB	c$Lomefloxacin
+c$ybiS	c$Doxycycline#SPACE#hyclate
+c$flgE	c$Ceftazidime
+c$xseB	c$Neomycin c$Levofloxacin
+c$lepA	c$CHIR090
+c$deoC	c$Streptonigrin c$Phleomycin
+c$dsbA	c$Spectinomycin
+c$ychJ	c$Clarythromycin
+c$yhbP	c$Fosfomycin
+c$emrD	c$Oxacillin c$Novobiocin
+c$ycfS	c$Kanamycin
+c$fabR	c$CHIR090
+c$galR	c$Amoxicillin
+c$yibF	c$Dactinomycin
+c$htpX	c$Kanamycin
+c$deoD	c$Spectinomycin
+c$uvrD	c$Metronidazole
+c$mltD	c$Cefsulodin
+c$ymfA	c$Neomycin
+c$yibI	c$Fosfomycin
+c$ubiX	c$Mitomycin#SPACE#C
+c$norR	c$Lomefloxacin
+c$gyrB	c$Novobiocin
+c$yeaQ	c$Spectinomycin
+c$wcaF	c$Bacitracin
+c$wzyE	c$Cefsulodin
+c$gmd	c$Polymyxin#SPACE#B
+c$cspA	c$Phleomycin
+c$entE	c$Fosfomycin
+c$fryC	c$Ceftazidime
+c$kdpD	c$Hygromycin#SPACE#B
+c$dcd	c$Sulfamethoxazole
+c$hisJ	c$Bicyclomycin
+c$yjbH	c$Bicyclomycin
+c$fau	c$Sulfamonomethoxine c$Sulfamethizole
+c$cpxA	c$Hygromycin#SPACE#B
+c$damX	c$Cefsulodin
 c$galU	c$Streptonigrin
+c$yhfL	c$Phleomycin
+c$tonB	c$Dactinomycin
+c$ybhK	c$CHIR090
+c$dsrB	c$Minocycline
+c$rpsF	c$Doxycycline
+c$phoR	c$Paromomycin
+c$rcsB	c$Mecillinam
+c$rpsU	c$Norfloxacin
+c$cysH	c$Bacitracin
+c$atoS	c$Phleomycin
+c$gcvH	c$Sulfamethizole
+c$nudB	c$Sulfadiazine
+c$yidR	c$Spectinomycin
+c$cmr	c$Lincomycin
+c$aroK	c$Cerulenin
+c$hemX	c$Streptonigrin c$Phleomycin
+c$ygfZ	c$Amoxicillin c$Mitomycin#SPACE#C c$Novobiocin
+c$ygfI	c$Doxycycline
+c$xerD	c$CHIR090
+c$ybjG	c$Kanamycin
+c$mdtE	c$Cloxacillin
+c$fepE	c$Novobiocin
+c$yrdA	c$Kanamycin
+c$dmsB	c$Dactinomycin
+c$ymgC	c$Streptonigrin
+c$bluR	c$Fosfomycin
+c$rfaQ	c$Doxycycline#SPACE#hyclate
+c$bfr	c$Amoxicillin
+c$mngR	c$Oxacillin
+c$arsC	c$Amoxicillin
+c$ydjI	c$Colistin
+c$yhcD	c$Lomefloxacin
+c$allR	c$Amoxicillin
+c$proQ	c$CHIR090
+c$proP	c$Spectinomycin
+c$cedA	c$Colistin
+c$rbsD	c$Radicicol
+c$galF	c$CHIR090
+c$iscU	c$Cephradine
+c$yibA	c$Amoxicillin
+c$cyaY	c$Mecillinam c$Ceftazidime
+c$hsrA	c$Doxycycline
+c$fdoI	c$Fosfomycin
+c$rffA	c$Cefsulodin c$Neomycin
+c$pspC	c$Kanamycin
+c$gntK	c$Neomycin
+c$hepA	c$Levofloxacin
+c$yicR	c$CHIR090
+c$yciI	c$Fosfomycin
+c$shoB	c$Trimethoprim
+c$fruB	c$Neomycin
+c$ydeP	c$Novobiocin
+c$yeiQ	c$Minocycline
+c$diaA	c$Mitomycin#SPACE#C
+c$gsiC	c$Ceftazidime
+c$dam	c$Cephradine
+c$typA	c$Metronidazole
+c$ihfB	c$Fosfomycin
+c$aroE	c$Fosfomycin
+c$ybdL	c$Ceftazidime
+c$yjgA	c$Neomycin
+c$lamB	c$Chlortetracycline
+c$fabG	c$Triclosan
+c$ydcY	c$Fosfomycin
+c$bssS	c$Novobiocin
+c$micM	c$Chloramphenicol c$Cerulenin
+c$fliA	c$Norfloxacin
+c$ymfQ	c$Phleomycin
+c$yobA	c$Kanamycin
+c$eutE	c$Amoxicillin
+c$csgA	c$Fosfomycin
+c$trmH	c$Streptonigrin
+c$pncB	c$Fosfomycin
+c$gcvA	c$Sulfamethizole
+c$treC	c$Ceftazidime
+c$nikE	c$CHIR090
+c$aceK	c$Novobiocin
+c$wzc	c$CHIR090
+c$yegW	c$Spectinomycin
+c$frdD	c$Ceftazidime

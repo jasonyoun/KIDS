@@ -1,19 +1,19 @@
-c$fabI	c$Triclosan
-c$gyrB	c$Ciprofloxacin
 c$mrcB	c$Cefoxitin c$Ampicillin
 c$dacA	c$Cefoxitin c$Ampicillin
-c$rpoB	c$Rifampin
 c$rho	c$Bicyclomycin
-c$gyrA	c$Enoxacin c$Ciprofloxacin
+c$gyrA	c$Ciprofloxacin c$Enoxacin
 c$parC	c$Ciprofloxacin
-c$rpsL	c$Streptomycin
-c$dacC	c$Cefoxitin c$Ampicillin
+c$rpoB	c$Rifampin
+c$fabI	c$Triclosan
+c$gyrB	c$Ciprofloxacin
 c$ftsI	c$Cefoxitin c$Ampicillin
-c$ampH	c$Cefoxitin c$Ampicillin
-c$prc	c$Cefoxitin c$Ampicillin
-c$dacB	c$Cefoxitin c$Ampicillin
-c$dacD	c$Cefoxitin c$Ampicillin
-c$fusA	c$Fusidic#SPACE#acid
 c$mrdA	c$Cefoxitin c$Ampicillin
 c$mrcA	c$Cefoxitin c$Ampicillin
+c$dacB	c$Cefoxitin c$Ampicillin
+c$dacD	c$Cefoxitin c$Ampicillin
+c$prc	c$Cefoxitin c$Ampicillin
 c$pbpG	c$Cefoxitin c$Ampicillin
+c$ampH	c$Cefoxitin c$Ampicillin
+c$rpsL	c$Streptomycin
+c$dacC	c$Cefoxitin c$Ampicillin
+c$fusA	c$Fusidic#SPACE#acid

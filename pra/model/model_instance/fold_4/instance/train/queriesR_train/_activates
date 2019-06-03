@@ -1,1413 +1,1413 @@
-c$lon	c$gadX
-c$pdxA	c$fis
-c$ompA	c$crp
-c$entE	c$crp
-c$yjiS	c$arcA
-c$ompC	c$arcA c$cpxR c$ompR c$envY
-c$dksA	c$crp
-c$gcvH	c$gcvA c$fnr c$lrp c$crp
-c$rbfA	c$arcA c$fis c$fnr c$crp
-c$frdD	c$fnr c$dcuR
-c$purD	c$phoP
-c$gntK	c$crp
-c$uxaB	c$arcA c$fnr c$crp
-c$nlpI	c$arcA
-c$tolC	c$marA c$phoP c$soxS c$rob
-c$fabF	c$arcA
-c$pstC	c$phoB c$fnr
-c$acrA	c$marA c$soxS c$rob
-c$glnD	c$fnr
-c$rbsR	c$crp
-c$nuoE	c$fnr c$fis c$cra c$narL c$crp
-c$gsiC	c$arcA
-c$secB	c$crp
-c$purE	c$purR
-c$yaiY	c$crp
-c$guaB	c$arcA c$purR c$fnr c$crp
-c$dsbA	c$cpxR
-c$yrbL	c$soxR c$phoP c$soxS
-c$ycjU	c$crp
-c$rpsF	c$crp
-c$cpxA	c$cpxR
-c$speB	c$fnr
-c$ybiS	c$crp
-c$envZ	c$crp
-c$lpcA	c$arcA
-c$aspA	c$fnr c$lrp c$crp
-c$ycgZ	c$fur
-c$rbsK	c$crp
-c$pyrB	c$purR
-c$phoP	c$phoP
-c$trxA	c$arcA
-c$lpd	c$fis c$fnr c$fur c$crp
-c$yhiI	c$arcA
-c$dgkA	c$basR
-c$dusB	c$crp
-c$apaH	c$fis
-c$aceE	c$fnr c$crp
-c$yeaD	c$fnr
-c$acrB	c$marA c$soxS c$rob
-c$purA	c$fnr c$gadE
-c$nusB	c$lrp
-c$plsX	c$arcA
-c$psiF	c$phoB
-c$ubiX	c$purR
-c$pstS	c$phoB c$fnr
-c$nikE	c$fnr c$cra
-c$leuO	c$leuO
-c$serB	c$lrp
-c$rimK	c$marA c$soxS c$rob
-c$serC	c$lrp
-c$secG	c$arcA c$fnr
-c$pyrD	c$purR c$fnr
-c$fis	c$crp
-c$guaA	c$arcA c$purR c$fnr c$crp
-c$cysB	c$phoP
-c$yjhP	c$crp
-c$recF	c$argP c$arcA c$fnr
-c$rimP	c$arcA c$fnr c$fis c$crp
-c$pstA	c$phoB c$fnr
-c$moaE	c$fnr c$modC
-c$nagA	c$phoP c$crp
-c$nuoM	c$fis c$fnr c$cra c$narL c$crp
-c$rseB	c$glnG c$glrR c$rcsB c$crp
-c$ydcY	c$fnr
-c$ubiG	c$crp
-c$hyaB	c$arcA c$ydeO c$appY
-c$phoQ	c$phoB c$phoP
-c$marA	c$marA c$cpxR c$fis c$soxS c$rob c$crp
-c$glpT	c$fnr c$fis c$crp
-c$idnD	c$idnR c$crp
-c$cyoA	c$fis c$cra c$gadE c$cusR c$crp
-c$dcuC	c$arcA c$fnr
-c$yciB	c$fnr
-c$feoC	c$arcA c$fnr c$nagC
-c$mdtF	c$evgA c$gadE c$gadW c$ydeO c$gadX
-c$lpxD	c$cpxR c$gadE
-c$yecR	c$arcA c$fnr
-c$ampC	c$bolA
-c$pldA	c$arcA
-c$ulaB	c$crp
-c$gpmM	c$fnr
-c$fadD	c$crp
-c$rpmF	c$arcA
-c$purM	c$purR c$fnr
-c$sdhC	c$arcA c$fur c$crp
-c$luxS	c$uvrY
-c$fur	c$soxS c$oxyR c$crp
-c$ybdN	c$arcA c$fnr c$cysB
-c$dmsB	c$fnr
-c$glnL	c$fis c$glnG c$crp
-c$yciE	c$mcbR
-c$pgaA	c$nhaR
-c$ycdZ	c$crp
-c$rseA	c$glnG c$glrR c$rcsB c$crp
-c$ynjA	c$fnr
-c$cvpA	c$purR
-c$cysI	c$cysB
-c$rpoD	c$arcA
-c$ptsH	c$cra c$crp
-c$mtlR	c$crp
-c$yciT	c$lrp
-c$gltD	c$arcA c$fnr c$adiY c$hdfR c$gadE c$lrp
-c$sgbU	c$crp
-c$gcvT	c$gcvA c$fnr c$lrp c$crp
-c$dnaG	c$arcA c$crp
-c$cpxR	c$cpxR
-c$cspE	c$crp
-c$appA	c$arcA c$ydeO c$appY
-c$tauA	c$cysB c$cbl
-c$carB	c$arcA c$purR c$fis c$rutR
-c$ubiC	c$arcA
-c$bdm	c$rcsB
-c$mltF	c$rob
-c$acrE	c$fnr
-c$yjjY	c$arcA c$fnr
-c$proL	c$arcA c$fis
-c$rpoS	c$gadX c$crp
-c$dadA	c$lrp c$crp
-c$fhlA	c$fnr c$fhlA
-c$sdaC	c$lrp
-c$cas1	c$leuO
-c$degP	c$cpxR
-c$zapB	c$fur
-c$dsbC	c$cpxR
-c$ygiB	c$marA c$phoP c$soxS c$rob
-c$nuoH	c$fis c$fnr c$cra c$narL c$crp
-c$purL	c$purR
-c$queA	c$fis
-c$mlc	c$crp
-c$cspA	c$fis
-c$fixA	c$caiF c$fnr c$crp
-c$fabH	c$arcA c$fadR
-c$wrbA	c$csgD
-c$nepI	c$arcA c$soxS
-c$glpR	c$arcA c$crp
-c$purK	c$purR
-c$csiD	c$lrp c$hns c$crp
-c$rbsD	c$crp
-c$tonB	c$fur
-c$dsdA	c$dsdX c$crp
-c$ygcO	c$fnr
-c$aceF	c$fnr c$crp
-c$fabR	c$arcA
-c$glnG	c$fis c$glnG c$crp
-c$malK	c$malT c$crp
-c$aroA	c$lrp
-c$fau	c$fis
-c$pgaC	c$nhaR
-c$deoD	c$fis c$crp
-c$mzrA	c$cpxR
-c$nuoF	c$fnr c$fis c$cra c$narL c$crp
-c$flhD	c$arcA c$qseB c$hns c$crp
-c$pspB	c$pspF c$crp
-c$glpF	c$crp
-c$dctA	c$dcuR c$crp
-c$acrZ	c$marA c$soxS c$rob
-c$potI	c$glnG c$lrp
-c$galM	c$galS c$galR c$crp
-c$kdpB	c$arcA c$kdpE
-c$gmhB	c$fnr
-c$hupA	c$fis c$crp
-c$dsbB	c$arcA
-c$cydB	c$arcA c$hypT c$fnr c$cra
-c$prpC	c$prpR c$crp
-c$sucD	c$arcA c$fur c$crp
-c$csgF	c$csgD c$basR c$mlrA c$ompR c$cra c$rcdA c$crp
-c$gadX	c$arcA c$phoB c$adiY c$gadW c$gadE c$gadX
-c$ybiY	c$arcA c$fnr
-c$rho	c$arcA
-c$aroG	c$cpxR c$lrp
-c$yceD	c$arcA
-c$narL	c$fnr c$argR c$modC
-c$arcA	c$arcA c$fnr
-c$gcvA	c$arcA
-c$rplI	c$crp
-c$lamB	c$malT c$crp
-c$mpl	c$crp
-c$ygcP	c$fnr
-c$waaY	c$marA c$soxS
-c$ybhK	c$arcA c$fnr
-c$mdtE	c$evgA c$ydeO c$gadW c$gadE c$gadX
-c$hns	c$fis c$cspA c$gadX
-c$deoC	c$fis c$crp
-c$nfuA	c$crp
-c$gcvP	c$gcvA c$fnr c$lrp c$crp
-c$hyaC	c$arcA c$ydeO c$appY
-c$rstB	c$arcA c$phoP
-c$ompG	c$crp
-c$rcsB	c$arcA
-c$uhpT	c$uhpA c$uvrY c$crp
-c$mazG	c$fis
-c$kdpC	c$arcA c$kdpE
-c$ftnA	c$fur
-c$gor	c$oxyR
-c$ompF	c$phoB c$ompR c$envY c$fur c$crp
-c$csgA	c$csgD
-c$malS	c$phoP c$malT c$crp
-c$ycbV	c$argR
-c$chbG	c$chbR c$crp
-c$yjhQ	c$crp
-c$emrD	c$lrp
-c$kdpA	c$arcA c$kdpE
-c$treC	c$arcA c$cra c$crp
-c$fes	c$fnr c$hns
-c$ybjX	c$arcA
-c$iraP	c$csgD
-c$mutM	c$arcA
-c$proK	c$fis
-c$nhaA	c$nhaR
-c$nuoJ	c$fnr c$fis c$cra c$narL c$crp
-c$glnA	c$fis c$glnG c$crp
-c$nfsA	c$marA c$soxS c$rob
-c$cusS	c$phoB c$cusR c$yedW
-c$mepM	c$oxyR
-c$fkpB	c$arcA
-c$uxuR	c$crp
-c$lsrA	c$crp
-c$soxS	c$soxR
-c$rutA	c$arcA c$phoP c$glnG
-c$fepE	c$fnr c$hns
-c$napA	c$narP c$fnr c$modC c$lrp
-c$rsmA	c$fis
-c$ybiW	c$arcA c$fnr
-c$idnR	c$idnR c$crp
-c$idnK	c$idnR c$crp
-c$caiA	c$arcA c$caiF c$fnr c$crp
-c$rpsU	c$arcA
-c$fdoI	c$arcA c$crp
-c$rstA	c$arcA c$phoP
-c$nagC	c$crp
-c$cheY	c$fnr
-c$astD	c$glnG c$argR c$lrp
-c$chbR	c$chbR c$crp
-c$baeR	c$cpxR c$baeR c$cra c$crp
-c$fnr	c$fnr
-c$ydhT	c$fnr
-c$lrp	c$gadE
-c$thrC	c$fnr c$lrp c$crp
-c$yqhD	c$yqhC
-c$nrfC	c$arcA c$narP c$fnr c$narL
-c$glyA	c$metR
-c$sstT	c$arcA c$lrp
-c$gadE	c$arcA c$phoP c$evgA c$ydeO c$gadE c$gadW c$gadX
-c$yjbR	c$gadE
-c$cusR	c$phoB c$yedW c$cusR
-c$cdaR	c$cdaR
-c$garL	c$fnr c$cdaR
-c$casA	c$leuO
-c$putA	c$marA
-c$glpK	c$crp
-c$ddpX	c$arcA c$glnG
-c$copA	c$cueR
-c$aceK	c$cra c$lrp
-c$dbpA	c$fnr
-c$nirC	c$narP c$fnr c$narL
-c$argR	c$arcA
-c$yeaJ	c$argR
-c$sbmC	c$crp
-c$potG	c$glnG c$lrp
-c$iraD	c$fnr
-c$hybC	c$arcA c$fnr c$fur
-c$cysM	c$cysB
-c$pdhR	c$fnr c$crp
-c$cyoE	c$fis c$cra c$gadE c$crp c$cusR
-c$modC	c$crp
-c$phoA	c$phoB
-c$fimF	c$lrp c$hns
-c$slyB	c$phoP c$fnr
-c$hupB	c$crp
-c$potA	c$fnr
-c$nrdF	c$iscR
-c$glgS	c$crp
-c$crp	c$cra c$crp
-c$galE	c$galS c$galR c$crp
-c$nirB	c$narP c$fnr c$narL
-c$mglA	c$crp
-c$yhjX	c$arcA c$ypdB
-c$galT	c$galS c$galR c$crp
-c$yeiQ	c$arcA c$fnr
-c$deoB	c$fis c$crp
-c$caiT	c$arcA c$caiF c$fnr c$crp
-c$ssuD	c$fnr c$cbl
-c$paaD	c$arcA c$crp
-c$cusB	c$phoB c$yedW c$cusR
-c$caiD	c$caiF c$arcA c$fnr c$crp
-c$dacC	c$bolA
-c$ydeO	c$evgA c$rcsB
-c$dppC	c$arcA c$lrp
-c$cysW	c$cysB
-c$sdhD	c$arcA c$fur c$crp
-c$rhaS	c$rhaS c$rhaR c$crp
-c$pnp	c$arcA c$fnr c$fis
-c$tdcA	c$fnr c$tdcR c$tdcA c$lrp c$crp
-c$fdhF	c$narP c$fnr c$fhlA
-c$cydD	c$arcA c$fnr c$narL
-c$yqhA	c$fnr
-c$grcA	c$arcA c$fis c$fnr c$crp
-c$ydeP	c$evgA c$uvrY c$narL c$rcsB
-c$yhjC	c$phoB
-c$ykgF	c$lrp
-c$aroF	c$soxR
-c$lsrK	c$crp
-c$sufB	c$oxyR c$iscR
-c$malQ	c$fnr c$malT
-c$oppF	c$arcA c$lrp
-c$ileS	c$arcA
-c$ydeI	c$rcdA
-c$cusA	c$phoB c$yedW c$cusR
-c$fhuB	c$trpR
-c$hybE	c$arcA c$fnr c$fur
-c$tyrR	c$lrp
-c$tyrA	c$soxR
-c$entH	c$crp
-c$ptsG	c$arcA c$fnr c$fis c$soxS c$crp
-c$tauC	c$cysB c$cbl
-c$paaH	c$arcA c$crp
-c$dctR	c$ydeO c$gadX
-c$ccmE	c$narP c$fnr c$modC
-c$clpS	c$crp
-c$agp	c$crp
-c$yibI	c$crp
-c$nikB	c$fnr c$cra
-c$metN	c$hypT c$fnr
-c$leuC	c$arcA c$leuO c$lrp
-c$proP	c$fis c$crp
-c$garK	c$fnr c$cdaR c$crp
-c$idnT	c$idnR c$crp
-c$ilvB	c$lrp c$crp
-c$leuL	c$arcA c$leuO c$lrp
-c$melR	c$melR c$crp
-c$fliZ	c$hns
-c$glcA	c$glcC c$crp
-c$pqiA	c$marA c$soxS
-c$focA	c$arcA c$fnr c$crp
-c$cheR	c$fnr
-c$adiC	c$phoB
-c$phnK	c$phoB c$arcA
-c$paaE	c$arcA c$crp
-c$potC	c$fnr
-c$lsrG	c$crp
-c$aroP	c$fnr c$argR c$cra
-c$oxyR	c$crp
-c$yadH	c$crp
-c$xseA	c$arcA c$fnr c$crp
-c$ttdR	c$ttdR
-c$chbF	c$chbR c$crp
-c$csgD	c$csgD c$basR c$mlrA c$ompR c$cra c$crp c$rcdA
-c$pepD	c$lrp
-c$acnA	c$marA c$soxS c$cra c$rob c$fur c$crp
-c$nuoN	c$fis c$fnr c$cra c$narL c$crp
-c$yraQ	c$argR
-c$ynfH	c$fnr
-c$narG	c$fnr c$narL c$rstA
-c$norV	c$norR
-c$yjiC	c$lrp
-c$yeaL	c$argR
-c$manX	c$cra c$crp
-c$cynX	c$cynR
-c$hdeA	c$phoP c$torR c$gadW c$gadE c$gadX c$rcsB
-c$xylR	c$arcA c$xylR c$crp
-c$xylA	c$xylR c$crp
-c$ilvA	c$lrp
-c$gntT	c$crp
-c$phoB	c$phoB
-c$phnN	c$phoB c$arcA c$argR
-c$ompR	c$crp
-c$cysA	c$cysB
-c$amtB	c$fnr c$glnG c$fur c$gadX
-c$rplY	c$arcA
-c$fadA	c$fis
-c$ypdA	c$arcA
-c$oppB	c$arcA c$lrp
-c$dtpB	c$lrp
-c$mdtD	c$cpxR c$baeR c$cra c$crp
-c$garP	c$fnr c$cdaR
-c$prpR	c$crp
-c$prpD	c$prpR c$crp
-c$phnO	c$arcA c$phoB c$argR
-c$mtlA	c$crp
-c$ccmC	c$narP c$fnr c$modC
-c$alkB	c$ada
-c$paaJ	c$arcA c$crp
-c$ydhU	c$fnr
-c$yobF	c$crp
-c$manZ	c$cra c$crp
-c$uhpA	c$lrp c$crp
-c$ompT	c$phoP c$lrp
-c$nupG	c$crp
-c$rseC	c$glnG c$glrR c$rcsB c$crp
-c$nac	c$glnG
-c$sufC	c$oxyR c$iscR
-c$torA	c$torR
-c$ynfO	c$fnr
-c$mntH	c$oxyR c$crp
-c$ygeA	c$araC c$crp
-c$rutE	c$arcA c$phoP c$glnG
-c$malT	c$lrp c$crp
-c$gadW	c$arcA c$phoB c$phoP c$gadE c$ydeO c$gadX c$sdiA
-c$accD	c$fadR
-c$brnQ	c$lrp
-c$iraM	c$arcA c$phoP c$fnr
-c$tauD	c$cysB c$cbl
-c$lysA	c$argP c$lysR
-c$galS	c$argR c$crp
-c$trkH	c$arcA
-c$caiE	c$caiF c$arcA c$fnr c$crp
-c$glgA	c$phoP c$crp
-c$murP	c$crp
-c$csgG	c$csgD c$basR c$mlrA c$ompR c$cra c$crp c$rcdA
-c$nagB	c$crp
-c$narH	c$fnr c$narL c$rstA
-c$feaB	c$arcA c$feaR c$crp
-c$gltF	c$arcA c$fnr c$adiY c$hdfR c$gadE c$lrp
-c$sucA	c$arcA c$fur c$crp
-c$yhiD	c$phoP c$torR c$gadE c$gadW c$rcsB c$gadX
-c$ychE	c$fnr
-c$hyfR	c$hyfR c$crp c$fhlA
-c$hyfB	c$hyfR c$crp c$fhlA
-c$yeaR	c$narP c$narL
-c$pabA	c$crp
-c$caiC	c$arcA c$caiF c$fnr c$crp
-c$chbA	c$chbR c$crp
-c$dcuR	c$fnr c$crp
-c$yjhX	c$crp
-c$phoR	c$phoB
-c$znuC	c$oxyR
-c$srlD	c$gutM c$hns c$crp
-c$stpA	c$lrp
-c$acnB	c$cra c$crp
-c$fepA	c$crp
-c$nanE	c$crp
-c$melB	c$melR c$crp
-c$pspA	c$pspF c$crp
-c$mntP	c$mntR c$fur
-c$ybjC	c$marA c$soxS c$rob
-c$yagI	c$fur
-c$caiF	c$fnr c$crp
-c$lrhA	c$lrhA c$lrp
-c$yhhX	c$crp
-c$tauB	c$cysB c$cbl
-c$cspD	c$hns c$crp
-c$evgA	c$evgA
-c$tdcE	c$fnr c$tdcR c$tdcA c$lrp c$crp
-c$prpE	c$prpR c$crp
-c$ugpA	c$phoB c$crp
-c$ptsI	c$cra c$crp
-c$ppsA	c$cra
-c$codB	c$purR c$nac
-c$gltB	c$arcA c$fnr c$adiY c$hdfR c$gadE c$lrp
-c$phoU	c$phoB c$fnr
-c$rpsT	c$arcA
-c$gutQ	c$gutM c$hns c$crp
-c$fdnG	c$fnr c$narL
-c$fdhE	c$arcA
-c$cyoC	c$fis c$cra c$gadE c$cusR c$crp
-c$rbsC	c$crp
-c$hcp	c$narP c$fnr c$oxyR c$narL
-c$napB	c$narP c$fnr c$modC c$lrp
-c$hycB	c$modC c$fhlA
-c$feoB	c$arcA c$fnr c$nagC
-c$yeiP	c$crp
-c$uxuB	c$fur c$crp
-c$cpxP	c$cpxR
-c$napC	c$narP c$fnr c$modC c$lrp
-c$ypdC	c$arcA
-c$rutR	c$arcA
-c$adiA	c$adiY
-c$preA	c$crp
-c$focB	c$hyfR c$crp c$fhlA
-c$ilvD	c$lrp
-c$ulaC	c$crp
-c$hcaR	c$arcA
-c$cstA	c$crp
-c$dppF	c$arcA c$lrp
-c$ugpQ	c$phoB c$crp
-c$ccmB	c$narP c$fnr c$modC
-c$dkgA	c$yqhC
-c$fecC	c$pdhR c$crp
-c$ilvC	c$ilvY
-c$dmsD	c$fnr
-c$dhaM	c$arcA c$fnr c$dhaR c$lrp
-c$paaK	c$arcA c$crp
-c$yehP	c$lrp
-c$fixC	c$caiF c$fnr c$crp
-c$preT	c$crp
-c$mlrA	c$crp
-c$csgE	c$csgD c$basR c$mlrA c$ompR c$cra c$rcdA c$crp
-c$clsB	c$lrp
-c$nfo	c$marA c$soxS c$rob
-c$lldD	c$arcA c$lldR c$crp
-c$glpB	c$fnr c$fis c$crp
-c$pgi	c$soxS
-c$nrdD	c$fnr
-c$mhpR	c$crp
-c$mhpB	c$mhpR c$crp
-c$hydN	c$fhlA
-c$aidB	c$ada
-c$hisP	c$glnG c$hns
-c$yhbE	c$mlrA
-c$gltP	c$argR
-c$ulaA	c$crp
-c$hsdM	c$fnr
-c$potD	c$fnr
-c$lsrB	c$crp
-c$gatY	c$crp
-c$metE	c$cra c$oxyR c$metR
-c$hisF	c$cra
-c$leuA	c$arcA c$leuO c$lrp
-c$fbp	c$cra
-c$ackA	c$arcA c$fnr
-c$ygdG	c$crp
-c$argG	c$arcA c$fnr c$crp
-c$dhaK	c$arcA c$fnr c$dhaR c$lrp
-c$znuB	c$oxyR
-c$yojI	c$lrp
-c$cyoB	c$fis c$cra c$gadE c$crp c$cusR
-c$dppD	c$arcA c$lrp
-c$aqpZ	c$fnr
-c$malF	c$fis c$malT c$crp
-c$katE	c$fur
-c$entB	c$crp
-c$xapA	c$xapR
-c$hyfF	c$hyfR c$fhlA c$crp
-c$rpmG	c$arcA
-c$pepT	c$fnr
-c$citX	c$dpiA
-c$astA	c$glnG c$argR c$lrp
-c$alaA	c$lrp
-c$gadB	c$adiY c$gadE c$gadW c$rcsB c$gadX
-c$citE	c$dpiA
-c$carA	c$arcA c$purR c$fis c$rutR
-c$nagE	c$crp
-c$cpdB	c$crp
-c$aldB	c$crp
-c$hybG	c$arcA c$fnr c$fur
-c$yhcH	c$crp
-c$fadB	c$fis
-c$hdeD	c$phoP c$gadE c$gadX c$rcsB
-c$sdaB	c$lrp
-c$nuoG	c$fnr c$fis c$cra c$narL c$crp
-c$clpA	c$crp
-c$baeS	c$cpxR c$baeR c$cra c$crp
-c$yjiR	c$arcA
-c$oppA	c$arcA c$lrp
-c$tdcB	c$fnr c$tdcR c$tdcA c$lrp c$crp
-c$phoH	c$phoB c$arcA
-c$glcD	c$glcC c$crp
-c$yedP	c$crp
-c$relA	c$glnG c$hns c$crp
-c$mdtC	c$cpxR c$baeR c$cra c$crp
-c$proY	c$lrp
-c$galP	c$crp
-c$yidQ	c$cpxR
-c$fucR	c$fucR c$crp
-c$fucA	c$fucR c$crp
-c$zinT	c$soxS c$oxyR c$fur
-c$dtpD	c$argR
-c$cysK	c$cysB
-c$gutM	c$gutM c$hns c$crp
-c$nanA	c$crp
-c$nrfE	c$arcA c$narP c$fnr c$narL
-c$ycjS	c$crp
-c$rarA	c$rcsB
-c$epd	c$crp
-c$phnG	c$arcA c$phoB
-c$yqeF	c$lrp
-c$ydcT	c$nac
-c$deoA	c$fis c$crp
-c$dpiA	c$arcA c$dcuR c$dpiA
-c$citG	c$dpiA
-c$gdhA	c$argP c$fnr c$fur
-c$leuB	c$arcA c$leuO c$lrp
-c$sucB	c$arcA c$fur c$crp
-c$hycC	c$modC c$fhlA
-c$dps	c$oxyR
-c$hofN	c$crp
-c$nikR	c$fnr c$cra
-c$nikD	c$fnr c$cra
-c$yibH	c$crp
-c$paaF	c$arcA c$crp
-c$kdpF	c$arcA c$kdpE
-c$nuoC	c$fis c$fnr c$cra c$narL c$crp
-c$sufA	c$oxyR c$iscR
-c$nanT	c$crp
-c$yjeM	c$lrp
-c$glgB	c$phoP
-c$modA	c$crp
-c$cysG	c$narP c$fnr c$narL
-c$osmC	c$nhaR c$lrp c$rcsB
-c$codA	c$purR c$nac
-c$leuE	c$lrp
-c$pta	c$fnr
-c$pyrL	c$purR
-c$truB	c$arcA c$fnr c$fis c$crp
-c$pntA	c$arcA
-c$evgS	c$evgA
-c$ybiT	c$fnr c$crp
-c$glcB	c$glcC c$crp
-c$hisA	c$cra
-c$bglB	c$leuO c$crp
-c$alaC	c$sgrR
-c$nrfB	c$arcA c$narP c$fnr c$narL
-c$aaeA	c$crp
-c$betI	c$cra
-c$nmpC	c$crp
-c$ydiV	c$sdiA
-c$mazF	c$fis c$hns c$crp
-c$astB	c$glnG c$argR c$lrp
-c$paaG	c$arcA c$crp
-c$hybD	c$arcA c$fnr c$fur
-c$ung	c$fnr
-c$ulaF	c$crp
-c$crr	c$cra c$crp
-c$fucU	c$fucR c$crp
-c$cusF	c$phoB c$yedW c$cusR
-c$ytfK	c$lrp
-c$araE	c$araC c$crp
-c$mdh	c$dpiA c$crp
-c$metI	c$hypT c$fnr
-c$ycjG	c$arcA
-c$pflB	c$arcA c$fnr c$crp
-c$narK	c$fnr c$narL
-c$yfaE	c$argP c$fis c$crp
-c$yhdZ	c$glnG
-c$sufE	c$oxyR c$iscR
-c$msrB	c$fnr c$cra
-c$uspE	c$lrp c$gadX
-c$casE	c$leuO
-c$cheB	c$fnr
-c$malG	c$fis c$malT c$crp
-c$yiaL	c$crp
-c$mrr	c$fnr
-c$zntA	c$zntR
-c$mhpE	c$mhpR c$crp
-c$hdeB	c$phoP c$torR c$gadE c$gadW c$gadX c$rcsB
-c$yieF	c$arcA
-c$fumC	c$arcA c$marA c$soxR c$soxS c$rob c$crp
-c$napD	c$narP c$fnr c$modC c$lrp
-c$ydeN	c$argR
-c$lldP	c$arcA c$lldR c$crp
-c$gatD	c$crp
-c$glnH	c$glnG
-c$lysU	c$lrp
-c$tdh	c$lrp
-c$kbl	c$lrp
-c$aer	c$fnr c$crp
-c$uidC	c$crp
-c$fucO	c$fucR c$crp
-c$cysH	c$hypT c$cysB
-c$ycjT	c$crp
-c$yhfG	c$crp
-c$upp	c$fnr
-c$ftnB	c$cpxR c$trpR c$fur
-c$slyA	c$fnr
-c$araH	c$araC c$crp
-c$appB	c$arcA c$ydeO c$appY
-c$ansB	c$fnr c$lrp c$crp
-c$glcC	c$crp
-c$dppB	c$arcA c$lrp
-c$fucP	c$fucR c$crp
-c$sodA	c$marA c$soxR c$soxS c$rob c$crp
-c$hisB	c$cra
-c$yhcC	c$arcA c$fnr
-c$feoA	c$arcA c$fnr c$nagC
-c$ydhX	c$fnr
-c$hcr	c$narP c$fnr c$oxyR c$narL
-c$yqgC	c$fnr
-c$ppiA	c$cpxR c$crp
-c$manY	c$cra c$crp
-c$yigF	c$arcA
-c$exuT	c$arcA c$fnr c$dpiA c$crp
-c$yghB	c$fnr
-c$xylH	c$xylR c$crp
-c$cadC	c$mlrA c$fnr c$cadC
-c$nanM	c$crp
-c$nanC	c$crp
-c$betB	c$cra
-c$fiu	c$crp
-c$nikA	c$fnr c$cra
-c$mgtA	c$soxR c$phoP
-c$metR	c$oxyR
-c$mqo	c$lrp
-c$cycA	c$arcA c$lrp
-c$umpH	c$crp
-c$rcsD	c$arcA
-c$yhcN	c$lrp
-c$casB	c$leuO
-c$hyfD	c$hyfR c$crp c$fhlA
-c$pagP	c$phoP
-c$yjeH	c$fnr
-c$ddpB	c$arcA c$glnG
-c$yjjW	c$crp
-c$bssR	c$fnr
-c$xylG	c$xylR c$crp
-c$fumB	c$arcA c$fnr c$dcuR c$fur c$lrp c$crp
-c$ydfO	c$fnr
-c$lldR	c$arcA c$lldR c$crp
-c$atoB	c$atoC
-c$hybO	c$arcA c$fnr c$fur
-c$mtlD	c$crp
-c$glpE	c$arcA c$crp
-c$bacA	c$cpxR
-c$uspC	c$arcA
-c$ravA	c$fnr
-c$rutB	c$arcA c$phoP c$glnG
-c$hybB	c$arcA c$fnr c$fur
-c$artM	c$lrp
-c$narI	c$fnr c$narL c$rstA
-c$hybF	c$arcA c$fnr c$fur
-c$priB	c$crp
-c$metH	c$metR
-c$dmsA	c$fnr
-c$srlE	c$gutM c$hns c$crp
-c$fadJ	c$lrp
-c$purH	c$phoP
-c$potB	c$fnr
-c$sbmA	c$cpxR
-c$narX	c$fnr c$modC
-c$znuA	c$oxyR
-c$fdnH	c$fnr c$narL
-c$aldA	c$crp
-c$yjcH	c$fnr c$crp
-c$folM	c$lrp
-c$dhaR	c$arcA c$fnr
-c$tnaA	c$torR c$crp
-c$uxaA	c$arcA c$fnr c$crp
-c$lacA	c$crp
-c$ttdA	c$ttdR
-c$adhE	c$fis c$fnr c$lrp
-c$nrdI	c$iscR
-c$fdoG	c$arcA
-c$yceI	c$arcA
-c$ugpC	c$phoB c$crp
-c$yciG	c$mcbR
-c$fdnI	c$fnr c$narL
-c$osmY	c$lrp c$crp
-c$nanS	c$crp
-c$ytfE	c$narP c$narL
-c$tdcD	c$fnr c$tdcR c$tdcA c$lrp c$crp
-c$gabD	c$nac c$lrp c$hns c$crp
-c$murR	c$murR
-c$hisQ	c$glnG c$hns
-c$dcuA	c$arcA c$fnr c$lrp c$crp
-c$phnD	c$phoB c$arcA
-c$purF	c$purR
-c$nadC	c$crp
-c$feaR	c$arcA c$nac c$crp
-c$astC	c$glnG c$argR c$lrp
-c$uhpC	c$lrp c$crp
-c$rmf	c$arcA c$crp
-c$xylF	c$xylR c$crp
-c$icd	c$cra
-c$narJ	c$fnr c$narL c$rstA
-c$fixB	c$caiF c$fnr c$crp
-c$yfbV	c$fnr
-c$cadA	c$cadC c$gadX c$lrp
-c$glk	c$cra
-c$moeB	c$arcA c$narL
-c$ecpR	c$ecpR c$lrp
-c$ecpA	c$ecpR
-c$ssuE	c$fnr c$cbl
-c$marB	c$cpxR c$marA c$fis c$soxS c$rob c$crp
-c$yeiG	c$arcA
-c$cynS	c$cynR
-c$mhpD	c$mhpR c$crp
-c$nfsB	c$marA c$soxS c$rob
-c$eco	c$lrp
-c$tdcR	c$fnr
-c$nhoA	c$soxS
-c$yceJ	c$arcA
-c$yeeX	c$cra
-c$entF	c$fnr c$hns
-c$ugpE	c$phoB c$crp
-c$sxy	c$crp
-c$cueO	c$cueR
-c$mhpA	c$mhpR c$crp
-c$fecB	c$pdhR c$crp
-c$radA	c$lrp
-c$ahpF	c$oxyR
-c$ynjC	c$fnr
-c$cyoD	c$fis c$cra c$gadE c$cusR c$crp
-c$cadB	c$cadC c$gadX c$lrp
-c$ppsR	c$cra
-c$yqjI	c$fnr
-c$pgaD	c$nhaR
-c$sdhA	c$arcA c$fur c$crp
-c$qseB	c$basR c$qseB
-c$nrfF	c$arcA c$narP c$fnr c$narL
-c$yiaO	c$crp
-c$nrfA	c$arcA c$narP c$fnr c$narL
-c$ada	c$ada
-c$lysC	c$argP
-c$cysD	c$cysB
-c$dhaL	c$arcA c$fnr c$dhaR c$lrp
-c$ivbL	c$lrp c$crp
-c$cysU	c$cysB
-c$leuD	c$arcA c$leuO c$lrp
-c$mhpC	c$mhpR c$crp
-c$hypE	c$fnr c$fhlA
-c$uspF	c$fnr
-c$treB	c$arcA c$cra c$crp
-c$actP	c$fnr c$crp
-c$ychH	c$crp
-c$xdhB	c$fnr
-c$mglB	c$crp
-c$puuA	c$arcA
-c$rhaR	c$rhaS c$rhaR c$crp
-c$agaA	c$crp
-c$malP	c$fnr c$malT
-c$nuoB	c$fis c$fnr c$cra c$narL c$crp
-c$cytR	c$crp
-c$zraP	c$zraR
-c$napG	c$narP c$fnr c$modC c$lrp
-c$fdoH	c$arcA c$crp
-c$add	c$rbsR
-c$cysJ	c$cysB
-c$mipA	c$phoB
-c$ogt	c$narL
-c$hycA	c$modC c$fhlA
-c$fadR	c$fadR
-c$tar	c$fnr
-c$nuoK	c$fis c$fnr c$cra c$narL c$crp
-c$moaC	c$fnr c$modC
-c$hypD	c$fnr c$fhlA
-c$yeaI	c$fnr
-c$glgX	c$phoP
-c$astE	c$glnG c$argR c$lrp
-c$araF	c$araC c$crp
-c$ccmF	c$narP c$fnr c$modC
-c$fecA	c$pdhR c$crp
-c$rhoL	c$arcA
-c$artI	c$lrp
-c$potH	c$glnG c$lrp
-c$puuE	c$argR
-c$iclR	c$fadR
-c$melA	c$melR c$crp
-c$ygiC	c$marA c$phoP c$soxS c$rob
-c$xapB	c$xapR
-c$murQ	c$crp
-c$mgrB	c$phoP
-c$glcF	c$glcC c$crp
-c$gltA	c$crp
-c$fsaA	c$arcA c$fnr
-c$sdaA	c$lrp
-c$bglG	c$leuO c$crp
-c$malX	c$crp
-c$eutD	c$argR
-c$mglC	c$crp
-c$hyfG	c$hyfR c$fhlA c$crp
-c$yhgE	c$arcA
-c$moaD	c$fnr c$modC
-c$ydhV	c$fnr
-c$cdd	c$crp
-c$citF	c$dpiA
-c$ttdB	c$ttdR
-c$phoE	c$phoB
-c$slp	c$ydeO c$gadX
-c$nupC	c$arcA c$nac c$crp
-c$ypdB	c$arcA
-c$gsiA	c$arcA
-c$rhaT	c$rhaS c$crp
-c$flhC	c$arcA c$qseB c$hns c$crp
-c$ydgI	c$lrp
-c$uspA	c$fnr
-c$ymjB	c$crp
-c$mhpF	c$mhpR c$crp
-c$oppC	c$arcA c$lrp
-c$mdlA	c$soxS
-c$uidB	c$crp
-c$aceA	c$cra c$lrp
-c$mdtA	c$cpxR c$baeR c$cra c$crp
-c$malE	c$fis c$malT c$crp
-c$ssuB	c$fnr c$cbl
-c$pncB	c$arcA
-c$avtA	c$arcA c$lrp
-c$speA	c$fnr
-c$cusC	c$phoB c$cusR c$yedW
-c$tktB	c$phoB
-c$hisH	c$cra
-c$trmA	c$fis
-c$ssuC	c$fnr c$cbl
-c$ilvN	c$lrp c$crp
-c$hlyE	c$fnr c$slyA c$hns c$crp
-c$cysP	c$cysB
-c$ttdT	c$ttdR
-c$yzgL	c$lrp
-c$pspE	c$pspF c$crp
-c$glnK	c$fnr c$glnG c$fur c$gadX
-c$lsrD	c$crp
-c$rutG	c$arcA c$phoP c$glnG
-c$glpA	c$fis c$fnr c$crp
-c$gnd	c$gadE
-c$alaT	c$fis
-c$ybjD	c$fnr
-c$hyfC	c$hyfR c$crp c$fhlA
-c$ybaO	c$soxS
-c$serA	c$lrp c$crp
-c$mdtL	c$trpR
-c$hycD	c$modC c$fhlA
-c$ygjV	c$crp
-c$nrdH	c$iscR
-c$ascB	c$crp
-c$ppiD	c$cpxR
-c$ddpC	c$arcA c$glnG
-c$nrdE	c$iscR
-c$betT	c$cra
-c$uhpB	c$lrp c$crp
-c$ndh	c$arcA c$fis
-c$tap	c$fnr
-c$xylB	c$xylR c$crp
-c$nuoL	c$fnr c$fis c$cra c$narL c$crp
-c$nrdG	c$fnr
-c$yehQ	c$lrp
-c$metQ	c$hypT c$fnr
-c$gadC	c$adiY c$gadW c$gadE c$gadX c$rcsB
-c$qseC	c$basR c$qseB
-c$malZ	c$malT
-c$fumA	c$crp
-c$raiA	c$cra c$crp
-c$srlR	c$gutM c$hns c$crp
-c$hpt	c$crp
-c$nanK	c$crp
-c$hyaD	c$arcA c$ydeO c$appY
-c$argP	c$phoB
-c$malI	c$crp
-c$yddG	c$fnr
-c$rpsO	c$arcA c$fis c$fnr
-c$uxaC	c$arcA c$fnr c$crp
-c$ybjG	c$phoP
-c$yegH	c$phoB
-c$yccA	c$arcA c$cpxR
-c$ydcS	c$nac
-c$hyfI	c$hyfR c$fhlA c$crp
-c$dsbG	c$oxyR
-c$rtcB	c$rtcR
-c$mtr	c$tyrR c$lrp
-c$cspC	c$crp
-c$pitA	c$fnr
-c$ompW	c$fnr
-c$xdhA	c$fnr
-c$gabT	c$lrp c$hns c$nac c$crp
-c$ynjE	c$fnr
-c$ydcV	c$nac
-c$yfbR	c$cysB
-c$betA	c$cra
-c$hypC	c$fnr c$fhlA
-c$ulaD	c$crp
-c$dcuB	c$arcA c$dcuR c$fnr c$lrp c$crp
-c$viaA	c$fnr
-c$frdA	c$dcuR c$fnr
-c$paaI	c$arcA c$crp
-c$lsrR	c$crp
-c$tsgA	c$crp
-c$moaB	c$fnr c$modC
-c$potF	c$glnG c$lrp
-c$fimI	c$hns c$lrp
-c$zwf	c$marA c$soxS c$rob
-c$fecD	c$pdhR c$crp
-c$nirD	c$narP c$fnr c$narL
-c$ppx	c$lrp
-c$gadA	c$arcA c$adiY c$gadE c$gadW c$gadX
-c$yeiW	c$crp
-c$cysQ	c$crp
-c$ugpB	c$phoB c$crp
-c$yiaM	c$crp
-c$tsx	c$crp
-c$ydeJ	c$fnr
-c$dcuS	c$fnr
-c$pspC	c$pspF c$crp
-c$gatZ	c$crp
-c$rbsB	c$crp
-c$ssuA	c$fnr c$cbl
-c$hofM	c$crp
-c$asnA	c$asnC
-c$phnJ	c$phoB c$arcA
-c$alkA	c$ada
-c$srlB	c$gutM c$hns c$crp
-c$ebgA	c$crp
-c$glgC	c$phoP c$crp
-c$ynjB	c$fnr
-c$mdlB	c$soxS
-c$napF	c$narP c$fnr c$modC c$lrp
-c$katG	c$fnr c$oxyR c$fur
-c$yjjU	c$gadE
-c$thrL	c$fnr c$lrp c$crp
-c$phnM	c$arcA c$phoB
-c$ygeH	c$cysB
-c$nhaR	c$nhaR
-c$cysN	c$cysB
-c$uidA	c$crp
-c$frdC	c$dcuR c$fnr
-c$artP	c$lrp
-c$ccmD	c$narP c$fnr c$modC
-c$yjcB	c$soxR
-c$fadH	c$arcA c$crp
-c$xdhC	c$fnr
-c$cysC	c$cysB
-c$pykA	c$fnr
-c$thrB	c$fnr c$lrp c$crp
-c$gsiD	c$arcA
-c$pck	c$arcA c$cra c$crp
-c$paaZ	c$crp
-c$torD	c$torR
-c$citC	c$dpiA
-c$phnF	c$arcA c$phoB
-c$agaV	c$crp
-c$torC	c$torR
-c$ybgS	c$lrp c$crp
-c$yciC	c$fnr
-c$phnH	c$phoB c$arcA
-c$chbB	c$chbR c$crp
-c$fixX	c$caiF c$fnr c$crp
-c$dppA	c$arcA c$lrp
-c$garR	c$fnr c$cdaR c$crp
-c$fimE	c$lrhA c$lrp
-c$psiE	c$phoB
-c$cbl	c$glnG c$cysB
-c$yhjA	c$fnr c$oxyR
-c$glpG	c$arcA c$crp
-c$sucC	c$arcA c$fur c$crp
-c$sufS	c$oxyR c$iscR
-c$ybhP	c$lrp
-c$hofP	c$crp
-c$tdcC	c$fnr c$tdcR c$tdcA c$lrp c$crp
-c$atoA	c$atoC
-c$tdcG	c$fnr c$tdcR c$tdcA c$lrp c$crp
-c$hycI	c$modC c$fhlA
-c$kup	c$fnr
-c$hisG	c$cra
-c$ibaG	c$mlrA
-c$csgC	c$csgD
-c$rbsA	c$crp
-c$zraR	c$zraR c$crp
-c$glpC	c$fnr c$fis c$crp
-c$rutF	c$arcA c$phoP c$glnG
-c$lyxK	c$crp
-c$aslB	c$rob
-c$yncD	c$arcA
-c$entC	c$crp
-c$galK	c$galS c$galR c$crp
-c$eutM	c$argR
-c$lacY	c$crp
-c$ycjQ	c$crp
-c$hcaT	c$argR
-c$thrA	c$fnr c$lrp c$crp
-c$cirA	c$crp
-c$patD	c$nac
-c$fecE	c$pdhR c$crp
-c$hisM	c$glnG c$hns
-c$ilvE	c$lrp
-c$gntU	c$crp
-c$sra	c$fis c$rcsB
-c$iaaA	c$arcA
-c$patA	c$fis c$glnG
-c$fadI	c$lrp
-c$yeiL	c$yeiL c$lrp
-c$garD	c$fnr c$cdaR
-c$gabP	c$hns c$lrp c$nac c$crp
-c$hha	c$cpxR c$basR
-c$fliA	c$hns
-c$gatC	c$crp
-c$ybjN	c$marA c$soxS c$rob
-c$caiB	c$caiF c$arcA c$fnr c$crp
-c$hisC	c$cra
-c$ynfG	c$fnr
-c$rluE	c$arcA
-c$fhuD	c$trpR
-c$ydhJ	c$fnr
-c$pyrI	c$purR
-c$hisD	c$cra
-c$eutQ	c$argR
-c$fucI	c$fucR c$crp
-c$ompN	c$soxS
-c$ydfH	c$phoB
-c$bcsZ	c$fnr
-c$rutC	c$arcA c$phoP c$glnG
-c$yjbQ	c$gadE c$lrp
-c$cynT	c$cynR
-c$yaaU	c$argR
-c$ysgA	c$crp
-c$csgB	c$csgD
-c$pspG	c$pspF
-c$poxB	c$marA c$soxS c$cra
-c$yijD	c$arcA
-c$glnP	c$glnG
-c$yebE	c$cpxR
-c$ynfE	c$fnr
-c$paaB	c$arcA c$crp
-c$phnC	c$phoB c$arcA
-c$lacI	c$crp
-c$nikC	c$fnr c$cra
-c$hypA	c$fhlA
-c$manA	c$arcA c$crp
-c$ahpC	c$oxyR
-c$ulaE	c$crp
-c$ycjR	c$crp
-c$dsdX	c$dsdX c$crp
-c$uxuA	c$fur c$crp
-c$norW	c$norR
-c$glpQ	c$fnr c$fis c$crp
-c$marR	c$cpxR c$marA c$fis c$soxS c$rob c$crp
-c$yfaL	c$fnr
-c$yibQ	c$fnr
-c$yhgN	c$fnr
-c$araC	c$araC c$crp
-c$kbaZ	c$crp
-c$mdtB	c$cpxR c$baeR c$cra c$crp
-c$yahA	c$argR c$cra
-c$allE	c$allS
-c$argT	c$glnG
-c$sfsA	c$crp
-c$gntP	c$crp
-c$dgcZ	c$cpxR c$cysB
-c$tynA	c$feaR
-c$pntB	c$arcA
-c$nrfD	c$arcA c$narP c$fnr c$narL
-c$yigZ	c$arcA
-c$ilvH	c$lrp
-c$dadX	c$lrp c$crp
-c$yfeC	c$crp
-c$fimC	c$lrp c$hns
-c$ydbK	c$soxS
-c$yeaG	c$glnG
-c$bglF	c$leuO c$crp
-c$yiaN	c$crp
-c$spy	c$cpxR c$baeR
-c$gatB	c$crp
-c$yieE	c$arcA
-c$phnL	c$phoB c$arcA
-c$yibN	c$fnr
-c$phnI	c$phoB c$arcA
-c$ebgC	c$crp
-c$waaZ	c$marA c$soxS
-c$yoaG	c$narP c$narL
-c$nrfG	c$arcA c$narP c$fnr c$narL
-c$hypF	c$fhlA
-c$hcaC	c$arcA c$hcaR
-c$htrE	c$lrp
-c$uraA	c$fnr
-c$aaeB	c$crp
-c$yfcZ	c$fnr c$lrp
-c$acrD	c$cpxR c$baeR c$evgA
-c$argF	c$fur
-c$ybfN	c$crp
-c$pepQ	c$arcA
-c$hypB	c$fnr c$fhlA
-c$fadL	c$phoP c$fnr c$crp
-c$tufB	c$fis
-c$ybdZ	c$fnr c$hns
-c$purN	c$purR c$fnr
-c$hyaA	c$arcA c$ydeO c$appY
-c$glcG	c$glcC c$crp
-c$ybfA	c$arcA
-c$atoE	c$atoC
-c$yghW	c$arcA c$fnr
-c$hmp	c$metR
-c$yehM	c$lrp
-c$ascF	c$crp
-c$hcaD	c$arcA c$hcaR
-c$yfdV	c$evgA
-c$sdhB	c$arcA c$fur c$crp
-c$nohA	c$fnr
-c$hycH	c$modC c$fhlA
-c$ycbU	c$argR
-c$paaA	c$arcA c$crp
-c$emrK	c$fnr c$evgA
-c$lhgO	c$lrp c$hns c$crp
-c$yncE	c$marA c$arcA
-c$idnO	c$idnR c$crp
-c$araG	c$araC c$crp
-c$rimO	c$arcA c$fnr
-c$tyrP	c$fnr c$tyrR c$lrp
-c$yhjE	c$lrp
-c$glcE	c$glcC c$crp
-c$dpiB	c$arcA c$dcuR c$dpiA
-c$cas2	c$leuO
-c$fhuC	c$trpR
-c$glpX	c$crp
-c$setA	c$sgrR
-c$ynfF	c$fnr
-c$cheZ	c$fnr
-c$nudJ	c$arcA
-c$ydhK	c$fnr
-c$oppD	c$arcA c$lrp
-c$hycE	c$modC c$fhlA
-c$ddpF	c$arcA c$glnG
-c$malY	c$crp
-c$bluF	c$rcdA
-c$ygcN	c$fnr
-c$ynjD	c$fnr
-c$yhhW	c$lrp c$crp
-c$fimB	c$basR c$nanR c$nagC
-c$yjiJ	c$arcA
-c$entA	c$crp
-c$lysP	c$argP c$lrp
-c$fucK	c$fucR c$crp
-c$yfcC	c$fnr c$lrp
-c$yjjQ	c$leuO
-c$yigG	c$arcA
-c$yccJ	c$csgD
-c$hyfJ	c$hyfR c$fhlA c$crp
-c$hisJ	c$glnG c$hns
-c$citD	c$dpiA
-c$ddpA	c$arcA c$glnG
-c$yeeE	c$lrp
-c$hcaB	c$arcA c$hcaR
-c$paaC	c$arcA c$crp
-c$sgbE	c$crp
-c$yhbS	c$fnr
-c$ilvM	c$lrp
-c$yafT	c$fnr
-c$appC	c$arcA c$ydeO c$appY
-c$ybiU	c$arcA
-c$cspI	c$basR
-c$hycG	c$modC c$fhlA
-c$oxc	c$evgA
-c$ynfK	c$fnr c$crp
-c$argO	c$argP c$lrp
-c$glgP	c$phoP c$crp
-c$chiP	c$crp
-c$metB	c$phoP c$hypT
-c$artQ	c$lrp
-c$asr	c$phoB c$rstA c$rcdA
-c$ilvI	c$lrp
-c$putP	c$arcA
-c$gudX	c$cdaR
-c$nuoI	c$fis c$fnr c$cra c$narL c$crp
-c$acs	c$fnr c$crp
-c$eutS	c$argR
-c$hyaF	c$arcA c$ydeO c$appY
-c$ydfZ	c$fnr
-c$hyfE	c$hyfR c$crp c$fhlA
-c$yjiY	c$yehT c$crp
-c$borD	c$phoP
-c$asnB	c$gadX
-c$udp	c$crp
-c$creD	c$creB
-c$ccmA	c$narP c$fnr c$modC
-c$yciN	c$lrp
-c$yadV	c$lrp
-c$hcaF	c$arcA c$hcaR
-c$tam	c$crp
-c$yciW	c$cysB
-c$metL	c$phoP c$hypT
-c$glpD	c$crp
-c$yhdX	c$glnG
-c$yiaK	c$crp
-c$mltA	c$fnr
-c$yhaC	c$fnr
-c$pqiB	c$marA c$soxS
-c$hofB	c$crp
-c$hyfA	c$hyfR c$crp c$fhlA
-c$eutP	c$argR
-c$allC	c$allS
-c$moeA	c$arcA c$narL
-c$csiE	c$lrp c$hns c$crp
-c$trg	c$fis c$crp
-c$glnQ	c$glnG
-c$bglJ	c$leuO
-c$hybA	c$arcA c$fnr c$fur
-c$lolA	c$rcsB
-c$yfeD	c$crp
-c$fic	c$crp
-c$gsiB	c$arcA
-c$xanP	c$purR
-c$hsdR	c$fnr
-c$nohB	c$fnr
-c$malM	c$malT c$crp
-c$ykgE	c$lrp
-c$yaiW	c$cpxR
-c$ydjX	c$fnr
-c$modB	c$crp
-c$yhfA	c$crp
-c$ccmH	c$narP c$fnr c$modC
-c$tomB	c$cpxR c$basR
-c$lsrC	c$crp
-c$ycjP	c$crp
-c$aspC	c$fnr c$lrp
-c$casD	c$leuO
 c$yffB	c$argR
-c$yecH	c$fnr
-c$ccmG	c$narP c$fnr c$modC
-c$hyfH	c$hyfR c$fhlA c$crp
-c$yqjA	c$cpxR
-c$ddpD	c$arcA c$glnG
-c$zraS	c$zraR c$crp
-c$ydjZ	c$fnr
-c$gudD	c$cdaR
-c$emrY	c$fnr c$evgA
-c$trmJ	c$arcA
-c$hycF	c$modC c$fhlA
-c$napH	c$narP c$fnr c$modC c$lrp
-c$frc	c$evgA
-c$yecJ	c$arcA
-c$phnE_1	c$arcA c$phoB
-c$trxC	c$oxyR
-c$ydcU	c$nac
-c$nagK	c$lrp
-c$ycjO	c$crp
-c$sgbH	c$crp
-c$ydcX	c$fnr
-c$ycbF	c$argR
-c$ykgG	c$lrp
-c$hisI	c$cra
-c$yhiM	c$gadE
-c$tfaQ	c$fnr
-c$yhbT	c$fnr
-c$pstB	c$phoB c$fnr
-c$tnaB	c$torR c$crp
-c$moaA	c$fnr c$modC
-c$hcaE	c$arcA c$hcaR
-c$hofC	c$crp
-c$yfbM	c$arcA
-c$tnaC	c$torR c$crp
-c$ybiJ	c$lrp
-c$ydgC	c$arcA
-c$entS	c$fur
-c$casC	c$leuO
+c$phoP	c$phoP
+c$purD	c$phoP
+c$deoB	c$fis c$crp
+c$ycgZ	c$fur
+c$carB	c$purR c$fis c$arcA c$rutR
+c$nuoH	c$narL c$cra c$fis c$crp c$fnr
+c$rpsO	c$fis c$fnr c$arcA
+c$rplI	c$crp
+c$fkpB	c$arcA
+c$dpiA	c$dcuR c$arcA c$dpiA
+c$mepM	c$oxyR
+c$rpoS	c$gadX c$crp
+c$rsmA	c$fis
+c$lpcA	c$arcA
+c$pstS	c$phoB c$fnr
+c$phnC	c$phoB c$arcA
+c$moaE	c$fnr c$modC
+c$mlc	c$crp
+c$rbfA	c$fis c$fnr c$crp c$arcA
+c$pstA	c$phoB c$fnr
+c$secG	c$fnr c$arcA
+c$acrB	c$rob c$soxS c$marA
+c$guaA	c$purR c$crp c$fnr c$arcA
+c$ulaB	c$crp
+c$ompR	c$crp
+c$ubiC	c$arcA
+c$zwf	c$rob c$soxS c$marA
+c$gpmM	c$fnr
+c$luxS	c$uvrY
+c$csgF	c$ompR c$cra c$basR c$csgD c$mlrA c$crp c$rcdA
+c$ybjX	c$arcA
+c$ompG	c$crp
+c$bdm	c$rcsB
+c$hyaC	c$ydeO c$arcA c$appY
+c$yidQ	c$cpxR
+c$degP	c$cpxR
+c$psiF	c$phoB
+c$purM	c$purR c$fnr
+c$acrA	c$rob c$soxS c$marA
+c$dksA	c$crp
+c$pstC	c$phoB c$fnr
+c$grcA	c$fis c$crp c$fnr c$arcA
+c$fur	c$oxyR c$soxS c$crp
+c$ybiY	c$fnr c$arcA
+c$lpxD	c$cpxR c$gadE
+c$nuoF	c$narL c$cra c$fis c$fnr c$crp
+c$fadD	c$crp
+c$appA	c$ydeO c$arcA c$appY
+c$pdxA	c$fis
+c$hupA	c$fis c$crp
+c$glnD	c$fnr
+c$galE	c$galR c$galS c$crp
+c$tolC	c$rob c$phoP c$soxS c$marA
+c$ompC	c$cpxR c$ompR c$envY c$arcA
+c$zapB	c$fur
+c$rseA	c$rcsB c$glrR c$crp c$glnG
+c$flhD	c$qseB c$crp c$arcA c$hns
+c$yciT	c$lrp
+c$pyrD	c$purR c$fnr
+c$rpoD	c$arcA
+c$idnD	c$idnR c$crp
+c$dusB	c$crp
+c$fhlA	c$fnr c$fhlA
+c$cusS	c$yedW c$cusR c$phoB
+c$sdaC	c$lrp
+c$nusB	c$lrp
+c$guaB	c$purR c$fnr c$crp c$arcA
+c$lon	c$gadX
+c$caiA	c$fnr c$crp c$caiF c$arcA
+c$prpC	c$crp c$prpR
+c$yebE	c$cpxR
+c$ompF	c$ompR c$fur c$phoB c$envY c$crp
+c$purE	c$purR
+c$acrZ	c$rob c$soxS c$marA
+c$uxuR	c$crp
+c$purK	c$purR
+c$rbsK	c$crp
+c$ybiW	c$fnr c$arcA
+c$uidA	c$crp
+c$ampC	c$bolA
+c$cysB	c$phoP
+c$proL	c$fis c$arcA
+c$tsx	c$crp
+c$glpF	c$crp
+c$nagA	c$phoP c$crp
+c$napA	c$narP c$fnr c$modC c$lrp
+c$hyaB	c$ydeO c$arcA c$appY
+c$nuoE	c$narL c$cra c$fis c$crp c$fnr
+c$lpd	c$fur c$fis c$crp c$fnr
+c$yrbL	c$phoP c$soxR c$soxS
+c$cas1	c$leuO
+c$fis	c$crp
+c$ygcO	c$fnr
+c$ynfE	c$fnr
+c$glnL	c$fis c$crp c$glnG
+c$fes	c$fnr c$hns
+c$gltD	c$gadE c$fnr c$arcA c$adiY c$hdfR c$lrp
+c$rseB	c$rcsB c$glrR c$crp c$glnG
+c$yhiI	c$arcA
+c$phoQ	c$phoP c$phoB
+c$melB	c$melR c$crp
+c$dsdA	c$crp c$dsdX
+c$yjhP	c$crp
+c$idnR	c$idnR c$crp
+c$ubiG	c$crp
+c$rho	c$arcA
+c$fabF	c$arcA
+c$dcuC	c$fnr c$arcA
+c$pyrB	c$purR
+c$kdpF	c$kdpE c$arcA
+c$nuoB	c$narL c$cra c$fis c$fnr c$crp
+c$csiD	c$crp c$hns c$lrp
+c$serC	c$lrp
+c$ptsH	c$cra c$crp
+c$feoC	c$nagC c$fnr c$arcA
+c$nuoJ	c$narL c$cra c$fis c$fnr c$crp
+c$citC	c$dpiA
+c$pgaC	c$nhaR
+c$ygiB	c$rob c$phoP c$soxS c$marA
+c$fabH	c$fadR c$arcA
+c$recF	c$argP c$fnr c$arcA
+c$tauA	c$cbl c$cysB
+c$ycjG	c$arcA
+c$yqgC	c$fnr
+c$ygcP	c$fnr
+c$nlpI	c$arcA
+c$purL	c$purR
+c$fbp	c$cra
+c$kdpB	c$kdpE c$arcA
+c$gmhB	c$fnr
+c$rbsR	c$crp
+c$envZ	c$crp
+c$slyA	c$fnr
+c$rpmF	c$arcA
+c$ompA	c$crp
+c$sbmC	c$crp
+c$ycjU	c$crp
+c$purA	c$gadE c$fnr
+c$waaY	c$soxS c$marA
+c$cpxR	c$cpxR
+c$dnaG	c$crp c$arcA
+c$rstB	c$phoP c$arcA
+c$yjiS	c$arcA
+c$dsbB	c$arcA
+c$ackA	c$fnr c$arcA
+c$mutM	c$arcA
+c$ypdB	c$arcA
+c$ycbV	c$argR
+c$glnG	c$fis c$crp c$glnG
+c$yccA	c$cpxR c$arcA
+c$phoB	c$phoB
+c$dsbC	c$cpxR
+c$speB	c$fnr
+c$galT	c$galR c$crp c$galS
+c$kdpA	c$kdpE c$arcA
+c$yjjY	c$fnr c$arcA
+c$glnA	c$fis c$crp c$glnG
+c$lsrA	c$crp
+c$cysI	c$cysB
+c$glk	c$cra
+c$rimP	c$fis c$fnr c$crp c$arcA
+c$sucD	c$fur c$crp c$arcA
+c$mdtF	c$gadX c$gadE c$ydeO c$gadW c$evgA
+c$malK	c$malT c$crp
+c$potI	c$lrp c$glnG
+c$hns	c$gadX c$cspA c$fis
+c$ulaD	c$crp
+c$ybdN	c$fnr c$cysB c$arcA
+c$rcsD	c$arcA
+c$yeaD	c$fnr
+c$chbG	c$chbR c$crp
+c$rimK	c$rob c$soxS c$marA
+c$ynjA	c$fnr
+c$pldA	c$arcA
+c$pspA	c$crp c$pspF
+c$idnK	c$idnR c$crp
+c$ompN	c$soxS
+c$yjiY	c$crp c$yehT
+c$yaiY	c$crp
+c$acrE	c$fnr
+c$malS	c$phoP c$malT c$crp
+c$nfuA	c$crp
+c$mazG	c$fis
+c$fimC	c$hns c$lrp
+c$mzrA	c$cpxR
+c$cspE	c$crp
+c$pgaA	c$nhaR
+c$pspB	c$crp c$pspF
+c$ycdZ	c$crp
+c$mpl	c$crp
+c$queA	c$fis
+c$yceD	c$arcA
+c$aceF	c$fnr c$crp
+c$arcA	c$fnr c$arcA
+c$dgkA	c$basR
+c$gor	c$oxyR
+c$narL	c$argR c$fnr c$modC
+c$yciE	c$mcbR
+c$rstA	c$phoP c$arcA
+c$ybiS	c$crp
+c$deoC	c$fis c$crp
+c$dsbA	c$cpxR
+c$emrD	c$lrp
+c$fabR	c$arcA
+c$deoD	c$fis c$crp
+c$yibI	c$crp
+c$ubiX	c$purR
+c$cspA	c$fis
+c$entE	c$crp
+c$hisJ	c$hns c$glnG
+c$fau	c$fis
+c$cpxA	c$cpxR
+c$tonB	c$fur
+c$ybhK	c$fnr c$arcA
+c$rpsF	c$crp
+c$phoR	c$phoB
+c$rcsB	c$arcA
+c$rpsU	c$arcA
+c$cysH	c$hypT c$cysB
+c$gcvH	c$fnr c$crp c$gcvA c$lrp
+c$ybjG	c$phoP
+c$mdtE	c$gadE c$gadX c$ydeO c$gadW c$evgA
+c$fepE	c$fnr c$hns
+c$dmsB	c$fnr
+c$proP	c$fis c$crp
+c$rbsD	c$crp
+c$fdoI	c$crp c$arcA
+c$pspC	c$crp c$pspF
+c$gntK	c$crp
+c$ydeP	c$narL c$rcsB c$uvrY c$evgA
+c$yeiQ	c$fnr c$arcA
+c$gsiC	c$arcA
+c$lamB	c$malT c$crp
+c$ydcY	c$fnr
+c$fliA	c$hns
+c$csgA	c$csgD
+c$pncB	c$arcA
+c$gcvA	c$arcA
+c$treC	c$cra c$crp c$arcA
+c$nikE	c$cra c$fnr
+c$aceK	c$cra c$lrp
+c$frdD	c$dcuR c$fnr
+c$nuoN	c$narL c$cra c$fis c$fnr c$crp
+c$phnO	c$argR c$phoB c$arcA
+c$cytR	c$crp
+c$torC	c$torR
+c$tdcD	c$tdcR c$tdcA c$fnr c$crp c$lrp
+c$dppB	c$arcA c$lrp
+c$ytfE	c$narL c$narP
+c$fixB	c$crp c$fnr c$caiF
+c$ilvC	c$ilvY
+c$patA	c$fis c$glnG
+c$ftnA	c$fur
+c$mglC	c$crp
+c$oxyR	c$crp
+c$hcr	c$narP c$narL c$oxyR c$fnr
+c$crp	c$cra c$crp
+c$acnB	c$cra c$crp
+c$acs	c$fnr c$crp
+c$gadX	c$gadX c$gadE c$phoB c$gadW c$arcA c$adiY
+c$mglA	c$crp
+c$lrp	c$gadE
+c$astB	c$argR c$lrp c$glnG
 c$ydhY	c$fnr
-c$hyaE	c$arcA c$ydeO c$appY
-c$acrF	c$fnr
-c$yjeT	c$fnr
-c$inaA	c$marA c$soxS c$rob
-c$ybaT	c$gadX
-c$yqgB	c$fnr
-c$araJ	c$araC c$crp
-c$grxA	c$oxyR
-c$ycaM	c$lrp
-c$hsdS	c$fnr
-c$yeaH	c$glnG
-c$waaH	c$phoB
-c$hofO	c$crp
-c$pspD	c$pspF c$crp
-c$allD	c$allS
-c$yodC	c$lrp
-c$fimG	c$lrp c$hns
-c$ybhN	c$lrp
-c$yiiS	c$ydeO
-c$dmsC	c$fnr
-c$aceB	c$cra c$lrp
-c$rbbA	c$arcA
-c$ycjN	c$crp
-c$fimA	c$hns c$lrp
-c$yjjZ	c$fnr c$oxyR
-c$fimH	c$hns c$lrp
+c$zinT	c$fur c$oxyR c$soxS
+c$qseB	c$qseB c$basR
+c$nuoI	c$narL c$cra c$fis c$crp c$fnr
+c$baeR	c$cpxR c$cra c$crp c$baeR
+c$ugpC	c$phoB c$crp
+c$cycA	c$arcA c$lrp
+c$nanC	c$crp
+c$gadB	c$gadX c$gadE c$rcsB c$gadW c$adiY
+c$yjiJ	c$arcA
+c$nuoL	c$narL c$cra c$fis c$fnr c$crp
+c$znuB	c$oxyR
+c$murP	c$crp
+c$cysN	c$cysB
+c$dppF	c$arcA c$lrp
+c$ppsR	c$cra
+c$yghW	c$fnr c$arcA
+c$norW	c$norR
+c$sucA	c$fur c$crp c$arcA
+c$melA	c$melR c$crp
+c$fnr	c$fnr
+c$aspA	c$fnr c$crp c$lrp
+c$iclR	c$fadR
+c$alkB	c$ada
+c$marR	c$cpxR c$rob c$fis c$soxS c$crp c$marA
+c$marB	c$cpxR c$rob c$fis c$soxS c$crp c$marA
+c$rhaR	c$rhaS c$crp c$rhaR
+c$nrfB	c$narP c$narL c$fnr c$arcA
+c$umpH	c$crp
+c$putP	c$arcA
+c$narG	c$narL c$rstA c$fnr
+c$phnG	c$phoB c$arcA
+c$ybjN	c$rob c$soxS c$marA
+c$idnT	c$idnR c$crp
+c$manA	c$crp c$arcA
+c$malP	c$malT c$fnr
+c$uxaC	c$crp c$fnr c$arcA
+c$dhaM	c$fnr c$arcA c$lrp c$dhaR
+c$ydhK	c$fnr
 c$yfdE	c$evgA
-c$amn	c$phoB
-c$yhbU	c$fnr
-c$purB	c$purR
-c$fliC	c$gadE c$hns
-c$yfiF	c$arcA
-c$rdoA	c$cpxR
-c$phnP	c$phoB c$arcA c$argR
-c$flxA	c$fis
-c$ycfD	c$argR
-c$nlpA	c$csgD
-c$yacH	c$arcA
-c$rcsA	c$gadE
-c$eutT	c$argR
-c$yhdY	c$glnG
-c$ybjS	c$lrp
-c$rtcA	c$rtcR
-c$yhdW	c$glnG
-c$ydhI	c$fnr
-c$ycjM	c$crp
-c$yciF	c$mcbR
-c$yehL	c$lrp
-c$ydfN	c$fnr
-c$yedX	c$phoB c$cusR c$yedW
-c$yoeA	c$fnr
-c$pgaB	c$nhaR
-c$yhhJ	c$arcA
-c$yfdX	c$evgA
-c$osmB	c$rcsB
-c$yceB	c$lrp
-c$yadG	c$crp
-c$puuB	c$argR
-c$anmK	c$fnr
-c$uspD	c$ydeO
-c$yeeD	c$lrp
-c$ykgA	c$argR
-c$glyU	c$fis
-c$yhaB	c$fnr
-c$yoaC	c$cysB
-c$yqaE	c$cpxR
-c$gntX	c$crp
-c$atoD	c$atoC
-c$yegR	c$evgA
-c$fldB	c$soxS
-c$ppdD	c$crp
-c$lsrF	c$crp
-c$yccT	c$csgD
-c$apaG	c$fis
-c$agaW	c$crp
-c$gudP	c$cdaR
+c$cysK	c$cysB
+c$lacY	c$crp
+c$puuA	c$arcA
+c$yedP	c$crp
+c$glcC	c$crp
+c$asnB	c$gadX
+c$malQ	c$malT c$fnr
+c$tdh	c$lrp
+c$nagE	c$crp
+c$katG	c$fur c$oxyR c$fnr
+c$yiaL	c$crp
+c$slyB	c$phoP c$fnr
+c$cysA	c$cysB
+c$hybO	c$fur c$fnr c$arcA
+c$hofC	c$crp
+c$aroF	c$soxR
+c$nadC	c$crp
+c$thrA	c$fnr c$crp c$lrp
+c$cheB	c$fnr
+c$ccmG	c$narP c$fnr c$modC
+c$glgB	c$phoP
+c$hisB	c$cra
+c$chbA	c$chbR c$crp
+c$nirB	c$narL c$narP c$fnr
+c$cusF	c$cusR c$yedW c$phoB
+c$phnI	c$phoB c$arcA
+c$soxS	c$soxR
+c$poxB	c$cra c$soxS c$marA
+c$uxaB	c$crp c$fnr c$arcA
+c$napF	c$narP c$fnr c$modC c$lrp
+c$radA	c$lrp
+c$gatC	c$crp
+c$fliZ	c$hns
+c$csgG	c$ompR c$cra c$basR c$csgD c$mlrA c$crp c$rcdA
+c$hyfH	c$crp c$hyfR c$fhlA
+c$cydB	c$hypT c$cra c$fnr c$arcA
+c$oppC	c$arcA c$lrp
+c$hybD	c$fur c$fnr c$arcA
+c$ccmA	c$narP c$fnr c$modC
+c$nuoG	c$narL c$cra c$fis c$fnr c$crp
+c$narX	c$fnr c$modC
+c$cdd	c$crp
+c$nanA	c$crp
+c$hdeD	c$phoP c$gadX c$gadE c$rcsB
+c$fimH	c$hns c$lrp
+c$mntH	c$oxyR c$crp
+c$trg	c$fis c$crp
+c$cyoA	c$cra c$gadE c$cusR c$fis c$crp
+c$dgcZ	c$cpxR c$cysB
+c$yhjA	c$oxyR c$fnr
+c$ynjB	c$fnr
+c$crr	c$cra c$crp
+c$serB	c$lrp
+c$gntT	c$crp
+c$nagC	c$crp
+c$nagB	c$crp
+c$nepI	c$soxS c$arcA
+c$fadB	c$fis
+c$lysP	c$argP c$lrp
+c$argR	c$arcA
+c$eutQ	c$argR
+c$trxA	c$arcA
+c$glpE	c$crp c$arcA
+c$yiaN	c$crp
+c$xylR	c$crp c$xylR c$arcA
+c$xylB	c$crp c$xylR
+c$pyrL	c$purR
+c$exuT	c$crp c$fnr c$arcA c$dpiA
+c$creD	c$creB
+c$mhpC	c$mhpR c$crp
+c$moaA	c$fnr c$modC
+c$ompT	c$phoP c$lrp
+c$malG	c$fis c$malT c$crp
+c$araH	c$araC c$crp
+c$paaZ	c$crp
+c$garK	c$cdaR c$crp c$fnr
+c$yqhD	c$yqhC
+c$modC	c$crp
+c$ccmH	c$narP c$fnr c$modC
+c$tdcB	c$tdcR c$tdcA c$crp c$fnr c$lrp
+c$mdtB	c$cpxR c$cra c$crp c$baeR
+c$treB	c$cra c$crp c$arcA
+c$acrD	c$cpxR c$baeR c$evgA
+c$glpD	c$crp
+c$idnO	c$idnR c$crp
+c$lsrD	c$crp
+c$ascB	c$crp
+c$fecD	c$crp c$pdhR
+c$mqo	c$lrp
+c$osmY	c$crp c$lrp
+c$sgbE	c$crp
+c$torA	c$torR
+c$csgC	c$csgD
+c$metE	c$cra c$oxyR c$metR
+c$ybaO	c$soxS
+c$hyfR	c$crp c$hyfR c$fhlA
+c$uxuB	c$fur c$crp
+c$yqjI	c$fnr
+c$lacI	c$crp
+c$acrF	c$fnr
+c$aer	c$fnr c$crp
+c$ydhT	c$fnr
+c$yhhW	c$crp c$lrp
+c$mntP	c$fur c$mntR
+c$nac	c$glnG
+c$ydcU	c$nac
+c$pspG	c$pspF
+c$argO	c$argP c$lrp
+c$ssuC	c$cbl c$fnr
+c$hcaT	c$argR
+c$uhpB	c$crp c$lrp
+c$ycjN	c$crp
+c$mdtL	c$trpR
+c$metB	c$phoP c$hypT
+c$ycjR	c$crp
+c$nfsA	c$rob c$soxS c$marA
+c$dpiB	c$dcuR c$arcA c$dpiA
+c$yhcN	c$lrp
+c$cysW	c$cysB
+c$qseC	c$qseB c$basR
+c$malX	c$crp
+c$trxC	c$oxyR
+c$xapB	c$xapR
+c$pepQ	c$arcA
+c$malT	c$crp c$lrp
+c$uxuA	c$fur c$crp
+c$frc	c$evgA
+c$dhaR	c$fnr c$arcA
+c$marA	c$cpxR c$rob c$fis c$soxS c$crp c$marA
+c$ssuE	c$fnr c$cbl
+c$yfbR	c$cysB
+c$cusR	c$yedW c$cusR c$phoB
+c$cyoC	c$cra c$gadE c$cusR c$fis c$crp
+c$yjeH	c$fnr
+c$cynT	c$cynR
+c$cusB	c$yedW c$cusR c$phoB
+c$yhcC	c$fnr c$arcA
+c$hisP	c$hns c$glnG
+c$entF	c$fnr c$hns
+c$hisD	c$cra
+c$prpR	c$crp
+c$iraM	c$phoP c$fnr c$arcA
+c$srlE	c$gutM c$crp c$hns
+c$purF	c$purR
+c$metN	c$hypT c$fnr
+c$sufC	c$iscR c$oxyR
+c$gntP	c$crp
+c$mazF	c$fis c$crp c$hns
 c$ybaS	c$gadX
-c$ypfN	c$argR
-c$ydjY	c$fnr
-c$yjbJ	c$lrp
-c$yhiN	c$fnr
-c$ydiU	c$iscR
-c$tpr	c$fis
+c$yecR	c$fnr c$arcA
+c$tfaQ	c$fnr
+c$rseC	c$rcsB c$glrR c$crp c$glnG
+c$yaiW	c$cpxR
+c$fhuB	c$trpR
+c$cpdB	c$crp
+c$hisM	c$hns c$glnG
+c$napD	c$narP c$fnr c$modC c$lrp
+c$manX	c$cra c$crp
+c$yjjQ	c$leuO
+c$cyoE	c$cra c$gadE c$cusR c$fis c$crp
+c$ppx	c$lrp
+c$metI	c$hypT c$fnr
+c$yjiC	c$lrp
+c$yoaG	c$narP c$narL
+c$codA	c$purR c$nac
+c$zraR	c$crp c$zraR
+c$ydbK	c$soxS
+c$ileS	c$arcA
+c$gadE	c$phoP c$gadE c$gadX c$ydeO c$gadW c$arcA c$evgA
+c$gdhA	c$fur c$argP c$fnr
+c$citF	c$dpiA
+c$raiA	c$cra c$crp
+c$aroP	c$argR c$cra c$fnr
+c$caiD	c$crp c$fnr c$caiF c$arcA
+c$xapA	c$xapR
+c$mglB	c$crp
+c$sdhB	c$fur c$crp c$arcA
+c$dtpD	c$argR
+c$gcvP	c$crp c$fnr c$gcvA c$lrp
+c$sstT	c$arcA c$lrp
+c$ndh	c$fis c$arcA
+c$ydhX	c$fnr
+c$allD	c$allS
+c$csgE	c$ompR c$cra c$basR c$csgD c$mlrA c$crp c$rcdA
+c$mhpR	c$crp
+c$narK	c$narL c$fnr
+c$nhaA	c$nhaR
+c$kup	c$fnr
+c$ogt	c$narL
+c$aroG	c$cpxR c$lrp
+c$glpC	c$fis c$fnr c$crp
+c$modB	c$crp
+c$hybA	c$fur c$fnr c$arcA
+c$paaG	c$crp c$arcA
+c$mdlA	c$soxS
+c$ompW	c$fnr
+c$malM	c$malT c$crp
+c$leuO	c$leuO
+c$aaeB	c$crp
+c$paaF	c$crp c$arcA
+c$puuB	c$argR
+c$ynfK	c$crp c$fnr
+c$hcaC	c$hcaR c$arcA
+c$cadC	c$cadC c$mlrA c$fnr
+c$yibQ	c$fnr
+c$gcvT	c$gcvA c$crp c$fnr c$lrp
+c$dcuB	c$dcuR c$fnr c$crp c$arcA c$lrp
+c$srlD	c$gutM c$crp c$hns
+c$ccmD	c$narP c$fnr c$modC
+c$betI	c$cra
+c$dadX	c$crp c$lrp
+c$galK	c$galR c$crp c$galS
+c$mdh	c$crp c$dpiA
+c$cbl	c$cysB c$glnG
+c$ssuB	c$cbl c$fnr
+c$ulaA	c$crp
+c$ccmE	c$narP c$fnr c$modC
+c$actP	c$fnr c$crp
+c$yagI	c$fur
+c$rutR	c$arcA
+c$lyxK	c$crp
+c$yncD	c$arcA
+c$ydeI	c$rcdA
+c$oppD	c$arcA c$lrp
+c$paaC	c$crp c$arcA
+c$feoA	c$nagC c$fnr c$arcA
+c$citD	c$dpiA
+c$zraS	c$crp c$zraR
+c$phnP	c$argR c$phoB c$arcA
+c$potH	c$lrp c$glnG
+c$thrB	c$fnr c$crp c$lrp
+c$gatD	c$crp
+c$nrfD	c$narP c$narL c$fnr c$arcA
+c$melR	c$melR c$crp
+c$hyaF	c$ydeO c$arcA c$appY
+c$puuE	c$argR
+c$ynjC	c$fnr
+c$lhgO	c$crp c$hns c$lrp
+c$murQ	c$crp
+c$dcuR	c$fnr c$crp
+c$cysD	c$cysB
+c$yhhJ	c$arcA
+c$znuA	c$oxyR
+c$glpX	c$crp
+c$mhpA	c$mhpR c$crp
+c$yieE	c$arcA
+c$ydjX	c$fnr
+c$tdcA	c$tdcR c$tdcA c$crp c$fnr c$lrp
+c$yqgB	c$fnr
+c$katE	c$fur
+c$bglJ	c$leuO
+c$oppF	c$arcA c$lrp
+c$hisA	c$cra
+c$tyrR	c$lrp
+c$agaW	c$crp
+c$feoB	c$nagC c$fnr c$arcA
+c$aroA	c$lrp
+c$gabD	c$crp c$nac c$hns c$lrp
+c$ddpD	c$arcA c$glnG
+c$uspC	c$arcA
+c$hcaR	c$arcA
+c$hcaE	c$hcaR c$arcA
+c$dmsD	c$fnr
+c$yhdX	c$glnG
+c$ugpB	c$phoB c$crp
+c$pqiA	c$soxS c$marA
+c$glpQ	c$fis c$fnr c$crp
+c$atoB	c$atoC
+c$kbl	c$lrp
+c$lysU	c$lrp
+c$sbmA	c$cpxR
+c$cysG	c$narP c$narL c$fnr
+c$malF	c$fis c$malT c$crp
+c$fhuD	c$trpR
+c$dcuS	c$fnr
+c$uhpC	c$crp c$lrp
+c$fumC	c$rob c$soxR c$soxS c$crp c$arcA c$marA
+c$metH	c$metR
+c$sufS	c$iscR c$oxyR
+c$gutQ	c$gutM c$crp c$hns
+c$yehM	c$lrp
+c$ptsG	c$fis c$soxS c$crp c$fnr c$arcA
+c$pabA	c$crp
+c$hisH	c$cra
+c$nirC	c$narP c$narL c$fnr
+c$pflB	c$fnr c$crp c$arcA
+c$fadH	c$crp c$arcA
+c$gsiB	c$arcA
+c$nupC	c$crp c$nac c$arcA
+c$ada	c$ada
+c$ydeO	c$rcsB c$evgA
+c$gadW	c$phoP c$gadE c$gadX c$phoB c$ydeO c$arcA c$sdiA
+c$focA	c$crp c$fnr c$arcA
+c$ddpA	c$arcA c$glnG
+c$chbF	c$chbR c$crp
+c$moaB	c$fnr c$modC
+c$malY	c$crp
+c$casD	c$leuO
+c$pta	c$fnr
+c$bacA	c$cpxR
+c$csgD	c$ompR c$cra c$basR c$csgD c$mlrA c$crp c$rcdA
+c$galM	c$galR c$galS c$crp
+c$nikB	c$cra c$fnr
+c$gadC	c$gadX c$gadE c$rcsB c$gadW c$adiY
+c$cadB	c$gadX c$cadC c$lrp
+c$paaI	c$crp c$arcA
+c$leuE	c$lrp
+c$ymjB	c$crp
+c$mhpD	c$mhpR c$crp
+c$fdnH	c$narL c$fnr
+c$cysC	c$cysB
+c$metR	c$oxyR
+c$glyA	c$metR
+c$pnp	c$fis c$fnr c$arcA
+c$yecJ	c$arcA
+c$folM	c$lrp
+c$truB	c$fis c$fnr c$crp c$arcA
+c$xdhB	c$fnr
+c$glcD	c$crp c$glcC
+c$stpA	c$lrp
+c$avtA	c$arcA c$lrp
+c$gltF	c$gadE c$fnr c$arcA c$adiY c$lrp c$hdfR
+c$mgrB	c$phoP
+c$waaH	c$phoB
+c$iraD	c$fnr
+c$tomB	c$cpxR c$basR
+c$glpG	c$crp c$arcA
+c$cynS	c$cynR
+c$tnaA	c$torR c$crp
+c$yfbM	c$arcA
+c$dbpA	c$fnr
+c$sodA	c$rob c$soxR c$soxS c$crp c$marA
+c$sdhA	c$fur c$crp c$arcA
+c$rbsC	c$crp
+c$norV	c$norR
+c$manZ	c$cra c$crp
+c$moaD	c$fnr c$modC
+c$wrbA	c$csgD
+c$xdhA	c$fnr
+c$ydhJ	c$fnr
+c$ahpF	c$oxyR
+c$caiC	c$fnr c$crp c$caiF c$arcA
+c$gltB	c$gadE c$fnr c$arcA c$adiY c$hdfR c$lrp
+c$narJ	c$narL c$rstA c$fnr
+c$cysP	c$cysB
+c$sra	c$rcsB c$fis
+c$amtB	c$gadX c$fur c$fnr c$glnG
+c$pepD	c$lrp
+c$accD	c$fadR
+c$nanK	c$crp
+c$murR	c$murR
+c$pgaB	c$nhaR
+c$dmsA	c$fnr
+c$hycF	c$modC c$fhlA
+c$betA	c$cra
+c$ybjC	c$rob c$soxS c$marA
+c$mhpF	c$mhpR c$crp
+c$glnQ	c$glnG
+c$xylF	c$crp c$xylR
+c$ycbF	c$argR
+c$glgA	c$phoP c$crp
+c$ygcN	c$fnr
+c$msrB	c$cra c$fnr
+c$pntB	c$arcA
+c$fadJ	c$lrp
+c$mtlA	c$crp
+c$ybjD	c$fnr
+c$thrL	c$crp c$fnr c$lrp
+c$cyoB	c$cra c$gadE c$cusR c$fis c$crp
+c$nuoC	c$narL c$cra c$fis c$crp c$fnr
+c$codB	c$purR c$nac
+c$hisQ	c$hns c$glnG
+c$dcuA	c$fnr c$crp c$arcA c$lrp
+c$nuoK	c$narL c$cra c$fis c$crp c$fnr
+c$nikA	c$cra c$fnr
+c$fucK	c$crp c$fucR
+c$clpA	c$crp
+c$yciC	c$fnr
+c$ansB	c$fnr c$crp c$lrp
+c$dadA	c$crp c$lrp
+c$ybfA	c$arcA
+c$galS	c$argR c$crp
+c$frdC	c$dcuR c$fnr
+c$sgbU	c$crp
+c$znuC	c$oxyR
+c$leuB	c$arcA c$lrp c$leuO
+c$tyrA	c$soxR
+c$nanE	c$crp
+c$zraP	c$zraR
+c$hybB	c$fur c$fnr c$arcA
+c$dtpB	c$lrp
+c$fadR	c$fadR
+c$fadA	c$fis
+c$gltP	c$argR
+c$nrdH	c$iscR
+c$serA	c$crp c$lrp
+c$agp	c$crp
+c$kdpC	c$kdpE c$arcA
+c$argG	c$fnr c$crp c$arcA
+c$hycD	c$modC c$fhlA
+c$rutG	c$phoP c$arcA c$glnG
+c$ynjD	c$fnr
+c$uspF	c$fnr
+c$oppA	c$arcA c$lrp
+c$ccmB	c$narP c$fnr c$modC
+c$phnJ	c$phoB c$arcA
+c$nrdF	c$iscR
+c$tufB	c$fis
+c$purH	c$phoP
+c$gsiD	c$arcA
+c$ydhI	c$fnr
+c$argP	c$phoB
+c$uhpT	c$uhpA c$crp c$uvrY
+c$ddpX	c$arcA c$glnG
+c$phoU	c$phoB c$fnr
+c$ccmC	c$narP c$fnr c$modC
+c$preT	c$crp
+c$fsaA	c$fnr c$arcA
+c$dps	c$oxyR
+c$yddG	c$fnr
+c$ugpE	c$phoB c$crp
+c$hypC	c$fnr c$fhlA
+c$fucI	c$crp c$fucR
+c$tdcG	c$tdcR c$tdcA c$fnr c$crp c$lrp
+c$glnH	c$glnG
+c$garL	c$cdaR c$fnr
+c$rpmG	c$arcA
+c$fimE	c$lrp c$lrhA
+c$nfsB	c$rob c$soxS c$marA
+c$sucC	c$fur c$crp c$arcA
+c$psiE	c$phoB
+c$appC	c$ydeO c$arcA c$appY
+c$ilvN	c$crp c$lrp
+c$gsiA	c$arcA
+c$chbR	c$chbR c$crp
+c$cstA	c$crp
+c$add	c$rbsR
+c$ppiD	c$cpxR
+c$srlB	c$gutM c$crp c$hns
+c$uspE	c$gadX c$lrp
+c$aaeA	c$crp
+c$adiA	c$adiY
+c$glcF	c$crp c$glcC
+c$pck	c$cra c$crp c$arcA
+c$nikC	c$cra c$fnr
+c$uxaA	c$crp c$fnr c$arcA
+c$nhoA	c$soxS
+c$mtlR	c$crp
+c$lolA	c$rcsB
+c$glpA	c$fis c$crp c$fnr
+c$hcaD	c$hcaR c$arcA
+c$lldD	c$lldR c$crp c$arcA
+c$yjhQ	c$crp
+c$nanS	c$crp
+c$entS	c$fur
+c$ydeN	c$argR
+c$trmA	c$fis
+c$yfcC	c$fnr c$lrp
+c$betB	c$cra
+c$moaC	c$fnr c$modC
+c$epd	c$crp
+c$astC	c$argR c$lrp c$glnG
+c$dmsC	c$fnr
+c$hycI	c$modC c$fhlA
+c$ydcV	c$nac
+c$napC	c$narP c$fnr c$modC c$lrp
+c$nupG	c$crp
+c$cspD	c$crp c$hns
+c$ftnB	c$cpxR c$fur c$trpR
+c$gutM	c$gutM c$crp c$hns
+c$hyfF	c$crp c$hyfR c$fhlA
+c$bglB	c$crp c$leuO
+c$xanP	c$purR
+c$rtcA	c$rtcR
+c$mdlB	c$soxS
+c$ahpC	c$oxyR
+c$eco	c$lrp
+c$araE	c$araC c$crp
+c$ybhP	c$lrp
+c$adhE	c$fis c$fnr c$lrp
+c$rtcB	c$rtcR
+c$rbsA	c$crp
+c$pgi	c$soxS
+c$tyrP	c$fnr c$lrp c$tyrR
+c$ydjZ	c$fnr
+c$napH	c$narP c$fnr c$modC c$lrp
+c$cheY	c$fnr
+c$metQ	c$hypT c$fnr
+c$nrdI	c$iscR
+c$pntA	c$arcA
+c$mlrA	c$crp
+c$deoA	c$fis c$crp
+c$lsrB	c$crp
+c$gntU	c$crp
+c$leuL	c$arcA c$lrp c$leuO
+c$yhdZ	c$glnG
+c$yfaE	c$argP c$fis c$crp
+c$malZ	c$malT
+c$artQ	c$lrp
+c$caiT	c$fnr c$crp c$caiF c$arcA
+c$frdA	c$dcuR c$fnr
+c$dhaL	c$fnr c$arcA c$lrp c$dhaR
+c$fimB	c$nagC c$basR c$nanR
+c$astE	c$argR c$lrp c$glnG
+c$paaB	c$crp c$arcA
+c$yqjA	c$cpxR
+c$speA	c$fnr
+c$csgB	c$csgD
+c$yedX	c$yedW c$cusR c$phoB
+c$lldR	c$lldR c$crp c$arcA
+c$alaA	c$lrp
+c$aqpZ	c$fnr
+c$alaC	c$sgrR
+c$fadI	c$lrp
+c$gatZ	c$crp
+c$cyoD	c$cra c$gadE c$cusR c$fis c$crp
+c$tam	c$crp
+c$yjjW	c$crp
+c$hyfD	c$crp c$fhlA c$hyfR
+c$leuC	c$arcA c$leuO c$lrp
+c$lsrG	c$crp
+c$yciF	c$mcbR
+c$entB	c$crp
+c$bglF	c$crp c$leuO
+c$ytfK	c$lrp
+c$ycjO	c$crp
+c$nlpA	c$csgD
+c$yojI	c$lrp
+c$hisF	c$cra
+c$rbsB	c$crp
+c$chbB	c$chbR c$crp
+c$xseA	c$fnr c$crp c$arcA
+c$manY	c$cra c$crp
+c$nagK	c$lrp
+c$potA	c$fnr
+c$gnd	c$gadE
+c$ptsI	c$cra c$crp
+c$ydfO	c$fnr
+c$nrfA	c$narL c$narP c$fnr c$arcA
+c$acnA	c$rob c$cra c$fur c$soxS c$crp c$marA
+c$rimO	c$fnr c$arcA
+c$mdtA	c$cpxR c$cra c$crp c$baeR
+c$putA	c$marA
+c$asr	c$rstA c$phoB c$rcdA
+c$srlR	c$gutM c$crp c$hns
+c$phoA	c$phoB
+c$rhaS	c$rhaS c$crp c$rhaR
+c$yghB	c$fnr
+c$fucA	c$crp c$fucR
+c$nikR	c$cra c$fnr
+c$mltA	c$fnr
+c$yeiG	c$arcA
+c$yeaR	c$narL c$narP
+c$hyfJ	c$crp c$fhlA c$hyfR
+c$sdhD	c$fur c$crp c$arcA
+c$yiaO	c$crp
+c$caiF	c$fnr c$crp
+c$ycjT	c$crp
+c$hycC	c$modC c$fhlA
+c$hybC	c$fur c$fnr c$arcA
+c$clpS	c$crp
+c$fimI	c$hns c$lrp
+c$bglG	c$crp c$leuO
+c$tauD	c$cbl c$cysB
+c$ung	c$fnr
+c$yjiR	c$arcA
+c$ulaF	c$crp
+c$ecpA	c$ecpR
+c$feaB	c$feaR c$crp c$arcA
+c$torD	c$torR
+c$yahA	c$argR c$cra
+c$yhjC	c$phoB
+c$narI	c$narL c$rstA c$fnr
+c$baeS	c$cpxR c$cra c$crp c$baeR
+c$metL	c$phoP c$hypT
+c$focB	c$crp c$hyfR c$fhlA
+c$betT	c$cra
+c$dppA	c$arcA c$lrp
+c$ascF	c$crp
+c$yciG	c$mcbR
+c$agaA	c$crp
+c$yehP	c$lrp
+c$priB	c$crp
+c$fixA	c$crp c$fnr c$caiF
+c$copA	c$cueR
+c$purN	c$purR c$fnr
 c$aaeX	c$crp
+c$ybhN	c$lrp
+c$mgtA	c$phoP c$soxR
+c$glpR	c$crp c$arcA
+c$yeeE	c$lrp
+c$sdhC	c$fur c$crp c$arcA
+c$hisI	c$cra
+c$nrdG	c$fnr
+c$trmJ	c$arcA
+c$pdhR	c$crp c$fnr
+c$ulaC	c$crp
+c$tap	c$fnr
+c$gltA	c$crp
+c$artP	c$lrp
+c$mtr	c$lrp c$tyrR
+c$phnN	c$argR c$phoB c$arcA
+c$leuD	c$arcA c$lrp c$leuO
+c$lsrC	c$crp
+c$nrdE	c$iscR
+c$sdaA	c$lrp
+c$yibH	c$crp
+c$mltF	c$rob
+c$hcp	c$narP c$narL c$oxyR c$fnr
+c$hyaE	c$ydeO c$arcA c$appY
+c$hisC	c$cra
+c$fdnI	c$narL c$fnr
+c$hlyE	c$fnr c$crp c$hns c$slyA
+c$dctA	c$dcuR c$crp
+c$aspC	c$fnr c$lrp
+c$iraP	c$csgD
+c$artI	c$lrp
+c$fdnG	c$narL c$fnr
+c$zntA	c$zntR
+c$glpK	c$crp
+c$spy	c$cpxR c$baeR
+c$oppB	c$arcA c$lrp
+c$ycbU	c$argR
+c$fdoG	c$arcA
+c$relA	c$crp c$hns c$glnG
+c$paaA	c$crp c$arcA
+c$ssuD	c$fnr c$cbl
+c$lysC	c$argP
+c$yfaL	c$fnr
+c$carA	c$purR c$fis c$arcA c$rutR
+c$ydfN	c$fnr
+c$yhdY	c$glnG
+c$sufA	c$iscR c$oxyR
+c$ybgS	c$crp c$lrp
+c$iaaA	c$arcA
+c$tpr	c$fis
+c$modA	c$crp
+c$prpD	c$crp c$prpR
+c$fecB	c$crp c$pdhR
+c$glgS	c$crp
+c$rbbA	c$arcA
+c$dacC	c$bolA
+c$hpt	c$crp
+c$hyaA	c$ydeO c$arcA c$appY
+c$phnH	c$phoB c$arcA
+c$galP	c$crp
+c$fdhF	c$narP c$fnr c$fhlA
+c$gatY	c$crp
+c$aceE	c$crp c$fnr
+c$tdcR	c$fnr
+c$nrfG	c$narL c$narP c$fnr c$arcA
+c$pspD	c$crp c$pspF
+c$tdcC	c$tdcR c$tdcA c$crp c$fnr c$lrp
+c$cirA	c$crp
+c$pykA	c$fnr
+c$mdtC	c$cpxR c$cra c$crp c$baeR
+c$ygdG	c$crp
+c$ilvB	c$crp c$lrp
+c$alaT	c$fis
+c$adiC	c$phoB
+c$rplY	c$arcA
+c$hybF	c$fur c$fnr c$arcA
+c$alkA	c$ada
+c$ravA	c$fnr
+c$nuoM	c$narL c$cra c$fis c$crp c$fnr
+c$tdcE	c$tdcR c$tdcA c$fnr c$crp c$lrp
+c$allC	c$allS
+c$lrhA	c$lrp c$lrhA
+c$ypdA	c$arcA
+c$citG	c$dpiA
+c$glcG	c$crp c$glcC
+c$fimA	c$hns c$lrp
+c$lsrR	c$crp
+c$leuA	c$arcA c$lrp c$leuO
+c$xylH	c$crp c$xylR
+c$yfeD	c$crp
+c$ydfH	c$phoB
+c$rutA	c$phoP c$arcA c$glnG
+c$yfcZ	c$fnr c$lrp
+c$upp	c$fnr
+c$thrC	c$fnr c$crp c$lrp
+c$dppD	c$arcA c$lrp
+c$hcaB	c$hcaR c$arcA
+c$moeA	c$narL c$arcA
+c$aceA	c$cra c$lrp
+c$lysA	c$argP c$lysR
+c$ilvH	c$lrp
+c$yraQ	c$argR
+c$yhdW	c$glnG
+c$glnK	c$gadX c$fur c$fnr c$glnG
+c$hybG	c$fur c$fnr c$arcA
+c$apaH	c$fis
+c$slp	c$gadX c$ydeO
+c$ybiT	c$fnr c$crp
+c$ydiV	c$sdiA
+c$yfiF	c$arcA
+c$paaJ	c$crp c$arcA
+c$citX	c$dpiA
+c$glcA	c$crp c$glcC
+c$yhgE	c$arcA
+c$potF	c$lrp c$glnG
+c$hypF	c$fhlA
+c$sufE	c$iscR c$oxyR
+c$glgC	c$phoP c$crp
+c$ypdC	c$arcA
+c$evgS	c$evgA
+c$fixC	c$fnr c$crp c$caiF
+c$fumB	c$fur c$dcuR c$crp c$fnr c$arcA c$lrp
+c$evgA	c$evgA
+c$cdaR	c$cdaR
+c$sucB	c$fur c$crp c$arcA
+c$aceB	c$cra c$lrp
+c$yiiS	c$ydeO
+c$phnD	c$phoB c$arcA
+c$rpsT	c$arcA
+c$hha	c$cpxR c$basR
+c$ydjY	c$fnr
+c$nrfF	c$narL c$narP c$fnr c$arcA
+c$ygiC	c$rob c$phoP c$soxS c$marA
+c$gudP	c$cdaR
+c$inaA	c$rob c$soxS c$marA
+c$yiaM	c$crp
+c$hycE	c$modC c$fhlA
+c$hypD	c$fnr c$fhlA
+c$lldP	c$crp c$lldR c$arcA
+c$cusA	c$cusR c$yedW c$phoB
+c$potC	c$fnr
+c$hyfE	c$crp c$fhlA c$hyfR
+c$yigZ	c$arcA
+c$potG	c$lrp c$glnG
+c$ycjM	c$crp
+c$ibaG	c$mlrA
+c$narH	c$narL c$rstA c$fnr
+c$caiB	c$crp c$fnr c$caiF c$arcA
+c$cysM	c$cysB
+c$yeiL	c$yeiL c$lrp
+c$yjjU	c$gadE
+c$fecE	c$crp c$pdhR
+c$phnM	c$phoB c$arcA
+c$yhjX	c$ypdB c$arcA
+c$ssuA	c$cbl c$fnr
+c$tauC	c$cbl c$cysB
+c$rutC	c$phoP c$arcA c$glnG
+c$gatB	c$crp
+c$ppiA	c$cpxR c$crp
+c$brnQ	c$lrp
+c$nirD	c$narP c$narL c$fnr
+c$yhhX	c$crp
+c$hycG	c$modC c$fhlA
+c$fadL	c$phoP c$crp c$fnr
+c$ycjQ	c$crp
+c$mrr	c$fnr
+c$xylG	c$crp c$xylR
+c$cusC	c$cusR c$yedW c$phoB
+c$ddpC	c$arcA c$glnG
+c$hyaD	c$ydeO c$arcA c$appY
+c$aldA	c$crp
+c$yeeD	c$lrp
+c$hsdS	c$fnr
+c$emrY	c$fnr c$evgA
+c$potB	c$fnr
+c$entA	c$crp
+c$ydiU	c$iscR
+c$yeiW	c$crp
+c$nanT	c$crp
+c$nanM	c$crp
+c$araG	c$araC c$crp
+c$yehL	c$lrp
+c$garP	c$cdaR c$fnr
+c$ybdZ	c$fnr c$hns
+c$fdhE	c$arcA
+c$moeB	c$narL c$arcA
+c$eutS	c$argR
+c$casA	c$leuO
+c$fiu	c$crp
+c$yigG	c$arcA
+c$yceJ	c$arcA
+c$entC	c$crp
+c$atoE	c$atoC
+c$garR	c$cdaR c$crp c$fnr
+c$entH	c$crp
+c$yhgN	c$fnr
+c$yaaU	c$argR
+c$casB	c$leuO
+c$nrdD	c$fnr
+c$ykgG	c$lrp
+c$yoaC	c$cysB
+c$ccmF	c$narP c$fnr c$modC
+c$gadA	c$gadE c$gadX c$gadW c$arcA c$adiY
+c$atoA	c$atoC
+c$hypB	c$fnr c$fhlA
+c$yhiD	c$phoP c$gadX c$gadE c$rcsB c$torR c$gadW
+c$cvpA	c$purR
+c$htrE	c$lrp
+c$fucO	c$crp c$fucR
+c$araC	c$araC c$crp
+c$ygeA	c$araC c$crp
+c$secB	c$crp
+c$ugpA	c$phoB c$crp
+c$hyfC	c$crp c$hyfR c$fhlA
+c$ttdR	c$ttdR
+c$yqeF	c$lrp
+c$fic	c$crp
+c$ugpQ	c$phoB c$crp
+c$cydD	c$narL c$fnr c$arcA
+c$cysU	c$cysB
+c$nikD	c$cra c$fnr
+c$hycB	c$modC c$fhlA
+c$yjbJ	c$lrp
+c$pyrI	c$purR
+c$udp	c$crp
+c$ulaE	c$crp
+c$nhaR	c$nhaR
+c$sgbH	c$crp
+c$yhaC	c$fnr
+c$pstB	c$phoB c$fnr
+c$oxc	c$evgA
+c$phoH	c$phoB c$arcA
+c$yqaE	c$cpxR
+c$gabP	c$crp c$nac c$hns c$lrp
+c$malE	c$fis c$malT c$crp
+c$tauB	c$cbl c$cysB
+c$clsB	c$lrp
+c$cysQ	c$crp
+c$ttdB	c$ttdR
+c$appB	c$ydeO c$arcA c$appY
+c$mtlD	c$crp
+c$yeaH	c$glnG
+c$proY	c$lrp
+c$eutM	c$argR
+c$rhaT	c$rhaS c$crp
+c$casE	c$leuO
+c$uidB	c$crp
+c$yadH	c$crp
+c$glcB	c$crp c$glcC
+c$fucP	c$crp c$fucR
+c$aidB	c$ada
+c$mdtD	c$cpxR c$cra c$crp c$baeR
+c$astD	c$argR c$lrp c$glnG
+c$hofO	c$crp
+c$fhuC	c$trpR
+c$yieF	c$arcA
+c$gudD	c$cdaR
+c$tynA	c$feaR
+c$napG	c$narP c$fnr c$modC c$lrp
+c$yafT	c$fnr
+c$yqhA	c$fnr
+c$rutE	c$phoP c$arcA c$glnG
+c$ydcS	c$nac
+c$cueO	c$cueR
+c$malI	c$crp
+c$fucU	c$crp c$fucR
+c$artM	c$lrp
+c$hdeA	c$phoP c$gadX c$gadE c$rcsB c$torR c$gadW
+c$setA	c$sgrR
+c$araF	c$araC c$crp
+c$bssR	c$fnr
+c$paaE	c$crp c$arcA
+c$cadA	c$gadX c$cadC c$lrp
+c$mhpB	c$mhpR c$crp
+c$phoE	c$phoB
+c$yfeC	c$crp
+c$nfo	c$rob c$soxS c$marA
+c$hofM	c$crp
+c$yhbE	c$mlrA
+c$fecA	c$crp c$pdhR
+c$hycH	c$modC c$fhlA
+c$cspC	c$crp
+c$dhaK	c$fnr c$arcA c$lrp c$dhaR
+c$fdoH	c$crp c$arcA
+c$uspA	c$fnr
+c$hyfI	c$crp c$hyfR c$fhlA
+c$fimF	c$hns c$lrp
+c$asnA	c$asnC
+c$hyfG	c$crp c$fhlA c$hyfR
+c$nohB	c$fnr
+c$cas2	c$leuO
+c$nrfC	c$narL c$narP c$fnr c$arcA
+c$hypA	c$fhlA
+c$hofP	c$crp
+c$yfdV	c$evgA
+c$yeeX	c$cra
+c$yadG	c$crp
+c$aldB	c$crp
+c$ilvE	c$lrp
+c$anmK	c$fnr
+c$ynfG	c$fnr
+c$hupB	c$crp
+c$phnF	c$phoB c$arcA
+c$tktB	c$phoB
+c$borD	c$phoP
+c$ebgC	c$crp
+c$glpB	c$fis c$crp c$fnr
+c$yjbR	c$gadE
+c$hmp	c$metR
+c$nudJ	c$arcA
+c$yobF	c$crp
+c$agaV	c$crp
+c$casC	c$leuO
+c$hypE	c$fnr c$fhlA
+c$ebgA	c$crp
+c$gntX	c$crp
+c$nrfE	c$narL c$narP c$fnr c$arcA
+c$sdaB	c$lrp
+c$hybE	c$fur c$fnr c$arcA
+c$fucR	c$crp c$fucR
+c$fixX	c$fnr c$crp c$caiF
+c$ycjP	c$crp
+c$glgP	c$phoP c$crp
+c$ecpR	c$ecpR c$lrp
+c$cpxP	c$cpxR
+c$bluF	c$rcdA
+c$osmC	c$rcsB c$nhaR c$lrp
+c$ydcX	c$fnr
+c$eutP	c$argR
+c$icd	c$cra
+c$citE	c$dpiA
+c$pspE	c$crp c$pspF
+c$yncE	c$arcA c$marA
+c$dppC	c$arcA c$lrp
+c$hisG	c$cra
+c$ppsA	c$cra
+c$mipA	c$phoB
+c$gabT	c$crp c$nac c$hns c$lrp
+c$paaH	c$crp c$arcA
+c$dctR	c$gadX c$ydeO
+c$paaK	c$crp c$arcA
+c$nmpC	c$crp
+c$yfbV	c$fnr
+c$feaR	c$crp c$nac c$arcA
+c$cynX	c$cynR
+c$rhoL	c$arcA
+c$csiE	c$crp c$hns c$lrp
+c$yigF	c$arcA
+c$hsdR	c$fnr
+c$fepA	c$crp
+c$argT	c$glnG
+c$kbaZ	c$crp
+c$yhbS	c$fnr
+c$yjcB	c$soxR
+c$cheZ	c$fnr
+c$yjcH	c$fnr c$crp
+c$ilvI	c$lrp
+c$astA	c$argR c$lrp c$glnG
+c$yhcH	c$crp
+c$glnP	c$glnG
+c$ygjV	c$crp
+c$ychE	c$fnr
+c$argF	c$fur
+c$yjhX	c$crp
+c$pagP	c$phoP
+c$rutB	c$phoP c$arcA c$glnG
+c$sufB	c$iscR c$oxyR
+c$potD	c$fnr
+c$ilvD	c$lrp
+c$hdeB	c$phoP c$gadX c$gadE c$rcsB c$torR c$gadW
+c$flhC	c$qseB c$crp c$arcA c$hns
+c$paaD	c$crp c$arcA
+c$fumA	c$crp
+c$rarA	c$rcsB
+c$garD	c$cdaR c$fnr
+c$allE	c$allS
+c$yciB	c$fnr
+c$sfsA	c$crp
+c$hyfA	c$crp c$fhlA c$hyfR
+c$gudX	c$cdaR
+c$tar	c$fnr
+c$ynjE	c$fnr
+c$yceI	c$arcA
+c$pqiB	c$soxS c$marA
+c$eutD	c$argR
+c$yjbQ	c$gadE c$lrp
+c$amn	c$phoB
+c$glgX	c$phoP
+c$patD	c$nac
+c$chiP	c$crp
+c$mhpE	c$mhpR c$crp
+c$napB	c$narP c$fnr c$modC c$lrp
+c$yeaL	c$argR
+c$rcsA	c$gadE
+c$uidC	c$crp
+c$dsdX	c$crp c$dsdX
+c$tsgA	c$crp
+c$yeaI	c$fnr
+c$yhfG	c$crp
+c$yadV	c$lrp
+c$ttdT	c$ttdR
+c$ycjS	c$crp
+c$yjeM	c$lrp
+c$ychH	c$crp
+c$trkH	c$arcA
+c$rutF	c$phoP c$arcA c$glnG
+c$hofN	c$crp
+c$ykgA	c$argR
+c$pitA	c$fnr
+c$yjjZ	c$oxyR c$fnr
+c$waaZ	c$soxS c$marA
+c$ydhV	c$fnr
+c$phnK	c$phoB c$arcA
+c$ybjS	c$lrp
+c$ybiJ	c$lrp
+c$uhpA	c$crp c$lrp
+c$prpE	c$crp c$prpR
+c$ivbL	c$crp c$lrp
+c$hyfB	c$crp c$fhlA c$hyfR
+c$yacH	c$arcA
+c$ydgI	c$lrp
+c$caiE	c$crp c$fnr c$caiF c$arcA
+c$yiaK	c$crp
+c$yehQ	c$lrp
+c$tnaC	c$torR c$crp
+c$cysJ	c$cysB
+c$uraA	c$fnr
+c$ynfH	c$fnr
+c$cheR	c$fnr
+c$plsX	c$arcA
+c$yhjE	c$lrp
+c$ypfN	c$argR
+c$yhfA	c$crp
+c$yhbT	c$fnr
+c$hcaF	c$hcaR c$arcA
+c$ydfZ	c$fnr
+c$rmf	c$crp c$arcA
+c$yccJ	c$csgD
+c$eutT	c$argR
+c$lsrK	c$crp
+c$ycaM	c$lrp
+c$xylA	c$crp c$xylR
+c$glcE	c$crp c$glcC
+c$hycA	c$modC c$fhlA
+c$ycfD	c$argR
+c$yijD	c$arcA
+c$ilvA	c$lrp
+c$yjeT	c$fnr
+c$flxA	c$fis
+c$araJ	c$araC c$crp
+c$emrK	c$fnr c$evgA
+c$preA	c$crp
+c$ddpB	c$arcA c$glnG
+c$lsrF	c$crp
+c$yhbU	c$fnr
+c$fecC	c$pdhR c$crp
+c$dkgA	c$yqhC
+c$lacA	c$crp
+c$ddpF	c$arcA c$glnG
+c$ynfF	c$fnr
+c$viaA	c$fnr
+c$yegH	c$phoB
+c$ydcT	c$nac
+c$nohA	c$fnr
+c$hydN	c$fhlA
+c$atoD	c$atoC
+c$hsdM	c$fnr
+c$cspI	c$basR
+c$yeaJ	c$argR
+c$purB	c$purR
+c$yeiP	c$crp
+c$fimG	c$hns c$lrp
+c$ydgC	c$arcA
+c$aslB	c$rob
+c$dsbG	c$oxyR
+c$ykgE	c$lrp
+c$glpT	c$fis c$fnr c$crp
+c$yeaG	c$glnG
+c$sxy	c$crp
+c$yccT	c$csgD
+c$yibN	c$fnr
+c$yoeA	c$fnr
+c$rluE	c$arcA
+c$hofB	c$crp
+c$ttdA	c$ttdR
+c$xdhC	c$fnr
+c$phnL	c$phoB c$arcA
+c$yciW	c$cysB
+c$yzgL	c$lrp
+c$fldB	c$soxS
+c$ybaT	c$gadX
+c$yodC	c$lrp
+c$ysgA	c$crp
+c$ykgF	c$lrp
+c$yegR	c$evgA
+c$pepT	c$fnr
+c$ybiU	c$arcA
+c$ilvM	c$lrp
+c$ydeJ	c$fnr
+c$phnE_1	c$phoB c$arcA
+c$bcsZ	c$fnr
+c$tnaB	c$torR c$crp
+c$pgaD	c$nhaR
+c$yceB	c$lrp
+c$proK	c$fis
+c$ygeH	c$cysB
+c$grxA	c$oxyR
+c$yciN	c$lrp
+c$uspD	c$ydeO
+c$yhaB	c$fnr
+c$ydhU	c$fnr
+c$yhiM	c$gadE
+c$osmB	c$rcsB
+c$glyU	c$fis
+c$yecH	c$fnr
+c$rdoA	c$cpxR
+c$ybfN	c$crp
+c$ppdD	c$crp
+c$apaG	c$fis
+c$ynfO	c$fnr
+c$yhiN	c$fnr
+c$fliC	c$gadE c$hns
+c$yfdX	c$evgA

@@ -1,4 +1,4 @@
-c$Kanamycin	c$groS c$ycjF c$prlC c$hslU c$pspA c$ycfS c$mutM c$grcA c$pspC c$yrfG c$ftsH c$hslO c$hflX c$ybeY c$yjhQ c$fxsA c$yccA c$hslV c$yebE c$yhiI c$hfq c$dnaJ c$pspB c$htpX c$ygiB c$yobA c$yrbL c$ybjG c$miaA c$pgpC c$queE c$yhdN c$ybjX c$mlaF c$lon c$clpP c$clpB c$ybbN c$yjhP c$clpX c$ybbA c$htpG c$rpoS c$rpoD c$dnaK c$yrdA c$ycjX c$hslR c$ytfK
-c$Norfloxacin	c$ydiY c$uvrB c$greA c$dnaG c$yhjG c$rlmN c$mcrB c$ylaC c$yebF c$ispE c$sspB c$sulA c$polB c$recA c$fliA c$rpmG c$yebE c$queG c$uvrA c$yghB c$rpsU c$deoA c$rho c$yagP c$rpoD c$recN c$fliZ c$ompN c$deoC c$yeeN c$sspA c$deoB
-c$Ampicillin	c$lldP c$acrF c$bglF c$fhiA c$uhpT c$fecA c$fepA c$yifK
-c$Rifampin	c$purD c$rpoD c$guaB c$guaC c$speD c$apt c$purN c$srmB c$guaA c$speA c$ndk
+c$Kanamycin	c$mlaF c$ybjX c$yhiI c$hslU c$prlC c$ybbN c$hflX c$yebE c$groS c$grcA c$ytfK c$dnaK c$ybjG c$htpX c$ycjF c$ybeY c$yjhQ c$ybbA c$yrdA c$fxsA c$queE c$hslV c$yrbL c$yhdN c$dnaJ c$yrfG c$miaA c$mutM c$ftsH c$yjhP c$ycfS c$clpP c$pspC c$pspA c$rpoS c$hslO c$ycjX c$hslR c$pgpC c$rpoD c$ygiB c$yobA c$htpG c$hfq c$lon c$yccA c$clpB c$clpX c$pspB
+c$Norfloxacin	c$dnaG c$ylaC c$polB c$uvrB c$queG c$uvrA c$deoA c$yagP c$rpmG c$yebE c$recA c$recN c$ispE c$ompN c$fliZ c$yhjG c$mcrB c$fliA c$rpoD c$deoB c$yeeN c$yebF c$yghB c$sulA c$sspB c$rpsU c$ydiY c$rho c$sspA c$deoC c$rlmN c$greA
+c$Ampicillin	c$uhpT c$fecA c$acrF c$fhiA c$bglF c$fepA c$yifK c$lldP
+c$Rifampin	c$srmB c$apt c$purD c$guaC c$speD c$purN c$ndk c$guaA c$rpoD c$guaB c$speA
