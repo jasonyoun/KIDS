@@ -95,6 +95,48 @@ class ExtractInfo():
 
 		np.savetxt(file_path, entity_full_names, fmt='%s')
 
+	def save_unknowns(self, file_path, relations):
+		"""
+		Save unknowns to generate hypothesis on.
+
+		Inputs:
+			file_path: path to save the unknowns
+			relations: list of strings of relations
+			           e.g. ['represses', 'confers resistance to antibiotic']
+		"""
+		pd_unknowns = pd.DataFrame(columns=['Subject', 'Predicate', 'Object'])
+
+		for relation in relations:
+			log.info('Processing unknowns for relation \'{}\'...'.format(relation))
+
+			# extract domain and range type for chosen relation
+			row = self.pd_dr[self.pd_dr['Relation'] == relation]
+			np_domain_entities = self.get_entity_by_type(row['Domain'].iloc[0])
+			np_range_entities = self.get_entity_by_type(row['Range'].iloc[0])
+
+			# generate list of tuples (sub, obj) from known triplets
+			pd_known = self.pd_data[self.pd_data['Predicate'] == relation]
+			known_sub_obj_tuple_list = [tuple(x) for x in pd_known[['Subject', 'Object']].values]
+
+			# generate list of tuples (sub, obj) of all possible combinations
+			all_sub_obj_tuple_list = np.array(np.meshgrid(np_domain_entities, np_range_entities)).T.reshape(-1, 2)
+			all_sub_obj_tuple_list = list(map(tuple, all_sub_obj_tuple_list))
+
+			log.debug('Size of all possible combinations of subject and object: {}'.format(len(all_sub_obj_tuple_list)))
+			log.debug('Size of known combinations of subject and object: {}'.format(len(known_sub_obj_tuple_list)))
+
+			# generate list of tuples (sub, obj) of unknown combinations
+			unknown_combinations = list(set(all_sub_obj_tuple_list) - set(known_sub_obj_tuple_list))
+
+			log.debug('Size of unknown combinations of subject and object: {}'.format(len(unknown_combinations)))
+
+			# append the unknown triplets to generate hypothesis on
+			pd_unknown_to_append = pd.DataFrame(unknown_combinations, columns=['Subject', 'Object'])
+			pd_unknown_to_append.insert(1, column='Predicate', value=relation)
+			pd_unknowns = pd_unknowns.append(pd_unknown_to_append, sort=False)
+
+		pd_unknowns.to_csv(file_path, sep='\t', index=False, header=None)
+
 	def _read_dr(self, dr_path, get_overlap_only=True):
 		"""
 		(Private) Read the relation / domain / range text file.
