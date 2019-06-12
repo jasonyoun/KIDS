@@ -1,7 +1,7 @@
 import pickle as pickle
 import er_mlp_cross_entropy
 import itertools
-import sys  
+import sys
 import os
 import configparser
 import json

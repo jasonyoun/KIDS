@@ -93,12 +93,12 @@ class DataOrchestrator:
             print('')
             my_file = "entity_full_names.txt"
             df = pd.read_csv(self.data_path+'/'+my_file,sep=':',encoding ='latin-1',header=None)
-            data_array = df.as_matrix()
+            data_array = df.values
             self.type_dic,self.subsets_dic = create_type_subsets_dic(data_array,entity_dic)
 
             my_file = "domain_range.txt"
             df = pd.read_csv(self.data_path+'/'+my_file,sep='\t',encoding ='latin-1',header=None)
-            data_array = df.as_matrix()
+            data_array = df.values
             self.domain_range_dic = {}
             for row in data_array:
                 self.domain_range_dic[predicate_dic[row[0].strip()]] = (row[1].strip(), row[2].strip())

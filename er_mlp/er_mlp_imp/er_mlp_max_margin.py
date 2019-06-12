@@ -2,234 +2,231 @@
 Filename: er_mlp_max_margin.py
 
 Authors:
-	Nicholas Joodi - npjoodi@ucdavis.edu
-	Jason Youn - jyoun@ucdavis.edu
+    Nicholas Joodi - npjoodi@ucdavis.edu
+    Jason Youn - jyoun@ucdavis.edu
 
 Description:
-	Construct ER MLP using max margin loss and
-	perform train, evaluation, and test.
+    Construct ER MLP using max margin loss and
+    perform train, evaluation, and test.
 
 To-do:
-	1. take _determine_threshold() and _test_model() out
-	2. use params['dev_file'] and params['test_file'] instead of
-		'dev.txt' and 'test.txt'
-	3. create_indexed_triplets_test() should be changed to
-		create_indexed_triplets() ?
-	4. do we need to shuffle test data? I don't think so.
-	5. probably remove _type from _test_model()
-	6. maybe put _test_model into er_mlp.py like compute_threshold
-	7. figure out why we set label to -1 here but to 0 in determine_thresholds.py
+    1. take _determine_threshold() and _test_model() out
+    2. use params['dev_file'] and params['test_file'] instead of
+        'dev.txt' and 'test.txt'
+    3. create_indexed_triplets_test() should be changed to
+        create_indexed_triplets() ?
+    4. do we need to shuffle test data? I don't think so.
+    5. probably remove _type from _test_model()
+    6. maybe put _test_model into er_mlp.py like compute_threshold
+    7. figure out why we set label to -1 here but to 0 in determine_thresholds.py
 """
 
 import os
-import sys
 import random
-import numpy as np
-import pickle as pickle
+import pickle
 import logging as log
+import numpy as np
 import tensorflow as tf
 from er_mlp import ERMLP
 from data_processor import DataProcessor
 from metrics import plot_cost, plot_map
 
 def run_model(params):
-	"""
-	Run the ER_MLP model using max margin loss.
+    """
+    Run the ER_MLP model using max margin loss.
 
-	Inputs:
-		params: dictionary containing different
-			parameters to be used when running the model
-	"""
-	# numerically represent the entities, predicates, and words
-	processor = DataProcessor()
+    Inputs:
+        params: dictionary containing different
+            parameters to be used when running the model
+    """
+    # numerically represent the entities, predicates, and words
+    processor = DataProcessor()
 
-	# load train / dev / test data as dataframe
-	train_df = processor.load(os.path.join(params['DATA_PATH'], params['TRAIN_FILE']))
-	dev_df = processor.load(os.path.join(params['DATA_PATH'], 'dev.txt'))
-	test_df = processor.load(os.path.join(params['DATA_PATH'], 'test.txt'))
+    # load train / dev / test data as dataframe
+    train_df = processor.load(os.path.join(params['DATA_PATH'], params['TRAIN_FILE']))
+    dev_df = processor.load(os.path.join(params['DATA_PATH'], 'dev.txt'))
+    test_df = processor.load(os.path.join(params['DATA_PATH'], 'test.txt'))
 
-	log.debug('train dataframe shape: {}'.format(train_df.shape))
-	log.debug('dev dataframe shape: {}'.format(dev_df.shape))
-	log.debug('test dataframe shape: {}'.format(test_df.shape))
+    log.debug('train dataframe shape: %s', train_df.shape)
+    log.debug('dev dataframe shape: %s', dev_df.shape)
+    log.debug('test dataframe shape: %s', test_df.shape)
 
-	if len(train_df.columns) < 4:
-		log.warning('Label (last column) is missing')
-		train_df['one'] = 1
+    if len(train_df.columns) < 4:
+        log.warning('Label (last column) is missing')
+        train_df['one'] = 1
 
-	if params['WORD_EMBEDDING']:
-		indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word(os.path.join(params['DATA_PATH'], 'entities.txt'))
-		indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word(os.path.join(params['DATA_PATH'], 'relations.txt'))
-	else:
-		entity_dic = processor.machine_translate(os.path.join(params['DATA_PATH'], 'entities.txt'))
-		pred_dic = processor.machine_translate(os.path.join(params['DATA_PATH'], 'relations.txt'))
+    if params['WORD_EMBEDDING']:
+        indexed_entities, num_entity_words, entity_dic = processor.machine_translate_using_word(
+            os.path.join(params['DATA_PATH'], 'entities.txt'))
+        indexed_predicates, num_pred_words, pred_dic = processor.machine_translate_using_word(
+            os.path.join(params['DATA_PATH'], 'relations.txt'))
+    else:
+        entity_dic = processor.machine_translate(os.path.join(params['DATA_PATH'], 'entities.txt'))
+        pred_dic = processor.machine_translate(os.path.join(params['DATA_PATH'], 'relations.txt'))
 
-	# numerically represent the data
-	indexed_train_data = processor.create_indexed_triplets_test(train_df.as_matrix(), entity_dic, pred_dic)
-	indexed_dev_data = processor.create_indexed_triplets_test(dev_df.as_matrix(), entity_dic, pred_dic)
-	indexed_test_data = processor.create_indexed_triplets_test(test_df.as_matrix(), entity_dic, pred_dic)
+    # numerically represent the data
+    indexed_train_data = processor.create_indexed_triplets_test(train_df.values, entity_dic, pred_dic)
+    indexed_dev_data = processor.create_indexed_triplets_test(dev_df.values, entity_dic, pred_dic)
+    indexed_test_data = processor.create_indexed_triplets_test(test_df.values, entity_dic, pred_dic)
 
-	# change label from 0 to -1 for test / dev data
-	indexed_dev_data[:, 3][indexed_dev_data[:, 3] == 0] = -1
-	indexed_test_data[:, 3][indexed_test_data[:, 3] == 0] = -1
+    # change label from 0 to -1 for test / dev data
+    indexed_dev_data[:, 3][indexed_dev_data[:, 3] == 0] = -1
+    indexed_test_data[:, 3][indexed_test_data[:, 3] == 0] = -1
 
-	# shuffle test data
-	np.random.shuffle(indexed_test_data)
+    # shuffle test data
+    np.random.shuffle(indexed_test_data)
 
-	# find number of entities and predicates
-	NUM_ENTITIES = len(entity_dic)
-	NUM_PREDS = len(pred_dic)
+    # construct new parameter dictionary to be actually fed into the network
+    er_mlp_params = {
+        'word_embedding': params['WORD_EMBEDDING'],
+        'embedding_size': params['EMBEDDING_SIZE'],
+        'layer_size': params['LAYER_SIZE'],
+        'corrupt_size': params['CORRUPT_SIZE'],
+        'lambda': params['LAMBDA'],
+        'num_entities': len(entity_dic),
+        'num_preds': len(pred_dic),
+        'learning_rate': params['LEARNING_RATE'],
+        'batch_size': params['BATCH_SIZE'],
+        'add_layers': params['ADD_LAYERS'],
+        'act_function':params['ACT_FUNCTION'],
+        'drop_out_percent': params['DROP_OUT_PERCENT'],
+        'margin': params['MARGIN']
+    }
 
-	# construct new parameter dictionary to be actually fed into the network
-	er_mlp_params = {
-		'word_embedding': params['WORD_EMBEDDING'],
-		'embedding_size': params['EMBEDDING_SIZE'],
-		'layer_size': params['LAYER_SIZE'],
-		'corrupt_size': params['CORRUPT_SIZE'],
-		'lambda': params['LAMBDA'],
-		'num_entities': NUM_ENTITIES,
-		'num_preds': NUM_PREDS,
-		'learning_rate': params['LEARNING_RATE'],
-		'batch_size': params['BATCH_SIZE'],
-		'add_layers': params['ADD_LAYERS'],
-		'act_function':params['ACT_FUNCTION'],
-		'drop_out_percent': params['DROP_OUT_PERCENT'],
-		'margin': params['MARGIN']
-	}
+    # append word embedding related parameters to the dictionary
+    if params['WORD_EMBEDDING']:
+        er_mlp_params['num_entity_words'] = num_entity_words
+        er_mlp_params['num_pred_words'] = num_pred_words
+        er_mlp_params['indexed_entities'] = indexed_entities
+        er_mlp_params['indexed_predicates'] = indexed_predicates
 
-	# append word embedding related parameters to the dictionary
-	if params['WORD_EMBEDDING']:
-		er_mlp_params['num_entity_words'] = num_entity_words
-		er_mlp_params['num_pred_words'] = num_pred_words
-		er_mlp_params['indexed_entities'] = indexed_entities
-		er_mlp_params['indexed_predicates'] = indexed_predicates
+    #########################
+    # construct the network #
+    #########################
+    er_mlp = ERMLP(er_mlp_params)
 
-	#########################
-	# construct the network #
-	#########################
-	er_mlp = ERMLP(er_mlp_params)
+    # network used for training
+    train_predictions = er_mlp.inference_for_max_margin_training()
+    tf.add_to_collection('train_predictions', train_predictions)
 
-	# network used for training
-	train_predictions = er_mlp.inference_for_max_margin_training()
-	tf.add_to_collection('train_predictions', train_predictions)
+    # network used for testing
+    test_predictions = er_mlp.inference()
+    tf.add_to_collection('test_predictions', test_predictions)
 
-	# network used for testing
-	test_predictions = er_mlp.inference()
-	tf.add_to_collection('test_predictions', test_predictions)
+    # margin based ranking loss
+    cost = er_mlp.loss()
+    tf.add_to_collection('cost', cost)
+    tf.summary.scalar('cost', cost)
 
-	# margin based ranking loss
-	cost = er_mlp.loss()
-	tf.add_to_collection('cost', cost)
-	tf.summary.scalar('cost', cost)
+    # optimizer
+    if params['OPTIMIZER'] == 0:
+        # adagrad
+        optimizer = er_mlp.train_adagrad(cost)
+    else:
+        # adam
+        optimizer = er_mlp.train_adam(cost)
 
-	# optimizer
-	if params['OPTIMIZER'] == 0:
-		# adagrad
-		optimizer = er_mlp.train_adagrad(cost)
-	else:
-		# adam
-		optimizer = er_mlp.train_adam(cost)
+    tf.add_to_collection('optimizer', optimizer)
 
-	tf.add_to_collection('optimizer', optimizer)
+    # merge summary
+    merged = tf.summary.merge_all()
 
-	# merge summary
-	merged = tf.summary.merge_all()
+    # saver to save the model
+    saver = tf.train.Saver()
 
-	# saver to save the model
-	saver = tf.train.Saver()
+    # choose the training data to actually train on
+    data_train = indexed_train_data[indexed_train_data[:, 3] == 1]
+    data_train = data_train[:, :3]
 
-	# choose the training data to actually train on
-	data_train = indexed_train_data[indexed_train_data[:, 3] == 1]
-	data_train = data_train[:, :3]
+    # some variable initializations
+    iter_list = []
+    cost_list = []
+    map_list = []
+    iteration = 0
 
-	# some variable initializations
-	iter_list = []
-	cost_list = []
-	map_list = []
-	iteration = 0
+    # init variables
+    log.info('Initializing tensor variables...')
+    init_all = tf.global_variables_initializer()
 
-	# init variables
-	log.info('Initializing tensor variables...')
-	init_all = tf.global_variables_initializer()
+    log.info('Begin training...')
+    # begin session
+    with tf.Session() as sess:
+        # writer
+        train_writer = tf.summary.FileWriter(os.path.join(params['MODEL_SAVE_DIRECTORY'], 'log'), sess.graph)
 
-	log.info('Begin training...')
-	# begin session
-	with tf.Session() as sess:
-		# writer
-		train_writer = tf.summary.FileWriter(os.path.join(params['MODEL_SAVE_DIRECTORY'], 'log'), sess.graph)
+        # run init
+        sess.run(init_all)
 
-		# run init
-		sess.run(init_all)
+        # epoch
+        for epoch in range(params['TRAINING_EPOCHS']):
+            log.info('****** Epoch: %d/%d ******', epoch, params['TRAINING_EPOCHS'])
 
-		# epoch
-		for epoch in range(params['TRAINING_EPOCHS']):
-			log.info('****** Epoch: {}/{} ******'.format(epoch, params['TRAINING_EPOCHS']))
+            total_batch = int(np.ceil(data_train.shape[0] / params['BATCH_SIZE']))
 
-			total_batch = int(np.ceil(data_train.shape[0] / params['BATCH_SIZE']))
+            # shuffle the training data for each epoch
+            np.random.shuffle(data_train)
 
-			# shuffle the training data for each epoch
-			np.random.shuffle(data_train)
+            # iteration
+            for i in range(total_batch):
+                # get corrupted batch using the un-corrupted data_train
+                start_idx = i*params['BATCH_SIZE']
+                end_idx = (i+1)*params['BATCH_SIZE']
+                batch_xs = er_mlp.get_training_batch_with_corrupted(data_train[start_idx:end_idx])
 
-			# iteration
-			for i in range(total_batch):
-				# get corrupted batch using the un-corrupted data_train
-				start_idx = i*params['BATCH_SIZE']
-				end_idx = (i+1)*params['BATCH_SIZE']
-				batch_xs = er_mlp.get_training_batch_with_corrupted(data_train[start_idx:end_idx])
+                # flip bit
+                flip = bool(random.getrandbits(1))
 
-				# flip bit
-				flip = bool(random.getrandbits(1))
+                # feed dictionary
+                feed_dict = {
+                    er_mlp.train_triplets: batch_xs,
+                    er_mlp.flip_placeholder: flip}
 
-				# feed dictionary
-				feed_dict = {
-					er_mlp.train_triplets: batch_xs,
-					er_mlp.flip_placeholder: flip}
+                # display progress
+                if (i == 0) and (epoch % params['DISPLAY_STEP'] == 0):
+                    _, train_summary, current_cost = sess.run([optimizer, merged, cost], feed_dict=feed_dict)
+                    train_writer.add_summary(train_summary, iteration)
 
-				# display progress
-				if (i == 0) and (epoch % params['DISPLAY_STEP'] == 0):
-					_, train_summary, current_cost = sess.run([optimizer, merged, cost], feed_dict=feed_dict)
-					train_writer.add_summary(train_summary, iteration)
+                    thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
+                    current_map = er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='current')
+                    log.info('current cost: %f', current_cost)
 
-					thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
-					current_map = er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='current')
-					log.info('current cost: {}'.format(current_cost))
+                    iter_list.append(iteration)
+                    cost_list.append(current_cost)
+                    map_list.append(current_map)
+                else:
+                    sess.run(optimizer, feed_dict=feed_dict)
 
-					iter_list.append(iteration)
-					cost_list.append(current_cost)
-					map_list.append(current_map)
-				else:
-					sess.run(optimizer, feed_dict=feed_dict)
+                # update iteration
+                iteration += 1
 
-				# update iteration
-				iteration += 1
+        # close writers
+        train_writer.close()
 
-		# close writers
-		train_writer.close()
+        # do final threshold determination and testing model
+        log.info('determine threshold for classification')
+        thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
+        er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='final')
 
-		# do final threshold determination and testing model
-		log.info('determine threshold for classification')
-		thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
-		er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='final')
+        # plot the cost graph
+        plot_cost(iter_list, cost_list, params['MODEL_SAVE_DIRECTORY'])
+        plot_map(iter_list, map_list, params['MODEL_SAVE_DIRECTORY'])
 
-		# plot the cost graph
-		plot_cost(iter_list, cost_list, params['MODEL_SAVE_DIRECTORY'])
-		plot_map(iter_list, map_list, params['MODEL_SAVE_DIRECTORY'])
+        # save the model & parameters if prompted
+        if params['SAVE_MODEL']:
+            saver.save(sess, os.path.join(params['MODEL_SAVE_DIRECTORY'], 'model'))
+            log.info('model saved in: %s', params['MODEL_SAVE_DIRECTORY'])
 
-		# save the model & parameters if prompted
-		if params['SAVE_MODEL']:
-			saver.save(sess, os.path.join(params['MODEL_SAVE_DIRECTORY'], 'model'))
-			log.info('model saved in: {}'.format(params['MODEL_SAVE_DIRECTORY']))
+            save_object = {
+                'thresholds':thresholds,
+                'entity_dic': entity_dic,
+                'pred_dic': pred_dic
+            }
 
-			save_object = {
-				'thresholds':thresholds,
-				'entity_dic': entity_dic,
-				'pred_dic': pred_dic
-			}
+            if params['WORD_EMBEDDING']:
+                save_object['indexed_entities'] = indexed_entities
+                save_object['indexed_predicates'] = indexed_predicates
+                save_object['num_pred_words'] = num_pred_words
+                save_object['num_entity_words'] = num_entity_words
 
-			if params['WORD_EMBEDDING']:
-				save_object['indexed_entities'] = indexed_entities
-				save_object['indexed_predicates'] = indexed_predicates
-				save_object['num_pred_words'] = num_pred_words
-				save_object['num_entity_words'] = num_entity_words
-
-			with open(os.path.join(params['MODEL_SAVE_DIRECTORY'], 'params.pkl'), 'wb') as output:
-				pickle.dump(save_object, output, pickle.HIGHEST_PROTOCOL)
+            with open(os.path.join(params['MODEL_SAVE_DIRECTORY'], 'params.pkl'), 'wb') as output:
+                pickle.dump(save_object, output, pickle.HIGHEST_PROTOCOL)
