@@ -9,7 +9,6 @@ Description:
     
 
 To-do:
-    1. check each line and understand
 """
 import os
 import pickle

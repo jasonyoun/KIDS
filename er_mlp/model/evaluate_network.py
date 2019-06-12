@@ -9,8 +9,7 @@ Description:
     
 
 To-do:
-    1. check each line and understand
-    3. take calibrate_probabilties() out to utils or somewhere else
+    1. take calibrate_probabilties() out to utils or somewhere else
         since it's also being used in predict.py
 """
 import os
@@ -234,7 +233,6 @@ def main():
     with open(_file, 'w') as t_f:
         for row in classifications_test:
             t_f.write(str(row) + '\n')
-
 
 if __name__ == '__main__':
     main()
