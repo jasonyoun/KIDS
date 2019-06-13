@@ -70,8 +70,8 @@ def run_model(params):
     indexed_test_data = processor.create_indexed_triplets_test(test_df.values, entity_dic, pred_dic)
 
     # change label from 0 to -1 for test / dev data
-    indexed_dev_data[:, 3][indexed_dev_data[:, 3] == 0] = -1
-    indexed_test_data[:, 3][indexed_test_data[:, 3] == 0] = -1
+    indexed_dev_data[:, 3][indexed_dev_data[:, 3] == -1] = 0
+    indexed_test_data[:, 3][indexed_test_data[:, 3] == -1] = 0
 
     # shuffle test data
     np.random.shuffle(indexed_test_data)

@@ -87,7 +87,7 @@ class DataProcessor:
 
         Returns:
             list of lists where each list has length equal to 4.
-            [sub_index, pred_index, obj_index, true/false]
+            [sub_index, pred_index, obj_index, 1/-1]
         """
         indexed_data = [[entity_dic[df_data[i][0]], pred_dic[df_data[i][1]], entity_dic[df_data[i][2]], df_data[i][3]] for i in range(len(df_data))]
 

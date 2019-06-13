@@ -354,8 +354,8 @@ class ERMLP:
         best_threshold = np.zeros(self.params['num_preds'])
 
         # make sure to change label is -1 not 0
-        dev_labels[:][dev_labels[:] == 0] = -1
-        predictions_list[:][predictions_list[:] == 0] = -1
+        dev_labels[:][dev_labels[:] == -1] = 0
+        predictions_list[:][predictions_list[:] == -1] = 0
 
         # for each predicate
         for i in range(self.params['num_preds']):
@@ -384,7 +384,7 @@ class ERMLP:
                     # using individual prediction as a score
                     score = predicate_predictions[j]
                     # find the predicted label for all predictions
-                    predictions = (predicate_predictions >= score)*2 - 1
+                    predictions = (predicate_predictions >= score)*1
 
                     if f1:
                         accuracy = f1_score(predicate_labels, predictions)
@@ -544,7 +544,7 @@ class ERMLP:
         roc_auc_test = roc_auc_stats(self.params['num_preds'], labels_test, predictions_test, predicates_test, pred_dic)
 
         # get test classification
-        classifications_test = self.classify(predictions_test, threshold, predicates_test, cross_margin=True)
+        classifications_test = self.classify(predictions_test, threshold, predicates_test)
         classifications_test = np.array(classifications_test).astype(int)
 
         # get confusion matrix

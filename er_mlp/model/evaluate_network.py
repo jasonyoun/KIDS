@@ -152,6 +152,10 @@ def main():
         roc_auc_test = roc_auc_stats(len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
         classifications_test = er_mlp.classify(predictions_list_test, thresholds, predicates_test)
         classifications_test = np.array(classifications_test).astype(int)
+
+        indexed_data_test[:, 3][indexed_data_test[:, 3] == -1] = 0
+        labels_test = np.reshape(indexed_data_test[:, 3], (-1, 1))
+
         labels_test = labels_test.astype(int)
         fl_measure_test = f1_score(labels_test, classifications_test)
         accuracy_test = accuracy_score(labels_test, classifications_test)
@@ -229,7 +233,6 @@ def main():
         save_results(results, os.path.join(model_save_dir, 'test'))
 
     _file = os.path.join(model_save_dir, 'test/classifications_er_mlp.txt')
-
     with open(_file, 'w') as t_f:
         for row in classifications_test:
             t_f.write(str(row) + '\n')

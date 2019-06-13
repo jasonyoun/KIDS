@@ -142,6 +142,7 @@ def main():
             indexed_data_test = processor.create_indexed_triplets_training(
                 test_df.values, entity_dic, pred_dic)
 
+        indexed_data_test[:, 3][indexed_data_test[:, 3] == -1] = 0
         data_test = indexed_data_test[:, :3]
         predicates_test = indexed_data_test[:, 1]
 

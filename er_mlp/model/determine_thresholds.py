@@ -64,6 +64,8 @@ def main():
         with open(os.path.join(model_save_dir, 'params.pkl'), 'rb') as _file:
             params = pickle.load(_file)
 
+        log.info('Original thresholds: %s', params['thresholds'])
+
         # some parameters
         entity_dic = params['entity_dic']
         pred_dic = params['pred_dic']
@@ -102,8 +104,7 @@ def main():
 
         processor = DataProcessor()
         dev_df = processor.load(os.path.join(configparser.getstr('DATA_PATH'), 'dev.txt'))
-        indexed_data_dev = processor.create_indexed_triplets_test(
-            dev_df.values, entity_dic, pred_dic)
+        indexed_data_dev = processor.create_indexed_triplets_test(dev_df.values, entity_dic, pred_dic)
         indexed_data_dev[:, 3][indexed_data_dev[:, 3] == -1] = 0
 
         # find the threshold
