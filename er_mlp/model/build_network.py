@@ -74,8 +74,6 @@ def main():
         'TRAIN_FILE': configparser.getstr('TRAIN_FILE'),
         'SEPARATOR': configparser.getstr('SEPARATOR'),
         'F1_FOR_THRESHOLD': configparser.getbool('F1_FOR_THRESHOLD'),
-        'USE_SMOLT_SAMPLING': configparser.getbool('USE_SMOLT_SAMPLING'),
-        'LOG_REG_CALIBRATE': configparser.getbool('LOG_REG_CALIBRATE'),
         'MARGIN': configparser.getfloat('MARGIN')
     }
 

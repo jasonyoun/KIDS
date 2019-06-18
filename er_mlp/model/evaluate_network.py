@@ -9,8 +9,6 @@ Description:
     
 
 To-do:
-    1. take calibrate_probabilties() out to utils or somewhere else
-        since it's also being used in predict.py
 """
 import os
 import pickle
@@ -40,33 +38,11 @@ def parse_argument():
         default='./',
         help='Base directory')
     parser.add_argument(
-        '--use_calibration',
-        action='store_const',
-        default=False,
-        const=True)
-    parser.add_argument(
         '--logfile',
         default='',
         help='Path to save the log')
 
     return parser.parse_args()
-
-def calibrate_probabilties(predictions_list_test, calibration_models, predicates_test, pred_dic, log_reg_calibrate):
-    for _, i in pred_dic.items():
-        indices, = np.where(predicates_test == i)
-
-        if np.shape(indices)[0] != 0:
-            predictions_predicate = predictions_list_test[indices]
-            clf = calibration_models[i]
-
-            if log_reg_calibrate:
-                p_calibrated = clf.predict_proba(predictions_predicate.reshape(-1, 1))[:, 1]
-            else:
-                p_calibrated = clf.transform(predictions_predicate.ravel())
-
-            predictions_list_test[indices] = np.reshape(p_calibrated, (-1, 1))
-
-    return predictions_list_test
 
 def main():
     """
@@ -75,9 +51,6 @@ def main():
     # set log and parse args
     args = parse_argument()
     model_global.set_logging(args.logfile)
-
-    # some init
-    calibrated = args.use_calibration
 
     # directory and filename setup
     model_instance_dir = 'model_instance'
@@ -96,10 +69,6 @@ def main():
         entity_dic = params['entity_dic']
         pred_dic = params['pred_dic']
         thresholds = params['thresholds']
-
-        if calibrated:
-            calibration_models = params['calibrated_models']
-            thresholds = params['thresholds_calibrated']
 
         er_mlp_params = {
             'word_embedding': configparser.getbool('WORD_EMBEDDING'),
@@ -144,10 +113,6 @@ def main():
 
         predictions_list_test = sess.run(er_mlp.test_predictions, feed_dict={er_mlp.test_triplets: data_test, er_mlp.y: labels_test})
 
-        if calibrated:
-            predictions_list_test = calibrate_probabilties(
-                predictions_list_test, calibration_models, predicates_test, pred_dic, configparser.getbool('LOG_REG_CALIBRATE'))
-
         mean_average_precision_test = pr_stats(len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
         roc_auc_test = roc_auc_stats(len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
         classifications_test = er_mlp.classify(predictions_list_test, thresholds, predicates_test)
@@ -162,12 +127,11 @@ def main():
         confusion_test = confusion_matrix(labels_test, classifications_test)
         precision_test = precision_score(labels_test, classifications_test)
         recall_test = recall_score(labels_test, classifications_test)
-        calib_file_name = '_calibrated' if calibrated else '_not_calibrated'
 
         plot_pr(len(pred_dic), labels_test, predictions_list_test, predicates_test,
-                pred_dic, os.path.join(model_save_dir, 'test'), name_of_file='er_mlp{}'.format(calib_file_name))
+                pred_dic, os.path.join(model_save_dir, 'test'), name_of_file='er_mlp_not_calibrated')
         plot_roc(len(pred_dic), labels_test, predictions_list_test, predicates_test,
-                 pred_dic, os.path.join(model_save_dir, 'test'), name_of_file='er_mlp{}'.format(calib_file_name))
+                 pred_dic, os.path.join(model_save_dir, 'test'), name_of_file='er_mlp_not_calibrated')
 
         results = {}
 
