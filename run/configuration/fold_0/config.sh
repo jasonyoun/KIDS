@@ -18,11 +18,5 @@ no_negatives=('has' 'is' 'is#SPACE#involved#SPACE#in' 'upregulated#SPACE#by#SPAC
 # The file name of your train data
 train_file="train.txt"
 
-# If we are calibrating the scores, what calibration model are we using. True for logistic regression, false for isotonic regression
-log_reg_calibrate=true
-
-# use smote sampling if the data in dev is unbalanced.
-use_smolt_sampling=true
-
 # The name of the file that will be predicted on.
 predict_file=train_local.txt

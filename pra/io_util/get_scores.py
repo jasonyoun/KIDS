@@ -23,30 +23,16 @@ def parse_argument():
     parser = argparse.ArgumentParser(description='parse and generate the scores file')
 
     parser.add_argument(
-        '--use_calibration',
-        action='store_const',
-        default=False,
-        const=True)
-
-    parser.add_argument(
         '--predicate',
         nargs='?',
         required=True,
         help='the predicate that we will get the scores for')
-
     parser.add_argument(
         '--dir',
         metavar='dir',
         nargs='?',
         default='./',
         help='base directory')
-
-    parser.add_argument(
-        '--log_reg_calibrate',
-        metavar='log_reg_calibrate',
-        nargs='?',
-        default='false',
-        help='use logistic regression for calibration, isotonic regression otherwise')
 
     return parser.parse_args()
 
@@ -56,13 +42,6 @@ def main():
     """
     args = parse_argument()
     relation = args.predicate
-    use_calibration = args.use_calibration
-
-    if use_calibration:
-        log_reg_calibrate = True if args.log_reg_calibrate == 'true' else False
-
-        with open('calibrations/' + relation + '.pkl', 'rb') as pickle_file:
-            clf = pickle.load(pickle_file)
 
     queries_tail = args.dir + '/queriesR_tail/' + relation
     fname = args.dir + '/predictions/' + relation
@@ -106,21 +85,8 @@ def main():
             scores.append(0.0)
             valid.append(0)
 
-    if use_calibration:
-        scores_array = np.array(scores)
-        valid_array = np.array(valid)
-        indices, = np.where(valid_array[:] > 0.)
-        the_scores = scores_array[indices].reshape(-1, 1)
-
-        if log_reg_calibrate:
-            scores = clf.predict_proba(the_scores)[:, 1]
-        else:
-            scores = clf.transform(the_scores.ravel())
-
-        scores_array[indices] = scores
-    else:
-        scores_array = np.array(scores)
-        valid_array = np.array(valid)
+    scores_array = np.array(scores)
+    valid_array = np.array(valid)
 
     # write the scores to the file
     with open(scores_file, "w") as _file:

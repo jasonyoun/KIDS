@@ -27,19 +27,12 @@ def parse_argument():
         nargs='?',
         required=True,
         help='the predicate that we will get the scores for')
-
     parser.add_argument(
         '--dir',
         metavar='dir',
         nargs='?',
         default='./',
         help='base directory')
-
-    parser.add_argument(
-        '--use_calibration',
-        action='store_const',
-        default=False,
-        const=True)
 
     return parser.parse_args()
 
@@ -83,14 +76,10 @@ def main():
     Main function.
     """
     args = parse_argument()
-    use_calibration = args.use_calibration
 
     relation = args.predicate
     scores_file = args.dir + '/scores/' + relation
     thresholds_file = args.dir + '/thresholds/' + relation
-
-    if use_calibration:
-        thresholds_file = args.dir + '/thresholds_calibration/' + relation
 
     labels_file = args.dir+'/queriesR_labels/'+relation
 

@@ -22,17 +22,10 @@ def parse_argument():
     parser = argparse.ArgumentParser(description='parse and generate the scores file')
 
     parser.add_argument(
-        '--use_calibration',
-        action='store_const',
-        default=False,
-        const=True)
-
-    parser.add_argument(
         '--predicate',
         nargs='?',
         required=True,
         help='the predicate that we will get the scores for')
-
     parser.add_argument(
         '--dir',
         metavar='dir',
@@ -48,14 +41,9 @@ def main():
     """
     args = parse_argument()
     relation = args.predicate
-    use_calibration = args.use_calibration
 
     scores_file = args.dir + '/scores/' + relation
-
     thresholds_file = 'dev/thresholds/' + relation
-    if use_calibration:
-        thresholds_file = 'dev/thresholds_calibration/' + relation
-
     classifications_file = args.dir + '/classifications/' + relation
 
     with open(scores_file, "r") as _file:

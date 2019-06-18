@@ -3,7 +3,6 @@
 set -e
 
 fold="$1"
-use_calibration="$2"
 current_dir=$(pwd)
 prev_current_dir=$current_dir/..
 model_instance_dir=$current_dir/model_instance
@@ -65,23 +64,14 @@ while read p; do
 	log "doing prediction..."
 	java -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.LearnerPRA
 
-	if  [  "$use_calibration" != "use_calibration" ] ; then
-		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder
-		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder
-	else
-		python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder --use_calibration --log_reg_calibrate $log_reg_calibrate
-		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder --use_calibration
-	fi
+	python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder
+	python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder
 
 	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
 done <"selected_relations"
 
 log "performing evaluation..."
-if  [  "$use_calibration" != "use_calibration" ] ; then
-	python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder
-else
-	python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder --use_calibration
-fi
+python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder
 
 sed -i -e "s|task=predict|task=_TASK_|g" conf
 sed -i -e "s|blocked_field=-1|blocked_field=THE_BLOCKED_FIELD|g" conf

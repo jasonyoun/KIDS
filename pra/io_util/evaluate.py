@@ -35,12 +35,6 @@ def parse_argument():
         default='./',
         help='base directory')
 
-    parser.add_argument(
-        '--use_calibration',
-        action='store_const',
-        default=False,
-        const=True)
-
     return parser.parse_args()
 
 def main():
@@ -48,7 +42,6 @@ def main():
     Main function.
     """
     args = parse_argument()
-    use_calibration = args.use_calibration
 
     with open('./selected_relations') as _file:
         relations = _file.readlines()
@@ -151,9 +144,8 @@ def main():
     recall_test = recall_score(combined_labels_array, combined_classifications_array)
     precision_test = precision_score(combined_labels_array, combined_classifications_array)
     confusion_test = confusion_matrix(combined_labels_array, combined_classifications_array)
-    calib_file_name = '_calibrated' if use_calibration else '_not_calibrated'
-    plot_pr(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic, args.dir, name_of_file='pra' + calib_file_name)
-    plot_roc(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic, args.dir, name_of_file='pra' + calib_file_name)
+    plot_pr(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic, args.dir, name_of_file='pra_not_calibrated')
+    plot_roc(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic, args.dir, name_of_file='pra_not_calibrated')
 
     results['overall'] = {
         'map': mean_average_precision_test,
