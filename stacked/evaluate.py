@@ -40,24 +40,7 @@ def parse_argument():
         required=True,
         help='directory to store the model')
 
-    parser.add_argument(
-        '--use_calibration',
-        action='store_const',
-        default=False,
-        const=True)
-
     return parser.parse_args()
-
-def classify(predictions_list, threshold):
-    classifications = []
-
-    for i in range(len(predictions_list)):
-        if predictions_list[i] >= threshold:
-            classifications.append(1)
-        else:
-            classifications.append(0)
-
-    return np.array(classifications)
 
 def main():
     """
@@ -72,17 +55,6 @@ def main():
     # setup configuration parser
     configparser = ConfigParser(config_file)
 
-    use_calibration = args.use_calibration
-    if use_calibration:
-        with open(os.path.join(model_save_dir, 'calibrations.pkl'), 'rb') as pickle_file:
-            clf_dic = pickle.load(pickle_file)
-
-    if use_calibration:
-        fn = open(os.path.join(model_save_dir, 'calibrated_threshold.pkl'), 'rb')
-    else:
-        fn = open(os.path.join(model_save_dir, 'threshold.pkl'), 'rb')
-    threshold = pickle.load(fn)
-
     fn = open(os.path.join(model_save_dir, 'model.pkl'), 'rb')
     model_dic = pickle.load(fn)
     pred_dic, test_x, test_y, predicates_test = features.get_x_y(
@@ -94,7 +66,6 @@ def main():
     probabilities = np.zeros_like(predicates_test, dtype=float)
     probabilities = probabilities.reshape((np.shape(probabilities)[0], 1))
     standard_classifications = np.zeros_like(predicates_test)
-    threshold_classifications = np.zeros_like(predicates_test)
 
     for _, i in pred_dic.items():
         indices, = np.where(predicates_test == i)
@@ -109,31 +80,9 @@ def main():
             preds = preds.reshape((np.shape(preds)[0], 1))
             probabilities[indices] = preds
             standard_classifications[indices] = preds_class
-            threshold_classifications[indices] = classify(preds, threshold[i])
-
-    if use_calibration:
-        for _, i in pred_dic.items():
-            indices, = np.where(predicates_test == i)
-            if np.shape(indices)[0] != 0:
-                clf = clf_dic[i]
-                X = probabilities[indices]
-
-                if configparser.getbool('LOG_REG_CALIBRATE'):
-                    preds = clf.predict_proba(X)[:, 1]
-                else:
-                    preds = clf.transform(X.ravel())
-
-                preds = preds.reshape((np.shape(preds)[0], 1))
-                probabilities[indices] = preds
-
-        # scores =log_reg.predict_proba( probabilities.reshape(-1,1))[:,1]
-        # probabilities = scores
 
     # classification using the adaboost
     classifications = standard_classifications
-
-    # classification using the threshold and probability
-    # classifications = threshold_classifications
 
     results = {}
     results['predicate'] = {}
