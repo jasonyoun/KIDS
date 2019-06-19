@@ -19,12 +19,11 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import PredefinedSplit
-ABS_PATH_METRICS = os.path.join(DIRECTORY, '../utils')
-sys.path.insert(0, ABS_PATH_METRICS)
-from metrics import roc_auc_stats, pr_stats
+sys.path.insert(0, os.path.join(DIRECTORY, '../utils'))
 import features
 from imblearn.over_sampling import SMOTE
 from config_parser import ConfigParser
+from sklearn.calibration import calibration_curve, CalibratedClassifierCV
 
 def parse_argument():
     """
@@ -231,7 +230,7 @@ def main():
 
             # use smote sampling to balance positives and negatives
             if configparser.getbool('USE_SMOTE_SAMPLING'):
-                ros = SMOTE(ratio='minority')
+                ros = SMOTE(sampling_strategy='minority')
                 train_x_predicate, train_y_predicate = ros.fit_sample(train_x_predicate, train_y_predicate.ravel())
                 train_y_predicate = train_y_predicate.reshape(-1, 1)
 
@@ -249,20 +248,19 @@ def main():
                 learning_rate=configparser.getfloat('learning_rate', section='RANDOM_SEARCH_BEST_PARAMS_{}'.format(key)),
                 random_state=0)
 
-            clf.fit(train_x_predicate, train_y_predicate.ravel())
+            if configparser.getbool('CLASSIFIER_CALIBRATION'):
+                final_clf = CalibratedClassifierCV(clf, method='isotonic', cv=5)
+            else:
+                final_clf = clf
 
-            # perform prediction
-            preds = clf.predict_proba(test_x_predicate)[:, 1]
-            preds = preds.reshape((np.shape(preds)[0], 1))
-            predictions_test[test_indices] = preds[:]
+            # fit the final chosen model (calibrated / uncalibrated)
+            final_clf.fit(train_x_predicate, train_y_predicate.ravel())
+            model_dic[idx] = final_clf
 
-            model_dic[idx] = clf
-
-    mean_ap = pr_stats(len(pred_dic), test_y, predictions_test, predicates_test, pred_dic)
-    auroc = roc_auc_stats(len(pred_dic), test_y, predictions_test, predicates_test, pred_dic)
-
-    print('mAP: {}'.format(mean_ap))
-    print('auroc: {}'.format(auroc))
+            # do prediction on the test set
+            probs = final_clf.predict_proba(test_x_predicate)[:, 1]
+            probs = np.reshape(probs, (-1, 1))
+            predictions_test[test_indices] = probs[:]
 
     with open(os.path.join(model_save_dir, 'model.pkl'), 'wb') as output:
         pickle.dump(model_dic, output, pickle.HIGHEST_PROTOCOL)

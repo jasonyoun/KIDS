@@ -57,15 +57,15 @@ def main():
 
     fn = open(os.path.join(model_save_dir, 'model.pkl'), 'rb')
     model_dic = pickle.load(fn)
+
     pred_dic, test_x, test_y, predicates_test = features.get_x_y(
-        configparser.getstr('TEST_DIR'),
+        configparser.getstr('test_dir'),
         configparser.getstr('er_mlp_model_dir'),
         configparser.getstr('pra_model_dir'))
-    # test_y[:][test_y[:] == -1] = 0
 
     probabilities = np.zeros_like(predicates_test, dtype=float)
     probabilities = probabilities.reshape((np.shape(probabilities)[0], 1))
-    standard_classifications = np.zeros_like(predicates_test)
+    classifications = np.zeros_like(predicates_test)
 
     for _, i in pred_dic.items():
         indices, = np.where(predicates_test == i)
@@ -75,14 +75,10 @@ def main():
             X = test_x[indices]
             predicates = predicates_test[indices]
 
-            preds = clf.predict_proba(X)[:, 1]
-            preds_class = clf.predict(X)
-            preds = preds.reshape((np.shape(preds)[0], 1))
-            probabilities[indices] = preds
-            standard_classifications[indices] = preds_class
-
-    # classification using the adaboost
-    classifications = standard_classifications
+            probs = clf.predict_proba(X)[:, 1]
+            probs = np.reshape(probs, (-1, 1))
+            probabilities[indices] = probs
+            classifications[indices] = clf.predict(X)
 
     results = {}
     results['predicate'] = {}
@@ -115,8 +111,6 @@ def main():
         indices, = np.where(predicates == i)
 
         if np.shape(indices)[0] != 0:
-            print(indices)
-            print(classifications)
             classifications_predicate = classifications[indices]
             predicate_predictions = probabilities[indices]
             labels_predicate = test_y[indices]
@@ -155,6 +149,11 @@ def main():
     _file = os.path.join(directory, 'classifications_stacked.txt')
     with open(_file, 'w') as t_f:
         for row in classifications:
+            t_f.write(str(row) + '\n')
+
+    _file = os.path.join(directory, 'confidence_stacked.txt')
+    with open(_file, 'w') as t_f:
+        for row in probabilities:
             t_f.write(str(row) + '\n')
 
     save_results(results, directory)
