@@ -57,7 +57,7 @@ def load_data_array(filepath, root):
 
 	df = df.loc[(df['label'] == 1)]
 
-	return df.as_matrix()
+	return df.values
 
 def load_confers_train_data_array(filepath, root):
 	my_file = os.path.join(root, filepath)
@@ -70,7 +70,7 @@ def load_confers_train_data_array(filepath, root):
 
 	df = df.loc[df['label'] == 1]
 
-	return df.as_matrix()
+	return df.values
 
 def get_edges_dic(array):
 	edges_dic = {}
