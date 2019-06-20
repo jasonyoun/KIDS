@@ -18,7 +18,7 @@ import logging as log
 
 from postprocess_modules.data_processor import DataProcessor
 from postprocess_modules.extract_info import ExtractInfo
-from postprocess_modules.split_folds import SplitFolds
+from postprocess_modules.distribute_data import DistributeData
 
 # default file paths
 DEFAULT_OUTPUT_PATH_STR = './output'
@@ -29,7 +29,8 @@ DEFAULT_DR_PATH_STR = './data/domain_range.txt'
 DEFAULT_ENTITIES_TXT_STR = 'entities.txt'
 DEFAULT_ENTITY_FULL_NAMES_TXT_STR = 'entity_full_names.txt'
 DEFAULT_ALL_DATA_TXT_STR = 'data.txt'
-DEFAULT_UNKNOWNS_TXT_STR = 'unknowns.txt'
+DEFAULT_HYPOTHESES_TXT_STR = 'hypotheses.txt'
+DEFAULT_FINAL_TRAIN_TXT_STR = 'final_train.txt'
 
 # number of folds to split the dataset into
 NUM_FOLDS = 5
@@ -89,15 +90,19 @@ def main():
     extract_info.save_entity_full_names(
         os.path.join(args.output_path, DEFAULT_ENTITY_FULL_NAMES_TXT_STR))
 
-    extract_info.save_unknowns(
-        os.path.join(args.output_path, DEFAULT_UNKNOWNS_TXT_STR),
+    extract_info.save_hypotheses(
+        os.path.join(args.output_path, DEFAULT_HYPOTHESES_TXT_STR),
         ['confers resistance to antibiotic'])
 
     # split the dataset into specified folds
-    split_folds = SplitFolds(pd_data, NUM_FOLDS, extract_info.get_entity_by_type('gene'))
-    data_split_fold_dic = split_folds.split_into_folds()
-    split_folds.save_folds(data_split_fold_dic, args.output_path)
+    distribute_data = DistributeData(pd_data, NUM_FOLDS, extract_info.get_entity_by_type('gene'))
 
+    data_split_fold_dic = distribute_data.split_into_folds()
+    distribute_data.save_folds(data_split_fold_dic, args.output_path)
+
+    # save data to use for training the final model
+    distribute_data.save_final_train_data(
+        os.path.join(args.output_path, DEFAULT_FINAL_TRAIN_TXT_STR))
 
 if __name__ == '__main__':
     main()

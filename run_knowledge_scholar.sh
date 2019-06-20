@@ -15,16 +15,16 @@ entities_filename="entities.txt"
 entity_full_names_filename="entity_full_names.txt"
 entity_full_names_copy_filename="entity_full_names_copy.txt"
 relations_filename="relations.txt"
-unknowns_filename="unknowns.txt"
-unknowns_copy_filename="unknowns_copy.txt"
+hypotheses_filename="hypotheses.txt"
+final_train_filename="final_train.txt"
 
 dr_filepath="$data_dir/$dr_filename"
 entities_filepath="$output_dir/$entities_filename"
 entity_full_names_filepath="$output_dir/$entity_full_names_filename"
 entity_full_names_copy_filepath="$output_dir/$entity_full_names_copy_filename"
 relations_filepath="$output_dir/$relations_filename"
-unknowns_filepath="$output_dir/$unknowns_filename"
-unknowns_copy_filepath="$output_dir/$unknowns_copy_filename"
+hypotheses_filepath="$output_dir/$hypotheses_filename"
+final_train_filepath="$output_dir/$final_train_filename"
 dr_copy_filepath="$output_dir/$dr_filename"
 data_filepath="$output_dir/$data_filename"
 data_copy_filepath="$folds_dir/$data_filename"
@@ -71,11 +71,15 @@ sed  -i -E 's|:|#SEMICOLON#|g' $dr_copy_filepath
 sed  -i -E 's| |#SPACE#|g' $dr_copy_filepath
 sed  -i -E 's|,|#COMMA#|g' $dr_copy_filepath
 
-# process unknowns.txt
-cp $unknowns_filepath $unknowns_copy_filepath
-sed  -i -E 's|:|#SEMICOLON#|g' $unknowns_copy_filepath
-sed  -i -E 's| |#SPACE#|g' $unknowns_copy_filepath
-sed  -i -E 's|,|#COMMA#|g' $unknowns_copy_filepath
+# process hypotheses.txt
+sed  -i -E 's|:|#SEMICOLON#|g' $hypotheses_filepath
+sed  -i -E 's| |#SPACE#|g' $hypotheses_filepath
+sed  -i -E 's|,|#COMMA#|g' $hypotheses_filepath
+
+# process final_train.txt
+sed  -i -E 's|:|#SEMICOLON#|g' $final_train_filepath
+sed  -i -E 's| |#SPACE#|g' $final_train_filepath
+sed  -i -E 's|,|#COMMA#|g' $final_train_filepath
 
 # generate relations.txt file
 cut -f 1 $dr_copy_filepath > $relations_filepath
@@ -95,8 +99,6 @@ for ((i=0; i<num_folds; i++)); do
 	cp $entity_full_names_copy_filepath "$copy_to/$entity_full_names_filename"
 	cp $dr_copy_filepath "$copy_to"
 	cp $relations_filepath "$copy_to"
-	cp $unknowns_copy_filepath "$copy_to/$unknowns_filename"
 done
 
 rm $entity_full_names_copy_filepath
-rm $unknowns_copy_filepath

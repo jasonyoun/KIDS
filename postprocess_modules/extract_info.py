@@ -94,19 +94,19 @@ class ExtractInfo():
 
         np.savetxt(file_path, entity_full_names, fmt='%s')
 
-    def save_unknowns(self, file_path, relations):
+    def save_hypotheses(self, file_path, relations):
         """
-        Save unknowns to generate hypothesis on.
+        Save hypotheses to generate hypothesis on.
 
         Inputs:
-            file_path: path to save the unknowns
+            file_path: path to save the hypotheses
             relations: list of strings of relations
                        e.g. ['represses', 'confers resistance to antibiotic']
         """
-        pd_unknowns = pd.DataFrame(columns=['Subject', 'Predicate', 'Object'])
+        pd_hypotheses = pd.DataFrame(columns=['Subject', 'Predicate', 'Object'])
 
         for relation in relations:
-            log.info('Processing unknowns for relation \'%s\'...', relation)
+            log.info('Processing hypotheses for relation \'%s\'...', relation)
 
             # extract domain and range type for chosen relation
             row = self.pd_dr[self.pd_dr['Relation'] == relation]
@@ -130,11 +130,11 @@ class ExtractInfo():
             log.debug('Size of unknown combinations of subject and object: %d', len(unknown_combinations))
 
             # append the unknown triplets to generate hypothesis on
-            pd_unknown_to_append = pd.DataFrame(unknown_combinations, columns=['Subject', 'Object'])
-            pd_unknown_to_append.insert(1, column='Predicate', value=relation)
-            pd_unknowns = pd_unknowns.append(pd_unknown_to_append, sort=False)
+            pd_hypotheses_to_append = pd.DataFrame(unknown_combinations, columns=['Subject', 'Object'])
+            pd_hypotheses_to_append.insert(1, column='Predicate', value=relation)
+            pd_hypotheses = pd_hypotheses.append(pd_hypotheses_to_append, sort=False)
 
-        pd_unknowns.to_csv(file_path, sep='\t', index=False, header=None)
+        pd_hypotheses.to_csv(file_path, sep='\t', index=False, header=None)
 
     def _read_dr(self, dr_path, get_overlap_only=True):
         """
