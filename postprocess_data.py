@@ -30,7 +30,6 @@ DEFAULT_ENTITIES_TXT_STR = 'entities.txt'
 DEFAULT_ENTITY_FULL_NAMES_TXT_STR = 'entity_full_names.txt'
 DEFAULT_ALL_DATA_TXT_STR = 'data.txt'
 DEFAULT_HYPOTHESES_TXT_STR = 'hypotheses.txt'
-DEFAULT_FINAL_TRAIN_TXT_STR = 'final_train.txt'
 
 # number of folds to split the dataset into
 NUM_FOLDS = 5
@@ -101,8 +100,7 @@ def main():
     distribute_data.save_folds(data_split_fold_dic, args.output_path)
 
     # save data to use for training the final model
-    distribute_data.save_final_train_data(
-        os.path.join(args.output_path, DEFAULT_FINAL_TRAIN_TXT_STR))
+    distribute_data.save_final_train_data(args.output_path)
 
 if __name__ == '__main__':
     main()

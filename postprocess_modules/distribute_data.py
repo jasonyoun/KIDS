@@ -75,15 +75,55 @@ class DistributeData():
         # negative data with only CRA edge
         self.neg_data_cra_only = self.neg_data[self.neg_data['Predicate'].isin([self.CRTA_STR])]
 
-    def save_final_train_data(self, filepath):
+    def save_final_train_data(self, output_dir, num_negs=49):
         """
         Save data for training the final model.
 
         Inputs:
-            filepath: file path to save the final train data
+            output_dir: directory to save the final train data
         """
-        log.info('Saving final training data to \'%s\'', filepath)
+        final_dir = os.path.join(output_dir, 'final')
+        os.makedirs(final_dir)
+
+        filepath = os.path.join(final_dir, 'train.txt')
+
+        log.info('Saving final train data to \'%s\'', filepath)
         self.pos_data.to_csv(filepath, sep='\t', index=False, header=None)
+
+        # init
+        known_negatives_dic = {}
+        new_with_neg_cra = pd.DataFrame(columns=self.COLUMNS)
+
+        # for each positive, randomly sample 'num_negs' negatives and append to 'new_with_neg_cra'
+        for i in range(self.pos_data_cra_only.shape[0]):
+            # actual positive SPO that we're working on
+            pos_spo = self.pos_data_cra_only.iloc[i, :]
+            obj = pos_spo['Object']
+
+            # append the original positive SPO
+            new_with_neg_cra = new_with_neg_cra.append(pos_spo)
+
+            # before, append negatives find known negatives
+            # and save to the dictionary if it already does not exist
+            if obj not in known_negatives_dic:
+                # find negative samples which has same object as the positive SPO
+                # but different subject than that in positive SPO
+                known_negatives_dic[obj] = self.updated_neg_data_cra_only[self.updated_neg_data_cra_only['Object'].isin([obj])]
+
+            if known_negatives_dic[obj].shape[0] < num_negs:
+                sys.exit('We are supposed to have enough negatives now!')
+
+            new_with_neg_cra = new_with_neg_cra.append(known_negatives_dic[obj].iloc[0:num_negs, :])
+
+            # remove used known negatives
+            known_negatives_dic[obj] = known_negatives_dic[obj].iloc[num_negs:, :]
+
+
+        filepath = os.path.join(final_dir, 'train_local.txt')
+
+        log.info('Saving final train_local data to \'%s\'', filepath)
+        new_with_neg_cra.to_csv(filepath, sep='\t', index=False, header=None)
+
 
     def split_into_folds(self):
         """
