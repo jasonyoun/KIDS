@@ -524,14 +524,14 @@ class ERMLP:
 
         return weights, padded_indices
 
-    def test_model(self, sess, indexed_data_test, pred_dic, threshold, _type='current'):
+    def test_model(self, sess, indexed_data_test, pred_dic, threshold=None, _type='current test'):
         """
-        Test the model using the optimal threshold found.
+        Test the model.
 
         Inputs:
             indexed_data_test: test data set
-            threshold: numpy array of same size as self.params['num_preds']
-                which contains the best threshold for each predicate
+            threshold: (optional) numpy array of same size as self.params['num_preds']
+                which contains the best threshold for each predicate.
         """
         data_test = indexed_data_test[:, :3]
         predicates_test = indexed_data_test[:, 1]
@@ -543,46 +543,48 @@ class ERMLP:
         mean_average_precision_test = pr_stats(self.params['num_preds'], labels_test, predictions_test, predicates_test, pred_dic)
         roc_auc_test = roc_auc_stats(self.params['num_preds'], labels_test, predictions_test, predicates_test, pred_dic)
 
-        # get test classification
-        classifications_test = self.classify(predictions_test, threshold, predicates_test)
-        classifications_test = np.array(classifications_test).astype(int)
+        if threshold is not None:
+            # get test classification
+            classifications_test = self.classify(predictions_test, threshold, predicates_test)
+            classifications_test = np.array(classifications_test).astype(int)
 
-        # get confusion matrix
-        confusion_test = confusion_matrix(labels_test, classifications_test)
+            # get confusion matrix
+            confusion_test = confusion_matrix(labels_test, classifications_test)
 
-        # find F1 & accuracy
-        labels_test = labels_test.astype(int)
-        f1_measure_test = f1_score(labels_test, classifications_test)
-        accuracy_test = accuracy_score(labels_test, classifications_test)
+            # find F1 & accuracy
+            labels_test = labels_test.astype(int)
+            f1_measure_test = f1_score(labels_test, classifications_test)
+            accuracy_test = accuracy_score(labels_test, classifications_test)
 
-        # print stats for each predicate
-        for i in range(self.params['num_preds']):
-            # find the corresponding string for the predicate
-            for key, value in pred_dic.items():
-                if value == i:
-                    pred_name = key
+            # print stats for each predicate
+            for i in range(self.params['num_preds']):
+                # find the corresponding string for the predicate
+                for key, value in pred_dic.items():
+                    if value == i:
+                        pred_name = key
 
-            # find which lines (indeces) contain the predicate
-            indices = np.where(predicates_test == i)[0]
+                # find which lines (indeces) contain the predicate
+                indices = np.where(predicates_test == i)[0]
 
-            if np.shape(indices)[0] != 0:
-                classifications_predicate = classifications_test[indices]
-                labels_predicate = labels_test[indices]
+                if np.shape(indices)[0] != 0:
+                    classifications_predicate = classifications_test[indices]
+                    labels_predicate = labels_test[indices]
 
-                # find F1, accuracy, and confusion matrix
-                f1_measure_predicate = f1_score(labels_predicate, classifications_predicate)
-                accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
-                confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
+                    # find F1, accuracy, and confusion matrix
+                    f1_measure_predicate = f1_score(labels_predicate, classifications_predicate)
+                    accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
+                    confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
 
-                log.debug('test f1 measure for %s: %f', pred_name, f1_measure_predicate)
-                log.debug('test accuracy for %s: %f', pred_name, accuracy_predicate)
-                log.debug('test confusion matrix for %s: %s', pred_name, confusion_predicate.tolist())
+                    log.debug('%s f1 measure for %s: %f', _type, pred_name, f1_measure_predicate)
+                    log.debug('%s accuracy for %s: %f', _type, pred_name, accuracy_predicate)
+                    log.debug('%s confusion matrix for %s: %s', _type, pred_name, confusion_predicate.tolist())
 
         # print stats for the whole dataset
-        log.debug('%s test mean average precision: %f', _type, mean_average_precision_test)
-        log.debug('%s test f1 measure: %f', _type, f1_measure_test)
-        log.debug('%s test accuracy: %f', _type, accuracy_test)
-        log.debug('%s test roc auc: %f', _type, roc_auc_test)
-        log.debug('%s test confusion matrix: %s', _type, confusion_test.tolist())
+        log.debug('%s mean average precision: %f', _type, mean_average_precision_test)
+        log.debug('%s roc auc: %f', _type, roc_auc_test)
+        if threshold is not None:
+            log.debug('%s f1 measure: %f', _type, f1_measure_test)
+            log.debug('%s accuracy: %f', _type, accuracy_test)
+            log.debug('%s confusion matrix: %s', _type, confusion_test.tolist())
 
         return mean_average_precision_test

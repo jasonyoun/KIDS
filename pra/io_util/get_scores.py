@@ -93,6 +93,5 @@ def main():
         for i in range(np.shape(scores_array)[0]):
             _file.write(str(scores_array[i]) + '\t' + str(valid_array[i]) + '\n')
 
-
 if __name__ == "__main__":
     main()

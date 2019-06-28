@@ -11,6 +11,7 @@ Description:
 To-do:
 """
 import os
+import sys
 import pickle
 import argparse
 import numpy as np
@@ -42,6 +43,11 @@ def parse_argument():
         '--logfile',
         default='',
         help='Path to save the log')
+    parser.add_argument(
+        '--final_model',
+        default=False,
+        action='store_true',
+        help='Set when training the final model')
 
     return parser.parse_args()
 
@@ -69,7 +75,8 @@ def main():
         # some parameters
         entity_dic = params['entity_dic']
         pred_dic = params['pred_dic']
-        thresholds = params['thresholds']
+        if not args.final_model:
+            thresholds = params['thresholds']
 
         er_mlp_params = {
             'word_embedding': configparser.getbool('WORD_EMBEDDING'),
@@ -109,23 +116,27 @@ def main():
         if test_df.shape[1] == 4:
             indexed_data_test = processor.create_indexed_triplets_test(
                 test_df.values, entity_dic, pred_dic)
+
+            indexed_data_test[:, 3][indexed_data_test[:, 3] == -1] = 0
         else:
             indexed_data_test = processor.create_indexed_triplets_training(
                 test_df.values, entity_dic, pred_dic)
 
-        indexed_data_test[:, 3][indexed_data_test[:, 3] == -1] = 0
         data_test = indexed_data_test[:, :3]
         predicates_test = indexed_data_test[:, 1]
 
         predictions_list_test = sess.run(
             er_mlp.test_predictions, feed_dict={er_mlp.test_triplets: data_test})
 
-        classifications_test = er_mlp.classify(predictions_list_test, thresholds, predicates_test)
-        classifications_test = np.array(classifications_test).astype(int)
-        classifications_test = classifications_test.reshape((np.shape(classifications_test)[0], 1))
+        if not args.final_model:
+            classifications_test = er_mlp.classify(predictions_list_test, thresholds, predicates_test)
+            classifications_test = np.array(classifications_test).astype(int)
+            classifications_test = classifications_test.reshape((np.shape(classifications_test)[0], 1))
 
-        c = np.dstack((classifications_test, predictions_list_test))
-        c = np.squeeze(c)
+            c = np.dstack((classifications_test, predictions_list_test))
+            c = np.squeeze(c)
+        else:
+            c = predictions_list_test
 
         if test_df.shape[1] == 4:
             labels_test = indexed_data_test[:, 3]
@@ -141,10 +152,16 @@ def main():
 
         with open(os.path.join(predict_folder, 'predictions.txt'), 'w') as _file:
             for i in range(np.shape(c)[0]):
-                if test_df.shape[1] == 4:
-                    _file.write('predicate: ' + str(predicates_test[i]) + '\tclassification: ' + str(int(c[i][0])) + '\tprediction: ' + str(c[i][1]) + '\tlabel: ' + str(int(c[i][2])) + '\n')
+                if not args.final_model:
+                    if test_df.shape[1] == 4:
+                        _file.write('predicate: ' + str(predicates_test[i]) + '\tclassification: ' + str(int(c[i][0])) + '\tprediction: ' + str(c[i][1]) + '\tlabel: ' + str(int(c[i][2])) + '\n')
+                    else:
+                        _file.write('predicate: ' + str(predicates_test[i]) + '\tclassification: ' + str(int(c[i][0])) + '\tprediction: ' + str(c[i][1]) + '\n')
                 else:
-                    _file.write('predicate: ' + str(predicates_test[i]) + '\tclassification: ' + str(int(c[i][0])) + '\tprediction: ' + str(c[i][1]) + '\n')
+                    if test_df.shape[1] == 4:
+                        _file.write('predicate: ' + str(predicates_test[i]) + '\tprediction: ' + str(c[i][0]) + '\tlabel: ' + str(int(c[i][1])) + '\n')
+                    else:
+                        _file.write('predicate: ' + str(predicates_test[i]) + '\tprediction: ' + str(c[i][0]) + '\n')
 
 if __name__ == '__main__':
     main()

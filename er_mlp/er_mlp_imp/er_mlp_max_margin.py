@@ -31,7 +31,7 @@ from er_mlp import ERMLP
 from data_processor import DataProcessor
 from metrics import plot_cost, plot_map
 
-def run_model(params):
+def run_model(params, final_model=False):
     """
     Run the ER_MLP model using max margin loss.
 
@@ -44,12 +44,16 @@ def run_model(params):
 
     # load train / dev / test data as dataframe
     train_df = processor.load(os.path.join(params['DATA_PATH'], params['TRAIN_FILE']))
-    dev_df = processor.load(os.path.join(params['DATA_PATH'], 'dev.txt'))
-    test_df = processor.load(os.path.join(params['DATA_PATH'], 'test.txt'))
+    train_local_df = processor.load(os.path.join(params['DATA_PATH'], 'train_local.txt'))
+    if not final_model:
+        dev_df = processor.load(os.path.join(params['DATA_PATH'], 'dev.txt'))
+        test_df = processor.load(os.path.join(params['DATA_PATH'], 'test.txt'))
 
     log.debug('train dataframe shape: %s', train_df.shape)
-    log.debug('dev dataframe shape: %s', dev_df.shape)
-    log.debug('test dataframe shape: %s', test_df.shape)
+    log.debug('train_local dataframe shape: %s', train_local_df.shape)
+    if not final_model:
+        log.debug('dev dataframe shape: %s', dev_df.shape)
+        log.debug('test dataframe shape: %s', test_df.shape)
 
     if len(train_df.columns) < 4:
         log.warning('Label (last column) is missing')
@@ -66,15 +70,20 @@ def run_model(params):
 
     # numerically represent the data
     indexed_train_data = processor.create_indexed_triplets_test(train_df.values, entity_dic, pred_dic)
-    indexed_dev_data = processor.create_indexed_triplets_test(dev_df.values, entity_dic, pred_dic)
-    indexed_test_data = processor.create_indexed_triplets_test(test_df.values, entity_dic, pred_dic)
+    indexed_train_local_data = processor.create_indexed_triplets_test(train_local_df.values, entity_dic, pred_dic)
+    if not final_model:
+        indexed_dev_data = processor.create_indexed_triplets_test(dev_df.values, entity_dic, pred_dic)
+        indexed_test_data = processor.create_indexed_triplets_test(test_df.values, entity_dic, pred_dic)
 
     # change label from 0 to -1 for test / dev data
-    indexed_dev_data[:, 3][indexed_dev_data[:, 3] == -1] = 0
-    indexed_test_data[:, 3][indexed_test_data[:, 3] == -1] = 0
+    if not final_model:
+        indexed_train_local_data[:, 3][indexed_train_local_data[:, 3] == -1] = 0
+        indexed_dev_data[:, 3][indexed_dev_data[:, 3] == -1] = 0
+        indexed_test_data[:, 3][indexed_test_data[:, 3] == -1] = 0
 
-    # shuffle test data
-    np.random.shuffle(indexed_test_data)
+        # shuffle test data
+        np.random.shuffle(indexed_train_local_data)
+        np.random.shuffle(indexed_test_data)
 
     # construct new parameter dictionary to be actually fed into the network
     er_mlp_params = {
@@ -141,7 +150,8 @@ def run_model(params):
     # some variable initializations
     iter_list = []
     cost_list = []
-    map_list = []
+    train_local_map_list = []
+    test_map_list = []
     iteration = 0
 
     # init variables
@@ -186,13 +196,18 @@ def run_model(params):
                     _, train_summary, current_cost = sess.run([optimizer, merged, cost], feed_dict=feed_dict)
                     train_writer.add_summary(train_summary, iteration)
 
-                    thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
-                    current_map = er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='current')
                     log.info('current cost: %f', current_cost)
+
+                    train_local_map = er_mlp.test_model(sess, indexed_train_local_data, pred_dic, _type='train local')
+                    train_local_map_list.append(train_local_map)
+
+                    if not final_model:
+                        thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
+                        test_map = er_mlp.test_model(sess, indexed_test_data, pred_dic, threshold=thresholds, _type='current test')
+                        test_map_list.append(test_map)
 
                     iter_list.append(iteration)
                     cost_list.append(current_cost)
-                    map_list.append(current_map)
                 else:
                     sess.run(optimizer, feed_dict=feed_dict)
 
@@ -202,14 +217,17 @@ def run_model(params):
         # close writers
         train_writer.close()
 
-        # do final threshold determination and testing model
-        log.info('determine threshold for classification')
-        thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
-        er_mlp.test_model(sess, indexed_test_data, pred_dic, thresholds, _type='final')
+        if not final_model:
+            # do final threshold determination and testing model
+            log.info('determine threshold for classification')
+            thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
+            er_mlp.test_model(sess, indexed_test_data, pred_dic, threshold=thresholds, _type='final')
 
         # plot the cost graph
         plot_cost(iter_list, cost_list, params['MODEL_SAVE_DIRECTORY'])
-        plot_map(iter_list, map_list, params['MODEL_SAVE_DIRECTORY'])
+        plot_map(iter_list, train_local_map_list, params['MODEL_SAVE_DIRECTORY'], filename='train_local_map.png')
+        if not final_model:
+            plot_map(iter_list, test_map_list, params['MODEL_SAVE_DIRECTORY'], filename='map.png')
 
         # save the model & parameters if prompted
         if params['SAVE_MODEL']:
@@ -217,10 +235,12 @@ def run_model(params):
             log.info('model saved in: %s', params['MODEL_SAVE_DIRECTORY'])
 
             save_object = {
-                'thresholds':thresholds,
                 'entity_dic': entity_dic,
                 'pred_dic': pred_dic
             }
+
+            if not final_model:
+                save_object['thresholds'] = thresholds
 
             if params['WORD_EMBEDDING']:
                 save_object['indexed_entities'] = indexed_entities

@@ -16,7 +16,7 @@ import numpy as np
 ER_MLP_MODEL_HOME = '../er_mlp/model/model_instance/'
 PRA_MODEL_HOME = '../pra/model/model_instance/'
 
-def get_x_y(which, er_mlp, pra):
+def get_x_y(which, er_mlp, pra, final_model=False):
     """
     Load the model predictions information.
 
@@ -55,8 +55,12 @@ def get_x_y(which, er_mlp, pra):
     for line in predictions:
         strings = line.split('\t')
         predicate = int(strings[0].replace('predicate: ', ''))
-        pred = float(strings[2].replace('prediction: ', ''))
-        label = int(strings[3].replace('label: ', ''))
+        if not final_model:
+            pred = float(strings[2].replace('prediction: ', ''))
+            label = int(strings[3].replace('label: ', ''))
+        else:
+            pred = float(strings[1].replace('prediction: ', ''))
+            label = int(strings[2].replace('label: ', ''))
 
         labels.append([label])
         er_mlp_features.append([predicate, pred, 1]) # all valid

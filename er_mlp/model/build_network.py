@@ -35,6 +35,11 @@ def parse_argument():
         '--logfile',
         default='',
         help='Path to save the log')
+    parser.add_argument(
+        '--final_model',
+        default=False,
+        action='store_true',
+        help='Set when training the final model')
 
     return parser.parse_args()
 
@@ -78,7 +83,7 @@ def main():
     }
 
     # run the model
-    er_mlp_max_margin.run_model(params)
+    er_mlp_max_margin.run_model(params, final_model=args.final_model)
 
 if __name__ == '__main__':
     main()

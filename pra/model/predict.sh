@@ -65,13 +65,20 @@ while read p; do
 	java -cp $prev_current_dir/$pra_imp_dir/pra_neg_mode_v4.jar edu.cmu.pra.LearnerPRA
 
 	python3 $prev_current_dir/$io_util_dir/get_scores.py --predicate $p --dir $prediction_folder
-	python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder
+
+	if [ "$fold" != "final" ]; then
+		python3 $prev_current_dir/$io_util_dir/classify.py --predicate $p --dir $prediction_folder
+	fi
 
 	sed -i -e "s|target_relation=$p|target_relation=THE_RELATION|g" conf
 done <"selected_relations"
 
 log "performing evaluation..."
-python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder
+if [ "$fold" != "final" ]; then
+	python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder
+else
+	python3 $prev_current_dir/$io_util_dir/evaluate.py --dir $prediction_folder --final_model
+fi
 
 sed -i -e "s|task=predict|task=_TASK_|g" conf
 sed -i -e "s|blocked_field=-1|blocked_field=THE_BLOCKED_FIELD|g" conf
