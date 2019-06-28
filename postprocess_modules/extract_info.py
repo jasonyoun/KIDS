@@ -103,7 +103,7 @@ class ExtractInfo():
             relations: list of strings of relations
                        e.g. ['represses', 'confers resistance to antibiotic']
         """
-        pd_hypotheses = pd.DataFrame(columns=['Subject', 'Predicate', 'Object'])
+        pd_hypotheses = pd.DataFrame(columns=['Subject', 'Predicate', 'Object', 'Label'])
 
         for relation in relations:
             log.info('Processing hypotheses for relation \'%s\'...', relation)
@@ -132,6 +132,7 @@ class ExtractInfo():
             # append the unknown triplets to generate hypothesis on
             pd_hypotheses_to_append = pd.DataFrame(unknown_combinations, columns=['Subject', 'Object'])
             pd_hypotheses_to_append.insert(1, column='Predicate', value=relation)
+            pd_hypotheses_to_append.insert(3, column='Label', value=1)
             pd_hypotheses = pd_hypotheses.append(pd_hypotheses_to_append, sort=False)
 
         pd_hypotheses.to_csv(file_path, sep='\t', index=False, header=None)
