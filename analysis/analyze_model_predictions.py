@@ -29,7 +29,8 @@ from config_parser import ConfigParser
 from utils import create_dir
 from kids_log import set_logging
 
-EDGES_COUNT_COLUMNS = ['Antibiotic',
+EDGES_COUNT_COLUMNS = ['fold',
+                       'Antibiotic',
                        'genes_resist',
                        'test_edges',
                        'dev_edges',
@@ -77,7 +78,6 @@ def parse_argument():
         action='store',
         required=True,
         help='directory to store the model')
-
     return parser.parse_args()
 
 def load_data_array(filepath, root):
@@ -186,47 +186,61 @@ def main():
     set_logging()
 
     # variables
-    list_directories = args.dir
-    results_dir = args.results_dir
     root_dir = os.path.abspath(os.path.join(DIRECTORY, '..'))
 
     # create results directory
-    create_dir(results_dir)
-
+    create_dir(args.results_dir)
 
     pd_edges_count = pd.DataFrame(columns=EDGES_COUNT_COLUMNS)
     pd_test_stats = pd.DataFrame(columns=TEST_STATS_COLUMNS)
 
-    for fold in list_directories:
-        print('Processing fold {}...'.format(fold))
+    for fold in args.dir:
+        log.info('Processing %s...', fold)
+
+        if fold == 'final':
+            is_final = True
+        else:
+            is_final = False
 
         config_file = '{}/run/configuration/{}/er_mlp.ini'.format(root_dir, fold)
         configparser = ConfigParser(config_file)
 
         data_path = configparser.getstr('DATA_PATH')
 
-        data_array = load_data_array('data.txt', os.path.join(data_path, '..'))
+        if not is_final:
+            data_array = load_data_array('data.txt', os.path.join(data_path, '..'))
+        else:
+            data_array = load_data_array('data.txt', '{}/../folds'.format(data_path))
         train_array = load_data_array('train.txt', data_path)
         train_confers_array = load_confers_train_data_array('train.txt', data_path)
-        dev_array = load_data_array('dev.txt', data_path)
+        if not is_final:
+            dev_array = load_data_array('dev.txt', data_path)
         test_array = load_data_array('test.txt', data_path)
 
         all_data_dic = get_edges_dic(data_array)
         train_edges_dic = get_edges_dic(train_array)
         train_confers_dic = get_edges_dic(train_confers_array)
-        dev_edges_dic = get_edges_dic(dev_array)
+        if not is_final:
+            dev_edges_dic = get_edges_dic(dev_array)
         test_edges_dic = get_edges_dic(test_array)
 
         list_append = []
         for k, v in all_data_dic.items():
             train_count = count_antibiotic_occurrence(k, train_edges_dic)
             train_confers_count = count_antibiotic_occurrence(k, train_confers_dic)
-            dev_count = count_antibiotic_occurrence(k, dev_edges_dic)
+            if not is_final:
+                dev_count = count_antibiotic_occurrence(k, dev_edges_dic)
+            else:
+                dev_count = np.nan
             test_count = count_antibiotic_occurrence(k, test_edges_dic)
 
-            list_append.append([k, str(v), str(test_count), str(dev_count), str(train_count), str(train_confers_count)])
+            list_append.append([fold, k, v, test_count, dev_count, train_count, train_confers_count])
 
         pd_edges_count = pd_edges_count.append(pd.DataFrame(list_append, columns=pd_edges_count.columns))
+
+        if is_final:
+            log.info('Skipping test statistics for final model...')
+            continue
 
         test_file = os.path.join(data_path, "test.txt")
         er_mlp_classifications = '{}/er_mlp/model/model_instance/{}/test/classifications_er_mlp.txt'.format(root_dir, fold)
@@ -260,20 +274,20 @@ def main():
             train_confers_count = count_antibiotic_occurrence(antibiotic, train_confers_dic)
 
             list_append.append(
-                [antibiotic, str(genes_resist_count), str(test_count),
-                 str(dev_count), str(train_count), str(train_confers_count),
-                 str(er_tp), str(er_tn), str(er_fp),
-                 str(pra_tp), str(pra_tn), str(pra_fp),
-                 str(stacked_tp), str(stacked_tn), str(stacked_fp),
-                 str(er_precision), str(pra_precision), str(stacked_precision),
-                 str(er_recall), str(pra_recall), str(stacked_recall),
-                 str(er_f1), str(pra_f1), str(stacked_f1)])
+                [fold, antibiotic, genes_resist_count, test_count,
+                 dev_count, train_count, train_confers_count,
+                 er_tp, er_tn, er_fp,
+                 pra_tp, pra_tn, pra_fp,
+                 stacked_tp, stacked_tn, stacked_fp,
+                 er_precision, pra_precision, stacked_precision,
+                 er_recall, pra_recall, stacked_recall,
+                 er_f1, pra_f1, stacked_f1])
 
         pd_test_stats = pd_test_stats.append(pd.DataFrame(list_append, columns=pd_test_stats.columns))
 
     # save to file
-    pd_edges_count.to_csv(os.path.join(results_dir, 'edges_count.txt'), sep='\t', index=False)
-    pd_test_stats.to_csv(os.path.join(results_dir, 'test_stats.txt'), sep='\t', index=False)
+    pd_edges_count.to_csv(os.path.join(args.results_dir, 'edges_count.txt'), sep='\t', index=False)
+    pd_test_stats.to_csv(os.path.join(args.results_dir, 'test_stats.txt'), sep='\t', index=False)
 
 if __name__ == '__main__':
     main()

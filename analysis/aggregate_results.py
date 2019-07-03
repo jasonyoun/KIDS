@@ -16,7 +16,6 @@ import argparse
 import glob
 import logging as log
 import os
-import pickle
 import sys
 
 # third party imports
@@ -139,7 +138,7 @@ def combine_results(results_list):
             TP = np.array([v[1][1] for v in value])
 
             precision = TP / (TP + FP)
-            recall = TP / (TP +FN)
+            recall = TP / (TP + FN)
             accuracy = (TP + TN) / (TN + FP + FN + TP)
             known_true = TP + FN
             known_neg = TN + FP
@@ -290,7 +289,7 @@ def plot_combined_pr(pr, dir_list, model, results_dir):
     for fold in dir_list:
         # There only exists one predicate: Confers resistance to antibiotic.
         # No need to show the name in the plot.
-        for predicate, values in pr[fold].items():
+        for _, values in pr[fold].items():
             recall, precision, ap = values
             plt.step(recall, precision, label="{} (AP:{:.3f})".format(fold, ap), where='post')
             plt.xlabel("Recall")

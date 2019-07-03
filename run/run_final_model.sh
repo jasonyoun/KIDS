@@ -90,3 +90,7 @@ hypotheses_confidence_file=$output_dir/hypotheses_confidence.txt
 echo "Saving hypotheses confidence file to: $hypotheses_confidence_file"
 
 paste $hypotheses_file $confidence_file >> $hypotheses_confidence_file
+
+# remove intermediate files
+rm $hypotheses_file
+rm $confidence_file

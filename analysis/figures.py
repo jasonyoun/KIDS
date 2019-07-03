@@ -24,6 +24,7 @@ from scipy import interp
 # global variables
 DEFAULT_OUTDIR_STR = '../output'
 DEFAULT_CONFIDENCE_FILE_STR = 'hypotheses_confidence.txt'
+DEFAULT_TEST_STATS_FILE_STR = 'test_stats.txt'
 
 def parse_argument():
     """
@@ -43,7 +44,7 @@ def parse_argument():
 
 def analyze_hypotheses(filepath):
     col_names = ['Subject', 'Predicate', 'Object', 'Label', 'Confidence']
-    pd_data =pd.read_csv(filepath, sep='\t', names=col_names)
+    pd_data = pd.read_csv(filepath, sep='\t', names=col_names)
 
     # classify confidence into bins
     bins = np.linspace(0, 1, 11)
@@ -57,13 +58,73 @@ def analyze_hypotheses(filepath):
     print(bin_size)
 
     ax = bin_size.plot.bar(logy=True, rot=45)
-
-    plt.title('Number of hypotheses belonging to each confidence interval.')
-    plt.xlabel('Confidence interval')
-    plt.ylabel('Count')
+    ax.set_title('Number of hypotheses belonging to each confidence interval.')
+    ax.set_xlabel('Confidence interval')
+    ax.set_ylabel('Count')
 
     plt.tight_layout()
-    plt.show()
+
+def edges_statistics(filepath):
+    pd_data = pd.read_csv(filepath, sep='\t')
+    pd_data['bin'] = pd.qcut(pd_data['edges_in_train'], q=5)
+    pd_data['bin_right_end'] = pd_data['bin'].apply(lambda x: x.right)
+    pd_data['bin'] = pd_data['bin'].astype(str)
+    pd_data['bin'] = pd_data['bin'].replace('\(-0\.001', '[0.0', regex=True)
+    pd_data['bin'] = pd_data['bin'].replace('\.0', '', regex=True)
+
+    # variables for boxplot
+    pra_data_list = []
+    mlp_data_list = []
+    stacked_data_list = []
+    xticklabels_list = []
+
+    for _, val in enumerate(np.unique(pd_data['bin_right_end'].tolist())):
+        pd_same_bin = pd_data[pd_data['bin_right_end'] == val].reset_index(drop=True)
+
+        pra_data_list.append(pd_same_bin['pra_f1'])
+        mlp_data_list.append(pd_same_bin['er_f1'])
+        stacked_data_list.append(pd_same_bin['stacked_f1'])
+        xticklabels_list.append('{}\n({})'.format(pd_same_bin['bin'][0], pd_same_bin.shape[0]))
+
+    pd_bin_values = pd_data['bin'].value_counts()
+
+    # draw boxplot
+    ind = np.arange(pd_bin_values.shape[0])
+    width = 0.2
+
+    fig, ax = plt.subplots()
+
+    bp1 = ax.boxplot(pra_data_list, positions=ind - width, widths=width, patch_artist=True)
+    bp2 = ax.boxplot(mlp_data_list, positions=ind, widths=width, patch_artist=True)
+    bp3 = ax.boxplot(stacked_data_list, positions=ind + width, widths=width, patch_artist=True)
+
+    ax.set_title('Number of edges vs. F1')
+    ax.set_xlabel('Number of edges bin\n(Number of samples in each bin)')
+    ax.set_ylabel('F1 score')
+    ax.set_xticks(ind)
+    ax.set_xticklabels(xticklabels_list)
+
+    # box plot 1 patch_artist
+    for box in bp1['boxes']:
+        box.set(facecolor='#e53935')
+    for median in bp1['medians']:
+        median.set(color='#000000')
+
+    # box plot 2 patch_artist
+    for box in bp2['boxes']:
+        box.set(facecolor='#00897b')
+    for median in bp2['medians']:
+        median.set(color='#000000')
+
+    # box plot 3 patch_artist
+    for box in bp3['boxes']:
+        box.set(facecolor='#8e24aa')
+    for median in bp3['medians']:
+        median.set(color='#000000')
+
+    ax.legend((bp1['boxes'][0], bp2['boxes'][0], bp3['boxes'][0]), ('PRA', 'MLP', 'Stacked'), loc='upper left')
+
+    plt.tight_layout()
 
 def main():
     """
@@ -72,6 +133,9 @@ def main():
     args = parse_argument()
 
     analyze_hypotheses(os.path.join(args.outdir, DEFAULT_CONFIDENCE_FILE_STR))
+    edges_statistics(os.path.join(args.outdir, DEFAULT_TEST_STATS_FILE_STR))
+
+    plt.show()
 
 if __name__ == '__main__':
     main()

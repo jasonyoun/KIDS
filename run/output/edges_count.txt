@@ -1,0 +1,583 @@
+fold	Antibiotic	genes_resist	test_edges	dev_edges	edges_in_train	confer_edges_in_train
+fold_0	Thiolactomycin	24	3	1	20	20
+fold_0	Novobiocin	37	8	2	27	27
+fold_0	Neomycin	72	14	6	52	52
+fold_0	Azithromycin	35	3	4	28	28
+fold_0	Carbenicillin	27	2	2	23	23
+fold_0	Cephradine	72	13	11	48	48
+fold_0	Cerulenin	18	3	0	15	15
+fold_0	Chloramphenicol	12	3	1	8	8
+fold_0	Clarythromycin	32	9	2	21	21
+fold_0	Doxorubicin	7	3	0	4	4
+fold_0	Doxycycline	62	13	1	48	48
+fold_0	Mecillinam	59	12	2	45	45
+fold_0	Minocycline	52	11	6	35	35
+fold_0	Mitomycin#SPACE#C	31	7	0	24	24
+fold_0	Oxacillin	27	5	3	19	19
+fold_0	Streptonigrin	53	11	5	37	37
+fold_0	Triclosan	23	4	0	19	18
+fold_0	CHIR090	72	11	9	52	52
+fold_0	Doxycycline#SPACE#hyclate	22	4	0	18	18
+fold_0	Lomefloxacin	53	9	8	36	36
+fold_0	Colistin	59	8	6	45	45
+fold_0	Ampicillin	20	1	0	19	0
+fold_0	Trimethoprim	10	1	0	9	9
+fold_0	Fosfomycin	70	15	5	50	50
+fold_0	Amoxicillin	51	10	3	38	38
+fold_0	Spectinomycin	47	9	4	34	34
+fold_0	Ceftazidime	52	13	6	33	33
+fold_0	Cefsulodin	99	15	10	70	70
+fold_0	Cefoxitin	14	0	1	13	2
+fold_0	Rifampin	12	0	0	12	0
+fold_0	Geneticin	5	1	0	4	4
+fold_0	Paromomycin	5	1	0	4	4
+fold_0	Troleandomycin	4	1	0	3	3
+fold_0	Tetracycline	3	1	0	2	2
+fold_0	Bacitracin	51	12	5	34	34
+fold_0	Dactinomycin	45	13	3	29	29
+fold_0	Nigericin	4	1	1	2	2
+fold_0	Phleomycin	32	5	1	26	26
+fold_0	Tunicamycin	13	3	1	9	9
+fold_0	Spiramycin	3	0	1	2	2
+fold_0	Vancomycin	13	4	1	8	8
+fold_0	Cefoperazone	1	0	1	0	0
+fold_0	Oxytetracycline	1	0	0	1	1
+fold_0	Rolitetracycline	1	1	0	0	0
+fold_0	Sulfachloropyridazine	1	0	0	1	1
+fold_0	Sulfathiazole	2	0	0	2	2
+fold_0	Sulfisoxazole	1	0	0	1	1
+fold_0	Cefazolin	1	1	0	0	0
+fold_0	Cephalothin	1	0	0	1	1
+fold_0	Nafcillin	1	0	0	1	1
+fold_0	Penicillin#SPACE#G	1	1	0	0	0
+fold_0	Kanamycin	97	6	6	85	36
+fold_0	Lincomycin	2	0	0	2	2
+fold_0	Dihydrostreptomycin	1	1	0	0	0
+fold_0	Josamycin	2	1	0	1	1
+fold_0	Hygromycin#SPACE#B	8	2	1	5	5
+fold_0	Sulfamethizole	10	1	1	8	8
+fold_0	Blasticidin#SPACE#S	2	1	0	1	1
+fold_0	Bleomycin	3	1	0	2	2
+fold_0	Polymyxin#SPACE#B	16	5	0	11	11
+fold_0	Enoxacin	4	1	1	2	1
+fold_0	Bicyclomycin	17	9	1	7	6
+fold_0	Metronidazole	39	6	1	32	32
+fold_0	Sulfamethoxazole	32	6	3	23	23
+fold_0	Norfloxacin	41	3	1	37	5
+fold_0	Rifamycin#SPACE#SV	2	1	0	1	1
+fold_0	Cefamandole	2	0	0	2	2
+fold_0	Sulfamonomethoxine	2	2	0	0	0
+fold_0	Streptomycin	7	2	0	5	4
+fold_0	Fusidic#SPACE#acid	1	0	0	1	0
+fold_0	Capreomycin	2	1	0	1	1
+fold_0	Levofloxacin	12	3	1	8	8
+fold_0	Ciprofloxacin	3	0	0	3	0
+fold_0	Chlortetracycline	1	0	0	1	1
+fold_0	Radicicol	3	1	0	2	2
+fold_0	Puromycin	1	0	0	1	1
+fold_0	Oxycarboxin	1	0	0	1	1
+fold_0	Sulfadiazine	2	1	0	1	1
+fold_0	Sulfanilamide	1	0	0	1	1
+fold_0	Ofloxacin	1	0	0	1	1
+fold_0	Penimepicycline	2	1	0	1	1
+fold_0	Tylosin	1	0	0	1	1
+fold_0	Cloxacillin	3	0	1	2	2
+fold_0	5-Nitro-2-furaldehyde#SPACE#semicarbazone	1	1	0	0	0
+fold_0	Furaltadone	2	0	0	2	2
+fold_0	Tinidazole	2	0	0	2	2
+fold_0	Sulfamethazine	2	0	0	2	2
+fold_0	Hygromycin#SPACE#	1	1	0	0	0
+fold_0	Cefmetazole	1	0	0	1	1
+fold_0	Cefuroxime	1	0	0	1	1
+fold_0	Moxalactam	1	1	0	0	0
+fold_0	Phenethicillin	1	0	1	0	0
+fold_0	Oleandomycin	1	1	0	0	0
+fold_0	Apramycin	1	0	0	1	1
+fold_0	Sisomicin	1	0	0	1	1
+fold_0	Gentamicins	1	0	0	1	1
+fold_0	Ornidazole	1	0	0	1	1
+fold_1	Thiolactomycin	24	9	1	14	14
+fold_1	Novobiocin	37	7	2	28	28
+fold_1	Neomycin	72	16	5	51	51
+fold_1	Azithromycin	35	6	2	27	27
+fold_1	Carbenicillin	27	12	4	11	11
+fold_1	Cephradine	72	16	4	52	52
+fold_1	Cerulenin	18	4	1	13	13
+fold_1	Chloramphenicol	12	4	1	7	7
+fold_1	Clarythromycin	32	1	2	29	29
+fold_1	Doxorubicin	7	2	0	5	5
+fold_1	Doxycycline	62	7	7	48	48
+fold_1	Mecillinam	59	14	5	40	40
+fold_1	Minocycline	52	16	5	31	31
+fold_1	Mitomycin#SPACE#C	31	7	2	22	22
+fold_1	Oxacillin	27	6	1	20	20
+fold_1	Streptonigrin	53	10	1	42	42
+fold_1	Triclosan	23	3	4	16	15
+fold_1	CHIR090	72	14	2	56	56
+fold_1	Doxycycline#SPACE#hyclate	22	2	2	18	18
+fold_1	Lomefloxacin	53	9	6	38	38
+fold_1	Colistin	59	14	5	40	40
+fold_1	Ampicillin	20	0	0	20	1
+fold_1	Trimethoprim	10	0	4	6	6
+fold_1	Fosfomycin	70	17	3	50	50
+fold_1	Amoxicillin	51	14	4	33	33
+fold_1	Spectinomycin	47	11	7	29	29
+fold_1	Ceftazidime	52	8	5	39	39
+fold_1	Cefsulodin	99	15	6	74	74
+fold_1	Cefoxitin	14	1	0	13	2
+fold_1	Rifampin	12	0	0	12	0
+fold_1	Geneticin	5	0	1	4	4
+fold_1	Paromomycin	5	1	0	4	4
+fold_1	Troleandomycin	4	1	2	1	1
+fold_1	Tetracycline	3	0	0	3	3
+fold_1	Bacitracin	51	11	4	36	36
+fold_1	Dactinomycin	45	7	2	36	36
+fold_1	Nigericin	4	1	0	3	3
+fold_1	Phleomycin	32	3	7	22	22
+fold_1	Tunicamycin	13	3	1	9	9
+fold_1	Spiramycin	3	3	0	0	0
+fold_1	Vancomycin	13	5	2	6	6
+fold_1	Cefoperazone	1	1	0	0	0
+fold_1	Oxytetracycline	1	0	0	1	1
+fold_1	Rolitetracycline	1	0	0	1	1
+fold_1	Sulfachloropyridazine	1	0	0	1	1
+fold_1	Sulfathiazole	2	1	0	1	1
+fold_1	Sulfisoxazole	1	0	0	1	1
+fold_1	Cefazolin	1	0	1	0	0
+fold_1	Cephalothin	1	0	0	1	1
+fold_1	Nafcillin	1	1	0	0	0
+fold_1	Penicillin#SPACE#G	1	0	0	1	1
+fold_1	Kanamycin	97	11	3	83	34
+fold_1	Lincomycin	2	1	0	1	1
+fold_1	Dihydrostreptomycin	1	0	0	1	1
+fold_1	Josamycin	2	0	0	2	2
+fold_1	Hygromycin#SPACE#B	8	0	3	5	5
+fold_1	Sulfamethizole	10	1	1	8	8
+fold_1	Blasticidin#SPACE#S	2	0	0	2	2
+fold_1	Bleomycin	3	0	0	3	3
+fold_1	Polymyxin#SPACE#B	16	3	3	10	10
+fold_1	Enoxacin	4	0	0	4	3
+fold_1	Bicyclomycin	17	1	2	14	13
+fold_1	Metronidazole	39	12	0	27	27
+fold_1	Sulfamethoxazole	32	2	3	27	27
+fold_1	Norfloxacin	41	0	0	41	9
+fold_1	Rifamycin#SPACE#SV	2	0	0	2	2
+fold_1	Cefamandole	2	0	0	2	2
+fold_1	Sulfamonomethoxine	2	0	0	2	2
+fold_1	Streptomycin	7	0	0	7	6
+fold_1	Fusidic#SPACE#acid	1	0	0	1	0
+fold_1	Capreomycin	2	1	1	0	0
+fold_1	Levofloxacin	12	3	0	9	9
+fold_1	Ciprofloxacin	3	0	0	3	0
+fold_1	Chlortetracycline	1	1	0	0	0
+fold_1	Radicicol	3	0	1	2	2
+fold_1	Puromycin	1	0	0	1	1
+fold_1	Oxycarboxin	1	0	0	1	1
+fold_1	Sulfadiazine	2	0	0	2	2
+fold_1	Sulfanilamide	1	0	0	1	1
+fold_1	Ofloxacin	1	0	0	1	1
+fold_1	Penimepicycline	2	0	0	2	2
+fold_1	Tylosin	1	0	0	1	1
+fold_1	Cloxacillin	3	1	1	1	1
+fold_1	5-Nitro-2-furaldehyde#SPACE#semicarbazone	1	0	0	1	1
+fold_1	Furaltadone	2	0	0	2	2
+fold_1	Tinidazole	2	0	1	1	1
+fold_1	Sulfamethazine	2	0	0	2	2
+fold_1	Hygromycin#SPACE#	1	0	0	1	1
+fold_1	Cefmetazole	1	0	0	1	1
+fold_1	Cefuroxime	1	0	0	1	1
+fold_1	Moxalactam	1	0	0	1	1
+fold_1	Phenethicillin	1	1	0	0	0
+fold_1	Oleandomycin	1	0	0	1	1
+fold_1	Apramycin	1	0	0	1	1
+fold_1	Sisomicin	1	1	0	0	0
+fold_1	Gentamicins	1	0	0	1	1
+fold_1	Ornidazole	1	1	0	0	0
+fold_2	Thiolactomycin	24	2	2	20	20
+fold_2	Novobiocin	37	7	5	25	25
+fold_2	Neomycin	72	18	9	45	45
+fold_2	Azithromycin	35	10	0	25	25
+fold_2	Carbenicillin	27	4	3	20	20
+fold_2	Cephradine	72	11	4	57	57
+fold_2	Cerulenin	18	3	1	14	14
+fold_2	Chloramphenicol	12	0	2	10	10
+fold_2	Clarythromycin	32	10	3	19	19
+fold_2	Doxorubicin	7	0	1	6	6
+fold_2	Doxycycline	62	12	6	44	44
+fold_2	Mecillinam	59	10	6	43	43
+fold_2	Minocycline	52	9	3	40	40
+fold_2	Mitomycin#SPACE#C	31	5	3	23	23
+fold_2	Oxacillin	27	5	0	22	22
+fold_2	Streptonigrin	53	15	1	37	37
+fold_2	Triclosan	23	5	2	16	15
+fold_2	CHIR090	72	18	11	43	43
+fold_2	Doxycycline#SPACE#hyclate	22	5	1	16	16
+fold_2	Lomefloxacin	53	13	2	38	38
+fold_2	Colistin	59	13	5	41	41
+fold_2	Ampicillin	20	0	0	20	1
+fold_2	Trimethoprim	10	2	0	8	8
+fold_2	Fosfomycin	70	12	4	54	54
+fold_2	Amoxicillin	51	12	4	35	35
+fold_2	Spectinomycin	47	9	4	34	34
+fold_2	Ceftazidime	52	12	4	36	36
+fold_2	Cefsulodin	99	27	5	63	63
+fold_2	Cefoxitin	14	1	0	13	2
+fold_2	Rifampin	12	0	0	12	0
+fold_2	Geneticin	5	3	0	2	2
+fold_2	Paromomycin	5	0	0	5	5
+fold_2	Troleandomycin	4	1	0	3	3
+fold_2	Tetracycline	3	0	1	2	2
+fold_2	Bacitracin	51	6	8	37	37
+fold_2	Dactinomycin	45	7	3	35	35
+fold_2	Nigericin	4	0	1	3	3
+fold_2	Phleomycin	32	10	1	21	21
+fold_2	Tunicamycin	13	6	2	5	5
+fold_2	Spiramycin	3	0	0	3	3
+fold_2	Vancomycin	13	1	0	12	12
+fold_2	Cefoperazone	1	0	1	0	0
+fold_2	Oxytetracycline	1	0	0	1	1
+fold_2	Rolitetracycline	1	0	0	1	1
+fold_2	Sulfachloropyridazine	1	0	0	1	1
+fold_2	Sulfathiazole	2	1	0	1	1
+fold_2	Sulfisoxazole	1	0	0	1	1
+fold_2	Cefazolin	1	0	0	1	1
+fold_2	Cephalothin	1	0	0	1	1
+fold_2	Nafcillin	1	0	0	1	1
+fold_2	Penicillin#SPACE#G	1	0	0	1	1
+fold_2	Kanamycin	97	7	1	89	40
+fold_2	Lincomycin	2	1	0	1	1
+fold_2	Dihydrostreptomycin	1	0	0	1	1
+fold_2	Josamycin	2	0	0	2	2
+fold_2	Hygromycin#SPACE#B	8	0	1	7	7
+fold_2	Sulfamethizole	10	4	1	5	5
+fold_2	Blasticidin#SPACE#S	2	0	0	2	2
+fold_2	Bleomycin	3	0	1	2	2
+fold_2	Polymyxin#SPACE#B	16	1	3	12	12
+fold_2	Enoxacin	4	0	0	4	3
+fold_2	Bicyclomycin	17	1	3	13	12
+fold_2	Metronidazole	39	6	5	28	28
+fold_2	Sulfamethoxazole	32	6	1	25	25
+fold_2	Norfloxacin	41	1	2	38	6
+fold_2	Rifamycin#SPACE#SV	2	1	0	1	1
+fold_2	Cefamandole	2	1	0	1	1
+fold_2	Sulfamonomethoxine	2	0	0	2	2
+fold_2	Streptomycin	7	0	1	6	5
+fold_2	Fusidic#SPACE#acid	1	0	0	1	0
+fold_2	Capreomycin	2	0	0	2	2
+fold_2	Levofloxacin	12	3	1	8	8
+fold_2	Ciprofloxacin	3	0	0	3	0
+fold_2	Chlortetracycline	1	0	0	1	1
+fold_2	Radicicol	3	1	1	1	1
+fold_2	Puromycin	1	1	0	0	0
+fold_2	Oxycarboxin	1	0	0	1	1
+fold_2	Sulfadiazine	2	1	0	1	1
+fold_2	Sulfanilamide	1	1	0	0	0
+fold_2	Ofloxacin	1	0	0	1	1
+fold_2	Penimepicycline	2	0	0	2	2
+fold_2	Tylosin	1	0	0	1	1
+fold_2	Cloxacillin	3	0	0	3	3
+fold_2	5-Nitro-2-furaldehyde#SPACE#semicarbazone	1	0	0	1	1
+fold_2	Furaltadone	2	1	0	1	1
+fold_2	Tinidazole	2	1	0	1	1
+fold_2	Sulfamethazine	2	0	0	2	2
+fold_2	Hygromycin#SPACE#	1	0	0	1	1
+fold_2	Cefmetazole	1	0	0	1	1
+fold_2	Cefuroxime	1	0	1	0	0
+fold_2	Moxalactam	1	0	0	1	1
+fold_2	Phenethicillin	1	0	0	1	1
+fold_2	Oleandomycin	1	0	0	1	1
+fold_2	Apramycin	1	0	0	1	1
+fold_2	Sisomicin	1	0	0	1	1
+fold_2	Gentamicins	1	0	0	1	1
+fold_2	Ornidazole	1	0	0	1	1
+fold_3	Thiolactomycin	24	4	1	19	19
+fold_3	Novobiocin	37	6	1	30	30
+fold_3	Neomycin	72	12	6	54	54
+fold_3	Azithromycin	35	7	3	25	25
+fold_3	Carbenicillin	27	4	3	20	20
+fold_3	Cephradine	72	15	4	53	53
+fold_3	Cerulenin	18	2	2	14	14
+fold_3	Chloramphenicol	12	3	0	9	9
+fold_3	Clarythromycin	32	5	1	26	26
+fold_3	Doxorubicin	7	2	1	4	4
+fold_3	Doxycycline	62	17	5	40	40
+fold_3	Mecillinam	59	13	5	41	41
+fold_3	Minocycline	52	8	3	41	41
+fold_3	Mitomycin#SPACE#C	31	4	2	25	25
+fold_3	Oxacillin	27	7	1	19	19
+fold_3	Streptonigrin	53	10	4	39	39
+fold_3	Triclosan	23	3	3	17	16
+fold_3	CHIR090	72	15	7	50	50
+fold_3	Doxycycline#SPACE#hyclate	22	6	1	15	15
+fold_3	Lomefloxacin	53	12	7	34	34
+fold_3	Colistin	59	17	4	38	38
+fold_3	Ampicillin	20	0	0	20	1
+fold_3	Trimethoprim	10	2	1	7	7
+fold_3	Fosfomycin	70	12	5	53	53
+fold_3	Amoxicillin	51	7	6	38	38
+fold_3	Spectinomycin	47	8	4	35	35
+fold_3	Ceftazidime	52	8	3	41	41
+fold_3	Cefsulodin	99	21	6	68	68
+fold_3	Cefoxitin	14	0	2	12	1
+fold_3	Rifampin	12	0	0	12	0
+fold_3	Geneticin	5	1	1	3	3
+fold_3	Paromomycin	5	3	0	2	2
+fold_3	Troleandomycin	4	1	0	3	3
+fold_3	Tetracycline	3	1	0	2	2
+fold_3	Bacitracin	51	12	7	32	32
+fold_3	Dactinomycin	45	6	6	33	33
+fold_3	Nigericin	4	2	0	2	2
+fold_3	Phleomycin	32	7	2	23	23
+fold_3	Tunicamycin	13	1	1	11	11
+fold_3	Spiramycin	3	0	0	3	3
+fold_3	Vancomycin	13	2	2	9	9
+fold_3	Cefoperazone	1	0	0	1	1
+fold_3	Oxytetracycline	1	1	0	0	0
+fold_3	Rolitetracycline	1	0	0	1	1
+fold_3	Sulfachloropyridazine	1	0	0	1	1
+fold_3	Sulfathiazole	2	0	0	2	2
+fold_3	Sulfisoxazole	1	0	0	1	1
+fold_3	Cefazolin	1	0	0	1	1
+fold_3	Cephalothin	1	1	0	0	0
+fold_3	Nafcillin	1	0	1	0	0
+fold_3	Penicillin#SPACE#G	1	0	0	1	1
+fold_3	Kanamycin	97	11	3	83	34
+fold_3	Lincomycin	2	0	0	2	2
+fold_3	Dihydrostreptomycin	1	0	0	1	1
+fold_3	Josamycin	2	0	1	1	1
+fold_3	Hygromycin#SPACE#B	8	5	1	2	2
+fold_3	Sulfamethizole	10	1	1	8	8
+fold_3	Blasticidin#SPACE#S	2	0	0	2	2
+fold_3	Bleomycin	3	2	0	1	1
+fold_3	Polymyxin#SPACE#B	16	3	1	12	12
+fold_3	Enoxacin	4	0	0	4	3
+fold_3	Bicyclomycin	17	2	0	15	14
+fold_3	Metronidazole	39	7	4	28	28
+fold_3	Sulfamethoxazole	32	7	5	20	20
+fold_3	Norfloxacin	41	5	0	36	4
+fold_3	Rifamycin#SPACE#SV	2	0	0	2	2
+fold_3	Cefamandole	2	1	0	1	1
+fold_3	Sulfamonomethoxine	2	0	0	2	2
+fold_3	Streptomycin	7	2	1	4	3
+fold_3	Fusidic#SPACE#acid	1	0	0	1	0
+fold_3	Capreomycin	2	0	0	2	2
+fold_3	Levofloxacin	12	2	1	9	9
+fold_3	Ciprofloxacin	3	0	0	3	0
+fold_3	Chlortetracycline	1	0	0	1	1
+fold_3	Radicicol	3	1	1	1	1
+fold_3	Puromycin	1	0	0	1	1
+fold_3	Oxycarboxin	1	0	0	1	1
+fold_3	Sulfadiazine	2	0	0	2	2
+fold_3	Sulfanilamide	1	0	0	1	1
+fold_3	Ofloxacin	1	0	0	1	1
+fold_3	Penimepicycline	2	1	0	1	1
+fold_3	Tylosin	1	1	0	0	0
+fold_3	Cloxacillin	3	1	0	2	2
+fold_3	5-Nitro-2-furaldehyde#SPACE#semicarbazone	1	0	0	1	1
+fold_3	Furaltadone	2	0	0	2	2
+fold_3	Tinidazole	2	0	0	2	2
+fold_3	Sulfamethazine	2	1	0	1	1
+fold_3	Hygromycin#SPACE#	1	0	0	1	1
+fold_3	Cefmetazole	1	0	0	1	1
+fold_3	Cefuroxime	1	1	0	0	0
+fold_3	Moxalactam	1	0	0	1	1
+fold_3	Phenethicillin	1	0	0	1	1
+fold_3	Oleandomycin	1	0	0	1	1
+fold_3	Apramycin	1	0	0	1	1
+fold_3	Sisomicin	1	0	0	1	1
+fold_3	Gentamicins	1	1	0	0	0
+fold_3	Ornidazole	1	0	0	1	1
+fold_4	Thiolactomycin	24	6	0	18	18
+fold_4	Novobiocin	37	9	1	27	27
+fold_4	Neomycin	72	12	6	54	54
+fold_4	Azithromycin	35	9	2	24	24
+fold_4	Carbenicillin	27	5	3	19	19
+fold_4	Cephradine	72	17	5	50	50
+fold_4	Cerulenin	18	6	2	10	10
+fold_4	Chloramphenicol	12	2	2	8	8
+fold_4	Clarythromycin	32	7	1	24	24
+fold_4	Doxorubicin	7	0	1	6	6
+fold_4	Doxycycline	62	13	5	44	44
+fold_4	Mecillinam	59	10	4	45	45
+fold_4	Minocycline	52	8	8	36	36
+fold_4	Mitomycin#SPACE#C	31	8	2	21	21
+fold_4	Oxacillin	27	4	6	17	17
+fold_4	Streptonigrin	53	7	4	42	42
+fold_4	Triclosan	23	7	1	15	14
+fold_4	CHIR090	72	14	7	51	51
+fold_4	Doxycycline#SPACE#hyclate	22	5	1	16	16
+fold_4	Lomefloxacin	53	10	6	37	37
+fold_4	Colistin	59	7	3	49	49
+fold_4	Ampicillin	20	0	0	20	1
+fold_4	Trimethoprim	10	5	0	5	5
+fold_4	Fosfomycin	70	14	5	51	51
+fold_4	Amoxicillin	51	8	2	41	41
+fold_4	Spectinomycin	47	10	4	33	33
+fold_4	Ceftazidime	52	11	2	39	39
+fold_4	Cefsulodin	99	17	13	65	65
+fold_4	Cefoxitin	14	1	0	13	2
+fold_4	Rifampin	12	0	0	12	0
+fold_4	Geneticin	5	0	1	4	4
+fold_4	Paromomycin	5	0	0	5	5
+fold_4	Troleandomycin	4	0	0	4	4
+fold_4	Tetracycline	3	1	0	2	2
+fold_4	Bacitracin	51	10	4	37	37
+fold_4	Dactinomycin	45	12	1	32	32
+fold_4	Nigericin	4	0	0	4	4
+fold_4	Phleomycin	32	7	1	24	24
+fold_4	Tunicamycin	13	0	0	13	13
+fold_4	Spiramycin	3	0	0	3	3
+fold_4	Vancomycin	13	1	1	11	11
+fold_4	Cefoperazone	1	0	0	1	1
+fold_4	Oxytetracycline	1	0	0	1	1
+fold_4	Rolitetracycline	1	0	0	1	1
+fold_4	Sulfachloropyridazine	1	1	0	0	0
+fold_4	Sulfathiazole	2	0	0	2	2
+fold_4	Sulfisoxazole	1	1	0	0	0
+fold_4	Cefazolin	1	0	0	1	1
+fold_4	Cephalothin	1	0	0	1	1
+fold_4	Nafcillin	1	0	0	1	1
+fold_4	Penicillin#SPACE#G	1	0	0	1	1
+fold_4	Kanamycin	97	13	4	80	31
+fold_4	Lincomycin	2	0	0	2	2
+fold_4	Dihydrostreptomycin	1	0	0	1	1
+fold_4	Josamycin	2	1	0	1	1
+fold_4	Hygromycin#SPACE#B	8	1	1	6	6
+fold_4	Sulfamethizole	10	3	1	6	6
+fold_4	Blasticidin#SPACE#S	2	1	0	1	1
+fold_4	Bleomycin	3	0	0	3	3
+fold_4	Polymyxin#SPACE#B	16	4	2	10	10
+fold_4	Enoxacin	4	2	0	2	1
+fold_4	Bicyclomycin	17	3	1	13	12
+fold_4	Metronidazole	39	8	2	29	29
+fold_4	Sulfamethoxazole	32	11	5	16	16
+fold_4	Norfloxacin	41	0	0	41	9
+fold_4	Rifamycin#SPACE#SV	2	0	0	2	2
+fold_4	Cefamandole	2	0	0	2	2
+fold_4	Sulfamonomethoxine	2	0	0	2	2
+fold_4	Streptomycin	7	2	1	4	3
+fold_4	Fusidic#SPACE#acid	1	0	0	1	0
+fold_4	Capreomycin	2	0	1	1	1
+fold_4	Levofloxacin	12	1	0	11	11
+fold_4	Ciprofloxacin	3	0	0	3	0
+fold_4	Chlortetracycline	1	0	0	1	1
+fold_4	Radicicol	3	0	1	2	2
+fold_4	Puromycin	1	0	0	1	1
+fold_4	Oxycarboxin	1	1	0	0	0
+fold_4	Sulfadiazine	2	0	0	2	2
+fold_4	Sulfanilamide	1	0	1	0	0
+fold_4	Ofloxacin	1	1	0	0	0
+fold_4	Penimepicycline	2	0	1	1	1
+fold_4	Tylosin	1	0	1	0	0
+fold_4	Cloxacillin	3	1	0	2	2
+fold_4	5-Nitro-2-furaldehyde#SPACE#semicarbazone	1	0	0	1	1
+fold_4	Furaltadone	2	1	0	1	1
+fold_4	Tinidazole	2	1	1	0	0
+fold_4	Sulfamethazine	2	1	0	1	1
+fold_4	Hygromycin#SPACE#	1	0	0	1	1
+fold_4	Cefmetazole	1	1	0	0	0
+fold_4	Cefuroxime	1	0	1	0	0
+fold_4	Moxalactam	1	0	0	1	1
+fold_4	Phenethicillin	1	0	1	0	0
+fold_4	Oleandomycin	1	0	0	1	1
+fold_4	Apramycin	1	1	0	0	0
+fold_4	Sisomicin	1	0	0	1	1
+fold_4	Gentamicins	1	0	0	1	1
+fold_4	Ornidazole	1	0	1	0	0
+final	Thiolactomycin	24	1104		24	24
+final	Novobiocin	37	1107		37	37
+final	Neomycin	72	4464		72	72
+final	Azithromycin	35	1104		35	35
+final	Carbenicillin	27	1103		27	27
+final	Cephradine	72	4504		72	72
+final	Cerulenin	18	1103		18	18
+final	Chloramphenicol	12	967		12	12
+final	Clarythromycin	32	1103		32	32
+final	Doxorubicin	7	1103		7	7
+final	Doxycycline	62	1103		62	62
+final	Mecillinam	59	1106		59	59
+final	Minocycline	52	1103		52	52
+final	Mitomycin#SPACE#C	31	1104		31	31
+final	Oxacillin	27	1104		27	27
+final	Streptonigrin	53	1103		53	53
+final	Triclosan	23	1013		23	22
+final	CHIR090	72	1103		72	72
+final	Doxycycline#SPACE#hyclate	22	957		22	22
+final	Lomefloxacin	53	960		53	53
+final	Colistin	59	4508		59	59
+final	Ampicillin	20	621		20	1
+final	Trimethoprim	10	280		10	10
+final	Fosfomycin	70	1107		70	70
+final	Amoxicillin	51	1105		51	51
+final	Spectinomycin	47	1130		47	47
+final	Ceftazidime	52	1104		52	52
+final	Cefsulodin	99	1106		95	95
+final	Cefoxitin	14	691		14	3
+final	Rifampin	12	582		12	0
+final	Geneticin	5	4722		5	5
+final	Paromomycin	5	4722		5	5
+final	Troleandomycin	4	4722		4	4
+final	Tetracycline	3	606		3	3
+final	Bacitracin	51	1104		51	51
+final	Dactinomycin	45	1104		45	45
+final	Nigericin	4	1103		4	4
+final	Phleomycin	32	1105		32	32
+final	Tunicamycin	13	1103		13	13
+final	Spiramycin	3	277		3	3
+final	Vancomycin	13	955		13	13
+final	Cefoperazone	1	478		1	1
+final	Oxytetracycline	1	475		1	1
+final	Rolitetracycline	1	475		1	1
+final	Sulfachloropyridazine	1	475		1	1
+final	Sulfathiazole	2	472		2	2
+final	Sulfisoxazole	1	475		1	1
+final	Cefazolin	1	479		1	1
+final	Cephalothin	1	476		1	1
+final	Nafcillin	1	475		1	1
+final	Penicillin#SPACE#G	1	476		1	1
+final	Kanamycin	97	947		97	48
+final	Lincomycin	2	475		2	2
+final	Dihydrostreptomycin	1	476		1	1
+final	Josamycin	2	475		2	2
+final	Hygromycin#SPACE#B	8	4722		8	8
+final	Sulfamethizole	10	1103		10	10
+final	Blasticidin#SPACE#S	2	475		2	2
+final	Bleomycin	3	637		3	3
+final	Polymyxin#SPACE#B	16	1107		16	16
+final	Enoxacin	4	527		4	3
+final	Bicyclomycin	17	1103		17	16
+final	Metronidazole	39	974		39	39
+final	Sulfamethoxazole	32	921		32	32
+final	Norfloxacin	41	999		41	9
+final	Rifamycin#SPACE#SV	2	4767		2	2
+final	Cefamandole	2	4722		2	2
+final	Sulfamonomethoxine	2	268		2	2
+final	Streptomycin	7	659		7	6
+final	Fusidic#SPACE#acid	1	479		1	0
+final	Capreomycin	2	4722		2	2
+final	Levofloxacin	12	1101		12	12
+final	Ciprofloxacin	3	490		3	0
+final	Chlortetracycline	1	4768		1	1
+final	Radicicol	3	1103		3	3
+final	Puromycin	1	255		1	1
+final	Oxycarboxin	1	4722		1	1
+final	Sulfadiazine	2	471		2	2
+final	Sulfanilamide	1	4722		1	1
+final	Ofloxacin	1	475		1	1
+final	Penimepicycline	2	475		2	2
+final	Tylosin	1	472		1	1
+final	Cloxacillin	3	4766		3	3
+final	5-Nitro-2-furaldehyde#SPACE#semicarbazone	1	475		1	1
+final	Furaltadone	2	475		2	2
+final	Tinidazole	2	475		2	2
+final	Sulfamethazine	2	475		2	2
+final	Hygromycin#SPACE#	1	4722		1	1
+final	Cefmetazole	1	478		1	1
+final	Cefuroxime	1	475		1	1
+final	Moxalactam	1	475		1	1
+final	Phenethicillin	1	475		1	1
+final	Oleandomycin	1	475		1	1
+final	Apramycin	1	478		1	1
+final	Sisomicin	1	475		1	1
+final	Gentamicins	1	655		1	1
+final	Ornidazole	1	475		1	1
