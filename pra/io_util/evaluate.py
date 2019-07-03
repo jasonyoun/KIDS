@@ -9,15 +9,24 @@ Description:
 
 To-do:
 """
+
+# standard imports
+import argparse
+import logging as log
 import os
 import sys
-import argparse
+from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
+
+# third party imports
 import numpy as np
+
+# local imports
 DIRECTORY = os.path.dirname(__file__)
 ABS_PATH_METRICS = os.path.join(DIRECTORY, '../../utils')
 sys.path.insert(0, ABS_PATH_METRICS)
-from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
-from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, save_results
+from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+from utils import save_results
+from kids_log import set_logging
 
 def parse_argument():
     """
@@ -47,6 +56,7 @@ def main():
     Main function.
     """
     args = parse_argument()
+    set_logging()
 
     with open('./selected_relations') as _file:
         relations = _file.readlines()
@@ -127,19 +137,18 @@ def main():
             classifications_predicate = combined_classifications_array[indices]
             classifications_predicate[:][classifications_predicate[:] == -1] = 0
 
-            fl_measure_predicate = f1_score(labels_predicate, classifications_predicate)
+            f1_measure_predicate = f1_score(labels_predicate, classifications_predicate)
             accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
             recall_predicate = recall_score(labels_predicate, classifications_predicate)
             precision_predicate = precision_score(labels_predicate, classifications_predicate)
             confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
 
-            print(' - test f1 measure for {}: {}'.format(pred_name, fl_measure_predicate))
-            print(' - test accuracy for {}: {}'.format(pred_name, accuracy_predicate))
-            print(' - test precision for {}: {}'.format(pred_name, precision_predicate))
-            print(' - test recall for {}: {}'.format(pred_name, recall_predicate))
-            print(' - test confusion matrix for {}:'.format(pred_name))
-            print(confusion_predicate)
-            print(' ')
+            log.debug(' - test f1 measure for %s: %f', pred_name, f1_measure_predicate)
+            log.debug(' - test accuracy for %s: %f', pred_name, accuracy_predicate)
+            log.debug(' - test precision for %s: %f', pred_name, precision_predicate)
+            log.debug(' - test recall for %s: %f', pred_name, recall_predicate)
+            log.debug(' - test confusion matrix for %s:', pred_name)
+            log.debug(str(confusion_predicate))
 
         fpr_pred, tpr_pred, _ = roc_curve(labels_predicate.ravel(), predicate_predictions.ravel())
         roc_auc_pred = auc(fpr_pred, tpr_pred)
@@ -151,7 +160,7 @@ def main():
         }
 
         if not args.final_model:
-            results['predicate'][pred_name]['f1'] = fl_measure_predicate,
+            results['predicate'][pred_name]['f1'] = f1_measure_predicate,
             results['predicate'][pred_name]['accuracy'] = accuracy_predicate,
             results['predicate'][pred_name]['cm'] = confusion_predicate,
             results['predicate'][pred_name]['precision'] = precision_predicate,
@@ -160,7 +169,7 @@ def main():
     mean_average_precision_test = pr_stats(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic)
     roc_auc_test = roc_auc_stats(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic)
     if not args.final_model:
-        fl_measure_test = f1_score(combined_labels_array, combined_classifications_array)
+        f1_measure_test = f1_score(combined_labels_array, combined_classifications_array)
         accuracy_test = accuracy_score(combined_labels_array, combined_classifications_array)
         recall_test = recall_score(combined_labels_array, combined_classifications_array)
         precision_test = precision_score(combined_labels_array, combined_classifications_array)
@@ -174,22 +183,22 @@ def main():
     }
 
     if not args.final_model:
-        results['overall']['f1'] = fl_measure_test,
+        results['overall']['f1'] = f1_measure_test,
         results['overall']['accuracy'] = accuracy_test,
         results['overall']['cm'] = confusion_test,
         results['overall']['precision'] = precision_test,
         results['overall']['recall'] = recall_test
 
-    print('test mean average precision: {}'.format(mean_average_precision_test))
-    print('test roc auc: {}'.format(roc_auc_test))
+    log.debug('test mean average precision: %f', mean_average_precision_test)
+    log.debug('test roc auc: %f', roc_auc_test)
+
     if not args.final_model:
-        print('test f1 measure: {}'.format(fl_measure_test))
-        print('test accuracy: {}'.format(accuracy_test))
-        print('test precision: {}'.format(precision_test))
-        print('test recall: {}'.format(recall_test))
-        print('test confusion matrix:')
-        print(confusion_test)
-    print(' ')
+        log.debug('test f1 measure: %f', f1_measure_test)
+        log.debug('test accuracy: %f', accuracy_test)
+        log.debug('test precision: %f', precision_test)
+        log.debug('test recall: %f', recall_test)
+        log.debug('test confusion matrix:')
+        log.debug(str(confusion_test))
 
     save_results(results, args.dir)
 

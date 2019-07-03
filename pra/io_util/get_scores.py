@@ -9,8 +9,12 @@ Description:
 
 To-do:
 """
-import pickle
+
+# standard imports
 import argparse
+import pickle
+
+# third party imports
 import numpy as np
 
 def parse_argument():

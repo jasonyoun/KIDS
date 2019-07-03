@@ -9,8 +9,12 @@ Description:
 
 To-do:
 """
+
+# standard imports
 import os
 import pickle
+
+# third party imports
 import numpy as np
 
 ER_MLP_MODEL_HOME = '../er_mlp/model/model_instance/'

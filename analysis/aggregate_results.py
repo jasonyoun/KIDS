@@ -10,19 +10,27 @@ Description:
 
 To-do:
 """
-import os
-import sys
-import glob
+
+# standard imports
 import argparse
+import glob
+import logging as log
+import os
 import pickle
-import numpy as np
+import sys
+
+# third party imports
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy import interp
 from sklearn.metrics import auc
+
+# local imports
 DIRECTORY = os.path.dirname(__file__)
-ABS_PATH_METRICS = os.path.join(DIRECTORY, '../../utils')
+ABS_PATH_METRICS = os.path.join(DIRECTORY, '../utils')
 sys.path.insert(0, ABS_PATH_METRICS)
-from metrics import save_results
+from utils import save_results, create_dir, load_pickle
+from kids_log import set_logging
 
 def parse_argument():
     """
@@ -39,7 +47,6 @@ def parse_argument():
         nargs='+',
         default='./',
         help='base directory')
-
     parser.add_argument(
         '--results_dir',
         metavar='dir',
@@ -50,25 +57,12 @@ def parse_argument():
 
     return parser.parse_args()
 
-def load_results(_file):
-    """
-    Load results.
-
-    Inputs:
-        _file: path to the pickle file to load
-
-    Returns:
-        loaded pickle file
-    """
-    with open(_file, 'rb') as pickle_file:
-        return pickle.load(pickle_file)
-
 def create_results_list(results):
     """
     Create dictionary of lists to hold the results.
 
     Inputs:
-        results: loaded pickle file using load_results()
+        results: loaded pickle file using load_pickle()
 
     Returns:
         results_list: initialized dictionary of lists
@@ -92,7 +86,7 @@ def add_result(results, results_overall):
     Append the results.
 
     Inputs:
-        results: loadd pickle file using load_results()
+        results: loadd pickle file using load_pickle()
         results_overall: results that will be appended to
     """
     for metric, value in results['overall'].items():
@@ -116,20 +110,9 @@ def get_latest_fig(path, prefix):
     list_of_files = glob.glob('{}/{}*.pkl'.format(path, prefix))
     latest_file = max(list_of_files, key=os.path.getctime)
 
-    with open(latest_file, 'rb') as pickle_file:
-        return pickle.load(pickle_file)
+    return load_pickle(latest_file)
 
-def create_dir(directory):
-    """
-    Create directory.
-
-    Inputs:
-        directory: directory to create
-    """
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
-def calculate(results_list):
+def combine_results(results_list):
     """
     Given different metrics based on the result lists provided.
 
@@ -247,13 +230,13 @@ def calculate(results_list):
 
     return results_overall
 
-def get_mean_average_roc(roc, list_directories):
+def get_mean_average_roc(roc, dir_list):
     """
     Generate one ROC curve using average of different ROC curves.
 
     Inputs:
         roc: pickle containing the ROC curves
-        list_directories: list containing different fold directory names
+        dir_list: list containing different fold directory names
     """
     all_fpr = {}
     mean_tpr = {}
@@ -265,7 +248,7 @@ def get_mean_average_roc(roc, list_directories):
     mean_auc = {}
     mean_auc_std = {}
 
-    for fold in list_directories:
+    for fold in dir_list:
         for predicate, values in roc[fold].items():
             if predicate not in predicates_fpr:
                 predicates_auc[predicate] = []
@@ -293,18 +276,18 @@ def get_mean_average_roc(roc, list_directories):
 
     return mean_fpr, mean_tpr, mean_auc, mean_auc_std
 
-def plot_pr(pr, list_directories, model, results_dir):
+def plot_combined_pr(pr, dir_list, model, results_dir):
     """
     Combine different PR curves into one plot.
 
     Inputs:
         pr: pickle containing the PR curve
-        list_directories: list containing different fold directory names
+        dir_list: list containing different fold directory names
         model: model name (PRA, MLP, Stacked)
         results_dir: directory to save the results to
     """
     plt.figure()
-    for fold in list_directories:
+    for fold in dir_list:
         # There only exists one predicate: Confers resistance to antibiotic.
         # No need to show the name in the plot.
         for predicate, values in pr[fold].items():
@@ -320,24 +303,26 @@ def main():
     """
     Main function.
     """
-    # parse args
+    # parse args and set logging
     args = parse_argument()
-    list_directories = args.dir
-    results_dir = args.results_dir
+    set_logging()
 
     # variables
-    root_dir = os.path.abspath(os.path.join(DIRECTORY, '../..'))
+    dir_list = args.dir
+    results_dir = args.results_dir
+    root_dir = os.path.abspath(os.path.join(DIRECTORY, '..'))
 
     # load previously saved results
     first_flag = True
+    log.info('Loading previously saved results...')
 
-    for fold in list_directories:
-        pra_results = load_results(
-            os.path.abspath('{}/pra/model/model_instance/{}/instance/test/results/results.pkl'.format(root_dir, fold)))
-        er_mlp_results = load_results(
-            os.path.abspath('{}/er_mlp/model/model_instance/{}/test/results/results.pkl'.format(root_dir, fold)))
-        stacked_results = load_results(
-            os.path.abspath('{}/stacked/model_instance/{}/test/results/results.pkl'.format(root_dir, fold)))
+    for fold in dir_list:
+        pra_results = load_pickle(
+            '{}/pra/model/model_instance/{}/instance/test/results/results.pkl'.format(root_dir, fold))
+        er_mlp_results = load_pickle(
+            '{}/er_mlp/model/model_instance/{}/test/results/results.pkl'.format(root_dir, fold))
+        stacked_results = load_pickle(
+            '{}/stacked/model_instance/{}/test/results/results.pkl'.format(root_dir, fold))
 
         if first_flag is True:
             pra_results_list = create_results_list(pra_results)
@@ -359,9 +344,10 @@ def main():
     create_dir(stacked_dir)
 
     # calculate additional performance metrics from the loaded results
-    pra_results_overall = calculate(pra_results_list)
-    er_mlp_results_overall = calculate(er_mlp_results_list)
-    stacked_results_overall = calculate(stacked_results_list)
+    pra_results_overall = combine_results(pra_results_list)
+    er_mlp_results_overall = combine_results(er_mlp_results_list)
+    stacked_results_overall = combine_results(stacked_results_list)
+
     # save these calculated results
     save_results(pra_results_overall, pra_dir)
     save_results(er_mlp_results_overall, er_mlp_dir)
@@ -369,7 +355,7 @@ def main():
 
     # load the figures
     pra_pr, pra_roc, er_mlp_pr, er_mlp_roc, stacked_pr, stacked_roc = {}, {}, {}, {}, {}, {}
-    for fold in list_directories:
+    for fold in dir_list:
         pra_pr[fold] = get_latest_fig('{}/pra/model/model_instance/{}/instance/test/fig'.format(root_dir, fold), 'pr_pra')
         pra_roc[fold] = get_latest_fig('{}/pra/model/model_instance/{}/instance/test/fig'.format(root_dir, fold), 'roc_pra')
         er_mlp_pr[fold] = get_latest_fig('{}/er_mlp/model/model_instance/{}/test/fig'.format(root_dir, fold), 'pr_er_mlp')
@@ -378,14 +364,14 @@ def main():
         stacked_roc[fold] = get_latest_fig('{}/stacked/model_instance/{}/fig'.format(root_dir, fold), 'roc_model')
 
     # plot the aggregated PR curves
-    plot_pr(pra_pr, list_directories, 'PRA', results_dir)
-    plot_pr(er_mlp_pr, list_directories, 'MLP', results_dir)
-    plot_pr(stacked_pr, list_directories, 'Stacked', results_dir)
+    plot_combined_pr(pra_pr, dir_list, 'PRA', results_dir)
+    plot_combined_pr(er_mlp_pr, dir_list, 'MLP', results_dir)
+    plot_combined_pr(stacked_pr, dir_list, 'Stacked', results_dir)
 
     # plot the aggregated ROC curve
-    pra_mean_fpr, pra_mean_tpr, pra_mean_auc, pra_mean_auc_std = get_mean_average_roc(pra_roc, list_directories)
-    er_mlp_mean_fpr, er_mlp_mean_tpr, er_mlp_mean_auc, er_mlp_mean_auc_std = get_mean_average_roc(er_mlp_roc, list_directories)
-    stacked_mean_fpr, stacked_mean_tpr, stacked_mean_auc, stacked_mean_auc_std = get_mean_average_roc(stacked_roc, list_directories)
+    pra_mean_fpr, pra_mean_tpr, pra_mean_auc, pra_mean_auc_std = get_mean_average_roc(pra_roc, dir_list)
+    er_mlp_mean_fpr, er_mlp_mean_tpr, er_mlp_mean_auc, er_mlp_mean_auc_std = get_mean_average_roc(er_mlp_roc, dir_list)
+    stacked_mean_fpr, stacked_mean_tpr, stacked_mean_auc, stacked_mean_auc_std = get_mean_average_roc(stacked_roc, dir_list)
 
     plt.figure()
     plt.plot([0, 1], [0, 1], color='navy', linestyle='--', label="baseline (AUC:{:.3f})".format(0.5))

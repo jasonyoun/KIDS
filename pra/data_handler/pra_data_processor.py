@@ -9,8 +9,12 @@ Description:
 
 To-do
 """
-import csv
+
+# standard imports
 import argparse
+import csv
+
+# third party imports
 import numpy as np
 import pandas as pd
 
@@ -29,14 +33,12 @@ def parse_argument():
         nargs='?',
         default='./',
         help='data directory')
-
     parser.add_argument(
         '--train_file',
         metavar='dir',
         nargs='?',
         default='./',
         help='The train file')
-
     parser.add_argument(
         '--use_domain',
         action='store_const',

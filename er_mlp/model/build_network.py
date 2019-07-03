@@ -10,11 +10,16 @@ Description:
 
 To-do:
 """
-import os
+
+# standard imports
 import argparse
+import os
+
+# local imports
 import model_global
 import er_mlp_max_margin
 from config_parser import ConfigParser
+from kids_log import set_logging
 
 def parse_argument():
     """
@@ -49,7 +54,7 @@ def main():
     """
     # set log and parse args
     args = parse_argument()
-    model_global.set_logging(args.logfile)
+    set_logging(args.logfile)
 
     # directory and filename setup
     model_instance_dir = 'model_instance'

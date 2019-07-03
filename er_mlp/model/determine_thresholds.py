@@ -11,15 +11,22 @@ Description:
 To-do:
     1. why set label to 0 now instead of -1?
 """
-import os
+
+# standard imports
 import argparse
 import logging as log
+import os
 import pickle
+
+# third party imports
 import tensorflow as tf
+
+# local imports
 import model_global
 from er_mlp import ERMLP
 from data_processor import DataProcessor
 from config_parser import ConfigParser
+from kids_log import set_logging
 
 def parse_argument():
     """
@@ -49,7 +56,7 @@ def main():
     """
     # set log and parse args
     args = parse_argument()
-    model_global.set_logging(args.logfile)
+    set_logging(args.logfile)
 
     # directory and filename setup
     model_instance_dir = 'model_instance'

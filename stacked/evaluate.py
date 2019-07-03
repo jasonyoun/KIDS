@@ -10,18 +10,26 @@ Description:
 To-do:
     1. Fix variable predicates so that it works in general case.
 """
-import os
-import sys
-import pickle
+
+# standard imports
 import argparse
-import features
+import logging as log
+import os
+import pickle
+import sys
+
+# third party imports
 import numpy as np
-DIRECTORY = os.path.dirname(__file__)
 from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
-ABS_PATH_METRICS = os.path.join(DIRECTORY, '../utils')
-sys.path.insert(0, ABS_PATH_METRICS)
-from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, save_results
+
+# local imports
+DIRECTORY = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(DIRECTORY, '../utils'))
 from config_parser import ConfigParser
+import features
+from kids_log import set_logging
+from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+from utils import save_results
 
 def parse_argument():
     """
@@ -52,6 +60,7 @@ def main():
     Main function.
     """
     args = parse_argument()
+    set_logging
 
     model_instance_dir = 'model_instance'
     model_save_dir = os.path.join(model_instance_dir, args.dir)
@@ -131,13 +140,12 @@ def main():
                 precision_predicate = precision_score(labels_predicate, classifications_predicate)
                 confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
 
-                print(' - predicate f1 measure for {}: {}'.format(pred_name, fl_measure_predicate))
-                print(' - predicate accuracy for {}: {}'.format(pred_name, accuracy_predicate))
-                print(' - predicate recall for {}: {}'.format(pred_name, recall_predicate))
-                print(' - predicate precision for {}: {}'.format(pred_name, precision_predicate))
-                print(' - predicate confusion matrix for {}:'.format(pred_name))
-                print(confusion_predicate)
-                print(' ')
+                log.debug(' - predicate f1 measure for %s: %f', pred_name, fl_measure_predicate)
+                log.debug(' - predicate accuracy for %s: %f', pred_name, accuracy_predicate)
+                log.debug(' - predicate recall for %s: %f', pred_name, recall_predicate)
+                log.debug(' - predicate precision for %s: %f', pred_name, precision_predicate)
+                log.debug(' - predicate confusion matrix for %s:', pred_name)
+                log.debug(str(confusion_predicate))
 
                 fpr_pred, tpr_pred, _ = roc_curve(labels_predicate.ravel(), predicate_predictions.ravel())
                 roc_auc_pred = auc(fpr_pred, tpr_pred)
@@ -171,15 +179,14 @@ def main():
     if not args.final_model:
         save_results(results, directory)
 
-        print('test f1 measure: {}'.format(fl_measure_test))
-        print('test accuracy: {}'.format(accuracy_test))
-        print('test precision: {}'.format(precision_test))
-        print('test recall: {}'.format(recall_test))
-        print('test confusion matrix:')
-        print('test auc: {}'.format(auc_test))
-        print('test ap: {}'.format(ap_test))
-        print(confusion_test)
-        print(ap_test)
+        log.debug('test f1 measure: %f', fl_measure_test)
+        log.debug('test accuracy: %f', accuracy_test)
+        log.debug('test precision: %f', precision_test)
+        log.debug('test recall: %f', recall_test)
+        log.debug('test auc: %f', auc_test)
+        log.debug('test ap: %f', ap_test)
+        log.debug('test confusion matrix:')
+        log.debug(str(confusion_test))
 
 if __name__ == "__main__":
     main()

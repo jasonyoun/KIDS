@@ -10,8 +10,10 @@ Description:
 
 To-do:
 """
-import random
+
+# standard imports
 import argparse
+import random
 
 def parse_argument():
     """

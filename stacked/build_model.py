@@ -10,23 +10,27 @@ Description:
 To-do:
     1. move number of fold for final model to config.
 """
-import os
-import sys
-import pickle
+
+# standard imports
 import argparse
+import os
+import pickle
+import sys
+
+# third party imports
+from imblearn.over_sampling import SMOTE
 import numpy as np
-DIRECTORY = os.path.dirname(__file__)
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import RandomizedSearchCV
-from sklearn.model_selection import PredefinedSplit
-from sklearn.model_selection import KFold
+from sklearn.model_selection import RandomizedSearchCV, PredefinedSplit
+from sklearn.calibration import CalibratedClassifierCV
+
+# local imports
+DIRECTORY = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(DIRECTORY, '../utils'))
 import features
-from imblearn.over_sampling import SMOTE
-from imblearn.pipeline import Pipeline
 from config_parser import ConfigParser
-from sklearn.calibration import calibration_curve, CalibratedClassifierCV
+from utils import create_dir
 
 RANDOM_STATE = 0
 
@@ -242,8 +246,7 @@ def main():
         configparser.write(configfile)
 
     directory = os.path.join(model_save_dir, 'train_local')
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    create_dir(directory)
 
     with open(os.path.join(directory, 'confidence.txt'), 'w') as t_f:
         for row in predictions_train:

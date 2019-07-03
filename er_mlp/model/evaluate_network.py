@@ -10,17 +10,25 @@ Description:
 
 To-do:
 """
+
+# standard imports
+import argparse
 import os
 import pickle
-import argparse
+
+# third party imports
 import numpy as np
 import tensorflow as tf
-import model_global
 from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
+
+# local imports
+import model_global
 from er_mlp import ERMLP
-from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats, save_results
+from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
+from utils import save_results
 from data_processor import DataProcessor
 from config_parser import ConfigParser
+from kids_log import set_logging
 
 def parse_argument():
     """
@@ -50,7 +58,7 @@ def main():
     """
     # set log and parse args
     args = parse_argument()
-    model_global.set_logging(args.logfile)
+    set_logging(args.logfile)
 
     # directory and filename setup
     model_instance_dir = 'model_instance'

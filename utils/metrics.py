@@ -13,15 +13,22 @@ To-do:
     2. combine roc_auc_stats and pr_stats into one maybe
         because they share lots of stuff.
 """
+
+# standard imports
+import datetime
+import logging as log
 import os
 import pickle
-import datetime
 import time
-import logging as log
+
+# third party imports
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score
 from scipy import interp
+
+# local imports
+from utils import create_dir
 
 def roc_auc_stats(num_preds, Y, predictions, predicates, pred_dic):
     """
@@ -201,8 +208,7 @@ def plot_roc(num_preds, Y, predictions, predicates, pred_dic, directory, name_of
     plt.legend(loc='lower right', prop={'size': 6})
 
     directory = directory + '/fig'
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    create_dir(directory)
 
     filename = directory + '/roc.png'
     plt.savefig(filename)
@@ -292,59 +298,13 @@ def plot_pr(num_preds, Y, predictions, predicates, pred_dic, directory, name_of_
     plt.legend(lines, labels, loc='upper right', prop={'size': 6})
 
     directory = directory + '/fig'
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    create_dir(directory)
 
     filename = directory + '/pr_' + name_of_file + st + '.png'
     plt.savefig(filename)
     print('saved:{!s}'.format(filename))
     with open(directory+'/pr_' + name_of_file + st + '.pkl', 'wb') as output:
         pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
-
-def save_to_text_file(results, directory):
-    """
-    Save the results to the text file.
-
-    Inputs:
-        results: same as that in save_results()
-        directory: that in save_results() + 'results'
-    """
-    with open(os.path.join(directory, 'results.txt'), 'w') as t_f:
-        t_f.write('Overall metrics: \n\n')
-
-        for metric, value in results['overall'].items():
-            t_f.write('{}: {}\n'.format(metric, value))
-
-        t_f.write('----------------------------------\n')
-        t_f.write('Predicates\n\n')
-
-        for predicate, metrics in results['predicate'].items():
-            t_f.write('metrics for {}: \n'.format(predicate))
-
-            for metric, value in metrics.items():
-                t_f.write('{}: {}\n'.format(metric, value))
-
-            t_f.write('----------------------------------\n')
-
-def save_results(results, directory):
-    """
-    Save evaluation results to the specified directory.
-
-    Inputs:
-        results: python dictionary where there are keys like
-            results['overall'], results['predicate'][pred_name]
-            and each key again has a value of dictionary
-            containing different evaluation results.
-        directory: folder to save the results
-    """
-    directory = os.path.join(directory, 'results')
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
-    with open(os.path.join(directory, 'results.pkl'), 'wb') as output:
-        pickle.dump(results, output, pickle.HIGHEST_PROTOCOL)
-
-    save_to_text_file(results, directory)
 
 def plot_cost(iterations, cost_list, directory):
     """
@@ -362,8 +322,7 @@ def plot_cost(iterations, cost_list, directory):
     plt.title('Loss per iteration of training')
 
     directory = directory + '/fig'
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    create_dir(directory)
 
     filename = directory + '/cost.png'
     plt.savefig(filename)
@@ -384,8 +343,7 @@ def plot_map(iterations, map_list, directory, filename='map.png'):
     plt.title('MAP per iteration of training')
 
     directory = os.path.join(directory, 'fig')
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    create_dir(directory)
 
     filename = os.path.join(directory, filename)
     plt.savefig(filename)
