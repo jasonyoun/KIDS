@@ -65,6 +65,8 @@ python3 -u evaluate.py --dir $config_dir --final_model
 ################
 # post process #
 ################
+cd $current_dir
+
 data_path=`grep 'DATA_PATH' configuration/$config_dir/config.sh | cut -d "=" -f 2 | sed 's/"//g'`
 hypotheses_file=$data_path/test.txt
 confidence_file=$stacked_instance_dir/$config_dir/test/confidence_stacked.txt

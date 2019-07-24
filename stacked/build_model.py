@@ -19,6 +19,7 @@ import sys
 
 # third party imports
 from imblearn.over_sampling import SMOTE
+from imblearn.pipeline import Pipeline
 import numpy as np
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -124,12 +125,12 @@ def randomized_search(configparser, train_x, train_y, test_x, test_y):
     clf = AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), random_state=RANDOM_STATE)
 
     param_distribution = {
-        'learning_rate': np.arange(
+        'adaboost__learning_rate': np.arange(
             float(configparser.getfloat('START', 'RANDOM_SEARCH_LEARNING_RATE')),
             float(configparser.getfloat('END', 'RANDOM_SEARCH_LEARNING_RATE')),
             float(configparser.getfloat('INCREMENT', 'RANDOM_SEARCH_LEARNING_RATE'))),
 
-        'n_estimators': np.arange(
+        'adaboost__n_estimators': np.arange(
             int(configparser.getint('START', section='RANDOM_SEARCH_ESTIMATORS')),
             int(configparser.getint('END', section='RANDOM_SEARCH_ESTIMATORS')),
             int(configparser.getint('INCREMENT', section='RANDOM_SEARCH_ESTIMATORS')))}
@@ -141,6 +142,9 @@ def randomized_search(configparser, train_x, train_y, test_x, test_y):
     train_indices = np.full(np.shape(train_x)[0], -1)
     test_indices = np.full(np.shape(test_x)[0], 0)
     test_fold = np.hstack((train_indices, test_indices))
+
+    ros = SMOTE(sampling_strategy='minority')
+    clf = Pipeline([('smote', ros), ('adaboost', clf)])
 
     random_search = RandomizedSearchCV(
         clf,
@@ -203,20 +207,18 @@ def main():
             print('No training data for predicate: {}'.format(key))
             continue
 
-        # use smote sampling to balance positives and negatives
-        if configparser.getbool('USE_SMOTE_SAMPLING'):
-            ros = SMOTE(sampling_strategy='minority')
-            train_x_pred, train_y_pred = ros.fit_sample(train_x_pred, train_y_pred.ravel())
-            train_y_pred = train_y_pred.reshape(-1, 1)
-
         if configparser.getbool('RUN_RANDOM_SEARCH'):
             ap_params = randomized_search(
-                configparser, train_x_pred, train_y_pred, test_x_pred, test_y_pred)
+                configparser,
+                train_x_pred,
+                train_y_pred,
+                test_x_pred,
+                test_y_pred)
 
             configparser.append(
                 'RANDOM_SEARCH_BEST_PARAMS_{}'.format(key),
-                {'n_estimators': ap_params['n_estimators'],
-                 'learning_rate': ap_params['learning_rate']})
+                {'n_estimators': ap_params['adaboost__n_estimators'],
+                 'learning_rate': ap_params['adaboost__learning_rate']})
 
         # build & fit model using the best parameters
         clf = AdaBoostClassifier(
@@ -225,12 +227,14 @@ def main():
             learning_rate=configparser.getfloat('learning_rate', section='RANDOM_SEARCH_BEST_PARAMS_{}'.format(key)),
             random_state=RANDOM_STATE)
 
-        if configparser.getbool('CLASSIFIER_CALIBRATION'):
-            final_clf = CalibratedClassifierCV(clf, method='isotonic', cv=5)
-        else:
-            final_clf = clf
+        ros = SMOTE(sampling_strategy='minority')
+        pipepline = Pipeline([('smote', ros), ('adaboost', clf)])
 
-        # fit the final chosen model (calibrated / uncalibrated)
+        if args.final_model:
+            final_clf = CalibratedClassifierCV(pipepline, method='isotonic', cv=5)
+        else:
+            final_clf = pipepline
+
         final_clf.fit(train_x_pred, train_y_pred.ravel())
         model_dic[idx] = final_clf
 

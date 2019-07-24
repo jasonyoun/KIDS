@@ -19,7 +19,9 @@ import pickle
 import sys
 
 # third party imports
+from matplotlib import pyplot
 import numpy as np
+from sklearn.calibration import calibration_curve
 from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
 
 # local imports
@@ -96,6 +98,14 @@ def main():
             probs = np.reshape(probs, (-1, 1))
             probabilities[indices] = probs
 
+            # # reliability diagram
+            # fop, mpv = calibration_curve(test_y, probs, n_bins=10, normalize=True)
+            # # plot perfectly calibrated
+            # pyplot.plot([0, 1], [0, 1], linestyle='--')
+            # # plot calibrated reliability
+            # pyplot.plot(mpv, fop, marker='.')
+            # pyplot.show()
+
             if not args.final_model:
                 classifications[indices] = clf.predict(X)
 
@@ -171,10 +181,11 @@ def main():
             for row in classifications:
                 t_f.write(str(row) + '\n')
 
-    _file = os.path.join(directory, 'confidence_stacked.txt')
-    with open(_file, 'w') as t_f:
-        for row in probabilities:
-            t_f.write(str(row) + '\n')
+    if args.final_model:
+        _file = os.path.join(directory, 'confidence_stacked.txt')
+        with open(_file, 'w') as t_f:
+            for row in probabilities:
+                t_f.write(str(row) + '\n')
 
     if not args.final_model:
         save_results(results, directory)
