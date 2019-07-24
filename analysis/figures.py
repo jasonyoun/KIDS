@@ -11,7 +11,6 @@ To-do:
 """
 # standard imports
 import argparse
-import glob
 import os
 import sys
 
@@ -19,11 +18,9 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy import interp
 
 # global variables
 DEFAULT_OUTDIR_STR = '../output'
-DEFAULT_CONFIDENCE_FILE_STR = 'hypotheses_confidence.txt'
 DEFAULT_TEST_STATS_FILE_STR = 'test_stats.txt'
 
 def parse_argument():
@@ -41,28 +38,6 @@ def parse_argument():
         help='Output directory.')
 
     return parser.parse_args()
-
-def analyze_hypotheses(filepath):
-    col_names = ['Subject', 'Predicate', 'Object', 'Label', 'Confidence']
-    pd_data = pd.read_csv(filepath, sep='\t', names=col_names)
-
-    # classify confidence into bins
-    bins = np.linspace(0, 1, 11)
-    pd_data['bin'] = pd.cut(pd_data['Confidence'], bins, include_lowest=True)
-
-    pd_data['bin'] = pd_data['bin'].astype(str)
-
-    bin_size = pd_data.groupby(pd_data['bin']).size()
-    bin_size = bin_size.rename(index={'(-0.001, 0.1]': '[0.0, 0.1]'})
-
-    print(bin_size)
-
-    ax = bin_size.plot.bar(logy=True, rot=45)
-    ax.set_title('Number of hypotheses belonging to each confidence interval.')
-    ax.set_xlabel('Confidence interval')
-    ax.set_ylabel('Count')
-
-    plt.tight_layout()
 
 def edges_statistics(filepath):
     pd_data = pd.read_csv(filepath, sep='\t')
@@ -132,7 +107,6 @@ def main():
     """
     args = parse_argument()
 
-    analyze_hypotheses(os.path.join(args.outdir, DEFAULT_CONFIDENCE_FILE_STR))
     edges_statistics(os.path.join(args.outdir, DEFAULT_TEST_STATS_FILE_STR))
 
     plt.show()
