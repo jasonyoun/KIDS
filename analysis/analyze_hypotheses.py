@@ -39,15 +39,11 @@ def parse_argument():
 
     return parser.parse_args()
 
-def bin_hypotheses(filepath):
-    col_names = ['Subject', 'Predicate', 'Object', 'Label', 'Confidence']
-    pd_data = pd.read_csv(filepath, sep='\t', names=col_names)
-
+def bin_hypotheses(pd_data):
     intervals = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
     intervals.reverse()
 
     dict_bin_count = {}
-    pd_copy = pd_data.copy()
 
     for i, interval in enumerate(intervals):
         if interval == 0.9:
@@ -55,9 +51,9 @@ def bin_hypotheses(filepath):
         else:
             bin_name = '[{}, {})'.format(interval, intervals[i-1])
 
-        pd_bin = pd_copy[pd_copy['Confidence'] >= interval]
+        pd_bin = pd_data[pd_data['Confidence'] >= interval]
         dict_bin_count[bin_name] = pd_bin.shape[0]
-        pd_copy = pd_copy.drop(pd_bin.index)
+        pd_data = pd_data.drop(pd_bin.index)
 
     print(dict_bin_count)
 
@@ -77,15 +73,35 @@ def bin_hypotheses(filepath):
 
     plt.tight_layout()
 
+def which_to_test(pd_data):
+    confidence = 0.7
+
+    pd_filtered = pd_data[pd_data['Confidence'] >= confidence]
+    print(pd_filtered.shape[0])
+
+    pd_group = pd_filtered.groupby('Object').size()
+    pd_group = pd_group.sort_values(ascending=False).to_frame(name='count')
+    pd_group['cum_sum'] = pd_group['count'].cumsum()
+    pd_group['cum_percentage'] = (pd_group['cum_sum'] / pd_group['count'].sum()) * 100
+
+    print(pd_group)
+
+    # pd_group.reset_index().to_csv('~/Jason/Shared/to_test.txt', sep='\t')
+
 def main():
     """
     Main function.
     """
     args = parse_argument()
 
-    bin_hypotheses(os.path.join(args.outdir, DEFAULT_CONFIDENCE_FILE_STR))
+    filepath = os.path.join(args.outdir, DEFAULT_CONFIDENCE_FILE_STR)
+    col_names = ['Subject', 'Predicate', 'Object', 'Label', 'Confidence']
+    pd_data = pd.read_csv(filepath, sep='\t', names=col_names)
 
-    plt.show()
+    # bin_hypotheses(pd_data.copy())
+    which_to_test(pd_data.copy())
+
+    # plt.show()
 
 if __name__ == '__main__':
     main()
