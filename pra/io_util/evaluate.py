@@ -160,10 +160,10 @@ def main():
         }
 
         if not args.final_model:
-            results['predicate'][pred_name]['f1'] = f1_measure_predicate,
-            results['predicate'][pred_name]['accuracy'] = accuracy_predicate,
-            results['predicate'][pred_name]['cm'] = confusion_predicate,
-            results['predicate'][pred_name]['precision'] = precision_predicate,
+            results['predicate'][pred_name]['f1'] = f1_measure_predicate
+            results['predicate'][pred_name]['accuracy'] = accuracy_predicate
+            results['predicate'][pred_name]['cm'] = confusion_predicate
+            results['predicate'][pred_name]['precision'] = precision_predicate
             results['predicate'][pred_name]['recall'] = recall_predicate
 
     mean_average_precision_test = pr_stats(len(relations), combined_labels_array, combined_scores_array, combined_predicates_array, predicates_dic)
@@ -183,10 +183,10 @@ def main():
     }
 
     if not args.final_model:
-        results['overall']['f1'] = f1_measure_test,
-        results['overall']['accuracy'] = accuracy_test,
-        results['overall']['cm'] = confusion_test,
-        results['overall']['precision'] = precision_test,
+        results['overall']['f1'] = f1_measure_test
+        results['overall']['accuracy'] = accuracy_test
+        results['overall']['cm'] = confusion_test
+        results['overall']['precision'] = precision_test
         results['overall']['recall'] = recall_test
 
     log.debug('test mean average precision: %f', mean_average_precision_test)

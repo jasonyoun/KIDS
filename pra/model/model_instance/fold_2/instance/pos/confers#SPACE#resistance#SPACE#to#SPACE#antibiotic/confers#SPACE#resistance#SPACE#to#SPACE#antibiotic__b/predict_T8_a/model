@@ -1,6 +1,6 @@
--3.05432	bias	
-0.26799	0~has,_has,confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	
-3.86749	0~is#SPACE#involved#SPACE#in,_is#SPACE#involved#SPACE#in,confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	
-1.60724	0~upregulated#SPACE#by#SPACE#antibiotic	
-0.03978	0~upregulated#SPACE#by#SPACE#antibiotic,_confers#SPACE#resistance#SPACE#to#SPACE#antibiotic,confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	
-2.94149	0~upregulated#SPACE#by#SPACE#antibiotic,_confers#SPACE#resistance#SPACE#to#SPACE#antibiotic,upregulated#SPACE#by#SPACE#antibiotic	
+-3.04158	bias	
+0.34937	0~has,_has,confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	
+2.33024	0~is#SPACE#involved#SPACE#in,_is#SPACE#involved#SPACE#in,confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	
+1.35903	0~upregulated#SPACE#by#SPACE#antibiotic	
+0.12448	0~upregulated#SPACE#by#SPACE#antibiotic,_confers#SPACE#resistance#SPACE#to#SPACE#antibiotic,confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	
+2.75631	0~upregulated#SPACE#by#SPACE#antibiotic,_confers#SPACE#resistance#SPACE#to#SPACE#antibiotic,upregulated#SPACE#by#SPACE#antibiotic	
