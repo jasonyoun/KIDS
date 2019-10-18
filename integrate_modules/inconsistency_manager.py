@@ -11,9 +11,15 @@ To-do:
     1. Move _SPO_LIST to global file.
     2. Move inconsistency correctors as sub class.
 """
+
+# standard imports
 import logging as log
-import xml.etree.ElementTree as ET
+
+# third party imports
 import pandas as pd
+import xml.etree.ElementTree as ET
+
+# local imports
 from .utilities import get_pd_of_statement
 from .inconsistency_correctors.inconsistency_corrector import InconsistencyCorrector
 
@@ -157,15 +163,59 @@ class InconsistencyManager(InconsistencyCorrector):
             pd_data, inconsistencies, **kwargs)
 
     @staticmethod
-    def reinstate_resolved_inconsistencies(pd_data_without_inconsistencies,
-                                           pd_validated_inconsistencies, mode='only_validated'):
+    def validate_resolved_inconsistencies(
+            pd_resolved,
+            pd_validated,
+            save_path,
+            save_only_validated=False):
+
+        # add new columns that will be used for validation
+        pd_combined = pd_resolved.copy()
+        pd_combined['Validation'] = ''
+        pd_combined['Match'] = ''
+
+        for _, row in pd_validated.iterrows():
+            gene = row.Subject
+            predicate = row.Predicate
+            antibiotic = row.Object
+
+            match = pd_combined[pd_combined.Subject == gene]
+            match = match[match.Object == antibiotic]
+
+            # if there are more than one matches, there is something wrong
+            if match.shape[0] > 1:
+                log.error('Found {} matching resolved inconsistencies for ({}, {}).'.format(match.shape[0], gene, antibiotic))
+                sys.exit()
+
+            if match.shape[0] == 0:
+                continue
+
+            pd_combined.loc[match.index, 'Validation'] = predicate
+
+            if pd_combined.loc[match.index, 'Predicate'].str.contains(predicate).values[0]:
+                pd_combined.loc[match.index, 'Match'] = 'True'
+            else:
+                pd_combined.loc[match.index, 'Match'] = 'False'
+
+        if save_only_validated:
+            pd_combined = pd_combined[pd_combined.Match != '']
+
+        pd_combined.to_csv(save_path, sep='\t', index=False)
+
+        return pd_combined
+
+    @staticmethod
+    def reinstate_resolved_inconsistencies(
+            pd_data_without_inconsistencies,
+            pd_validated,
+            mode='only_validated'):
         """
         Insert resolved inconsistencies back into the
         original data to create final knowledge graph.
 
         Inputs:
             pd_data_without_inconsistencies: data without inconsistent triplets
-            pd_validated_inconsistencies: inconsistencies where some / all of them are validated
+            pd_validated: inconsistencies where some / all of them are validated
             mode: which resolved inconsistencies to reinstate ('all' | 'only_validated')
 
         Returns:
@@ -177,7 +227,7 @@ class InconsistencyManager(InconsistencyCorrector):
                            'Conflicting tuple info']
 
         # drop unnecessary columns
-        pd_filtered = pd_validated_inconsistencies.drop(columns=columns_to_drop)
+        pd_filtered = pd_validated.drop(columns=columns_to_drop)
 
         log.info('Number of data without inconsistencies: %d',
                  pd_data_without_inconsistencies.shape[0])

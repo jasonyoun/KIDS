@@ -95,7 +95,9 @@ class DataManager:
             if (before - after) > 0:
                 log.warning('Dropping %d missing values.', (before - after))
 
-            pd_data = self.name_map_data(pd_data, str_source)
+            log.info('Applying name mapping to data from source %s', str_source)
+
+            pd_data = self.name_map_data(pd_data)
             pd_data['Source'] = str_source
             list_integrated_data.append(pd_data)
 
@@ -130,13 +132,12 @@ class DataManager:
 
         return pd_data.drop_duplicates()
 
-    def name_map_data(self, pd_data, str_source):
+    def name_map_data(self, pd_data):
         """
         (Private) Perform name mapping given data from single source.
 
         Inputs:
             pd_data: all the data from single source
-            str_source: source name that is being processed
 
         Returns:
             pd_converted_data: name mapped data
@@ -158,23 +159,14 @@ class DataManager:
                 return row
 
             new_x = row.copy()
-            if (row['Subject'] in dict_map.values()) and (row['Object'] in dict_map):
-                # map the object name
-                new_x['Object'] = dict_map[row['Object']]
-            elif (row['Object'] in dict_map.values()) and (row['Subject'] in dict_map):
-                # map the subject name
+
+            if (row['Subject'] in dict_map) and (row['Subject'] not in dict_map.values()):
                 new_x['Subject'] = dict_map[row['Subject']]
-            elif (row['Subject'] in dict_map) and (row['Object'] in dict_map):
-                # map both subject and object naems
-                new_x['Subject'] = dict_map[row['Subject']]
+
+            if (row['Object'] in dict_map) and (row['Object'] not in dict_map.values()):
                 new_x['Object'] = dict_map[row['Object']]
-            else:
-                # we should've covered everything by now
-                pass
 
             return new_x
-
-        log.info('Applying name mapping to data from source %s', str_source)
 
         pd_converted_data = pd_data.apply(has_mapping_name, axis=1, args=(dict_map, ))
 

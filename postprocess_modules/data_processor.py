@@ -58,10 +58,6 @@ class DataProcessor():
         # drop unnecessary columns
         pd_data = pd.read_csv(self.data_path, sep='\t').drop(self.COLUMN_NAMES_TO_DROP, axis=1)
 
-        # remove temporal information
-        pd_data = self._remove_temporal_info(pd_data)
-        pd_data = pd_data.drop_duplicates(keep='first')
-
         # fill label column
         pd_data = self._fill_label_column(pd_data)
 
@@ -74,28 +70,6 @@ class DataProcessor():
 
         label_group = pd_data.groupby('Label')
         log.debug('Size of data grouped by label: \n%s', label_group.size())
-
-        return pd_data
-
-    def _remove_temporal_info(self, pd_data):
-        """
-        (Private) Remove temporal information.
-        For now, there exists temporal info only for C(N)RTA and (N)UBA predicates.
-
-        Inputs:
-            pd_data: data which contains temporal information
-
-        Returns:
-            pd_data: data with temporal information removed
-        """
-        log.info('Removing temporal info from the predicates...')
-
-        # remove temporal data in predicate
-        pd_data.loc[pd_data['Predicate'].str.startswith(self.CRTA_STR), 'Predicate'] = self.CRTA_STR
-        pd_data.loc[pd_data['Predicate'].str.startswith(self.CNRTA_STR), 'Predicate'] = self.CNRTA_STR
-
-        pd_data.loc[pd_data['Predicate'].str.startswith(self.UBA_STR), 'Predicate'] = self.UBA_STR
-        pd_data.loc[pd_data['Predicate'].str.startswith(self.NUBA_STR), 'Predicate'] = self.NUBA_STR
 
         return pd_data
 

@@ -26,14 +26,8 @@ from data_manager import DataManager
 
 pd.options.mode.chained_assignment = None
 
-# default paths
-DEFAULT_OUTPUT_DIR_STR = '../output'
-
 # default file names
-DEFAULT_INCONSISTENCY_FILE_TXT = '../output/resolved_inconsistencies.txt'
-DEFAULT_VALIDATION_FILE_TXT = '../data/inconsistency_validation/validation_results.txt'
-DEFAULT_ANALYSIS_RESULT_TXT = 'inconsistency_analysis.txt'
-DEFAULT_COMBINED_EXCEL = 'resolution_validation_combined.xlsx'
+DEFAULT_VALIDATED_INCONSISTENCIES_TXT = 'validated_inconsistencies.txt'
 
 DEFAULT_MAP_FILE = '../data/data_map.txt'
 
@@ -54,21 +48,6 @@ def parse_argument():
         - parsed arguments
     """
     parser = argparse.ArgumentParser(description='Analyze inconsistency validation experimental results.')
-
-    parser.add_argument(
-        '--output_path',
-        default=DEFAULT_OUTPUT_DIR_STR,
-        help='Directory to save the analysis results')
-
-    parser.add_argument(
-        '--inconsistency_file',
-        default=DEFAULT_INCONSISTENCY_FILE_TXT,
-        help='Filepath containing resolved inconsistencies info')
-
-    parser.add_argument(
-        '--validation_file',
-        default=DEFAULT_VALIDATION_FILE_TXT,
-        help='Filepath containing validation info')
 
     parser.add_argument(
         '--threshold_key',
@@ -100,62 +79,6 @@ def calculate_f1(recall, precision):
         return 0
 
     return (2 * precision * recall) / (precision + recall)
-
-def combine_resolution_with_validation(resolved, validated, save_only_validated, save_path=None):
-    if Path(resolved).suffix == '.txt':
-        pd_combined = pd.read_csv(resolved, sep='\t')
-    elif Path(resolved).suffix == '.xlsx':
-        pd_combined = pd.read_excel(resolved)
-    else:
-        sys.exit('Invalid file extension for given file: {}'.format(resolved))
-
-    if Path(validated).suffix == '.txt':
-        pd_validate = pd.read_csv(validated, sep='\t')
-    elif Path(validated).suffix == '.xlsx':
-        pd_validate = pd.read_excel(validated)
-    else:
-        sys.exit('Invalid file extension for given file: {}'.format(validated))
-
-    # need to perform name mapping because we may compare
-    # validation with only single source that has no name mapping yet
-    pd_combined = DataManager(map_file=DEFAULT_MAP_FILE).name_map_data(pd_combined, resolved)
-
-    # add new columns that will be used for validation
-    pd_combined['Validation'] = ''
-    pd_combined['Match'] = ''
-
-    for _, row in pd_validate.iterrows():
-        gene = row.Subject
-        predicate = row.Predicate
-        antibiotic = row.Object
-
-        match = pd_combined[pd_combined.Subject == gene]
-        match = match[match.Object == antibiotic]
-
-        # if there are more than one matches, there is something wrong
-        if match.shape[0] > 1:
-            log.error('Found {} matching resolved inconsistencies for ({}, {}).'.format(match.shape[0], gene, antibiotic))
-            sys.exit()
-
-        if match.shape[0] == 0:
-            continue
-
-        pd_combined.loc[match.index, 'Validation'] = predicate
-
-        if pd_combined.loc[match.index, 'Predicate'].str.contains(predicate).values[0]:
-            pd_combined.loc[match.index, 'Match'] = 'True'
-        else:
-            pd_combined.loc[match.index, 'Match'] = 'False'
-
-    print(pd_combined)
-
-    if save_path:
-        if save_only_validated:
-            pd_combined = pd_combined[pd_combined.Match != '']
-
-        pd_combined.to_excel(save_path, index=False)
-
-    return pd_combined
 
 def calculate_statistics(pd_data, threshold_key=None):
     # only look at the data that we validated
@@ -223,16 +146,15 @@ def main():
     set_logging()
     args = parse_argument()
 
-    pd_combined = combine_resolution_with_validation(
-        args.inconsistency_file,
-        args.validation_file,
-        args.save_only_validated,
-        save_path=os.path.join(args.output_path, DEFAULT_COMBINED_EXCEL))
+    pd_validated_inconsistencies = pd.read_csv(
+            os.path.join('../output', DEFAULT_VALIDATED_INCONSISTENCIES_TXT),
+            sep='\t',
+            na_values=[],
+            keep_default_na=False)
 
-    calculate_statistics(pd_combined.copy(), threshold_key=args.threshold_key)
+    calculate_statistics(pd_validated_inconsistencies, threshold_key=args.threshold_key)
 
     plt.show()
-
 
 if __name__ == '__main__':
     main()

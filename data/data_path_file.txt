@@ -9,4 +9,3 @@ Path	Source
 ~/Jason/Research/KBase/KnowledgeScholar/data/dataset/Girgis_et_al/Girgis_et_al.txt	Girgis
 ~/Jason/Research/KBase/KnowledgeScholar/data/dataset/Soo_et_al/Soo_et_al.txt	Soo
 ~/Jason/Research/KBase/KnowledgeScholar/data/dataset/CARD/CARD_Antibiotics_Resistance_Ecoli_Genes.txt	CARD
-~/Jason/Research/KBase/KnowledgeScholar/data/dataset/Youn_et_al/Youn_et_al.txt	Youn
