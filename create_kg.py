@@ -21,29 +21,14 @@ import pandas as pd
 # local imports
 from integrate_modules.data_manager import DataManager
 from integrate_modules.inconsistency_manager import InconsistencyManager
-from integrate_modules.report_manager import plot_trustworthiness
+from integrate_modules.report_manager import plot_integration_summary
+from tools.config_parser import ConfigParser
+from tools.set_logging import set_logging
 
-# default arguments
-DEFAULT_DATA_PATH_STR = './data/data_path_file.txt'
-DEFAULT_MAP_STR = './data/data_map.txt'
-DEFAULT_DATA_RULE_STR = './data/data_rules.xml'
-DEFAULT_INCONSISTENCY_RULES_STR = './data/inconsistency_rules.xml'
-DEFAULT_WITHOUT_INCONSISTSENCIES_STR = './output/kg_without_inconsistencies.txt'
-DEFAULT_RESOLVED_INCONSISTENCIES_STR = './output/resolved_inconsistencies.txt'
-DEFAULT_VALIDATION_FILE_TXT = './data/inconsistency_validation/validation_results.txt'
-DEFAULT_VALIDATED_INCONSISTENCIES_STR = './output/validated_inconsistencies.txt'
-DEFAULT_FINAL_KG_STR = './output/kg_final.txt'
+# default variables
+DEFAULT_CONFIG_FILE = './configuration/create_kg_config.ini'
 DEFAULT_PHASE_STR = 'all'
-
-def set_logging():
-    """
-    Configure logging.
-    """
-    log.basicConfig(format='(%(levelname)s) %(filename)s: %(message)s', level=log.DEBUG)
-
-    # set logging level to WARNING for matplotlib
-    logger = log.getLogger('matplotlib')
-    logger.setLevel(log.WARNING)
+DEFAULT_LOG_LEVEL = 'DEBUG'
 
 def parse_argument():
     """
@@ -55,64 +40,23 @@ def parse_argument():
     parser = argparse.ArgumentParser(description='Integrate knowledgebase from multiple sources.')
 
     parser.add_argument(
-        '--data_path',
-        default=DEFAULT_DATA_PATH_STR,
-        help='Path to the file data_path_file.txt')
-
-    parser.add_argument(
-        '--map',
-        default=DEFAULT_MAP_STR,
-        help='Path to the file data_map.txt')
-
-    parser.add_argument(
-        '--data_rule',
-        default=DEFAULT_DATA_RULE_STR,
-        help='Path to the file data_rules.xml')
-
-    parser.add_argument(
-        '--inconsistency_rule',
-        default=DEFAULT_INCONSISTENCY_RULES_STR,
-        help='Path to the file inconsistency_rules.xml')
-
-    parser.add_argument(
-        '--without_inconsistsencies',
-        default=DEFAULT_WITHOUT_INCONSISTSENCIES_STR,
-        help='Path to save the knowledge graph without inconsistencies')
-
-    parser.add_argument(
-        '--resolved_inconsistencies',
-        default=DEFAULT_RESOLVED_INCONSISTENCIES_STR,
-        help='Path to save the inconsistencies file')
-
-    parser.add_argument(
-        '--validation_file',
-        default=DEFAULT_VALIDATION_FILE_TXT,
-        help='Filepath containing validation info')
-
-    parser.add_argument(
-        '--validated_inconsistencies',
-        default=DEFAULT_VALIDATED_INCONSISTENCIES_STR,
-        help='Path for validationed inconsistencies file')
-
-    parser.add_argument(
-        '--data_out',
-        default=DEFAULT_FINAL_KG_STR,
-        help='Path to save the final knowledge graph')
-
-    parser.add_argument(
-        '--use_temporal',
-        default=False,
-        action='store_true',
-        help='Remove temporal data unless this option is set')
+        '--config_file',
+        default=DEFAULT_CONFIG_FILE,
+        help='INI configuration file location.')
 
     parser.add_argument(
         '--phase',
         default=DEFAULT_PHASE_STR,
-        help='Select one of three phase strings (phase1 | phase2 | phase3 | all)')
+        help='Select phase to run (phase1 | phase2 | all).')
+
+    parser.add_argument(
+        '--log_level',
+        default=DEFAULT_LOG_LEVEL,
+        help='Set log level (DEBUG | INFO | WARNING | ERROR).')
 
     # check for correct phase argument
     phase_arg = parser.parse_args().phase
-    if phase_arg not in ['phase1', 'phase2', 'phase3', 'all']:
+    if phase_arg not in ['phase1', 'phase2', 'all']:
         raise ValueError('Invalid phase argumnet \'{}\'!'.format(phase_arg))
 
     return parser.parse_args()
@@ -122,70 +66,100 @@ def main():
     Main function.
     """
     # set log and parse args
-    set_logging()
     args = parse_argument()
+    set_logging(log_level=args.log_level)
+
+    # setup config parser
+    config_parser = ConfigParser(args.config_file)
 
     # construct DataManager class
-    data_manager = DataManager(args.data_path, args.map, args.data_rule)
+    data_manager = DataManager(
+        config_parser.getstr('data_path'),
+        config_parser.getstr('name_map'),
+        config_parser.getstr('data_rule'),
+        config_parser.getstr('replace_rule'))
 
     # construct InconsistencyManager class
     inconsistency_manager = InconsistencyManager(
-        args.inconsistency_rule, resolver_mode='AverageLog')
+        config_parser.getstr('inconsistency_rules'),
+        resolver_mode=config_parser.getstr('resolver_mode'))
 
     if args.phase == 'phase1':
-        # perform 1) knowledge integration and 2) knowledge rule application
-        pd_data = data_manager.integrate_data()
+        # perform knowledge integration
+        pd_data = data_manager.integrate()
 
-        # remove temporal data in predicate
-        if not args.use_temporal:
-            pd_data = data_manager.drop_temporal_info(pd_data)
+        # perform name mapping
+        pd_data = data_manager.map_name(pd_data)
+
+        # perform knowledge inferral
+        pd_data = data_manager.infer(pd_data)
+
+        # replace some parts of the data (currently used to drop temporal data)
+        pd_data = data_manager.replace(pd_data)
 
         # perform inconsistency detection
-        inconsistencies = inconsistency_manager.detect_inconsistencies(pd_data)
+        inconsistencies = inconsistency_manager.detect(pd_data)
 
         # perform inconsistency resolution and parse the results
-        resolution_result = inconsistency_manager.resolve_inconsistencies(pd_data, inconsistencies)
+        resolution_result = inconsistency_manager.resolve(pd_data, inconsistencies)
         pd_resolved_inconsistencies = resolution_result[0]
         pd_without_inconsistencies = resolution_result[1]
         np_trustworthiness_vector = resolution_result[2]
 
-        # report data integration results
-        plot_trustworthiness(pd_data, np_trustworthiness_vector, inconsistencies)
+        # report summary of integration
+        plot_integration_summary(
+            pd_data,
+            np_trustworthiness_vector,
+            inconsistencies,
+            config_parser.getstr('integration_summary_plot'))
 
-        # save results for wet lab validation
+        # save results
         log.info('Saving knowledge graph without inconsistencies to \'%s\'',
-                 args.without_inconsistsencies)
-        pd_without_inconsistencies.to_csv(args.without_inconsistsencies, index=False, sep='\t')
+                 config_parser.getstr('without_inconsistsencies'))
+        pd_without_inconsistencies.to_csv(
+            config_parser.getstr('without_inconsistsencies'),
+            index=False,
+            sep='\t')
 
-        log.info('Saving resolved inconsistencies to \'%s\'', args.resolved_inconsistencies)
-        pd_resolved_inconsistencies.to_csv(args.resolved_inconsistencies, index=False, sep='\t')
+        log.info('Saving resolved inconsistencies to \'%s\'',
+                 config_parser.getstr('resolved_inconsistencies'))
+        pd_resolved_inconsistencies.to_csv(
+            config_parser.getstr('resolved_inconsistencies'),
+            index=False,
+            sep='\t')
 
     if args.phase == 'phase2':
-        pd_resolved = pd.read_csv(args.resolved_inconsistencies, sep='\t')
-        pd_validated = pd.read_csv(args.validation_file, sep='\t')
-        pd_resolved = data_manager.name_map_data(pd_resolved)
+        # read the files saved in phase1
+        pd_without_inconsistencies = pd.read_csv(
+            config_parser.getstr('without_inconsistsencies'), sep='\t')
+        pd_resolved = pd.read_csv(
+            config_parser.getstr('resolved_inconsistencies'), sep='\t')
 
-        inconsistency_manager.validate_resolved_inconsistencies(
+        # read validation results
+        pd_validated = pd.read_csv(
+            config_parser.getstr('validation_results'), sep='\t')
+
+        # compare computational resolution results with validation results
+        pd_resolved_and_validated = inconsistency_manager.compare_resolution_with_validation(
             pd_resolved,
-            pd_validated,
-            args.validated_inconsistencies)
+            pd_validated)
 
-    if args.phase == 'phase3':
-        # load previously saved results and validation results
-        pd_without_inconsistencies = pd.read_csv(args.without_inconsistsencies, sep='\t')
-        pd_validated_inconsistencies = pd.read_csv(
-            args.validated_inconsistencies,
-            sep='\t',
-            na_values=[],
-            keep_default_na=False)
+        # save resolution validation comparison result
+        log.info('Saving resolved and validated inconsistencies to \'%s\'',
+                 config_parser.getstr('validated_inconsistencies'))
+        pd_resolved_and_validated.to_csv(
+            config_parser.getstr('validated_inconsistencies'),
+            index=False,
+            sep='\t')
 
-        # insert resolved inconsistsencies back into the KG
-        pd_data_final = inconsistency_manager.reinstate_resolved_inconsistencies(
+        # insert resolved and validated inconsistsencies back into the KG
+        pd_final = inconsistency_manager.reinstate_resolved_and_validated(
             pd_without_inconsistencies,
-            pd_validated_inconsistencies)
+            pd_resolved_and_validated)
 
         # save integrated data
-        pd_data_final.to_csv(args.data_out, index=False, sep='\t')
+        log.info('Saving final knowledge graph to \'%s\'', config_parser.getstr('final_kg'))
+        pd_final.to_csv(config_parser.getstr('final_kg'), index=False, sep='\t')
 
 if __name__ == '__main__':
     main()

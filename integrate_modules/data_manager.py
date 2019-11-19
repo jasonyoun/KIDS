@@ -7,25 +7,21 @@ Authors:
 
 Description:
     Python class to manage the dataset.
-    Step 1. Perform name mapping.
-    Step 2. Apply data rule to infer new data.
 
 To-do:
-    1. Maybe split integrate_data() into two functions name_map() and data_rule()
-    2. Move _SPO_LIST to global file.
-    3. Define remove temporal info predicates in the xml file.
 """
-#!/usr/bin/python
-
+# standard imports
+import logging as log
 import os
 import sys
-import logging as log
-import xml.etree.ElementTree as ET
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), './'))
+
+# third party imports
 import pandas as pd
+import xml.etree.ElementTree as ET
 
-DIRECTORY = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(DIRECTORY, './'))
-
+# local imports
 from utilities import get_pd_of_statement
 
 class DataManager:
@@ -33,59 +29,39 @@ class DataManager:
     Class for managing the data.
     """
 
-    #######################################
-    # we probably need to get rid of this #
-    #######################################
-    SPO_LIST = ['Subject', 'Predicate', 'Object']
-    CRA_STR = 'confers resistance to antibiotic'
-    CNRA_STR = 'confers no resistance to antibiotic'
-    UA_STR = 'upregulated by antibiotic'
-    NUA_STR = 'not upregulated by antibiotic'
-
-    def __init__(self, data_paths=None, map_file=None, data_rule_file=None):
+    def __init__(self, data_paths, map_file=None, data_rule_file=None, replace_rule_file=None):
         """
         Class constructor for DataManager. All inputs are optional
         since only name mapping may be used somewhere else.
 
         Inputs:
-            data_paths: (optional) path & source for each dataset
-            map_file: (optional) data name mapping file name
-            data_rule_file: (optional) data rule file name
+            data_paths: (str) Filepath containing data sources.
+            map_file: (str, optional) Filepath of name mapping table.
+            data_rule_file: (str, optional) Filepath for knowledge inferral.
+            replace_rule_file: (str, optional) Filepath for any replacements.
         """
         self.data_paths = data_paths
         self.map_file = map_file
         self.data_rule_file = data_rule_file
+        self.replace_rule_file = replace_rule_file
 
-    def integrate_data(self):
+    def integrate(self):
         """
-        Integrate data from multiple sources and
-        generate name mapped, data rule applied data.
+        Integrate data from multiple sources.
 
         Returns:
-            pd_integrated_data: resulting integrated data
-
-                       Subject     Predicate Object Source
-                0          lrp  no represses   fadD  hiTRN
-                1          fur  no represses   yfeD  hiTRN
-                2          fnr  no represses   ybhN  hiTRN
-                3          crp  no represses   uxuR  hiTRN
-                                ...
+            pd_integrated: (pd.DataFrame) Integrated data.
         """
-        list_integrated_data = []
-
-        if isinstance(self.data_paths, str):
-            pd_data_paths = pd.read_csv(self.data_paths, sep='\t', comment='#')
-        else:
-            pd_data_paths = self.data_paths
+        list_integrated = []
+        pd_data_paths = pd.read_csv(self.data_paths, sep='\t')
 
         # iterate over each dataset and perform name mappipng
         for _, row in pd_data_paths.iterrows():
-            str_source = row['Source']
-            str_path = row['Path']
+            source = row['Source']
+            path = row['Path']
 
-            log.info('Processing source %s using %s', str_source, str_path)
-
-            pd_data = pd.read_csv(str_path, '\t')
+            log.info('Processing source %s using %s', source, path)
+            pd_data = pd.read_csv(path, '\t')
 
             # drop missing values if there's any
             before = pd_data.shape[0]
@@ -95,57 +71,40 @@ class DataManager:
             if (before - after) > 0:
                 log.warning('Dropping %d missing values.', (before - after))
 
-            log.info('Applying name mapping to data from source %s', str_source)
+            log.info('Applying name mapping to data from source %s', source)
 
-            pd_data = self.name_map_data(pd_data)
-            pd_data['Source'] = str_source
-            list_integrated_data.append(pd_data)
+            # pd_data = self.name_map_data(pd_data)
+            pd_data['Source'] = source
+            list_integrated.append(pd_data)
 
-            log.info('Added %d tuples from source %s', pd_data.shape[0], str_source)
+            log.info('Added %d triplets from source %s', pd_data.shape[0], source)
 
-        # apply data rule
-        pd_integrated_data = pd.concat(list_integrated_data, sort=True)
-        if self.data_rule_file:
-            pd_integrated_data = self._apply_data_rule(pd_integrated_data)
-        pd_integrated_data.index = range(pd_integrated_data.shape[0]) # update the index
+        # concatenate data
+        pd_integrated = pd.concat(list_integrated, sort=True)
+        log.info('Total of %d triplets integrated.', pd_integrated.shape[0])
 
-        log.info('Total of %d tuples integrated.', pd_integrated_data.shape[0])
+        return pd_integrated.reset_index(drop=True)
 
-        return pd_integrated_data
-
-    def drop_temporal_info(self, pd_data):
+    def map_name(self, pd_data):
         """
-        Remove temporal data in the predicate.
+        Perform name mapping given data from single source.
 
         Inputs:
-            pd_data: integrated data using self.pd_data()
+            pd_data: (pd.DataFrame) Data that needs name mapping.
 
         Returns:
-            pandas dataframe whose predicate does not contain temporal information
+            pd_mapped: (pd.DataFrame) Name mapped data.
         """
+        if not self.map_file:
+            log.info('Mapping file not specified. Skipping name mapping...')
+            return pd_data
 
-        pd_data.loc[pd_data['Predicate'].str.startswith(self.CRA_STR), 'Predicate'] = self.CRA_STR
-        pd_data.loc[pd_data['Predicate'].str.startswith(self.CNRA_STR), 'Predicate'] = self.CNRA_STR
+        log.info('Applyg name mapping table...')
 
-        pd_data.loc[pd_data['Predicate'].str.startswith(self.UA_STR), 'Predicate'] = self.UA_STR
-        pd_data.loc[pd_data['Predicate'].str.startswith(self.NUA_STR), 'Predicate'] = self.NUA_STR
-
-        return pd_data.drop_duplicates()
-
-    def name_map_data(self, pd_data):
-        """
-        (Private) Perform name mapping given data from single source.
-
-        Inputs:
-            pd_data: all the data from single source
-
-        Returns:
-            pd_converted_data: name mapped data
-        """
         # open name mapping file
-        with open(self.map_file) as _file:
-            next(_file) # skip the header
-            map_file_content = _file.readlines()
+        with open(self.map_file) as file:
+            next(file) # skip the header
+            map_file_content = file.readlines()
 
         # store dictionary of the name mapping information
         dict_map = {}
@@ -154,36 +113,41 @@ class DataManager:
             dict_map[key] = value
 
         def has_mapping_name(row, dict_map):
+            row_copy = row.copy()
+            values = dict_map.values()
+
             # return original if both subject and object are already using correct name
-            if (row['Subject'] in dict_map.values()) and (row['Object'] in dict_map.values()):
+            if (row['Subject'] in values) and (row['Object'] in values):
                 return row
 
-            new_x = row.copy()
+            if (row['Subject'] in dict_map) and (row['Subject'] not in values):
+                row_copy['Subject'] = dict_map[row['Subject']]
 
-            if (row['Subject'] in dict_map) and (row['Subject'] not in dict_map.values()):
-                new_x['Subject'] = dict_map[row['Subject']]
+            if (row['Object'] in dict_map) and (row['Object'] not in values):
+                row_copy['Object'] = dict_map[row['Object']]
 
-            if (row['Object'] in dict_map) and (row['Object'] not in dict_map.values()):
-                new_x['Object'] = dict_map[row['Object']]
+            return row_copy
 
-            return new_x
+        pd_mapped = pd_data.apply(has_mapping_name, axis=1, args=(dict_map, ))
 
-        pd_converted_data = pd_data.apply(has_mapping_name, axis=1, args=(dict_map, ))
+        return pd_mapped
 
-        return pd_converted_data
-
-    def _apply_data_rule(self, pd_data):
+    def infer(self, pd_data):
         """
-        (Private) Apply data rule and infer new data.
+        Apply data rule and infer new data.
 
         Inputs:
-            pd_data: name mapped data integrated from all the sources
+            pd_data: (pd.DataFrame) Data to infer new knowledge from.
 
         Returns:
-            pd_new_data: data with new inferred data added
+            pd_updated: (pd.DataFrame) Data with new inferred data added.
         """
+        if not self.data_rule_file:
+            log.info('Data rule file not specified. Skipping knowledge inferral...')
+            return pd_data
+
         data_rules = ET.parse(self.data_rule_file).getroot()
-        pd_new_data = pd_data.copy()
+        pd_updated = pd_data.copy()
 
         log.info('Applying data rule to infer new data using %s', self.data_rule_file)
 
@@ -195,9 +159,9 @@ class DataManager:
             if_statement = data_rule.find('if')
             pd_if_statement = get_pd_of_statement(if_statement)
             indices_meeting_if = (pd_data[pd_if_statement.index] == pd_if_statement).all(1).values
-            pd_rule_specific_new_data = pd_data[indices_meeting_if].copy()
+            pd_new_data = pd_data[indices_meeting_if].copy()
 
-            if pd_rule_specific_new_data.shape[0] == 0:
+            if pd_new_data.shape[0] == 0:
                 log.debug('\tNo new data inferred using this data rule')
                 continue
 
@@ -205,18 +169,69 @@ class DataManager:
             # and change it with the original (predicate, object, or both)
             then_statement = data_rule.find('then')
             pd_then_statement = get_pd_of_statement(then_statement)
-            pd_rule_specific_new_data[pd_then_statement.index] = pd_then_statement.tolist()
+            pd_new_data[pd_then_statement.index] = pd_then_statement.tolist()
 
             # append the new data to the original
-            pd_new_data = pd_new_data.append(pd_rule_specific_new_data)
+            pd_updated = pd_updated.append(pd_new_data)
 
-            log.debug('\t%d new tuples found using this data rule',
-                      pd_rule_specific_new_data.shape[0])
+            log.debug('\t%d new triplets found using this data rule', pd_new_data.shape[0])
 
         # drop the duplicates
-        pd_new_data = pd_new_data.drop_duplicates()
+        pd_updated = pd_updated.drop_duplicates()
 
-        log.info('Total of %d new tuples added based on the data rule after dropping the duplicates',
-                 (pd_new_data.shape[0] - pd_data.shape[0]))
+        log.info('Total of %d new triplets added based on the data rule after dropping the duplicates',
+                 (pd_updated.shape[0] - pd_data.shape[0]))
 
-        return pd_new_data
+        return pd_updated.reset_index(drop=True)
+
+    def replace(self, pd_data):
+        """
+        Replace any parts of the data if necessary.
+        (Currently used specifically to drop temporal data.)
+
+        Inputs:
+            pd_data: (pd.DataFrame) Data that has parts to be replaced.
+
+        Returns:
+            pd_replaced: (pd.DataFrame) Data with parts replaced.
+        """
+        if not self.replace_rule_file:
+            log.info('Replace rule file not specified. Skipping data replacement...')
+            return pd_data
+
+        replace_rules = ET.parse(self.replace_rule_file).getroot()
+        pd_replaced = pd_data.copy()
+
+        log.info('Replacing parts of the data using %s', self.replace_rule_file)
+
+        # iterate over each data rule
+        for replace_rule in replace_rules:
+            log.debug('Processing replace rule %s', replace_rule.get('name'))
+
+            # find indices that meets the rule's if statement
+            if_statement = replace_rule.find('if')
+            pd_if_statement = get_pd_of_statement(if_statement)
+            if_name = pd_if_statement.index[0]
+            if_value = pd_if_statement[0]
+            indices_meeting_if = (pd_data[if_name].str.contains(if_value))
+
+            if not indices_meeting_if.any():
+                log.debug('\tNothing to replace using this rule')
+                continue
+
+            # get the then statement that we are going to replace with
+            then_statement = replace_rule.find('then')
+            pd_then_statement = get_pd_of_statement(then_statement)
+            then_name = pd_then_statement.index[0]
+            then_value = pd_then_statement[0]
+
+            assert if_name == then_name
+
+            pd_replaced.loc[indices_meeting_if, if_name] = then_value
+
+            log.debug('\t%d triplets replaced using this rule', indices_meeting_if.sum())
+
+        # drop duplicates
+        pd_replaced = pd_replaced.drop_duplicates()
+
+        return pd_replaced.reset_index(drop=True)

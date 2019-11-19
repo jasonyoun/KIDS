@@ -29,7 +29,7 @@ pd.options.mode.chained_assignment = None
 # default file names
 DEFAULT_VALIDATED_INCONSISTENCIES_TXT = 'validated_inconsistencies.txt'
 
-DEFAULT_MAP_FILE = '../data/data_map.txt'
+DEFAULT_MAP_FILE = '../data/name_map.txt'
 
 CRA_STR = 'confers resistance to antibiotic'
 CNRA_STR = 'confers no resistance to antibiotic'

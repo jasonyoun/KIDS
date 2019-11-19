@@ -9,36 +9,21 @@ Description:
     it's suitable for use in hypothesis generator.
 
 To-do:
-    1. make a general code which can be applied to multiple datasets
 """
-
+# standard imporots
 import os
 import argparse
 import logging as log
 
+# local imports
 from postprocess_modules.data_processor import DataProcessor
-from postprocess_modules.extract_info import ExtractInfo
 from postprocess_modules.distribute_data import DistributeData
+from tools.config_parser import ConfigParser
+from tools.set_logging import set_logging
 
-# default file paths
-DEFAULT_OUTPUT_PATH_STR = './output'
-DEFAULT_DATA_PATH_STR = './output/kg_final.txt'
-DEFAULT_DR_PATH_STR = './data/domain_range.txt'
-
-# default file names
-DEFAULT_ENTITIES_TXT_STR = 'entities.txt'
-DEFAULT_ENTITY_FULL_NAMES_TXT_STR = 'entity_full_names.txt'
-DEFAULT_ALL_DATA_TXT_STR = 'data.txt'
-DEFAULT_HYPOTHESES_TXT_STR = 'hypotheses.txt'
-
-# number of folds to split the dataset into
-NUM_FOLDS = 5
-
-def set_logging():
-    """
-    Configure logging.
-    """
-    log.basicConfig(format='(%(levelname)s) %(filename)s: %(message)s', level=log.DEBUG)
+# default variables
+DEFAULT_CONFIG_FILE = './configuration/postprocess_config.ini'
+DEFAULT_LOG_LEVEL = 'DEBUG'
 
 def parse_argument():
     """
@@ -50,19 +35,14 @@ def parse_argument():
     parser = argparse.ArgumentParser(description='Postprocess the integrated data.')
 
     parser.add_argument(
-        '--output_path',
-        default=DEFAULT_OUTPUT_PATH_STR,
-        help='Path to save the results')
+        '--config_file',
+        default=DEFAULT_CONFIG_FILE,
+        help='INI configuration file location.')
 
     parser.add_argument(
-        '--data_path',
-        default=DEFAULT_DATA_PATH_STR,
-        help='Path to the integrated data file to process')
-
-    parser.add_argument(
-        '--dr_path',
-        default=DEFAULT_DR_PATH_STR,
-        help='Path to the file containing (domain / relation / range) info')
+        '--log_level',
+        default=DEFAULT_LOG_LEVEL,
+        help='Set log level (DEBUG | INFO | WARNING | ERROR).')
 
     return parser.parse_args()
 
@@ -71,36 +51,61 @@ def main():
     Main function.
     """
     # set log and parse args
-    set_logging()
     args = parse_argument()
+    set_logging(log_level=args.log_level)
 
-    # read data and reformat it
-    pd_data = DataProcessor(args.data_path).reformat_data()
+    # setup config parser
+    config_parser = ConfigParser(args.config_file)
 
-    # save the reformatted data
-    pd_data.to_csv(os.path.join(DEFAULT_OUTPUT_PATH_STR, DEFAULT_ALL_DATA_TXT_STR),
-                   sep='\t', index=False, header=None)
+    # DataProcessor object
+    data_processor = DataProcessor(
+        config_parser.getstr('final_kg'),
+        config_parser.getstr('label_rules'),
+        config_parser.getstr('domain_range'))
 
-    # separate dataset into entities and relations
-    extract_info = ExtractInfo(pd_data, args.dr_path)
+    # reformat and save the data
+    pd_with_label = data_processor.add_label()
 
-    extract_info.save_all_entities(os.path.join(args.output_path, DEFAULT_ENTITIES_TXT_STR))
+    log.info('Saving reformatted data to \'%s\'', config_parser.getstr('all_data'))
+    pd_with_label.to_csv(
+        config_parser.getstr('all_data'),
+        sep='\t', index=False, header=None)
 
-    extract_info.save_entity_full_names(
-        os.path.join(args.output_path, DEFAULT_ENTITY_FULL_NAMES_TXT_STR))
+    # get and save complete dictionary of entities indexed by its type
+    entity_dic = data_processor.get_entity_dic(pd_with_label)
 
-    extract_info.save_hypotheses(
-        os.path.join(args.output_path, DEFAULT_HYPOTHESES_TXT_STR),
-        ['confers resistance to antibiotic'])
+    data_processor.save_entities(
+        entity_dic,
+        config_parser.getstr('entities'),
+        config_parser.getstr('entity_full_names'))
+
+    # generate & save hypotheses
+    pd_hypotheses = data_processor.generate_hypotheses(
+        pd_with_label,
+        entity_dic,
+        [config_parser.getstr('hypothesis_relation')])
+
+    log.info('Saving hypotheses to \'%s\'', config_parser.getstr('hypotheses'))
+    pd_hypotheses.to_csv(
+        config_parser.getstr('hypotheses'),
+        sep='\t', index=False, header=None)
 
     # split the dataset into specified folds
-    distribute_data = DistributeData(pd_data, NUM_FOLDS, extract_info.get_entity_by_type('gene'))
+    distribute_data = DistributeData(
+        pd_with_label,
+        config_parser.getint('num_folds'),
+        config_parser.getint('num_negatives'),
+        config_parser.getstr('hypothesis_relation'),
+        entity_dic['gene'])
 
     data_split_fold_dic = distribute_data.split_into_folds()
-    distribute_data.save_folds(data_split_fold_dic, args.output_path)
+
+    distribute_data.save_folds(
+        data_split_fold_dic,
+        config_parser.getstr('output_path'))
 
     # save data to use for training the final model
-    distribute_data.save_final_train_data(args.output_path)
+    distribute_data.save_train_data_for_final_model(config_parser.getstr('output_path'))
 
 if __name__ == '__main__':
     main()

@@ -12,12 +12,21 @@ To-do:
     1. Change np.matrix into np.array for future compatibility.
     2. Check what answers do.
 """
+# standard imports
 import logging as log
-from operator import itemgetter
 import math
+from operator import itemgetter
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../'))
+
+# third party imports
 import numpy as np
 import pandas as pd
-from ..utilities import measure_accuracy
+
+# local imports
+from utilities import measure_accuracy
 
 MAX_NUM_ITERATIONS = 10
 SPO_LIST = ['Subject', 'Predicate', 'Object']

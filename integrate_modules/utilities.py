@@ -6,23 +6,25 @@ Authors:
     Jason Youn - jyoun@ucdavis.edu
 
 Description:
-    Collection of utility functions.
+    Collection of utility functions specific to integrade modules.
 
 To-do:
-    1. clean-up and put comments
 """
+# standard imports
 import logging as log
+
+# third party imports
 import pandas as pd
 
 def get_pd_of_statement(statement):
     """
-    Get names and values of the statement from data rules.
+    Get names and values of the statement.
 
     Inputs:
-        statement: XML node containing the statement to process
+        statement: (xml.etree.ElementTree.Element) XML node containing the statement to process.
 
     Returns:
-        All found values in series.
+        (pd.Series) All found values.
     """
     feature_names = [feature.get('name') for feature in statement]
     feature_values = [feature.get('value') for feature in statement]
@@ -70,17 +72,3 @@ def measure_trustworthiness(pd_data, answers, spo_list):
         pd_trustworthiness[source] = float(common.shape[0]) / float(source_claims.shape[0])
 
     return pd_trustworthiness
-
-def get_belief_of_inconsistencies(inconsistencies_with_max_belief, answer, spo_list):
-    data = {0: [], 1: []}
-
-    for inconsistent_tuples_with_max_belief in inconsistencies_with_max_belief.values():
-        belief = inconsistent_tuples_with_max_belief[0][2]
-
-        pd_claim = pd.Series(inconsistent_tuples_with_max_belief[0][0], index=spo_list)
-        if (answer[spo_list] == pd_claim).all(1).any():
-            data[0] = data[0] + [belief]
-        else:
-            data[1] = data[1] + [belief]
-
-    return data

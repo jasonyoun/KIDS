@@ -10,14 +10,21 @@ Description:
 To-do:
     1. Change np.matrix into np.array for future compatibility.
 """
-# import generic packages
+# standard imports
 import logging as log
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), './'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../'))
+
+# third party imports
 import numpy as np
 import pandas as pd
 
-# import knowledge_scholar packages
-from .sums import Sums
-from ..utilities import measure_accuracy
+# local imports
+from sums import Sums
+from utilities import measure_accuracy
 
 # constants
 MAX_NUM_ITERATIONS = 10

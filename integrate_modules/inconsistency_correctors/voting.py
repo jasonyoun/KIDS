@@ -10,8 +10,11 @@ Description:
 
 To-do:
 """
-import operator
+# standard imports
 import logging as log
+import operator
+
+# third party imports
 import numpy as np
 import pandas as pd
 
