@@ -104,7 +104,7 @@ def get_results_of_search(results, count=5):
 
     return ap_params
 
-def randomized_search(configparser, train_x, train_y, test_x, test_y):
+def randomized_search(configparser, train_x, train_y, test_x=None, test_y=None, final_model=False):
     """
     Given the train & test set, perform randomized search to find
     best n_estimators & learning_rate for the adaboost algorithm.
@@ -115,8 +115,8 @@ def randomized_search(configparser, train_x, train_y, test_x, test_y):
             train_x[:, 1] = pra prediction raw output
             train_x[:, 2] = valid / invalid depending on pra
         train_y: numpy array containing the ground truth label
-        test_x: same as train_x but for test data
-        test_y: same as train_y but for test data
+        test_x: (optional) same as train_x but for test data
+        test_y: (optional) same as train_y but for test data
 
     Returns:
         dictionary of numpy (masked) ndarrays
@@ -135,16 +135,25 @@ def randomized_search(configparser, train_x, train_y, test_x, test_y):
             int(configparser.getint('END', section='RANDOM_SEARCH_ESTIMATORS')),
             int(configparser.getint('INCREMENT', section='RANDOM_SEARCH_ESTIMATORS')))}
 
-    all_x = np.vstack((train_x, test_x))
-    all_y = np.vstack((train_y, test_y)).astype(int)
-
-    # get train / test split indices for predefined split cross-validator
-    train_indices = np.full(np.shape(train_x)[0], -1)
-    test_indices = np.full(np.shape(test_x)[0], 0)
-    test_fold = np.hstack((train_indices, test_indices))
-
+    # pipeline the model with SMOTE
     ros = SMOTE(sampling_strategy='minority')
     clf = Pipeline([('smote', ros), ('adaboost', clf)])
+
+    if not final_model:
+        all_x = np.vstack((train_x, test_x))
+        all_y = np.vstack((train_y, test_y)).astype(int)
+
+        # get train / test split indices for predefined split cross-validator
+        train_indices = np.full(np.shape(train_x)[0], -1)
+        test_indices = np.full(np.shape(test_x)[0], 0)
+        test_fold = np.hstack((train_indices, test_indices))
+
+        cv = PredefinedSplit(test_fold)
+    else:
+        all_x = train_x
+        all_y = train_y.astype(int)
+
+        cv = 5
 
     random_search = RandomizedSearchCV(
         clf,
@@ -152,7 +161,7 @@ def randomized_search(configparser, train_x, train_y, test_x, test_y):
         n_iter=configparser.getint('RANDOM_SEARCH_COUNT'),
         n_jobs=configparser.getint('RANDOM_SEARCH_PROCESSES'),
         scoring=['f1', 'average_precision'],
-        cv=PredefinedSplit(test_fold),
+        cv=cv,
         refit='average_precision')
 
     random_search.fit(all_x, all_y.ravel())
@@ -208,12 +217,19 @@ def main():
             continue
 
         if configparser.getbool('RUN_RANDOM_SEARCH'):
-            ap_params = randomized_search(
-                configparser,
-                train_x_pred,
-                train_y_pred,
-                test_x_pred,
-                test_y_pred)
+            if not args.final_model:
+                ap_params = randomized_search(
+                    configparser,
+                    train_x_pred,
+                    train_y_pred,
+                    test_x_pred,
+                    test_y_pred)
+            else:
+                ap_params = randomized_search(
+                    configparser,
+                    train_x_pred,
+                    train_y_pred,
+                    final_model=True)
 
             configparser.append(
                 'RANDOM_SEARCH_BEST_PARAMS_{}'.format(key),

@@ -15,37 +15,37 @@ output_dir=$current_dir/output
 echo "Config directory: $config_dir"
 echo "Output directory: $output_dir"
 
-#######
-# PRA #
-#######
-pra_dir='../pra/model'
-pra_instance_dir=$pra_dir/model_instance
+# #######
+# # PRA #
+# #######
+# pra_dir='../pra/model'
+# pra_instance_dir=$pra_dir/model_instance
 
-mkdir -p $pra_instance_dir/$config_dir
-cp configuration/$config_dir/conf $pra_instance_dir/$config_dir/conf
-cp configuration/$config_dir/config.sh $pra_instance_dir/$config_dir/config.sh
-cd $pra_dir
+# mkdir -p $pra_instance_dir/$config_dir
+# cp configuration/$config_dir/conf $pra_instance_dir/$config_dir/conf
+# cp configuration/$config_dir/config.sh $pra_instance_dir/$config_dir/config.sh
+# cd $pra_dir
 
-./build_models.sh $config_dir
-./predict.sh $config_dir
-./evaluate_models.sh $config_dir
+# ./build_models.sh $config_dir
+# ./predict.sh $config_dir
+# ./evaluate_models.sh $config_dir
 
-#######
-# MLP #
-#######
-cd $current_dir
+# #######
+# # MLP #
+# #######
+# cd $current_dir
 
-er_mlp_model_dir="../er_mlp/model"
-er_mlp_instance_dir="$er_mlp_model_dir/model_instance"
-er_mlp_log_dir="$current_dir/log/er_mlp_$config_dir.log"
+# er_mlp_model_dir="../er_mlp/model"
+# er_mlp_instance_dir="$er_mlp_model_dir/model_instance"
+# er_mlp_log_dir="$current_dir/log/er_mlp_$config_dir.log"
 
-mkdir -p "$er_mlp_instance_dir/$config_dir"
-cp "configuration/$config_dir/er_mlp.ini" "$er_mlp_instance_dir/$config_dir/$config_dir.ini"
-cd $er_mlp_model_dir
+# mkdir -p "$er_mlp_instance_dir/$config_dir"
+# cp "configuration/$config_dir/er_mlp.ini" "$er_mlp_instance_dir/$config_dir/$config_dir.ini"
+# cd $er_mlp_model_dir
 
-python3 -u build_network.py --dir $config_dir --logfile $er_mlp_log_dir --final_model
-python3 -u predict.py --dir $config_dir --predict_file train_local.txt --logfile $er_mlp_log_dir --final_model
-python3 -u predict.py --dir $config_dir --predict_file test.txt --logfile $er_mlp_log_dir --final_model
+# python3 -u build_network.py --dir $config_dir --logfile $er_mlp_log_dir --final_model
+# python3 -u predict.py --dir $config_dir --predict_file train_local.txt --logfile $er_mlp_log_dir --final_model
+# python3 -u predict.py --dir $config_dir --predict_file test.txt --logfile $er_mlp_log_dir --final_model
 
 ###########
 # stacked #

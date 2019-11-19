@@ -39,45 +39,36 @@ def parse_argument():
 
     return parser.parse_args()
 
-def bin_hypotheses(pd_data):
-    intervals = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-    intervals.reverse()
-
+def bin_hypotheses(pd_data, intervals=[0.0, 0.25, 0.5, 0.75, 1.0]):
+    intervals_sorted = sorted(intervals)
     dict_bin_count = {}
 
-    for i, interval in enumerate(intervals):
-        if interval == 0.9:
-            bin_name = '[{}, {}]'.format(interval, 1)
-        else:
-            bin_name = '[{}, {})'.format(interval, intervals[i-1])
+    for i in range(len(intervals_sorted)-1):
+        floor = intervals_sorted[i]
+        ceil = intervals_sorted[i+1]
+        bin_name = '[{}, {}{}'.format(str(floor), str(ceil), ']' if ceil == 1 else ')')
 
-        pd_bin = pd_data[pd_data['Confidence'] >= interval]
-        dict_bin_count[bin_name] = pd_bin.shape[0]
-        pd_data = pd_data.drop(pd_bin.index)
+        index = pd_data['Confidence'] >= floor
+        if ceil != 1:
+            index &= pd_data['Confidence'] < ceil
+        else:
+            index &= pd_data['Confidence'] <= ceil
+
+        dict_bin_count[bin_name] = pd_data[index].shape[0]
 
     print(dict_bin_count)
 
-    list_values = list(dict_bin_count.values())
-    list_values.reverse()
-
-    list_keys = list(dict_bin_count.keys())
-    list_keys.reverse()
-
-    fig, ax = plt.subplots()
-    bp = ax.bar(np.arange(len(dict_bin_count)), list_values, log=True)
-
-    ax.set_xlabel('Confidence interval')
-    ax.set_ylabel('Number of hypotheses (log)')
-    ax.set_xticks(np.arange(len(dict_bin_count)))
-    ax.set_xticklabels(list_keys, rotation=45)
-
-    plt.tight_layout()
-
 def which_to_test(pd_data):
-    confidence = 0.7
+    floor = 0.1
+    ceil = 1.0
 
-    pd_filtered = pd_data[pd_data['Confidence'] >= confidence]
-    print(pd_filtered.shape[0])
+    index = pd_data['Confidence'] >= floor
+    if ceil != 1.0:
+        index &= pd_data['Confidence'] < ceil
+    else:
+        index &= pd_data['Confidence'] <= ceil
+
+    pd_filtered = pd_data[index]
 
     pd_group = pd_filtered.groupby('Object').size()
     pd_group = pd_group.sort_values(ascending=False).to_frame(name='count')
@@ -86,7 +77,7 @@ def which_to_test(pd_data):
 
     print(pd_group)
 
-    # pd_group.reset_index().to_csv('~/Jason/Shared/to_test.txt', sep='\t')
+    pd_group.reset_index().to_csv('~/Jason/UbuntuShare/to_test.txt', sep='\t')
 
 def main():
     """
@@ -98,7 +89,7 @@ def main():
     col_names = ['Subject', 'Predicate', 'Object', 'Label', 'Confidence']
     pd_data = pd.read_csv(filepath, sep='\t', names=col_names)
 
-    # bin_hypotheses(pd_data.copy())
+    bin_hypotheses(pd_data.copy())
     which_to_test(pd_data.copy())
 
     # plt.show()
