@@ -29,6 +29,7 @@ MAX_NUM_ITERATIONS = 10
 SPO_LIST = ['Subject', 'Predicate', 'Object']
 THRESHOLD = np.power(0.1, 10)
 
+
 class AverageLog:
     """
     Inconsistency resolution using AverageLog.
@@ -47,8 +48,8 @@ class AverageLog:
                 2          fnr  no represses   ybhN  hiTRN
                 3          crp  no represses   uxuR  hiTRN
 
-            inconsistencies: Dictionary containing inconsistency_id as key
-                and list of inconsistent triples + source as value
+            inconsistencies: (dict) Dictionary containing inconsistency_id as key
+                and list of inconsistent triples + source as value.
 
                 {
                 0: [(('Subject 1', 'Predicate 1', 'Object 1'), ['Source 1']),
@@ -61,14 +62,14 @@ class AverageLog:
             answers:
 
         Returns:
-            inconsistencies_with_max_belief: dictionary where the key inconsistency_id
-                and the value is a list of tuples where each tuple is of form
-                (inconsistent_tuple, sources, belief). value of the dictionary is
-                sorted by belief from high to low.
-            pd_belief_and_source_without_inconsistencies: belief vector and
-                pd_grouped_data concatenated but without the inconsistencies
-            np_trustworthiness_vector: vector containing trustworthiness
-                of all the sources
+            inconsistencies_with_max_belief: (dict) Dictionary where the key
+                inconsistency_id and the value is a list of tuples where each tuple
+                is of form (inconsistent_tuple, sources, belief).
+                Value of the dictionary is sorted by belief from high to low.
+            pd_belief_and_source_without_inconsistencies: (pd.DataFrame) Belief
+                vector and pd_grouped_data concatenated but without the inconsistencies.
+            np_trustworthiness_vector: (np.array) Vector containing trustworthiness
+                of all the sources.
         """
         log.info('Resolving inconsistencies using Average Log')
 

@@ -30,6 +30,7 @@ MAX_NUM_ITERATIONS = 8
 SPO_LIST = ['Subject', 'Predicate', 'Object']
 THRESHOLD = np.power(0.1, 10)
 
+
 class PooledInvestment:
     """
     Inconsistency resolution using AverageLog.
@@ -71,9 +72,11 @@ class PooledInvestment:
         pd_grouped_data = pd_data.groupby(SPO_LIST)['Source'].apply(set)
 
         # initialize
-        np_present_belief_vector = Investment.initialize_belief(pd_source_size_data, pd_grouped_data, inconsistencies)
+        np_present_belief_vector = Investment.initialize_belief(
+            pd_source_size_data, pd_grouped_data, inconsistencies)
         np_past_trustworthiness_vector = Investment.initialize_trustworthiness(pd_source_size_data)
-        np_default_a_matrix, np_b_matrix = Investment.create_matrices(pd_grouped_data, pd_source_size_data)
+        np_default_a_matrix, np_b_matrix = Investment.create_matrices(
+            pd_grouped_data, pd_source_size_data)
 
         delta = 1.0
         past_accuracy = 0.0
@@ -81,11 +84,18 @@ class PooledInvestment:
 
         # update until it reaches convergence
         while delta > THRESHOLD and iteration < MAX_NUM_ITERATIONS:
-            np_a_matrix = Investment.update_a_matrix(np_default_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
+            np_a_matrix = Investment.update_a_matrix(
+                np_default_a_matrix, np_past_trustworthiness_vector, pd_source_size_data)
             np_trustworthiness_vector = Sums.normalize(np_a_matrix.dot(np_present_belief_vector))
             claims = pd_grouped_data.index.tolist()
-            np_present_belief_vector = Sums.normalize(cls.normalize(np_b_matrix.dot(np_trustworthiness_vector), claims, inconsistencies, exponent))
-            delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_trustworthiness_vector)
+            np_present_belief_vector = Sums.normalize(
+                cls.normalize(
+                    np_b_matrix.dot(np_trustworthiness_vector),
+                    claims,
+                    inconsistencies,
+                    exponent))
+            delta = Sums.measure_trustworthiness_change(
+                np_past_trustworthiness_vector, np_trustworthiness_vector)
             np_past_trustworthiness_vector = np_trustworthiness_vector
 
             if answers is not None:
@@ -145,11 +155,14 @@ class PooledInvestment:
             total_score = 0
 
             for (inconsistent_tuple, _) in inconsistent_tuples:
-                total_score = total_score + Investment.function_s(np_present_belief_vector[claims.index(inconsistent_tuple)], exponent)
+                total_score = total_score + Investment.function_s(
+                    np_present_belief_vector[claims.index(inconsistent_tuple)], exponent)
 
             for (inconsistent_tuple, _) in inconsistent_tuples:
                 present_value = np_new_belief_vector[claims.index(inconsistent_tuple)]
-                claim_spepcific_value = Investment.function_s(np_present_belief_vector[claims.index(inconsistent_tuple)], exponent)
-                np_new_belief_vector[claims.index(inconsistent_tuple)] = present_value * claim_spepcific_value / total_score
+                claim_spepcific_value = Investment.function_s(
+                    np_present_belief_vector[claims.index(inconsistent_tuple)], exponent)
+                np_new_belief_vector[claims.index(inconsistent_tuple)] = \
+                    present_value * claim_spepcific_value / total_score
 
         return np_new_belief_vector

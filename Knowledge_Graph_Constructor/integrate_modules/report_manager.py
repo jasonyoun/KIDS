@@ -11,7 +11,6 @@ To-do:
 """
 # standard imports
 import logging as log
-import math
 
 # third party imports
 from matplotlib import rcParams
@@ -26,6 +25,7 @@ rcParams['font.sans-serif'] = ['Arial']
 # constants
 SPO_LIST = ['Subject', 'Predicate', 'Object']
 COLUMN_NAMES = SPO_LIST + ['Source']
+
 
 def plot_integration_summary(
         pd_data,
@@ -47,7 +47,8 @@ def plot_integration_summary(
     pd_grouped_data = pd_data_copy.groupby(SPO_LIST)['Source'].apply(set)
     sources = pd_data.groupby('Source').size().index.tolist()
 
-    list_trustworthiness_vector = [float(trustworthiness) for trustworthiness in np_trustworthiness_vector]
+    list_trustworthiness_vector = \
+        [float(trustworthiness) for trustworthiness in np_trustworthiness_vector]
     pd_trustworthiness = pd.Series(list_trustworthiness_vector, index=sources)
 
     pd_data_stat_column_names = ['Single source', 'Multiple sources', 'Inconsistencies']

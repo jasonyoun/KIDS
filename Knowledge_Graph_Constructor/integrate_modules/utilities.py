@@ -16,6 +16,7 @@ import logging as log
 # third party imports
 import pandas as pd
 
+
 def get_pd_of_statement(statement):
     """
     Get names and values of the statement.
@@ -30,6 +31,7 @@ def get_pd_of_statement(statement):
     feature_values = [feature.get('value') for feature in statement]
 
     return pd.Series(feature_values, index=feature_names)
+
 
 def measure_accuracy(resolved_inconsistencies, answers, spo_list, iteration=0):
     correctly_resolved_inconsistencies = 0.0
@@ -61,6 +63,7 @@ def measure_accuracy(resolved_inconsistencies, answers, spo_list, iteration=0):
         accuracy = float(correctly_resolved_inconsistencies) / float(total_attempted_resolution)
 
     return "{0:.4f}".format(accuracy)
+
 
 def measure_trustworthiness(pd_data, answers, spo_list):
     sources = pd.unique(pd_data['Source']).tolist()

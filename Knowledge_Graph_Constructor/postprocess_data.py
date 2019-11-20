@@ -11,7 +11,6 @@ Description:
 To-do:
 """
 # standard imporots
-import os
 import argparse
 import logging as log
 
@@ -24,6 +23,7 @@ from tools.set_logging import set_logging
 # default variables
 DEFAULT_CONFIG_FILE = './configuration/postprocess_config.ini'
 DEFAULT_LOG_LEVEL = 'DEBUG'
+
 
 def parse_argument():
     """
@@ -45,6 +45,7 @@ def parse_argument():
         help='Set log level (DEBUG | INFO | WARNING | ERROR).')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -106,6 +107,7 @@ def main():
 
     # save data to use for training the final model
     distribute_data.save_train_data_for_final_model(config_parser.getstr('output_path'))
+
 
 if __name__ == '__main__':
     main()

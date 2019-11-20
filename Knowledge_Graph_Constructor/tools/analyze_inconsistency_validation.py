@@ -8,37 +8,36 @@ Description:
 
 To-do:
 """
-
-import os
-import sys
+# standard imports
 import argparse
 import logging as log
-from pathlib import Path
-import numpy as np
-import pandas as pd
-import matplotlib.pylab as plt
-from sklearn.metrics import confusion_matrix
+import os
+import sys
 
 ABS_PATH_METRICS = os.path.join(os.path.dirname(__file__), '../integrate_modules')
 sys.path.insert(0, ABS_PATH_METRICS)
 
-from data_manager import DataManager
+# third party imports
+import matplotlib.pylab as plt
+import numpy as np
+import pandas as pd
+from sklearn.metrics import confusion_matrix
 
 pd.options.mode.chained_assignment = None
 
 # default file names
 DEFAULT_VALIDATED_INCONSISTENCIES_TXT = 'validated_inconsistencies.txt'
-
 DEFAULT_MAP_FILE = '../data/name_map.txt'
-
 CRA_STR = 'confers resistance to antibiotic'
 CNRA_STR = 'confers no resistance to antibiotic'
+
 
 def set_logging():
     """
     Configure logging.
     """
     log.basicConfig(format='(%(levelname)s) %(filename)s: %(message)s', level=log.DEBUG)
+
 
 def parse_argument():
     """
@@ -47,7 +46,8 @@ def parse_argument():
     Returns:
         - parsed arguments
     """
-    parser = argparse.ArgumentParser(description='Analyze inconsistency validation experimental results.')
+    parser = argparse.ArgumentParser(
+        description='Analyze inconsistency validation experimental results.')
 
     parser.add_argument(
         '--threshold_key',
@@ -62,11 +62,13 @@ def parse_argument():
 
     return parser.parse_args()
 
+
 def calculate_recall(tp, fn):
     if tp + fn == 0:
         return 0
 
     return tp / (tp + fn)
+
 
 def calculate_precision(tp, fp):
     if tp + fp == 0:
@@ -74,11 +76,13 @@ def calculate_precision(tp, fp):
 
     return tp / (tp + fp)
 
+
 def calculate_f1(recall, precision):
     if precision + recall == 0:
         return 0
 
     return (2 * precision * recall) / (precision + recall)
+
 
 def calculate_statistics(pd_data, threshold_key=None):
     # only look at the data that we validated
@@ -110,7 +114,8 @@ def calculate_statistics(pd_data, threshold_key=None):
             cm_result = confusion_matrix(pd_pass['Validation label'], pd_pass['Resolution label'])
 
             if cm_result.shape == (1, 1):
-                log.warning('Confusion matrix output has size {} for {} {}.'.format(cm_result.shape, threshold_key, param))
+                log.warning('Confusion matrix output has size {} for {} {}.'
+                            .format(cm_result.shape, threshold_key, param))
                 continue
 
             tp = cm_result[1, 1]
@@ -138,6 +143,7 @@ def calculate_statistics(pd_data, threshold_key=None):
         plt.figure()
         plt.plot(param_list, f1_list)
 
+
 def main():
     """
     Main function.
@@ -155,6 +161,7 @@ def main():
     calculate_statistics(pd_validated_inconsistencies, threshold_key=args.threshold_key)
 
     plt.show()
+
 
 if __name__ == '__main__':
     main()

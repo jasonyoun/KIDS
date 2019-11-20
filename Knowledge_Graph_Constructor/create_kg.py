@@ -30,6 +30,7 @@ DEFAULT_CONFIG_FILE = './configuration/create_kg_config.ini'
 DEFAULT_PHASE_STR = 'all'
 DEFAULT_LOG_LEVEL = 'DEBUG'
 
+
 def parse_argument():
     """
     Parse input arguments.
@@ -160,6 +161,7 @@ def main():
         # save integrated data
         log.info('Saving final knowledge graph to \'%s\'', config_parser.getstr('final_kg'))
         pd_final.to_csv(config_parser.getstr('final_kg'), index=False, sep='\t')
+
 
 if __name__ == '__main__':
     main()

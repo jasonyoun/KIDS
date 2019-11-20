@@ -10,6 +10,7 @@ To-do:
 # standard imports
 import logging as log
 
+
 def set_logging(log_file=None, log_level='DEBUG'):
     """
     Configure logging. By default, log to the console.

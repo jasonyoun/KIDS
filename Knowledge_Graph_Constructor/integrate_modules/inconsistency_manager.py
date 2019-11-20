@@ -33,6 +33,7 @@ from inconsistency_correctors.truthfinder import TruthFinder
 from utilities import get_pd_of_statement
 from inconsistency_correctors.voting import Voting
 
+
 class InconsistencyManager():
     """
     Class for detecting the inconsistencies.
@@ -150,8 +151,8 @@ class InconsistencyManager():
                     pd_conflict_data[conflict_feature_name] = conflict_value
 
                     sources = pd.unique(
-                        pd_condition_match[(pd_condition_match[self._SPO_LIST]
-                                                    == pd_conflict_data).all(1)]['Source'])
+                        pd_condition_match[(pd_condition_match[self._SPO_LIST] ==
+                                            pd_conflict_data).all(1)]['Source'])
 
                     conflict_tuples.append((tuple(pd_conflict_data[self._SPO_LIST]),
                                             sources.tolist()))
@@ -232,7 +233,7 @@ class InconsistencyManager():
             if match.shape[0] > 1:
                 # if there are more than one match, there is something wrong
                 raise ValueError('Found {} matching resolved inconsistencies for ({}, {}).'
-                    .format(match.shape[0], validated_sub, validated_obj))
+                                 .format(match.shape[0], validated_sub, validated_obj))
             elif match.shape[0] == 0:
                 # no match, continue to next validation
                 continue
@@ -355,8 +356,10 @@ class InconsistencyManager():
             row_dict['Source size'] = len(sources)
             row_dict['Sources'] = ','.join(sources)
             row_dict['Total source size'] = total_source_size
-            row_dict['Mean belief of conflicting tuples'] = '{0:.10f}'.format(mean_belief_of_conflicting_tuple)
-            row_dict['Belief difference'] = '{0:.10f}'.format(belief - mean_belief_of_conflicting_tuple)
+            row_dict['Mean belief of conflicting tuples'] = \
+                '{0:.10f}'.format(mean_belief_of_conflicting_tuple)
+            row_dict['Belief difference'] = \
+                '{0:.10f}'.format(belief - mean_belief_of_conflicting_tuple)
             row_dict['Conflicting tuple info'] = str(conflicting_tuples)
 
             pd_resolved_inconsistencies = pd_resolved_inconsistencies.append(

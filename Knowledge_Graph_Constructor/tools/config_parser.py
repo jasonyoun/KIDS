@@ -10,6 +10,7 @@ To-do:
 # standard imports
 import configparser
 
+
 class ConfigParser:
     """
     Config parser.

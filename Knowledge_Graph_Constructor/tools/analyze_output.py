@@ -9,9 +9,6 @@ Description:
 
 To-do:
 """
-
-#!/usr/bin/python
-
 # import from generic packages
 import os
 import warnings
@@ -43,6 +40,7 @@ def set_logging():
     logger = log.getLogger('matplotlib')
     logger.setLevel(log.WARNING)
 
+
 def parse_argument():
     """
     Parse input arguments.
@@ -58,6 +56,7 @@ def parse_argument():
         help='Path to the file data_path_file.txt')
 
     return parser.parse_args()
+
 
 def save_cra_matrix(pd_known_cra, pd_genes, pd_antibiotics):
     pd_pivot_table = pd.pivot_table(
@@ -80,6 +79,7 @@ def save_cra_matrix(pd_known_cra, pd_genes, pd_antibiotics):
 
     return pd_pivot_table
 
+
 def plot_heatmap(pd_pivot_table):
     pd_pivot_table = pd_pivot_table.replace('confers resistance to antibiotic', 1)
     pd_pivot_table = pd_pivot_table.replace('confers no resistance to antibiotic', -1)
@@ -93,7 +93,7 @@ def plot_heatmap(pd_pivot_table):
     # build the figure instance with the desired height
     fig, ax = plt.subplots(
         figsize=(50, 60),
-        gridspec_kw=dict(top=1-top_margin, bottom=bottom_margin))
+        gridspec_kw=dict(top=1 - top_margin, bottom=bottom_margin))
 
     # do spectral biclustering on the data
     with warnings.catch_warnings():
@@ -131,6 +131,7 @@ def plot_heatmap(pd_pivot_table):
     ax.set_yticks([])
 
     plt.savefig('/home/jyoun/Jason/UbuntuShare/fig1.pdf')
+
 
 def main():
     """

@@ -32,6 +32,7 @@ MAX_NUM_ITERATIONS = 10
 SPO_LIST = ['Subject', 'Predicate', 'Object']
 THRESHOLD = np.power(0.1, 10)
 
+
 class Sums:
     """
     Inconsistency resolution using Sums.
@@ -68,7 +69,7 @@ class Sums:
         log.info('Resolving inconsistencies using Sums')
 
         # preprocess
-        pd_source_size_data = pd_data.groupby('Source').size() # number of triples per each source
+        pd_source_size_data = pd_data.groupby('Source').size()  # number of triples per each source
         pd_grouped_data = pd_data.groupby(SPO_LIST)['Source'].apply(set)
 
         # initialize
@@ -164,8 +165,10 @@ class Sums:
             pd_belief_and_source_without_inconsistencies: belief vector and
                 pd_grouped_data concatenated but without the inconsistencies
         """
-        pd_present_belief_vector = pd.DataFrame(np_present_belief_vector, index=pd_grouped_data.index)
-        pd_present_belief_and_source = pd.concat([pd_present_belief_vector, pd_grouped_data], axis=1)
+        pd_present_belief_vector = pd.DataFrame(
+            np_present_belief_vector, index=pd_grouped_data.index)
+        pd_present_belief_and_source = pd.concat(
+            [pd_present_belief_vector, pd_grouped_data], axis=1)
 
         pd_belief_and_source_without_inconsistencies = pd_present_belief_and_source
         inconsistencies_with_max_belief = {}
@@ -173,7 +176,8 @@ class Sums:
         # loop through each inconsistency
         for inconsistency_id in inconsistencies:
             if inconsistency_id % 100 == 0:
-                log.debug('Processing inconsistencies: %d / %d', inconsistency_id, len(inconsistencies))
+                log.debug('Processing inconsistencies: %d / %d',
+                          inconsistency_id, len(inconsistencies))
 
             inconsistent_tuples = inconsistencies[inconsistency_id]
             inconsistent_tuples_with_max_belief = []
@@ -183,7 +187,8 @@ class Sums:
                 belief = pd_present_belief_and_source.loc[inconsistent_tuple].values[0]
                 # log.debug('{} {}'.format(inconsistent_tuple, belief))
                 inconsistent_tuples_with_max_belief.append((inconsistent_tuple, sources, belief))
-                pd_belief_and_source_without_inconsistencies = pd_belief_and_source_without_inconsistencies.drop(inconsistent_tuple)
+                pd_belief_and_source_without_inconsistencies = \
+                    pd_belief_and_source_without_inconsistencies.drop(inconsistent_tuple)
 
             # sort inconsistencies by belief from high to low
             inconsistent_tuples_with_max_belief = sorted(

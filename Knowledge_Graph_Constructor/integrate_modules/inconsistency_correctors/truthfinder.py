@@ -31,6 +31,7 @@ MAX_NUM_ITERATIONS = 10
 SPO_LIST = ['Subject', 'Predicate', 'Object']
 THRESHOLD = np.power(0.1, 10)
 
+
 class TruthFinder():
     """
     Inconsistency resolution using TruthFinder.
@@ -76,7 +77,8 @@ class TruthFinder():
         pd_present_belief_vector = cls.initialize_belief(pd_grouped_data)
         np_present_belief_vector = np.matrix(pd_present_belief_vector)
         np_past_trustworthiness_vector = cls.initialize_trustworthiness(pd_source_size_data)
-        np_a_matrix, np_b_matrix = cls.create_matrices(pd_grouped_data, pd_source_size_data, inconsistencies, rho)
+        np_a_matrix, np_b_matrix = cls.create_matrices(
+            pd_grouped_data, pd_source_size_data, inconsistencies, rho)
 
         function_s = np.vectorize(cls.function_s, otypes=[np.float])
         function_t = np.vectorize(cls.function_t, otypes=[np.float])
@@ -87,9 +89,12 @@ class TruthFinder():
 
         # update until it reaches convergence
         while delta > THRESHOLD and iteration < MAX_NUM_ITERATIONS:
-            np_present_belief_vector = function_s(np_b_matrix.dot(np_past_trustworthiness_vector), gamma)
-            np_present_trustworthiness_vector = function_t(np_a_matrix.dot(np_present_belief_vector))
-            delta = Sums.measure_trustworthiness_change(np_past_trustworthiness_vector, np_present_trustworthiness_vector)
+            np_present_belief_vector = function_s(
+                np_b_matrix.dot(np_past_trustworthiness_vector), gamma)
+            np_present_trustworthiness_vector = function_t(
+                np_a_matrix.dot(np_present_belief_vector))
+            delta = Sums.measure_trustworthiness_change(
+                np_past_trustworthiness_vector, np_present_trustworthiness_vector)
             np_past_trustworthiness_vector = np_present_trustworthiness_vector
 
             if answers is not None:
@@ -191,7 +196,9 @@ class TruthFinder():
             modified source vector
         """
         for idx in range(len(elements)):
-            if elements[idx] != 1 and TruthFinder.source_has_conflicting_belief(elements.index[idx], elements.name, inconsistencies):
+            source_has_conflicting_belief = TruthFinder.source_has_conflicting_belief(
+                elements.index[idx], elements.name, inconsistencies)
+            if elements[idx] != 1 and source_has_conflicting_belief:
                 elements[idx] = -rho
 
         return elements
@@ -232,8 +239,10 @@ class TruthFinder():
 
         np_a_matrix = (np_belief_source_matrix / size_of_sources).T
 
-        pd_belief_source_matrix = pd.DataFrame(np_belief_source_matrix, index=pd_grouped_data.index, columns=sources)
-        np_b_matrix = pd_belief_source_matrix.apply(TruthFinder.modify_source_vector, args=(inconsistencies, rho)).as_matrix()
+        pd_belief_source_matrix = pd.DataFrame(
+            np_belief_source_matrix, index=pd_grouped_data.index, columns=sources)
+        np_b_matrix = pd_belief_source_matrix.apply(
+            TruthFinder.modify_source_vector, args=(inconsistencies, rho)).as_matrix()
 
         return np_a_matrix, np_b_matrix
 

@@ -24,6 +24,7 @@ import xml.etree.ElementTree as ET
 # local imports
 from utilities import get_pd_of_statement
 
+
 class DataManager:
     """
     Class for managing the data.
@@ -103,7 +104,7 @@ class DataManager:
 
         # open name mapping file
         with open(self.map_file) as file:
-            next(file) # skip the header
+            next(file)  # skip the header
             map_file_content = file.readlines()
 
         # store dictionary of the name mapping information
@@ -179,7 +180,7 @@ class DataManager:
         # drop the duplicates
         pd_updated = pd_updated.drop_duplicates()
 
-        log.info('Total of %d new triplets added based on the data rule after dropping the duplicates',
+        log.info('Total of %d new triplets added based on the data rule',
                  (pd_updated.shape[0] - pd_data.shape[0]))
 
         return pd_updated.reset_index(drop=True)
