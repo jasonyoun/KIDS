@@ -16,12 +16,18 @@ To-do:
     4. namescope for the model
     5. cross_margin inside compute_threshold() is not used. why?
 """
-import random
+# standard imports
 import logging as log
+import random
+
+# third party imports
 import numpy as np
-import tensorflow as tf
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
+import tensorflow as tf
+
+# local imports
 from metrics import roc_auc_stats, pr_stats
+
 
 class ERMLP:
     """
@@ -105,10 +111,16 @@ class ERMLP:
 
         self.weights = {
             # initialize word embeddings
-            'E': tf.Variable(tf.random_uniform([e_vocab_size, self.params['embedding_size']], -0.001, 0.001), name='E'),
-            'P': tf.Variable(tf.random_uniform([p_vocab_size, self.params['embedding_size']], -0.001, 0.001), name='P'),
+            'E': tf.Variable(
+                tf.random_uniform([e_vocab_size, self.params['embedding_size']], -0.001, 0.001),
+                name='E'),
+            'P': tf.Variable(
+                tf.random_uniform([p_vocab_size, self.params['embedding_size']], -0.001, 0.001),
+                name='P'),
             # weights and biases of the network
-            'C': tf.Variable(initializer([3 * self.params['embedding_size'], self.params['layer_size']]), name='C'),
+            'C': tf.Variable(
+                initializer([3 * self.params['embedding_size'], self.params['layer_size']]),
+                name='C'),
             'B': tf.Variable(initializer([self.params['layer_size'], 1]), name='B')
         }
 
@@ -116,7 +128,8 @@ class ERMLP:
         if self.params['add_layers'] > 0:
             for i in range(1, self.params['add_layers'] + 1):
                 self.weights['C{}'.format(i)] = tf.Variable(
-                    initializer([self.params['layer_size'], self.params['layer_size']]), name='C{}'.format(i))
+                    initializer([self.params['layer_size'], self.params['layer_size']]),
+                    name='C{}'.format(i))
 
         ##########
         # biases #
@@ -129,15 +142,19 @@ class ERMLP:
         # add more layers if necessary
         if self.params['add_layers'] > 0:
             for i in range(1, self.params['add_layers'] + 1):
-                self.biases['b{}'.format(i)] = tf.Variable(tf.zeros([1, self.params['layer_size']]), name='b{}'.format(i))
+                self.biases['b{}'.format(i)] = tf.Variable(
+                    tf.zeros([1, self.params['layer_size']]),
+                    name='b{}'.format(i))
 
         #############
         # constants #
         #############
         # gets constants required for word embeddings
         if self.params['word_embedding']:
-            padded_entity_embedding_weights, padded_entity_indices = self.get_padded_indices_and_weights(self.params['indexed_entities'])
-            padded_predicate_embedding_weights, padded_predicate_indices = self.get_padded_indices_and_weights(self.params['indexed_predicates'])
+            padded_entity_embedding_weights, padded_entity_indices = \
+                self.get_padded_indices_and_weights(self.params['indexed_entities'])
+            padded_predicate_embedding_weights, padded_predicate_indices = \
+                self.get_padded_indices_and_weights(self.params['indexed_predicates'])
 
             self.constants = {
                 'padded_entity_indices': tf.constant(padded_entity_indices, dtype=tf.int32),
@@ -164,14 +181,18 @@ class ERMLP:
             # look up indices in a list of embedding tensors and return
             # a tensor containing the embeddings (dense vectors) for each of the vocabularies
             # entity_embedded_word_ids.get_shape() = (8333, 2, 50)
-            pred_embedded_word_ids = tf.nn.embedding_lookup(self.weights['P'], self.constants['padded_predicate_indices'])
-            entity_embedded_word_ids = tf.nn.embedding_lookup(self.weights['E'], self.constants['padded_entity_indices'])
+            pred_embedded_word_ids = tf.nn.embedding_lookup(
+                self.weights['P'], self.constants['padded_predicate_indices'])
+            entity_embedded_word_ids = tf.nn.embedding_lookup(
+                self.weights['E'], self.constants['padded_entity_indices'])
 
             # calculate weighted version of these embeddings
             # self.constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
             # entity_weighted_sum_of_embeddings.get_shape() = (8333, 2, 50)
-            pred_weighted_sum_of_embeddings = tf.multiply(pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
-            entity_weighted_sum_of_embeddings = tf.multiply(entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
+            pred_weighted_sum_of_embeddings = tf.multiply(
+                pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
+            entity_weighted_sum_of_embeddings = tf.multiply(
+                entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
 
             # find sum of weighted embeddings calculated above
             # entity_emb.get_shape() = (8333, 50)
@@ -194,12 +215,19 @@ class ERMLP:
         obj_correct_emb = obj_emb
 
         # create a corrupt triplet, either corrupting the head or tail entity based on flip boolean
-        sub_corrupted_emb, obj_corrupt_emb = tf.cond(self.flip_placeholder, lambda: (sub_emb, corrupt_emb), lambda: (corrupt_emb, obj_emb))
+        sub_corrupted_emb, obj_corrupt_emb = tf.cond(
+            self.flip_placeholder,
+            lambda: (sub_emb, corrupt_emb),
+            lambda: (corrupt_emb, obj_emb))
 
         # calculation of the first layer involves concatenating the three
         # embeddings for each sample and multipling it by the weight vector
-        correct_pre_act = tf.add(tf.matmul(tf.concat([sub_correct_emb, pred_emb, obj_correct_emb], 1), self.weights['C']), self.biases['b'])
-        corrupted_pre_act = tf.add(tf.matmul(tf.concat([sub_corrupted_emb, pred_emb, obj_corrupt_emb], 1), self.weights['C']), self.biases['b'])
+        correct_pre_act = tf.add(
+            tf.matmul(tf.concat([sub_correct_emb, pred_emb, obj_correct_emb], 1), self.weights['C']),
+            self.biases['b'])
+        corrupted_pre_act = tf.add(
+            tf.matmul(tf.concat([sub_corrupted_emb, pred_emb, obj_corrupt_emb], 1), self.weights['C']),
+            self.biases['b'])
 
         # add more layers if necessary
         if self.params['add_layers'] > 0:
@@ -208,10 +236,15 @@ class ERMLP:
                 corrupted_post_act = tf.nn.relu(corrupted_pre_act)
 
                 correct_dropout = tf.nn.dropout(correct_post_act, self.params['drop_out_percent'])
-                corrupted_dropout = tf.nn.dropout(corrupted_post_act, self.params['drop_out_percent'])
+                corrupted_dropout = tf.nn.dropout(
+                    corrupted_post_act, self.params['drop_out_percent'])
 
-                correct_pre_act = tf.add(tf.matmul(correct_dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
-                corrupted_pre_act = tf.add(tf.matmul(corrupted_dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
+                correct_pre_act = tf.add(
+                    tf.matmul(correct_dropout, self.weights['C{}'.format(i)]),
+                    self.biases['b{}'.format(i)])
+                corrupted_pre_act = tf.add(
+                    tf.matmul(corrupted_dropout, self.weights['C{}'.format(i)]),
+                    self.biases['b{}'.format(i)])
 
         if self.params['act_function'] == 0:
             # tanh
@@ -226,7 +259,8 @@ class ERMLP:
 
         if self.params['add_layers'] > 0:
             pre_final_correct = tf.nn.dropout(pre_final_correct, self.params['drop_out_percent'])
-            pre_final_corrupted = tf.nn.dropout(pre_final_corrupted, self.params['drop_out_percent'])
+            pre_final_corrupted = tf.nn.dropout(
+                pre_final_corrupted, self.params['drop_out_percent'])
 
         out_correct_pre_act = tf.matmul(pre_final_correct, self.weights['B'])
         out_corrupted_pre_act = tf.matmul(pre_final_corrupted, self.weights['B'])
@@ -234,8 +268,12 @@ class ERMLP:
         out_correct = tf.sigmoid(out_correct_pre_act)
         out_corrupted = tf.sigmoid(out_corrupted_pre_act)
 
-        # given batch_size = 5,000 and corrupt_size = 100, self.train_predictions will have shape (500,000 x 2)
-        self.train_predictions = tf.concat([out_correct, out_corrupted], axis=1, name='inference_for_max_margin_training')
+        # given batch_size = 5,000 and corrupt_size = 100
+        # self.train_predictions will have shape (500,000 x 2)
+        self.train_predictions = tf.concat(
+            [out_correct, out_corrupted],
+            axis=1,
+            name='inference_for_max_margin_training')
 
         return self.train_predictions
 
@@ -257,14 +295,18 @@ class ERMLP:
             # look up indices in a list of embedding tensors and return
             # a tensor containing the embeddings (dense vectors) for each of the vocabularies
             # entity_embedded_word_ids.get_shape() = (8333, 2, 50)
-            pred_embedded_word_ids = tf.nn.embedding_lookup(self.weights['P'], self.constants['padded_predicate_indices'])
-            entity_embedded_word_ids = tf.nn.embedding_lookup(self.weights['E'], self.constants['padded_entity_indices'])
+            pred_embedded_word_ids = tf.nn.embedding_lookup(
+                self.weights['P'], self.constants['padded_predicate_indices'])
+            entity_embedded_word_ids = tf.nn.embedding_lookup(
+                self.weights['E'], self.constants['padded_entity_indices'])
 
             # calculate weighted version of these embeddings
             # _constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
             # entity_weighted_sum_of_embeddings.get_shape() = (8333, 2, 50)
-            pred_weighted_sum_of_embeddings = tf.multiply(pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
-            entity_weighted_sum_of_embeddings = tf.multiply(entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
+            pred_weighted_sum_of_embeddings = tf.multiply(
+                pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
+            entity_weighted_sum_of_embeddings = tf.multiply(
+                entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
 
             # find sum of weighted embeddings calculated above
             # entity_emb.get_shape() = (8333, 50)
@@ -282,7 +324,9 @@ class ERMLP:
 
         # calculation of the first layer involves concatenating the three
         # embeddings for each sample and multipling it by the weight vector
-        pre_act = tf.add(tf.matmul(tf.concat([sub_emb, pred_emb, obj_emb], axis=1), self.weights['C']), self.biases['b'])
+        pre_act = tf.add(
+            tf.matmul(tf.concat([sub_emb, pred_emb, obj_emb], axis=1), self.weights['C']),
+            self.biases['b'])
 
         # add more layers if necessary
         if self.params['add_layers'] > 0:
@@ -291,9 +335,13 @@ class ERMLP:
 
                 if training:
                     dropout = tf.nn.dropout(post_act, self.params['drop_out_percent'])
-                    pre_act = tf.add(tf.matmul(dropout, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
+                    pre_act = tf.add(
+                        tf.matmul(dropout, self.weights['C{}'.format(i)]),
+                        self.biases['b{}'.format(i)])
                 else:
-                    pre_act = tf.add(tf.matmul(post_act, self.weights['C{}'.format(i)]), self.biases['b{}'.format(i)])
+                    pre_act = tf.add(
+                        tf.matmul(post_act, self.weights['C{}'.format(i)]),
+                        self.biases['b{}'.format(i)])
 
         if self.params['act_function'] == 0:
             # tanh
@@ -329,7 +377,9 @@ class ERMLP:
         data_dev = indexed_data_dev[:, :3]
         labels_dev = np.reshape(indexed_data_dev[:, 3], (-1, 1))
 
-        predictions_dev = sess.run(self.test_predictions, feed_dict={self.test_triplets: data_dev, self.y: labels_dev})
+        predictions_dev = sess.run(
+            self.test_predictions,
+            feed_dict={self.test_triplets: data_dev, self.y: labels_dev})
 
         predicates_dev = indexed_data_dev[:, 1]
         threshold = self.compute_threshold(predictions_dev, labels_dev, predicates_dev, f1)
@@ -384,7 +434,7 @@ class ERMLP:
                     # using individual prediction as a score
                     score = predicate_predictions[j]
                     # find the predicted label for all predictions
-                    predictions = (predicate_predictions >= score)*1
+                    predictions = (predicate_predictions >= score) * 1
 
                     if f1:
                         accuracy = f1_score(predicate_labels, predictions)
@@ -520,7 +570,7 @@ class ERMLP:
         padded_indices[mask] = np.hstack((indices[:]))
 
         weights = np.multiply(np.ones(mask.shape, dtype=np.float32) / lens[:, None], mask)
-        weights = np.expand_dims(weights, self.params['embedding_size']-1)
+        weights = np.expand_dims(weights, self.params['embedding_size'] - 1)
 
         return weights, padded_indices
 
@@ -537,11 +587,24 @@ class ERMLP:
         predicates_test = indexed_data_test[:, 1]
         labels_test = np.reshape(indexed_data_test[:, 3], (-1, 1))
 
-        predictions_test = sess.run(self.test_predictions, feed_dict={self.test_triplets: data_test, self.y: labels_test})
+        predictions_test = sess.run(
+            self.test_predictions,
+            feed_dict={self.test_triplets: data_test, self.y: labels_test})
 
         # find mAP and auc
-        mean_average_precision_test = pr_stats(self.params['num_preds'], labels_test, predictions_test, predicates_test, pred_dic)
-        roc_auc_test = roc_auc_stats(self.params['num_preds'], labels_test, predictions_test, predicates_test, pred_dic)
+        mean_average_precision_test = pr_stats(
+            self.params['num_preds'],
+            labels_test,
+            predictions_test,
+            predicates_test,
+            pred_dic)
+
+        roc_auc_test = roc_auc_stats(
+            self.params['num_preds'],
+            labels_test,
+            predictions_test,
+            predicates_test,
+            pred_dic)
 
         if threshold is not None:
             # get test classification

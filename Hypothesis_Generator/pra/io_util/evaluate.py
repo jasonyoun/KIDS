@@ -9,24 +9,26 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import argparse
 import logging as log
 import os
 import sys
-from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
 
-# third party imports
-import numpy as np
-
-# local imports
 DIRECTORY = os.path.dirname(__file__)
 ABS_PATH_METRICS = os.path.join(DIRECTORY, '../../utils')
 sys.path.insert(0, ABS_PATH_METRICS)
+
+# third party imports
+import numpy as np
+from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score
+from sklearn.metrics import f1_score, confusion_matrix, precision_score, recall_score
+
+# local imports
+from kids_log import set_logging
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 from utils import save_results
-from kids_log import set_logging
+
 
 def parse_argument():
     """
@@ -50,6 +52,7 @@ def parse_argument():
         help='Set when training the final model')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -113,7 +116,8 @@ def main():
             combined_predicates_array = np.append(combined_predicates_array, predicates_array)
             combined_labels_array = np.append(combined_labels_array, labels_array)
             if not args.final_model:
-                combined_classifications_array = np.append(combined_classifications_array, classifications_array)
+                combined_classifications_array = np.append(
+                    combined_classifications_array, classifications_array)
 
     combined_scores_array = np.transpose(combined_scores_array).astype(float)
     combined_predicates_array = np.transpose(combined_predicates_array).astype(int)
@@ -206,6 +210,7 @@ def main():
         with open(args.dir + "/classifications_pra.txt", 'w') as t_f:
             for row in classifications:
                 t_f.write(str(row) + '\n')
+
 
 if __name__ == "__main__":
     main()

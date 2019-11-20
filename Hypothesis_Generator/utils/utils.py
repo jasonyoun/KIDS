@@ -9,11 +9,11 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import logging as log
 import os
 import pickle
+
 
 def create_dir(directory):
     """
@@ -23,10 +23,11 @@ def create_dir(directory):
         directory: directory to create
     """
     if os.path.isdir(directory):
-    	log.warning('Directory \'%s\' already exists!', directory)
+        log.warning('Directory \'%s\' already exists!', directory)
     else:
-    	log.info('Creating directory: %s', directory)
-    	os.makedirs(directory)
+        log.info('Creating directory: %s', directory)
+        os.makedirs(directory)
+
 
 def load_pickle(filepath_str):
     """
@@ -41,6 +42,7 @@ def load_pickle(filepath_str):
     log.info('Loading pickle file from \'%s\'', filepath_str)
     with open(filepath_str, 'rb') as pickle_file:
         return pickle.load(pickle_file)
+
 
 def save_to_text_file(results, directory):
     """
@@ -66,6 +68,7 @@ def save_to_text_file(results, directory):
                 outfile.write('{}: {}\n'.format(metric, value))
 
             outfile.write('----------------------------------\n')
+
 
 def save_results(results, directory):
     """

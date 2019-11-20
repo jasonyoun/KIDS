@@ -9,11 +9,15 @@ Description:
 
 To-do:
 """
-import re
+# standard imports
 import logging as log
+import re
+
+# third party imports
 import numpy as np
 import pandas as pd
 import scipy.io as spio
+
 
 class DataProcessor:
     """
@@ -68,7 +72,9 @@ class DataProcessor:
             list of lists where each list has length equal to 3.
             [sub_index, pred_index, obj_index]
         """
-        indexed_data = [[entity_dic[df_data[i][0]], pred_dic[df_data[i][1]], entity_dic[df_data[i][2]]] for i in range(len(df_data))]
+        indexed_data = [
+            [entity_dic[df_data[i][0]], pred_dic[df_data[i][1]], entity_dic[df_data[i][2]]]
+            for i in range(len(df_data))]
 
         return np.array(indexed_data)
 
@@ -89,7 +95,9 @@ class DataProcessor:
             list of lists where each list has length equal to 4.
             [sub_index, pred_index, obj_index, 1/-1]
         """
-        indexed_data = [[entity_dic[df_data[i][0]], pred_dic[df_data[i][1]], entity_dic[df_data[i][2]], df_data[i][3]] for i in range(len(df_data))]
+        indexed_data = [
+            [entity_dic[df_data[i][0]], pred_dic[df_data[i][1]], entity_dic[df_data[i][2]], df_data[i][3]]
+            for i in range(len(df_data))]
 
         return np.array(indexed_data)
 
@@ -152,7 +160,7 @@ class DataProcessor:
         item_dic = {}
         item_index_id = 0
 
-        log.info('Performing machine translation for items in \'%s\' using word embedding...', fname)
+        log.info('Translating items in \'%s\' using word embedding...', fname)
 
         # open file
         with open(fname, encoding='utf8') as _file:
@@ -168,7 +176,10 @@ class DataProcessor:
         if init_embed_file:
             log.info('Using init embed file \'%s\' for word embedding...', init_embed_file)
             mat = spio.loadmat(init_embed_file, squeeze_me=True)
-            indexed_items = [[mat['tree'][i][()][0] - 1] if isinstance(mat['tree'][i][()][0], int) else [x - 1 for x in mat['tree'][i][()][0]] for i in range(len(mat['tree']))]
+            indexed_items = [
+                [mat['tree'][i][()][0] - 1]
+                if isinstance(mat['tree'][i][()][0], int)
+                else [x - 1 for x in mat['tree'][i][()][0]] for i in range(len(mat['tree']))]
             num_words = len(mat['words'])
         else:
             word_index_id = 0
@@ -221,7 +232,7 @@ class DataProcessor:
         entity_dic = {}
         entity_index_id = 0
 
-        log.info('Performing machine translation for items in \'%s\' without using word embedding...', fname)
+        log.info('Translating items in \'%s\' without using word embedding...', fname)
 
         # open file
         with open(fname, encoding='utf-8') as _file:

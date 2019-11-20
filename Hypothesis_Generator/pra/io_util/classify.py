@@ -10,9 +10,9 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import argparse
+
 
 def parse_argument():
     """
@@ -36,6 +36,7 @@ def parse_argument():
         help='base directory')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -62,6 +63,7 @@ def main():
                 _file.write('1\t' + str(score[0]) + '\n')
             else:
                 _file.write('0\t' + str(score[0]) + '\n')
+
 
 if __name__ == "__main__":
     main()

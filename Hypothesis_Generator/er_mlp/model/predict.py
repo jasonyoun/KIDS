@@ -6,7 +6,7 @@ Authors:
     Jason Youn - jyoun@ucdavis.edu
 
 Description:
-    
+
 
 To-do:
 """
@@ -15,18 +15,18 @@ To-do:
 import argparse
 import os
 import pickle
-import sys
 
 # third party imports
 import numpy as np
 import tensorflow as tf
 
 # local imports
-import model_global
-from er_mlp import ERMLP
-from data_processor import DataProcessor
 from config_parser import ConfigParser
+from data_processor import DataProcessor
+from er_mlp import ERMLP
 from kids_log import set_logging
+import model_global
+
 
 def parse_argument():
     """
@@ -57,6 +57,7 @@ def parse_argument():
         help='Set when training the final model')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -136,9 +137,11 @@ def main():
             er_mlp.test_predictions, feed_dict={er_mlp.test_triplets: data_test})
 
         if not args.final_model:
-            classifications_test = er_mlp.classify(predictions_list_test, thresholds, predicates_test)
+            classifications_test = er_mlp.classify(
+                predictions_list_test, thresholds, predicates_test)
             classifications_test = np.array(classifications_test).astype(int)
-            classifications_test = classifications_test.reshape((np.shape(classifications_test)[0], 1))
+            classifications_test = classifications_test.reshape(
+                (np.shape(classifications_test)[0], 1))
 
             c = np.dstack((classifications_test, predictions_list_test))
             c = np.squeeze(c)

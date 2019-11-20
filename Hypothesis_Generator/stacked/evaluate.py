@@ -10,7 +10,6 @@ Description:
 To-do:
     1. Fix variable predicates so that it works in general case.
 """
-
 # standard imports
 import argparse
 import logging as log
@@ -18,20 +17,21 @@ import os
 import pickle
 import sys
 
-# third party imports
-from matplotlib import pyplot
-import numpy as np
-from sklearn.calibration import calibration_curve
-from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
-
-# local imports
 DIRECTORY = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(DIRECTORY, '../utils'))
+
+# third party imports
+import numpy as np
+from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score
+from sklearn.metrics import f1_score, confusion_matrix, precision_score, recall_score
+
+# local imports
 from config_parser import ConfigParser
 import features
 from kids_log import set_logging
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 from utils import save_results
+
 
 def parse_argument():
     """
@@ -56,6 +56,7 @@ def parse_argument():
         help='Set when training the final model')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -97,14 +98,6 @@ def main():
             probs = clf.predict_proba(X)[:, 1]
             probs = np.reshape(probs, (-1, 1))
             probabilities[indices] = probs
-
-            # # reliability diagram
-            # fop, mpv = calibration_curve(test_y, probs, n_bins=10, normalize=True)
-            # # plot perfectly calibrated
-            # pyplot.plot([0, 1], [0, 1], linestyle='--')
-            # # plot calibrated reliability
-            # pyplot.plot(mpv, fop, marker='.')
-            # pyplot.show()
 
             if not args.final_model:
                 classifications[indices] = clf.predict(X)
@@ -198,6 +191,7 @@ def main():
         log.debug('test ap: %f', ap_test)
         log.debug('test confusion matrix:')
         log.debug(str(confusion_test))
+
 
 if __name__ == "__main__":
     main()

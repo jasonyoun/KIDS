@@ -20,16 +20,21 @@ To-do:
     6. maybe put _test_model into er_mlp.py like compute_threshold
     7. figure out why we set label to -1 here but to 0 in determine_thresholds.py
 """
-
-import os
-import random
-import pickle
+# standard imports
 import logging as log
+import os
+import pickle
+import random
+
+# third party imports
 import numpy as np
 import tensorflow as tf
-from er_mlp import ERMLP
+
+# local imports
 from data_processor import DataProcessor
+from er_mlp import ERMLP
 from metrics import plot_cost, plot_map
+
 
 def run_model(params, final_model=False):
     """
@@ -69,11 +74,16 @@ def run_model(params, final_model=False):
         pred_dic = processor.machine_translate(os.path.join(params['DATA_PATH'], 'relations.txt'))
 
     # numerically represent the data
-    indexed_train_data = processor.create_indexed_triplets_test(train_df.values, entity_dic, pred_dic)
-    indexed_train_local_data = processor.create_indexed_triplets_test(train_local_df.values, entity_dic, pred_dic)
+    indexed_train_data = processor.create_indexed_triplets_test(
+        train_df.values, entity_dic, pred_dic)
+    indexed_train_local_data = processor.create_indexed_triplets_test(
+        train_local_df.values, entity_dic, pred_dic)
+
     if not final_model:
-        indexed_dev_data = processor.create_indexed_triplets_test(dev_df.values, entity_dic, pred_dic)
-        indexed_test_data = processor.create_indexed_triplets_test(test_df.values, entity_dic, pred_dic)
+        indexed_dev_data = processor.create_indexed_triplets_test(
+            dev_df.values, entity_dic, pred_dic)
+        indexed_test_data = processor.create_indexed_triplets_test(
+            test_df.values, entity_dic, pred_dic)
 
     # change label from 0 to -1 for test / dev data
     if not final_model:
@@ -97,7 +107,7 @@ def run_model(params, final_model=False):
         'learning_rate': params['LEARNING_RATE'],
         'batch_size': params['BATCH_SIZE'],
         'add_layers': params['ADD_LAYERS'],
-        'act_function':params['ACT_FUNCTION'],
+        'act_function': params['ACT_FUNCTION'],
         'drop_out_percent': params['DROP_OUT_PERCENT'],
         'margin': params['MARGIN']
     }
@@ -162,7 +172,8 @@ def run_model(params, final_model=False):
     # begin session
     with tf.Session() as sess:
         # writer
-        train_writer = tf.summary.FileWriter(os.path.join(params['MODEL_SAVE_DIRECTORY'], 'log'), sess.graph)
+        train_writer = tf.summary.FileWriter(
+            os.path.join(params['MODEL_SAVE_DIRECTORY'], 'log'), sess.graph)
 
         # run init
         sess.run(init_all)
@@ -179,8 +190,8 @@ def run_model(params, final_model=False):
             # iteration
             for i in range(total_batch):
                 # get corrupted batch using the un-corrupted data_train
-                start_idx = i*params['BATCH_SIZE']
-                end_idx = (i+1)*params['BATCH_SIZE']
+                start_idx = i * params['BATCH_SIZE']
+                end_idx = (i + 1) * params['BATCH_SIZE']
                 batch_xs = er_mlp.get_training_batch_with_corrupted(data_train[start_idx:end_idx])
 
                 # flip bit
@@ -193,17 +204,21 @@ def run_model(params, final_model=False):
 
                 # display progress
                 if (i == 0) and (epoch % params['DISPLAY_STEP'] == 0):
-                    _, train_summary, current_cost = sess.run([optimizer, merged, cost], feed_dict=feed_dict)
+                    _, train_summary, current_cost = sess.run(
+                        [optimizer, merged, cost], feed_dict=feed_dict)
                     train_writer.add_summary(train_summary, iteration)
 
                     log.info('current cost: %f', current_cost)
 
-                    train_local_map = er_mlp.test_model(sess, indexed_train_local_data, pred_dic, _type='train local')
+                    train_local_map = er_mlp.test_model(
+                        sess, indexed_train_local_data, pred_dic, _type='train local')
                     train_local_map_list.append(train_local_map)
 
                     if not final_model:
-                        thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
-                        test_map = er_mlp.test_model(sess, indexed_test_data, pred_dic, threshold=thresholds, _type='current test')
+                        thresholds = er_mlp.determine_threshold(
+                            sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
+                        test_map = er_mlp.test_model(
+                            sess, indexed_test_data, pred_dic, threshold=thresholds, _type='current test')
                         test_map_list.append(test_map)
 
                     iter_list.append(iteration)
@@ -220,8 +235,10 @@ def run_model(params, final_model=False):
         if not final_model:
             # do final threshold determination and testing model
             log.info('determine threshold for classification')
-            thresholds = er_mlp.determine_threshold(sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
-            er_mlp.test_model(sess, indexed_test_data, pred_dic, threshold=thresholds, _type='final')
+            thresholds = er_mlp.determine_threshold(
+                sess, indexed_dev_data, f1=params['F1_FOR_THRESHOLD'])
+            er_mlp.test_model(
+                sess, indexed_test_data, pred_dic, threshold=thresholds, _type='final')
 
         # plot the cost graph
         plot_cost(iter_list, cost_list, params['MODEL_SAVE_DIRECTORY'])

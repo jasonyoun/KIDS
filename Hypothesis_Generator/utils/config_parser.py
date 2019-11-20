@@ -11,6 +11,7 @@ To-do:
 """
 import configparser
 
+
 class ConfigParser:
     """
     Config parser.

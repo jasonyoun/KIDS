@@ -9,7 +9,6 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import os
 import pickle
@@ -19,6 +18,7 @@ import numpy as np
 
 ER_MLP_MODEL_HOME = '../er_mlp/model/model_instance/'
 PRA_MODEL_HOME = '../pra/model/model_instance/'
+
 
 def get_x_y(which, er_mlp, pra, final_model=False):
     """
@@ -67,7 +67,7 @@ def get_x_y(which, er_mlp, pra, final_model=False):
             label = int(strings[2].replace('label: ', ''))
 
         labels.append([label])
-        er_mlp_features.append([predicate, pred, 1]) # all valid
+        er_mlp_features.append([predicate, pred, 1])  # all valid
 
     # convert to numpy arrays
     labels_array = np.array(labels)

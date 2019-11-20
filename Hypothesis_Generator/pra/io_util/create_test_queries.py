@@ -10,10 +10,10 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import argparse
 import random
+
 
 def parse_argument():
     """
@@ -46,6 +46,7 @@ def parse_argument():
 
     return parser.parse_args()
 
+
 def main():
     """
     Main function.
@@ -68,13 +69,13 @@ def main():
             subject = "c$" + columns[0]
             _object = "c$" + columns[2]
 
-            if columns[3] == '1': # positive queries
+            if columns[3] == '1':  # positive queries
                 if subject not in queries:
                     queries[subject] = set()
                     queries[subject].add(_object)
                 else:
                     queries[subject].add(_object)
-            else: # negative queries
+            else:  # negative queries
                 if subject not in queries_neg:
                     queries_neg[subject] = set()
                     queries_neg[subject].add(_object)
@@ -115,6 +116,7 @@ def main():
                     _file.write(' ' + o)
 
                 _file.write('\n')
+
 
 if __name__ == "__main__":
     main()

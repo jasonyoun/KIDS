@@ -12,6 +12,7 @@ To-do:
 import os
 import logging as log
 
+
 def set_logging(logfile_str=''):
     """
     Configure logging.

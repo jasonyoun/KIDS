@@ -9,13 +9,12 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import argparse
-import pickle
 
 # third party imports
 import numpy as np
+
 
 def parse_argument():
     """
@@ -39,6 +38,7 @@ def parse_argument():
         help='base directory')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -96,6 +96,7 @@ def main():
     with open(scores_file, "w") as _file:
         for i in range(np.shape(scores_array)[0]):
             _file.write(str(scores_array[i]) + '\t' + str(valid_array[i]) + '\n')
+
 
 if __name__ == "__main__":
     main()

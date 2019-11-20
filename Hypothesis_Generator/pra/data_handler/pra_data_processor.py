@@ -9,7 +9,6 @@ Description:
 
 To-do
 """
-
 # standard imports
 import argparse
 import csv
@@ -17,6 +16,7 @@ import csv
 # third party imports
 import numpy as np
 import pandas as pd
+
 
 def parse_argument():
     """
@@ -47,6 +47,7 @@ def parse_argument():
 
     return parser.parse_args()
 
+
 def create_type_subsets_dic(data_array):
     """
     Create dictionaries given a file entity_full_names.txt.
@@ -74,6 +75,7 @@ def create_type_subsets_dic(data_array):
 
     return type_dic, subsets_dic
 
+
 def clean_row(row):
     """
     Remove all whitespace for given row at the start and end,
@@ -85,6 +87,7 @@ def clean_row(row):
     for i in range(np.shape(row)[0]):
         if isinstance(row[i], str):
             row[i] = row[i].strip()
+
 
 class DataProcessor:
     def __init__(self, data_path, use_domain=False):
@@ -100,12 +103,20 @@ class DataProcessor:
 
         if self.use_domain:
             my_file = "entity_full_names.txt"
-            pd_data = pd.read_csv(self.data_path + '/' + my_file, sep=':', encoding='latin-1', header=None)
+            pd_data = pd.read_csv(
+                self.data_path + '/' + my_file,
+                sep=':',
+                encoding='latin-1',
+                header=None)
             data_array = pd_data.values
             self.type_dic, self.subsets_dic = create_type_subsets_dic(data_array)
 
             my_file = "domain_range.txt"
-            pd_data = pd.read_csv(self.data_path + '/' + my_file, sep='\t', encoding='latin-1', header=None)
+            pd_data = pd.read_csv(
+                self.data_path + '/' + my_file,
+                sep='\t',
+                encoding='latin-1',
+                header=None)
             data_array = pd_data.values
             self.domain_range_dic = {}
             for row in data_array:
@@ -128,7 +139,12 @@ class DataProcessor:
         Returns:
             pd_data: dataframe containing the data
         """
-        pd_data = pd.read_csv(self.data_path + '/' + data_file, sep='\t', encoding='latin-1', header=None)
+        pd_data = pd.read_csv(
+            self.data_path + '/' + data_file,
+            sep='\t',
+            encoding='latin-1',
+            header=None)
+
         return pd_data
 
     def create_selected_relations_file(self, data):
@@ -276,11 +292,6 @@ class DataProcessor:
         with open(filename, 'w') as csvfile:
             writer = csv.writer(csvfile, delimiter='\t', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(['Entity', 'Relation', 'Value', 'Iteration of Promotion', 'Probability', 'Source', 'Candidate Source'])
-                # if not positive:
-                #     if row[1] in self.no_negatives:
-                #         continue
-                # print(row[0])
-                # print(row[1])
 
             if self.use_domain:
                 for row in positives:
@@ -313,6 +324,7 @@ class DataProcessor:
                 for key in self.entity_set:
                     writer.writerow([key, 'generalizations', 'object', '', '1.0', '', ''])
 
+
 def main():
     """
     Main function.
@@ -332,6 +344,7 @@ def main():
     if args.use_domain:
         if shape[1] == 4:
             processor.create_triplets_generalizations_file(train_df.values, positive=False)
+
 
 if __name__ == "__main__":
     main()

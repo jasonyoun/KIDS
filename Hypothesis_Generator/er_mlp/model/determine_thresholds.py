@@ -11,7 +11,6 @@ Description:
 To-do:
     1. why set label to 0 now instead of -1?
 """
-
 # standard imports
 import argparse
 import logging as log
@@ -27,6 +26,7 @@ from er_mlp import ERMLP
 from data_processor import DataProcessor
 from config_parser import ConfigParser
 from kids_log import set_logging
+
 
 def parse_argument():
     """
@@ -49,6 +49,7 @@ def parse_argument():
         help='Path to save the log')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -88,7 +89,7 @@ def main():
             'learning_rate': configparser.getfloat('LEARNING_RATE'),
             'batch_size': configparser.getint('BATCH_SIZE'),
             'add_layers': configparser.getint('ADD_LAYERS'),
-            'act_function':configparser.getint('ACT_FUNCTION'),
+            'act_function': configparser.getint('ACT_FUNCTION'),
             'drop_out_percent': configparser.getfloat('DROP_OUT_PERCENT')
         }
 
@@ -111,7 +112,8 @@ def main():
 
         processor = DataProcessor()
         dev_df = processor.load(os.path.join(configparser.getstr('DATA_PATH'), 'dev.txt'))
-        indexed_data_dev = processor.create_indexed_triplets_test(dev_df.values, entity_dic, pred_dic)
+        indexed_data_dev = processor.create_indexed_triplets_test(
+            dev_df.values, entity_dic, pred_dic)
         indexed_data_dev[:, 3][indexed_data_dev[:, 3] == -1] = 0
 
         # find the threshold
@@ -142,6 +144,7 @@ def main():
         # save the parameters
         with open(os.path.join(model_save_dir, 'params.pkl'), 'wb') as output:
             pickle.dump(save_object, output, pickle.HIGHEST_PROTOCOL)
+
 
 if __name__ == '__main__':
     main()

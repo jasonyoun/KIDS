@@ -9,13 +9,13 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import argparse
 
 # third party imports
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score
+
 
 def parse_argument():
     """
@@ -39,6 +39,7 @@ def parse_argument():
         help='base directory')
 
     return parser.parse_args()
+
 
 def compute_threshold(predictions_list, dev_labels, f1=True):
     """
@@ -75,6 +76,7 @@ def compute_threshold(predictions_list, dev_labels, f1=True):
 
     return best_threshold
 
+
 def main():
     """
     Main function.
@@ -85,7 +87,7 @@ def main():
     scores_file = args.dir + '/scores/' + relation
     thresholds_file = args.dir + '/thresholds/' + relation
 
-    labels_file = args.dir+'/queriesR_labels/'+relation
+    labels_file = args.dir + '/queriesR_labels/' + relation
 
     with open(labels_file, "r") as l_file:
         labels = l_file.readlines()
@@ -109,6 +111,7 @@ def main():
 
     with open(thresholds_file, "w") as _file:
         _file.write(str(threshold) + '\n')
+
 
 if __name__ == "__main__":
     main()

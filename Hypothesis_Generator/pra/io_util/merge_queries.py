@@ -9,13 +9,13 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import argparse
 import os
 
 # third party imports
 import pandas as pd
+
 
 def parse_argument():
     """
@@ -34,6 +34,7 @@ def parse_argument():
         help='base directory')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -60,6 +61,7 @@ def main():
         neg_df = pd.read_csv(args.dir + '/queriesR_train_neg/' + relation, sep='\t', encoding='latin-1', names=["subject", "object"])
         result = pd.merge(pos_df, neg_df, how='left', on="subject")
         result.to_csv(args.dir + '/queriesR_train/' + relation, sep='\t', index=False, header=False)
+
 
 if __name__ == "__main__":
     main()

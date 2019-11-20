@@ -13,7 +13,6 @@ To-do:
     2. combine roc_auc_stats and pr_stats into one maybe
         because they share lots of stuff.
 """
-
 # standard imports
 import datetime
 import logging as log
@@ -29,6 +28,7 @@ from scipy import interp
 
 # local imports
 from utils import create_dir
+
 
 def roc_auc_stats(num_preds, Y, predictions, predicates, pred_dic):
     """
@@ -92,6 +92,7 @@ def roc_auc_stats(num_preds, Y, predictions, predicates, pred_dic):
 
     return roc_auc['macro']
 
+
 def pr_stats(num_preds, Y, predictions, predicates, pred_dic):
     """
     Find different statistics related to precision and recall.
@@ -119,8 +120,6 @@ def pr_stats(num_preds, Y, predictions, predicates, pred_dic):
     baseline = np.zeros(np.shape(predictions))
     # find baseline precision / recall
     baseline_precision, baseline_recall, _ = precision_recall_curve(Y.ravel(), baseline.ravel())
-    # find area under the curve using baseline precision / recall
-    baseline_aucPR = auc(baseline_recall, baseline_precision)
 
     ######################################
     # print baseline precision & recall? #
@@ -160,6 +159,7 @@ def pr_stats(num_preds, Y, predictions, predicates, pred_dic):
     mean_average_precision = sum_ap / len(predicates_included)
 
     return mean_average_precision
+
 
 def plot_roc(num_preds, Y, predictions, predicates, pred_dic, directory, name_of_file='model'):
     ts = time.time()
@@ -213,7 +213,7 @@ def plot_roc(num_preds, Y, predictions, predicates, pred_dic, directory, name_of
     filename = directory + '/roc.png'
     plt.savefig(filename)
 
-    with open(directory+'/roc_macro_'+name_of_file+st+'.pkl', 'wb') as output:
+    with open(directory + '/roc_macro_' + name_of_file + st + '.pkl', 'wb') as output:
         pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
     print("saved:{!s}".format(filename))
 
@@ -244,12 +244,12 @@ def plot_roc(num_preds, Y, predictions, predicates, pred_dic, directory, name_of
 
     print('saved:{!s}'.format(filename))
 
+
 def plot_pr(num_preds, Y, predictions, predicates, pred_dic, directory, name_of_file='model'):
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('_%Y_%m_%d_%H_%M_%S')
     baseline = np.zeros(np.shape(predictions))
     baseline_precision, baseline_recall, _ = precision_recall_curve(Y.ravel(), baseline.ravel())
-    baseline_aucPR = auc(baseline_recall, baseline_precision)
 
     precision = dict()
     recall = dict()
@@ -303,8 +303,9 @@ def plot_pr(num_preds, Y, predictions, predicates, pred_dic, directory, name_of_
     filename = directory + '/pr_' + name_of_file + st + '.png'
     plt.savefig(filename)
     print('saved:{!s}'.format(filename))
-    with open(directory+'/pr_' + name_of_file + st + '.pkl', 'wb') as output:
+    with open(directory + '/pr_' + name_of_file + st + '.pkl', 'wb') as output:
         pickle.dump(saved_data_points, output, pickle.HIGHEST_PROTOCOL)
+
 
 def plot_cost(iterations, cost_list, directory):
     """
@@ -326,6 +327,7 @@ def plot_cost(iterations, cost_list, directory):
 
     filename = directory + '/cost.png'
     plt.savefig(filename)
+
 
 def plot_map(iterations, map_list, directory, filename='map.png'):
     """

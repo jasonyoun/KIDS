@@ -6,11 +6,9 @@ Authors:
     Jason Youn - jyoun@ucdavis.edu
 
 Description:
-    
 
 To-do:
 """
-
 # standard imports
 import argparse
 import os
@@ -19,7 +17,8 @@ import pickle
 # third party imports
 import numpy as np
 import tensorflow as tf
-from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
+from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_score
+from sklearn.metrics import f1_score, confusion_matrix, precision_score, recall_score
 
 # local imports
 import model_global
@@ -29,6 +28,7 @@ from utils import save_results
 from data_processor import DataProcessor
 from config_parser import ConfigParser
 from kids_log import set_logging
+
 
 def parse_argument():
     """
@@ -51,6 +51,7 @@ def parse_argument():
         help='Path to save the log')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -112,17 +113,22 @@ def main():
 
         processor = DataProcessor()
         test_df = processor.load(os.path.join(configparser.getstr('DATA_PATH'), 'test.txt'))
-        indexed_data_test = processor.create_indexed_triplets_test(test_df.values, entity_dic, pred_dic)
+        indexed_data_test = processor.create_indexed_triplets_test(
+            test_df.values, entity_dic, pred_dic)
         indexed_data_test[:, 3][indexed_data_test[:, 3] == -1] = 0
 
         data_test = indexed_data_test[:, :3]
         labels_test = np.reshape(indexed_data_test[:, 3], (-1, 1))
         predicates_test = indexed_data_test[:, 1]
 
-        predictions_list_test = sess.run(er_mlp.test_predictions, feed_dict={er_mlp.test_triplets: data_test, er_mlp.y: labels_test})
+        predictions_list_test = sess.run(
+            er_mlp.test_predictions,
+            feed_dict={er_mlp.test_triplets: data_test, er_mlp.y: labels_test})
 
-        mean_average_precision_test = pr_stats(len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
-        roc_auc_test = roc_auc_stats(len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
+        mean_average_precision_test = pr_stats(
+            len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
+        roc_auc_test = roc_auc_stats(
+            len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
         classifications_test = er_mlp.classify(predictions_list_test, thresholds, predicates_test)
         classifications_test = np.array(classifications_test).astype(int)
 
@@ -208,6 +214,7 @@ def main():
     with open(_file, 'w') as t_f:
         for row in classifications_test:
             t_f.write(str(row) + '\n')
+
 
 if __name__ == '__main__':
     main()

@@ -10,12 +10,14 @@ Description:
 To-do:
     1. move number of fold for final model to config.
 """
-
 # standard imports
 import argparse
 import os
 import pickle
 import sys
+
+DIRECTORY = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(DIRECTORY, '../utils'))
 
 # third party imports
 from imblearn.over_sampling import SMOTE
@@ -27,13 +29,12 @@ from sklearn.model_selection import RandomizedSearchCV, PredefinedSplit
 from sklearn.calibration import CalibratedClassifierCV
 
 # local imports
-DIRECTORY = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(DIRECTORY, '../utils'))
 import features
 from config_parser import ConfigParser
 from utils import create_dir
 
 RANDOM_STATE = 0
+
 
 def parse_argument():
     """
@@ -51,6 +52,7 @@ def parse_argument():
         action='store',
         required=True,
         help='The pra models to add')
+
     parser.add_argument(
         '--er_mlp',
         metavar='er_mlp_model (er_mlp_model_2)',
@@ -58,6 +60,7 @@ def parse_argument():
         action='store',
         required=True,
         help='The er-mlp models to add')
+
     parser.add_argument(
         '--dir',
         metavar='dir',
@@ -65,6 +68,7 @@ def parse_argument():
         action='store',
         required=True,
         help='directory to store the model')
+
     parser.add_argument(
         '--final_model',
         default=False,
@@ -72,6 +76,7 @@ def parse_argument():
         help='Set when training the final model')
 
     return parser.parse_args()
+
 
 def get_results_of_search(results, count=5):
     # f1
@@ -103,6 +108,7 @@ def get_results_of_search(results, count=5):
     print("")
 
     return ap_params
+
 
 def randomized_search(configparser, train_x, train_y, test_x=None, test_y=None, final_model=False):
     """
@@ -167,6 +173,7 @@ def randomized_search(configparser, train_x, train_y, test_x=None, test_y=None, 
     random_search.fit(all_x, all_y.ravel())
 
     return get_results_of_search(random_search.cv_results_)
+
 
 def main():
     """
@@ -271,6 +278,7 @@ def main():
     with open(os.path.join(directory, 'confidence.txt'), 'w') as t_f:
         for row in predictions_train:
             t_f.write(str(row) + '\n')
+
 
 if __name__ == "__main__":
     main()

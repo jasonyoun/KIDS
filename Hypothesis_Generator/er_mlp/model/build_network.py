@@ -10,16 +10,16 @@ Description:
 
 To-do:
 """
-
 # standard imports
 import argparse
 import os
 
 # local imports
-import model_global
-import er_mlp_max_margin
 from config_parser import ConfigParser
+import er_mlp_max_margin
 from kids_log import set_logging
+import model_global
+
 
 def parse_argument():
     """
@@ -47,6 +47,7 @@ def parse_argument():
         help='Set when training the final model')
 
     return parser.parse_args()
+
 
 def main():
     """
@@ -89,6 +90,7 @@ def main():
 
     # run the model
     er_mlp_max_margin.run_model(params, final_model=args.final_model)
+
 
 if __name__ == '__main__':
     main()
