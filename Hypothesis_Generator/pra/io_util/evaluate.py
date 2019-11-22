@@ -45,6 +45,7 @@ def parse_argument():
         nargs='?',
         default='./',
         help='base directory')
+
     parser.add_argument(
         '--final_model',
         default=False,

@@ -27,7 +27,7 @@ from sklearn.metrics import f1_score, confusion_matrix, precision_score, recall_
 
 # local imports
 from config_parser import ConfigParser
-import features
+from data_processor import DataProcessor
 from kids_log import set_logging
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 from utils import save_results
@@ -49,6 +49,7 @@ def parse_argument():
         action='store',
         required=True,
         help='directory to store the model')
+
     parser.add_argument(
         '--final_model',
         default=False,
@@ -72,14 +73,17 @@ def main():
     # setup configuration parser
     configparser = ConfigParser(config_file)
 
-    fn = open(os.path.join(model_save_dir, 'model.pkl'), 'rb')
-    model_dic = pickle.load(fn)
+    with open(os.path.join(model_save_dir, 'model.pkl'), 'rb') as file:
+        model_dic = pickle.load(file)
 
-    pred_dic, test_x, test_y, predicates_test = features.get_x_y(
-        configparser.getstr('test_dir'),
+    # load data
+    dp = DataProcessor(
         configparser.getstr('er_mlp_model_dir'),
         configparser.getstr('pra_model_dir'),
-        args.final_model)
+        configparser.getstr('test_dir'))
+
+    pred_dic = dp.get_pred_dic()
+    test_x, test_y, predicates_test = dp.get_x_y()
 
     probabilities = np.zeros_like(predicates_test, dtype=float)
     probabilities = probabilities.reshape((np.shape(probabilities)[0], 1))
@@ -150,9 +154,11 @@ def main():
                 log.debug(' - predicate confusion matrix for %s:', pred_name)
                 log.debug(str(confusion_predicate))
 
-                fpr_pred, tpr_pred, _ = roc_curve(labels_predicate.ravel(), predicate_predictions.ravel())
+                fpr_pred, tpr_pred, _ = roc_curve(
+                    labels_predicate.ravel(), predicate_predictions.ravel())
                 roc_auc_pred = auc(fpr_pred, tpr_pred)
-                ap_pred = average_precision_score(labels_predicate.ravel(), predicate_predictions.ravel())
+                ap_pred = average_precision_score(
+                    labels_predicate.ravel(), predicate_predictions.ravel())
 
                 results['predicate'][pred_name] = {
                     'map': ap_pred,

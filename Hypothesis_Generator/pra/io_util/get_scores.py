@@ -30,6 +30,7 @@ def parse_argument():
         nargs='?',
         required=True,
         help='the predicate that we will get the scores for')
+
     parser.add_argument(
         '--dir',
         metavar='dir',

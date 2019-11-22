@@ -13,12 +13,17 @@ To-do:
 # standard imports
 import argparse
 import os
+import sys
+
+DIRECTORY = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(DIRECTORY, '../er_mlp_imp'))
+sys.path.insert(0, os.path.join(DIRECTORY, '../data_handler'))
+sys.path.insert(0, os.path.join(DIRECTORY, '../../utils'))
 
 # local imports
 from config_parser import ConfigParser
 import er_mlp_max_margin
 from kids_log import set_logging
-import model_global
 
 
 def parse_argument():
@@ -36,10 +41,12 @@ def parse_argument():
         nargs='?',
         default='./',
         help='Base directory')
+
     parser.add_argument(
         '--logfile',
         default='',
         help='Path to save the log')
+
     parser.add_argument(
         '--final_model',
         default=False,
@@ -66,27 +73,32 @@ def main():
     configparser = ConfigParser(config_file)
 
     params = {
-        'WORD_EMBEDDING': configparser.getbool('WORD_EMBEDDING'),
-        'TRAINING_EPOCHS': configparser.getint('TRAINING_EPOCHS'),
-        'BATCH_SIZE': configparser.getint('BATCH_SIZE'),
-        'DISPLAY_STEP': configparser.getint('DISPLAY_STEP'),
-        'EMBEDDING_SIZE': configparser.getint('EMBEDDING_SIZE'),
-        'LAYER_SIZE': configparser.getint('LAYER_SIZE'),
-        'LEARNING_RATE': configparser.getfloat('LEARNING_RATE'),
-        'CORRUPT_SIZE': configparser.getint('CORRUPT_SIZE'),
-        'LAMBDA': configparser.getfloat('LAMBDA'),
-        'OPTIMIZER': configparser.getint('OPTIMIZER'),
-        'ACT_FUNCTION': configparser.getint('ACT_FUNCTION'),
-        'ADD_LAYERS': configparser.getint('ADD_LAYERS'),
-        'DROP_OUT_PERCENT': configparser.getfloat('DROP_OUT_PERCENT'),
-        'DATA_PATH': configparser.getstr('DATA_PATH'),
-        'SAVE_MODEL': configparser.getbool('SAVE_MODEL'),
-        'MODEL_SAVE_DIRECTORY': model_save_dir,
-        'TRAIN_FILE': configparser.getstr('TRAIN_FILE'),
-        'SEPARATOR': configparser.getstr('SEPARATOR'),
-        'F1_FOR_THRESHOLD': configparser.getbool('F1_FOR_THRESHOLD'),
-        'MARGIN': configparser.getfloat('MARGIN')
+        'word_embedding': configparser.getbool('word_embedding'),
+        'training_epochs': configparser.getint('training_epochs'),
+        'batch_size': configparser.getint('batch_size'),
+        'display_step': configparser.getint('display_step'),
+        'embedding_size': configparser.getint('embedding_size'),
+        'layer_size': configparser.getint('layer_size'),
+        'learning_rate': configparser.getfloat('learning_rate'),
+        'corrupt_size': configparser.getint('corrupt_size'),
+        'lambda': configparser.getfloat('lambda'),
+        'optimizer': configparser.getint('optimizer'),
+        'act_function': configparser.getint('act_function'),
+        'add_layers': configparser.getint('add_layers'),
+        'drop_out_percent': configparser.getfloat('drop_out_percent'),
+        'data_path': configparser.getstr('data_path'),
+        'save_model': configparser.getbool('save_model'),
+        'model_save_directory': model_save_dir,
+        'train_file': configparser.getstr('train_file'),
+        'train_local_file': configparser.getstr('train_local_file'),
+        'separator': configparser.getstr('separator'),
+        'f1_for_threshold': configparser.getbool('f1_for_threshold'),
+        'margin': configparser.getfloat('margin')
     }
+
+    if not args.final_model:
+        params['dev_file'] = configparser.getstr('dev_file')
+        params['test_file'] = configparser.getstr('test_file')
 
     # run the model
     er_mlp_max_margin.run_model(params, final_model=args.final_model)

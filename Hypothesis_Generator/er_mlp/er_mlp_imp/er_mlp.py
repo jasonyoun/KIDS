@@ -9,12 +9,6 @@ Description:
     Building blocks to be used for constructing ER MLP.
 
 To-do:
-    1. why use tf.ones for the B weights?
-    2. combine inference_for_max_margin_training() and inference() into one function?
-        or at least separate word embedding lookup part into separate function
-    3. change names E, P, C, B, b to more meaningful names
-    4. namescope for the model
-    5. cross_margin inside compute_threshold() is not used. why?
 """
 # standard imports
 import logging as log
@@ -33,7 +27,6 @@ class ERMLP:
     """
     Class which consists of building blocks to build different types of ER MLPs.
     """
-
     def __init__(self, params, sess=None, meta_graph=None, model_restore=None):
         """
         Constructor for class ERMLP.
@@ -62,6 +55,8 @@ class ERMLP:
             meta_graph: filepath for meta graph
             model_restore: filepath fo model to restore
         """
+        log.info('Loading previously saved tensor terms...')
+
         saver = tf.train.import_meta_graph(meta_graph)
         saver.restore(sess, model_restore)
 
@@ -75,7 +70,7 @@ class ERMLP:
         """
         (Private) Create all the tensors required to construct the model.
         """
-        log.info('Creating tensor terms necessary for building the network...')
+        log.info('Creating tensor terms for building the network...')
 
         ################
         # placeholders #
@@ -121,7 +116,9 @@ class ERMLP:
             'C': tf.Variable(
                 initializer([3 * self.params['embedding_size'], self.params['layer_size']]),
                 name='C'),
-            'B': tf.Variable(initializer([self.params['layer_size'], 1]), name='B')
+            'B': tf.Variable(
+                initializer([self.params['layer_size'], 1]),
+                name='B')
         }
 
         # add more layers if necessary
@@ -136,7 +133,9 @@ class ERMLP:
         ##########
         # bias for the first layer
         self.biases = {
-            'b': tf.Variable(tf.zeros([1, self.params['layer_size']]), name='b')
+            'b': tf.Variable(
+                tf.zeros([1, self.params['layer_size']]),
+                name='b')
         }
 
         # add more layers if necessary
@@ -152,20 +151,63 @@ class ERMLP:
         # gets constants required for word embeddings
         if self.params['word_embedding']:
             padded_entity_embedding_weights, padded_entity_indices = \
-                self.get_padded_indices_and_weights(self.params['indexed_entities'])
+                self._get_padded_indices_and_weights(self.params['indexed_entities'])
             padded_predicate_embedding_weights, padded_predicate_indices = \
-                self.get_padded_indices_and_weights(self.params['indexed_predicates'])
+                self._get_padded_indices_and_weights(self.params['indexed_predicates'])
 
             self.constants = {
-                'padded_entity_indices': tf.constant(padded_entity_indices, dtype=tf.int32),
-                'padded_predicate_indices': tf.constant(padded_predicate_indices, dtype=tf.int32),
-                'padded_entity_embedding_weights': tf.constant(padded_entity_embedding_weights, dtype=tf.float32),
-                'padded_predicate_embedding_weights': tf.constant(padded_predicate_embedding_weights, dtype=tf.float32)
+                'padded_entity_indices': tf.constant(
+                    padded_entity_indices,
+                    dtype=tf.int32),
+                'padded_predicate_indices': tf.constant(
+                    padded_predicate_indices,
+                    dtype=tf.int32),
+                'padded_entity_embedding_weights': tf.constant(
+                    padded_entity_embedding_weights,
+                    dtype=tf.float32),
+                'padded_predicate_embedding_weights': tf.constant(
+                    padded_predicate_embedding_weights,
+                    dtype=tf.float32)
             }
         else:
             self.constants = None
 
-    def inference_for_max_margin_training(self):
+    def _get_padded_indices_and_weights(self, indices):
+        """
+        (Private) Given indexed entities, return a padded weight and indice numpy array
+        which are used to represent entity / relation as an average of
+        their constituting word vectors.
+
+        Inputs:
+            indices: list of lists [[], [], []] where each list
+                contains word index ids for a single entity / relation
+                ex) indices = [[0], [1], [0, 2], [3]]
+
+        Returns:
+            weights: weights to use for averaging constituting word vectors
+                ex) weights = [ [1, 0],
+                                [1, 0],
+                                [0.5, 0.5],
+                                [1, 0] ]
+            padded_indices: vocabulary ids to be used for embedding lookup
+                ex) padded_indices = [ [0, 0],
+                               [1, 0],
+                               [0, 2],
+                               [3, 0] ]
+        """
+        # find length of each list inside indices
+        lens = np.array([len(indices[i]) for i in range(len(indices))])
+        mask = np.arange(lens.max()) < lens[:, None]
+
+        padded_indices = np.zeros(mask.shape, dtype=np.int32)
+        padded_indices[mask] = np.hstack((indices[:]))
+
+        weights = np.multiply(np.ones(mask.shape, dtype=np.float32) / lens[:, None], mask)
+        weights = np.expand_dims(weights, self.params['embedding_size'] - 1)
+
+        return weights, padded_indices
+
+    def build_traininig_model(self):
         """
         Neural network that is used for training. Along with the evaluation of a triplet,
         the evaluation of a corrupted triplet is calculated as well so that we can calulcate
@@ -177,30 +219,8 @@ class ERMLP:
         """
         log.info('Building the network to be used for training...')
 
-        if self.params['word_embedding']:
-            # look up indices in a list of embedding tensors and return
-            # a tensor containing the embeddings (dense vectors) for each of the vocabularies
-            # entity_embedded_word_ids.get_shape() = (8333, 2, 50)
-            pred_embedded_word_ids = tf.nn.embedding_lookup(
-                self.weights['P'], self.constants['padded_predicate_indices'])
-            entity_embedded_word_ids = tf.nn.embedding_lookup(
-                self.weights['E'], self.constants['padded_entity_indices'])
-
-            # calculate weighted version of these embeddings
-            # self.constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
-            # entity_weighted_sum_of_embeddings.get_shape() = (8333, 2, 50)
-            pred_weighted_sum_of_embeddings = tf.multiply(
-                pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
-            entity_weighted_sum_of_embeddings = tf.multiply(
-                entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
-
-            # find sum of weighted embeddings calculated above
-            # entity_emb.get_shape() = (8333, 50)
-            pred_emb = tf.reduce_sum(pred_weighted_sum_of_embeddings, 1)
-            entity_emb = tf.reduce_sum(entity_weighted_sum_of_embeddings, 1)
-        else:
-            pred_emb = self.weights['P']
-            entity_emb = self.weights['E']
+        # lookup word embeddings
+        pred_emb, entity_emb = self._lookup_embeddings()
 
         # split the input
         sub, pred, obj, corrupt = tf.split(tf.cast(self.train_triplets, tf.int32), 4, 1)
@@ -223,10 +243,14 @@ class ERMLP:
         # calculation of the first layer involves concatenating the three
         # embeddings for each sample and multipling it by the weight vector
         correct_pre_act = tf.add(
-            tf.matmul(tf.concat([sub_correct_emb, pred_emb, obj_correct_emb], 1), self.weights['C']),
+            tf.matmul(
+                tf.concat([sub_correct_emb, pred_emb, obj_correct_emb], 1),
+                self.weights['C']),
             self.biases['b'])
         corrupted_pre_act = tf.add(
-            tf.matmul(tf.concat([sub_corrupted_emb, pred_emb, obj_corrupt_emb], 1), self.weights['C']),
+            tf.matmul(
+                tf.concat([sub_corrupted_emb, pred_emb, obj_corrupt_emb], 1),
+                self.weights['C']),
             self.biases['b'])
 
         # add more layers if necessary
@@ -235,9 +259,12 @@ class ERMLP:
                 correct_post_act = tf.nn.relu(correct_pre_act)
                 corrupted_post_act = tf.nn.relu(corrupted_pre_act)
 
-                correct_dropout = tf.nn.dropout(correct_post_act, self.params['drop_out_percent'])
+                correct_dropout = tf.nn.dropout(
+                    correct_post_act,
+                    self.params['drop_out_percent'])
                 corrupted_dropout = tf.nn.dropout(
-                    corrupted_post_act, self.params['drop_out_percent'])
+                    corrupted_post_act,
+                    self.params['drop_out_percent'])
 
                 correct_pre_act = tf.add(
                     tf.matmul(correct_dropout, self.weights['C{}'.format(i)]),
@@ -273,51 +300,29 @@ class ERMLP:
         self.train_predictions = tf.concat(
             [out_correct, out_corrupted],
             axis=1,
-            name='inference_for_max_margin_training')
+            name='build_traininig_model')
 
         return self.train_predictions
 
-    def inference(self, training=False):
+    def build_testing_model(self):
         """
         Similar to the network used for training,
         but without evaluating the corrupted triplet.
         This is used for testing.
-
-        Inputs:
-            training: boolean to control the dropout
 
         Returns:
             test_predictions: score for edge existence
         """
         log.info('Building the network to be used for testing...')
 
-        if self.params['word_embedding']:
-            # look up indices in a list of embedding tensors and return
-            # a tensor containing the embeddings (dense vectors) for each of the vocabularies
-            # entity_embedded_word_ids.get_shape() = (8333, 2, 50)
-            pred_embedded_word_ids = tf.nn.embedding_lookup(
-                self.weights['P'], self.constants['padded_predicate_indices'])
-            entity_embedded_word_ids = tf.nn.embedding_lookup(
-                self.weights['E'], self.constants['padded_entity_indices'])
-
-            # calculate weighted version of these embeddings
-            # _constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
-            # entity_weighted_sum_of_embeddings.get_shape() = (8333, 2, 50)
-            pred_weighted_sum_of_embeddings = tf.multiply(
-                pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
-            entity_weighted_sum_of_embeddings = tf.multiply(
-                entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
-
-            # find sum of weighted embeddings calculated above
-            # entity_emb.get_shape() = (8333, 50)
-            pred_emb = tf.reduce_sum(pred_weighted_sum_of_embeddings, 1)
-            entity_emb = tf.reduce_sum(entity_weighted_sum_of_embeddings, 1)
-        else:
-            pred_emb = self.weights['P']
-            entity_emb = self.weights['E']
+        # lookup word embeddings
+        pred_emb, entity_emb = self._lookup_embeddings()
 
         # split the input. now there is no corrupted entity in the dataset
         sub, pred, obj = tf.split(tf.cast(self.test_triplets, tf.int32), 3, 1)
+
+        # for each term of each sample, select the required embedding
+        # and remove the extra dimension caused by the selection
         sub_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, sub))
         obj_emb = tf.squeeze(tf.nn.embedding_lookup(entity_emb, obj))
         pred_emb = tf.squeeze(tf.nn.embedding_lookup(pred_emb, pred))
@@ -333,15 +338,9 @@ class ERMLP:
             for i in range(1, self.params['add_layers'] + 1):
                 post_act = tf.nn.relu(pre_act)
 
-                if training:
-                    dropout = tf.nn.dropout(post_act, self.params['drop_out_percent'])
-                    pre_act = tf.add(
-                        tf.matmul(dropout, self.weights['C{}'.format(i)]),
-                        self.biases['b{}'.format(i)])
-                else:
-                    pre_act = tf.add(
-                        tf.matmul(post_act, self.weights['C{}'.format(i)]),
-                        self.biases['b{}'.format(i)])
+                pre_act = tf.add(
+                    tf.matmul(post_act, self.weights['C{}'.format(i)]),
+                    self.biases['b{}'.format(i)])
 
         if self.params['act_function'] == 0:
             # tanh
@@ -352,23 +351,51 @@ class ERMLP:
             log.debug('Using sigmoid for pre-final layer activation')
             pre_final = tf.sigmoid(pre_act)
 
-        if self.params['add_layers'] > 0 and training:
+        if self.params['add_layers'] > 0:
             pre_final = tf.nn.dropout(pre_final, self.params['drop_out_percent'])
 
-        out_pre_act = tf.matmul(pre_final, self.weights['B'], name='inference')
+        out_pre_act = tf.matmul(pre_final, self.weights['B'], name='build_testing_model')
 
         self.test_predictions = tf.sigmoid(out_pre_act)
 
         return self.test_predictions
 
-    def determine_threshold(self, sess, indexed_data_dev, f1=False):
+    def _lookup_embeddings(self):
+        if self.params['word_embedding']:
+            # look up indices in a list of embedding tensors and return
+            # a tensor containing the embeddings (dense vectors) for each of the vocabularies
+            # entity_embedded_word_ids.get_shape() = (8333, 2, 50)
+            pred_embedded_word_ids = tf.nn.embedding_lookup(
+                self.weights['P'], self.constants['padded_predicate_indices'])
+            entity_embedded_word_ids = tf.nn.embedding_lookup(
+                self.weights['E'], self.constants['padded_entity_indices'])
+
+            # calculate weighted version of these embeddings
+            # self.constants['padded_entity_embedding_weights'].get_shape() = (8333, 2, 1)
+            # entity_weighted_sum_of_embeddings.get_shape() = (8333, 2, 50)
+            pred_weighted_sum_of_embeddings = tf.multiply(
+                pred_embedded_word_ids, self.constants['padded_predicate_embedding_weights'])
+            entity_weighted_sum_of_embeddings = tf.multiply(
+                entity_embedded_word_ids, self.constants['padded_entity_embedding_weights'])
+
+            # find sum of weighted embeddings calculated above
+            # entity_emb.get_shape() = (8333, 50)
+            pred_emb = tf.reduce_sum(pred_weighted_sum_of_embeddings, 1)
+            entity_emb = tf.reduce_sum(entity_weighted_sum_of_embeddings, 1)
+        else:
+            pred_emb = self.weights['P']
+            entity_emb = self.weights['E']
+
+        return pred_emb, entity_emb
+
+    def determine_threshold(self, sess, indexed_data_dev, use_f1=False):
         """
         Use the dev set to compute the best thresholds for classification.
 
         Inputs:
             sess: tensorflow session
             indexed_data_dev: development data set
-            f1: True is using F1 score, False if using accuracy score
+            use_f1: True is using F1 score, False if using accuracy score
 
         Returns:
             threshold: numpy array of same size as self.params['num_preds']
@@ -382,41 +409,24 @@ class ERMLP:
             feed_dict={self.test_triplets: data_dev, self.y: labels_dev})
 
         predicates_dev = indexed_data_dev[:, 1]
-        threshold = self.compute_threshold(predictions_dev, labels_dev, predicates_dev, f1)
 
-        return threshold
-
-    def compute_threshold(self, predictions_list, dev_labels, predicates, f1=False):
-        """
-        Determine the best threshold to use for classification.
-
-        Inputs:
-            predictions_list: prediction found by running a feed-forward of the model
-            dev_labels: ground truth label to be compared with predictions_list
-            predicates: numpy array containing all the predicates within the dataset
-            f1: True is using F1 score, False if using accuracy score
-
-        Returns:
-            best_threshold: numpy array of same size as self.params['num_preds']
-                which contains the best threshold for each predicate
-        """
-        # inits
-        best_threshold = np.zeros(self.params['num_preds'])
+        # fill this up
+        threshold = np.zeros(self.params['num_preds'])
 
         # make sure to change label is -1 not 0
-        dev_labels[:][dev_labels[:] == -1] = 0
-        predictions_list[:][predictions_list[:] == -1] = 0
+        labels_dev[:][labels_dev[:] == -1] = 0
+        predictions_dev[:][predictions_dev[:] == -1] = 0
 
         # for each predicate
         for i in range(self.params['num_preds']):
             # find which lines (indeces) contain the predicate
-            predicate_indices = np.where(predicates == i)[0]
+            predicate_indices = np.where(predicates_dev == i)[0]
 
             if np.shape(predicate_indices)[0] != 0:
                 # among actual predictions, get those with predicate of interest
-                predicate_predictions = np.reshape(predictions_list[predicate_indices], (-1, 1))
+                predicate_predictions = np.reshape(predictions_dev[predicate_indices], (-1, 1))
                 # among gt labels, get those with predicate of interest
-                predicate_labels = np.reshape(dev_labels[predicate_indices], (-1, 1))
+                predicate_labels = np.reshape(labels_dev[predicate_indices], (-1, 1))
 
                 # stack prediction / gt label column-wise and sort along first column
                 both = np.column_stack((predicate_predictions, predicate_labels))
@@ -436,7 +446,7 @@ class ERMLP:
                     # find the predicted label for all predictions
                     predictions = (predicate_predictions >= score) * 1
 
-                    if f1:
+                    if use_f1:
                         accuracy = f1_score(predicate_labels, predictions)
                     else:
                         accuracy = accuracy_score(predicate_labels, predictions)
@@ -445,9 +455,9 @@ class ERMLP:
 
                 # find all the indices that has the best accuracy
                 indices = np.argmax(accuracies)
-                best_threshold[i] = np.mean(predicate_predictions[indices])
+                threshold[i] = np.mean(predicate_predictions[indices])
 
-        return best_threshold
+        return threshold
 
     def loss(self):
         """
@@ -458,12 +468,15 @@ class ERMLP:
         """
         log.info('Using margin based ranking loss')
 
+        error = tf.subtract(self.train_predictions[:, 1], self.train_predictions[:, 0])
+        error_plus_margin = tf.add(error, self.params['margin'])
+        after_thresh = tf.maximum(error_plus_margin, 0)
         batch_size = tf.constant(self.params['batch_size'], dtype=tf.float32)
-        max_with_margin_sum = tf.div(tf.reduce_sum(tf.maximum(
-            tf.add(tf.subtract(self.train_predictions[:, 1], self.train_predictions[:, 0]), self.params['margin']), 0)), batch_size)
+
+        loss = tf.div(tf.reduce_sum(after_thresh), batch_size)
         l2 = tf.reduce_sum([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
 
-        return tf.add(max_with_margin_sum, tf.multiply(self.params['lambda'], l2))
+        return tf.add(loss, tf.multiply(self.params['lambda'], l2))
 
     def train_adam(self, loss):
         """
@@ -476,6 +489,7 @@ class ERMLP:
             adam optimizer
         """
         log.info('Training using Adam as optimizer')
+
         return tf.train.AdamOptimizer(learning_rate=self.params['learning_rate']).minimize(loss)
 
     def train_adagrad(self, loss):
@@ -489,9 +503,10 @@ class ERMLP:
             adagrad optimizer
         """
         log.info('Training using adagrad as optimizer')
+
         return tf.train.AdagradOptimizer(learning_rate=self.params['learning_rate']).minimize(loss)
 
-    def classify(self, predictions_list, threshold, predicates, cross_margin=False):
+    def classify(self, predictions_list, threshold, predicates):
         """
         Using the best threshold computed for each predicate,
         perform classification on the predicted values.
@@ -501,12 +516,10 @@ class ERMLP:
             threshold: numpy array of same size as self.params['num_preds']
                 which contains the best threshold for each predicate
             predicates: numpy array containing all the predicates within the dataset
-            cross_margin: set to True if using cross margin
 
         Returns:
             classifications: list of length len(predictions_list)
-                containing the label (1 or 0/-1) depending on whether
-                if cross_margin is True or False
+                containing the label (1 or 0).
         """
         classifications = []
 
@@ -514,10 +527,7 @@ class ERMLP:
             if predictions_list[i][0] >= threshold[predicates[i]]:
                 classifications.append(1)
             else:
-                if cross_margin:
-                    classifications.append(-1)
-                else:
-                    classifications.append(0)
+                classifications.append(0)
 
         return classifications
 
@@ -534,45 +544,15 @@ class ERMLP:
             batch: corrupted training batch data of
                 len(batch) = data.shape[0] x CORRUPT_SIZE
         """
-        batch = [(data[i][0], data[i][1], data[i][2], random.randint(0, self.params['num_entities']-1))\
-            for i in range(data.shape[0]) for j in range(self.params['corrupt_size'])]
+        batch = []
+
+        for i in range(data.shape[0]):
+            for j in range(self.params['corrupt_size']):
+                batch.append(
+                    (data[i][0], data[i][1], data[i][2],
+                     random.randint(0, self.params['num_entities'] - 1)))
 
         return batch
-
-    def get_padded_indices_and_weights(self, indices):
-        """
-        Given indexed entities, return a padded weight and indice numpy array
-        which are used to represent entity / relation as an average of
-        their constituting word vectors.
-
-        Inputs:
-            indices: list of lists [[], [], []] where each list
-                contains word index ids for a single entity / relation
-                ex) indices = [[0], [1], [0, 2], [3]]
-
-        Returns:
-            weights: weights to use for averaging constituting word vectors
-                ex) weights = [ [1, 0],
-                                [1, 0],
-                                [0.5, 0.5],
-                                [1, 0] ]
-            padded_indices: vocabulary ids to be used for embedding lookup
-                ex) padded_indices = [ [0, 0],
-                               [1, 0],
-                               [0, 2],
-                               [3, 0] ]
-        """
-        # find length of each list inside indices
-        lens = np.array([len(indices[i]) for i in range(len(indices))])
-        mask = np.arange(lens.max()) < lens[:, None]
-
-        padded_indices = np.zeros(mask.shape, dtype=np.int32)
-        padded_indices[mask] = np.hstack((indices[:]))
-
-        weights = np.multiply(np.ones(mask.shape, dtype=np.float32) / lens[:, None], mask)
-        weights = np.expand_dims(weights, self.params['embedding_size'] - 1)
-
-        return weights, padded_indices
 
     def test_model(self, sess, indexed_data_test, pred_dic, threshold=None, _type='current test'):
         """
@@ -606,6 +586,10 @@ class ERMLP:
             predicates_test,
             pred_dic)
 
+        # print stats for the whole dataset
+        log.debug('%s mean average precision: %f', _type, mean_average_precision_test)
+        log.debug('%s roc auc: %f', _type, roc_auc_test)
+
         if threshold is not None:
             # get test classification
             classifications_test = self.classify(predictions_test, threshold, predicates_test)
@@ -618,6 +602,10 @@ class ERMLP:
             labels_test = labels_test.astype(int)
             f1_measure_test = f1_score(labels_test, classifications_test)
             accuracy_test = accuracy_score(labels_test, classifications_test)
+
+            log.debug('%s f1 measure: %f', _type, f1_measure_test)
+            log.debug('%s accuracy: %f', _type, accuracy_test)
+            log.debug('%s confusion matrix: %s', _type, confusion_test.tolist())
 
             # print stats for each predicate
             for i in range(self.params['num_preds']):
@@ -634,20 +622,13 @@ class ERMLP:
                     labels_predicate = labels_test[indices]
 
                     # find F1, accuracy, and confusion matrix
-                    f1_measure_predicate = f1_score(labels_predicate, classifications_predicate)
-                    accuracy_predicate = accuracy_score(labels_predicate, classifications_predicate)
-                    confusion_predicate = confusion_matrix(labels_predicate, classifications_predicate)
+                    f1_measure_pred = f1_score(labels_predicate, classifications_predicate)
+                    accuracy_pred = accuracy_score(labels_predicate, classifications_predicate)
+                    confusion_pred = confusion_matrix(labels_predicate, classifications_predicate)
 
-                    log.debug('%s f1 measure for %s: %f', _type, pred_name, f1_measure_predicate)
-                    log.debug('%s accuracy for %s: %f', _type, pred_name, accuracy_predicate)
-                    log.debug('%s confusion matrix for %s: %s', _type, pred_name, confusion_predicate.tolist())
-
-        # print stats for the whole dataset
-        log.debug('%s mean average precision: %f', _type, mean_average_precision_test)
-        log.debug('%s roc auc: %f', _type, roc_auc_test)
-        if threshold is not None:
-            log.debug('%s f1 measure: %f', _type, f1_measure_test)
-            log.debug('%s accuracy: %f', _type, accuracy_test)
-            log.debug('%s confusion matrix: %s', _type, confusion_test.tolist())
+                    log.debug('%s f1 measure for %s: %f', _type, pred_name, f1_measure_pred)
+                    log.debug('%s accuracy for %s: %f', _type, pred_name, accuracy_pred)
+                    log.debug('%s confusion matrix for %s: %s',
+                              _type, pred_name, confusion_pred.tolist())
 
         return mean_average_precision_test

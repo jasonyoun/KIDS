@@ -338,11 +338,10 @@ def main():
     processor.create_relations_file()
 
     train_df = processor.load(args.train_file)
-    shape = np.shape(train_df.values)
     processor.create_triplets_generalizations_file(train_df.values)
 
     if args.use_domain:
-        if shape[1] == 4:
+        if np.shape(train_df.values)[1] == 4:
             processor.create_triplets_generalizations_file(train_df.values, positive=False)
 
 

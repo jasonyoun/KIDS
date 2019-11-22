@@ -13,6 +13,13 @@ To-do:
 import argparse
 import os
 import pickle
+import sys
+
+DIRECTORY = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(DIRECTORY, '../er_mlp_imp'))
+sys.path.insert(0, os.path.join(DIRECTORY, '../data_handler'))
+sys.path.insert(0, os.path.join(DIRECTORY, '../../utils'))
+
 
 # third party imports
 import numpy as np
@@ -21,7 +28,6 @@ from sklearn.metrics import roc_curve, auc, average_precision_score, accuracy_sc
 from sklearn.metrics import f1_score, confusion_matrix, precision_score, recall_score
 
 # local imports
-import model_global
 from er_mlp import ERMLP
 from metrics import plot_roc, plot_pr, roc_auc_stats, pr_stats
 from utils import save_results
@@ -45,6 +51,7 @@ def parse_argument():
         nargs='?',
         default='./',
         help='Base directory')
+
     parser.add_argument(
         '--logfile',
         default='',
@@ -71,50 +78,29 @@ def main():
 
     with tf.Session() as sess:
         # load the saved parameters
-        with open(os.path.join(model_save_dir, 'params.pkl'), 'rb') as _file:
-            params = pickle.load(_file)
+        with open(os.path.join(model_save_dir, 'params.pkl'), 'rb') as file:
+            params = pickle.load(file)
 
         # some parameters
         entity_dic = params['entity_dic']
         pred_dic = params['pred_dic']
         thresholds = params['thresholds']
 
-        er_mlp_params = {
-            'word_embedding': configparser.getbool('WORD_EMBEDDING'),
-            'embedding_size': configparser.getint('EMBEDDING_SIZE'),
-            'layer_size': configparser.getint('LAYER_SIZE'),
-            'corrupt_size': configparser.getint('CORRUPT_SIZE'),
-            'lambda': configparser.getfloat('LAMBDA'),
-            'num_entities': len(entity_dic),
-            'num_preds': len(pred_dic),
-            'learning_rate': configparser.getfloat('LEARNING_RATE'),
-            'batch_size': configparser.getint('BATCH_SIZE'),
-            'add_layers': configparser.getint('ADD_LAYERS'),
-            'act_function': configparser.getint('ACT_FUNCTION'),
-            'drop_out_percent': configparser.getfloat('DROP_OUT_PERCENT')
-        }
-
-        if configparser.getbool('WORD_EMBEDDING'):
-            num_entity_words = params['num_entity_words']
-            num_pred_words = params['num_pred_words']
-            indexed_entities = params['indexed_entities']
-            indexed_predicates = params['indexed_predicates']
-            er_mlp_params['num_entity_words'] = num_entity_words
-            er_mlp_params['num_pred_words'] = num_pred_words
-            er_mlp_params['indexed_entities'] = indexed_entities
-            er_mlp_params['indexed_predicates'] = indexed_predicates
-
         # init ERMLP class using the parameters defined above
         er_mlp = ERMLP(
-            er_mlp_params,
+            {},
             sess,
             meta_graph=os.path.join(model_save_dir, 'model.meta'),
             model_restore=os.path.join(model_save_dir, 'model'))
 
+        # load data
         processor = DataProcessor()
-        test_df = processor.load(os.path.join(configparser.getstr('DATA_PATH'), 'test.txt'))
-        indexed_data_test = processor.create_indexed_triplets_test(
+
+        test_df = processor.load(os.path.join(configparser.getstr('data_path'), 'test.txt'))
+        indexed_data_test = processor.create_indexed_triplets_with_label(
             test_df.values, entity_dic, pred_dic)
+
+        # change label from -1 to 0
         indexed_data_test[:, 3][indexed_data_test[:, 3] == -1] = 0
 
         data_test = indexed_data_test[:, :3]
@@ -125,10 +111,21 @@ def main():
             er_mlp.test_predictions,
             feed_dict={er_mlp.test_triplets: data_test, er_mlp.y: labels_test})
 
+        # stats
         mean_average_precision_test = pr_stats(
-            len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
+            len(pred_dic),
+            labels_test,
+            predictions_list_test,
+            predicates_test,
+            pred_dic)
+
         roc_auc_test = roc_auc_stats(
-            len(pred_dic), labels_test, predictions_list_test, predicates_test, pred_dic)
+            len(pred_dic),
+            labels_test,
+            predictions_list_test,
+            predicates_test,
+            pred_dic)
+
         classifications_test = er_mlp.classify(predictions_list_test, thresholds, predicates_test)
         classifications_test = np.array(classifications_test).astype(int)
 
@@ -142,10 +139,23 @@ def main():
         precision_test = precision_score(labels_test, classifications_test)
         recall_test = recall_score(labels_test, classifications_test)
 
-        plot_pr(len(pred_dic), labels_test, predictions_list_test, predicates_test,
-                pred_dic, os.path.join(model_save_dir, 'test'), name_of_file='er_mlp_not_calibrated')
-        plot_roc(len(pred_dic), labels_test, predictions_list_test, predicates_test,
-                 pred_dic, os.path.join(model_save_dir, 'test'), name_of_file='er_mlp_not_calibrated')
+        plot_pr(
+            len(pred_dic),
+            labels_test,
+            predictions_list_test,
+            predicates_test,
+            pred_dic,
+            os.path.join(model_save_dir, 'test'),
+            name_of_file='er_mlp_not_calibrated')
+
+        plot_roc(
+            len(pred_dic),
+            labels_test,
+            predictions_list_test,
+            predicates_test,
+            pred_dic,
+            os.path.join(model_save_dir, 'test'),
+            name_of_file='er_mlp_not_calibrated')
 
         results = {}
 
@@ -184,9 +194,13 @@ def main():
                 print(confusion_predicate)
                 print(' ')
                 predicate_predictions = predictions_list_test[indices]
-                fpr_pred, tpr_pred, _ = roc_curve(labels_predicate.ravel(), predicate_predictions.ravel())
+                fpr_pred, tpr_pred, _ = roc_curve(
+                    labels_predicate.ravel(),
+                    predicate_predictions.ravel())
                 roc_auc_pred = auc(fpr_pred, tpr_pred)
-                ap_pred = average_precision_score(labels_predicate.ravel(), predicate_predictions.ravel())
+                ap_pred = average_precision_score(
+                    labels_predicate.ravel(),
+                    predicate_predictions.ravel())
 
                 results['predicate'][pred_name] = {
                     'map': ap_pred,
@@ -210,10 +224,9 @@ def main():
         print(thresholds)
         save_results(results, os.path.join(model_save_dir, 'test'))
 
-    _file = os.path.join(model_save_dir, 'test/classifications_er_mlp.txt')
-    with open(_file, 'w') as t_f:
+    with open(os.path.join(model_save_dir, 'test/classifications_er_mlp.txt'), 'w') as file:
         for row in classifications_test:
-            t_f.write(str(row) + '\n')
+            file.write(str(row) + '\n')
 
 
 if __name__ == '__main__':

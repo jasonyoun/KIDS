@@ -29,8 +29,8 @@ from sklearn.model_selection import RandomizedSearchCV, PredefinedSplit
 from sklearn.calibration import CalibratedClassifierCV
 
 # local imports
-import features
 from config_parser import ConfigParser
+from data_processor import DataProcessor
 from utils import create_dir
 
 RANDOM_STATE = 0
@@ -132,14 +132,14 @@ def randomized_search(configparser, train_x, train_y, test_x=None, test_y=None, 
 
     param_distribution = {
         'adaboost__learning_rate': np.arange(
-            float(configparser.getfloat('START', 'RANDOM_SEARCH_LEARNING_RATE')),
-            float(configparser.getfloat('END', 'RANDOM_SEARCH_LEARNING_RATE')),
-            float(configparser.getfloat('INCREMENT', 'RANDOM_SEARCH_LEARNING_RATE'))),
+            float(configparser.getfloat('start', 'RANDOM_SEARCH_LEARNING_RATE')),
+            float(configparser.getfloat('end', 'RANDOM_SEARCH_LEARNING_RATE')),
+            float(configparser.getfloat('increment', 'RANDOM_SEARCH_LEARNING_RATE'))),
 
         'adaboost__n_estimators': np.arange(
-            int(configparser.getint('START', section='RANDOM_SEARCH_ESTIMATORS')),
-            int(configparser.getint('END', section='RANDOM_SEARCH_ESTIMATORS')),
-            int(configparser.getint('INCREMENT', section='RANDOM_SEARCH_ESTIMATORS')))}
+            int(configparser.getint('start', section='RANDOM_SEARCH_ESTIMATORS')),
+            int(configparser.getint('end', section='RANDOM_SEARCH_ESTIMATORS')),
+            int(configparser.getint('increment', section='RANDOM_SEARCH_ESTIMATORS')))}
 
     # pipeline the model with SMOTE
     ros = SMOTE(sampling_strategy='minority')
@@ -164,8 +164,8 @@ def randomized_search(configparser, train_x, train_y, test_x=None, test_y=None, 
     random_search = RandomizedSearchCV(
         clf,
         param_distributions=param_distribution,
-        n_iter=configparser.getint('RANDOM_SEARCH_COUNT'),
-        n_jobs=configparser.getint('RANDOM_SEARCH_PROCESSES'),
+        n_iter=configparser.getint('random_search_count'),
+        n_jobs=configparser.getint('random_search_processes'),
         scoring=['f1', 'average_precision'],
         cv=cv,
         refit='average_precision')
@@ -189,18 +189,23 @@ def main():
     # setup configuration parser
     configparser = ConfigParser(config_file)
 
-    # read the previous prediction results
-    pred_dic, train_x, train_y, predicates_train = features.get_x_y(
-        configparser.getstr('TRAIN_DIR'),
-        configparser.getstr('ER_MLP_MODEL_DIR'),
-        configparser.getstr('PRA_MODEL_DIR'),
-        args.final_model)
+    # load data
+    dp_train = DataProcessor(
+        configparser.getstr('train_dir'),
+        configparser.getstr('er_mlp_model_dir'),
+        configparser.getstr('pra_model_dir'))
+
+    pred_dic = dp_train.get_pred_dic()
+    train_x, train_y, predicates_train = dp_train.get_x_y()
 
     if not args.final_model:
-        pred_dic, test_x, test_y, predicates_test = features.get_x_y(
-            configparser.getstr('DEV_DIR'),
-            configparser.getstr('ER_MLP_MODEL_DIR'),
-            configparser.getstr('PRA_MODEL_DIR'))
+        dp_dev = DataProcessor(
+            configparser.getstr('dev_dir'),
+            configparser.getstr('er_mlp_model_dir'),
+            configparser.getstr('pra_model_dir'))
+
+        pred_dic = dp_dev.get_pred_dic()
+        test_x, test_y, predicates_test = dp_dev.get_x_y()
 
     # prediction results of adaboosst
     predictions_train = np.zeros_like(predicates_train, dtype=float)
@@ -223,7 +228,7 @@ def main():
             print('No training data for predicate: {}'.format(key))
             continue
 
-        if configparser.getbool('RUN_RANDOM_SEARCH'):
+        if configparser.getbool('run_random_search'):
             if not args.final_model:
                 ap_params = randomized_search(
                     configparser,
