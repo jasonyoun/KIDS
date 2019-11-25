@@ -85,7 +85,7 @@ def main():
         config_parser.getstr('inconsistency_rules'),
         resolver_mode=config_parser.getstr('resolver_mode'))
 
-    if args.phase == 'phase1':
+    if args.phase in ['phase1', 'all']:
         # perform knowledge integration
         pd_data = data_manager.integrate()
 
@@ -129,7 +129,7 @@ def main():
             index=False,
             sep='\t')
 
-    if args.phase == 'phase2':
+    if args.phase in ['phase2', 'all']:
         # read the files saved in phase1
         pd_without_inconsistencies = pd.read_csv(
             config_parser.getstr('without_inconsistsencies'), sep='\t')
