@@ -94,4 +94,5 @@ cp $dr_copy_filepath "$final_dir"
 cp $relations_filepath "$final_dir"
 
 # remove temporary files
+rm $dr_copy_filepath
 rm $entity_full_names_copy_filepath

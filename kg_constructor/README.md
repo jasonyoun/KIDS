@@ -11,7 +11,7 @@ Following is a description of the directories.
 * <code>[./postprocess_modules](./postprocess_modules)</code>: Contains source code for postprocess.
 * <code>[./tools](./tools)</code>: Utility files.
 
-## How to run
+## How to Run
 
 ### Step 1: Update the paths.
 Modify the file paths in the following files to match your local settings.
@@ -41,26 +41,20 @@ Postprocess the knowledge graph created in Step 3 to generate Hypothesis Generat
 ./run_postprocess.sh
 ```
 
-## Output files
+## Output
+Following files and directories will be populated under the <code>[./output](./output)</code> directory once finished running.
 
-### 4. out.txt
-In this output file (a set of consistent knowledge), the knowledge is represented in triple format (Subject, Predicate, Object). There are 6 columns in the following order.
-* Subject:
-* Predicate:
-* Object:
-* Belief: the confidence score of this specific fact measured by the inconsistency corrector (default is AverageLog).
-* Source size: number of sources supporting this knowledge
-* Sources: the list of sources supporting this knowledge
+* <code>[./output/final](./output/final)</code>: Contains all the files to be used for training the final model.
+* <code>[./output/folds](./output/folds)</code>: Contains all the files to be used for doing the k-fold cross validation.
+* <code>[./output/data.txt](./output/data.txt)</code>: Same file as <code>[./output/kg_final.txt](./output/kg_final.txt)</code> with subset of columns *Subject*, *Predicate*, and *Object*. Also, the *Label* column is added.
+* <code>[./output/entities.txt](./output/entities.txt)</code>: All entities of the knowledge graph.
+* <code>[./output/entity_full_names.txt](./output/entity_full_names.txt)</code>: All entities of the knowledge graph with their corresponding entity types.
+* <code>[./output/hypotheses.txt](./output/hypotheses.txt)</code>: Hypotheses that needs to be generated using the Hypothesis Generator.
+* <code>[./output/kg_final.txt](./output/kg_final.txt)</code>: Final knowledge graph produced by the Knowledge Graph Constructor. This file includes the resolved inconsistencies. The Knowledge is represented in the triplet format. There are 6 columns in the following order: ***Subject***, ***Predicate***, ***Object***, ***Belief*** (The confidence score of this specific fact measured by the inconsistency corrector. Default is AverageLog), ***Source size*** (The number of sources supporting this knowledge), and ***Sources*** (The list of sources supporting this knowledge.)
+* <code>[./output/kg_without_inconsistencies.txt](./output/kg_without_inconsistencies.txt)</code>: Same file as the [./output/kg_final.txt](./output/kg_final.txt) except for the absence of resolved inconsistencies.
+* <code>[./output/relations.txt](./output/relations.txt)</code>: All the relations in the knowledge graph.
+* <code>[./output/resolved_inconsistencies.txt](./output/resolved_inconsistencies.txt)</code>: File containing the inconsistencies resolved through the computational method. The first six columns are for the fact with the highest belief (i.e. one that the inconsistency corrector think it is correct) among conflicting facts. There columns are in the following order: ***Subject***, ***Predicate***, ***Object***,***Belief*** (The confidence score of this specific fact measured by the inconsistency corrector. Default is AverageLog.), ***Source size*** (The number of sources supporting this knowledge.), ***Sources*** (The list of sources supporting this knowledge.), ***Total source size*** (The number of all sources including the source size from the conflicting facts.), ***Mean belief of conflicting tuples*** (The average of beliefs of all other tuples conflicting to one that is represented in the first 3 columns.), ***Belief difference*** (The difference between the *Belief* and the *Mean belief of conflicting tuples*.), and ***Conflicting tuple info*** (The list of all the tuples conflicting to one that is represented in the first 3 columns. It is the list represented in "[(element1), (element2), ...]" and each element of the list is represented by "tuple, sources, belief" where tuple is "(subject, predicate, object)", and source is "[source1, source2, ...]".)
+* <code>[./output/trustworthiness_data_summary.pdf](./output/trustworthiness_data_summary.pdf)</code>: Figure showing the statistics of the knowledge base integration result.
+* <code>[./output/validated_inconsistencies.txt](./output/validated_inconsistencies.txt)</code>: Inconsistencies that has been resolved using the computational method and wet-lab validation.
 
-### 5. inconsistency_out.txt
-In this output file (a set of inconsistent knowledge), the knowledge is represented in triple format (Subject, Predicate, Object). The first six columns are for the fact with the highest belief (i.e. one that the inconsistency corrector think it is correct) among conflicting facts.
-* Subject:
-* Predicate:
-* Object:
-* Belief: the confidence score of this specific fact measured by the inconsistency corrector (default is AverageLog).
-* Source size: number of sources supporting this knowledge
-* Sources: the list of sources supporting this knowledge
-* Total source size: the number of all sources (including the source size from the conflicting facts)
-* Mean belief of conflicting tuples: the average of beliefs of all other tuples conflicting to one that is represented in the first 3 columns.
-* Belief difference: the difference between the Belief and the Mean belief of conflicting tuples
-* Conflicting tuple info: the list of all the tuples conflicting to one that is represented in the first 3 columns. It is the list represented in "[(element1), (element2), ...]" and each element of the list is represented by "tuple, sources, belief" where tuple is "(subject, predicate, object)", and source is "[source1, source2, ...]"
+
