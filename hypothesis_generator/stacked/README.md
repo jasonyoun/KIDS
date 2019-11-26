@@ -1,7 +1,4 @@
-# The Stacked Ensemble
-
-The implementation of the Stacked Ensemble using scikit learn
-
+## Files & Directories
 ## Create a model
 
 ```

@@ -1,32 +1,71 @@
-# Hypothesis-Generation
+# Hypothesis Generator (HG)
+This folder contains source code responsible for generating and analyzing the hypotheses based on the machine learning based models trained on the knowledge graph (KG) constructed by the [KG Constructor](/kg_constructor).
 
-Inspired by Google Knowledge Vault, this project leverages deep learning and random walks to generate features for hypothesis generation. 
+## Directories
+* <code>[./analysis](./analysis)</code>: Folder containing files used for analysing the results.
+* <code>[./data](./data)</code>: Folder containing all the files used by the HG.
+* <code>[./er_mlp](./er_mlp)</code>: Implementation of the multilayer perceptrion (MLP) in TensorFlow. Please refer to its own [README](./er_mlp/README.md) file for its own file structure.
+* <code>[./pra](./pra)</code>: Implementation of the Path Ranking Algorithm (PRA). This model leverages random walks to train a model that learns which paths are most important in the KG when identifying whether an edge should exist. This portion of the code utilizes the [Ni et al.](https://github.com/noon99jaki/pra) implementation along with helper scripts that we have created to handle the output of the model. Please refer to its own [README](./pra/README.md) file for its own file structure.
+* <code>[./run](./run)</code>: Folder containing executable schell scripts to run the experiments. Please refer to its own [README](./run/README.md) file for detailed explanation.
+* <code>[./stacked](./stacked)</code>: An ensemble of the PRA and MLP using boosted decision stumps. Please refer to its own [README](./stacked/README.md) file for its own file structure.
+* <code>[./utils](./utils)</code>: Folder containing utility functions.
 
-## Quick start:
-* First, to run these experiments, you will need to install the python dependencies located in requirements.txt. Second, we used the original PRA implementation from Ni et al. This will require Java 7 or higher.
-* To install the python requirements:
+## How to Run
+Steps below describe how to replicate the results reported in the paper.
+
+### Step 1: Update the paths.
+Modify the file paths in the following files to match your local settings.
+
+* <code>./run/configuration/*/config.sh</code>: PRA related configuration files.
+* <code>./run/configuration/*/er_mlp.ini</code>: MLP related configuration files.
+
+You can run the following script to automatically update above paths according to your local path.
 ```
-pip3 install -r requirements.txt
+./update_paths.sh
 ```
-* This project is composed of three different approaches to link prediciton. To make it easier to reproduce the experiments, please navigate to the [run](https://github.com/IBPA/Hypothesis-Generation/tree/master/run) directory that contains helper shell scripts.
 
+### Step 2: Clean previous results.
+Current <code>[output](./run/output)</code> directory consists of results used in the paper. If you wish to run the code and replicate the results, please remove all the files.
 
-## Code layout
+```
+rm -r ./run/output/*
+```
 
-The code is separated out into a few folders. Each folder contains its own README describing what is contained.
+Beside the results, this repository contains the default models used in the paper. If you wish to train new models, you first need to remove these original models.
 
-### At a high level:
+```
+rm -r ./pra/model/model_instance/*
+rm -r ./er_mlp/model/model_instance/*
+rm -r ./stacked/model_instance/*
+```
 
-* [er_mlp](https://github.com/IBPA/Hypothesis-Generation/tree/master/er_mlp) - The implementation of the ER-MLP in TensorFlow. A fully connected feedforward artificial neural network; Also known as a latent feature model for knowledge graph completion
+### Step 3: Perform k-fold cross validation.
+Directory [run](./run) contains multiple helper shell scripts to run the experiments using three different models mentioned in the paper: PRA, MLP, and Stacked. Running following scripts will reproduce the results in the paper.
 
-* [pra](https://github.com/IBPA/Hypothesis-Generation/tree/master/pra) - The implementation of the PRA. This model leverages random walks to train a model that learns which paths are most important in the knowledge graph when identifying whether an edge should exist. This portion of the code is leveraging the Ni et al. implementation, along with helper scripts that we've created to handle the output of the model. The helper scripts are written in bash and python.
+```
+cd run
+./run_pra_experiments.sh
+./run_er_mlp_experiments.sh
+./run_stacked_experiments.sh
+```
 
-  * The PRA implementation was cloned from here: https://github.com/noon99jaki
+### Step 4: Generate the hypothesis.
+Running the following script will train the final model and generate the hypotheses.
 
+```
+./run_final_model.sh
+```
 
-* [stacked](https://github.com/IBPA/Hypothesis-Generation/tree/master/stacked) -  An ensemble of the PRA and ER-MLP using boosted decision stumps
+## Output
+Following files and directories will be populated under the [output](./run/output)</code> directory once finished running.
 
-* [utils](https://github.com/IBPA/Hypothesis-Generation/tree/master/utils) -  a folder containing functions to handle performance metrics for all models
-
-* [run](https://github.com/IBPA/Hypothesis-Generation/tree/master/run) -  a folder containing executable schell scripts to run experiments
-
+* <code>[er_mlp](./run/output/er_mlp)</code>: Folder containing the MLP results.
+* <code>[pra](./run/output/pra)</code>: Folder containing the PRA results.
+* <code>[stacked](./run/output/stacked)</code>: Folder containing the Stacked results.
+* <code>[MLP_pr.pdf](./run/output/MLP_pr.pdf)</code>: Precision-recall curve of the MLP.
+* <code>[PRA_pr.pdf](./run/output/PRA_pr.pdf)</code>: Precision-recall curve of the PRA.
+* <code>[Stacked_pr.pdf](./run/output/Stacked_pr.pdf)</code>: Precision-recall curve of the Stacked.
+* <code>[edges_count.txt](./run/output/edges_count.txt)</code>: Paper specific input KG analysis file.
+* <code>[hypotheses_confidence.txt](./run/output/hypotheses_confidence.txt)</code>: Contains all the hypotheses generated by the final model. The columns are in the following order: ***Subject***, ***Predicate***, ***Object***, ***Label*** (all 1s since we are assuming positive relationship for the hypothesis), and ***Probability*** (Value between 0 and 1 denothing how confident the final model thinks the hypothesis is true.)
+* <code>[roc.pdf](./run/output/roc.pdf)</code>: Receiver operating characteristic (ROC) curve.
+* <code>[test_stats.txt](./run/output/test_stats.txt)</code>: Experiment statistics of k-fold cross validation using all the models.
