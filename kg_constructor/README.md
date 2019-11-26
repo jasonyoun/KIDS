@@ -1,5 +1,5 @@
 # Knowledge Graph (KG) Constructor
-This folder contains source code responsible for 1) creating the KG using knowledge extracted from the datasets available online and 2) resolving any inconsistencies that may rise during the KG construction process.
+This folder contains source code responsible for 1) creating the KG using knowledge extracted from the datasets available online and 2) resolving any inconsistencies that may rise during the KG construction process. The KG created here will be used to train the [Hypothesis Generator](/hypothesis_generator).
 
 ## Directories
 * <code>[./configuration](./configuration)</code>: Contains **.ini** files used for setting up the configurations.

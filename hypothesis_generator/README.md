@@ -13,18 +13,28 @@ This folder contains source code responsible for generating and analyzing the hy
 ## How to Run
 Steps below describe how to replicate the results reported in the paper.
 
-### Step 1: Update the paths.
+### Step 1: Update the data files.
+(Optitonal) If you wish to use the new KG created in the [KG Constructor](/kg_constructor), existing data need to be removed and replaced with the new one.
+
+```
+rm -r ./data/kb/*
+cp -r ../kg_constructor/output/folds ./data/kb
+cp -r ../kg_constructor/output/final ./data/kb
+```
+
+### Step 2: Update the paths.
 Modify the file paths in the following files to match your local settings.
 
 * <code>./run/configuration/*/config.sh</code>: PRA related configuration files.
 * <code>./run/configuration/*/er_mlp.ini</code>: MLP related configuration files.
 
 You can run the following script to automatically update above paths according to your local path.
+
 ```
 ./update_paths.sh
 ```
 
-### Step 2: Clean previous results.
+### Step 3: Clean previous results.
 Current <code>[output](./run/output)</code> directory consists of results used in the paper. If you wish to run the code and replicate the results, please remove all the files.
 
 ```
@@ -39,7 +49,7 @@ rm -r ./er_mlp/model/model_instance/*
 rm -r ./stacked/model_instance/*
 ```
 
-### Step 3: Perform k-fold cross validation.
+### Step 4: Perform k-fold cross validation.
 Directory [run](./run) contains multiple helper shell scripts to run the experiments using three different models mentioned in the paper: PRA, MLP, and Stacked. Running following scripts will reproduce the results in the paper.
 
 ```
@@ -49,7 +59,7 @@ cd run
 ./run_stacked_experiments.sh
 ```
 
-### Step 4: Generate the hypothesis.
+### Step 5: Generate the hypothesis.
 Running the following script will train the final model and generate the hypotheses.
 
 ```
