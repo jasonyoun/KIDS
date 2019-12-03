@@ -74,7 +74,7 @@ class DataProcessor():
             label_feature_if_then = list(zip(label_feature_ifs, label_feature_thens))
 
             for feature_if, feature_then in label_feature_if_then:
-                pd_filtered = pd_with_label[pd_with_label[self._PRED_STR].str.match(feature_if)]
+                pd_filtered = pd_with_label[pd_with_label[self._PRED_STR] == feature_if]
                 pd_with_label.loc[pd_filtered.index, self._PRED_STR] = feature_then
                 pd_with_label.loc[pd_filtered.index, self._LABEL_STR] = label_rule.get('label')
 
