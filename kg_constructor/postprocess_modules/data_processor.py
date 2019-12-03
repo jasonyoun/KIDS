@@ -43,7 +43,7 @@ class DataProcessor():
         Inputs:
             label_rule_file: (str) Filepath of label rule file.
         """
-        self.pd_data = pd.read_csv(data_filepath, sep='\t')
+        self.pd_data = pd.read_csv(data_filepath, sep='\t', keep_default_na=False)
         self.label_rule_file = label_rule_file
         self.pd_dr, self.relations, self.entity_types = self._read_dr(domain_relation_file)
 
@@ -58,6 +58,10 @@ class DataProcessor():
         pd_with_label = self.pd_data[self._SPO_LIST].copy()
         pd_with_label[self._LABEL_STR] = ''
 
+        # predicates before applying the label
+        predicate_group = pd_with_label.groupby(self._PRED_STR)
+        log.debug('Size of data grouped by raw predicates: \n%s', predicate_group.size())
+
         log.info('Applying labels using %s', self.label_rule_file)
 
         # iterate over each label rule
@@ -70,7 +74,7 @@ class DataProcessor():
             label_feature_if_then = list(zip(label_feature_ifs, label_feature_thens))
 
             for feature_if, feature_then in label_feature_if_then:
-                pd_filtered = pd_with_label[pd_with_label[self._PRED_STR].str.match(feature_if)]
+                pd_filtered = pd_with_label[pd_with_label[self._PRED_STR] == feature_if]
                 pd_with_label.loc[pd_filtered.index, self._PRED_STR] = feature_then
                 pd_with_label.loc[pd_filtered.index, self._LABEL_STR] = label_rule.get('label')
 
