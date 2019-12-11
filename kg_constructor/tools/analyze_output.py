@@ -24,11 +24,116 @@ from sklearn.cluster import SpectralBiclustering
 # default arguments
 DEFAULT_DATA_DIR_STR = '../output'
 DEFAULT_ENTITY_FULL_NAMES_FILENAME = 'entity_full_names.txt'
-DEFAULT_KNOWLEDGE_GRAPH_FILENAME = 'out.txt'
+DEFAULT_KNOWLEDGE_GRAPH_FILENAME = 'kg_final.txt'
 
 # drop these columns because it's not necessary for network training
 COLUMN_NAMES_TO_DROP = ['Belief', 'Source size', 'Sources']
 
+SORT_ANTIBIOTIC = [
+    '5-Nitro-2-furaldehyde semicarbazone',
+    'Furaltadone',
+    'Amoxicillin',
+    'Ampicillin',
+    'Aztreonam',
+    'Cefamandole',
+    'Cefazolin',
+    'Cefoxitin',
+    'Cefuroxime',
+    'Cefsulodin',
+    'Ceftazidime',
+    'Cephalothin',
+    'Cerulenin',
+    'Ciprofloxacin',
+    'Levofloxacin',
+    'Lomefloxacin',
+    'Norfloxacin',
+    'Ofloxacin',
+    'Enoxacin',
+    'Nalidixic acid',
+    'Metronidazole',
+    'Ornidazole',
+    'Tinidazole',
+    'Mitomycin C',
+    'Nitrofurantoin',
+    'Spectinomycin',
+    'Streptonigrin',
+    'Thiolactomycin',
+    'Amikacin',
+    'Kanamycin',
+    'Tobramycin',
+    'Neomycin',
+    'Paromomycin',
+    'Apramycin',
+    'Dihydrostreptomycin',
+    'Geneticin',
+    'Gentamicins',
+    'Sisomicin',
+    'Streptomycin',
+    'Azithromycin',
+    'Clarythromycin',
+    'Erythromycin',
+    'Hygromycin B',
+    'Josamycin',
+    'Oleandomycin',
+    'Spiramycin',
+    'Troleandomycin',
+    'Tylosin',
+    'Novobiocin',
+    'Nigericin',
+    'Bicyclomycin',
+    'Cefmetazole',
+    'Cephradine',
+    'Moxalactam',
+    'Lincomycin',
+    'Mecillinam',
+    'Blasticidin S',
+    'Capreomycin',
+    'Carbenicillin',
+    'Cloxacillin',
+    'Nafcillin',
+    'Oxacillin',
+    'Penicillin G',
+    'Phenethicillin',
+    'Vancomycin',
+    'Cefoperazone',
+    'Piperacillin',
+    'Bleomycin',
+    'Dactinomycin',
+    'Fosfomycin',
+    'Chloramphenicol',
+    'Oxycarboxin',
+    'Radicicol',
+    'Sulfachloropyridazine',
+    'Sulfadiazine',
+    'Sulfamethazine',
+    'Sulfamethizole',
+    'Sulfamethoxazole',
+    'Sulfamonomethoxine',
+    'Sulfanilamide',
+    'Sulfathiazole',
+    'Sulfisoxazole',
+    'Triclosan',
+    'Trimethoprim',
+    'Chlortetracycline',
+    'Doxycycline',
+    'Doxycycline hyclate',
+    'Minocycline',
+    'Oxytetracycline',
+    'Penimepicycline',
+    'Rolitetracycline',
+    'Tetracycline',
+    'Rifampin',
+    'Rifamycin SV',
+    'Fusidic acid',
+    'Puromycin',
+    'CHIR090',
+    'Phleomycin',
+    'Polymyxin B',
+    'Tunicamycin',
+    'Hygromycin ',
+    'Bacitracin',
+    'Colistin',
+    'Doxorubicin']
 
 def set_logging():
     """
@@ -85,52 +190,30 @@ def plot_heatmap(pd_pivot_table):
     pd_pivot_table = pd_pivot_table.replace('confers no resistance to antibiotic', -1)
     pd_pivot_table = pd_pivot_table[pd_pivot_table.columns].astype(float)
     pd_pivot_table = pd_pivot_table.fillna(0)
+    pd_pivot_table = pd_pivot_table.transpose()
 
-    # compute the required figure height
-    top_margin = 0.02
-    bottom_margin = 0.12
+
+    pd_pivot_table = pd_pivot_table.reset_index()
+    pd_pivot_table['Object'] = pd.Categorical(pd_pivot_table['Object'], SORT_ANTIBIOTIC)
+    pd_pivot_table = pd_pivot_table.sort_values('Object')
+    antibiotics = pd_pivot_table['Object'].to_numpy().tolist()
+    pd_pivot_table = pd_pivot_table.set_index('Object')
 
     # build the figure instance with the desired height
-    fig, ax = plt.subplots(
-        figsize=(50, 60),
-        gridspec_kw=dict(top=1 - top_margin, bottom=bottom_margin))
-
-    # do spectral biclustering on the data
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        model = SpectralBiclustering(n_clusters=(2, 2))
-        model.fit(pd_pivot_table.values)
-
-    # restore indexes and columns of biclustering result
-    row_idx_0, col_idx_0 = model.get_indices(0)
-    _, col_idx_1 = model.get_indices(1)
-    row_idx_2, _ = model.get_indices(2)
-
-    new_idx = [pd_pivot_table.index[i] for i in list(np.concatenate((row_idx_0, row_idx_2)))]
-    new_columns = [pd_pivot_table.columns[i] for i in list(np.concatenate((col_idx_0, col_idx_1)))]
-    pd_pivot_table = pd_pivot_table.reindex(index=new_idx, columns=new_columns)
+    fig, ax = plt.subplots(figsize=(40, 15))
 
     # generate heatmap
-    myColors = [(1, 0.6, 0.6), (0.93, 0.93, 0.93), (0, 0, 0.7)]
+    myColors = [(1, 0.6, 0.6), (1, 1, 1), (0, 0, 0.7)]
     cmap = LinearSegmentedColormap.from_list('custom', myColors, len(myColors))
-    ax = sns.heatmap(pd_pivot_table, cmap=cmap, ax=ax, cbar_kws={"shrink": 0.75})
-    # ax.collections[0].colorbar.remove()
-
-    # colorbar
-    cbar = ax.collections[0].colorbar
-    cbar.ax.get_yaxis().set_ticks([])
-
-    for i, lab in enumerate(['confers no resistance to antibiotic', 'unknown', 'confers resistance to antibiotic']):
-        cbar.ax.text(0, (i-1) * 0.667, lab, ha='center', va='center', fontsize=50, rotation=270, color='white' if i != 1 else 'black')
+    ax = sns.heatmap(pd_pivot_table, cmap=cmap, ax=ax)
 
     # x, y axis labels
-    ax.set_xlabel('Antibiotics', size=70)
-    ax.set_ylabel('Genes', size=70)
-    ax.xaxis.set_label_coords(0.5, -0.04)
-    ax.yaxis.set_label_coords(-0.02, 0.5)
+    # ax.yaxis.set_label_coords(0.5, -0.04)
+    # ax.xaxis.set_label_coords(-0.02, 0.5)
+    ax.set_xticks([])
     ax.set_yticks([])
 
-    plt.savefig('/home/jyoun/Jason/UbuntuShare/fig1.pdf')
+    plt.savefig('/home/jyoun/Jason/UbuntuShare/heatmap.png', dpi=600, transparent=True)
 
 
 def main():
