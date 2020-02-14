@@ -180,6 +180,11 @@ def main():
             for row in classifications:
                 t_f.write(str(row) + '\n')
 
+        _file = os.path.join(directory, 'predictions_stacked.txt')
+        with open(_file, 'w') as t_f:
+            for row in probabilities[:, 0]:
+                t_f.write(str(row) + '\n')
+
     if args.final_model:
         _file = os.path.join(directory, 'confidence_stacked.txt')
         with open(_file, 'w') as t_f:
