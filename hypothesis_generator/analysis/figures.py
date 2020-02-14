@@ -18,6 +18,7 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score
 
 # global variables
 DEFAULT_OUTDIR_STR = '../output'
@@ -101,13 +102,113 @@ def edges_statistics(filepath):
 
     plt.tight_layout()
 
+def pr_curve_cv():
+    plt.figure()
+    folds = ['fold_0', 'fold_1', 'fold_2', 'fold_3', 'fold_4']
+
+    # PRA
+    parent_dir = '/home/jyoun/Jason/Research/KIDS/hypothesis_generator/pra/model/model_instance/{}/instance/test/classifications/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic'
+
+    data_dict = {}
+    precision = {}
+    recall = {}
+    ap = {}
+    for fold in folds:
+        pd_data = pd.read_csv(parent_dir.format(fold), sep='\t', names=['classification', 'score'])
+        pd_label = pd.Series([(index % 50) == 0 for index in pd_data.index.tolist()])
+        pd_data['label'] = pd_label.astype(int)
+
+        data_dict[fold] = pd_data[['score', 'label']]
+
+        precision[fold], recall[fold], _ = precision_recall_curve(pd_data['label'], pd_data['score'])
+        ap[fold] = average_precision_score(pd_data['label'], pd_data['score'])
+
+    pd_combined = pd.concat(data_dict.values())
+
+    avg_precision, avg_recall, _ = precision_recall_curve(pd_combined['label'], pd_combined['score'])
+    mAP = 0
+
+    for fold in folds:
+        plt.step(recall[fold], precision[fold], where='post', color='r')
+        mAP += ap[fold]
+
+    plt.step(avg_recall, avg_precision, label="{} (mAP:{:.3f})".format('PRA', mAP/len(folds)), where='post')
+
+    # MLP
+    parent_dir = '/home/jyoun/Jason/Research/KIDS/hypothesis_generator/er_mlp/model/model_instance/{}/test/predictions.txt'
+
+    data_dict = {}
+    precision = {}
+    recall = {}
+    ap = {}
+    for fold in folds:
+        pd_data = pd.read_csv(parent_dir.format(fold), sep='\t', names=['predicate', 'classification', 'score', 'label'])
+        pd_data['score'] = pd_data['score'].apply(lambda x: x.replace('prediction: ', ''))
+        pd_data['score'] = pd_data['score'].astype(float)
+        pd_data['label'] = pd_data['label'].apply(lambda x: x.replace('label: ', ''))
+        pd_data['label'] = pd_data['label'].astype(int)
+
+        data_dict[fold] = pd_data[['score', 'label']]
+
+        precision[fold], recall[fold], _ = precision_recall_curve(pd_data['label'], pd_data['score'])
+        ap[fold] = average_precision_score(pd_data['label'], pd_data['score'])
+
+    pd_combined = pd.concat(data_dict.values())
+
+    avg_precision, avg_recall, _ = precision_recall_curve(pd_combined['label'], pd_combined['score'])
+    mAP = 0
+
+    for fold in folds:
+        plt.step(recall[fold], precision[fold], where='post', color='g')
+        mAP += ap[fold]
+
+    plt.step(avg_recall, avg_precision, label="{} (mAP:{:.3f})".format('MLP', mAP/len(folds)), where='post')
+
+
+    # stacked
+    parent_dir = '/home/jyoun/Jason/Research/KIDS/hypothesis_generator/stacked/model_instance/{}/test/predictions_stacked.txt'
+
+    data_dict = {}
+    precision = {}
+    recall = {}
+    ap = {}
+    for fold in folds:
+        pd_data = pd.read_csv(parent_dir.format(fold), sep='\t', names=['score'])
+        pd_label = pd.Series([(index % 50) == 0 for index in pd_data.index.tolist()])
+        pd_data['label'] = pd_label.astype(int)
+
+        data_dict[fold] = pd_data[['score', 'label']]
+
+        precision[fold], recall[fold], _ = precision_recall_curve(pd_data['label'], pd_data['score'])
+        ap[fold] = average_precision_score(pd_data['label'], pd_data['score'])
+
+    pd_combined = pd.concat(data_dict.values())
+
+    avg_precision, avg_recall, _ = precision_recall_curve(pd_combined['label'], pd_combined['score'])
+    mAP = 0
+
+    for fold in folds:
+        plt.step(recall[fold], precision[fold], where='post', color='b')
+        mAP += ap[fold]
+
+    plt.step(avg_recall, avg_precision, label="{} (mAP:{:.3f})".format('Stacked', mAP/len(folds)), where='post')
+
+    # figure details
+    plt.xlabel("Recall")
+    plt.ylabel("Precision")
+    plt.title("Precision Recall Curve")
+    plt.legend(loc="upper right", prop={'size': 8})
+    plt.savefig('/home/jyoun/Jason/UbuntuShare/combined_pr.svg')
+
+
 def main():
     """
     Main function.
     """
     args = parse_argument()
 
-    edges_statistics(os.path.join(args.outdir, DEFAULT_TEST_STATS_FILE_STR))
+    # edges_statistics(os.path.join(args.outdir, DEFAULT_TEST_STATS_FILE_STR))
+    pr_curve_cv()
 
     plt.show()
 
