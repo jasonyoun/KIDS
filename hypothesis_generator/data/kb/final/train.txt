@@ -5004,7 +5004,6 @@ hemH	has	ferrochelatase#SPACE#activity	1
 tyrR	is#SPACE#part#SPACE#of	cytosol	1
 arcA	represses	putP	1
 hiuH	is#SPACE#involved#SPACE#in	purine#SPACE#nucleobase#SPACE#metabolic#SPACE#process	1
-ydjI	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Sulfamethoxazole	1
 rseP	is#SPACE#involved#SPACE#in	positive#SPACE#regulation#SPACE#of#SPACE#transcription#COMMA##SPACE#DNA-templated	1
 paaI	has	CoA#SPACE#hydrolase#SPACE#activity	1
 cpxR	represses	motA	1
@@ -6111,7 +6110,6 @@ cysE	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Carbenicillin	1
 waaC	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Triclosan	1
 cvrA	is#SPACE#part#SPACE#of	plasma#SPACE#membrane	1
 gadX	activates	rpoS	1
-elfD	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Vancomycin	1
 argR	represses	truB	1
 aroB	has	protein#SPACE#binding	1
 bolA	has	DNA#SPACE#binding#SPACE#transcription#SPACE#factor#SPACE#activity	1
@@ -10801,7 +10799,6 @@ sppA	is#SPACE#part#SPACE#of	integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE
 crp	activates	manA	1
 fimD	has	fimbrial#SPACE#usher#SPACE#porin#SPACE#activity	1
 ydcL	is#SPACE#part#SPACE#of	membrane	1
-ylcG	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Vancomycin	1
 roxA	has	oxidoreductase#SPACE#activity#COMMA##SPACE#acting#SPACE#on#SPACE#paired#SPACE#donors#COMMA##SPACE#with#SPACE#incorporation#SPACE#or#SPACE#reduction#SPACE#of#SPACE#molecular#SPACE#oxygen#COMMA##SPACE#2-oxoglutarate#SPACE#as#SPACE#one#SPACE#donor#COMMA##SPACE#and#SPACE#incorporation#SPACE#of#SPACE#one#SPACE#atom#SPACE#each#SPACE#of#SPACE#oxygen#SPACE#into#SPACE#both#SPACE#donors	1
 lrp	activates	thrL	1
 mlaE	has	response#SPACE#to#SPACE#antibiotic	1
@@ -11959,7 +11956,6 @@ ldtC	has	transferase#SPACE#activity#COMMA##SPACE#transferring#SPACE#amino-acyl#S
 cadC	is#SPACE#involved#SPACE#in	positive#SPACE#regulation#SPACE#of#SPACE#transcription#COMMA##SPACE#DNA-templated	1
 yiaJ	represses	yiaN	1
 maeA	is#SPACE#part#SPACE#of	cytosol	1
-rpsU	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Sulfamethoxazole	1
 yfcI	has	response#SPACE#to#SPACE#antibiotic	1
 secF	is#SPACE#part#SPACE#of	integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane	1
 yjjG	has	phosphatase#SPACE#activity	1
@@ -14258,7 +14254,6 @@ ubiH	is#SPACE#involved#SPACE#in	response#SPACE#to#SPACE#oxidative#SPACE#stress	1
 yjbJ	is#SPACE#part#SPACE#of	cytosol	1
 tcyN	is#SPACE#involved#SPACE#in	cysteine#SPACE#transmembrane#SPACE#transport	1
 lipA	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Novobiocin	1
-ymfI	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Sulfamethoxazole	1
 fur	represses	oppB	1
 rnt	has	3'-5'#SPACE#exonuclease#SPACE#activity	1
 rclA	is#SPACE#part#SPACE#of	cytoplasm	1
@@ -17011,7 +17006,6 @@ yidI	is#SPACE#part#SPACE#of	plasma#SPACE#membrane	1
 ydcS	is#SPACE#part#SPACE#of	outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space	1
 clpX	upregulated#SPACE#by#SPACE#antibiotic	Kanamycin	1
 ulaB	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Doxycycline	1
-cydX	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Vancomycin	1
 mrdA	is#SPACE#involved#SPACE#in	response#SPACE#to#SPACE#antibiotic	1
 ompA	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Azithromycin	1
 crp	activates	cysQ	1
@@ -19004,7 +18998,6 @@ abgT	has	secondary#SPACE#active#SPACE#p-aminobenzoyl-glutamate#SPACE#transmembra
 sodA	is#SPACE#involved#SPACE#in	response#SPACE#to#SPACE#heat	1
 pgrR	has	response#SPACE#to#SPACE#antibiotic	1
 mdtL	is#SPACE#part#SPACE#of	integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane	1
-yjjY	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Sulfamethoxazole	1
 tusD	confers#SPACE#resistance#SPACE#to#SPACE#antibiotic	Neomycin	1
 smpB	is#SPACE#involved#SPACE#in	trans-translation-dependent#SPACE#protein#SPACE#tagging	1
 bioF	has	pyridoxal#SPACE#phosphate#SPACE#binding	1
