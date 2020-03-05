@@ -1,0 +1,9 @@
+c$Rifampin	c$rpoB
+c$Enoxacin	c$gyrA
+c$Bicyclomycin	c$rho
+c$Triclosan	c$fabI
+c$Cefoxitin	c$prc c$dacC c$ampH c$dacB c$mrcB c$dacA c$dacD c$mrdA c$mrcA c$ftsI c$pbpG
+c$Ampicillin	c$prc c$dacC c$ampH c$dacB c$mrcB c$dacA c$dacD c$mrdA c$mrcA c$ftsI c$pbpG
+c$Fusidic#SPACE#acid	c$fusA
+c$Ciprofloxacin	c$gyrA c$parC c$gyrB
+c$Streptomycin	c$rpsL

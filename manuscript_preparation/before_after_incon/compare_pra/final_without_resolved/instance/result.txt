@@ -1,0 +1,3 @@
+./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/M3_p1e+06_h1_LVParticle1e+04f_acc0.01_b1e+00__b/Path_all20_L1=8e-03_L2=1e-04/train_T8_a/	754	0.829000	184	0.988064	2.070292	2.107427	90.531830	3.772927383603835	7	53	16.200616200635498	15	20.917
+./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic__b/predict_T8_a/	2.753
+./pos/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic__b/predict_T8_a/	2.539
