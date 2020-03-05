@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 names = ['Subject', 'Predicate', 'Object', 'Label', 'Probability']
 subset = ['Subject', 'Predicate', 'Object']
 
-pd_hypotheses = pd.read_csv('./good_models/7/hypotheses_confidence.txt', sep='\t', names=names)
-pd_validated = pd.read_csv('./all_validated_hypothesis.txt', sep='\t').dropna()
+pd_hypotheses = pd.read_csv('./7/hypotheses_confidence.txt', sep='\t', names=names)
+pd_validated = pd.read_csv('./validated_hypothesis.txt', sep='\t').dropna()
 pd_validated = pd_validated[['Subject', 'Predicate', 'Object', 'Resistance']]
 
 pd_hypotheses = pd_hypotheses.drop(['Label'], axis=1)

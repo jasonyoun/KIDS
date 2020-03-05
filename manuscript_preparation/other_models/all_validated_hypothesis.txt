@@ -152,7 +152,6 @@ atpD	confers resistance to antibiotic	Hygromycin B	Yes
 atpE	confers resistance to antibiotic	Hygromycin B	Yes
 atpF	confers resistance to antibiotic	Hygromycin B	Yes
 atpG	confers resistance to antibiotic	Hygromycin B	No
-bfr	confers resistance to antibiotic	Cephradine	
 cadC	confers resistance to antibiotic	Geneticin	No
 cpoB	confers resistance to antibiotic	Apramycin	No
 cpoB	confers resistance to antibiotic	Sisomicin	No
@@ -178,36 +177,25 @@ fur	confers resistance to antibiotic	Paromomycin	No
 fur	confers resistance to antibiotic	Triclosan	No
 gadE	confers resistance to antibiotic	Geneticin	No
 gadE	confers resistance to antibiotic	Paromomycin	No
-gadX	confers resistance to antibiotic	Cephradine	
 gadX	confers resistance to antibiotic	Paromomycin	No
 gadX	confers resistance to antibiotic	Troleandomycin	No
 galR	confers resistance to antibiotic	Paromomycin	No
-gcvT	confers resistance to antibiotic	Cephradine	
 gpmM	confers resistance to antibiotic	Streptomycin	No
-guaB	confers resistance to antibiotic	Cephradine	
-gyrB	confers resistance to antibiotic	Levofloxacin	
 hdfR	confers resistance to antibiotic	Geneticin	No
 hdfR	confers resistance to antibiotic	Paromomycin	No
 hfq	confers resistance to antibiotic	Triclosan	No
 hns	confers resistance to antibiotic	Geneticin	No
 hns	confers resistance to antibiotic	Paromomycin	No
 hns	confers resistance to antibiotic	Triclosan	Yes
-hupA	confers resistance to antibiotic	Cephradine	
-insO-1	confers resistance to antibiotic	Apramycin	
-insO-1	confers resistance to antibiotic	Sisomicin	
 insX	confers resistance to antibiotic	Apramycin	No
 insX	confers resistance to antibiotic	Sisomicin	No
 iscS	confers resistance to antibiotic	Chloramphenicol	No
 lpcA	confers resistance to antibiotic	Triclosan	No
-lpxA	confers resistance to antibiotic	Triclosan	
-lrp	confers resistance to antibiotic	Cephradine	
 lrp	confers resistance to antibiotic	Geneticin	Yes
 lrp	confers resistance to antibiotic	Paromomycin	No
 lrp	confers resistance to antibiotic	Troleandomycin	No
 mlc	confers resistance to antibiotic	Troleandomycin	No
-parE	confers resistance to antibiotic	Levofloxacin	
 ppiB	confers resistance to antibiotic	Triclosan	No
-purA	confers resistance to antibiotic	Cephradine	
 rbsK	confers resistance to antibiotic	Chloramphenicol	No
 recN	confers resistance to antibiotic	Paromomycin	No
 rfaD	confers resistance to antibiotic	Chloramphenicol	No
@@ -224,7 +212,6 @@ tatB	confers resistance to antibiotic	Triclosan	No
 waaC	confers resistance to antibiotic	Chloramphenicol	No
 waaF	confers resistance to antibiotic	Triclosan	Yes
 ycjU	confers resistance to antibiotic	Triclosan	Yes
-ygbK	confers resistance to antibiotic	Cephradine	
 pncA	confers resistance to antibiotic	Oxycarboxin	No
 psuK	confers resistance to antibiotic	Oxycarboxin	No
 psuK	confers resistance to antibiotic	Sulfanilamide	No
