@@ -78,9 +78,9 @@ def main():
 
     # load data
     dp = DataProcessor(
+        configparser.getstr('test_dir'),
         configparser.getstr('er_mlp_model_dir'),
-        configparser.getstr('pra_model_dir'),
-        configparser.getstr('test_dir'))
+        configparser.getstr('pra_model_dir'))
 
     pred_dic = dp.get_pred_dic()
     test_x, test_y, predicates_test = dp.get_x_y()

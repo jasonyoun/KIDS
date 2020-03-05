@@ -21,7 +21,7 @@ class DataProcessor():
     _ER_MLP_MODEL_HOME = '../er_mlp/model/model_instance/'
     _PRA_MODEL_HOME = '../pra/model/model_instance/'
 
-    def __init__(self, mlp_dir, pra_dir, data_type):
+    def __init__(self, data_type, mlp_dir, pra_dir):
         self.data_type = data_type
         self.mlp_model_base_dir = os.path.join(self._ER_MLP_MODEL_HOME, mlp_dir)
         self.pra_model_base_dir = os.path.join(self._PRA_MODEL_HOME, pra_dir, 'instance')
