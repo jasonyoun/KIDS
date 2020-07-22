@@ -83,11 +83,11 @@ print('cellular_component:', pd_cellular_components.shape)
 # nodes file #
 ##############
 pd_nodes = pd.concat(
-	[pd_genes,
-	pd_antibiotics,
-	pd_molecular_functions,
-	pd_biological_processes,
-	pd_cellular_components])
+    [pd_genes,
+    pd_antibiotics,
+    pd_molecular_functions,
+    pd_biological_processes,
+    pd_cellular_components])
 
 pd_nodes = pd_nodes.reset_index(drop=True)
 pd_nodes['Id'] = pd_nodes.index
@@ -106,24 +106,24 @@ pd_edges = pd_edges.replace({'Subject': lookup, 'Object': lookup})
 pd_edges = pd_edges.rename(columns={'Subject': 'Source', 'Predicate': 'Label', 'Object': 'Target'})
 
 def map_func(label):
-	if 'resistance to antibiotic' in label:
-		return 'resistance to antibiotic'
-	elif 'upregulated by antibiotic' in label:
-		return 'upregulated by antibiotic'
-	elif 'represses' in label:
-		return 'represses'
-	elif 'activates' in label:
-		return 'activates'
-	elif 'has' in label:
-		return 'has'
-	elif 'is involved in' in label:
-		return 'is involved in'
-	elif 'is part of' in label:
-		return 'is part of'
-	elif 'targeted by' in label:
-		return 'targeted by'
-	else:
-		raise ValueError('Invalid label: {}'.format(label))
+    if 'resistance to antibiotic' in label:
+        return 'resistance to antibiotic'
+    elif 'upregulated by antibiotic' in label:
+        return 'upregulated by antibiotic'
+    elif 'represses' in label:
+        return 'represses'
+    elif 'activates' in label:
+        return 'activates'
+    elif 'has' in label:
+        return 'has'
+    elif 'is involved in' in label:
+        return 'is involved in'
+    elif 'is part of' in label:
+        return 'is part of'
+    elif 'targeted by' in label:
+        return 'targeted by'
+    else:
+        raise ValueError('Invalid label: {}'.format(label))
 
 pd_edges['Category'] = pd_edges['Label'].apply(lambda x: map_func(x))
 pd_edges['Type'] = 'Directed'

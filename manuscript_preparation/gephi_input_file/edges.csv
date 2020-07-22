@@ -1,531 +1,65 @@
-index,Source,Label,Target,Category,Type,Weight
-715,459,confers no resistance to antibiotic after 7 days,568,resistance to antibiotic,Directed,1.0
-1854,144,confers no resistance to antibiotic after 3 days,552,resistance to antibiotic,Directed,1.0
-209,359,confers no resistance to antibiotic after 7 days,544,resistance to antibiotic,Directed,1.0
-1136,1,confers no resistance to antibiotic after 7 days,584,resistance to antibiotic,Directed,1.0
-2036,252,confers no resistance to antibiotic after 7 days,518,resistance to antibiotic,Directed,1.0
-3164,250,no activates,227,activates,Directed,1.0
-4889,280,is part of,615,is part of,Directed,1.0
-319,413,confers no resistance to antibiotic after 3 days,542,resistance to antibiotic,Directed,1.0
-4854,210,no activates,270,activates,Directed,1.0
-4394,472,no activates,334,activates,Directed,1.0
-1793,139,confers no resistance to antibiotic after 15 hours,555,resistance to antibiotic,Directed,1.0
-1339,115,confers no resistance to antibiotic after 15 hours,579,resistance to antibiotic,Directed,1.0
-1205,373,confers no resistance to antibiotic after 7 days,567,resistance to antibiotic,Directed,1.0
-1869,183,confers no resistance to antibiotic after 18 hours,583,resistance to antibiotic,Directed,1.0
-1953,273,confers no resistance to antibiotic after 18 hours,578,resistance to antibiotic,Directed,1.0
-2240,96,confers no resistance to antibiotic after 15 hours,512,resistance to antibiotic,Directed,1.0
-5121,118,has,592,has,Directed,1.0
-4582,172,no represses,253,represses,Directed,1.0
-4061,67,no represses,310,represses,Directed,1.0
-4003,164,is part of,616,is part of,Directed,1.0
-3146,472,no activates,14,activates,Directed,1.0
-2740,213,has,598,has,Directed,1.0
-1260,161,confers no resistance to antibiotic after 15 hours,533,resistance to antibiotic,Directed,1.0
-4832,364,no activates,467,activates,Directed,1.0
-1654,146,confers no resistance to antibiotic after 3 days,553,resistance to antibiotic,Directed,1.0
-2923,172,no represses,46,represses,Directed,1.0
-3902,172,no activates,499,activates,Directed,1.0
-3849,208,is involved in,613,is involved in,Directed,1.0
-3374,203,no activates,444,activates,Directed,1.0
-867,266,confers no resistance to antibiotic after 7 days,565,resistance to antibiotic,Directed,1.0
-352,386,confers no resistance to antibiotic after 15 hours,538,resistance to antibiotic,Directed,1.0
-695,486,confers no resistance to antibiotic after 7 days,568,resistance to antibiotic,Directed,1.0
-3985,341,has,594,has,Directed,1.0
-2825,472,no represses,9,represses,Directed,1.0
-661,290,confers no resistance to antibiotic after 18 hours,523,resistance to antibiotic,Directed,1.0
-3148,241,not upregulated by antibiotic after 30 mins,523,upregulated by antibiotic,Directed,1.0
-4295,375,no represses,234,represses,Directed,1.0
-186,80,confers no resistance to antibiotic after 7 days,564,resistance to antibiotic,Directed,1.0
-1755,483,confers no resistance to antibiotic after 15 hours,508,resistance to antibiotic,Directed,1.0
-3639,67,no represses,71,represses,Directed,1.0
-1358,281,confers no resistance to antibiotic after 3 days,558,resistance to antibiotic,Directed,1.0
-15,221,confers no resistance to antibiotic after 15 hours,579,resistance to antibiotic,Directed,1.0
-3627,16,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-4898,487,has,590,has,Directed,1.0
-716,369,confers no resistance to antibiotic after 36 hours,568,resistance to antibiotic,Directed,1.0
-3682,203,no activates,388,activates,Directed,1.0
-1242,368,confers no resistance to antibiotic after 7 days,579,resistance to antibiotic,Directed,1.0
-4796,311,represses,283,represses,Directed,1.0
-2588,203,no activates,108,activates,Directed,1.0
-3252,375,no represses,480,represses,Directed,1.0
-2205,346,confers no resistance to antibiotic after 7 days,521,resistance to antibiotic,Directed,1.0
-5130,112,no activates,239,activates,Directed,1.0
-1520,313,confers no resistance to antibiotic after 7 days,522,resistance to antibiotic,Directed,1.0
-4289,485,no activates,230,activates,Directed,1.0
-1660,61,confers no resistance to antibiotic after 15 hours,525,resistance to antibiotic,Directed,1.0
-1092,185,confers no resistance to antibiotic after 7 days,543,resistance to antibiotic,Directed,1.0
-3303,457,activates,501,activates,Directed,1.0
-1390,291,confers no resistance to antibiotic after 7 days,582,resistance to antibiotic,Directed,1.0
-4577,364,no activates,229,activates,Directed,1.0
-3610,172,no activates,73,activates,Directed,1.0
-4590,99,not upregulated by antibiotic after 30 mins,523,upregulated by antibiotic,Directed,1.0
-1846,279,confers no resistance to antibiotic after 3 days,542,resistance to antibiotic,Directed,1.0
-5179,210,no activates,460,activates,Directed,1.0
-3806,210,no represses,505,represses,Directed,1.0
-1289,219,confers no resistance to antibiotic after 7 days,575,resistance to antibiotic,Directed,1.0
-2059,407,confers no resistance to antibiotic after 7 days,542,resistance to antibiotic,Directed,1.0
-1997,385,confers no resistance to antibiotic after 15 hours,562,resistance to antibiotic,Directed,1.0
-2889,212,not upregulated by antibiotic after 30 mins,519,upregulated by antibiotic,Directed,1.0
-2802,364,activates,411,activates,Directed,1.0
-4724,468,has,589,has,Directed,1.0
-1633,140,confers no resistance to antibiotic after 7 days,585,resistance to antibiotic,Directed,1.0
-1646,491,confers no resistance to antibiotic after 15 hours,574,resistance to antibiotic,Directed,1.0
-4193,203,no represses,209,represses,Directed,1.0
-2436,500,confers no resistance to antibiotic after 7 days,541,resistance to antibiotic,Directed,1.0
-4251,143,no represses,4,represses,Directed,1.0
-3365,434,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-4967,112,no represses,181,represses,Directed,1.0
-4932,485,no represses,259,represses,Directed,1.0
-2712,462,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-2238,48,confers no resistance to antibiotic after 3 days,568,resistance to antibiotic,Directed,1.0
-2947,112,no activates,347,activates,Directed,1.0
-3842,472,no activates,349,activates,Directed,1.0
-2874,250,no activates,298,activates,Directed,1.0
-5222,156,is part of,615,is part of,Directed,1.0
-5046,396,is involved in,610,is involved in,Directed,1.0
-3375,229,not upregulated by antibiotic after 30 mins,519,upregulated by antibiotic,Directed,1.0
-4513,143,no activates,239,activates,Directed,1.0
-2022,186,confers no resistance to antibiotic after 18 hours,534,resistance to antibiotic,Directed,1.0
-3056,143,no represses,405,represses,Directed,1.0
-3768,158,represses,65,represses,Directed,1.0
-4627,88,has,600,has,Directed,1.0
-4292,39,is involved in,602,is involved in,Directed,1.0
-1562,450,confers no resistance to antibiotic after 15 hours,510,resistance to antibiotic,Directed,1.0
-3524,250,no activates,41,activates,Directed,1.0
-1597,492,confers no resistance to antibiotic after 7 days,553,resistance to antibiotic,Directed,1.0
-4074,172,no activates,169,activates,Directed,1.0
-3582,148,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-3729,112,no represses,421,represses,Directed,1.0
-2183,52,confers no resistance to antibiotic after 18 hours,531,resistance to antibiotic,Directed,1.0
-3603,67,no activates,136,activates,Directed,1.0
-2209,268,confers no resistance to antibiotic after 15 hours,554,resistance to antibiotic,Directed,1.0
-2832,217,is involved in,609,is involved in,Directed,1.0
-3214,472,no represses,78,represses,Directed,1.0
-5049,472,no represses,192,represses,Directed,1.0
-4271,172,no represses,21,represses,Directed,1.0
-2758,375,no activates,63,activates,Directed,1.0
-282,380,confers no resistance to antibiotic after 3 days,558,resistance to antibiotic,Directed,1.0
-3286,364,no activates,287,activates,Directed,1.0
-4928,375,no represses,114,represses,Directed,1.0
-780,314,confers no resistance to antibiotic after 15 hours,542,resistance to antibiotic,Directed,1.0
-77,314,confers no resistance to antibiotic after 15 hours,509,resistance to antibiotic,Directed,1.0
-2462,178,confers no resistance to antibiotic after 7 days,556,resistance to antibiotic,Directed,1.0
-1601,60,confers resistance to antibiotic,545,resistance to antibiotic,Directed,1.0
-2505,352,confers no resistance to antibiotic after 7 days,520,resistance to antibiotic,Directed,1.0
-798,248,confers no resistance to antibiotic after 7 days,514,resistance to antibiotic,Directed,1.0
-4702,488,no activates,415,activates,Directed,1.0
-4055,364,no activates,296,activates,Directed,1.0
-3813,67,no represses,348,represses,Directed,1.0
-4484,249,no activates,165,activates,Directed,1.0
-4414,172,no activates,265,activates,Directed,1.0
-1317,105,confers no resistance to antibiotic after 7 days,547,resistance to antibiotic,Directed,1.0
-3489,8,is involved in,608,is involved in,Directed,1.0
-2846,172,no represses,463,represses,Directed,1.0
-4233,67,no represses,292,represses,Directed,1.0
-1021,358,confers no resistance to antibiotic after 30 mins,551,resistance to antibiotic,Directed,1.0
-998,70,confers no resistance to antibiotic after 3 days,532,resistance to antibiotic,Directed,1.0
-3572,249,no represses,318,represses,Directed,1.0
-4042,88,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-1394,32,confers no resistance to antibiotic after 15 hours,581,resistance to antibiotic,Directed,1.0
-1810,207,confers no resistance to antibiotic after 15 hours,554,resistance to antibiotic,Directed,1.0
-125,104,confers no resistance to antibiotic after 15 hours,531,resistance to antibiotic,Directed,1.0
-2949,143,no represses,377,represses,Directed,1.0
-5273,67,no activates,24,activates,Directed,1.0
-2616,375,no activates,138,activates,Directed,1.0
-1826,159,confers no resistance to antibiotic after 3 days,569,resistance to antibiotic,Directed,1.0
-3908,311,no represses,179,represses,Directed,1.0
-291,416,confers no resistance to antibiotic after 3 days,583,resistance to antibiotic,Directed,1.0
-3898,437,not upregulated by antibiotic after 30 mins,523,upregulated by antibiotic,Directed,1.0
-735,338,confers no resistance to antibiotic after 15 hours,523,resistance to antibiotic,Directed,1.0
-4236,112,no represses,122,represses,Directed,1.0
-3342,207,is involved in,612,is involved in,Directed,1.0
-4669,67,no activates,289,activates,Directed,1.0
-2190,343,confers no resistance to antibiotic after 7 days,556,resistance to antibiotic,Directed,1.0
-4086,472,no represses,68,represses,Directed,1.0
-769,7,confers no resistance to antibiotic after 7 days,553,resistance to antibiotic,Directed,1.0
-1372,403,confers no resistance to antibiotic after 30 mins,551,resistance to antibiotic,Directed,1.0
-3968,112,no represses,119,represses,Directed,1.0
-449,392,confers no resistance to antibiotic after 7 days,559,resistance to antibiotic,Directed,1.0
-3344,67,no represses,504,represses,Directed,1.0
-406,303,confers no resistance to antibiotic after 7 days,528,resistance to antibiotic,Directed,1.0
-3853,210,no represses,254,represses,Directed,1.0
-4182,424,has,596,has,Directed,1.0
-2906,210,no represses,200,represses,Directed,1.0
-4273,149,not upregulated by antibiotic after 30 mins,523,upregulated by antibiotic,Directed,1.0
-242,84,confers no resistance to antibiotic after 7 days,556,resistance to antibiotic,Directed,1.0
-2608,249,no activates,376,activates,Directed,1.0
-3509,249,no activates,197,activates,Directed,1.0
-3947,485,no activates,184,activates,Directed,1.0
-4494,249,no activates,438,activates,Directed,1.0
-1553,22,confers no resistance to antibiotic after 7 days,539,resistance to antibiotic,Directed,1.0
-4810,249,no represses,363,represses,Directed,1.0
-4080,160,has,597,has,Directed,1.0
-5214,231,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-919,261,confers no resistance to antibiotic after 15 hours,533,resistance to antibiotic,Directed,1.0
-5160,250,no represses,230,represses,Directed,1.0
-4800,143,no represses,329,represses,Directed,1.0
-4442,459,is involved in,605,is involved in,Directed,1.0
-2112,304,confers no resistance to antibiotic after 7 days,576,resistance to antibiotic,Directed,1.0
-3320,257,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-5244,311,no activates,202,activates,Directed,1.0
-882,244,confers no resistance to antibiotic after 7 days,537,resistance to antibiotic,Directed,1.0
-1428,446,confers no resistance to antibiotic after 15 hours,515,resistance to antibiotic,Directed,1.0
-259,120,confers no resistance to antibiotic after 15 hours,583,resistance to antibiotic,Directed,1.0
-1263,361,confers no resistance to antibiotic after 3 days,532,resistance to antibiotic,Directed,1.0
-4875,112,no activates,445,activates,Directed,1.0
-4923,67,no represses,255,represses,Directed,1.0
-1972,448,confers no resistance to antibiotic after 7 days,514,resistance to antibiotic,Directed,1.0
-3088,464,not upregulated by antibiotic after 30 mins,519,upregulated by antibiotic,Directed,1.0
-4848,375,no represses,215,represses,Directed,1.0
-1436,242,confers no resistance to antibiotic after 15 hours,526,resistance to antibiotic,Directed,1.0
-45,189,confers no resistance to antibiotic after 15 hours,546,resistance to antibiotic,Directed,1.0
-231,387,confers no resistance to antibiotic after 15 hours,573,resistance to antibiotic,Directed,1.0
-3109,203,no activates,418,activates,Directed,1.0
-4575,485,no activates,440,activates,Directed,1.0
-3262,250,no activates,344,activates,Directed,1.0
-4409,203,no activates,267,activates,Directed,1.0
-975,306,confers no resistance to antibiotic after 3 days,552,resistance to antibiotic,Directed,1.0
-3326,30,is part of,619,is part of,Directed,1.0
-3425,311,no represses,237,represses,Directed,1.0
-4135,203,no represses,187,represses,Directed,1.0
-806,53,confers no resistance to antibiotic after 15 hours,553,resistance to antibiotic,Directed,1.0
-692,196,confers no resistance to antibiotic after 15 hours,536,resistance to antibiotic,Directed,1.0
-0,224,confers no resistance to antibiotic after 7 days,529,resistance to antibiotic,Directed,1.0
-3101,112,no activates,86,activates,Directed,1.0
-707,361,confers no resistance to antibiotic after 15 hours,510,resistance to antibiotic,Directed,1.0
-56,436,confers no resistance to antibiotic after 15 hours,513,resistance to antibiotic,Directed,1.0
-4821,274,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-3815,311,no activates,166,activates,Directed,1.0
-3040,420,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-1304,451,confers no resistance to antibiotic after 7 days,585,resistance to antibiotic,Directed,1.0
-3531,360,not upregulated by antibiotic after 30 mins,523,upregulated by antibiotic,Directed,1.0
-4915,485,no activates,247,activates,Directed,1.0
-4850,429,is involved in,607,is involved in,Directed,1.0
-1614,366,confers no resistance to antibiotic after 15 hours,545,resistance to antibiotic,Directed,1.0
-626,81,confers no resistance to antibiotic after 15 hours,550,resistance to antibiotic,Directed,1.0
-10,379,confers no resistance to antibiotic after 3 days,582,resistance to antibiotic,Directed,1.0
-4981,250,activates,161,activates,Directed,1.0
-179,26,confers no resistance to antibiotic after 7 days,522,resistance to antibiotic,Directed,1.0
-4005,249,no activates,238,activates,Directed,1.0
-2716,485,no represses,92,represses,Directed,1.0
-4619,172,no represses,258,represses,Directed,1.0
-3895,101,has,591,has,Directed,1.0
-4576,8,has,599,has,Directed,1.0
-250,408,confers no resistance to antibiotic after 15 hours,533,resistance to antibiotic,Directed,1.0
-610,20,confers no resistance to antibiotic after 15 hours,580,resistance to antibiotic,Directed,1.0
-1350,275,confers no resistance to antibiotic after 7 days,531,resistance to antibiotic,Directed,1.0
-1586,398,confers no resistance to antibiotic after 15 hours,570,resistance to antibiotic,Directed,1.0
-324,93,confers no resistance to antibiotic after 7 days,544,resistance to antibiotic,Directed,1.0
-3336,472,no activates,35,activates,Directed,1.0
-3250,488,no activates,5,activates,Directed,1.0
-1651,417,confers no resistance to antibiotic after 15 hours,554,resistance to antibiotic,Directed,1.0
-4147,210,no activates,145,activates,Directed,1.0
-615,443,confers no resistance to antibiotic after 30 mins,523,resistance to antibiotic,Directed,1.0
-2344,497,confers no resistance to antibiotic after 7 days,586,resistance to antibiotic,Directed,1.0
-1237,277,confers no resistance to antibiotic after 7 days,584,resistance to antibiotic,Directed,1.0
-2896,472,no activates,113,activates,Directed,1.0
-4371,485,no activates,391,activates,Directed,1.0
-3028,143,no represses,176,represses,Directed,1.0
-4046,364,no activates,243,activates,Directed,1.0
-3529,372,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-1094,117,confers no resistance to antibiotic after 7 days,568,resistance to antibiotic,Directed,1.0
-2568,72,confers no resistance to antibiotic after 15 hours,513,resistance to antibiotic,Directed,1.0
-1551,204,confers no resistance to antibiotic after 18 hours,523,resistance to antibiotic,Directed,1.0
-777,478,confers no resistance to antibiotic after 18 hours,556,resistance to antibiotic,Directed,1.0
-2473,362,confers no resistance to antibiotic after 30 mins,523,resistance to antibiotic,Directed,1.0
-5044,249,no represses,194,represses,Directed,1.0
-1322,236,confers no resistance to antibiotic after 3 days,558,resistance to antibiotic,Directed,1.0
-1798,170,confers no resistance to antibiotic after 7 days,560,resistance to antibiotic,Directed,1.0
-326,195,confers no resistance to antibiotic after 7 days,534,resistance to antibiotic,Directed,1.0
-2721,250,no represses,205,represses,Directed,1.0
-1060,321,confers no resistance to antibiotic after 3 days,562,resistance to antibiotic,Directed,1.0
-3955,249,no activates,326,activates,Directed,1.0
-2014,450,confers no resistance to antibiotic after 3 days,553,resistance to antibiotic,Directed,1.0
-1744,55,confers no resistance to antibiotic after 7 days,587,resistance to antibiotic,Directed,1.0
-663,201,confers no resistance to antibiotic after 7 days,567,resistance to antibiotic,Directed,1.0
-3355,311,no represses,87,represses,Directed,1.0
-1019,449,confers no resistance to antibiotic after 7 days,511,resistance to antibiotic,Directed,1.0
-2481,309,confers no resistance to antibiotic after 7 days,585,resistance to antibiotic,Directed,1.0
-3274,174,is involved in,603,is involved in,Directed,1.0
-4269,472,no activates,447,activates,Directed,1.0
-389,331,confers no resistance to antibiotic after 7 days,539,resistance to antibiotic,Directed,1.0
-545,332,confers no resistance to antibiotic after 18 hours,523,resistance to antibiotic,Directed,1.0
-1020,218,confers no resistance to antibiotic after 18 hours,557,resistance to antibiotic,Directed,1.0
-4562,67,no activates,414,activates,Directed,1.0
-5192,210,no activates,335,activates,Directed,1.0
-4611,364,no activates,301,activates,Directed,1.0
-2803,375,no activates,83,activates,Directed,1.0
-24,308,confers no resistance to antibiotic after 7 days,522,resistance to antibiotic,Directed,1.0
-1995,368,confers no resistance to antibiotic after 15 hours,534,resistance to antibiotic,Directed,1.0
-1476,288,confers no resistance to antibiotic after 18 hours,556,resistance to antibiotic,Directed,1.0
-883,153,confers no resistance to antibiotic after 15 hours,545,resistance to antibiotic,Directed,1.0
-2,343,confers no resistance to antibiotic after 15 hours,574,resistance to antibiotic,Directed,1.0
-2069,163,confers no resistance to antibiotic after 18 hours,553,resistance to antibiotic,Directed,1.0
-5194,210,no represses,75,represses,Directed,1.0
-1495,232,confers no resistance to antibiotic after 15 hours,570,resistance to antibiotic,Directed,1.0
-2530,121,confers no resistance to antibiotic after 7 days,544,resistance to antibiotic,Directed,1.0
-3457,172,no represses,152,represses,Directed,1.0
-433,6,confers no resistance to antibiotic after 15 hours,579,resistance to antibiotic,Directed,1.0
-2404,28,confers no resistance to antibiotic after 15 hours,523,resistance to antibiotic,Directed,1.0
-3935,70,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-2282,4,confers no resistance to antibiotic after 18 hours,556,resistance to antibiotic,Directed,1.0
-1000,426,confers no resistance to antibiotic after 7 days,534,resistance to antibiotic,Directed,1.0
-4944,488,no activates,225,activates,Directed,1.0
-2284,506,confers no resistance to antibiotic after 7 days,518,resistance to antibiotic,Directed,1.0
-1129,319,confers no resistance to antibiotic after 15 hours,553,resistance to antibiotic,Directed,1.0
-311,69,confers no resistance to antibiotic after 7 days,560,resistance to antibiotic,Directed,1.0
-3127,249,no activates,312,activates,Directed,1.0
-2173,333,confers no resistance to antibiotic after 15 hours,548,resistance to antibiotic,Directed,1.0
-1314,455,confers no resistance to antibiotic after 18 hours,530,resistance to antibiotic,Directed,1.0
-1124,327,confers no resistance to antibiotic after 15 hours,571,resistance to antibiotic,Directed,1.0
-3153,472,no activates,412,activates,Directed,1.0
-106,401,confers no resistance to antibiotic after 15 hours,581,resistance to antibiotic,Directed,1.0
-188,15,confers no resistance to antibiotic after 7 days,522,resistance to antibiotic,Directed,1.0
-4707,472,no represses,325,represses,Directed,1.0
-3491,64,not upregulated by antibiotic after 30 mins,523,upregulated by antibiotic,Directed,1.0
-1622,12,confers no resistance to antibiotic after 7 days,540,resistance to antibiotic,Directed,1.0
-233,323,confers no resistance to antibiotic after 3 days,542,resistance to antibiotic,Directed,1.0
-944,345,confers no resistance to antibiotic after 15 hours,553,resistance to antibiotic,Directed,1.0
-4622,485,no activates,302,activates,Directed,1.0
-2361,21,confers no resistance to antibiotic after 7 days,528,resistance to antibiotic,Directed,1.0
-4039,143,no represses,284,represses,Directed,1.0
-97,19,confers no resistance to antibiotic after 15 hours,532,resistance to antibiotic,Directed,1.0
-5141,103,not upregulated by antibiotic after 30 mins,519,upregulated by antibiotic,Directed,1.0
-1114,470,confers no resistance to antibiotic after 7 days,572,resistance to antibiotic,Directed,1.0
-4214,488,no activates,498,activates,Directed,1.0
-121,477,confers no resistance to antibiotic after 30 mins,519,resistance to antibiotic,Directed,1.0
-4499,485,no activates,465,activates,Directed,1.0
-4927,393,not upregulated by antibiotic after 30 mins,519,upregulated by antibiotic,Directed,1.0
-710,473,confers no resistance to antibiotic after 15 hours,545,resistance to antibiotic,Directed,1.0
-3739,203,no activates,410,activates,Directed,1.0
-805,181,confers no resistance to antibiotic after 15 hours,533,resistance to antibiotic,Directed,1.0
-4012,485,no represses,33,represses,Directed,1.0
-3769,249,no activates,127,activates,Directed,1.0
-4858,164,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-3591,210,no activates,256,activates,Directed,1.0
-3565,311,no activates,163,activates,Directed,1.0
-731,135,confers no resistance to antibiotic after 15 hours,538,resistance to antibiotic,Directed,1.0
-1758,150,confers no resistance to antibiotic after 7 days,565,resistance to antibiotic,Directed,1.0
-3915,67,no represses,390,represses,Directed,1.0
-1673,45,confers no resistance to antibiotic after 7 days,572,resistance to antibiotic,Directed,1.0
-804,56,confers no resistance to antibiotic after 18 hours,547,resistance to antibiotic,Directed,1.0
-4830,172,no represses,171,represses,Directed,1.0
-1004,317,confers no resistance to antibiotic after 15 hours,530,resistance to antibiotic,Directed,1.0
-1045,226,confers no resistance to antibiotic after 7 days,542,resistance to antibiotic,Directed,1.0
-772,433,confers no resistance to antibiotic after 7 days,576,resistance to antibiotic,Directed,1.0
-1599,269,confers no resistance to antibiotic after 3 days,523,resistance to antibiotic,Directed,1.0
-2818,485,no activates,177,activates,Directed,1.0
-216,157,confers no resistance to antibiotic after 7 days,515,resistance to antibiotic,Directed,1.0
-3515,210,no represses,402,represses,Directed,1.0
-973,395,confers no resistance to antibiotic after 18 hours,578,resistance to antibiotic,Directed,1.0
-2359,371,confers no resistance to antibiotic after 15 hours,513,resistance to antibiotic,Directed,1.0
-1550,354,confers no resistance to antibiotic after 7 days,516,resistance to antibiotic,Directed,1.0
-7,59,confers no resistance to antibiotic after 15 hours,583,resistance to antibiotic,Directed,1.0
-161,408,confers no resistance to antibiotic after 3 days,540,resistance to antibiotic,Directed,1.0
-4873,203,no represses,54,represses,Directed,1.0
-1492,439,confers no resistance to antibiotic after 7 days,529,resistance to antibiotic,Directed,1.0
-1366,431,confers no resistance to antibiotic after 30 mins,519,resistance to antibiotic,Directed,1.0
-27,155,confers no resistance to antibiotic after 18 hours,577,resistance to antibiotic,Directed,1.0
-2789,375,no activates,476,activates,Directed,1.0
-3993,375,no represses,474,represses,Directed,1.0
-4355,375,no represses,295,represses,Directed,1.0
-4181,143,no activates,461,activates,Directed,1.0
-1353,355,confers no resistance to antibiotic after 3 days,534,resistance to antibiotic,Directed,1.0
-839,31,confers no resistance to antibiotic after 15 hours,509,resistance to antibiotic,Directed,1.0
-4393,210,no represses,42,represses,Directed,1.0
-1139,18,confers resistance to antibiotic after 3 days,509,resistance to antibiotic,Directed,1.0
-4788,485,no represses,110,represses,Directed,1.0
-2491,389,confers no resistance to antibiotic after 15 hours,509,resistance to antibiotic,Directed,1.0
-1235,190,confers no resistance to antibiotic after 30 mins,556,resistance to antibiotic,Directed,1.0
-2701,27,is involved in,614,is involved in,Directed,1.0
-1056,76,confers no resistance to antibiotic after 3 days,582,resistance to antibiotic,Directed,1.0
-571,309,confers no resistance to antibiotic after 15 hours,515,resistance to antibiotic,Directed,1.0
-3353,89,not upregulated by antibiotic after 30 mins,523,upregulated by antibiotic,Directed,1.0
-2063,98,confers no resistance to antibiotic after 15 hours,519,resistance to antibiotic,Directed,1.0
-2136,307,confers no resistance to antibiotic after 7 days,528,resistance to antibiotic,Directed,1.0
-1899,342,confers no resistance to antibiotic after 7 days,565,resistance to antibiotic,Directed,1.0
-1460,95,confers resistance to antibiotic,570,resistance to antibiotic,Directed,1.0
-402,3,confers no resistance to antibiotic after 7 days,521,resistance to antibiotic,Directed,1.0
-3224,203,no represses,79,represses,Directed,1.0
-2534,38,confers no resistance to antibiotic after 3 days,569,resistance to antibiotic,Directed,1.0
-2532,490,confers no resistance to antibiotic after 7 days,541,resistance to antibiotic,Directed,1.0
-1707,62,confers no resistance to antibiotic after 7 days,534,resistance to antibiotic,Directed,1.0
-2055,134,confers no resistance to antibiotic after 7 days,566,resistance to antibiotic,Directed,1.0
-1059,173,confers no resistance to antibiotic after 15 hours,571,resistance to antibiotic,Directed,1.0
-2856,250,no activates,91,activates,Directed,1.0
-536,106,confers no resistance to antibiotic after 18 hours,553,resistance to antibiotic,Directed,1.0
-1435,466,confers no resistance to antibiotic after 7 days,522,resistance to antibiotic,Directed,1.0
-4597,210,no represses,29,represses,Directed,1.0
-3337,13,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-2640,112,no activates,94,activates,Directed,1.0
-4189,485,no activates,406,activates,Directed,1.0
-1471,123,confers no resistance to antibiotic after 15 hours,535,resistance to antibiotic,Directed,1.0
-4102,228,is part of,619,is part of,Directed,1.0
-1062,141,confers no resistance to antibiotic after 7 days,584,resistance to antibiotic,Directed,1.0
-749,133,confers no resistance to antibiotic after 7 days,584,resistance to antibiotic,Directed,1.0
-1028,95,confers no resistance to antibiotic after 18 hours,531,resistance to antibiotic,Directed,1.0
-176,66,confers no resistance to antibiotic after 7 days,576,resistance to antibiotic,Directed,1.0
-4341,44,has,601,has,Directed,1.0
-5265,210,no represses,10,represses,Directed,1.0
-5056,249,no represses,489,represses,Directed,1.0
-4649,315,is involved in,604,is involved in,Directed,1.0
-3514,311,no activates,285,activates,Directed,1.0
-429,494,confers no resistance to antibiotic after 7 days,576,resistance to antibiotic,Directed,1.0
-1813,425,confers no resistance to antibiotic after 15 hours,519,resistance to antibiotic,Directed,1.0
-1717,276,confers no resistance to antibiotic after 15 hours,579,resistance to antibiotic,Directed,1.0
-1547,409,confers no resistance to antibiotic after 15 hours,526,resistance to antibiotic,Directed,1.0
-1617,162,confers no resistance to antibiotic after 7 days,575,resistance to antibiotic,Directed,1.0
-890,394,confers no resistance to antibiotic after 3 days,542,resistance to antibiotic,Directed,1.0
-4667,172,no activates,220,activates,Directed,1.0
-4638,250,no activates,336,activates,Directed,1.0
-1636,100,confers no resistance to antibiotic after 7 days,532,resistance to antibiotic,Directed,1.0
-3930,210,no represses,151,represses,Directed,1.0
-2288,40,confers no resistance to antibiotic after 15 hours,515,resistance to antibiotic,Directed,1.0
-800,400,confers no resistance to antibiotic after 7 days,543,resistance to antibiotic,Directed,1.0
-1296,293,confers no resistance to antibiotic after 7 days,575,resistance to antibiotic,Directed,1.0
-4490,364,no activates,246,activates,Directed,1.0
-365,0,confers no resistance to antibiotic after 3 days,558,resistance to antibiotic,Directed,1.0
-3512,482,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-2212,223,confers no resistance to antibiotic after 15 hours,573,resistance to antibiotic,Directed,1.0
-2913,249,no activates,454,activates,Directed,1.0
-1151,339,confers no resistance to antibiotic after 18 hours,577,resistance to antibiotic,Directed,1.0
-2459,8,confers no resistance to antibiotic after 18 hours,588,resistance to antibiotic,Directed,1.0
-819,77,confers no resistance to antibiotic after 15 hours,536,resistance to antibiotic,Directed,1.0
-1451,452,confers no resistance to antibiotic after 7 days,518,resistance to antibiotic,Directed,1.0
-5039,203,no activates,167,activates,Directed,1.0
-1316,383,confers no resistance to antibiotic after 3 days,582,resistance to antibiotic,Directed,1.0
-372,49,confers no resistance to antibiotic after 18 hours,553,resistance to antibiotic,Directed,1.0
-3589,365,not upregulated by antibiotic after 30 mins,523,upregulated by antibiotic,Directed,1.0
-2482,245,confers no resistance to antibiotic after 7 days,521,resistance to antibiotic,Directed,1.0
-4366,172,no represses,233,represses,Directed,1.0
-4998,116,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-2077,493,confers no resistance to antibiotic after 15 hours,512,resistance to antibiotic,Directed,1.0
-2848,67,no activates,251,activates,Directed,1.0
-5150,249,no activates,353,activates,Directed,1.0
-3761,67,no activates,299,activates,Directed,1.0
-4798,67,no represses,435,represses,Directed,1.0
-3102,250,no activates,50,activates,Directed,1.0
-2039,37,confers no resistance to antibiotic after 15 hours,510,resistance to antibiotic,Directed,1.0
-4281,466,is involved in,606,is involved in,Directed,1.0
-4224,210,no represses,180,represses,Directed,1.0
-2541,131,confers no resistance to antibiotic after 15 hours,581,resistance to antibiotic,Directed,1.0
-3522,311,no represses,399,represses,Directed,1.0
-3424,172,no represses,351,represses,Directed,1.0
-3629,67,no represses,125,represses,Directed,1.0
-2233,441,confers no resistance to antibiotic after 7 days,515,resistance to antibiotic,Directed,1.0
-3763,210,no represses,199,represses,Directed,1.0
-3689,203,no activates,378,activates,Directed,1.0
-2647,210,no activates,370,activates,Directed,1.0
-825,328,confers no resistance to antibiotic after 15 hours,588,resistance to antibiotic,Directed,1.0
-4727,249,no activates,260,activates,Directed,1.0
-5183,67,no activates,2,activates,Directed,1.0
-1543,303,confers no resistance to antibiotic after 7 days,575,resistance to antibiotic,Directed,1.0
-1888,324,confers no resistance to antibiotic after 7 days,517,resistance to antibiotic,Directed,1.0
-36,428,confers no resistance to antibiotic after 15 hours,513,resistance to antibiotic,Directed,1.0
-515,51,confers no resistance to antibiotic after 15 hours,526,resistance to antibiotic,Directed,1.0
-3421,357,represses,172,represses,Directed,1.0
-3157,203,no activates,432,activates,Directed,1.0
-590,235,confers no resistance to antibiotic after 15 hours,542,resistance to antibiotic,Directed,1.0
-3817,375,no represses,337,represses,Directed,1.0
-4891,43,is part of,618,is part of,Directed,1.0
-5298,311,no represses,305,represses,Directed,1.0
-4101,143,no represses,374,represses,Directed,1.0
-3549,485,represses,130,represses,Directed,1.0
-1711,381,confers no resistance to antibiotic after 3 days,523,resistance to antibiotic,Directed,1.0
-4036,488,no activates,384,activates,Directed,1.0
-583,214,confers no resistance to antibiotic after 15 hours,548,resistance to antibiotic,Directed,1.0
-3436,143,no activates,175,activates,Directed,1.0
-3298,250,no represses,469,represses,Directed,1.0
-5227,210,no represses,129,represses,Directed,1.0
-1055,193,confers no resistance to antibiotic after 30 mins,556,resistance to antibiotic,Directed,1.0
-4704,143,no represses,496,represses,Directed,1.0
-3723,250,no activates,155,activates,Directed,1.0
-4375,67,no represses,422,represses,Directed,1.0
-1098,356,confers no resistance to antibiotic after 7 days,514,resistance to antibiotic,Directed,1.0
-4911,203,no activates,264,activates,Directed,1.0
-3784,311,no represses,297,represses,Directed,1.0
-3439,203,no represses,430,represses,Directed,1.0
-278,34,confers no resistance to antibiotic after 15 hours,515,resistance to antibiotic,Directed,1.0
-2428,442,confers no resistance to antibiotic after 18 hours,556,resistance to antibiotic,Directed,1.0
-1851,62,confers no resistance to antibiotic after 15 hours,549,resistance to antibiotic,Directed,1.0
-3885,485,no represses,72,represses,Directed,1.0
-3415,168,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-3128,191,is part of,618,is part of,Directed,1.0
-2170,320,confers no resistance to antibiotic after 15 hours,544,resistance to antibiotic,Directed,1.0
-2589,485,no represses,181,represses,Directed,1.0
-1186,175,confers no resistance to antibiotic after 7 days,564,resistance to antibiotic,Directed,1.0
-3212,311,no represses,404,represses,Directed,1.0
-3983,375,no activates,36,activates,Directed,1.0
-1113,142,confers no resistance to antibiotic after 7 days,572,resistance to antibiotic,Directed,1.0
-4352,453,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-1031,124,confers no resistance to antibiotic after 7 days,542,resistance to antibiotic,Directed,1.0
-3647,172,no activates,57,activates,Directed,1.0
-4602,112,no represses,440,represses,Directed,1.0
-5167,341,not upregulated by antibiotic after 30 mins,551,upregulated by antibiotic,Directed,1.0
-4344,488,no activates,182,activates,Directed,1.0
-4195,172,no activates,137,activates,Directed,1.0
-2618,311,activates,198,activates,Directed,1.0
-4899,250,no represses,503,represses,Directed,1.0
-5103,203,no activates,25,activates,Directed,1.0
-4718,249,no represses,188,represses,Directed,1.0
-2163,282,confers no resistance to antibiotic after 7 days,559,resistance to antibiotic,Directed,1.0
-4016,311,no represses,126,represses,Directed,1.0
-3691,250,no activates,58,activates,Directed,1.0
-657,316,confers no resistance to antibiotic after 3 days,553,resistance to antibiotic,Directed,1.0
-4038,311,no activates,222,activates,Directed,1.0
-1584,154,confers no resistance to antibiotic after 7 days,560,resistance to antibiotic,Directed,1.0
-4357,250,no activates,128,activates,Directed,1.0
-4787,485,no activates,107,activates,Directed,1.0
-2821,311,no represses,225,represses,Directed,1.0
-892,97,confers no resistance to antibiotic after 15 hours,527,resistance to antibiotic,Directed,1.0
-1475,350,confers no resistance to antibiotic after 7 days,547,resistance to antibiotic,Directed,1.0
-4492,112,no activates,423,activates,Directed,1.0
-1367,479,confers no resistance to antibiotic after 15 hours,536,resistance to antibiotic,Directed,1.0
-4543,74,not upregulated by antibiotic after 30 mins,556,upregulated by antibiotic,Directed,1.0
-2242,168,confers no resistance to antibiotic after 3 days,509,resistance to antibiotic,Directed,1.0
-2400,132,confers no resistance to antibiotic after 7 days,537,resistance to antibiotic,Directed,1.0
-1720,286,confers no resistance to antibiotic after 7 days,582,resistance to antibiotic,Directed,1.0
-1889,216,confers no resistance to antibiotic after 3 days,532,resistance to antibiotic,Directed,1.0
-4742,485,no activates,471,activates,Directed,1.0
-2945,206,has,593,has,Directed,1.0
-3124,311,represses,90,represses,Directed,1.0
-2858,364,no activates,82,activates,Directed,1.0
-4483,210,no represses,17,represses,Directed,1.0
-755,367,confers no resistance to antibiotic after 7 days,540,resistance to antibiotic,Directed,1.0
-1967,23,confers no resistance to antibiotic after 15 hours,579,resistance to antibiotic,Directed,1.0
-325,47,confers no resistance to antibiotic after 18 hours,557,resistance to antibiotic,Directed,1.0
-2030,263,confers no resistance to antibiotic after 15 hours,573,resistance to antibiotic,Directed,1.0
-2267,111,confers no resistance to antibiotic after 7 days,537,resistance to antibiotic,Directed,1.0
-442,233,confers no resistance to antibiotic after 15 hours,588,resistance to antibiotic,Directed,1.0
-999,481,confers no resistance to antibiotic after 15 hours,532,resistance to antibiotic,Directed,1.0
-768,272,confers no resistance to antibiotic after 18 hours,571,resistance to antibiotic,Directed,1.0
-2892,330,has,595,has,Directed,1.0
-379,419,confers no resistance to antibiotic after 3 days,583,resistance to antibiotic,Directed,1.0
-2841,364,no activates,484,activates,Directed,1.0
-4091,375,no activates,475,activates,Directed,1.0
-5166,172,no activates,382,activates,Directed,1.0
-4284,210,no represses,495,represses,Directed,1.0
-390,300,confers no resistance to antibiotic after 15 hours,557,resistance to antibiotic,Directed,1.0
-4334,278,has,591,has,Directed,1.0
-1208,427,confers no resistance to antibiotic after 15 hours,508,resistance to antibiotic,Directed,1.0
-4009,262,not upregulated by antibiotic after 30 mins,519,upregulated by antibiotic,Directed,1.0
-3331,249,no activates,240,activates,Directed,1.0
-321,397,confers no resistance to antibiotic after 15 hours,581,resistance to antibiotic,Directed,1.0
-2453,271,confers no resistance to antibiotic after 7 days,561,resistance to antibiotic,Directed,1.0
-1956,109,confers no resistance to antibiotic after 15 hours,524,resistance to antibiotic,Directed,1.0
-4118,458,is part of,617,is part of,Directed,1.0
-3679,246,is involved in,611,is involved in,Directed,1.0
-4175,210,no represses,102,represses,Directed,1.0
-2179,85,confers no resistance to antibiotic after 3 days,568,resistance to antibiotic,Directed,1.0
-2277,147,confers no resistance to antibiotic after 15 hours,563,resistance to antibiotic,Directed,1.0
-2239,502,confers no resistance to antibiotic after 18 hours,523,resistance to antibiotic,Directed,1.0
-1421,11,confers no resistance to antibiotic after 15 hours,525,resistance to antibiotic,Directed,1.0
-1384,102,confers resistance to antibiotic,556,resistance to antibiotic,Directed,1.0
-1088,294,confers no resistance to antibiotic after 7 days,531,resistance to antibiotic,Directed,1.0
-3399,364,no activates,192,activates,Directed,1.0
-3808,143,no activates,340,activates,Directed,1.0
-2137,211,confers no resistance to antibiotic after 7 days,528,resistance to antibiotic,Directed,1.0
-2111,507,confers no resistance to antibiotic after 15 hours,509,resistance to antibiotic,Directed,1.0
-2607,250,represses,322,represses,Directed,1.0
-2418,456,confers no resistance to antibiotic after 15 hours,570,resistance to antibiotic,Directed,1.0
+Source,Label,Target,Category,Type,Weight
+45,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+4,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+17,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+53,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+30,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+12,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+47,confers resistance to antibiotic,64,confers resistance to antibiotic,Directed,1.0
+31,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+22,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+2,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+28,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+19,confers resistance to antibiotic,60,confers resistance to antibiotic,Directed,1.0
+27,confers resistance to antibiotic,60,confers resistance to antibiotic,Directed,1.0
+23,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+41,confers resistance to antibiotic,60,confers resistance to antibiotic,Directed,1.0
+52,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+20,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+42,confers resistance to antibiotic,60,confers resistance to antibiotic,Directed,1.0
+44,confers resistance to antibiotic,72,confers resistance to antibiotic,Directed,1.0
+34,confers resistance to antibiotic,70,confers resistance to antibiotic,Directed,1.0
+24,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+54,confers resistance to antibiotic,63,confers resistance to antibiotic,Directed,1.0
+36,confers resistance to antibiotic,70,confers resistance to antibiotic,Directed,1.0
+46,confers resistance to antibiotic,70,confers resistance to antibiotic,Directed,1.0
+8,confers resistance to antibiotic,70,confers resistance to antibiotic,Directed,1.0
+38,confers resistance to antibiotic,70,confers resistance to antibiotic,Directed,1.0
+15,confers resistance to antibiotic,65,confers resistance to antibiotic,Directed,1.0
+26,confers resistance to antibiotic,70,confers resistance to antibiotic,Directed,1.0
+9,confers resistance to antibiotic,72,confers resistance to antibiotic,Directed,1.0
+29,confers resistance to antibiotic,72,confers resistance to antibiotic,Directed,1.0
+56,confers resistance to antibiotic,72,confers resistance to antibiotic,Directed,1.0
+13,confers resistance to antibiotic,60,confers resistance to antibiotic,Directed,1.0
+5,confers resistance to antibiotic,64,confers resistance to antibiotic,Directed,1.0
+14,confers resistance to antibiotic,63,confers resistance to antibiotic,Directed,1.0
+3,confers resistance to antibiotic,72,confers resistance to antibiotic,Directed,1.0
+0,confers resistance to antibiotic,60,confers resistance to antibiotic,Directed,1.0
+37,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+55,confers resistance to antibiotic,72,confers resistance to antibiotic,Directed,1.0
+54,confers resistance to antibiotic,72,confers resistance to antibiotic,Directed,1.0
+33,confers resistance to antibiotic,60,confers resistance to antibiotic,Directed,1.0
+48,confers resistance to antibiotic,70,confers resistance to antibiotic,Directed,1.0
+57,confers resistance to antibiotic,63,confers resistance to antibiotic,Directed,1.0
+43,confers resistance to antibiotic,65,confers resistance to antibiotic,Directed,1.0
+25,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+49,confers resistance to antibiotic,63,confers resistance to antibiotic,Directed,1.0
+55,confers resistance to antibiotic,70,confers resistance to antibiotic,Directed,1.0
+50,confers resistance to antibiotic,63,confers resistance to antibiotic,Directed,1.0
+1,confers resistance to antibiotic,63,confers resistance to antibiotic,Directed,1.0
+58,confers resistance to antibiotic,60,confers resistance to antibiotic,Directed,1.0
+10,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+35,confers resistance to antibiotic,62,confers resistance to antibiotic,Directed,1.0
+32,confers resistance to antibiotic,66,confers resistance to antibiotic,Directed,1.0
+18,confers resistance to antibiotic,66,confers resistance to antibiotic,Directed,1.0
+39,confers resistance to antibiotic,66,confers resistance to antibiotic,Directed,1.0
+16,confers resistance to antibiotic,66,confers resistance to antibiotic,Directed,1.0
+40,confers resistance to antibiotic,69,confers resistance to antibiotic,Directed,1.0
+51,confers resistance to antibiotic,69,confers resistance to antibiotic,Directed,1.0
+51,confers resistance to antibiotic,67,confers resistance to antibiotic,Directed,1.0
+59,confers resistance to antibiotic,71,confers resistance to antibiotic,Directed,1.0
+7,confers resistance to antibiotic,61,confers resistance to antibiotic,Directed,1.0
+11,confers resistance to antibiotic,71,confers resistance to antibiotic,Directed,1.0
+14,confers resistance to antibiotic,68,confers resistance to antibiotic,Directed,1.0
+6,confers resistance to antibiotic,61,confers resistance to antibiotic,Directed,1.0
+21,confers resistance to antibiotic,61,confers resistance to antibiotic,Directed,1.0

@@ -1,12 +1,12 @@
 import pandas as pd
-from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import precision_recall_curve, auc
 import matplotlib.pyplot as plt
 
 names = ['Subject', 'Predicate', 'Object', 'Label', 'Probability']
 subset = ['Subject', 'Predicate', 'Object']
 
 pd_hypotheses = pd.read_csv('./7/hypotheses_confidence.txt', sep='\t', names=names)
-pd_validated = pd.read_csv('./validated_hypothesis.txt', sep='\t').dropna()
+pd_validated = pd.read_csv('./all_validated_hypothesis.txt', sep='\t').dropna()
 pd_validated = pd_validated[['Subject', 'Predicate', 'Object', 'Resistance']]
 
 pd_hypotheses = pd_hypotheses.drop(['Label'], axis=1)
@@ -55,6 +55,9 @@ print()
 y_true = pd_joined['Resistance'].to_numpy()
 y_scores = pd_joined['Probability'].to_numpy()
 precision, recall, thresholds = precision_recall_curve(y_true, y_scores, pos_label='Yes')
+
+mAP = auc(recall, precision)
+print(mAP)
 
 plt.figure()
 plt.step(recall, precision, lw=2, where='mid')
