@@ -1,0 +1,11 @@
+Overall metrics: 
+
+map: 0.5024273962308186
+roc_auc: 0.9465852912510627
+----------------------------------
+Predicates
+
+metrics for confers#SPACE#resistance#SPACE#to#SPACE#antibiotic: 
+map: 0.5024273962308186
+roc_auc: 0.9465784406373959
+----------------------------------
