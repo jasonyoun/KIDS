@@ -2,8 +2,10 @@ import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, confusion_matrix
+from scipy.stats import pearsonr
 
 pd_validated = pd.read_csv('./all_validated_hypothesis.txt', sep='\t')
+# pd_validated = pd.read_csv('./26_hypotheses.txt', sep='\t')
 pd_hypotheses = pd.read_csv('./hypotheses_confidence.txt', sep='\t', names=['Subject', 'Predicate', 'Object', 'Label', 'Probability'])
 pd_merged = pd_hypotheses.merge(pd_validated, on=['Subject','Predicate', 'Object'], how='left', indicator=True)
 pd_merged['Validated'] = pd_merged['_merge'].apply(lambda x: True if x == 'both' else False)
@@ -49,3 +51,10 @@ print(pd_validated_grouped)
 
 pd_validated_positive_grouped = pd_merged[pd_merged['Resistance'] == 'Yes'].groupby(['binned']).size()
 print(pd_validated_positive_grouped)
+
+# pearsonr
+pd_temp = pd_merged[pd_merged['Validated'] == True]
+print(pd_temp.head())
+probabilities = pd_temp['Probability'].tolist()
+resistance = [1 if x == 'Yes' else 0 for x in pd_temp['Resistance'].tolist()]
+print(pearsonr(probabilities, resistance))

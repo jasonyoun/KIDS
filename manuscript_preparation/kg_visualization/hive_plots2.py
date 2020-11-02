@@ -277,64 +277,64 @@ G_tb = nx.MultiDiGraph(
 h.connect_axes(h.axes[0],
                h.axes[1],
                G_cra.edges,
-               stroke_width=0.25,
-               stroke_opacity=0.1,
+               stroke_width=1.5,
+               stroke_opacity=0.05,
                stroke='#607d8b')
 
 # gene,uba,antibiotic
 h.connect_axes(h.axes[0],
                h.axes[1],
                G_uba.edges,
-               stroke_width=0.25,
-               stroke_opacity=0.1,
+               stroke_width=1.5,
+               stroke_opacity=0.05,
                stroke='#9c5d99')
 
 # gene,represses,gene
 h.connect_axes(h.axes[0],
                h.axes[0],
                G_represses.edges,
-               stroke_width=0.25,
-               stroke_opacity=0.1,
+               stroke_width=1.5,
+               stroke_opacity=0.05,
                stroke='#00a014')
 
 # gene,activates,gene
 h.connect_axes(h.axes[0],
                h.axes[0],
                G_activates.edges,
-               stroke_width=0.25,
-               stroke_opacity=0.1,
+               stroke_width=1.5,
+               stroke_opacity=0.05,
                stroke='#b26c00')
 
 # gene,has,molecular_function
 h.connect_axes(h.axes[0],
                h.axes[2],
                G_has.edges,
-               stroke_width=0.25,
-               stroke_opacity=0.1,
+               stroke_width=1.5,
+               stroke_opacity=0.05,
                stroke='#e04d1c')
 
 # gene,iii,biological_processes
 h.connect_axes(h.axes[0],
                h.axes[3],
                G_iii.edges,
-               stroke_width=0.25,
-               stroke_opacity=0.1,
+               stroke_width=1.5,
+               stroke_opacity=0.05,
                stroke='#007a6b')
 
 # gene,ipo,cellular_components
 h.connect_axes(h.axes[4],
                h.axes[0],
                G_ipo.edges,
-               stroke_width=0.25,
-               stroke_opacity=0.1,
+               stroke_width=1.5,
+               stroke_opacity=0.05,
                stroke='#009d8b')
 
 # gene,tb,antibiotic
 h.connect_axes(h.axes[0],
                h.axes[1],
                G_tb.edges,
-               stroke_width=0.25,
-               stroke_opacity=0.1,
+               stroke_width=1.5,
+               stroke_opacity=0.05,
                stroke='#0081a5')
 
 # save output
