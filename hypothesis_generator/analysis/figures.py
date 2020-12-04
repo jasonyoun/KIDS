@@ -21,7 +21,7 @@ import pandas as pd
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score
 
 # global variables
-DEFAULT_OUTDIR_STR = '../output'
+DEFAULT_OUTDIR_STR = '../run/output'
 DEFAULT_TEST_STATS_FILE_STR = 'test_stats.txt'
 
 def parse_argument():
@@ -74,33 +74,33 @@ def edges_statistics(filepath):
     bp2 = ax.boxplot(mlp_data_list, positions=ind, widths=width, patch_artist=True)
     bp3 = ax.boxplot(stacked_data_list, positions=ind + width, widths=width, patch_artist=True)
 
-    ax.set_title('Number of edges vs. F1')
-    ax.set_xlabel('Number of edges bin\n(Number of samples in each bin)')
+    ax.set_xlabel('Number of edges\n(Number of samples in each bin)')
     ax.set_ylabel('F1 score')
     ax.set_xticks(ind)
     ax.set_xticklabels(xticklabels_list)
 
     # box plot 1 patch_artist
     for box in bp1['boxes']:
-        box.set(facecolor='#e53935')
+        box.set(facecolor='#fdb318')
     for median in bp1['medians']:
         median.set(color='#000000')
 
     # box plot 2 patch_artist
     for box in bp2['boxes']:
-        box.set(facecolor='#00897b')
+        box.set(facecolor='#f05323')
     for median in bp2['medians']:
         median.set(color='#000000')
 
     # box plot 3 patch_artist
     for box in bp3['boxes']:
-        box.set(facecolor='#8e24aa')
+        box.set(facecolor='#152d53')
     for median in bp3['medians']:
         median.set(color='#000000')
 
     ax.legend((bp1['boxes'][0], bp2['boxes'][0], bp3['boxes'][0]), ('PRA', 'MLP', 'Stacked'), loc='upper left')
 
     plt.tight_layout()
+    plt.savefig('/home/jyoun/Jason/VM_Shared/edges_stat.svg')
 
 def pr_curve_cv():
     plt.figure()
@@ -207,10 +207,10 @@ def main():
     """
     args = parse_argument()
 
-    # edges_statistics(os.path.join(args.outdir, DEFAULT_TEST_STATS_FILE_STR))
-    pr_curve_cv()
+    edges_statistics(os.path.join(args.outdir, DEFAULT_TEST_STATS_FILE_STR))
+    # pr_curve_cv()
 
-    plt.show()
+    # plt.show()
 
 if __name__ == '__main__':
     main()
