@@ -284,6 +284,14 @@ class InconsistencyManager():
         elif mode == 'only_validated':
             pd_to_append = pd_resolved_and_validated[pd_resolved_and_validated['Validation'] != '']
             pd_to_append = pd_to_append[pd_to_append['Match'] == 'True']
+        elif mode == 'validated_and_rest_as_positives':
+            pd_to_append = pd_resolved_and_validated[pd_resolved_and_validated['Validation'] != '']
+            pd_to_append = pd_to_append[pd_to_append['Match'] == 'True']
+
+            pd_not_validated = pd_resolved_and_validated[pd_resolved_and_validated['Validation'] == '']
+            pd_not_validated['Predicate'] = 'confers resistance to antibiotic'
+
+            pd_to_append = pd.concat([pd_to_append, pd_not_validated], ignore_index=True, sort=False)
         else:
             raise ValueError('Invalid mode \'{}\' passed'.format(mode))
 

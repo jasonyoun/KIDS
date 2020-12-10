@@ -156,7 +156,8 @@ def main():
         # insert resolved and validated inconsistsencies back into the KG
         pd_final = inconsistency_manager.reinstate_resolved_and_validated(
             pd_without_inconsistencies,
-            pd_resolved_and_validated)
+            pd_resolved_and_validated,
+            mode='validated_and_rest_as_positives')
 
         # save integrated data
         log.info('Saving final knowledge graph to \'%s\'', config_parser.getstr('final_kg'))
