@@ -4,14 +4,14 @@ import pandas as pd
 
 # potential connection by resolved inconsistencies
 pd_result = pd.read_csv(
-    '/home/jyoun/Jason/Scratch/KIDS/before_after_incon/find_path/result.txt',
+    '/home/jyoun/Jason/Research/KIDS/manuscript_preparation/before_after_incon/find_path/result.txt',
     sep='\t',
     index_col=False,
     names=['index', 'node1', 'node2', 'node3', 'node4'])
 
 # train data
 pd_train = pd.read_csv(
-    '/home/jyoun/Jason/Scratch/KIDS/before_after_incon/find_path/train_original.txt',
+    '/home/jyoun/Jason/Research/KIDS/manuscript_preparation/before_after_incon/find_path/train_original.txt',
     sep='\t',
     names=['Subject', 'Predicate', 'Object', 'Label'])
 
@@ -35,18 +35,18 @@ cellular_component = [entity.split(':')[-1] for entity in entities if 'concept:c
 
 # scores
 pd_original_score = pd.read_csv(
-    '/home/jyoun/Jason/Scratch/KIDS/before_after_incon/compare_pra/final_original/instance/test/scores/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic',
+    '/home/jyoun/Jason/Research/KIDS/manuscript_preparation/before_after_incon/compare_pra/final_original/instance/test/scores/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic',
     sep='\t',
     names=['score', 'path_exists'])
 
 pd_without_resolved_score = pd.read_csv(
-    '/home/jyoun/Jason/Scratch/KIDS/before_after_incon/compare_pra/final_without_resolved/instance/test/scores/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic',
+    '/home/jyoun/Jason/Research/KIDS/manuscript_preparation/before_after_incon/compare_pra/final_without_resolved/instance/test/scores/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic',
     sep='\t',
     names=['score', 'path_exists'])
 
 # reason
 reason = []
-with open('/home/jyoun/Jason/Scratch/KIDS/before_after_incon/compare_pra/final_original/instance/test/predictions/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic.reasons') as file:
+with open('/home/jyoun/Jason/Research/KIDS/manuscript_preparation/before_after_incon/compare_pra/final_original/instance/test/predictions/confers#SPACE#resistance#SPACE#to#SPACE#antibiotic.reasons') as file:
     for line in file:
         line = line.replace('#SPACE#', ' ')
         line = line.replace('#SEMICOLON#', ':')

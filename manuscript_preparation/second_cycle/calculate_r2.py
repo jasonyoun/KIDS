@@ -14,5 +14,13 @@ ideal_line = [
 	0.7,
 	0.9]
 
+
+fraction_of_positives = [
+	14/147,
+	12/48,
+	12/29,
+	26/36,
+	29/37]
+
 print(fraction_of_positives)
 print(r2_score(ideal_line, fraction_of_positives))

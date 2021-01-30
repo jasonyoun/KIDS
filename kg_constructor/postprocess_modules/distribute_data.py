@@ -264,9 +264,6 @@ class DistributeData():
             pos_triplet = self.pos_target.iloc[i, :]
             obj = pos_triplet[self._OBJ_STR]
 
-            # append the original positive SPO
-            new_with_neg_cra = new_with_neg_cra.append(pos_triplet)
-
             # before, append negatives find known negatives
             # and save to the dictionary if it already does not exist
             if obj not in known_negatives_dic:
@@ -276,7 +273,11 @@ class DistributeData():
                     self.updated_neg_target[self._OBJ_STR].isin([obj])]
 
             if known_negatives_dic[obj].shape[0] < self.num_negs:
-                sys.exit('We are supposed to have enough negatives now!')
+                log.warning('We are supposed to have enough negatives now for %s!', obj)
+                continue
+
+            # append the original positive SPO
+            new_with_neg_cra = new_with_neg_cra.append(pos_triplet)
 
             new_with_neg_cra = new_with_neg_cra.append(
                 known_negatives_dic[obj].iloc[0:self.num_negs, :])
@@ -317,9 +318,6 @@ class DistributeData():
                 'fold_{}_{}_without_neg'.format(cur_fold, dtype)].iloc[i, :]
             obj = pos_triplet[self._OBJ_STR]
 
-            # append the original positive SPO
-            new_with_neg_cra = new_with_neg_cra.append(pos_triplet)
-
             # before, append negatives find known negatives
             # and save to the dictionary if it already does not exist
             if obj not in known_negatives_dic:
@@ -329,7 +327,11 @@ class DistributeData():
                     self.updated_neg_target[self._OBJ_STR].isin([obj])]
 
             if known_negatives_dic[obj].shape[0] < self.num_negs:
-                raise ValueError('We are supposed to have enough negatives now!')
+                log.warning('We are supposed to have enough negatives now for %s!', obj)
+                continue
+
+            # append the original positive SPO
+            new_with_neg_cra = new_with_neg_cra.append(pos_triplet)
 
             new_with_neg_cra = new_with_neg_cra.append(
                 known_negatives_dic[obj].iloc[0:self.num_negs, :])

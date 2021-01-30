@@ -1,0 +1,2560 @@
+c$hfq	c$cytosol
+c$fnr	c$cytosol
+c$ydhJ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hypA	c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$phoQ	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cysK	c$cytosol c$cytoplasm c$cysteine#SPACE#synthase#SPACE#complex
+c$lon	c$cytosol c$cytoplasm
+c$sgcC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hepA	c$cytoplasm
+c$cmoA	c$cytosol
+c$tdcC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cusA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$iscR	c$cytosol
+c$nirC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pflA	c$cytosol
+c$purR	c$cytosol
+c$xanP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ccmG	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mdtJ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$bcr	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hpf	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$arcA	c$cytosol c$protein-DNA#SPACE#complex
+c$acnB	c$cytosol
+c$yceI	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$modA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$tldD	c$cytosol
+c$tolC	c$efflux#SPACE#pump#SPACE#complex c$cell#SPACE#outer#SPACE#membrane
+c$yejA	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$dppF	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$fis	c$cytosol c$nucleoid c$cytoplasm c$cytoplasmic#SPACE#nucleosome
+c$feoA	c$cytoplasm
+c$manY	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yccA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$yhbO	c$cytosol c$cytoplasm
+c$rnb	c$cytosol
+c$glpK	c$cytosol
+c$ygfZ	c$cytosol
+c$purA	c$cytosol c$cytoplasm c$membrane
+c$crp	c$cytosol
+c$ompG	c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$rbfA	c$cytosol
+c$yeiL	c$cytosol
+c$secA	c$cytosol c$plasma#SPACE#membrane c$cell#SPACE#envelope#SPACE#Sec#SPACE#protein#SPACE#transport#SPACE#complex c$cytoplasm c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$plsC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhbE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$truB	c$cytosol c$mitochondrion
+c$cpxA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$mntH	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$lpxL	c$plasma#SPACE#membrane c$membrane
+c$lrp	c$cytosol
+c$livG	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$membrane
+c$rhlB	c$cytosol
+c$gntR	c$cytosol
+c$mrdA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cydB	c$plasma#SPACE#membrane c$cytochrome#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rplO	c$large#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$mitochondrial#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$acrA	c$plasma#SPACE#membrane c$efflux#SPACE#pump#SPACE#complex c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$dmsD	c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$cytoplasm
+c$cysB	c$cytosol
+c$thrS	c$cytosol c$cytoplasm
+c$livM	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$msrB	c$cytosol
+c$yhjV	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$glgP	c$cytoplasm
+c$cpxR	c$cytosol c$protein-DNA#SPACE#complex
+c$lpoA	c$periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane
+c$ycaM	c$plasma#SPACE#membrane
+c$gltF	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$efp	c$cytosol c$cytoplasm
+c$yadH	c$plasma#SPACE#membrane
+c$dsdA	c$cytosol c$cytoplasm
+c$rfaD	c$cytosol c$membrane
+c$prmC	c$cytosol c$cytoplasm
+c$ugpA	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nrfF	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rpmJ	c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$ptsI	c$cytosol c$phosphoenolpyruvate-dependent#SPACE#sugar#SPACE#phosphotransferase#SPACE#complex c$cytoplasm
+c$fldA	c$cytosol c$cytoplasm
+c$pyrD	c$cytosol c$plasma#SPACE#membrane c$membrane
+c$rlmG	c$cytosol c$cytoplasm
+c$mdlA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$radA	c$cytosol
+c$fhlA	c$cytosol
+c$hycC	c$ferredoxin#SPACE#hydrogenase#SPACE#complex c$plasma#SPACE#membrane
+c$stpA	c$cytosol c$protein-DNA#SPACE#complex c$nucleoid c$cytoplasm
+c$glnL	c$intracellular
+c$rimP	c$cytosol
+c$pyrE	c$cytosol c$cytoplasm
+c$hns	c$cytosol c$protein-DNA#SPACE#complex c$nucleoid c$cytoplasm c$membrane
+c$entF	c$cytosol c$plasma#SPACE#membrane c$enterobactin#SPACE#synthetase#SPACE#complex
+c$dtpC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tauC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mglC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ftsE	c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$cytoplasm c$extrinsic#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#division#SPACE#site
+c$dnaX	c$nucleus c$DNA#SPACE#polymerase#SPACE#III#COMMA##SPACE#clamp#SPACE#loader#SPACE#complex c$DNA#SPACE#replication#SPACE#factor#SPACE#C#SPACE#complex
+c$acpP	c$cytosol c$cytoplasm
+c$ligA	c$cytosol c$plasma#SPACE#membrane
+c$lexA	c$cytosol
+c$uvrC	c$excinuclease#SPACE#repair#SPACE#complex
+c$nrdF	c$cytoplasm c$ribonucleoside-diphosphate#SPACE#reductase#SPACE#complex
+c$yfiF	c$cytosol
+c$tolB	c$periplasmic#SPACE#space c$cell#SPACE#division#SPACE#site c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$bcsQ	c$cytosol c$plasma#SPACE#membrane c$cell#SPACE#pole c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fur	c$cytosol
+c$ybaN	c$plasma#SPACE#membrane
+c$ghxP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hisC	c$cytosol c$cytoplasm
+c$otsA	c$cytosol c$cytoplasm
+c$menB	c$cytosol
+c$ansA	c$cytosol c$cytoplasm
+c$def	c$cytosol c$mitochondrion
+c$narL	c$cytosol
+c$nuoB	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$cytoplasm c$membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$ptsG	c$cytosol c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hchA	c$cytosol
+c$mtr	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cdd	c$cytosol
+c$yddG	c$plasma#SPACE#membrane
+c$arcB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$moeA	c$cytosol c$cytoplasm
+c$garP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$rho	c$cytosol c$membrane
+c$fimA	c$pilus
+c$pspA	c$cytosol c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$cell#SPACE#pole
+c$ilvN	c$cytosol c$acetolactate#SPACE#synthase#SPACE#complex
+c$hyaB	c$[Ni-Fe]#SPACE#hydrogenase#SPACE#complex c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rbsA	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$exbB	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#protein#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lpxM	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$flhE	c$bacterial-type#SPACE#flagellum
+c$emrE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dsbA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$fadL	c$cell#SPACE#outer#SPACE#membrane
+c$hofO	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lpd	c$cytosol c$cytoplasm c$membrane
+c$mgrB	c$plasma#SPACE#membrane
+c$ptsN	c$cytosol c$plasma#SPACE#membrane
+c$gpsA	c$cytosol
+c$dosP	c$intracellular
+c$allR	c$cytosol
+c$phoB	c$cytosol c$protein-DNA#SPACE#complex
+c$cusR	c$cytosol c$protein-DNA#SPACE#complex
+c$zapA	c$cytosol c$cell#SPACE#septum c$cell#SPACE#division#SPACE#site
+c$rcsC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$intracellular
+c$ilvE	c$cytosol
+c$nuoC	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$cytoplasm c$membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$grpE	c$cytosol c$cytoplasm
+c$bamE	c$Bam#SPACE#protein#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$membrane
+c$kdpE	c$cytosol c$protein-DNA#SPACE#complex
+c$hybC	c$extrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$[Ni-Fe]#SPACE#hydrogenase#SPACE#complex
+c$mltB	c$cell#SPACE#outer#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rsmA	c$cytosol
+c$damX	c$cell#SPACE#septum c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$folP	c$cytosol c$cytoplasm
+c$prlC	c$cytosol c$cytoplasm
+c$rbsB	c$plasma#SPACE#membrane c$periplasmic#SPACE#space c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rpsQ	c$ribosome c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$cirA	c$cell#SPACE#outer#SPACE#membrane
+c$mdtC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$srlE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glnP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$mnmC	c$cytoplasm
+c$lysP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$potF	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$gcd	c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$dedD	c$cell#SPACE#septum c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fucP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$melB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$xylF	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$cysS	c$cytosol c$cytoplasm
+c$hyfR	c$intracellular
+c$yciT	c$cytosol
+c$ycdX	c$cytosol
+c$recA	c$cytosol
+c$ytfT	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$malS	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$sstT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$cyoC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytochrome#SPACE#o#SPACE#ubiquinol#SPACE#oxidase#SPACE#complex
+c$guaD	c$cytosol
+c$rpoB	c$cytosol c$cytoplasm c$membrane
+c$yqjI	c$cytosol
+c$lpxD	c$cytosol c$cytoplasm
+c$yjdF	c$plasma#SPACE#membrane
+c$chiP	c$cell#SPACE#outer#SPACE#membrane
+c$recG	c$cytosol c$Holliday#SPACE#junction#SPACE#helicase#SPACE#complex
+c$fhuB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$xseB	c$cytosol
+c$pstA	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ubiG	c$cytosol
+c$surA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$tatA	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#membrane c$TAT#SPACE#protein#SPACE#transport#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tppB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydeN	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$mlaE	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$yadC	c$pilus
+c$sspB	c$cytosol c$ribosome
+c$yajQ	c$cytosol
+c$prfA	c$cytosol
+c$phoP	c$cytosol c$protein-DNA#SPACE#complex
+c$elfC	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$membrane
+c$pstS	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ivy	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$kdpD	c$plasma#SPACE#membrane c$intracellular c$intrinsic#SPACE#component#SPACE#of#SPACE#the#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#the#SPACE#plasma#SPACE#membrane
+c$evgA	c$cytosol
+c$osmF	c$plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$trxA	c$cytosol c$cytoplasm
+c$cspE	c$cytosol
+c$btuC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rplP	c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$intracellular c$ribosome
+c$tesB	c$cytosol
+c$mdh	c$cytosol c$cytoplasm c$extrinsic#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$ldtB	c$periplasmic#SPACE#space
+c$cpxP	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$lpcA	c$cytosol c$cytoplasm
+c$recQ	c$chromosome c$replisome c$cytoplasm c$single-stranded#SPACE#DNA-dependent#SPACE#ATP-dependent#SPACE#DNA#SPACE#helicase#SPACE#complex c$bacterial#SPACE#nucleoid
+c$mdoG	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$topA	c$cytosol
+c$avtA	c$cytosol
+c$nagB	c$cytosol c$cytoplasm
+c$dnaK	c$cytosol c$cytoplasm c$membrane
+c$phnO	c$cytoplasm
+c$yehW	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$mlaB	c$cytosol
+c$cadB	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fadR	c$cytosol
+c$ygeV	c$intracellular
+c$zraS	c$plasma#SPACE#membrane c$intracellular c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rpoS	c$cytoplasm
+c$mscS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$modC	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$deoA	c$cytosol c$membrane
+c$ydeT	c$cell#SPACE#outer#SPACE#membrane
+c$gyrB	c$cytosol c$DNA#SPACE#topoisomerase#SPACE#complex#SPACE#(ATP-hydrolyzing) c$cytoplasm
+c$hyaC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$[Ni-Fe]#SPACE#hydrogenase#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$qmcA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ascF	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$bolA	c$cytosol
+c$dctA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$iscA	c$cytosol
+c$metB	c$cytoplasm
+c$proP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$agaS	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yiaV	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybjG	c$plasma#SPACE#membrane
+c$yhbY	c$cytosol
+c$recF	c$cytosol
+c$aas	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$chaA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$alkA	c$protein-DNA#SPACE#complex c$cytoplasm
+c$macB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tcyN	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane
+c$rplT	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$yjiK	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mltG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$mglB	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$metH	c$cytosol c$cytoplasm
+c$wcaJ	c$plasma#SPACE#membrane
+c$narK	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydhK	c$plasma#SPACE#membrane
+c$malF	c$maltose#SPACE#transport#SPACE#complex c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cydD	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hlyE	c$periplasmic#SPACE#space c$extracellular#SPACE#region
+c$rph	c$cytosol
+c$gnd	c$cytosol
+c$ybhF	c$plasma#SPACE#membrane
+c$manA	c$cytosol c$cytoplasm
+c$obgE	c$cytosol
+c$truC	c$cytosol
+c$mglA	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$dcuS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$aceF	c$cytoplasm c$pyruvate#SPACE#dehydrogenase#SPACE#complex
+c$ppsA	c$cytosol
+c$ybjL	c$plasma#SPACE#membrane
+c$sapC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rstB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$macA	c$plasma#SPACE#membrane c$extrinsic#SPACE#component#SPACE#of#SPACE#membrane
+c$guaC	c$cytosol
+c$uidB	c$plasma#SPACE#membrane
+c$arnC	c$plasma#SPACE#membrane c$membrane
+c$torS	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ruvA	c$Holliday#SPACE#junction#SPACE#resolvase#SPACE#complex c$Holliday#SPACE#junction#SPACE#helicase#SPACE#complex
+c$yciQ	c$plasma#SPACE#membrane
+c$fdoG	c$cytosol c$formate#SPACE#dehydrogenase#SPACE#complex c$membrane
+c$purF	c$cytosol c$cytoplasm
+c$parC	c$extrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytosol c$DNA#SPACE#topoisomerase#SPACE#complex#SPACE#(ATP-hydrolyzing) c$cytoplasm
+c$fumA	c$cytosol
+c$abgA	c$cytoplasm
+c$wzxE	c$plasma#SPACE#membrane
+c$hflK	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$plasma#SPACE#membrane c$membrane#SPACE#protein#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$ftsB	c$cell#SPACE#septum c$cell#SPACE#division#SPACE#site
+c$oppA	c$periplasmic#SPACE#space c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$mog	c$cytosol
+c$narG	c$intrinsic#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$NarGHI#SPACE#complex c$intrinsic#SPACE#component#SPACE#of#SPACE#the#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#the#SPACE#plasma#SPACE#membrane
+c$eutH	c$plasma#SPACE#membrane
+c$zupT	c$plasma#SPACE#membrane c$membrane
+c$pdxK	c$cytosol
+c$betA	c$membrane
+c$acrB	c$plasma#SPACE#membrane c$efflux#SPACE#pump#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lptC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$argO	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$secY	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#envelope#SPACE#Sec#SPACE#protein#SPACE#transport#SPACE#complex c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ridA	c$cytosol c$membrane
+c$yihI	c$cytosol
+c$ugpC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$membrane
+c$ypdA	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gabT	c$cytosol
+c$gspM	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$extracellular#SPACE#region
+c$mnmG	c$cytosol
+c$creC	c$plasma#SPACE#membrane c$intracellular c$membrane
+c$acrE	c$plasma#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$membrane
+c$sthA	c$cytosol
+c$clpA	c$cytosol
+c$cysZ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rlmE	c$cytosol
+c$waaU	c$cytosol
+c$yadM	c$pilus
+c$yfeX	c$cytosol c$cytoplasm
+c$metL	c$cytosol c$cytoplasm
+c$der	c$cytosol
+c$yabI	c$plasma#SPACE#membrane
+c$yiiS	c$cytosol
+c$potG	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane
+c$yfbL	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dgcJ	c$plasma#SPACE#membrane
+c$purK	c$cytosol
+c$uvrA	c$excinuclease#SPACE#repair#SPACE#complex c$cytosol
+c$relA	c$plasma#SPACE#membrane c$cell#SPACE#wall
+c$gsiA	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nrfD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rplR	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$intracellular c$ribosome
+c$yajL	c$cytosol c$mitochondrion c$nucleus
+c$moeB	c$cytosol
+c$xerD	c$Holliday#SPACE#junction#SPACE#resolvase#SPACE#complex
+c$ygdD	c$plasma#SPACE#membrane
+c$uvrD	c$cytosol
+c$fruB	c$extrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$plasma#SPACE#membrane c$cytoplasm
+c$narZ	c$nitrate#SPACE#reductase#SPACE#complex c$membrane
+c$uhpT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$arnB	c$cytoplasm
+c$bamB	c$Bam#SPACE#protein#SPACE#complex
+c$rimL	c$cytoplasm
+c$malQ	c$cytosol
+c$narY	c$nitrate#SPACE#reductase#SPACE#complex c$membrane
+c$lepA	c$cytosol c$plasma#SPACE#membrane
+c$leuE	c$plasma#SPACE#membrane
+c$ffh	c$cytosol c$signal#SPACE#recognition#SPACE#particle
+c$iscX	c$cytosol
+c$trpD	c$anthranilate#SPACE#synthase#SPACE#complex c$cytosol
+c$parE	c$cytosol
+c$lipA	c$cytosol c$cytoplasm
+c$mdtA	c$efflux#SPACE#pump#SPACE#complex
+c$uvrB	c$excinuclease#SPACE#repair#SPACE#complex
+c$ynjI	c$plasma#SPACE#membrane
+c$sapF	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$torR	c$cytosol c$protein-DNA#SPACE#complex
+c$tnaB	c$plasma#SPACE#membrane
+c$chbB	c$cytosol
+c$cyoB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytochrome#SPACE#o#SPACE#ubiquinol#SPACE#oxidase#SPACE#complex
+c$ibpB	c$cytoplasm
+c$livH	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yifK	c$plasma#SPACE#membrane
+c$zapC	c$cell#SPACE#division#SPACE#site
+c$carB	c$cytosol c$carbamoyl-phosphate#SPACE#synthase#SPACE#complex c$cytoplasm
+c$yhdX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$fbaA	c$cytosol c$plasma#SPACE#membrane c$cell#SPACE#wall
+c$yfaV	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$tbpA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$hscA	c$cytosol c$iron-sulfur#SPACE#cluster#SPACE#transfer#SPACE#complex c$cytoplasm
+c$glnG	c$cytosol
+c$tolR	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yihY	c$plasma#SPACE#membrane
+c$rffD	c$cytosol
+c$lgt	c$plasma#SPACE#membrane c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rbsC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$baeS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$tktA	c$cytosol
+c$yhgF	c$cytosol
+c$psd	c$intracellular
+c$livJ	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$mraY	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tyrR	c$cytosol
+c$tyrP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$araF	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ampE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tolQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#envelope c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pheS	c$cytosol c$phenylalanine-tRNA#SPACE#ligase#SPACE#complex c$cytoplasm
+c$fhuA	c$cell#SPACE#outer#SPACE#membrane
+c$purL	c$cytosol c$cytoplasm
+c$clpP	c$cytosol c$membrane
+c$rsxA	c$plasma#SPACE#membrane
+c$eutK	c$ethanolamine#SPACE#degradation#SPACE#polyhedral#SPACE#organelle
+c$proV	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$cmtA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rusA	c$Holliday#SPACE#junction#SPACE#resolvase#SPACE#complex
+c$aphA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$gpmM	c$cytosol c$cytoplasm
+c$dacC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$narP	c$intracellular
+c$mdtK	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$fruA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$entB	c$cytosol c$plasma#SPACE#membrane
+c$rplL	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$yeeX	c$cytosol
+c$ybdG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$cysE	c$cytosol c$cysteine#SPACE#synthase#SPACE#complex
+c$narH	c$intrinsic#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$NarGHI#SPACE#complex c$intrinsic#SPACE#component#SPACE#of#SPACE#the#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#the#SPACE#plasma#SPACE#membrane
+c$sapD	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$hyaA	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$[Ni-Fe]#SPACE#hydrogenase#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$alkB	c$cytoplasm
+c$araD	c$cytosol
+c$hslV	c$cytosol
+c$appA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rpe	c$cytosol
+c$bamD	c$Bam#SPACE#protein#SPACE#complex
+c$yqhA	c$plasma#SPACE#membrane
+c$asmA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yafU	c$plasma#SPACE#membrane
+c$ytfB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$malZ	c$cytoplasm
+c$ppsR	c$cytosol
+c$serA	c$cytosol
+c$focB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tpx	c$cytosol c$cytoplasm
+c$nikD	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$cyoD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytochrome#SPACE#o#SPACE#ubiquinol#SPACE#oxidase#SPACE#complex
+c$hslR	c$cytosol
+c$lysU	c$cytosol c$cytoplasm c$membrane
+c$scpB	c$cytosol
+c$potH	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ttcA	c$cytosol
+c$ppiB	c$cytosol
+c$aroB	c$cytoplasm
+c$ssuA	c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rob	c$cytosol
+c$ybjC	c$membrane
+c$uacT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dcuC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nsrR	c$cytosol
+c$hycF	c$ferredoxin#SPACE#hydrogenase#SPACE#complex
+c$adiC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$aer	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dnaG	c$cytoplasm
+c$hscB	c$cytosol c$iron-sulfur#SPACE#cluster#SPACE#transfer#SPACE#complex
+c$asnB	c$cytosol c$cytoplasm
+c$abgT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$nlpD	c$cytosol c$cell#SPACE#outer#SPACE#membrane c$cell#SPACE#division#SPACE#site
+c$gspH	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$blr	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#division#SPACE#site
+c$gatB	c$cytosol
+c$rpmG	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$ileS	c$cytosol
+c$aspC	c$cytosol c$cytoplasm
+c$recC	c$exodeoxyribonuclease#SPACE#V#SPACE#complex
+c$mutS	c$cytosol c$mismatch#SPACE#repair#SPACE#complex
+c$apt	c$cytosol
+c$clcA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yedP	c$cytoplasm
+c$proB	c$cytosol
+c$lpxC	c$cytoplasm
+c$fliR	c$plasma#SPACE#membrane c$intracellular
+c$ybfF	c$cytosol
+c$ppiD	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gmhB	c$cytosol
+c$dnaJ	c$cytosol c$cytoplasm c$membrane
+c$ptrB	c$cytoplasm
+c$ruvC	c$Holliday#SPACE#junction#SPACE#resolvase#SPACE#complex
+c$yjcE	c$plasma#SPACE#membrane
+c$ahpC	c$cytosol c$cytoplasm c$membrane c$alkyl#SPACE#hydroperoxide#SPACE#reductase#SPACE#complex
+c$paaA	c$cytosol
+c$oxyR	c$cytosol
+c$nfsA	c$cytosol
+c$mscM	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$frdB	c$plasma#SPACE#membrane#SPACE#fumarate#SPACE#reductase#SPACE#complex c$cytosol c$membrane
+c$rplU	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$fepC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$ndh	c$plasma#SPACE#membrane c$cytoplasm c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$katE	c$cytosol c$cytoplasm
+c$afuC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane
+c$yagF	c$cytosol
+c$srkA	c$cytoplasm
+c$sufC	c$cytosol
+c$infA	c$cytosol
+c$nagE	c$organelle#SPACE#inner#SPACE#membrane c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$aceA	c$cytosol
+c$yceK	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$fdx	c$cytosol
+c$hybA	c$[Ni-Fe]#SPACE#hydrogenase#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$leuA	c$cytosol
+c$caiT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$cho	c$excinuclease#SPACE#repair#SPACE#complex
+c$shiA	c$plasma#SPACE#membrane
+c$flgE	c$cytosol c$bacterial-type#SPACE#flagellum#SPACE#hook
+c$mfd	c$cytosol
+c$tas	c$cytosol
+c$pflB	c$cytosol c$membrane
+c$elbB	c$cytosol
+c$cusS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$intracellular
+c$actP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glyA	c$cytosol c$membrane
+c$fecE	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$zapB	c$cytosol c$cell#SPACE#division#SPACE#site
+c$rraB	c$cytosol
+c$rfaH	c$cytosol
+c$amtB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hemE	c$cytosol
+c$potB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nupC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ftsH	c$mitochondrion c$membrane#SPACE#protein#SPACE#complex c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$xylH	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yfcF	c$cytosol
+c$creB	c$cytosol c$protein-DNA#SPACE#complex
+c$malE	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$periplasmic#SPACE#space c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$dadA	c$plasma#SPACE#membrane c$cytoplasm
+c$guaB	c$cytosol c$cytoplasm
+c$livF	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$asr	c$periplasmic#SPACE#space
+c$xerC	c$Holliday#SPACE#junction#SPACE#resolvase#SPACE#complex
+c$manX	c$cytosol c$cytoplasm c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yehX	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$gltX	c$cytosol
+c$hisG	c$cytosol
+c$purU	c$cytosol
+c$mdtI	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mreB	c$plasma#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytoskeleton
+c$ruvB	c$Holliday#SPACE#junction#SPACE#resolvase#SPACE#complex c$cytosol
+c$lacY	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ypjM_2	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yncD	c$cell#SPACE#outer#SPACE#membrane
+c$sanA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ccmC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$serC	c$cytosol c$cytoplasm
+c$ykgO	c$ribosome
+c$gdhA	c$cytosol c$cytoplasm
+c$tatC	c$plasma#SPACE#membrane c$TAT#SPACE#protein#SPACE#transport#SPACE#complex c$membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$trmD	c$cytosol
+c$hycD	c$plasma#SPACE#membrane c$ferredoxin#SPACE#hydrogenase#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$kefB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rffE	c$cytosol
+c$zur	c$cytosol
+c$aaeB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$artI	c$periplasmic#SPACE#space c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$phnG	c$alpha-D-ribose#SPACE#1-methylphosphonate#SPACE#5-triphosphate#SPACE#synthase#SPACE#complex
+c$ycjO	c$maltose#SPACE#transport#SPACE#complex c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nuoJ	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$mrcA	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nhaB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ilvH	c$cytosol c$acetolactate#SPACE#synthase#SPACE#complex
+c$nanC	c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$hflX	c$cytosol c$cytoplasm
+c$proA	c$cytosol
+c$nudF	c$cytosol
+c$waaB	c$cytosol
+c$melA	c$cytosol
+c$dnaQ	c$cytosol c$DNA#SPACE#polymerase#SPACE#III#COMMA##SPACE#core#SPACE#complex
+c$atoS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$arnF	c$plasma#SPACE#membrane
+c$yedR	c$plasma#SPACE#membrane
+c$cpdB	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$nuoI	c$plasma#SPACE#membrane c$cytoplasm c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$cadC	c$plasma#SPACE#membrane c$intracellular
+c$rplM	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$fmt	c$cytosol
+c$ftsI	c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dgcM	c$intracellular
+c$aroC	c$cytosol
+c$glmS	c$cytosol
+c$emtA	c$cell#SPACE#outer#SPACE#membrane
+c$lhgO	c$plasma#SPACE#membrane c$cytoplasm
+c$kgtP	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ompF	c$pore#SPACE#complex c$cell#SPACE#outer#SPACE#membrane c$membrane
+c$tar	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ghxQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$udp	c$cytosol
+c$pflD	c$cytosol
+c$nanE	c$cytosol
+c$uhpC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$intracellular c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$sieB	c$plasma#SPACE#membrane
+c$tdk	c$cytosol
+c$adk	c$cytosol
+c$rfbA	c$cytosol
+c$bcp	c$cytosol
+c$ybcI	c$plasma#SPACE#membrane
+c$metJ	c$cytosol
+c$lsrC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$narI	c$plasma#SPACE#membrane c$nitrate#SPACE#reductase#SPACE#complex c$NarGHI#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nepI	c$plasma#SPACE#membrane
+c$phnL	c$alpha-D-ribose#SPACE#1-methylphosphonate#SPACE#5-triphosphate#SPACE#synthase#SPACE#complex
+c$rpsU	c$cytosol c$ribosomal#SPACE#subunit c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$ubiC	c$cytosol
+c$fabD	c$cytosol
+c$arnT	c$plasma#SPACE#membrane
+c$yeeN	c$cytosol
+c$yhbP	c$cytosol
+c$ybgI	c$cytosol c$cytoplasm
+c$yfcV	c$pilus
+c$kdpC	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$qseC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$ybjX	c$cytosol
+c$tehA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dapF	c$cytosol
+c$motA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$potD	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$aroF	c$cytoplasm
+c$znuB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lolC	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#protein#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dacA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mukB	c$cytosol c$condensin#SPACE#complex
+c$thiF	c$cytosol
+c$hda	c$cytosol c$plasma#SPACE#membrane c$membrane
+c$aroK	c$cytosol
+c$tyrB	c$cytosol c$cytoplasm
+c$ybhN	c$plasma#SPACE#membrane
+c$trpB	c$cytosol c$cytoplasm
+c$hyfE	c$plasma#SPACE#membrane
+c$proC	c$cytosol
+c$waaQ	c$cytosol
+c$ycfJ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fdnG	c$formate#SPACE#dehydrogenase#SPACE#complex c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$csgA	c$pilus
+c$galK	c$cytosol c$cytoplasm
+c$ssb	c$cytosol
+c$maeA	c$mitochondrion c$cytosol
+c$adeQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rpoH	c$cytosol c$plasma#SPACE#membrane
+c$yiaB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fadI	c$cytosol c$cytoplasm
+c$cysP	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$murR	c$cytosol
+c$napH	c$plasma#SPACE#membrane c$membrane
+c$luxS	c$cytosol
+c$gltI	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$mdtB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cheW	c$cytosol
+c$glpA	c$cytosol c$glycerol-3-phosphate#SPACE#dehydrogenase#SPACE#complex
+c$phnH	c$alpha-D-ribose#SPACE#1-methylphosphonate#SPACE#5-triphosphate#SPACE#synthase#SPACE#complex
+c$yihA	c$cytosol
+c$degQ	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ddlB	c$cytosol
+c$bamC	c$cell#SPACE#surface c$Bam#SPACE#protein#SPACE#complex
+c$yrdA	c$cytosol
+c$grcA	c$cytosol c$cytoplasm
+c$ackA	c$cytosol c$membrane
+c$hpt	c$cytosol
+c$tcyJ	c$periplasmic#SPACE#space c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$emrY	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dgoT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$nrdG	c$anaerobic#SPACE#ribonucleoside-triphosphate#SPACE#reductase#SPACE#complex
+c$bcsB	c$plasma#SPACE#membrane
+c$rpiA	c$cytosol
+c$fsr	c$plasma#SPACE#membrane
+c$oppC	c$plasma#SPACE#membrane
+c$orn	c$cytosol
+c$thrB	c$cytosol
+c$clpB	c$cytosol c$membrane
+c$tsf	c$cytosol c$cytoplasm c$membrane
+c$nuoL	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$sucC	c$cytosol c$succinate-CoA#SPACE#ligase#SPACE#complex#SPACE#(ADP-forming) c$cytoplasm
+c$dgkA	c$plasma#SPACE#membrane c$membrane
+c$pfkA	c$cytosol c$6-phosphofructokinase#SPACE#complex c$cytoplasm
+c$mqo	c$cytosol c$cytoplasm c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$galM	c$cytoplasm
+c$leuB	c$cytosol
+c$eamA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$yfcZ	c$cytosol
+c$ychE	c$plasma#SPACE#membrane
+c$cusF	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rpmE	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$lapB	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hemX	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hupB	c$cytosol
+c$lamB	c$pore#SPACE#complex c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$dgcN	c$plasma#SPACE#membrane c$cell#SPACE#division#SPACE#site
+c$hybB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$[Ni-Fe]#SPACE#hydrogenase#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yeaD	c$cytosol
+c$yeiG	c$cytosol
+c$yojI	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dtpB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$frdC	c$plasma#SPACE#membrane#SPACE#fumarate#SPACE#reductase#SPACE#complex c$plasma#SPACE#membrane
+c$tsx	c$pore#SPACE#complex c$cell#SPACE#outer#SPACE#membrane
+c$setC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$gadB	c$cytosol c$membrane
+c$aldA	c$cytosol
+c$ushA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yceO	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yaiW	c$cytosol c$external#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$iscU	c$cytosol c$cytoplasm
+c$pepP	c$cytosol
+c$sodA	c$cytosol c$cytoplasm
+c$dksA	c$cytosol c$cytoplasm
+c$ycdZ	c$plasma#SPACE#membrane
+c$ymgF	c$plasma#SPACE#membrane
+c$mdtF	c$plasma#SPACE#membrane c$membrane
+c$copA	c$intrinsic#SPACE#component#SPACE#of#SPACE#membrane c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tap	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$maeB	c$cytosol
+c$gltD	c$cytosol
+c$metG	c$cytosol c$membrane
+c$ynfA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$queF	c$cytosol
+c$dppA	c$periplasmic#SPACE#space c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$agaC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$aspS	c$cytosol
+c$ppk	c$cytosol c$plasma#SPACE#membrane c$periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$polyphosphate#SPACE#kinase#SPACE#complex
+c$mlc	c$cytoplasm
+c$ptsH	c$cytosol c$phosphoenolpyruvate-dependent#SPACE#sugar#SPACE#phosphotransferase#SPACE#complex c$cytoplasm
+c$sdaC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$purH	c$cytosol
+c$lolA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$dinB	c$cytoplasm
+c$yidG	c$plasma#SPACE#membrane
+c$ydcT	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$prc	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$dld	c$plasma#SPACE#membrane c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$bfr	c$cytosol c$membrane
+c$rplY	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$dppB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nuoF	c$plasma#SPACE#membrane c$cytoplasm c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$dmsC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$dimethyl#SPACE#sulfoxide#SPACE#reductase#SPACE#complex
+c$pykF	c$cytosol c$cytoplasm c$membrane
+c$ydcS	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yidA	c$cytosol c$cytoplasm
+c$rssB	c$intracellular
+c$sbp	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yciI	c$cytosol
+c$putP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yijE	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygiM	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$aroG	c$cytosol c$cytoplasm
+c$zapE	c$cytoplasm c$cell#SPACE#division#SPACE#site
+c$crr	c$cytosol c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$membrane
+c$yhjG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hisH	c$imidazoleglycerol-phosphate#SPACE#synthase#SPACE#complex
+c$dedA	c$plasma#SPACE#membrane
+c$chbA	c$cytosol
+c$eutL	c$ethanolamine#SPACE#degradation#SPACE#polyhedral#SPACE#organelle
+c$gluQ	c$cytosol
+c$sdhC	c$plasma#SPACE#membrane
+c$lpp	c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$srmB	c$cytosol
+c$glnE	c$cytosol
+c$mtfA	c$cytosol
+c$prfC	c$cytosol
+c$acrD	c$plasma#SPACE#membrane c$membrane
+c$hscC	c$cytosol c$cytoplasm
+c$ydeA	c$plasma#SPACE#membrane
+c$can	c$cytosol
+c$murA	c$cytosol
+c$ftsQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fucI	c$cytosol
+c$rfe	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$Gram-negative-bacterium-type#SPACE#cell#SPACE#wall c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pqiA	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$aceE	c$cytosol c$membrane
+c$motB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mntP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$fhuC	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$fabA	c$cytosol
+c$pgaD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cydC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fiu	c$cell#SPACE#outer#SPACE#membrane
+c$dcuA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nanT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ycjT	c$cell#SPACE#wall
+c$glpQ	c$periplasmic#SPACE#space
+c$ompL	c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane
+c$cusB	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ilvI	c$cytosol
+c$paaC	c$cytosol
+c$kdgK	c$cytosol
+c$menA	c$plasma#SPACE#membrane c$membrane
+c$ampG	c$plasma#SPACE#membrane
+c$aroP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$metF	c$cytosol
+c$greA	c$cytosol c$cytoplasm
+c$ynfE	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yhcB	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gatA	c$cytosol c$plasma#SPACE#membrane
+c$ulaA	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pgi	c$cytosol
+c$rcnA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tauB	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$rpoA	c$cytosol c$cytoplasm c$membrane
+c$agaD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$murP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yadE	c$cytosol
+c$secG	c$plasma#SPACE#membrane c$cell#SPACE#envelope#SPACE#Sec#SPACE#protein#SPACE#transport#SPACE#complex c$intracellular
+c$yciH	c$ribosome
+c$matP	c$DNA#SPACE#replication#SPACE#termination#SPACE#region
+c$hsdM	c$cytosol
+c$tonB	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#protein#SPACE#complex c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$deoB	c$cytosol
+c$rfaE	c$cytosol c$cytoplasm
+c$exuT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ytfE	c$cytosol
+c$mhpT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$amiD	c$outer#SPACE#membrane
+c$mdtQ	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$thyA	c$cytosol
+c$yhiI	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hisA	c$cytosol c$cytoplasm
+c$slyD	c$cytosol
+c$tktB	c$cytosol
+c$entA	c$cytosol
+c$ybaT	c$plasma#SPACE#membrane
+c$waaA	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$galU	c$cytosol
+c$yiaU	c$cytosol c$cytoplasm
+c$kdpB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$nfuA	c$cytosol
+c$uxaB	c$cytosol
+c$galE	c$cytosol c$cytoplasm
+c$garL	c$cytoplasm
+c$dcyD	c$cytosol
+c$ycfS	c$extracellular#SPACE#region
+c$rplK	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$glpD	c$glycerol-3-phosphate#SPACE#dehydrogenase#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$marC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$livK	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$lsrR	c$cytosol
+c$lsrD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$gltS	c$plasma#SPACE#membrane
+c$ynjD	c$maltose#SPACE#transport#SPACE#complex c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$htpG	c$cytosol
+c$fepA	c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$ftnA	c$cytosol c$cytoplasm
+c$tdcE	c$cytosol c$cytoplasm c$membrane
+c$accB	c$cytosol c$cytoplasm
+c$dcuB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yehB	c$cell#SPACE#outer#SPACE#membrane
+c$fdhE	c$cytosol c$cytoplasm
+c$plsB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lpxT	c$plasma#SPACE#membrane
+c$gpt	c$cytosol
+c$appB	c$plasma#SPACE#membrane c$cytochrome#SPACE#complex
+c$yejB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$entH	c$cytosol
+c$alsE	c$cytosol
+c$thiP	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ptrA	c$cytoplasm c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$gltB	c$cytosol
+c$pgk	c$cytosol
+c$ydcI	c$cytosol c$cytoplasm
+c$nuoM	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$respiratory#SPACE#chain#SPACE#complex#SPACE#I c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$ycjR	c$cytosol
+c$dipZ	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$uidC	c$cell#SPACE#outer#SPACE#membrane
+c$groL	c$cytosol c$GroEL-GroES#SPACE#complex c$membrane
+c$ybbN	c$cytosol
+c$dsbB	c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$hycE	c$ferredoxin#SPACE#hydrogenase#SPACE#complex
+c$psuT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$adiA	c$cytosol
+c$nikE	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$yjiY	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rplS	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$rplQ	c$cytosol c$large#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$ykgH	c$plasma#SPACE#membrane
+c$phoA	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$codB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$waaF	c$cytosol
+c$sfmF	c$pilus
+c$yeaL	c$plasma#SPACE#membrane
+c$holB	c$DNA#SPACE#polymerase#SPACE#III#SPACE#complex
+c$narJ	c$cytoplasm
+c$pncB	c$cytosol
+c$valS	c$cytosol
+c$frdD	c$plasma#SPACE#membrane#SPACE#fumarate#SPACE#reductase#SPACE#complex c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rnr	c$cytosol
+c$ihfA	c$cytosol c$nucleoid
+c$epmA	c$cytosol
+c$fdhF	c$cytosol
+c$entE	c$cytosol
+c$gatZ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$agaI	c$cytosol c$cytoplasm
+c$rpsD	c$cytosol c$small#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$hcaT	c$plasma#SPACE#membrane
+c$modE	c$cytosol
+c$proQ	c$cytosol
+c$qorB	c$cytosol
+c$pspC	c$plasma#SPACE#membrane
+c$hcaD	c$cell
+c$nuoK	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$rpsP	c$ribosome c$small#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$nadB	c$cytosol
+c$mrdB	c$plasma#SPACE#membrane c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybcL	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$sspA	c$cytosol
+c$ynfF	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ppiA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$lptA	c$periplasmic#SPACE#space c$cell#SPACE#outer#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$deoC	c$cytosol c$membrane
+c$dmsA	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space c$dimethyl#SPACE#sulfoxide#SPACE#reductase#SPACE#complex
+c$setA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$uspB	c$plasma#SPACE#membrane c$membrane
+c$queA	c$cytosol
+c$mltC	c$anchored#SPACE#component#SPACE#of#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yjfF	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$narU	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygeY	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ugpB	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$nrdE	c$cytoplasm c$ribonucleoside-diphosphate#SPACE#reductase#SPACE#complex
+c$exbD	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#protein#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tusA	c$cytosol
+c$ybiW	c$cytosol c$cytoplasm
+c$mepM	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hsrA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$kdpF	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hdeD	c$plasma#SPACE#membrane
+c$rarA	c$replisome
+c$ompT	c$cell#SPACE#outer#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$bglF	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$tufB	c$cytosol
+c$rbbA	c$plasma#SPACE#membrane c$cell#SPACE#pole c$membrane c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$dgcT	c$plasma#SPACE#membrane
+c$yciN	c$cytosol
+c$cydX	c$plasma#SPACE#membrane c$membrane c$outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gntT	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$potE	c$plasma#SPACE#membrane
+c$clpX	c$cytosol c$mitochondrial#SPACE#matrix
+c$ybaB	c$cytosol
+c$tsaC	c$cytosol c$cytoplasm
+c$nlpA	c$plasma#SPACE#membrane
+c$pliG	c$cytosol c$periplasmic#SPACE#space
+c$alaS	c$cytosol c$membrane
+c$basS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$xapA	c$cytoplasm
+c$basR	c$cytosol c$protein-DNA#SPACE#complex
+c$holE	c$cytosol c$DNA#SPACE#polymerase#SPACE#III#COMMA##SPACE#core#SPACE#complex
+c$yfcE	c$cytosol
+c$frdA	c$plasma#SPACE#membrane#SPACE#fumarate#SPACE#reductase#SPACE#complex c$cytosol c$membrane
+c$rdgC	c$cytosol c$bacterial#SPACE#nucleoid
+c$azoR	c$cytosol
+c$mltD	c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yjhG	c$cytosol
+c$brnQ	c$plasma#SPACE#membrane
+c$gabD	c$cytoplasm
+c$eamB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhiD	c$plasma#SPACE#membrane
+c$accD	c$cytosol c$acetate#SPACE#CoA-transferase#SPACE#complex
+c$yfhR	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glnA	c$cytosol c$cytoplasm c$membrane
+c$tdh	c$cytosol c$cytoplasm
+c$nrdB	c$cytosol c$cytoplasm c$ribonucleoside-diphosphate#SPACE#reductase#SPACE#complex
+c$eutM	c$ethanolamine#SPACE#degradation#SPACE#polyhedral#SPACE#organelle
+c$sodB	c$cytosol c$cytoplasm c$membrane
+c$ynhF	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pabA	c$anthranilate#SPACE#synthase#SPACE#complex c$cytosol
+c$ybeD	c$cytosol
+c$rpmI	c$large#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$fucU	c$cytoplasm
+c$treB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gph	c$cytosol
+c$ompA	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$pore#SPACE#complex c$cell#SPACE#outer#SPACE#membrane c$membrane c$outer#SPACE#membrane
+c$ycaK	c$cytosol
+c$nmpC	c$cell#SPACE#outer#SPACE#membrane c$membrane
+c$fumB	c$cytosol
+c$ebgA	c$beta-galactosidase#SPACE#complex
+c$yceJ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$nrdD	c$anaerobic#SPACE#ribonucleoside-triphosphate#SPACE#reductase#SPACE#complex
+c$yibF	c$cytosol
+c$zntA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$gadA	c$cytosol c$membrane
+c$mdtD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yiaN	c$plasma#SPACE#membrane
+c$artM	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yigF	c$plasma#SPACE#membrane
+c$ompR	c$cytosol c$protein-DNA#SPACE#complex
+c$sra	c$cytosol c$cytoplasm c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$ftsP	c$cell#SPACE#division#SPACE#site c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$fryC	c$plasma#SPACE#membrane
+c$dhaK	c$cytosol
+c$pck	c$cytosol
+c$modB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$alsB	c$plasma#SPACE#membrane c$periplasmic#SPACE#space c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$atpE	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$proton-transporting#SPACE#ATP#SPACE#synthase#SPACE#complex#COMMA##SPACE#coupling#SPACE#factor#SPACE#F(o)
+c$osmC	c$cytosol
+c$ompC	c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane
+c$prfB	c$cytosol
+c$ftsW	c$plasma#SPACE#membrane c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ynbC	c$membrane
+c$yeiB	c$plasma#SPACE#membrane
+c$galP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$atpG	c$proton-transporting#SPACE#ATP#SPACE#synthase#SPACE#complex#COMMA##SPACE#catalytic#SPACE#core#SPACE#F(1) c$membrane
+c$yhdW	c$periplasmic#SPACE#space
+c$yfeO	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$uspG	c$cytoplasm
+c$fdoI	c$plasma#SPACE#membrane c$formate#SPACE#dehydrogenase#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ihfB	c$cytosol
+c$speC	c$cytosol
+c$recB	c$exodeoxyribonuclease#SPACE#V#SPACE#complex
+c$umuD	c$DNA#SPACE#polymerase#SPACE#V#SPACE#complex
+c$bioD2	c$cytosol
+c$ugpE	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$entS	c$plasma#SPACE#membrane
+c$rsuA	c$cytosol
+c$tsr	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lplA	c$mitochondrion c$cytosol
+c$tusB	c$sulfurtransferase#SPACE#complex
+c$kbl	c$cytosol c$cytoplasm
+c$gloA	c$cytosol
+c$ynaI	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygbI	c$intracellular
+c$ecnA	c$membrane c$anchored#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$ydeE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$napC	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rpiR	c$cytosol
+c$alsA	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$cspC	c$cytosol c$membrane
+c$artQ	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$sgrR	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$hipA	c$cytosol
+c$lolB	c$cell#SPACE#outer#SPACE#membrane
+c$hisD	c$cytosol c$cytoplasm
+c$yhfK	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$hdeB	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yihV	c$cytosol c$cytoplasm
+c$chiA	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$nudC	c$cytosol
+c$ftnB	c$cytosol c$cytoplasm
+c$ubiD	c$cytosol c$cytoplasm
+c$atpD	c$proton-transporting#SPACE#ATP#SPACE#synthase#SPACE#complex#COMMA##SPACE#catalytic#SPACE#core#SPACE#F(1) c$membrane
+c$deoD	c$cytosol c$membrane
+c$yqjF	c$plasma#SPACE#membrane
+c$rseC	c$plasma#SPACE#membrane
+c$metK	c$cytosol
+c$yjdO	c$cell#SPACE#pole c$membrane
+c$mioC	c$cytosol
+c$lptD	c$cell#SPACE#outer#SPACE#membrane
+c$sucA	c$cytosol c$oxoglutarate#SPACE#dehydrogenase#SPACE#complex
+c$trg	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rfbC	c$cytosol
+c$rzoQ	c$plasma#SPACE#membrane c$membrane
+c$oppB	c$plasma#SPACE#membrane
+c$dapE	c$cytosol
+c$yhjX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rseA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nfrB	c$plasma#SPACE#membrane
+c$znuC	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$dmsB	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$dimethyl#SPACE#sulfoxide#SPACE#reductase#SPACE#complex
+c$rplI	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$lolD	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#protein#SPACE#complex
+c$yobD	c$plasma#SPACE#membrane
+c$yfaE	c$cytoplasm
+c$rplA	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$yihN	c$plasma#SPACE#membrane
+c$nuoE	c$plasma#SPACE#membrane c$cytoplasm c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$ascB	c$cytosol
+c$yebG	c$cytosol
+c$mlaD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$napG	c$plasma#SPACE#membrane
+c$yibH	c$plasma#SPACE#membrane
+c$djlB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fbaB	c$cytosol c$membrane
+c$ybhI	c$plasma#SPACE#membrane
+c$trkA	c$membrane
+c$malK	c$maltose#SPACE#transport#SPACE#complex c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$membrane
+c$cspB	c$cytosol
+c$osmY	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$nadE	c$cytosol c$cytoplasm
+c$ddpA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$sodC	c$periplasmic#SPACE#space c$cytoplasm c$extracellular#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$nuoA	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$purN	c$cytosol c$cytoplasm
+c$mrcB	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$clsB	c$membrane
+c$baeR	c$cytosol c$protein-DNA#SPACE#complex
+c$puuP	c$plasma#SPACE#membrane
+c$ynfH	c$plasma#SPACE#membrane c$dimethyl#SPACE#sulfoxide#SPACE#reductase#SPACE#complex
+c$rpmH	c$intracellular c$ribosome
+c$mak	c$cytosol
+c$yfbR	c$cytoplasm
+c$marB	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rimM	c$cytosol
+c$ycfP	c$cytosol
+c$nusB	c$cytosol
+c$nrfA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$nuoN	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$fepE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hisQ	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nikA	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yjhF	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nanM	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$hlpA	c$cytosol c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rluB	c$cytosol
+c$mcbA	c$extrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gcvT	c$cytosol
+c$yqiC	c$cytosol
+c$pitA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fliH	c$cytosol
+c$rseP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glpC	c$plasma#SPACE#membrane c$glycerol-3-phosphate#SPACE#dehydrogenase#SPACE#complex
+c$flu	c$cell#SPACE#surface c$periplasmic#SPACE#space c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$membrane c$extracellular#SPACE#region
+c$fdnI	c$plasma#SPACE#membrane c$formate#SPACE#dehydrogenase#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$slyB	c$cell#SPACE#outer#SPACE#membrane
+c$uraA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fecD	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hflC	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$membrane#SPACE#protein#SPACE#complex c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$yncE	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$pnp	c$cytosol c$membrane
+c$pheA	c$cytoplasm
+c$ybhD	c$cytosol c$cytoplasm
+c$pyrC	c$cytosol c$cytoplasm
+c$yadK	c$pilus
+c$ydcY	c$cytosol
+c$ydcL	c$plasma#SPACE#membrane c$membrane
+c$pabC	c$cytosol
+c$tdcA	c$cytosol c$cytoplasm
+c$yihR	c$cytoplasm
+c$alsC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rsmH	c$cytosol c$cytoplasm
+c$tilS	c$cytosol
+c$menF	c$anthranilate#SPACE#synthase#SPACE#complex c$cytoplasm
+c$rpsA	c$cytoplasm c$membrane c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$lsrB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$periplasmic#SPACE#space c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$lpxB	c$extrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytosol c$cytoplasm
+c$tusC	c$sulfurtransferase#SPACE#complex
+c$kch	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rimK	c$cytoplasm
+c$yjcS	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$sucB	c$cytosol c$oxoglutarate#SPACE#dehydrogenase#SPACE#complex
+c$gstB	c$cytosol
+c$fabI	c$cytosol c$membrane
+c$gltK	c$plasma#SPACE#membrane
+c$rcsB	c$cytosol
+c$hdeA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$zitB	c$plasma#SPACE#membrane
+c$glpT	c$plasma#SPACE#membrane
+c$soxR	c$cytoplasm
+c$yebS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ccmD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#the#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#the#SPACE#plasma#SPACE#membrane
+c$ycdY	c$cytosol
+c$selD	c$cytosol c$cytoplasm
+c$ddlA	c$cytosol
+c$galT	c$cytosol
+c$acrZ	c$plasma#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane
+c$ung	c$mitochondrion c$nucleus
+c$fadE	c$plasma#SPACE#membrane
+c$glnQ	c$plasma#SPACE#membrane
+c$setB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$yhaI	c$plasma#SPACE#membrane
+c$pspG	c$plasma#SPACE#membrane
+c$minC	c$cytosol c$cell#SPACE#pole
+c$nrfC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mlaA	c$cell#SPACE#outer#SPACE#membrane
+c$wcaB	c$cytosol
+c$arnD	c$membrane
+c$pntA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fabG	c$cytosol
+c$dacB	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$codA	c$cytosol
+c$csgF	c$cell#SPACE#outer#SPACE#membrane
+c$mltA	c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$prkB	c$cytosol
+c$araB	c$cytoplasm
+c$bacA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$artJ	c$periplasmic#SPACE#space c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ynbB	c$plasma#SPACE#membrane
+c$lpxP	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$icd	c$cytosol c$cytoplasm
+c$gltP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$torD	c$cytoplasm
+c$gloC	c$cytosol
+c$recD	c$exodeoxyribonuclease#SPACE#V#SPACE#complex
+c$pdeN	c$plasma#SPACE#membrane
+c$wzzE	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$focA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$infC	c$cytosol c$membrane
+c$fabH	c$cytosol
+c$pdxH	c$cytosol
+c$rplN	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$ybjJ	c$plasma#SPACE#membrane
+c$dtd	c$cytoplasm
+c$atpA	c$proton-transporting#SPACE#ATP#SPACE#synthase#SPACE#complex#COMMA##SPACE#catalytic#SPACE#core#SPACE#F(1) c$membrane
+c$pyrI	c$cytoplasm
+c$cynT	c$cytoplasm
+c$moaD	c$cytosol
+c$shoB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yajO	c$cytosol
+c$fbp	c$cytosol c$cytoplasm
+c$feoB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$ompN	c$membrane
+c$rpoD	c$cytosol
+c$cstA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$abgB	c$cytoplasm
+c$yebQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ymgD	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$pstC	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybbY	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rfbB	c$cytosol
+c$iclR	c$cytosol
+c$gspF	c$plasma#SPACE#membrane
+c$tmk	c$cytosol c$cytoplasm
+c$rutG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ssuC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhjD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rihB	c$cytosol
+c$entD	c$enterobactin#SPACE#synthetase#SPACE#complex c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$epd	c$cytosol
+c$lldP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rseB	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ulaF	c$cytosol
+c$uhpB	c$plasma#SPACE#membrane c$intracellular
+c$yobA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$gshA	c$cytosol
+c$secF	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cheB	c$cytosol c$plasma#SPACE#membrane
+c$yedA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$ydfG	c$cytosol
+c$phoR	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$yfcQ	c$pilus
+c$tig	c$cytosol c$membrane
+c$aqpZ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$narX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$betT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pgpB	c$plasma#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gss	c$cytosol
+c$manZ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$prs	c$cytosol
+c$srlB	c$cytoplasm
+c$ydcO	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$puuB	c$cytoplasm
+c$gabP	c$plasma#SPACE#membrane
+c$yqiG	c$cell#SPACE#outer#SPACE#membrane
+c$secE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#envelope#SPACE#Sec#SPACE#protein#SPACE#transport#SPACE#complex c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ytjB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$sbmA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$potI	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$ymfA	c$plasma#SPACE#membrane
+c$fkpB	c$cytosol
+c$tcyL	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$bglH	c$pore#SPACE#complex c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$pepD	c$cytosol
+c$metN	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$Gram-negative-bacterium-type#SPACE#cell#SPACE#wall
+c$yjhU	c$cytosol
+c$flgG	c$bacterial-type#SPACE#flagellum#SPACE#hook c$cell#SPACE#outer#SPACE#membrane
+c$envY	c$membrane
+c$gyrA	c$cytosol c$DNA#SPACE#topoisomerase#SPACE#complex#SPACE#(ATP-hydrolyzing) c$cytoplasm c$membrane
+c$rcsF	c$periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$external#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$intracellular
+c$ssuB	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$dusA	c$cytosol
+c$araE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yjcH	c$plasma#SPACE#membrane
+c$rep	c$cytoplasmic#SPACE#replisome
+c$cytR	c$cytosol
+c$rlmJ	c$cytosol
+c$dnaA	c$cytosol c$plasma#SPACE#membrane
+c$cheY	c$cytosol
+c$rbsD	c$cytosol
+c$sucD	c$cytosol c$succinate-CoA#SPACE#ligase#SPACE#complex#SPACE#(ADP-forming) c$cytoplasm
+c$atpC	c$proton-transporting#SPACE#ATP#SPACE#synthase#SPACE#complex#COMMA##SPACE#catalytic#SPACE#core#SPACE#F(1)
+c$ddpC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gcvP	c$cytosol c$glycine#SPACE#cleavage#SPACE#complex
+c$yegD	c$cytoplasm
+c$fliD	c$bacterial-type#SPACE#flagellum#SPACE#filament#SPACE#cap
+c$raiA	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$yahN	c$plasma#SPACE#membrane
+c$rstA	c$cytosol c$protein-DNA#SPACE#complex
+c$hisM	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hinT	c$cytosol
+c$gntU	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tyrS	c$cytosol c$membrane
+c$hupA	c$cytosol c$nucleoid c$cytoplasm c$HU-DNA#SPACE#complex c$membrane
+c$hisF	c$cytosol c$imidazoleglycerol-phosphate#SPACE#synthase#SPACE#complex
+c$yibN	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$adhE	c$cytosol c$membrane
+c$ppnP	c$cytosol
+c$cspA	c$cytosol
+c$ccmB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yfgO	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydjZ	c$plasma#SPACE#membrane
+c$waaC	c$cytosol
+c$slmA	c$bacterial#SPACE#nucleoid
+c$seqA	c$cytosol c$SeqA-DNA#SPACE#complex
+c$yicH	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nanA	c$cytosol
+c$ygcR	c$cytosol
+c$aceK	c$cytoplasm
+c$nikB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rarD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$spy	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$tisB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$bioD	c$cytosol
+c$puuE	c$cytosol
+c$eptB	c$plasma#SPACE#membrane
+c$yeeL	c$cytosol
+c$minD	c$cytosol c$plasma#SPACE#membrane c$cell#SPACE#pole c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$carA	c$cytosol c$carbamoyl-phosphate#SPACE#synthase#SPACE#complex c$cytoplasm
+c$bglB	c$cytosol
+c$mdfA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$proW	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$paoC	c$periplasmic#SPACE#space
+c$ydgK	c$plasma#SPACE#membrane
+c$insI-1	c$protein-DNA#SPACE#complex
+c$argK	c$intracellular
+c$yeeZ	c$cytosol
+c$mdoH	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$slp	c$outer#SPACE#membrane
+c$rffH	c$cytosol
+c$yejF	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$tqsA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dut	c$cytosol
+c$tdcB	c$cytosol
+c$ydiM	c$plasma#SPACE#membrane
+c$envZ	c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ftsN	c$plasma#SPACE#membrane c$cell#SPACE#septum c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$trmI	c$tRNA#SPACE#methyltransferase#SPACE#complex
+c$yieE	c$cytosol
+c$amiA	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ydjG	c$cytosol
+c$mngA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pcm	c$cytoplasm
+c$tauA	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$csrA	c$cytosol
+c$kdpA	c$plasma#SPACE#membrane c$membrane
+c$proS	c$cytosol
+c$chbC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yphD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$gudP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$pabB	c$cytoplasm
+c$mdtO	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$nemA	c$cytosol
+c$yniC	c$cytosol
+c$dppC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$barA	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glpB	c$cytosol c$glycerol-3-phosphate#SPACE#dehydrogenase#SPACE#complex
+c$proY	c$plasma#SPACE#membrane
+c$atpB	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$proton-transporting#SPACE#ATP#SPACE#synthase#SPACE#complex#COMMA##SPACE#coupling#SPACE#factor#SPACE#F(o) c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nlpI	c$anchored#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$lacZ	c$beta-galactosidase#SPACE#complex
+c$treC	c$cytosol
+c$rpsO	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$ppa	c$cytosol c$membrane
+c$murB	c$cytosol c$cytoplasm
+c$elaB	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$eutB	c$cytosol c$ethanolamine#SPACE#ammonia-lyase#SPACE#complex
+c$mepS	c$cell#SPACE#outer#SPACE#membrane
+c$ftsL	c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydhU	c$plasma#SPACE#membrane
+c$mutL	c$mismatch#SPACE#repair#SPACE#complex
+c$qseB	c$cytosol c$protein-DNA#SPACE#complex
+c$btuD	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$extrinsic#SPACE#component#SPACE#of#SPACE#membrane
+c$fimC	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$hemG	c$cytosol
+c$borD	c$anchored#SPACE#component#SPACE#of#SPACE#membrane
+c$patD	c$cytosol
+c$typA	c$cytosol
+c$yfaU	c$cytoplasm
+c$pldA	c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$tolA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hslO	c$cytosol
+c$yghD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$extracellular#SPACE#region
+c$rcnB	c$cytosol c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$dnaE	c$cytosol c$cytoplasm c$DNA#SPACE#polymerase#SPACE#III#COMMA##SPACE#core#SPACE#complex
+c$cspG	c$cytosol
+c$kduI	c$cytosol
+c$eutS	c$polyhedral#SPACE#organelle c$ethanolamine#SPACE#degradation#SPACE#polyhedral#SPACE#organelle
+c$trkH	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glcB	c$cytosol
+c$ulaB	c$cytoplasm
+c$sppA	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dapB	c$cytosol
+c$rpmF	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$rsfS	c$cytosol
+c$mscL	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$slt	c$peptidoglycan-based#SPACE#cell#SPACE#wall c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ftsK	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hslU	c$cytosol c$membrane
+c$rlmN	c$cytosol
+c$yjeH	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yqhD	c$cytosol
+c$pyrB	c$cytosol c$cytoplasm
+c$bepA	c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ftp	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$cynX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$tsgA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nuoH	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$polA	c$cytosol c$cytoplasm
+c$pal	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$cell#SPACE#division#SPACE#site
+c$hmp	c$intracellular
+c$hha	c$cytosol
+c$metE	c$cytosol c$extracellular#SPACE#region
+c$dppD	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$yggS	c$cytosol c$intracellular
+c$lapA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yehQ	c$cytosol
+c$ybiV	c$cytoplasm
+c$kdgR	c$cytosol
+c$prmB	c$cytosol c$cytoplasm
+c$nfsB	c$cytosol c$membrane
+c$araG	c$cytosol c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$phoU	c$extrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytoplasm
+c$ubiB	c$plasma#SPACE#membrane
+c$pntB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mrr	c$bacterial#SPACE#nucleoid
+c$rhlE	c$cytosol
+c$wcaD	c$plasma#SPACE#membrane
+c$acs	c$cytosol
+c$yahF	c$cytosol c$succinate-CoA#SPACE#ligase#SPACE#complex#SPACE#(ADP-forming)
+c$frmA	c$cytosol c$cytoplasm
+c$recT	c$protein-DNA#SPACE#complex
+c$cueO	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$pdeB	c$plasma#SPACE#membrane
+c$sdaA	c$cytosol
+c$gatC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lysC	c$cytosol c$cytoplasm
+c$mltF	c$cell#SPACE#outer#SPACE#membrane
+c$add	c$cytosol
+c$serB	c$cytoplasm
+c$cdgI	c$plasma#SPACE#membrane
+c$hxpB	c$cytosol
+c$glcA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pqqL	c$cytosol
+c$lacI	c$cytosol
+c$fruK	c$cytoplasm
+c$cspD	c$cytosol
+c$yhhN	c$plasma#SPACE#membrane
+c$kefF	c$cytosol
+c$gntK	c$cytoplasm
+c$ygiW	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$hisP	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$yhdZ	c$plasma#SPACE#membrane c$membrane
+c$hprS	c$plasma#SPACE#membrane c$intracellular
+c$lldD	c$plasma#SPACE#membrane
+c$rppH	c$cytoplasm
+c$puuD	c$cytosol
+c$yiaM	c$plasma#SPACE#membrane
+c$hokC	c$plasma#SPACE#membrane c$periplasmic#SPACE#space c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yebT	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rcsD	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fetB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$napA	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ygeW	c$cytoplasm
+c$glrK	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$argG	c$cytosol c$cytoplasm
+c$rplC	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$sdhA	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#succinate#SPACE#dehydrogenase#SPACE#complex
+c$ygaZ	c$plasma#SPACE#membrane
+c$caiA	c$plasma#SPACE#membrane
+c$rluC	c$cytosol
+c$modF	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$idnT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pepN	c$plasma#SPACE#membrane c$membrane
+c$insF1	c$cell#SPACE#outer#SPACE#membrane
+c$yqgF	c$cytosol
+c$pta	c$cytosol
+c$yceD	c$cytosol
+c$fecC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$putA	c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$zraP	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yajR	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lepB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydhC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rsgA	c$cytosol c$cytoplasm
+c$yciB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fetA	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$fucA	c$cytosol
+c$yhhX	c$cytosol
+c$adeP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhhL	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$trpS	c$cytosol
+c$proX	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$gadC	c$plasma#SPACE#membrane
+c$torA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ldhA	c$cytosol
+c$ybaO	c$cytosol
+c$lgoT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$yqiK	c$cytosol c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ilvD	c$cytosol
+c$dhaL	c$cytosol
+c$yddA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$malP	c$cytosol c$cytoplasm
+c$yedI	c$plasma#SPACE#membrane
+c$pdxJ	c$cytosol
+c$talB	c$cytosol c$membrane
+c$nrfB	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yaaA	c$cytosol
+c$dtpD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$htrE	c$cell#SPACE#outer#SPACE#membrane
+c$nadA	c$cytosol
+c$yfcP	c$pilus
+c$ymjA	c$cytosol
+c$pstB	c$plasma#SPACE#membrane
+c$eutG	c$cytosol
+c$hisJ	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$csgG	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$pgsA	c$mitochondrion c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$thiQ	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$mtlD	c$cytosol
+c$dnaN	c$cytosol
+c$yieK	c$cytosol c$cytoplasm
+c$fieF	c$plasma#SPACE#membrane
+c$rbsK	c$cytosol c$cytoplasm
+c$yebC	c$cytosol
+c$nadC	c$cytosol c$cytoplasm
+c$fepG	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yiaT	c$cell#SPACE#outer#SPACE#membrane
+c$acnA	c$cytosol c$cytoplasm
+c$purM	c$cytosol
+c$yaaU	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$dxs	c$cytosol
+c$cyaY	c$cytosol c$cytoplasm
+c$fpr	c$cytosol c$cytoplasm
+c$arsB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydjK	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$thrC	c$cytosol
+c$yehT	c$intracellular
+c$groS	c$cytosol c$GroEL-GroES#SPACE#complex
+c$aroA	c$cytosol
+c$msbA	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$atpF	c$proton-transporting#SPACE#ATP#SPACE#synthase#SPACE#complex#COMMA##SPACE#coupling#SPACE#factor#SPACE#F(o) c$anchored#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yphF	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$cycA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$wzc	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$napF	c$cytoplasm
+c$msrQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$sapB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$evgS	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$rpsG	c$cytosol c$membrane c$ribosome c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$mdtM	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$iscS	c$cytosol
+c$oppF	c$plasma#SPACE#membrane
+c$ycfH	c$cytosol
+c$ulaG	c$cytoplasm
+c$gcvH	c$cytosol c$glycine#SPACE#cleavage#SPACE#complex c$cytoplasm
+c$rpsH	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$yjeO	c$plasma#SPACE#membrane
+c$murE	c$cytosol
+c$nrfG	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tnaA	c$cytosol c$cell#SPACE#pole c$membrane
+c$fabF	c$cytosol
+c$trxB	c$cytosol
+c$mmuP	c$plasma#SPACE#membrane
+c$ytfQ	c$plasma#SPACE#membrane c$periplasmic#SPACE#space c$integral#SPACE#component#SPACE#of#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$glnS	c$cytosol
+c$tusD	c$sulfurtransferase#SPACE#complex
+c$pnuC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lpoB	c$periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane
+c$syd	c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$cytoplasm
+c$spoT	c$cytosol c$plasma#SPACE#membrane c$cell#SPACE#wall
+c$yneE	c$plasma#SPACE#membrane
+c$ytfF	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$ccmE	c$plasma#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$katG	c$cytosol c$extracellular#SPACE#region
+c$fecB	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$potA	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane
+c$trpA	c$cytosol c$chloroplast c$cytoplasm
+c$degP	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$speB	c$cytosol
+c$yjjA	c$cytosol
+c$ldrD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$torC	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$oxidoreductase#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mprA	c$cytosol
+c$emrB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yejK	c$bacterial#SPACE#nucleoid
+c$yjfL	c$plasma#SPACE#membrane
+c$ais	c$periplasmic#SPACE#space
+c$argI	c$cytoplasm
+c$ribB	c$cytosol
+c$tatD	c$cytosol c$cytoplasm
+c$ybhJ	c$cytosol
+c$ubiA	c$plasma#SPACE#membrane
+c$rluE	c$cytosol
+c$yfjW	c$plasma#SPACE#membrane
+c$lpxA	c$cytosol c$cytoplasm
+c$csgB	c$pilus c$cell#SPACE#outer#SPACE#membrane
+c$hycB	c$ferredoxin#SPACE#hydrogenase#SPACE#complex
+c$yidD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mtlA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yjhB	c$plasma#SPACE#membrane
+c$ydhX	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$era	c$cytosol c$plasma#SPACE#membrane c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$cytoplasm
+c$rplF	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$fdoH	c$formate#SPACE#dehydrogenase#SPACE#complex c$membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#the#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#the#SPACE#plasma#SPACE#membrane
+c$aroH	c$cytoplasm
+c$cheR	c$cytosol c$plasma#SPACE#membrane
+c$yfdG	c$plasma#SPACE#membrane
+c$clsA	c$membrane
+c$hofB	c$plasma#SPACE#membrane
+c$yzcX	c$cell#SPACE#outer#SPACE#membrane
+c$lspA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glpE	c$cytoplasm
+c$cvpA	c$plasma#SPACE#membrane
+c$uup	c$plasma#SPACE#membrane c$cytoplasm
+c$nrdA	c$cytosol c$ribonucleoside-diphosphate#SPACE#reductase#SPACE#complex
+c$nlpE	c$cell#SPACE#outer#SPACE#membrane
+c$erpA	c$cytosol
+c$yigM	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$ldcA	c$cytosol
+c$ghrA	c$cytosol c$nucleus
+c$zwf	c$cytosol
+c$suhB	c$cytosol c$cytoplasm
+c$dinQ	c$membrane
+c$rluF	c$cytosol
+c$sixA	c$cytoplasm
+c$rnhB	c$ribonuclease#SPACE#H2#SPACE#complex
+c$fhuD	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$zinT	c$cytoplasm c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yhiN	c$cytosol
+c$yhdY	c$plasma#SPACE#membrane
+c$glvC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$corA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glpF	c$plasma#SPACE#membrane
+c$yibI	c$plasma#SPACE#membrane
+c$yggF	c$cytosol
+c$mdtE	c$plasma#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yggE	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$holC	c$DNA#SPACE#polymerase#SPACE#III#COMMA##SPACE#clamp#SPACE#loader#SPACE#chi/psi#SPACE#subcomplex
+c$rhaD	c$cytosol
+c$metQ	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$anchored#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yadG	c$plasma#SPACE#membrane
+c$yfbU	c$cytosol
+c$pitB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydgC	c$plasma#SPACE#membrane
+c$dnaB	c$cytosol
+c$cdsA	c$plasma#SPACE#membrane c$membrane
+c$pppA	c$plasma#SPACE#membrane
+c$priB	c$pre-primosome#SPACE#complex
+c$emrD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gpmA	c$cytosol c$cytoplasm
+c$chaC	c$cytoplasm
+c$dpiB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mpl	c$cytoplasm
+c$lolE	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#protein#SPACE#complex c$Gram-negative-bacterium-type#SPACE#cell#SPACE#wall c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ytfP	c$cytosol
+c$tamA	c$TAM#SPACE#protein#SPACE#secretion#SPACE#complex c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$fliA	c$cytosol
+c$pgpC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nrdH	c$cell
+c$rffC	c$cytoplasm
+c$nusA	c$cytosol
+c$gsiC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rlpA	c$plasma#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$membrane
+c$ldtD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$phoE	c$pore#SPACE#complex c$membrane
+c$yiaY	c$mitochondrion c$cytosol
+c$rlmL	c$cytosol c$cytoplasm
+c$nadK	c$cytosol
+c$yhgN	c$plasma#SPACE#membrane
+c$araC	c$cytosol
+c$fecA	c$cell#SPACE#outer#SPACE#membrane
+c$fre	c$cytosol
+c$rsmG	c$cytosol
+c$zntB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ttdT	c$plasma#SPACE#membrane
+c$mdtN	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$glgA	c$cytosol
+c$xapB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$pyrG	c$cytosol
+c$nuoG	c$plasma#SPACE#membrane c$plasma#SPACE#membrane#SPACE#respiratory#SPACE#chain#SPACE#complex#SPACE#I c$cytoplasm c$NADH#SPACE#dehydrogenase#SPACE#complex
+c$fadD	c$cytosol c$cytoplasm c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$metI	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$exoX	c$cytosol c$DNA#SPACE#polymerase#SPACE#III#COMMA##SPACE#core#SPACE#complex
+c$rpsT	c$cytosol c$ribosome c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$agaW	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yfbS	c$plasma#SPACE#membrane
+c$yihD	c$cytosol
+c$yebO	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nirB	c$nitrite#SPACE#reductase#SPACE#complex#SPACE#[NAD(P)H]
+c$ligB	c$cytosol
+c$ccmA	c$cytosol c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rplE	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$ccmF	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hybO	c$extrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$[Ni-Fe]#SPACE#hydrogenase#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygbN	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$infB	c$cytosol c$membrane
+c$gor	c$cytosol c$membrane
+c$ftsY	c$cytosol c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$membrane
+c$tatE	c$plasma#SPACE#membrane c$TAT#SPACE#protein#SPACE#transport#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhjA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$malG	c$maltose#SPACE#transport#SPACE#complex c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$sohB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mdlB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$cusC	c$cell#SPACE#outer#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$murJ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cyoA	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$cytochrome#SPACE#o#SPACE#ubiquinol#SPACE#oxidase#SPACE#complex
+c$ndk	c$cytosol
+c$bamA	c$Bam#SPACE#protein#SPACE#complex c$cell#SPACE#outer#SPACE#membrane
+c$phnN	c$cytosol
+c$yadN	c$pilus
+c$tynA	c$periplasmic#SPACE#space
+c$yohJ	c$plasma#SPACE#membrane
+c$glnB	c$cytosol
+c$holA	c$DNA#SPACE#polymerase#SPACE#III#SPACE#complex
+c$yjbJ	c$cytosol
+c$lysS	c$cytosol c$cytoplasm c$membrane
+c$panF	c$plasma#SPACE#membrane
+c$yjgA	c$cytosol
+c$satP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yieF	c$cytosol
+c$ykgG	c$cytosol
+c$ykgE	c$cytosol
+c$yfiH	c$cytosol
+c$yhcD	c$cell#SPACE#outer#SPACE#membrane
+c$yraJ	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane c$membrane
+c$yoaB	c$cytosol
+c$nhaA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rmuC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$guaA	c$cytosol
+c$paoA	c$periplasmic#SPACE#space
+c$ygiS	c$periplasmic#SPACE#space c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$fkpA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yccJ	c$cytosol
+c$sfmD	c$cell#SPACE#outer#SPACE#membrane
+c$gspO	c$plasma#SPACE#membrane
+c$dauA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$sdhD	c$plasma#SPACE#membrane
+c$ydjA	c$cytosol
+c$ravA	c$cytosol c$cytoplasm
+c$sapA	c$periplasmic#SPACE#space c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$kdsB	c$cytosol
+c$dcrB	c$periplasmic#SPACE#space
+c$yjhC	c$cytosol
+c$napD	c$cytoplasm
+c$mipA	c$cell#SPACE#outer#SPACE#membrane
+c$nhoA	c$cytoplasm
+c$hexR	c$cytosol
+c$gatY	c$cytosol
+c$kefC	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mlaC	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ybhA	c$cytosol
+c$trpE	c$anthranilate#SPACE#synthase#SPACE#complex c$cytosol c$cytoplasm
+c$selB	c$cytosol c$cytoplasm
+c$mgtA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$intracellular#SPACE#membrane-bounded#SPACE#organelle
+c$dsdX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ispH	c$cytosol
+c$thiE	c$cytoplasm
+c$yoaK	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yfcL	c$cytosol
+c$ompW	c$cell#SPACE#outer#SPACE#membrane
+c$pgaB	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$nirD	c$nitrite#SPACE#reductase#SPACE#complex#SPACE#[NAD(P)H]
+c$dhaM	c$cytosol
+c$acpT	c$cytosol
+c$torZ	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$pgl	c$cytosol
+c$queE	c$cytosol
+c$rpsK	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$pldB	c$membrane c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fepB	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$trmJ	c$cytosol
+c$yfgH	c$cell#SPACE#outer#SPACE#membrane
+c$lptE	c$cell#SPACE#outer#SPACE#membrane
+c$yjfJ	c$cytosol
+c$folE	c$cytosol c$cytoplasm
+c$rodZ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hokD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$flgD	c$cytosol c$bacterial-type#SPACE#flagellum#SPACE#hook
+c$essD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$lptF	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$secB	c$cytosol
+c$mdtP	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ychF	c$cytoplasm
+c$glpG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yqeJ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhbX	c$plasma#SPACE#membrane
+c$ftsA	c$cytosol c$plasma#SPACE#membrane c$cell#SPACE#division#SPACE#site c$membrane c$cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hemN	c$cytoplasm
+c$waaH	c$membrane
+c$rpsB	c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$gspA	c$cytosol c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$zapD	c$cytosol c$cell#SPACE#division#SPACE#site
+c$rpsJ	c$cytosol c$small#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$rpsC	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$agp	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$afuB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$btuE	c$periplasmic#SPACE#space
+c$flgF	c$bacterial-type#SPACE#flagellum#SPACE#hook
+c$hyfB	c$plasma#SPACE#membrane
+c$rlmI	c$cytosol c$cytoplasm
+c$ykgM	c$ribosome
+c$speD	c$cytosol
+c$cyoE	c$plasma#SPACE#membrane
+c$rlmH	c$cytoplasm
+c$hemL	c$cytosol
+c$ynbD	c$plasma#SPACE#membrane c$cytoplasm c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tam	c$cytosol
+c$yicG	c$plasma#SPACE#membrane
+c$yciC	c$plasma#SPACE#membrane
+c$eco	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$pheT	c$cytosol c$phenylalanine-tRNA#SPACE#ligase#SPACE#complex c$membrane
+c$rlmB	c$cytosol
+c$dps	c$membrane
+c$cfa	c$cytosol
+c$fusA	c$cytosol c$cytoplasm
+c$fimD	c$cell#SPACE#outer#SPACE#membrane
+c$cheZ	c$cytosol c$plasma#SPACE#membrane
+c$yehM	c$cytosol
+c$ybjI	c$cytoplasm
+c$yadI	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cytoplasm
+c$umpH	c$cytosol
+c$accA	c$cytosol c$acetate#SPACE#CoA-transferase#SPACE#complex c$cytoplasm
+c$pspE	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$menI	c$cytosol
+c$ribE	c$cytosol c$intracellular
+c$smpB	c$cytosol
+c$rsxB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tgt	c$cytosol c$cytoplasm
+c$waaL	c$plasma#SPACE#membrane
+c$dcd	c$cytosol
+c$djlA	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhfL	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$plaP	c$plasma#SPACE#membrane
+c$clcB	c$plasma#SPACE#membrane
+c$ibsE	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yaiY	c$plasma#SPACE#membrane
+c$rpoC	c$cytosol c$cytoplasm c$membrane
+c$cydA	c$plasma#SPACE#membrane c$cytochrome#SPACE#complex c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$csgE	c$cell#SPACE#outer#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yaiZ	c$plasma#SPACE#membrane
+c$argF	c$cytoplasm
+c$rfbD	c$cytosol
+c$uidA	c$cytosol
+c$ghrB	c$cytosol
+c$hdhA	c$cytosol
+c$gntP	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$alaE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gsiB	c$periplasmic#SPACE#space c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ycbV	c$pilus
+c$ilvB	c$acetolactate#SPACE#synthase#SPACE#complex
+c$deaD	c$cytosol
+c$glmM	c$cytosol
+c$nupG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yegV	c$cytoplasm
+c$hyfD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yieP	c$cytosol
+c$pgaC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$qorA	c$cytosol c$cytoplasm
+c$pbpC	c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$glmU	c$cytosol
+c$mdoC	c$plasma#SPACE#membrane
+c$gspE	c$plasma#SPACE#membrane c$type#SPACE#II#SPACE#protein#SPACE#secretion#SPACE#system#SPACE#complex
+c$sugE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fimH	c$pilus
+c$fxsA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$edd	c$cytosol
+c$intA	c$provirus
+c$ycjF	c$plasma#SPACE#membrane
+c$ansB	c$periplasmic#SPACE#space c$cytoplasm c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$poxB	c$cytosol
+c$csrD	c$plasma#SPACE#membrane
+c$glyQ	c$cytosol
+c$cmtB	c$cytoplasm
+c$flgC	c$bacterial-type#SPACE#flagellum#SPACE#hook
+c$cysW	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhbS	c$cytosol
+c$pdeG	c$plasma#SPACE#membrane
+c$rimO	c$cytosol
+c$pykA	c$cytosol c$cytoplasm
+c$purE	c$cytosol
+c$torY	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yciA	c$cytosol
+c$idnK	c$cytoplasm
+c$htpX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$hslJ	c$membrane
+c$rplB	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$ftsZ	c$cytoplasm c$cell#SPACE#division#SPACE#site
+c$yfaZ	c$cell#SPACE#outer#SPACE#membrane
+c$mliC	c$periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$cell#SPACE#outer#SPACE#membrane
+c$cptA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhiM	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pspD	c$plasma#SPACE#membrane
+c$pfkB	c$cytosol c$cytoplasm
+c$yffS	c$cytosol
+c$mtgA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pgm	c$cytosol
+c$cysU	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glgB	c$cytosol c$cytoplasm
+c$argS	c$cytosol
+c$djlC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gcvR	c$cytosol
+c$panE	c$cytosol c$cytoplasm
+c$ypdK	c$plasma#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$helD	c$cytosol c$DNA#SPACE#helicase#SPACE#complex
+c$folA	c$cytosol
+c$ispB	c$cytosol
+c$ccmH	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$plasma#SPACE#membrane
+c$leuC	c$cytosol
+c$eda	c$cytosol c$cytoplasm c$membrane
+c$dapA	c$cytosol
+c$cysJ	c$cytosol c$sulfite#SPACE#reductase#SPACE#complex#SPACE#(NADPH)
+c$trmA	c$cytosol
+c$panD	c$cytosol
+c$thiI	c$cytosol
+c$frwC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rpmA	c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$amiC	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$araH	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$membrane
+c$dfp	c$cytosol
+c$yiaA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$glvB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pqiB	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$glf	c$cytosol
+c$patA	c$cytosol
+c$cysA	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$ygaM	c$cytosol c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yrfF	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$grxD	c$cytosol
+c$cmk	c$cytosol
+c$hcxB	c$cytosol
+c$yfeR	c$cytosol c$cytoplasm
+c$yegH	c$plasma#SPACE#membrane
+c$rpsR	c$cytosol c$ribosome c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$pepQ	c$cytosol
+c$cysI	c$sulfite#SPACE#reductase#SPACE#complex#SPACE#(NADPH)
+c$uspD	c$cytosol
+c$znuA	c$periplasmic#SPACE#space
+c$wzyE	c$plasma#SPACE#membrane
+c$fdrA	c$cytosol c$succinate-CoA#SPACE#ligase#SPACE#complex#SPACE#(ADP-forming)
+c$moaB	c$cytosol
+c$yccF	c$plasma#SPACE#membrane
+c$eno	c$cytosol c$phosphopyruvate#SPACE#hydratase#SPACE#complex c$membrane c$cytoskeleton
+c$rsmB	c$cytosol
+c$hflD	c$plasma#SPACE#membrane c$extrinsic#SPACE#component#SPACE#of#SPACE#cytoplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ycfZ	c$plasma#SPACE#membrane
+c$gnsB	c$cytosol
+c$mrp	c$cytosol
+c$glyS	c$cytosol
+c$tsaD	c$cytosol c$EKC/KEOPS#SPACE#complex
+c$dapD	c$cytosol
+c$fepD	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$cheA	c$cytosol c$plasma#SPACE#membrane c$cytoplasm
+c$ybbP	c$plasma#SPACE#membrane
+c$mreC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygiB	c$cell#SPACE#outer#SPACE#membrane
+c$elfA	c$pilus
+c$eutC	c$ethanolamine#SPACE#ammonia-lyase#SPACE#complex
+c$sfmA	c$pilus
+c$yeeO	c$plasma#SPACE#membrane c$membrane
+c$pcnB	c$cytosol c$cytoplasm
+c$galF	c$cytosol
+c$acrF	c$plasma#SPACE#membrane
+c$pdeF	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$malX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$dgcQ	c$plasma#SPACE#membrane
+c$yrbG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$panC	c$cytosol
+c$ilvC	c$cytosol c$cytoplasm
+c$minE	c$cytosol c$plasma#SPACE#membrane
+c$ytjA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$cybB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$prmA	c$cytosol
+c$ydjX	c$plasma#SPACE#membrane
+c$fliG	c$plasma#SPACE#membrane
+c$gspG	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rpsL	c$cytosol c$ribosome c$small#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$yedW	c$cytosol c$protein-DNA#SPACE#complex
+c$yiiM	c$cytosol
+c$cpoB	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$arnE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ltaE	c$cytosol
+c$rsmC	c$cytosol c$cytoplasm
+c$thrA	c$cytoplasm
+c$mhpD	c$cytoplasm
+c$amiB	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yagU	c$plasma#SPACE#membrane
+c$msrP	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ppdB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hyfC	c$plasma#SPACE#membrane
+c$glk	c$cytosol
+c$rluD	c$cytosol
+c$fdhD	c$cytosol c$cytoplasm
+c$ybgQ	c$cell#SPACE#outer#SPACE#membrane
+c$rpsF	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$pdeA	c$plasma#SPACE#membrane
+c$yfeW	c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$narQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$intracellular
+c$yehY	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$hemY	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$accC	c$cytosol c$cytoplasm
+c$ybiY	c$cytoplasm
+c$rna	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$tesA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yqjH	c$cytosol
+c$bisC	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yraK	c$pilus
+c$gspK	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$kefG	c$cytosol
+c$tpiA	c$cytosol c$membrane
+c$fliL	c$bacterial-type#SPACE#flagellum#SPACE#basal#SPACE#body c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rihC	c$cytosol
+c$cvrA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybaV	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$thiD	c$cytosol c$cytoplasm
+c$dsbC	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$selA	c$cytosol
+c$hycG	c$ferredoxin#SPACE#hydrogenase#SPACE#complex
+c$xanQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gsiD	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rplV	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$araJ	c$plasma#SPACE#membrane
+c$ymjB	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$rplD	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$tabA	c$cytosol
+c$yidK	c$plasma#SPACE#membrane
+c$kdgT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$ypfJ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yejE	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hisS	c$cytosol
+c$yigL	c$cytosol
+c$cysH	c$cytoplasm
+c$purT	c$cytosol
+c$ulaC	c$plasma#SPACE#membrane
+c$yhdP	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$tehB	c$cytosol
+c$yehU	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$tcyP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$yggR	c$cytosol
+c$yaaJ	c$plasma#SPACE#membrane
+c$ydiB	c$cytosol
+c$umuC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$DNA#SPACE#polymerase#SPACE#V#SPACE#complex c$membrane
+c$narV	c$plasma#SPACE#membrane c$nitrate#SPACE#reductase#SPACE#complex
+c$hyfF	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$purC	c$cytosol c$membrane
+c$thiM	c$cytosol
+c$ppc	c$cytosol
+c$yniD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ytfR	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$asnA	c$cytosol c$cytoplasm
+c$yhdU	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$nrfE	c$plasma#SPACE#membrane
+c$ybgK	c$cytosol
+c$ydiN	c$plasma#SPACE#membrane
+c$cspI	c$cytosol
+c$appC	c$plasma#SPACE#membrane c$cytochrome#SPACE#complex c$membrane
+c$msrA	c$cytosol
+c$mhpC	c$cytoplasm
+c$rfbX	c$plasma#SPACE#membrane
+c$azuC	c$plasma#SPACE#membrane
+c$maoP	c$cytosol
+c$osmE	c$plasma#SPACE#membrane
+c$ydgI	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygcS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$panB	c$cytosol c$cytoplasm c$membrane
+c$ybhP	c$cytoplasm
+c$nikC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybbW	c$plasma#SPACE#membrane
+c$yggT	c$plasma#SPACE#membrane
+c$ibsD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yfcC	c$plasma#SPACE#membrane
+c$creD	c$plasma#SPACE#membrane
+c$fliK	c$bacterial-type#SPACE#flagellum#SPACE#hook
+c$argT	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$hofC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$fdnH	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$formate#SPACE#dehydrogenase#SPACE#complex c$membrane
+c$rpsS	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$rplX	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$rihA	c$cytosol
+c$pgpA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hemF	c$cytosol c$cytoplasm
+c$rpmC	c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$yahI	c$cytosol
+c$gldA	c$cytosol
+c$ydaN	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mutH	c$mismatch#SPACE#repair#SPACE#complex
+c$ycjV	c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$etk	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$ybjM	c$plasma#SPACE#membrane
+c$kdsC	c$cytosol
+c$treA	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$grxB	c$cytosol
+c$nusG	c$cytosol
+c$yahC	c$plasma#SPACE#membrane
+c$truD	c$cytosol
+c$yohC	c$plasma#SPACE#membrane
+c$rnc	c$cytosol
+c$efeO	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$mdaB	c$cytosol
+c$ispU	c$cytosol c$cytoplasm
+c$yqeA	c$cytosol
+c$mdtL	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ycaO	c$cytosol
+c$ynbA	c$plasma#SPACE#membrane
+c$erfK	c$extracellular#SPACE#region
+c$yhjE	c$plasma#SPACE#membrane
+c$rclA	c$cytoplasm
+c$tatB	c$TAT#SPACE#protein#SPACE#transport#SPACE#complex c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$xthA	c$cytosol
+c$yqjD	c$plasma#SPACE#membrane c$cell#SPACE#pole
+c$amyA	c$cytoplasm
+c$nagZ	c$cytosol
+c$ylaC	c$plasma#SPACE#membrane
+c$idi	c$cytoplasm
+c$yjjB	c$plasma#SPACE#membrane
+c$mscK	c$plasma#SPACE#membrane
+c$ybcJ	c$cytosol
+c$aceB	c$cytoplasm
+c$glpX	c$cytosol
+c$pdeK	c$plasma#SPACE#membrane
+c$yjiG	c$plasma#SPACE#membrane
+c$yghB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gspL	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pagP	c$cell#SPACE#outer#SPACE#membrane
+c$msrC	c$cytosol
+c$rtcR	c$intracellular
+c$ygaP	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yigG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydiO	c$plasma#SPACE#membrane
+c$yggW	c$cytoplasm
+c$atpH	c$proton-transporting#SPACE#ATP#SPACE#synthase#SPACE#complex#COMMA##SPACE#catalytic#SPACE#core#SPACE#F(1)
+c$solA	c$cytosol
+c$ispA	c$cytosol
+c$aspA	c$cytosol c$membrane
+c$bioP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pepT	c$cytosol
+c$loiP	c$cell#SPACE#outer#SPACE#membrane
+c$bglX	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yegT	c$plasma#SPACE#membrane
+c$yhfT	c$plasma#SPACE#membrane
+c$yfjD	c$plasma#SPACE#membrane
+c$envC	c$plasma#SPACE#membrane c$periplasmic#SPACE#space c$cell#SPACE#division#SPACE#site c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ybiS	c$extracellular#SPACE#region
+c$pepB	c$cytosol
+c$yfgM	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$xylE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ycjP	c$plasma#SPACE#membrane
+c$folC	c$cytoplasm
+c$eptA	c$plasma#SPACE#membrane
+c$yegQ	c$cytosol
+c$rimJ	c$cytosol c$cytoplasm
+c$artP	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex#COMMA##SPACE#substrate-binding#SPACE#subunit-containing
+c$rhtC	c$plasma#SPACE#membrane
+c$rplW	c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$ppnN	c$cytosol
+c$dcuD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$mnmE	c$cytosol c$plasma#SPACE#membrane c$cytoplasm
+c$mnmA	c$cytosol
+c$upp	c$cytosol c$membrane
+c$gatD	c$cytosol
+c$map	c$cytosol
+c$yejM	c$plasma#SPACE#membrane
+c$yjgX	c$plasma#SPACE#membrane
+c$ydbH	c$plasma#SPACE#membrane
+c$yfhH	c$cytosol
+c$nudE	c$cytosol
+c$aroE	c$cytosol
+c$mdoB	c$plasma#SPACE#membrane c$periplasmic#SPACE#space c$membrane
+c$ybaE	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ygiN	c$cytosol
+c$ybfA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$atoE	c$plasma#SPACE#membrane
+c$tsaB	c$cytosol c$EKC/KEOPS#SPACE#complex
+c$leuD	c$cytosol c$3-isopropylmalate#SPACE#dehydratase#SPACE#complex
+c$miaB	c$cytosol
+c$ycbB	c$extracellular#SPACE#region
+c$ybaK	c$cytosol
+c$ycfT	c$plasma#SPACE#membrane
+c$dcp	c$cytosol c$cytoplasm c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ybiO	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$asd	c$cytosol
+c$flhB	c$plasma#SPACE#membrane
+c$iadA	c$cytosol c$cytoplasm
+c$potC	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$frlA	c$plasma#SPACE#membrane
+c$yeiP	c$cytosol c$cytoplasm
+c$yjbF	c$integral#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$yfjP	c$cytosol
+c$tamB	c$TAM#SPACE#protein#SPACE#secretion#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$folD	c$cytosol
+c$yghQ	c$plasma#SPACE#membrane
+c$yffB	c$cytosol
+c$pdxY	c$cytosol
+c$yfhM	c$anchored#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane
+c$frvB	c$plasma#SPACE#membrane c$membrane
+c$ldrB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yjiA	c$cytosol
+c$lptG	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$yohK	c$plasma#SPACE#membrane
+c$fucO	c$cytosol
+c$ydjM	c$plasma#SPACE#membrane
+c$udk	c$cytosol
+c$dgcE	c$plasma#SPACE#membrane c$intracellular
+c$sgbE	c$cytosol
+c$gltJ	c$plasma#SPACE#membrane
+c$gfcA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$menH	c$cytosol
+c$rpsN	c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit c$small#SPACE#ribosomal#SPACE#subunit
+c$clsC	c$membrane
+c$degS	c$integral#SPACE#component#SPACE#of#SPACE#external#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$pyrH	c$cytosol
+c$murF	c$cytosol
+c$gapC	c$cytosol
+c$ymfJ	c$cytosol
+c$paoB	c$periplasmic#SPACE#space
+c$trkG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$pssA	c$cytosol
+c$ygbL	c$cytosol
+c$fhuE	c$cell#SPACE#outer#SPACE#membrane
+c$gapA	c$cytosol c$membrane
+c$folX	c$cytosol
+c$ampD	c$outer#SPACE#membrane
+c$pdxB	c$cytosol
+c$yjeM	c$plasma#SPACE#membrane
+c$ftsX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$Gram-negative-bacterium-type#SPACE#cell#SPACE#wall c$cell#SPACE#division#SPACE#site
+c$aroD	c$cytosol
+c$yeaV	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$essQ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybhS	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$atpI	c$plasma#SPACE#membrane
+c$ydjE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$yedE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$secD	c$plasma#SPACE#membrane c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yqiJ	c$plasma#SPACE#membrane
+c$gshB	c$cytosol c$cytoplasm
+c$elyC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$elfG	c$pilus
+c$rnt	c$cytosol c$DNA#SPACE#polymerase#SPACE#III#COMMA##SPACE#core#SPACE#complex
+c$sdhE	c$cytoplasm
+c$yfgD	c$cytosol
+c$kup	c$plasma#SPACE#membrane c$membrane
+c$lsrG	c$cytosol
+c$tauD	c$cytoplasm
+c$intD	c$cytosol
+c$sgcB	c$cytoplasm
+c$arcC	c$cytosol
+c$yehA	c$pilus
+c$kbaZ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$iap	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$rplJ	c$cytosol c$large#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$ynhG	c$extracellular#SPACE#region
+c$ydhP	c$plasma#SPACE#membrane
+c$ymiA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gmk	c$cytosol
+c$yncL	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$wrbA	c$cytosol c$membrane
+c$ybiB	c$cytosol
+c$nimT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$yqjA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$kdsA	c$cytosol
+c$yiaO	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ybaL	c$plasma#SPACE#membrane
+c$ypjD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$crcB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yheS	c$cytosol
+c$zipA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$cell#SPACE#division#SPACE#site c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ycaC	c$cytosol c$membrane
+c$flgB	c$bacterial-type#SPACE#flagellum#SPACE#hook
+c$gltA	c$cytosol
+c$mreD	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gspC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rpmB	c$cytosol c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit c$ribosome
+c$hsdR	c$cytosol
+c$ddpB	c$plasma#SPACE#membrane
+c$rraA	c$cytosol
+c$yhbT	c$cytosol
+c$yfiC	c$cytoplasm
+c$pyrF	c$cytosol c$cytoplasm
+c$pqiC	c$plasma#SPACE#membrane c$anchored#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ibpA	c$cytosol
+c$bglA	c$cytosol
+c$tufA	c$cytoplasm
+c$yidH	c$plasma#SPACE#membrane
+c$moaE	c$cytosol
+c$uspA	c$membrane
+c$cdh	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$argH	c$cytosol c$cytoplasm
+c$thiC	c$cytosol
+c$aes	c$cytoplasm
+c$ahpF	c$cytosol c$alkyl#SPACE#hydroperoxide#SPACE#reductase#SPACE#complex
+c$ygiZ	c$plasma#SPACE#membrane
+c$sgcE	c$cytosol
+c$sfmH	c$pilus
+c$ybfB	c$plasma#SPACE#membrane
+c$insH-5	c$cytosol
+c$yfdC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$wzzB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhhM	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yccS	c$plasma#SPACE#membrane
+c$mppA	c$periplasmic#SPACE#space c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$trxC	c$cytosol c$cytoplasm
+c$lpxK	c$plasma#SPACE#membrane c$membrane
+c$rpsI	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit c$small#SPACE#ribosomal#SPACE#subunit
+c$cynS	c$cytoplasm
+c$secM	c$periplasmic#SPACE#space
+c$emrA	c$intrinsic#SPACE#component#SPACE#of#SPACE#periplasmic#SPACE#side#SPACE#of#SPACE#plasma#SPACE#membrane c$intrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$murD	c$cytoplasm
+c$yoaE	c$plasma#SPACE#membrane
+c$mokC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yghG	c$cell#SPACE#outer#SPACE#membrane
+c$speE	c$cytosol
+c$ppdC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hemB	c$cytosol
+c$bcsG	c$plasma#SPACE#membrane
+c$yqhH	c$intrinsic#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane
+c$ribC	c$cytosol
+c$yjbB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$wbbJ	c$cytosol
+c$cysM	c$cytoplasm
+c$hemC	c$cytosol c$cytoplasm
+c$yoaJ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygfB	c$cytosol
+c$ycbU	c$pilus
+c$yagA	c$cytosol
+c$ybhC	c$cell#SPACE#outer#SPACE#membrane
+c$rpsE	c$cytosol c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$fklB	c$cytosol
+c$yraQ	c$plasma#SPACE#membrane
+c$yicC	c$cytosol
+c$kbaY	c$cytosol
+c$coaA	c$cytosol
+c$yihP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yajD	c$cytosol
+c$ygjV	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rhtA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$yidC	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yfcO	c$cytosol
+c$ydcZ	c$plasma#SPACE#membrane
+c$yraH	c$pilus
+c$ybbD	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yaiO	c$cell#SPACE#outer#SPACE#membrane
+c$rhtB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$ygjQ	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhbW	c$cytosol
+c$mtn	c$cytosol
+c$rdgB	c$cytosol c$cytoplasm
+c$yohP	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rclC	c$plasma#SPACE#membrane
+c$ydcV	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$ibaG	c$cytosol
+c$ygeH	c$cytosol
+c$cobS	c$plasma#SPACE#membrane
+c$btuF	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yhhT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yfjI	c$cytosol
+c$ycdU	c$plasma#SPACE#membrane
+c$yihO	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yagG	c$plasma#SPACE#membrane
+c$ybhQ	c$plasma#SPACE#membrane
+c$yhfW	c$cytosol
+c$ydcU	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$rhmA	c$cytoplasm
+c$yebE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ydjN	c$plasma#SPACE#membrane c$membrane
+c$mdoD	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$lptB	c$plasma#SPACE#membrane c$ATP-binding#SPACE#cassette#SPACE#(ABC)#SPACE#transporter#SPACE#complex
+c$yjiJ	c$plasma#SPACE#membrane
+c$lpxH	c$extrinsic#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybhG	c$plasma#SPACE#membrane
+c$fabB	c$cytosol
+c$psiE	c$plasma#SPACE#membrane
+c$yecS	c$plasma#SPACE#membrane
+c$cbrB	c$plasma#SPACE#membrane
+c$citT	c$plasma#SPACE#membrane
+c$yfcA	c$plasma#SPACE#membrane
+c$ymiB	c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$phnI	c$alpha-D-ribose#SPACE#1-methylphosphonate#SPACE#5-triphosphate#SPACE#synthase#SPACE#complex
+c$frr	c$cytosol c$cytoplasm
+c$yicS	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$betB	c$cytosol
+c$frvA	c$plasma#SPACE#membrane
+c$yjjP	c$plasma#SPACE#membrane
+c$ypfN	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yodB	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$mgsA	c$cytosol
+c$ygaH	c$plasma#SPACE#membrane
+c$yehD	c$pilus
+c$yidE	c$plasma#SPACE#membrane
+c$fhuF	c$cytosol
+c$yfcR	c$pilus
+c$ispG	c$cytosol
+c$ygdH	c$cytosol
+c$bhsA	c$cell#SPACE#outer#SPACE#membrane
+c$rmf	c$cytoplasm
+c$serS	c$cytosol
+c$ybdZ	c$cytosol
+c$creA	c$cytosol
+c$yfeH	c$plasma#SPACE#membrane
+c$yhhQ	c$plasma#SPACE#membrane
+c$wecH	c$plasma#SPACE#membrane
+c$viaA	c$cytosol c$membrane
+c$mdtH	c$plasma#SPACE#membrane
+c$grxA	c$cell
+c$ycaI	c$plasma#SPACE#membrane
+c$opgE	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$hisI	c$cytosol
+c$intB	c$cytosol
+c$ycaD	c$plasma#SPACE#membrane
+c$yqeG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$yliI	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$ydfJ	c$plasma#SPACE#membrane
+c$ecnB	c$anchored#SPACE#component#SPACE#of#SPACE#cell#SPACE#outer#SPACE#membrane c$membrane
+c$yicJ	c$plasma#SPACE#membrane
+c$yejL	c$cytosol
+c$lplT	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yqjK	c$cytosol
+c$gspJ	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yajC	c$cell#SPACE#envelope#SPACE#Sec#SPACE#protein#SPACE#transport#SPACE#complex c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybiR	c$plasma#SPACE#membrane
+c$yecD	c$cytosol
+c$yheO	c$cytosol
+c$yeeA	c$plasma#SPACE#membrane
+c$yfdV	c$plasma#SPACE#membrane
+c$corC	c$plasma#SPACE#membrane
+c$hokE	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$grxC	c$cytosol
+c$yceH	c$cytosol
+c$ggt	c$periplasmic#SPACE#space c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$glnH	c$membrane c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$yfcJ	c$plasma#SPACE#membrane
+c$yidI	c$plasma#SPACE#membrane
+c$hokB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$talA	c$cytosol
+c$yigI	c$cytosol
+c$ydjY	c$cytosol
+c$sseA	c$cytosol
+c$bcsA	c$plasma#SPACE#membrane
+c$yqeI	c$intracellular c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yaiE	c$cytosol
+c$araA	c$cytosol
+c$ykgR	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yeeE	c$plasma#SPACE#membrane
+c$engB	c$cytosol
+c$ydfZ	c$cytosol
+c$lnt	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$bioD1	c$cytosol
+c$dgcI	c$plasma#SPACE#membrane
+c$ibsC	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yicL	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane
+c$purB	c$cytosol
+c$appX	c$cell#SPACE#outer#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rsxE	c$plasma#SPACE#membrane
+c$ansP	c$plasma#SPACE#membrane
+c$ldrA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$aat	c$cytoplasm
+c$rhaT	c$plasma#SPACE#membrane
+c$yohO	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yfcD	c$cytosol
+c$malM	c$outer#SPACE#membrane-bounded#SPACE#periplasmic#SPACE#space
+c$amn	c$cytosol
+c$yadS	c$plasma#SPACE#membrane
+c$nupX	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ppdA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$leuS	c$cytosol
+c$ydhR	c$cytosol
+c$rpsM	c$cytosol c$small#SPACE#ribosomal#SPACE#subunit c$cytosolic#SPACE#small#SPACE#ribosomal#SPACE#subunit
+c$frmB	c$cytosol
+c$yqaA	c$plasma#SPACE#membrane
+c$yfaA	c$cytosol
+c$ybjO	c$plasma#SPACE#membrane
+c$lysO	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$crl	c$cytosol
+c$ibsB	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$allB	c$cytoplasm
+c$hokA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$srlA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yjaG	c$cytosol
+c$ybgD	c$pilus
+c$yfgG	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yjtD	c$cytosol
+c$ynfB	c$cell#SPACE#outer#SPACE#membrane
+c$ybhM	c$plasma#SPACE#membrane
+c$gmd	c$cytoplasm
+c$ychQ	c$plasma#SPACE#membrane
+c$ibsA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$gspI	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane c$type#SPACE#II#SPACE#protein#SPACE#secretion#SPACE#system#SPACE#complex
+c$ygdQ	c$plasma#SPACE#membrane
+c$yhhJ	c$plasma#SPACE#membrane
+c$ybhR	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$alpA	c$provirus
+c$yfbV	c$plasma#SPACE#membrane
+c$wbbH	c$plasma#SPACE#membrane
+c$yijD	c$plasma#SPACE#membrane
+c$dkgA	c$cytosol
+c$yahJ	c$cytosol
+c$yfjS	c$plasma#SPACE#membrane
+c$abrB	c$plasma#SPACE#membrane
+c$eptC	c$plasma#SPACE#membrane
+c$maa	c$cytosol
+c$ychN	c$cytosol
+c$yebY	c$cytosol
+c$yecN	c$plasma#SPACE#membrane
+c$ynjC	c$plasma#SPACE#membrane
+c$ymcE	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yhaO	c$plasma#SPACE#membrane
+c$ythA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$rpmD	c$cytosolic#SPACE#large#SPACE#ribosomal#SPACE#subunit
+c$ykfA	c$cytosol
+c$ybbJ	c$plasma#SPACE#membrane
+c$yjjJ	c$cytosol
+c$pmbA	c$cytosol c$cytoplasm
+c$thiG	c$cytosol
+c$yqcE	c$plasma#SPACE#membrane
+c$ygeL	c$intracellular
+c$yqjG	c$cytoplasm
+c$yciO	c$cytosol
+c$yggX	c$cytosol
+c$yfcU	c$cell#SPACE#outer#SPACE#membrane
+c$rsxD	c$plasma#SPACE#membrane
+c$ispD	c$cytosol
+c$ydiK	c$plasma#SPACE#membrane
+c$ydcF	c$plasma#SPACE#membrane
+c$flhA	c$plasma#SPACE#membrane
+c$yqjE	c$plasma#SPACE#membrane
+c$pmrR	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yjgN	c$plasma#SPACE#membrane
+c$yihG	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybhL	c$plasma#SPACE#membrane
+c$rpoE	c$cytoplasm
+c$alx	c$plasma#SPACE#membrane
+c$rpoZ	c$cytosol c$RNA#SPACE#polymerase#SPACE#complex
+c$yeaY	c$outer#SPACE#membrane
+c$yqgE	c$cytosol
+c$yhgE	c$plasma#SPACE#membrane
+c$efeU	c$plasma#SPACE#membrane
+c$dgcF	c$plasma#SPACE#membrane
+c$yfdI	c$plasma#SPACE#membrane
+c$ytfL	c$plasma#SPACE#membrane
+c$yqfA	c$plasma#SPACE#membrane
+c$ygiH	c$plasma#SPACE#membrane
+c$safA	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yqgA	c$plasma#SPACE#membrane
+c$rsxG	c$cell#SPACE#outer#SPACE#membrane
+c$yebZ	c$plasma#SPACE#membrane
+c$ydhF	c$cytosol
+c$ynjF	c$plasma#SPACE#membrane
+c$yiiR	c$plasma#SPACE#membrane
+c$msyB	c$cytosol
+c$yciK	c$intracellular
+c$yneM	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygbE	c$plasma#SPACE#membrane
+c$yidX	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$bcsZ	c$extracellular#SPACE#region
+c$dinF	c$plasma#SPACE#membrane
+c$ortT	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygjI	c$plasma#SPACE#membrane
+c$yqfB	c$cytosol
+c$ybeZ	c$cytosol
+c$fliP	c$plasma#SPACE#membrane
+c$pheP	c$plasma#SPACE#membrane
+c$yohD	c$plasma#SPACE#membrane
+c$yccM	c$plasma#SPACE#membrane
+c$usg	c$cytosol
+c$yoaI	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yibL	c$cytosol
+c$ycaR	c$cytosol
+c$ynfM	c$plasma#SPACE#membrane
+c$flk	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yccU	c$cytosol
+c$crfC	c$cytosol
+c$yphA	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#membrane c$membrane
+c$yhhH	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ygcQ	c$plasma#SPACE#membrane
+c$yaiL	c$cytosol
+c$gnsA	c$cytosol
+c$yiaW	c$plasma#SPACE#membrane
+c$yfdH	c$plasma#SPACE#membrane
+c$pdxI	c$cytosol
+c$yafY	c$plasma#SPACE#membrane
+c$wzxC	c$plasma#SPACE#membrane
+c$yhhS	c$plasma#SPACE#membrane c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$ybjT	c$plasma#SPACE#membrane
+c$yeiH	c$plasma#SPACE#membrane
+c$yfeZ	c$plasma#SPACE#membrane
+c$yniB	c$plasma#SPACE#membrane
+c$yjiH	c$plasma#SPACE#membrane
+c$yhaH	c$plasma#SPACE#membrane
+c$yeeR	c$plasma#SPACE#membrane
+c$yjiN	c$plasma#SPACE#membrane
+c$yggL	c$cytosol
+c$ydgU	c$integral#SPACE#component#SPACE#of#SPACE#plasma#SPACE#membrane
+c$yjdM	c$cytosol
+c$yecM	c$cytosol
