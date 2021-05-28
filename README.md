@@ -1,62 +1,68 @@
 # Knowledge Integration and Decision Support (KIDS)
-KIDS is an end-to-end, automated framework for knowledge discovery consisting of three key components: 1) a knowledge graph constructor of biological  information, 2) an inconsistency resolver, and 3) a hypothesis generator.
+KIDS constructs an inconsistency-free knowledge graph that supports multiple triple types and performs knowledge graph completion. We apply the KIDS framework to the area of *Eschericia coli* antibiotic resistance. This work proposes an integrated approach towards automated knowledge representation and discovery, and demonstrates how evidence-driven decisions can automate knowledge discovery with high confidence and accelerated pace.
 
 ![Figure 1](/images/Figure1.png)
 *Figure 1. Overview of the KIDS framework.*
 
 ## Directories
-* <code>[/kg_constructor](/kg_constructor)</code>: Code for creating the knowledge graph. Note that this directory also contains the source code for performing inconsistency resolution. Please refer to its own [README](/kg_constructor/README.md) file for more information.
-* <code>[/hypothesis_generator](/hypothesis_generator)</code>: Code for generating the hypothesis based on the knowledge graph created. Please refer to its own [README](/hypothesis_generator/README.md) file for more information.
+* <code>[./hypothesis_generator](./hypothesis_generator)</code>: Code for generating the hypothesis based on the knowledge graph created. Please refer to its own [README](/hypothesis_generator/README.md) file for more information.
+* <code>[./images](./images)</code>: Contains README file related images.
+* <code>[./kg_constructor](./kg_constructor)</code>: Code for creating the knowledge graph. Note that this directory also contains the source code for performing inconsistency resolution. Please refer to its own [README](./kg_constructor/README.md) file for more information.
+* <code>[./manuscript_preparation](./manuscript_preparation)</code>: Code for analyzing the results as reported in the manuscript.
 
 ## Getting Started
 
-### Dependencies
-In addition to Python 3.6, following Python libraries are required.
+### 2a. Clone this repository to your local machine.
 
 ```
-argparse==1.1
-configparser==3.5.0
-imbalanced-learn==0.4.3
-matplotlib==3.1.0
-numpy==1.16.3
-pandas==0.24.2
-scikit-learn==0.20.0
-scipy==1.3.1
-tensorflow==1.13.1
+mkdir KIDS
+git clone https://github.com/IBPA/KIDS.git ./KIDS
 ```
 
-You can install these required Python libraries as follows.
+### 2b. Install all the dependencies.
 
+Create and activate virtual environment.
 ```
-pip3 install -r requirements.txt
+cd ./KIDS
+python3 -m venv env
+source env/bin/activate
+```
+
+Install all required python packages once the virtual environment has been activated.
+```
+pip3 install requirements.txt
 ```
 
 You will also need Java 7 or higher. If you are running Ubuntu 18.04, follow the steps below to install Java OpenJDK 11.
-
 ```
 sudo apt update
 sudo apt install openjdk-11-jdk
 ```
 
-### Running
-1. Construct the KG by following the [README](/kg_constructor/README.md) file.
-2. Generate the hypothesis by following the [README](/hypothesis_generator/README.md) file.
+(Optional) You can deactivate the virtual environment once finished.
+```
+cd ./KIDS
+deactivate
+```
 
-### Docker
-This section will be updated once we have the docker image.
+### 2c. Running the code.
+- Construct the KG by following the [README](/kg_constructor/README.md) file.
+- Generate the hypothesis by following the [README](/hypothesis_generator/README.md) file.
 
-## Citation
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut diam quam nulla porttitor massa id.
+## 3. Contact
 
-## Authors
-* **Jason Youn** - *Some work* - <jyoun@ucdavis.edu>
-* **Minseung Kim** - *Some work* - <msgkim@ucdavis.edu>
-* **Nicholas Joodi** - *Some work* - <npjoodi@ucdavis.edu>
+For any questions, please contact us at tagkopouloslab@ucdavis.edu.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+## 4. Citation
 
-## Acknowledgments
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+We will update this section once citation information is available.
+
+## 5. License
+
+This project is licensed under the **Apache-2.0 License**. Please see the <code>[LICENSE](./LICENSE)</code> file for details.
+
+## 6. Acknowledgments
+
+* Special thanks to the members of the [Tagkopoulos lab](http://tagkopouloslab.ucdavis.edu/) and the reviewers for their suggestions.
+* Nick Joodi and Minseung Kim for their help in the initial discussions, and Ameen Eetemadi for his comments on creating the figures.
+* This work was supported by the USDA-NIFA AI Institute for Next Generation Food Systems (AIFS), USDA-NIFA award number 2020-67021-32855 and the NIEHS grant P42ES004699 to Ilias Tagkopoulos.
