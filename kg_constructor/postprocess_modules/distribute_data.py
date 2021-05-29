@@ -273,7 +273,7 @@ class DistributeData():
                     self.updated_neg_target[self._OBJ_STR].isin([obj])]
 
             if known_negatives_dic[obj].shape[0] < self.num_negs:
-                log.warning('We are supposed to have enough negatives now for %s!', obj)
+                # log.warning('We are supposed to have enough negatives now for %s!', obj)
                 continue
 
             # append the original positive SPO

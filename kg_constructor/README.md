@@ -1,5 +1,5 @@
 # Knowledge Graph (KG) Constructor
-This folder contains source code responsible for 1) creating the KG using knowledge extracted from the datasets available online and 2) resolving any inconsistencies that may rise during the KG construction process. The KG created here will be used to train the [Hypothesis Generator](/hypothesis_generator).
+This folder contains source code responsible for **1)** creating the KG using knowledge extracted from the datasets available online and **2)** resolving any inconsistencies that may rise during the KG construction process. The KG created here will be used to train the [Hypothesis Generator](/hypothesis_generator).
 
 ## Directories
 * <code>[./configuration](./configuration)</code>: Contains **.ini** files used for setting up the configurations.
@@ -13,34 +13,37 @@ This folder contains source code responsible for 1) creating the KG using knowle
 Steps below describe how to replicate the results reported in the paper.
 
 ### Step 1: Update the paths.
-Modify the file paths in the following files to match your local settings.
-
-* <code>[./data/data_path_file.txt](./data/data_path_file.txt)</code>
-* <code>[./configuration/create_kg_config.ini](./configuration/create_kg_config.ini)</code>
-* <code>[./configuration/postprocess_config.ini](./configuration/postprocess_config.ini)</code>
-
-You can run the following script to automatically update above paths according to your local path.
+Running the following script will automatically update the paths to match your local computer path.
 ```
 ./update_paths.sh
 ```
 
 ### Step 2: Clean the output directory.
 Current <code>[output](./output)</code> directory consists of results used in the paper. If you wish to run the code and obtain new results, please remove all files and directories under it.
-
 ```
 rm -r ./output/*
 ```
 
 ### Step 3: Run the KG construction and inconsistency resolver.
 This step will construct the inconsistency-free knowledge graph. The generated files will be populated under the <code>[output](./output)</code> directory.
-
 ```
 python3 create_kg.py --phase all
 ```
 
-### Step 4: Run postprocessing.
-Postprocess the knowledge graph created in Step 3 to generate Hypothesis Generator friendly files.
+Note that the [default configuration](./configuration/create_kg_config.ini) removes the temporal data from the knowledge graph.
+```
+# Replacement rules (currently used to remove temporal data).
+replace_rule = /path/to/data/directory/replace_rules.xml
+```
 
+In order to create the complete knowledge graph containing the temporal information, please comment out the line as follows:
+```
+# Replacement rules (currently used to remove temporal data).
+# replace_rule = /path/to/data/directory/replace_rules.xml
+```
+
+### Step 4: Run postprocessing.
+Postprocess the knowledge graph created in Step 3 to generate hypothesis generator friendly files.
 ```
 ./run_postprocess.sh
 ```

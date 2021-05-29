@@ -12,6 +12,8 @@ KIDS constructs an inconsistency-free knowledge graph that supports multiple tri
 
 ## Getting Started
 
+This code has been tested with Python 3.6 under both Ubuntu 18.04 LTS and Ubuntu 20.04 LTS.
+
 ### 2a. Clone this repository to your local machine.
 
 ```
@@ -30,7 +32,7 @@ source env/bin/activate
 
 Install all required python packages once the virtual environment has been activated.
 ```
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 ```
 
 You will also need Java 7 or higher. If you are running Ubuntu 18.04, follow the steps below to install Java OpenJDK 11.
