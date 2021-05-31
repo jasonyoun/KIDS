@@ -49,6 +49,8 @@ rm -r ./er_mlp/model/model_instance/*
 rm -r ./stacked/model_instance/*
 ```
 
+Running the toy example takes roughly 5 seconds on PRA. For MLP, running time depends on the number of epochs. To change the number of epochs, please update the configuration files at ```./run/configuration/fold_*/er_mlp.ini``` by updating the attribute ***training_epochs***.
+
 ### Step 4: Perform k-fold cross validation.
 Directory [run](./run) contains multiple helper shell scripts to run the experiments using three different models mentioned in the paper: PRA, MLP, and Stacked. Running following scripts will reproduce the results in the paper.
 

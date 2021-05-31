@@ -12,10 +12,14 @@ data_dir="$kgc_dir/data"
 # update paths in data_path_file.txt
 dataset_dir="$data_dir/dataset"
 data_path_file="$data_dir/data_path_file.txt"
+data_path_file_toy="$data_dir/data_path_file_toy.txt"
 default_dataset_dir="/path/to/dataset/directory"
 
 echo "Updating filepaths in '$data_path_file'..."
 sed -i 's|'$default_dataset_dir'|'$dataset_dir'|g' $data_path_file
+
+echo "Updating filepaths in '$data_path_file_toy'..."
+sed -i 's|'$default_dataset_dir'|'$dataset_dir'|g' $data_path_file_toy
 
 # update paths in the configuration files
 config_dir="$kgc_dir/configuration"

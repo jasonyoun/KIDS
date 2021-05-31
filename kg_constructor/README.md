@@ -27,19 +27,25 @@ rm -r ./output/*
 ### Step 3: Run the KG construction and inconsistency resolver.
 This step will construct the inconsistency-free knowledge graph. The generated files will be populated under the <code>[output](./output)</code> directory.
 ```
-python3 create_kg.py --phase all
+python3 create_kg.py --phase=all
 ```
 
-Note that the [default configuration](./configuration/create_kg_config.ini) removes the temporal data from the knowledge graph.
+Note that the [default configuration](./configuration/create_kg_config.ini) removes the temporal data from the knowledge graph. In order to create the complete knowledge graph containing the temporal information, please comment out the line as follows:
 ```
-# Replacement rules (currently used to remove temporal data).
+# Comment out this line
 replace_rule = /path/to/data/directory/replace_rules.xml
+
+# Like this
+# replace_rule = /path/to/data/directory/replace_rules.xml
 ```
 
-In order to create the complete knowledge graph containing the temporal information, please comment out the line as follows:
+For running a toy example with smaller dataset, update the [configuration](./configuration/create_kg_config.ini) file as below. Running the toy example will take roughly 8 seconds on a normal desktop.
 ```
-# Replacement rules (currently used to remove temporal data).
-# replace_rule = /path/to/data/directory/replace_rules.xml
+# Change this line
+data_path = /path/to/data/directorydata_path_file_toy.txt
+
+# Like this
+data_path = /path/to/data/directorydata_path_file_toy.txt
 ```
 
 ### Step 4: Run postprocessing.
